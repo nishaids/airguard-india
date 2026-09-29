@@ -31,3 +31,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+
+# Webfont cache for the explainer PDF; refetched on demand.
+reports/.fontcache/

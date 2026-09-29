@@ -1,0 +1,23 @@
+{
+  "generated_by": "src/models/evaluate.py",
+  "generated_at_utc": "2026-09-29T02:27:43Z",
+  "figures": [
+    "27_regression_comparison.png",
+    "28_classification_comparison.png",
+    "29_confusion_matrices.png",
+    "30_roc_curves.png",
+    "31_residual_analysis.png",
+    "32_learning_curves.png",
+    "33_per_city_error.png",
+    "34_train_test_gap.png",
+    "35_error_analysis.png"
+  ],
+  "tables": [
+    "master_comparison_regression.csv",
+    "master_comparison_classification.csv",
+    "master_comparison_clustering.csv"
+  ],
+  "best_regression": "LightGBM",
+  "best_classification": "XGBoost + SMOTE",
+  "selected_k": 2
+}

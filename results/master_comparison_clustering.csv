@@ -1,0 +1,7 @@
+Algorithm,k,Silhouette,Davies-Bouldin,Calinski-Harabasz
+KMeans,2,0.3553,1.0464,7.2702
+Agglomerative (Ward),2,0.3553,1.0464,7.2702
+"KMeans (k=2, candidate)",2,0.3553,1.0464,7.2702
+"KMeans (k=3, candidate)",3,0.2259,1.0703,6.2198
+"KMeans (k=4, candidate)",4,0.2418,0.8596,7.1852
+"KMeans (k=5, candidate)",5,0.178,0.8999,6.6188

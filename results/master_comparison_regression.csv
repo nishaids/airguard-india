@@ -1,0 +1,7 @@
+Model,Family,CV MAE,CV MAE sd,Test MAE,Test RMSE,Test R2,Test MAPE %,Test bias,Train MAE,Train-test R2 gap,Fit seconds
+LightGBM,gradient boosting,29.9257,9.9545,15.1028,23.4986,0.9119,14.5791,2.7921,11.906,0.0635,5.02
+Random Forest,bagged trees,29.8832,10.4446,15.2834,23.9581,0.9084,14.5995,2.6553,8.8735,0.0729,67.65
+XGBoost,gradient boosting,31.9789,11.999,15.4436,23.8794,0.909,15.1466,3.309,10.1118,0.0746,10.14
+Linear Regression,linear,28.6281,8.8923,15.9045,24.6183,0.9033,15.1222,3.2962,22.8609,-0.0083,0.14
+Ridge Regression,linear,28.5014,8.7714,15.9062,24.6193,0.9033,15.1249,3.3005,22.8611,-0.0083,0.06
+Persistence baseline (tomorrow = today),baseline,,,18.9049,31.5564,0.8411,16.3565,0.0871,,,

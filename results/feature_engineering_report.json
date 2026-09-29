@@ -1,0 +1,2725 @@
+{
+  "generated_by": "src/features/build.py",
+  "generated_at_utc": "2026-09-28T17:47:55Z",
+  "forecasting_formulation": "Targets are next-day AQI and next-day AQI bucket, per city. Features may use measurements dated today or earlier for that city only.",
+  "leakage_controls": {
+    "temporal": "The split is a fixed calendar boundary; shuffle is never used. TimeSeriesSplit is used for cross-validation. Lags and rolling windows are computed with groupby('City') so no city contributes to another city's history, and no window extends past the current day.",
+    "target": "AQI_next and AQI_Bucket_next are mutually excluded from each other's feature matrix, and an assertion in build_feature_matrix fails the run if either appears among the candidates. Same-day AQI and AQI_Bucket_ordinal are retained as legitimate predictors because they are known at prediction time; the distinct same-day nowcast leakage is demonstrated empirically in models/train_classification.py.",
+    "encoder": "The encoding is fitted on the training period only. Applying a full-sample city mean would allow each test row to contribute to the value of its own encoded feature.",
+    "scaler": "Scaling is performed inside a scikit-learn Pipeline so that fit_transform touches training folds only; no scaler is ever fitted on the test partition.",
+    "imputation": "All imputation statistics were estimated on pre-boundary rows in src/data/clean.py, and the adopted strategy uses no forward-looking information within a city's series."
+  },
+  "shape": {
+    "rows": 18395,
+    "columns": 194
+  },
+  "split": {
+    "boundary": "2019-05-26",
+    "train_rows": 13559,
+    "test_rows": 4836,
+    "train_range": [
+      "2015-01-01",
+      "2019-05-25"
+    ],
+    "test_range": [
+      "2019-05-26",
+      "2020-07-01"
+    ],
+    "test_fraction_actual": 0.2629
+  },
+  "feature_groups": {
+    "same_day_measurements": [
+      "PM2.5",
+      "PM10",
+      "NO",
+      "NO2",
+      "NOx",
+      "NH3",
+      "CO",
+      "SO2",
+      "O3",
+      "Benzene",
+      "Toluene",
+      "AQI",
+      "AQI_Bucket_ordinal",
+      "aqi_above_scale",
+      "n_imputed_pollutants",
+      "inserted_calendar_day"
+    ],
+    "temporal": [
+      "year",
+      "month",
+      "day_of_month",
+      "day_of_week",
+      "day_of_year",
+      "week_of_year",
+      "quarter",
+      "is_weekend",
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "days_since_start"
+    ],
+    "event_flags": [
+      "festival_flag",
+      "days_from_diwali",
+      "stubble_season_flag",
+      "lockdown_flag",
+      "post_lockdown_flag",
+      "covid_year_flag"
+    ],
+    "lags": [
+      "AQI_lag1",
+      "AQI_lag2",
+      "AQI_lag3",
+      "AQI_lag7",
+      "PM2.5_lag1",
+      "PM2.5_lag2",
+      "PM2.5_lag3",
+      "PM2.5_lag7",
+      "PM10_lag1",
+      "PM10_lag2",
+      "PM10_lag3",
+      "PM10_lag7",
+      "NO2_lag1",
+      "NO2_lag2",
+      "NO2_lag3",
+      "NO2_lag7",
+      "SO2_lag1",
+      "SO2_lag2",
+      "SO2_lag3",
+      "SO2_lag7",
+      "CO_lag1",
+      "CO_lag2",
+      "CO_lag3",
+      "CO_lag7",
+      "O3_lag1",
+      "O3_lag2",
+      "O3_lag3",
+      "O3_lag7",
+      "NH3_lag1",
+      "NH3_lag2",
+      "NH3_lag3",
+      "NH3_lag7"
+    ],
+    "rolling": [
+      "AQI_roll3_mean",
+      "AQI_roll3_std",
+      "AQI_roll7_mean",
+      "AQI_roll7_std",
+      "AQI_roll14_mean",
+      "AQI_roll14_std",
+      "AQI_delta1",
+      "AQI_dev_roll7",
+      "PM2.5_roll3_mean",
+      "PM2.5_roll3_std",
+      "PM2.5_roll7_mean",
+      "PM2.5_roll7_std",
+      "PM2.5_roll14_mean",
+      "PM2.5_roll14_std",
+      "PM2.5_delta1",
+      "PM2.5_dev_roll7",
+      "PM10_roll3_mean",
+      "PM10_roll3_std",
+      "PM10_roll7_mean",
+      "PM10_roll7_std",
+      "PM10_roll14_mean",
+      "PM10_roll14_std",
+      "PM10_delta1",
+      "PM10_dev_roll7",
+      "NO2_roll3_mean",
+      "NO2_roll3_std",
+      "NO2_roll7_mean",
+      "NO2_roll7_std",
+      "NO2_roll14_mean",
+      "NO2_roll14_std",
+      "NO2_delta1",
+      "NO2_dev_roll7",
+      "SO2_roll3_mean",
+      "SO2_roll3_std",
+      "SO2_roll7_mean",
+      "SO2_roll7_std",
+      "SO2_roll14_mean",
+      "SO2_roll14_std",
+      "SO2_delta1",
+      "SO2_dev_roll7",
+      "CO_roll3_mean",
+      "CO_roll3_std",
+      "CO_roll7_mean",
+      "CO_roll7_std",
+      "CO_roll14_mean",
+      "CO_roll14_std",
+      "CO_delta1",
+      "CO_dev_roll7",
+      "O3_roll3_mean",
+      "O3_roll3_std",
+      "O3_roll7_mean",
+      "O3_roll7_std",
+      "O3_roll14_mean",
+      "O3_roll14_std",
+      "O3_delta1",
+      "O3_dev_roll7",
+      "NH3_roll3_mean",
+      "NH3_roll3_std",
+      "NH3_roll7_mean",
+      "NH3_roll7_std",
+      "NH3_roll14_mean",
+      "NH3_roll14_std",
+      "NH3_delta1",
+      "NH3_dev_roll7"
+    ],
+    "ratios": [
+      "pm_ratio",
+      "no2_nox_ratio",
+      "so2_pm25_ratio",
+      "o3_no2_ratio",
+      "pm_coarse",
+      "total_pollutant_load"
+    ],
+    "station_metadata": [
+      "n_stations",
+      "n_active_stations"
+    ],
+    "hai_and_sub_indices": [
+      "sub_PM2.5",
+      "sub_PM10",
+      "sub_NO2",
+      "sub_NH3",
+      "sub_SO2",
+      "sub_CO",
+      "sub_O3",
+      "HAI_healthy_adult",
+      "HAI_children",
+      "HAI_elderly_60plus",
+      "HAI_asthma_copd",
+      "HAI_cardiac",
+      "HAI_pregnant",
+      "HAI_outdoor_worker",
+      "AQI_recomputed"
+    ],
+    "encoded_categoricals": [
+      "City_ohe_Amaravati",
+      "City_ohe_Amritsar",
+      "City_ohe_Bengaluru",
+      "City_ohe_Chennai",
+      "City_ohe_Delhi",
+      "City_ohe_Gurugram",
+      "City_ohe_Hyderabad",
+      "City_ohe_Jaipur",
+      "City_ohe_Kolkata",
+      "City_ohe_Lucknow",
+      "City_ohe_Thiruvananthapuram",
+      "City_ohe_Visakhapatnam",
+      "City_target_enc",
+      "season_Monsoon",
+      "season_Post-Monsoon",
+      "season_Summer",
+      "season_Winter",
+      "dom_CO",
+      "dom_NO2",
+      "dom_O3",
+      "dom_PM10",
+      "dom_PM2.5",
+      "dom_SO2",
+      "State_code"
+    ]
+  },
+  "feature_group_counts": {
+    "same_day_measurements": 16,
+    "temporal": 13,
+    "event_flags": 6,
+    "lags": 32,
+    "rolling": 64,
+    "ratios": 6,
+    "station_metadata": 2,
+    "hai_and_sub_indices": 15,
+    "encoded_categoricals": 24,
+    "total_candidates": 178,
+    "numeric_candidates": 178
+  },
+  "event_flags": {
+    "festival_flag_days": 322,
+    "stubble_season_flag_days": 2817,
+    "lockdown_flag_days": 816,
+    "covid_year_flag_days": 2196,
+    "diwali_dates_used": {
+      "2015": "2015-11-11",
+      "2016": "2016-10-30",
+      "2017": "2017-10-19",
+      "2018": "2018-11-07",
+      "2019": "2019-10-27",
+      "2020": "2020-11-14"
+    },
+    "covid_policy": "The 2020 lockdown is modelled with an explicit flag rather than excluded. The flag lets a model represent the regime change instead of averaging over it, and the period is additionally reported as a separate stress-test slice of the test set in results/evaluation_regression.json and results/evaluation_classification.json, so that its contribution to the headline error is visible rather than hidden."
+  },
+  "station_metadata": {
+    "integrated": true,
+    "source": "D:\\PODS Project\\airguard-india\\data\\raw\\stations.csv",
+    "n_stations_total": 230,
+    "cities_matched": 12,
+    "per_city": [
+      {
+        "City": "Amaravati",
+        "n_stations": 1,
+        "n_active_stations": 1,
+        "State": "Andhra Pradesh"
+      },
+      {
+        "City": "Amritsar",
+        "n_stations": 1,
+        "n_active_stations": 1,
+        "State": "Punjab"
+      },
+      {
+        "City": "Bengaluru",
+        "n_stations": 10,
+        "n_active_stations": 10,
+        "State": "Karnataka"
+      },
+      {
+        "City": "Chennai",
+        "n_stations": 4,
+        "n_active_stations": 4,
+        "State": "Tamil Nadu"
+      },
+      {
+        "City": "Delhi",
+        "n_stations": 38,
+        "n_active_stations": 37,
+        "State": "Delhi"
+      },
+      {
+        "City": "Gurugram",
+        "n_stations": 4,
+        "n_active_stations": 4,
+        "State": "Haryana"
+      },
+      {
+        "City": "Hyderabad",
+        "n_stations": 6,
+        "n_active_stations": 6,
+        "State": "Telangana"
+      },
+      {
+        "City": "Jaipur",
+        "n_stations": 3,
+        "n_active_stations": 3,
+        "State": "Rajasthan"
+      },
+      {
+        "City": "Kolkata",
+        "n_stations": 7,
+        "n_active_stations": 7,
+        "State": "West Bengal"
+      },
+      {
+        "City": "Lucknow",
+        "n_stations": 5,
+        "n_active_stations": 4,
+        "State": "Uttar Pradesh"
+      },
+      {
+        "City": "Thiruvananthapuram",
+        "n_stations": 2,
+        "n_active_stations": 2,
+        "State": "Kerala"
+      },
+      {
+        "City": "Visakhapatnam",
+        "n_stations": 1,
+        "n_active_stations": 1,
+        "State": "Andhra Pradesh"
+      }
+    ]
+  },
+  "encodings": {
+    "city_one_hot_columns": [
+      "City_ohe_Amaravati",
+      "City_ohe_Amritsar",
+      "City_ohe_Bengaluru",
+      "City_ohe_Chennai",
+      "City_ohe_Delhi",
+      "City_ohe_Gurugram",
+      "City_ohe_Hyderabad",
+      "City_ohe_Jaipur",
+      "City_ohe_Kolkata",
+      "City_ohe_Lucknow",
+      "City_ohe_Thiruvananthapuram",
+      "City_ohe_Visakhapatnam"
+    ],
+    "city_target_encoding": {
+      "statistic": "mean same-day AQI",
+      "fitted_on": "rows with Date < 2019-05-26",
+      "n_train_rows": 13559,
+      "values": {
+        "Amaravati": 114.11,
+        "Amritsar": 128.23,
+        "Bengaluru": 98.82,
+        "Chennai": 120.87,
+        "Delhi": 274.55,
+        "Gurugram": 245.49,
+        "Hyderabad": 117.1,
+        "Jaipur": 148.45,
+        "Kolkata": 172.03,
+        "Lucknow": 231.12,
+        "Thiruvananthapuram": 81.69,
+        "Visakhapatnam": 127.26
+      },
+      "global_fallback": 163.06,
+      "leakage_note": "The encoding is fitted on the training period only. Applying a full-sample city mean would allow each test row to contribute to the value of its own encoded feature."
+    },
+    "ordinal_encoding": {
+      "column": "AQI_Bucket -> AQI_Bucket_ordinal",
+      "mapping": {
+        "Good": 0,
+        "Satisfactory": 1,
+        "Moderate": 2,
+        "Poor": 3,
+        "Very Poor": 4,
+        "Severe": 5
+      },
+      "justification": "The CPCB buckets are ordered severity categories, so an ordinal code preserves the ordering that a one-hot encoding would discard. The ordinal form is used for the ordered-severity features; the classification target itself is kept as the string label so that per-class metrics remain readable."
+    },
+    "state_codes": {
+      "Andhra Pradesh": 0,
+      "Delhi": 1,
+      "Haryana": 2,
+      "Karnataka": 3,
+      "Kerala": 4,
+      "Punjab": 5,
+      "Rajasthan": 6,
+      "Tamil Nadu": 7,
+      "Telangana": 8,
+      "Uttar Pradesh": 9,
+      "West Bengal": 10
+    }
+  },
+  "feature_selection": {
+    "regression": {
+      "task": "regression",
+      "target": "AQI_next",
+      "n_candidates": 178,
+      "stage_0_zero_variance": {
+        "n_dropped": 5,
+        "dropped": [
+          "inserted_calendar_day",
+          "lockdown_flag",
+          "post_lockdown_flag",
+          "covid_year_flag",
+          "dom_SO2"
+        ],
+        "reason": "constant on the training rows, so uninformative by construction"
+      },
+      "stage_1_correlation": {
+        "threshold": 0.95,
+        "n_dropped": 40,
+        "dropped": [
+          {
+            "dropped": "AQI_Bucket_ordinal",
+            "kept": "AQI",
+            "pairwise_abs_correlation": 0.9555,
+            "dropped_target_corr": 0.8788,
+            "kept_target_corr": 0.9144
+          },
+          {
+            "dropped": "month",
+            "kept": "day_of_year",
+            "pairwise_abs_correlation": 0.9968,
+            "dropped_target_corr": 0.0278,
+            "kept_target_corr": 0.0287
+          },
+          {
+            "dropped": "week_of_year",
+            "kept": "day_of_year",
+            "pairwise_abs_correlation": 0.9841,
+            "dropped_target_corr": 0.0286,
+            "kept_target_corr": 0.0287
+          },
+          {
+            "dropped": "day_of_year",
+            "kept": "quarter",
+            "pairwise_abs_correlation": 0.9709,
+            "dropped_target_corr": 0.0287,
+            "kept_target_corr": 0.0412
+          },
+          {
+            "dropped": "doy_sin",
+            "kept": "month_sin",
+            "pairwise_abs_correlation": 0.9555,
+            "dropped_target_corr": 0.0009,
+            "kept_target_corr": 0.0849
+          },
+          {
+            "dropped": "month_cos",
+            "kept": "doy_cos",
+            "pairwise_abs_correlation": 0.9524,
+            "dropped_target_corr": 0.3229,
+            "kept_target_corr": 0.341
+          },
+          {
+            "dropped": "days_since_start",
+            "kept": "year",
+            "pairwise_abs_correlation": 0.9719,
+            "dropped_target_corr": 0.1418,
+            "kept_target_corr": 0.1422
+          },
+          {
+            "dropped": "days_from_diwali",
+            "kept": "festival_flag",
+            "pairwise_abs_correlation": 1.0,
+            "dropped_target_corr": 0.0852,
+            "kept_target_corr": 0.0852
+          },
+          {
+            "dropped": "AQI_roll3_mean",
+            "kept": "AQI",
+            "pairwise_abs_correlation": 0.9553,
+            "dropped_target_corr": 0.8906,
+            "kept_target_corr": 0.9144
+          },
+          {
+            "dropped": "AQI_roll14_mean",
+            "kept": "AQI_roll7_mean",
+            "pairwise_abs_correlation": 0.9736,
+            "dropped_target_corr": 0.8622,
+            "kept_target_corr": 0.8748
+          },
+          {
+            "dropped": "PM2.5_lag1",
+            "kept": "PM2.5_roll3_mean",
+            "pairwise_abs_correlation": 0.9686,
+            "dropped_target_corr": 0.7983,
+            "kept_target_corr": 0.8559
+          },
+          {
+            "dropped": "PM2.5_roll7_mean",
+            "kept": "PM2.5_roll3_mean",
+            "pairwise_abs_correlation": 0.9518,
+            "dropped_target_corr": 0.8369,
+            "kept_target_corr": 0.8559
+          },
+          {
+            "dropped": "PM10_roll3_mean",
+            "kept": "PM10",
+            "pairwise_abs_correlation": 0.9502,
+            "dropped_target_corr": 0.6759,
+            "kept_target_corr": 0.6915
+          },
+          {
+            "dropped": "PM10_roll14_mean",
+            "kept": "PM10_roll7_mean",
+            "pairwise_abs_correlation": 0.9692,
+            "dropped_target_corr": 0.6544,
+            "kept_target_corr": 0.6618
+          },
+          {
+            "dropped": "NO2_lag1",
+            "kept": "NO2_roll3_mean",
+            "pairwise_abs_correlation": 0.9754,
+            "dropped_target_corr": 0.5069,
+            "kept_target_corr": 0.5334
+          },
+          {
+            "dropped": "NO2_roll7_mean",
+            "kept": "NO2_roll3_mean",
+            "pairwise_abs_correlation": 0.9562,
+            "dropped_target_corr": 0.5296,
+            "kept_target_corr": 0.5334
+          },
+          {
+            "dropped": "SO2_lag1",
+            "kept": "SO2_roll3_mean",
+            "pairwise_abs_correlation": 0.9571,
+            "dropped_target_corr": 0.3545,
+            "kept_target_corr": 0.3802
+          },
+          {
+            "dropped": "SO2_roll14_mean",
+            "kept": "SO2_roll7_mean",
+            "pairwise_abs_correlation": 0.9641,
+            "dropped_target_corr": 0.3761,
+            "kept_target_corr": 0.3799
+          },
+          {
+            "dropped": "CO_lag1",
+            "kept": "CO_roll3_mean",
+            "pairwise_abs_correlation": 0.9568,
+            "dropped_target_corr": 0.264,
+            "kept_target_corr": 0.285
+          },
+          {
+            "dropped": "CO_roll7_mean",
+            "kept": "CO_roll14_mean",
+            "pairwise_abs_correlation": 0.9517,
+            "dropped_target_corr": 0.2869,
+            "kept_target_corr": 0.2891
+          },
+          {
+            "dropped": "O3_lag1",
+            "kept": "O3_roll3_mean",
+            "pairwise_abs_correlation": 0.9668,
+            "dropped_target_corr": 0.3208,
+            "kept_target_corr": 0.3401
+          },
+          {
+            "dropped": "O3_roll7_mean",
+            "kept": "O3_roll14_mean",
+            "pairwise_abs_correlation": 0.9519,
+            "dropped_target_corr": 0.3412,
+            "kept_target_corr": 0.3418
+          },
+          {
+            "dropped": "NH3_roll3_mean",
+            "kept": "NH3",
+            "pairwise_abs_correlation": 0.959,
+            "dropped_target_corr": 0.183,
+            "kept_target_corr": 0.1855
+          },
+          {
+            "dropped": "NH3_roll7_mean",
+            "kept": "NH3_roll14_mean",
+            "pairwise_abs_correlation": 0.9722,
+            "dropped_target_corr": 0.184,
+            "kept_target_corr": 0.1877
+          },
+          {
+            "dropped": "n_active_stations",
+            "kept": "n_stations",
+            "pairwise_abs_correlation": 0.9996,
+            "dropped_target_corr": 0.4058,
+            "kept_target_corr": 0.4164
+          },
+          {
+            "dropped": "PM10",
+            "kept": "sub_PM10",
+            "pairwise_abs_correlation": 0.9918,
+            "dropped_target_corr": 0.6915,
+            "kept_target_corr": 0.6931
+          },
+          {
+            "dropped": "NO2",
+            "kept": "sub_NO2",
+            "pairwise_abs_correlation": 0.9992,
+            "dropped_target_corr": 0.5378,
+            "kept_target_corr": 0.5392
+          },
+          {
+            "dropped": "NH3",
+            "kept": "sub_NH3",
+            "pairwise_abs_correlation": 1.0,
+            "dropped_target_corr": 0.1855,
+            "kept_target_corr": 0.1855
+          },
+          {
+            "dropped": "sub_SO2",
+            "kept": "SO2",
+            "pairwise_abs_correlation": 1.0,
+            "dropped_target_corr": 0.3745,
+            "kept_target_corr": 0.3745
+          },
+          {
+            "dropped": "O3",
+            "kept": "sub_O3",
+            "pairwise_abs_correlation": 0.9966,
+            "dropped_target_corr": 0.3351,
+            "kept_target_corr": 0.3358
+          },
+          {
+            "dropped": "sub_PM2.5",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9675,
+            "dropped_target_corr": 0.9077,
+            "kept_target_corr": 0.9149
+          },
+          {
+            "dropped": "HAI_children",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9928,
+            "dropped_target_corr": 0.9045,
+            "kept_target_corr": 0.9149
+          },
+          {
+            "dropped": "HAI_elderly_60plus",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9809,
+            "dropped_target_corr": 0.89,
+            "kept_target_corr": 0.9149
+          },
+          {
+            "dropped": "HAI_asthma_copd",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.989,
+            "dropped_target_corr": 0.9006,
+            "kept_target_corr": 0.9149
+          },
+          {
+            "dropped": "HAI_cardiac",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.968,
+            "dropped_target_corr": 0.8808,
+            "kept_target_corr": 0.9149
+          },
+          {
+            "dropped": "HAI_pregnant",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9826,
+            "dropped_target_corr": 0.8937,
+            "kept_target_corr": 0.9149
+          },
+          {
+            "dropped": "HAI_outdoor_worker",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9918,
+            "dropped_target_corr": 0.9007,
+            "kept_target_corr": 0.9149
+          },
+          {
+            "dropped": "AQI_recomputed",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9993,
+            "dropped_target_corr": 0.9101,
+            "kept_target_corr": 0.9149
+          },
+          {
+            "dropped": "n_stations",
+            "kept": "City_ohe_Delhi",
+            "pairwise_abs_correlation": 0.9775,
+            "dropped_target_corr": 0.4164,
+            "kept_target_corr": 0.4409
+          },
+          {
+            "dropped": "stubble_season_flag",
+            "kept": "season_Post-Monsoon",
+            "pairwise_abs_correlation": 1.0,
+            "dropped_target_corr": 0.1712,
+            "kept_target_corr": 0.1712
+          }
+        ],
+        "n_remaining": 133
+      },
+      "stage_2_model_based": {
+        "estimator": "LGBMRegressor",
+        "cumulative_gain_share_retained": 0.995,
+        "n_dropped": 33,
+        "dropped": [
+          "aqi_above_scale",
+          "n_imputed_pollutants",
+          "year",
+          "quarter",
+          "is_weekend",
+          "festival_flag",
+          "sub_PM10",
+          "sub_NO2",
+          "sub_NH3",
+          "sub_CO",
+          "sub_O3",
+          "City_ohe_Amaravati",
+          "City_ohe_Amritsar",
+          "City_ohe_Bengaluru",
+          "City_ohe_Chennai",
+          "City_ohe_Delhi",
+          "City_ohe_Gurugram",
+          "City_ohe_Hyderabad",
+          "City_ohe_Jaipur",
+          "City_ohe_Kolkata",
+          "City_ohe_Lucknow",
+          "City_ohe_Thiruvananthapuram",
+          "City_ohe_Visakhapatnam",
+          "season_Monsoon",
+          "season_Post-Monsoon",
+          "season_Summer",
+          "season_Winter",
+          "dom_CO",
+          "dom_NO2",
+          "dom_O3",
+          "dom_PM10",
+          "dom_PM2.5",
+          "State_code"
+        ]
+      },
+      "n_retained": 100,
+      "retained": [
+        "AQI_delta1",
+        "PM2.5_delta1",
+        "AQI",
+        "PM2.5_dev_roll7",
+        "NO2_delta1",
+        "AQI_dev_roll7",
+        "CO_delta1",
+        "PM2.5",
+        "PM10_delta1",
+        "CO_dev_roll7",
+        "pm_ratio",
+        "SO2_delta1",
+        "PM2.5_roll3_std",
+        "AQI_roll3_std",
+        "SO2_dev_roll7",
+        "O3_delta1",
+        "AQI_roll7_mean",
+        "PM10_dev_roll7",
+        "NO2_dev_roll7",
+        "doy_cos",
+        "total_pollutant_load",
+        "pm_coarse",
+        "AQI_roll14_std",
+        "NO",
+        "AQI_roll7_std",
+        "no2_nox_ratio",
+        "O3_dev_roll7",
+        "SO2_roll3_std",
+        "AQI_lag1",
+        "O3_lag7",
+        "AQI_lag2",
+        "CO_roll3_std",
+        "Toluene",
+        "day_of_month",
+        "CO_lag3",
+        "CO_roll7_std",
+        "NOx",
+        "CO_lag7",
+        "HAI_healthy_adult",
+        "NO2_roll14_std",
+        "AQI_lag7",
+        "O3_roll7_std",
+        "CO_lag2",
+        "NH3_delta1",
+        "o3_no2_ratio",
+        "so2_pm25_ratio",
+        "Benzene",
+        "O3_roll3_std",
+        "SO2_roll7_std",
+        "PM2.5_lag3",
+        "NH3_roll7_std",
+        "SO2_lag7",
+        "PM2.5_lag2",
+        "City_target_enc",
+        "SO2_lag3",
+        "CO_roll14_std",
+        "O3_roll14_std",
+        "NO2_roll3_std",
+        "SO2",
+        "PM2.5_roll7_std",
+        "AQI_lag3",
+        "NH3_dev_roll7",
+        "PM2.5_roll3_mean",
+        "NH3_lag7",
+        "O3_lag2",
+        "CO",
+        "PM2.5_lag7",
+        "O3_roll14_mean",
+        "NO2_roll7_std",
+        "NO2_lag7",
+        "PM2.5_roll14_std",
+        "NH3_roll14_std",
+        "NO2_lag3",
+        "O3_lag3",
+        "SO2_roll3_mean",
+        "SO2_lag2",
+        "day_of_week",
+        "SO2_roll14_std",
+        "NH3_roll3_std",
+        "CO_roll3_mean",
+        "PM10_roll7_std",
+        "NO2_lag2",
+        "PM10_roll3_std",
+        "SO2_roll7_mean",
+        "CO_roll14_mean",
+        "PM2.5_roll14_mean",
+        "O3_roll3_mean",
+        "NH3_roll14_mean",
+        "PM10_lag1",
+        "PM10_roll14_std",
+        "NH3_lag1",
+        "NO2_roll3_mean",
+        "NH3_lag3",
+        "PM10_roll7_mean",
+        "PM10_lag2",
+        "PM10_lag3",
+        "NO2_roll14_mean",
+        "month_sin",
+        "NH3_lag2",
+        "PM10_lag7"
+      ],
+      "retained_with_importance": [
+        {
+          "rank": 1,
+          "feature": "AQI_delta1",
+          "importance": 262,
+          "importance_share_pct": 3.553,
+          "abs_corr_with_target": 0.166
+        },
+        {
+          "rank": 2,
+          "feature": "PM2.5_delta1",
+          "importance": 246,
+          "importance_share_pct": 3.336,
+          "abs_corr_with_target": 0.169
+        },
+        {
+          "rank": 3,
+          "feature": "AQI",
+          "importance": 220,
+          "importance_share_pct": 2.983,
+          "abs_corr_with_target": 0.9144
+        },
+        {
+          "rank": 4,
+          "feature": "PM2.5_dev_roll7",
+          "importance": 183,
+          "importance_share_pct": 2.481,
+          "abs_corr_with_target": 0.2604
+        },
+        {
+          "rank": 5,
+          "feature": "NO2_delta1",
+          "importance": 171,
+          "importance_share_pct": 2.319,
+          "abs_corr_with_target": 0.0671
+        },
+        {
+          "rank": 6,
+          "feature": "AQI_dev_roll7",
+          "importance": 168,
+          "importance_share_pct": 2.278,
+          "abs_corr_with_target": 0.2433
+        },
+        {
+          "rank": 7,
+          "feature": "CO_delta1",
+          "importance": 150,
+          "importance_share_pct": 2.034,
+          "abs_corr_with_target": 0.0285
+        },
+        {
+          "rank": 8,
+          "feature": "PM2.5",
+          "importance": 146,
+          "importance_share_pct": 1.98,
+          "abs_corr_with_target": 0.882
+        },
+        {
+          "rank": 9,
+          "feature": "PM10_delta1",
+          "importance": 141,
+          "importance_share_pct": 1.912,
+          "abs_corr_with_target": 0.1156
+        },
+        {
+          "rank": 10,
+          "feature": "CO_dev_roll7",
+          "importance": 133,
+          "importance_share_pct": 1.803,
+          "abs_corr_with_target": 0.0491
+        },
+        {
+          "rank": 11,
+          "feature": "pm_ratio",
+          "importance": 124,
+          "importance_share_pct": 1.681,
+          "abs_corr_with_target": 0.3532
+        },
+        {
+          "rank": 12,
+          "feature": "SO2_delta1",
+          "importance": 122,
+          "importance_share_pct": 1.654,
+          "abs_corr_with_target": 0.0335
+        },
+        {
+          "rank": 13,
+          "feature": "PM2.5_roll3_std",
+          "importance": 117,
+          "importance_share_pct": 1.586,
+          "abs_corr_with_target": 0.5061
+        },
+        {
+          "rank": 14,
+          "feature": "AQI_roll3_std",
+          "importance": 113,
+          "importance_share_pct": 1.532,
+          "abs_corr_with_target": 0.3357
+        },
+        {
+          "rank": 15,
+          "feature": "SO2_dev_roll7",
+          "importance": 105,
+          "importance_share_pct": 1.424,
+          "abs_corr_with_target": 0.0671
+        },
+        {
+          "rank": 16,
+          "feature": "O3_delta1",
+          "importance": 105,
+          "importance_share_pct": 1.424,
+          "abs_corr_with_target": 0.0279
+        },
+        {
+          "rank": 17,
+          "feature": "AQI_roll7_mean",
+          "importance": 102,
+          "importance_share_pct": 1.383,
+          "abs_corr_with_target": 0.8748
+        },
+        {
+          "rank": 18,
+          "feature": "PM10_dev_roll7",
+          "importance": 102,
+          "importance_share_pct": 1.383,
+          "abs_corr_with_target": 0.1828
+        },
+        {
+          "rank": 19,
+          "feature": "NO2_dev_roll7",
+          "importance": 99,
+          "importance_share_pct": 1.342,
+          "abs_corr_with_target": 0.1135
+        },
+        {
+          "rank": 20,
+          "feature": "doy_cos",
+          "importance": 97,
+          "importance_share_pct": 1.315,
+          "abs_corr_with_target": 0.341
+        },
+        {
+          "rank": 21,
+          "feature": "total_pollutant_load",
+          "importance": 97,
+          "importance_share_pct": 1.315,
+          "abs_corr_with_target": 0.8475
+        },
+        {
+          "rank": 22,
+          "feature": "pm_coarse",
+          "importance": 96,
+          "importance_share_pct": 1.302,
+          "abs_corr_with_target": 0.2728
+        },
+        {
+          "rank": 23,
+          "feature": "AQI_roll14_std",
+          "importance": 95,
+          "importance_share_pct": 1.288,
+          "abs_corr_with_target": 0.4498
+        },
+        {
+          "rank": 24,
+          "feature": "NO",
+          "importance": 94,
+          "importance_share_pct": 1.275,
+          "abs_corr_with_target": 0.5939
+        },
+        {
+          "rank": 25,
+          "feature": "AQI_roll7_std",
+          "importance": 91,
+          "importance_share_pct": 1.234,
+          "abs_corr_with_target": 0.4131
+        },
+        {
+          "rank": 26,
+          "feature": "no2_nox_ratio",
+          "importance": 88,
+          "importance_share_pct": 1.193,
+          "abs_corr_with_target": 0.0487
+        },
+        {
+          "rank": 27,
+          "feature": "O3_dev_roll7",
+          "importance": 88,
+          "importance_share_pct": 1.193,
+          "abs_corr_with_target": 0.0548
+        },
+        {
+          "rank": 28,
+          "feature": "SO2_roll3_std",
+          "importance": 86,
+          "importance_share_pct": 1.166,
+          "abs_corr_with_target": 0.154
+        },
+        {
+          "rank": 29,
+          "feature": "AQI_lag1",
+          "importance": 84,
+          "importance_share_pct": 1.139,
+          "abs_corr_with_target": 0.8463
+        },
+        {
+          "rank": 30,
+          "feature": "O3_lag7",
+          "importance": 84,
+          "importance_share_pct": 1.139,
+          "abs_corr_with_target": 0.2825
+        },
+        {
+          "rank": 31,
+          "feature": "AQI_lag2",
+          "importance": 82,
+          "importance_share_pct": 1.112,
+          "abs_corr_with_target": 0.8126
+        },
+        {
+          "rank": 32,
+          "feature": "CO_roll3_std",
+          "importance": 80,
+          "importance_share_pct": 1.085,
+          "abs_corr_with_target": 0.1543
+        },
+        {
+          "rank": 33,
+          "feature": "Toluene",
+          "importance": 80,
+          "importance_share_pct": 1.085,
+          "abs_corr_with_target": 0.2778
+        },
+        {
+          "rank": 34,
+          "feature": "day_of_month",
+          "importance": 79,
+          "importance_share_pct": 1.071,
+          "abs_corr_with_target": 0.0067
+        },
+        {
+          "rank": 35,
+          "feature": "CO_lag3",
+          "importance": 77,
+          "importance_share_pct": 1.044,
+          "abs_corr_with_target": 0.2423
+        },
+        {
+          "rank": 36,
+          "feature": "CO_roll7_std",
+          "importance": 77,
+          "importance_share_pct": 1.044,
+          "abs_corr_with_target": 0.1555
+        },
+        {
+          "rank": 37,
+          "feature": "NOx",
+          "importance": 75,
+          "importance_share_pct": 1.017,
+          "abs_corr_with_target": 0.5018
+        },
+        {
+          "rank": 38,
+          "feature": "CO_lag7",
+          "importance": 75,
+          "importance_share_pct": 1.017,
+          "abs_corr_with_target": 0.2353
+        },
+        {
+          "rank": 39,
+          "feature": "HAI_healthy_adult",
+          "importance": 74,
+          "importance_share_pct": 1.003,
+          "abs_corr_with_target": 0.9149
+        },
+        {
+          "rank": 40,
+          "feature": "NO2_roll14_std",
+          "importance": 71,
+          "importance_share_pct": 0.963,
+          "abs_corr_with_target": 0.3321
+        },
+        {
+          "rank": 41,
+          "feature": "AQI_lag7",
+          "importance": 71,
+          "importance_share_pct": 0.963,
+          "abs_corr_with_target": 0.7639
+        },
+        {
+          "rank": 42,
+          "feature": "O3_roll7_std",
+          "importance": 71,
+          "importance_share_pct": 0.963,
+          "abs_corr_with_target": 0.1966
+        },
+        {
+          "rank": 43,
+          "feature": "CO_lag2",
+          "importance": 69,
+          "importance_share_pct": 0.936,
+          "abs_corr_with_target": 0.2521
+        },
+        {
+          "rank": 44,
+          "feature": "NH3_delta1",
+          "importance": 67,
+          "importance_share_pct": 0.908,
+          "abs_corr_with_target": 0.0269
+        },
+        {
+          "rank": 45,
+          "feature": "o3_no2_ratio",
+          "importance": 66,
+          "importance_share_pct": 0.895,
+          "abs_corr_with_target": 0.1292
+        },
+        {
+          "rank": 46,
+          "feature": "so2_pm25_ratio",
+          "importance": 66,
+          "importance_share_pct": 0.895,
+          "abs_corr_with_target": 0.3626
+        },
+        {
+          "rank": 47,
+          "feature": "Benzene",
+          "importance": 65,
+          "importance_share_pct": 0.881,
+          "abs_corr_with_target": 0.2293
+        },
+        {
+          "rank": 48,
+          "feature": "O3_roll3_std",
+          "importance": 65,
+          "importance_share_pct": 0.881,
+          "abs_corr_with_target": 0.1735
+        },
+        {
+          "rank": 49,
+          "feature": "SO2_roll7_std",
+          "importance": 65,
+          "importance_share_pct": 0.881,
+          "abs_corr_with_target": 0.1755
+        },
+        {
+          "rank": 50,
+          "feature": "PM2.5_lag3",
+          "importance": 64,
+          "importance_share_pct": 0.868,
+          "abs_corr_with_target": 0.7351
+        },
+        {
+          "rank": 51,
+          "feature": "NH3_roll7_std",
+          "importance": 64,
+          "importance_share_pct": 0.868,
+          "abs_corr_with_target": 0.0389
+        },
+        {
+          "rank": 52,
+          "feature": "SO2_lag7",
+          "importance": 63,
+          "importance_share_pct": 0.854,
+          "abs_corr_with_target": 0.3202
+        },
+        {
+          "rank": 53,
+          "feature": "PM2.5_lag2",
+          "importance": 62,
+          "importance_share_pct": 0.841,
+          "abs_corr_with_target": 0.755
+        },
+        {
+          "rank": 54,
+          "feature": "City_target_enc",
+          "importance": 61,
+          "importance_share_pct": 0.827,
+          "abs_corr_with_target": 0.6494
+        },
+        {
+          "rank": 55,
+          "feature": "SO2_lag3",
+          "importance": 60,
+          "importance_share_pct": 0.814,
+          "abs_corr_with_target": 0.3324
+        },
+        {
+          "rank": 56,
+          "feature": "CO_roll14_std",
+          "importance": 60,
+          "importance_share_pct": 0.814,
+          "abs_corr_with_target": 0.1596
+        },
+        {
+          "rank": 57,
+          "feature": "O3_roll14_std",
+          "importance": 59,
+          "importance_share_pct": 0.8,
+          "abs_corr_with_target": 0.2173
+        },
+        {
+          "rank": 58,
+          "feature": "NO2_roll3_std",
+          "importance": 58,
+          "importance_share_pct": 0.786,
+          "abs_corr_with_target": 0.2735
+        },
+        {
+          "rank": 59,
+          "feature": "SO2",
+          "importance": 57,
+          "importance_share_pct": 0.773,
+          "abs_corr_with_target": 0.3745
+        },
+        {
+          "rank": 60,
+          "feature": "PM2.5_roll7_std",
+          "importance": 56,
+          "importance_share_pct": 0.759,
+          "abs_corr_with_target": 0.5665
+        },
+        {
+          "rank": 61,
+          "feature": "AQI_lag3",
+          "importance": 54,
+          "importance_share_pct": 0.732,
+          "abs_corr_with_target": 0.7934
+        },
+        {
+          "rank": 62,
+          "feature": "NH3_dev_roll7",
+          "importance": 54,
+          "importance_share_pct": 0.732,
+          "abs_corr_with_target": 0.0335
+        },
+        {
+          "rank": 63,
+          "feature": "PM2.5_roll3_mean",
+          "importance": 53,
+          "importance_share_pct": 0.719,
+          "abs_corr_with_target": 0.8559
+        },
+        {
+          "rank": 64,
+          "feature": "NH3_lag7",
+          "importance": 52,
+          "importance_share_pct": 0.705,
+          "abs_corr_with_target": 0.1684
+        },
+        {
+          "rank": 65,
+          "feature": "O3_lag2",
+          "importance": 52,
+          "importance_share_pct": 0.705,
+          "abs_corr_with_target": 0.3103
+        },
+        {
+          "rank": 66,
+          "feature": "CO",
+          "importance": 49,
+          "importance_share_pct": 0.664,
+          "abs_corr_with_target": 0.2808
+        },
+        {
+          "rank": 67,
+          "feature": "PM2.5_lag7",
+          "importance": 48,
+          "importance_share_pct": 0.651,
+          "abs_corr_with_target": 0.699
+        },
+        {
+          "rank": 68,
+          "feature": "O3_roll14_mean",
+          "importance": 47,
+          "importance_share_pct": 0.637,
+          "abs_corr_with_target": 0.3418
+        },
+        {
+          "rank": 69,
+          "feature": "NO2_roll7_std",
+          "importance": 47,
+          "importance_share_pct": 0.637,
+          "abs_corr_with_target": 0.319
+        },
+        {
+          "rank": 70,
+          "feature": "NO2_lag7",
+          "importance": 46,
+          "importance_share_pct": 0.624,
+          "abs_corr_with_target": 0.4613
+        },
+        {
+          "rank": 71,
+          "feature": "PM2.5_roll14_std",
+          "importance": 46,
+          "importance_share_pct": 0.624,
+          "abs_corr_with_target": 0.5893
+        },
+        {
+          "rank": 72,
+          "feature": "NH3_roll14_std",
+          "importance": 45,
+          "importance_share_pct": 0.61,
+          "abs_corr_with_target": 0.0368
+        },
+        {
+          "rank": 73,
+          "feature": "NO2_lag3",
+          "importance": 44,
+          "importance_share_pct": 0.597,
+          "abs_corr_with_target": 0.4754
+        },
+        {
+          "rank": 74,
+          "feature": "O3_lag3",
+          "importance": 44,
+          "importance_share_pct": 0.597,
+          "abs_corr_with_target": 0.3035
+        },
+        {
+          "rank": 75,
+          "feature": "SO2_roll3_mean",
+          "importance": 44,
+          "importance_share_pct": 0.597,
+          "abs_corr_with_target": 0.3802
+        },
+        {
+          "rank": 76,
+          "feature": "SO2_lag2",
+          "importance": 44,
+          "importance_share_pct": 0.597,
+          "abs_corr_with_target": 0.3419
+        },
+        {
+          "rank": 77,
+          "feature": "day_of_week",
+          "importance": 44,
+          "importance_share_pct": 0.597,
+          "abs_corr_with_target": 0.0077
+        },
+        {
+          "rank": 78,
+          "feature": "SO2_roll14_std",
+          "importance": 44,
+          "importance_share_pct": 0.597,
+          "abs_corr_with_target": 0.1861
+        },
+        {
+          "rank": 79,
+          "feature": "NH3_roll3_std",
+          "importance": 44,
+          "importance_share_pct": 0.597,
+          "abs_corr_with_target": 0.0369
+        },
+        {
+          "rank": 80,
+          "feature": "CO_roll3_mean",
+          "importance": 41,
+          "importance_share_pct": 0.556,
+          "abs_corr_with_target": 0.285
+        },
+        {
+          "rank": 81,
+          "feature": "PM10_roll7_std",
+          "importance": 41,
+          "importance_share_pct": 0.556,
+          "abs_corr_with_target": 0.3612
+        },
+        {
+          "rank": 82,
+          "feature": "NO2_lag2",
+          "importance": 36,
+          "importance_share_pct": 0.488,
+          "abs_corr_with_target": 0.4868
+        },
+        {
+          "rank": 83,
+          "feature": "PM10_roll3_std",
+          "importance": 35,
+          "importance_share_pct": 0.475,
+          "abs_corr_with_target": 0.3178
+        },
+        {
+          "rank": 84,
+          "feature": "SO2_roll7_mean",
+          "importance": 34,
+          "importance_share_pct": 0.461,
+          "abs_corr_with_target": 0.3799
+        },
+        {
+          "rank": 85,
+          "feature": "CO_roll14_mean",
+          "importance": 34,
+          "importance_share_pct": 0.461,
+          "abs_corr_with_target": 0.2891
+        },
+        {
+          "rank": 86,
+          "feature": "PM2.5_roll14_mean",
+          "importance": 33,
+          "importance_share_pct": 0.447,
+          "abs_corr_with_target": 0.8238
+        },
+        {
+          "rank": 87,
+          "feature": "O3_roll3_mean",
+          "importance": 31,
+          "importance_share_pct": 0.42,
+          "abs_corr_with_target": 0.3401
+        },
+        {
+          "rank": 88,
+          "feature": "NH3_roll14_mean",
+          "importance": 30,
+          "importance_share_pct": 0.407,
+          "abs_corr_with_target": 0.1877
+        },
+        {
+          "rank": 89,
+          "feature": "PM10_lag1",
+          "importance": 29,
+          "importance_share_pct": 0.393,
+          "abs_corr_with_target": 0.64
+        },
+        {
+          "rank": 90,
+          "feature": "PM10_roll14_std",
+          "importance": 29,
+          "importance_share_pct": 0.393,
+          "abs_corr_with_target": 0.3667
+        },
+        {
+          "rank": 91,
+          "feature": "NH3_lag1",
+          "importance": 27,
+          "importance_share_pct": 0.366,
+          "abs_corr_with_target": 0.174
+        },
+        {
+          "rank": 92,
+          "feature": "NO2_roll3_mean",
+          "importance": 27,
+          "importance_share_pct": 0.366,
+          "abs_corr_with_target": 0.5334
+        },
+        {
+          "rank": 93,
+          "feature": "NH3_lag3",
+          "importance": 26,
+          "importance_share_pct": 0.353,
+          "abs_corr_with_target": 0.1692
+        },
+        {
+          "rank": 94,
+          "feature": "PM10_roll7_mean",
+          "importance": 25,
+          "importance_share_pct": 0.339,
+          "abs_corr_with_target": 0.6618
+        },
+        {
+          "rank": 95,
+          "feature": "PM10_lag2",
+          "importance": 24,
+          "importance_share_pct": 0.325,
+          "abs_corr_with_target": 0.6122
+        },
+        {
+          "rank": 96,
+          "feature": "PM10_lag3",
+          "importance": 21,
+          "importance_share_pct": 0.285,
+          "abs_corr_with_target": 0.595
+        },
+        {
+          "rank": 97,
+          "feature": "NO2_roll14_mean",
+          "importance": 18,
+          "importance_share_pct": 0.244,
+          "abs_corr_with_target": 0.5278
+        },
+        {
+          "rank": 98,
+          "feature": "month_sin",
+          "importance": 16,
+          "importance_share_pct": 0.217,
+          "abs_corr_with_target": 0.0849
+        },
+        {
+          "rank": 99,
+          "feature": "NH3_lag2",
+          "importance": 15,
+          "importance_share_pct": 0.203,
+          "abs_corr_with_target": 0.1702
+        },
+        {
+          "rank": 100,
+          "feature": "PM10_lag7",
+          "importance": 14,
+          "importance_share_pct": 0.19,
+          "abs_corr_with_target": 0.5675
+        }
+      ],
+      "fitted_on_rows": 10331,
+      "fitted_on": "rows with Date < 2019-05-26"
+    },
+    "classification": {
+      "task": "classification",
+      "target": "AQI_Bucket_next",
+      "n_candidates": 178,
+      "stage_0_zero_variance": {
+        "n_dropped": 5,
+        "dropped": [
+          "inserted_calendar_day",
+          "lockdown_flag",
+          "post_lockdown_flag",
+          "covid_year_flag",
+          "dom_SO2"
+        ],
+        "reason": "constant on the training rows, so uninformative by construction"
+      },
+      "stage_1_correlation": {
+        "threshold": 0.95,
+        "n_dropped": 40,
+        "dropped": [
+          {
+            "dropped": "AQI_Bucket_ordinal",
+            "kept": "AQI",
+            "pairwise_abs_correlation": 0.9555,
+            "dropped_target_corr": 0.8686,
+            "kept_target_corr": 0.8765
+          },
+          {
+            "dropped": "month",
+            "kept": "day_of_year",
+            "pairwise_abs_correlation": 0.9968,
+            "dropped_target_corr": 0.0076,
+            "kept_target_corr": 0.0084
+          },
+          {
+            "dropped": "day_of_year",
+            "kept": "week_of_year",
+            "pairwise_abs_correlation": 0.9841,
+            "dropped_target_corr": 0.0084,
+            "kept_target_corr": 0.009
+          },
+          {
+            "dropped": "week_of_year",
+            "kept": "quarter",
+            "pairwise_abs_correlation": 0.9585,
+            "dropped_target_corr": 0.009,
+            "kept_target_corr": 0.0194
+          },
+          {
+            "dropped": "doy_sin",
+            "kept": "month_sin",
+            "pairwise_abs_correlation": 0.9555,
+            "dropped_target_corr": 0.0248,
+            "kept_target_corr": 0.1122
+          },
+          {
+            "dropped": "month_cos",
+            "kept": "doy_cos",
+            "pairwise_abs_correlation": 0.9524,
+            "dropped_target_corr": 0.3363,
+            "kept_target_corr": 0.362
+          },
+          {
+            "dropped": "year",
+            "kept": "days_since_start",
+            "pairwise_abs_correlation": 0.9719,
+            "dropped_target_corr": 0.1367,
+            "kept_target_corr": 0.1411
+          },
+          {
+            "dropped": "days_from_diwali",
+            "kept": "festival_flag",
+            "pairwise_abs_correlation": 1.0,
+            "dropped_target_corr": 0.0743,
+            "kept_target_corr": 0.0743
+          },
+          {
+            "dropped": "AQI_roll3_mean",
+            "kept": "AQI",
+            "pairwise_abs_correlation": 0.9553,
+            "dropped_target_corr": 0.8561,
+            "kept_target_corr": 0.8765
+          },
+          {
+            "dropped": "AQI_roll14_mean",
+            "kept": "AQI_roll7_mean",
+            "pairwise_abs_correlation": 0.9736,
+            "dropped_target_corr": 0.831,
+            "kept_target_corr": 0.8414
+          },
+          {
+            "dropped": "PM2.5_lag1",
+            "kept": "PM2.5_roll3_mean",
+            "pairwise_abs_correlation": 0.9686,
+            "dropped_target_corr": 0.7562,
+            "kept_target_corr": 0.8093
+          },
+          {
+            "dropped": "PM2.5_roll7_mean",
+            "kept": "PM2.5_roll3_mean",
+            "pairwise_abs_correlation": 0.9518,
+            "dropped_target_corr": 0.7962,
+            "kept_target_corr": 0.8093
+          },
+          {
+            "dropped": "PM10_roll3_mean",
+            "kept": "PM10",
+            "pairwise_abs_correlation": 0.9502,
+            "dropped_target_corr": 0.6439,
+            "kept_target_corr": 0.6572
+          },
+          {
+            "dropped": "PM10_roll14_mean",
+            "kept": "PM10_roll7_mean",
+            "pairwise_abs_correlation": 0.9692,
+            "dropped_target_corr": 0.6264,
+            "kept_target_corr": 0.6312
+          },
+          {
+            "dropped": "NO2_lag1",
+            "kept": "NO2_roll3_mean",
+            "pairwise_abs_correlation": 0.9754,
+            "dropped_target_corr": 0.494,
+            "kept_target_corr": 0.519
+          },
+          {
+            "dropped": "NO2_roll7_mean",
+            "kept": "NO2_roll3_mean",
+            "pairwise_abs_correlation": 0.9562,
+            "dropped_target_corr": 0.5142,
+            "kept_target_corr": 0.519
+          },
+          {
+            "dropped": "SO2_lag1",
+            "kept": "SO2_roll3_mean",
+            "pairwise_abs_correlation": 0.9571,
+            "dropped_target_corr": 0.3531,
+            "kept_target_corr": 0.3788
+          },
+          {
+            "dropped": "SO2_roll14_mean",
+            "kept": "SO2_roll7_mean",
+            "pairwise_abs_correlation": 0.9641,
+            "dropped_target_corr": 0.3744,
+            "kept_target_corr": 0.3778
+          },
+          {
+            "dropped": "CO_lag1",
+            "kept": "CO_roll3_mean",
+            "pairwise_abs_correlation": 0.9568,
+            "dropped_target_corr": 0.2551,
+            "kept_target_corr": 0.2756
+          },
+          {
+            "dropped": "CO_roll7_mean",
+            "kept": "CO_roll14_mean",
+            "pairwise_abs_correlation": 0.9517,
+            "dropped_target_corr": 0.2763,
+            "kept_target_corr": 0.2775
+          },
+          {
+            "dropped": "O3_lag1",
+            "kept": "O3_roll3_mean",
+            "pairwise_abs_correlation": 0.9668,
+            "dropped_target_corr": 0.3267,
+            "kept_target_corr": 0.3455
+          },
+          {
+            "dropped": "O3_roll7_mean",
+            "kept": "O3_roll14_mean",
+            "pairwise_abs_correlation": 0.9519,
+            "dropped_target_corr": 0.3437,
+            "kept_target_corr": 0.3443
+          },
+          {
+            "dropped": "NH3_roll3_mean",
+            "kept": "NH3",
+            "pairwise_abs_correlation": 0.959,
+            "dropped_target_corr": 0.1759,
+            "kept_target_corr": 0.1785
+          },
+          {
+            "dropped": "NH3_roll7_mean",
+            "kept": "NH3_roll14_mean",
+            "pairwise_abs_correlation": 0.9722,
+            "dropped_target_corr": 0.1772,
+            "kept_target_corr": 0.181
+          },
+          {
+            "dropped": "n_active_stations",
+            "kept": "n_stations",
+            "pairwise_abs_correlation": 0.9996,
+            "dropped_target_corr": 0.3755,
+            "kept_target_corr": 0.3858
+          },
+          {
+            "dropped": "PM10",
+            "kept": "sub_PM10",
+            "pairwise_abs_correlation": 0.9918,
+            "dropped_target_corr": 0.6572,
+            "kept_target_corr": 0.6649
+          },
+          {
+            "dropped": "NO2",
+            "kept": "sub_NO2",
+            "pairwise_abs_correlation": 0.9992,
+            "dropped_target_corr": 0.5241,
+            "kept_target_corr": 0.5263
+          },
+          {
+            "dropped": "NH3",
+            "kept": "sub_NH3",
+            "pairwise_abs_correlation": 1.0,
+            "dropped_target_corr": 0.1785,
+            "kept_target_corr": 0.1785
+          },
+          {
+            "dropped": "sub_SO2",
+            "kept": "SO2",
+            "pairwise_abs_correlation": 1.0,
+            "dropped_target_corr": 0.3735,
+            "kept_target_corr": 0.3735
+          },
+          {
+            "dropped": "sub_O3",
+            "kept": "O3",
+            "pairwise_abs_correlation": 0.9966,
+            "dropped_target_corr": 0.341,
+            "kept_target_corr": 0.3428
+          },
+          {
+            "dropped": "sub_PM2.5",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9675,
+            "dropped_target_corr": 0.8741,
+            "kept_target_corr": 0.8772
+          },
+          {
+            "dropped": "HAI_children",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9928,
+            "dropped_target_corr": 0.8727,
+            "kept_target_corr": 0.8772
+          },
+          {
+            "dropped": "HAI_elderly_60plus",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9809,
+            "dropped_target_corr": 0.8636,
+            "kept_target_corr": 0.8772
+          },
+          {
+            "dropped": "HAI_asthma_copd",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.989,
+            "dropped_target_corr": 0.8704,
+            "kept_target_corr": 0.8772
+          },
+          {
+            "dropped": "HAI_cardiac",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.968,
+            "dropped_target_corr": 0.8574,
+            "kept_target_corr": 0.8772
+          },
+          {
+            "dropped": "HAI_pregnant",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9826,
+            "dropped_target_corr": 0.8661,
+            "kept_target_corr": 0.8772
+          },
+          {
+            "dropped": "HAI_outdoor_worker",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9918,
+            "dropped_target_corr": 0.8708,
+            "kept_target_corr": 0.8772
+          },
+          {
+            "dropped": "AQI_recomputed",
+            "kept": "HAI_healthy_adult",
+            "pairwise_abs_correlation": 0.9993,
+            "dropped_target_corr": 0.8718,
+            "kept_target_corr": 0.8772
+          },
+          {
+            "dropped": "n_stations",
+            "kept": "City_ohe_Delhi",
+            "pairwise_abs_correlation": 0.9775,
+            "dropped_target_corr": 0.3858,
+            "kept_target_corr": 0.411
+          },
+          {
+            "dropped": "stubble_season_flag",
+            "kept": "season_Post-Monsoon",
+            "pairwise_abs_correlation": 1.0,
+            "dropped_target_corr": 0.1645,
+            "kept_target_corr": 0.1645
+          }
+        ],
+        "n_remaining": 133
+      },
+      "stage_2_model_based": {
+        "estimator": "LGBMClassifier",
+        "cumulative_gain_share_retained": 0.995,
+        "n_dropped": 31,
+        "dropped": [
+          "aqi_above_scale",
+          "quarter",
+          "is_weekend",
+          "month_sin",
+          "festival_flag",
+          "sub_PM10",
+          "sub_NO2",
+          "sub_NH3",
+          "sub_CO",
+          "City_ohe_Amaravati",
+          "City_ohe_Amritsar",
+          "City_ohe_Bengaluru",
+          "City_ohe_Chennai",
+          "City_ohe_Delhi",
+          "City_ohe_Gurugram",
+          "City_ohe_Hyderabad",
+          "City_ohe_Jaipur",
+          "City_ohe_Kolkata",
+          "City_ohe_Lucknow",
+          "City_ohe_Thiruvananthapuram",
+          "City_ohe_Visakhapatnam",
+          "season_Monsoon",
+          "season_Post-Monsoon",
+          "season_Summer",
+          "season_Winter",
+          "dom_CO",
+          "dom_NO2",
+          "dom_O3",
+          "dom_PM10",
+          "dom_PM2.5",
+          "State_code"
+        ]
+      },
+      "n_retained": 102,
+      "retained": [
+        "PM2.5_delta1",
+        "PM2.5",
+        "AQI",
+        "NO2_delta1",
+        "O3_delta1",
+        "SO2_dev_roll7",
+        "PM2.5_dev_roll7",
+        "AQI_delta1",
+        "SO2_delta1",
+        "total_pollutant_load",
+        "CO_delta1",
+        "AQI_lag7",
+        "PM2.5_roll3_std",
+        "days_since_start",
+        "NO2_roll3_std",
+        "O3_roll3_std",
+        "AQI_roll14_std",
+        "NOx",
+        "O3_dev_roll7",
+        "AQI_roll3_std",
+        "NO",
+        "NO2_dev_roll7",
+        "NH3_delta1",
+        "CO_dev_roll7",
+        "O3_roll7_std",
+        "doy_cos",
+        "SO2_roll3_std",
+        "PM2.5_lag3",
+        "SO2_lag7",
+        "CO",
+        "PM10_delta1",
+        "AQI_lag1",
+        "day_of_month",
+        "CO_lag7",
+        "AQI_dev_roll7",
+        "AQI_lag3",
+        "AQI_lag2",
+        "AQI_roll7_std",
+        "SO2_roll14_std",
+        "no2_nox_ratio",
+        "CO_roll3_std",
+        "O3_lag7",
+        "Benzene",
+        "O3",
+        "Toluene",
+        "O3_lag3",
+        "PM2.5_roll7_std",
+        "PM2.5_lag7",
+        "CO_roll7_std",
+        "HAI_healthy_adult",
+        "NH3_dev_roll7",
+        "CO_roll14_std",
+        "SO2_lag3",
+        "NO2_roll14_std",
+        "pm_ratio",
+        "AQI_roll7_mean",
+        "O3_roll14_std",
+        "PM2.5_lag2",
+        "PM10_dev_roll7",
+        "so2_pm25_ratio",
+        "NO2_lag3",
+        "SO2_lag2",
+        "PM2.5_roll14_std",
+        "NO2_roll7_std",
+        "SO2_roll7_std",
+        "o3_no2_ratio",
+        "CO_lag3",
+        "pm_coarse",
+        "NH3_roll14_std",
+        "NO2_lag7",
+        "O3_lag2",
+        "SO2",
+        "NH3_roll3_std",
+        "CO_lag2",
+        "NH3_lag7",
+        "PM2.5_roll14_mean",
+        "NH3_roll7_std",
+        "NO2_lag2",
+        "PM10_roll3_std",
+        "PM2.5_roll3_mean",
+        "PM10_lag7",
+        "day_of_week",
+        "PM10_roll14_std",
+        "NO2_roll14_mean",
+        "NH3_lag3",
+        "NH3_lag1",
+        "SO2_roll3_mean",
+        "O3_roll14_mean",
+        "PM10_lag2",
+        "CO_roll14_mean",
+        "O3_roll3_mean",
+        "PM10_lag3",
+        "PM10_roll7_std",
+        "NH3_lag2",
+        "PM10_lag1",
+        "SO2_roll7_mean",
+        "CO_roll3_mean",
+        "NH3_roll14_mean",
+        "NO2_roll3_mean",
+        "PM10_roll7_mean",
+        "City_target_enc",
+        "n_imputed_pollutants"
+      ],
+      "retained_with_importance": [
+        {
+          "rank": 1,
+          "feature": "PM2.5_delta1",
+          "importance": 1029,
+          "importance_share_pct": 2.252,
+          "abs_corr_with_target": 0.1437
+        },
+        {
+          "rank": 2,
+          "feature": "PM2.5",
+          "importance": 1008,
+          "importance_share_pct": 2.206,
+          "abs_corr_with_target": 0.8273
+        },
+        {
+          "rank": 3,
+          "feature": "AQI",
+          "importance": 966,
+          "importance_share_pct": 2.114,
+          "abs_corr_with_target": 0.8765
+        },
+        {
+          "rank": 4,
+          "feature": "NO2_delta1",
+          "importance": 866,
+          "importance_share_pct": 1.895,
+          "abs_corr_with_target": 0.0654
+        },
+        {
+          "rank": 5,
+          "feature": "O3_delta1",
+          "importance": 792,
+          "importance_share_pct": 1.733,
+          "abs_corr_with_target": 0.0314
+        },
+        {
+          "rank": 6,
+          "feature": "SO2_dev_roll7",
+          "importance": 772,
+          "importance_share_pct": 1.69,
+          "abs_corr_with_target": 0.0691
+        },
+        {
+          "rank": 7,
+          "feature": "PM2.5_dev_roll7",
+          "importance": 743,
+          "importance_share_pct": 1.626,
+          "abs_corr_with_target": 0.223
+        },
+        {
+          "rank": 8,
+          "feature": "AQI_delta1",
+          "importance": 740,
+          "importance_share_pct": 1.62,
+          "abs_corr_with_target": 0.1526
+        },
+        {
+          "rank": 9,
+          "feature": "SO2_delta1",
+          "importance": 735,
+          "importance_share_pct": 1.609,
+          "abs_corr_with_target": 0.0343
+        },
+        {
+          "rank": 10,
+          "feature": "total_pollutant_load",
+          "importance": 731,
+          "importance_share_pct": 1.6,
+          "abs_corr_with_target": 0.8069
+        },
+        {
+          "rank": 11,
+          "feature": "CO_delta1",
+          "importance": 729,
+          "importance_share_pct": 1.595,
+          "abs_corr_with_target": 0.0263
+        },
+        {
+          "rank": 12,
+          "feature": "AQI_lag7",
+          "importance": 713,
+          "importance_share_pct": 1.56,
+          "abs_corr_with_target": 0.7389
+        },
+        {
+          "rank": 13,
+          "feature": "PM2.5_roll3_std",
+          "importance": 689,
+          "importance_share_pct": 1.508,
+          "abs_corr_with_target": 0.459
+        },
+        {
+          "rank": 14,
+          "feature": "days_since_start",
+          "importance": 635,
+          "importance_share_pct": 1.39,
+          "abs_corr_with_target": 0.1411
+        },
+        {
+          "rank": 15,
+          "feature": "NO2_roll3_std",
+          "importance": 628,
+          "importance_share_pct": 1.374,
+          "abs_corr_with_target": 0.2698
+        },
+        {
+          "rank": 16,
+          "feature": "O3_roll3_std",
+          "importance": 614,
+          "importance_share_pct": 1.344,
+          "abs_corr_with_target": 0.1646
+        },
+        {
+          "rank": 17,
+          "feature": "AQI_roll14_std",
+          "importance": 601,
+          "importance_share_pct": 1.315,
+          "abs_corr_with_target": 0.4307
+        },
+        {
+          "rank": 18,
+          "feature": "NOx",
+          "importance": 599,
+          "importance_share_pct": 1.311,
+          "abs_corr_with_target": 0.4823
+        },
+        {
+          "rank": 19,
+          "feature": "O3_dev_roll7",
+          "importance": 595,
+          "importance_share_pct": 1.302,
+          "abs_corr_with_target": 0.0656
+        },
+        {
+          "rank": 20,
+          "feature": "AQI_roll3_std",
+          "importance": 585,
+          "importance_share_pct": 1.28,
+          "abs_corr_with_target": 0.3135
+        },
+        {
+          "rank": 21,
+          "feature": "NO",
+          "importance": 579,
+          "importance_share_pct": 1.267,
+          "abs_corr_with_target": 0.5543
+        },
+        {
+          "rank": 22,
+          "feature": "NO2_dev_roll7",
+          "importance": 579,
+          "importance_share_pct": 1.267,
+          "abs_corr_with_target": 0.1144
+        },
+        {
+          "rank": 23,
+          "feature": "NH3_delta1",
+          "importance": 578,
+          "importance_share_pct": 1.265,
+          "abs_corr_with_target": 0.025
+        },
+        {
+          "rank": 24,
+          "feature": "CO_dev_roll7",
+          "importance": 575,
+          "importance_share_pct": 1.258,
+          "abs_corr_with_target": 0.0475
+        },
+        {
+          "rank": 25,
+          "feature": "O3_roll7_std",
+          "importance": 553,
+          "importance_share_pct": 1.21,
+          "abs_corr_with_target": 0.1871
+        },
+        {
+          "rank": 26,
+          "feature": "doy_cos",
+          "importance": 552,
+          "importance_share_pct": 1.208,
+          "abs_corr_with_target": 0.362
+        },
+        {
+          "rank": 27,
+          "feature": "SO2_roll3_std",
+          "importance": 541,
+          "importance_share_pct": 1.184,
+          "abs_corr_with_target": 0.1587
+        },
+        {
+          "rank": 28,
+          "feature": "PM2.5_lag3",
+          "importance": 532,
+          "importance_share_pct": 1.164,
+          "abs_corr_with_target": 0.703
+        },
+        {
+          "rank": 29,
+          "feature": "SO2_lag7",
+          "importance": 529,
+          "importance_share_pct": 1.158,
+          "abs_corr_with_target": 0.3196
+        },
+        {
+          "rank": 30,
+          "feature": "CO",
+          "importance": 524,
+          "importance_share_pct": 1.147,
+          "abs_corr_with_target": 0.2706
+        },
+        {
+          "rank": 31,
+          "feature": "PM10_delta1",
+          "importance": 523,
+          "importance_share_pct": 1.145,
+          "abs_corr_with_target": 0.1052
+        },
+        {
+          "rank": 32,
+          "feature": "AQI_lag1",
+          "importance": 518,
+          "importance_share_pct": 1.134,
+          "abs_corr_with_target": 0.8138
+        },
+        {
+          "rank": 33,
+          "feature": "day_of_month",
+          "importance": 516,
+          "importance_share_pct": 1.129,
+          "abs_corr_with_target": 0.009
+        },
+        {
+          "rank": 34,
+          "feature": "CO_lag7",
+          "importance": 514,
+          "importance_share_pct": 1.125,
+          "abs_corr_with_target": 0.2259
+        },
+        {
+          "rank": 35,
+          "feature": "AQI_dev_roll7",
+          "importance": 508,
+          "importance_share_pct": 1.112,
+          "abs_corr_with_target": 0.2266
+        },
+        {
+          "rank": 36,
+          "feature": "AQI_lag3",
+          "importance": 494,
+          "importance_share_pct": 1.081,
+          "abs_corr_with_target": 0.7644
+        },
+        {
+          "rank": 37,
+          "feature": "AQI_lag2",
+          "importance": 483,
+          "importance_share_pct": 1.057,
+          "abs_corr_with_target": 0.7834
+        },
+        {
+          "rank": 38,
+          "feature": "AQI_roll7_std",
+          "importance": 481,
+          "importance_share_pct": 1.053,
+          "abs_corr_with_target": 0.3916
+        },
+        {
+          "rank": 39,
+          "feature": "SO2_roll14_std",
+          "importance": 471,
+          "importance_share_pct": 1.031,
+          "abs_corr_with_target": 0.1952
+        },
+        {
+          "rank": 40,
+          "feature": "no2_nox_ratio",
+          "importance": 462,
+          "importance_share_pct": 1.011,
+          "abs_corr_with_target": 0.0591
+        },
+        {
+          "rank": 41,
+          "feature": "CO_roll3_std",
+          "importance": 457,
+          "importance_share_pct": 1.0,
+          "abs_corr_with_target": 0.1489
+        },
+        {
+          "rank": 42,
+          "feature": "O3_lag7",
+          "importance": 455,
+          "importance_share_pct": 0.996,
+          "abs_corr_with_target": 0.2827
+        },
+        {
+          "rank": 43,
+          "feature": "Benzene",
+          "importance": 454,
+          "importance_share_pct": 0.994,
+          "abs_corr_with_target": 0.2201
+        },
+        {
+          "rank": 44,
+          "feature": "O3",
+          "importance": 454,
+          "importance_share_pct": 0.994,
+          "abs_corr_with_target": 0.3428
+        },
+        {
+          "rank": 45,
+          "feature": "Toluene",
+          "importance": 449,
+          "importance_share_pct": 0.983,
+          "abs_corr_with_target": 0.2675
+        },
+        {
+          "rank": 46,
+          "feature": "O3_lag3",
+          "importance": 446,
+          "importance_share_pct": 0.976,
+          "abs_corr_with_target": 0.3046
+        },
+        {
+          "rank": 47,
+          "feature": "PM2.5_roll7_std",
+          "importance": 443,
+          "importance_share_pct": 0.97,
+          "abs_corr_with_target": 0.5217
+        },
+        {
+          "rank": 48,
+          "feature": "PM2.5_lag7",
+          "importance": 441,
+          "importance_share_pct": 0.965,
+          "abs_corr_with_target": 0.6717
+        },
+        {
+          "rank": 49,
+          "feature": "CO_roll7_std",
+          "importance": 439,
+          "importance_share_pct": 0.961,
+          "abs_corr_with_target": 0.1464
+        },
+        {
+          "rank": 50,
+          "feature": "HAI_healthy_adult",
+          "importance": 439,
+          "importance_share_pct": 0.961,
+          "abs_corr_with_target": 0.8772
+        },
+        {
+          "rank": 51,
+          "feature": "NH3_dev_roll7",
+          "importance": 436,
+          "importance_share_pct": 0.954,
+          "abs_corr_with_target": 0.0318
+        },
+        {
+          "rank": 52,
+          "feature": "CO_roll14_std",
+          "importance": 435,
+          "importance_share_pct": 0.952,
+          "abs_corr_with_target": 0.1476
+        },
+        {
+          "rank": 53,
+          "feature": "SO2_lag3",
+          "importance": 434,
+          "importance_share_pct": 0.95,
+          "abs_corr_with_target": 0.3313
+        },
+        {
+          "rank": 54,
+          "feature": "NO2_roll14_std",
+          "importance": 433,
+          "importance_share_pct": 0.948,
+          "abs_corr_with_target": 0.326
+        },
+        {
+          "rank": 55,
+          "feature": "pm_ratio",
+          "importance": 430,
+          "importance_share_pct": 0.941,
+          "abs_corr_with_target": 0.3308
+        },
+        {
+          "rank": 56,
+          "feature": "AQI_roll7_mean",
+          "importance": 428,
+          "importance_share_pct": 0.937,
+          "abs_corr_with_target": 0.8414
+        },
+        {
+          "rank": 57,
+          "feature": "O3_roll14_std",
+          "importance": 428,
+          "importance_share_pct": 0.937,
+          "abs_corr_with_target": 0.2107
+        },
+        {
+          "rank": 58,
+          "feature": "PM2.5_lag2",
+          "importance": 422,
+          "importance_share_pct": 0.924,
+          "abs_corr_with_target": 0.7194
+        },
+        {
+          "rank": 59,
+          "feature": "PM10_dev_roll7",
+          "importance": 414,
+          "importance_share_pct": 0.906,
+          "abs_corr_with_target": 0.169
+        },
+        {
+          "rank": 60,
+          "feature": "so2_pm25_ratio",
+          "importance": 411,
+          "importance_share_pct": 0.9,
+          "abs_corr_with_target": 0.3672
+        },
+        {
+          "rank": 61,
+          "feature": "NO2_lag3",
+          "importance": 405,
+          "importance_share_pct": 0.886,
+          "abs_corr_with_target": 0.4616
+        },
+        {
+          "rank": 62,
+          "feature": "SO2_lag2",
+          "importance": 397,
+          "importance_share_pct": 0.869,
+          "abs_corr_with_target": 0.3403
+        },
+        {
+          "rank": 63,
+          "feature": "PM2.5_roll14_std",
+          "importance": 395,
+          "importance_share_pct": 0.864,
+          "abs_corr_with_target": 0.5493
+        },
+        {
+          "rank": 64,
+          "feature": "NO2_roll7_std",
+          "importance": 393,
+          "importance_share_pct": 0.86,
+          "abs_corr_with_target": 0.3158
+        },
+        {
+          "rank": 65,
+          "feature": "SO2_roll7_std",
+          "importance": 390,
+          "importance_share_pct": 0.854,
+          "abs_corr_with_target": 0.1826
+        },
+        {
+          "rank": 66,
+          "feature": "o3_no2_ratio",
+          "importance": 388,
+          "importance_share_pct": 0.849,
+          "abs_corr_with_target": 0.1202
+        },
+        {
+          "rank": 67,
+          "feature": "CO_lag3",
+          "importance": 372,
+          "importance_share_pct": 0.814,
+          "abs_corr_with_target": 0.2342
+        },
+        {
+          "rank": 68,
+          "feature": "pm_coarse",
+          "importance": 369,
+          "importance_share_pct": 0.808,
+          "abs_corr_with_target": 0.2596
+        },
+        {
+          "rank": 69,
+          "feature": "NH3_roll14_std",
+          "importance": 358,
+          "importance_share_pct": 0.784,
+          "abs_corr_with_target": 0.0388
+        },
+        {
+          "rank": 70,
+          "feature": "NO2_lag7",
+          "importance": 356,
+          "importance_share_pct": 0.779,
+          "abs_corr_with_target": 0.447
+        },
+        {
+          "rank": 71,
+          "feature": "O3_lag2",
+          "importance": 353,
+          "importance_share_pct": 0.773,
+          "abs_corr_with_target": 0.3122
+        },
+        {
+          "rank": 72,
+          "feature": "SO2",
+          "importance": 347,
+          "importance_share_pct": 0.759,
+          "abs_corr_with_target": 0.3735
+        },
+        {
+          "rank": 73,
+          "feature": "NH3_roll3_std",
+          "importance": 338,
+          "importance_share_pct": 0.74,
+          "abs_corr_with_target": 0.0402
+        },
+        {
+          "rank": 74,
+          "feature": "CO_lag2",
+          "importance": 333,
+          "importance_share_pct": 0.729,
+          "abs_corr_with_target": 0.2449
+        },
+        {
+          "rank": 75,
+          "feature": "NH3_lag7",
+          "importance": 329,
+          "importance_share_pct": 0.72,
+          "abs_corr_with_target": 0.1627
+        },
+        {
+          "rank": 76,
+          "feature": "PM2.5_roll14_mean",
+          "importance": 306,
+          "importance_share_pct": 0.67,
+          "abs_corr_with_target": 0.789
+        },
+        {
+          "rank": 77,
+          "feature": "NH3_roll7_std",
+          "importance": 291,
+          "importance_share_pct": 0.637,
+          "abs_corr_with_target": 0.043
+        },
+        {
+          "rank": 78,
+          "feature": "NO2_lag2",
+          "importance": 290,
+          "importance_share_pct": 0.635,
+          "abs_corr_with_target": 0.472
+        },
+        {
+          "rank": 79,
+          "feature": "PM10_roll3_std",
+          "importance": 256,
+          "importance_share_pct": 0.56,
+          "abs_corr_with_target": 0.2935
+        },
+        {
+          "rank": 80,
+          "feature": "PM2.5_roll3_mean",
+          "importance": 256,
+          "importance_share_pct": 0.56,
+          "abs_corr_with_target": 0.8093
+        },
+        {
+          "rank": 81,
+          "feature": "PM10_lag7",
+          "importance": 251,
+          "importance_share_pct": 0.549,
+          "abs_corr_with_target": 0.5459
+        },
+        {
+          "rank": 82,
+          "feature": "day_of_week",
+          "importance": 250,
+          "importance_share_pct": 0.547,
+          "abs_corr_with_target": 0.0079
+        },
+        {
+          "rank": 83,
+          "feature": "PM10_roll14_std",
+          "importance": 249,
+          "importance_share_pct": 0.545,
+          "abs_corr_with_target": 0.3432
+        },
+        {
+          "rank": 84,
+          "feature": "NO2_roll14_mean",
+          "importance": 248,
+          "importance_share_pct": 0.543,
+          "abs_corr_with_target": 0.5116
+        },
+        {
+          "rank": 85,
+          "feature": "NH3_lag3",
+          "importance": 247,
+          "importance_share_pct": 0.541,
+          "abs_corr_with_target": 0.1639
+        },
+        {
+          "rank": 86,
+          "feature": "NH3_lag1",
+          "importance": 237,
+          "importance_share_pct": 0.519,
+          "abs_corr_with_target": 0.1677
+        },
+        {
+          "rank": 87,
+          "feature": "SO2_roll3_mean",
+          "importance": 236,
+          "importance_share_pct": 0.517,
+          "abs_corr_with_target": 0.3788
+        },
+        {
+          "rank": 88,
+          "feature": "O3_roll14_mean",
+          "importance": 235,
+          "importance_share_pct": 0.514,
+          "abs_corr_with_target": 0.3443
+        },
+        {
+          "rank": 89,
+          "feature": "PM10_lag2",
+          "importance": 234,
+          "importance_share_pct": 0.512,
+          "abs_corr_with_target": 0.584
+        },
+        {
+          "rank": 90,
+          "feature": "CO_roll14_mean",
+          "importance": 232,
+          "importance_share_pct": 0.508,
+          "abs_corr_with_target": 0.2775
+        },
+        {
+          "rank": 91,
+          "feature": "O3_roll3_mean",
+          "importance": 217,
+          "importance_share_pct": 0.475,
+          "abs_corr_with_target": 0.3455
+        },
+        {
+          "rank": 92,
+          "feature": "PM10_lag3",
+          "importance": 216,
+          "importance_share_pct": 0.473,
+          "abs_corr_with_target": 0.5674
+        },
+        {
+          "rank": 93,
+          "feature": "PM10_roll7_std",
+          "importance": 215,
+          "importance_share_pct": 0.471,
+          "abs_corr_with_target": 0.3345
+        },
+        {
+          "rank": 94,
+          "feature": "NH3_lag2",
+          "importance": 208,
+          "importance_share_pct": 0.455,
+          "abs_corr_with_target": 0.1629
+        },
+        {
+          "rank": 95,
+          "feature": "PM10_lag1",
+          "importance": 203,
+          "importance_share_pct": 0.444,
+          "abs_corr_with_target": 0.6103
+        },
+        {
+          "rank": 96,
+          "feature": "SO2_roll7_mean",
+          "importance": 177,
+          "importance_share_pct": 0.387,
+          "abs_corr_with_target": 0.3778
+        },
+        {
+          "rank": 97,
+          "feature": "CO_roll3_mean",
+          "importance": 161,
+          "importance_share_pct": 0.352,
+          "abs_corr_with_target": 0.2756
+        },
+        {
+          "rank": 98,
+          "feature": "NH3_roll14_mean",
+          "importance": 158,
+          "importance_share_pct": 0.346,
+          "abs_corr_with_target": 0.181
+        },
+        {
+          "rank": 99,
+          "feature": "NO2_roll3_mean",
+          "importance": 158,
+          "importance_share_pct": 0.346,
+          "abs_corr_with_target": 0.519
+        },
+        {
+          "rank": 100,
+          "feature": "PM10_roll7_mean",
+          "importance": 157,
+          "importance_share_pct": 0.344,
+          "abs_corr_with_target": 0.6312
+        },
+        {
+          "rank": 101,
+          "feature": "City_target_enc",
+          "importance": 128,
+          "importance_share_pct": 0.28,
+          "abs_corr_with_target": 0.619
+        },
+        {
+          "rank": 102,
+          "feature": "n_imputed_pollutants",
+          "importance": 88,
+          "importance_share_pct": 0.193,
+          "abs_corr_with_target": 0.0226
+        }
+      ],
+      "fitted_on_rows": 10331,
+      "fitted_on": "rows with Date < 2019-05-26"
+    }
+  },
+  "targets": {
+    "regression": "AQI_next",
+    "classification": "AQI_Bucket_next",
+    "regression_non_null": 17056,
+    "classification_non_null": 17056
+  },
+  "figures": [
+    "07_hai_vs_aqi_scatter.png",
+    "08_hai_divergence_by_cohort.png",
+    "09_feature_selection.png"
+  ]
+}

@@ -6,11 +6,22 @@ Body: {"city": str, "date": "YYYY-MM-DD", "cohort": str, "adjustments": {polluta
 from __future__ import annotations
 
 import json
+import sys
 from http.server import BaseHTTPRequestHandler
+from pathlib import Path
 
-import _repo  # noqa: F401  (adds the repo root to sys.path as a side effect)
+# Vercel imports this file by path, without its own directory on sys.path, so a
+# sibling helper module cannot be imported here -- the bootstrap is inline.
+# Locally the real repository sits two levels up and is used directly, so the
+# development server always runs the current working tree. On Vercel only
+# webapp/ is uploaded, so api/_bundle/ is used instead: a generated mirror of
+# the paths these functions need (see src/deploy/vendor_for_vercel.py).
+_HERE = Path(__file__).resolve().parent
+_ROOT = _HERE.parents[1] if (_HERE.parents[1] / "src" / "config.py").exists() else _HERE / "_bundle"
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-from src.deploy.serverless_inference import forecast
+from src.deploy.serverless_inference import forecast  # noqa: E402
 
 
 def handle(payload: dict) -> tuple[int, dict]:

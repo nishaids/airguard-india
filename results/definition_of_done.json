@@ -1,9 +1,9 @@
 {
   "generated_by": "src/report/audit.py",
-  "generated_at_utc": "2026-09-29T17:52:20Z",
+  "generated_at_utc": "2026-09-29T18:48:16Z",
   "n_checks": 13,
-  "n_passed": 12,
-  "all_passed": false,
+  "n_passed": 13,
+  "all_passed": true,
   "checks": [
     {
       "check": "`python run_all.py` reproduces everything from a fresh clone",
@@ -62,13 +62,13 @@
     },
     {
       "check": "Deployment URL recorded",
-      "passed": false,
-      "detail": "No deployment URL recorded yet. DEPLOY.md documents the steps; run `python -m src.report.readme --url <url>` after deploying and regenerate the reports so the URL propagates."
+      "passed": true,
+      "detail": "Deployment URL recorded: https://webapp-phi-taupe.vercel.app"
     },
     {
       "check": "Phase-wise git history",
       "passed": true,
-      "detail": "17 commits; history tells the phase story rather than landing as a single change."
+      "detail": "22 commits; history tells the phase story rather than landing as a single change."
     }
   ]
 }

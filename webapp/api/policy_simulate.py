@@ -12,20 +12,29 @@ this endpoint has no scipy/scikit-learn size concern at all).
 from __future__ import annotations
 
 import json
+import sys
 from functools import lru_cache
 from http.server import BaseHTTPRequestHandler
+from pathlib import Path
 
-import _repo  # noqa: F401
+# See the equivalent note in forecast.py: Vercel imports this file without its
+# own directory on sys.path, so the bootstrap is inline rather than a sibling
+# module. Locally the repository is used directly; on Vercel, api/_bundle/.
+_HERE = Path(__file__).resolve().parent
+_ROOT = _HERE.parents[1] if (_HERE.parents[1] / "src" / "config.py").exists() else _HERE / "_bundle"
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-import pandas as pd
+import pandas as pd  # noqa: E402
 
-from src.data.clean import CLEAN_PATH
-from src.simulate.policy import rescore, simulate
+from src.data.clean import CLEAN_PATH  # noqa: E402
+from src.deploy.serverless_inference import read_csv_maybe_gzipped  # noqa: E402
+from src.simulate.policy import rescore, simulate  # noqa: E402
 
 
 @lru_cache(maxsize=1)
 def _clean_frame() -> pd.DataFrame:
-    return pd.read_csv(CLEAN_PATH, parse_dates=["Date"])
+    return read_csv_maybe_gzipped(CLEAN_PATH, parse_dates=["Date"])
 
 
 @lru_cache(maxsize=1)

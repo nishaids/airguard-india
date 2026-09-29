@@ -35,10 +35,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -497,8 +493,13 @@ def recommend_city_retention(missing: Dict[str, Any]) -> Dict[str, Any]:
 # --------------------------------------------------------------------------- #
 # Figures
 # --------------------------------------------------------------------------- #
-def _save(fig: plt.Figure, name: str) -> Path:
+def _save(fig: "plt.Figure", name: str) -> Path:
     """Save a figure at the project DPI and return its path."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     path = config.FIGURES_DIR / name
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=config.FIG_DPI, bbox_inches="tight", facecolor="white")
@@ -509,6 +510,11 @@ def _save(fig: plt.Figure, name: str) -> Path:
 
 def plot_missingness_matrix(frame: pd.DataFrame) -> Path:
     """Render a missingness matrix over the whole table, ordered by date."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     ordered = frame.sort_values(["Date", "City"]).reset_index(drop=True)
     mask = ordered.isna().to_numpy().astype(float)
     fig, ax = plt.subplots(figsize=(11, 6))
@@ -530,6 +536,11 @@ def plot_missingness_matrix(frame: pd.DataFrame) -> Path:
 
 def plot_city_availability_heatmap(frame: pd.DataFrame) -> Path:
     """Render a city-by-month heatmap of labelled-AQI availability."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     work = frame.copy()
     work["ym"] = work["Date"].dt.to_period("M").astype(str)
     pivot = (
@@ -562,6 +573,11 @@ def plot_city_availability_heatmap(frame: pd.DataFrame) -> Path:
 
 def plot_null_percentage_bar(missing: Dict[str, Any]) -> Path:
     """Render a ranked bar chart of null percentage per column."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     entries = [e for e in missing["per_column"] if e["null_pct"] > 0]
     entries.sort(key=lambda e: e["null_pct"], reverse=True)
     names = [e["column"] for e in entries]
@@ -586,6 +602,11 @@ def plot_null_percentage_bar(missing: Dict[str, Any]) -> Path:
 
 def plot_outlier_counts(outliers: Dict[str, Any]) -> Path:
     """Render the IQR-versus-z-score outlier comparison."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     rows = outliers["per_column"]
     names = [r["column"] for r in rows]
     iqr_pct = [r["iqr_outlier_pct"] for r in rows]

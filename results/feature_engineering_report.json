@@ -1,6 +1,6 @@
 {
   "generated_by": "src/features/build.py",
-  "generated_at_utc": "2026-09-28T17:47:55Z",
+  "generated_at_utc": "2026-09-29T18:44:53Z",
   "forecasting_formulation": "Targets are next-day AQI and next-day AQI bucket, per city. Features may use measurements dated today or earlier for that city only.",
   "leakage_controls": {
     "temporal": "The split is a fixed calendar boundary; shuffle is never used. TimeSeriesSplit is used for cross-validation. Lags and rolling windows are computed with groupby('City') so no city contributes to another city's history, and no window extends past the current day.",

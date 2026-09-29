@@ -13,8 +13,10 @@ object, and importing either package pulls in scipy -- see
 
 from __future__ import annotations
 
+import gzip
 import json
 from functools import lru_cache
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 import numpy as np
@@ -28,24 +30,84 @@ from src.features.safe_window import lookup_window
 DEPLOY_MODELS_DIR = config.MODELS_DIR / "deploy"
 
 
+def _read_json(path: Path) -> Any:
+    """Read a JSON artefact, transparently accepting a gzipped copy.
+
+    ``src/deploy/vendor_for_vercel.py`` gzips the larger artefacts to keep the
+    Vercel upload small; locally the plain file is present. Either works.
+    """
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    packed = path.with_suffix(path.suffix + ".gz")
+    with gzip.open(packed, "rt", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
 @lru_cache(maxsize=1)
 def _regression_booster() -> Dict[str, Any]:
-    return json.loads((DEPLOY_MODELS_DIR / "regression_booster.json").read_text(encoding="utf-8"))
+    return _read_json(DEPLOY_MODELS_DIR / "regression_booster.json")
 
 
 @lru_cache(maxsize=1)
 def _classification_booster() -> Dict[str, Any]:
-    return json.loads((DEPLOY_MODELS_DIR / "classification_booster.json").read_text(encoding="utf-8"))
+    return _read_json(DEPLOY_MODELS_DIR / "classification_booster.json")
 
 
 @lru_cache(maxsize=1)
 def _classification_classes() -> list:
-    return json.loads((DEPLOY_MODELS_DIR / "classification_classes.json").read_text(encoding="utf-8"))
+    return _read_json(DEPLOY_MODELS_DIR / "classification_classes.json")
 
 
 @lru_cache(maxsize=1)
 def _feature_order() -> Dict[str, list]:
-    return json.loads((DEPLOY_MODELS_DIR / "feature_order.json").read_text(encoding="utf-8"))
+    return _read_json(DEPLOY_MODELS_DIR / "feature_order.json")
+
+
+def read_csv_maybe_gzipped(path: Path, **kwargs: Any) -> pd.DataFrame:
+    """Read a CSV, falling back to a ``.gz`` copy beside it.
+
+    ``src/deploy/vendor_for_vercel.py`` ships the two large CSVs gzipped to keep
+    the Vercel upload small; the repository itself has them plain.
+    """
+    if path.exists():
+        return pd.read_csv(path, **kwargs)
+    return pd.read_csv(path.with_suffix(path.suffix + ".gz"), compression="gzip", **kwargs)
+
+
+_readers_installed = False
+
+
+def _install_gzip_csv_readers() -> None:
+    """Point the shared loaders at the gzipped CSVs when that is all there is.
+
+    ``app.utils.inference`` reads ``features_full.csv`` and ``city_day_clean.csv``
+    by their plain paths. Only the gzipped copies reach Vercel, so the two
+    loaders are redirected rather than reimplemented -- reimplementing them would
+    duplicate the validation, what-if and cohort logic this module deliberately
+    reuses unchanged.
+    """
+    global _readers_installed
+    if _readers_installed:
+        return
+
+    from app.utils import inference as streamlit_inference
+    from src.data.clean import CLEAN_PATH
+    from src.features.build import FEATURES_PATH
+
+    if FEATURES_PATH.exists() and CLEAN_PATH.exists():
+        _readers_installed = True
+        return  # running against the repository, nothing to redirect
+
+    def load_features() -> pd.DataFrame:
+        frame = read_csv_maybe_gzipped(FEATURES_PATH, parse_dates=["Date"])
+        return frame.sort_values(["City", "Date"]).reset_index(drop=True)
+
+    def load_clean() -> pd.DataFrame:
+        return read_csv_maybe_gzipped(CLEAN_PATH, parse_dates=["Date"]).sort_values(["City", "Date"])
+
+    streamlit_inference.load_features = lru_cache(maxsize=1)(load_features)
+    streamlit_inference.load_clean = lru_cache(maxsize=1)(load_clean)
+    _readers_installed = True
 
 
 def deployed_model_names() -> Dict[str, str]:
@@ -71,6 +133,8 @@ def forecast(
 ) -> Dict[str, Any]:
     """Same contract as ``app.utils.inference.forecast``, served without lightgbm/sklearn."""
     from app.utils import inference as streamlit_inference
+
+    _install_gzip_csv_readers()
 
     validation = streamlit_inference.validate_request(city, requested)
     if not validation.ok:

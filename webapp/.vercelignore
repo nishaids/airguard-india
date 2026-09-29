@@ -1,0 +1,4 @@
+node_modules
+.next
+.vercel
+dev_api_server.py

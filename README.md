@@ -97,7 +97,7 @@ Headline scenario — *PM2.5 and PM10 reduced by 20%*: mean AQI 144.1 → 120.3 
 
 > **Independent sanity check.** The 2020 national lockdown produced a *measured* **-33.99%** change in national mean AQI. The simulator's nearest comparable scenario — a 40% reduction across all pollutants — yields **-37.0%**. The two agree closely, and the simulator was not fitted to that episode in any way.
 
-*Artefacts at this build: **41 figures** (all at 300 DPI, colour-blind-safe), **18 result files**, **17 model artefacts**. Generated 2026-09-29.*
+*Artefacts at this build: **41 figures** (all at 300 DPI, colour-blind-safe), **21 result files**, **18 model artefacts**. Generated 2026-09-29.*
 <!-- RESULTS:END -->
 
 > **Why the persistence baseline matters.** Daily AQI is strongly
@@ -123,7 +123,7 @@ streamlit run app/Home.py
 | **4 · Model Insights** | Master comparison tables, confusion matrices, ROC curves, residuals, learning curves, per-city error, error analysis, **SHAP global + local**, tuning report, **leakage demonstration**, imputation bake-off, plain-language metric glossary, data card and model card |
 
 <!-- DEPLOYMENT:START -->
-**Live deployment:** _Not yet deployed. Run `python -m src.report.readme --url <your-url>` once the app is live._
+**Live deployment:** https://webapp-phi-taupe.vercel.app
 <!-- DEPLOYMENT:END -->
 
 ---

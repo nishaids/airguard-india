@@ -49,10 +49,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -645,7 +641,9 @@ def select_features(
 # --------------------------------------------------------------------------- #
 # Figures
 # --------------------------------------------------------------------------- #
-def _save(fig: plt.Figure, name: str) -> Path:
+def _save(fig: "plt.Figure", name: str) -> Path:
+    import matplotlib.pyplot as plt
+
     path = config.FIGURES_DIR / name
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=config.FIG_DPI, bbox_inches="tight", facecolor="white")
@@ -656,6 +654,11 @@ def _save(fig: plt.Figure, name: str) -> Path:
 
 def plot_hai_vs_aqi(frame: pd.DataFrame, divergence: Dict[str, Any]) -> Path:
     """Contrast the official AQI with the asthma/COPD HAI on real observations."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     work = frame.dropna(subset=["AQI", "HAI_asthma_copd"]).copy()
     aqi_scaled = work["AQI"] / 5.0
     hai = work["HAI_asthma_copd"]
@@ -712,6 +715,11 @@ def plot_hai_vs_aqi(frame: pd.DataFrame, divergence: Dict[str, Any]) -> Path:
 
 def plot_hai_divergence(divergence: Dict[str, Any]) -> Path:
     """Render per-cohort divergence from the AQI and from the reference cohort."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     rows = divergence["per_cohort"]
     labels = [r["cohort_label"] for r in rows]
     from_aqi = [r["pct_band_differs_from_aqi"] for r in rows]
@@ -768,6 +776,11 @@ def plot_hai_divergence(divergence: Dict[str, Any]) -> Path:
 
 def plot_feature_selection(selection: Dict[str, Any]) -> Path:
     """Render the top retained features by importance for both tasks."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     fig, axes = plt.subplots(1, 2, figsize=(15, 7))
     for ax, (task, info) in zip(axes, selection.items()):
         top = info["retained_with_importance"][:20][::-1]

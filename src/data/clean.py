@@ -45,7 +45,6 @@ from typing import Any, Callable, Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
-from scipy import stats as sp_stats
 
 from src import config
 from src.data.quality import load_raw_city_day, recommend_city_retention, assess_missingness
@@ -499,6 +498,8 @@ def compare_imputation_strategies(
     however well they score, and they are reported to quantify the cost of the
     causality constraint.
     """
+    from scipy import stats as sp_stats
+
     rng = np.random.default_rng(seed)
     train = frame.loc[frame["Date"] < boundary].copy().reset_index(drop=True)
     stats = fit_imputation_statistics(frame, columns, boundary)
@@ -724,6 +725,8 @@ def validate_clean(
     Failures raise ``AssertionError`` loudly rather than being logged, so a
     broken pipeline cannot silently produce a report.
     """
+    from scipy import stats as sp_stats
+
     checks: Dict[str, Any] = {}
 
     assert not frame.duplicated(subset=["City", "Date"]).any(), "duplicate (City, Date)"

@@ -25,7 +25,6 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-import joblib
 import numpy as np
 import pandas as pd
 
@@ -97,6 +96,8 @@ def load_model(kind: str) -> Any:
         metric; otherwise the untuned winner is loaded. The decision is read from
         ``results/tuning_report.json`` rather than assumed.
     """
+    import joblib
+
     tuning = load_results("tuning_report.json")
     results = load_results(f"evaluation_{kind}.json")
 

@@ -1,0 +1,40 @@
+# AirGuard India - pinned runtime environment
+# Verified on Python 3.10.6 (Windows 11) and compatible with Google Colab free tier.
+# Install with:  python -m pip install -r requirements.txt
+
+# --- core data stack -------------------------------------------------------- #
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+pyarrow==23.0.0
+
+# --- modelling -------------------------------------------------------------- #
+scikit-learn==1.7.2
+xgboost==3.2.0
+lightgbm==4.7.0
+imbalanced-learn==0.14.2
+statsmodels==0.15.0
+joblib==1.5.3
+
+# --- explainability --------------------------------------------------------- #
+shap==0.49.1
+
+# --- visualisation ---------------------------------------------------------- #
+matplotlib==3.10.8
+seaborn==0.13.2
+plotly==6.5.2
+
+# --- data acquisition ------------------------------------------------------- #
+kagglehub==1.0.2
+requests==2.32.3
+
+# --- reporting -------------------------------------------------------------- #
+python-docx==1.2.0
+
+# --- application ------------------------------------------------------------ #
+streamlit==1.53.1
+
+# --- notebook execution (development only) ---------------------------------- #
+nbformat==5.11.1
+nbconvert==7.17.1
+ipykernel==7.3.0

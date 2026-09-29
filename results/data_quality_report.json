@@ -1,0 +1,1439 @@
+{
+  "generated_by": "src/data/quality.py",
+  "generated_at_utc": "2026-09-28T17:32:05Z",
+  "source_file": "D:\\PODS Project\\airguard-india\\data\\raw\\city_day.csv",
+  "shape": {
+    "rows": 29531,
+    "columns": 16
+  },
+  "missingness": {
+    "n_rows": 29531,
+    "per_column": [
+      {
+        "column": "City",
+        "nulls": 0,
+        "non_null": 29531,
+        "null_pct": 0.0
+      },
+      {
+        "column": "Date",
+        "nulls": 0,
+        "non_null": 29531,
+        "null_pct": 0.0
+      },
+      {
+        "column": "PM2.5",
+        "nulls": 4598,
+        "non_null": 24933,
+        "null_pct": 15.57
+      },
+      {
+        "column": "PM10",
+        "nulls": 11140,
+        "non_null": 18391,
+        "null_pct": 37.723
+      },
+      {
+        "column": "NO",
+        "nulls": 3582,
+        "non_null": 25949,
+        "null_pct": 12.13
+      },
+      {
+        "column": "NO2",
+        "nulls": 3585,
+        "non_null": 25946,
+        "null_pct": 12.14
+      },
+      {
+        "column": "NOx",
+        "nulls": 4185,
+        "non_null": 25346,
+        "null_pct": 14.172
+      },
+      {
+        "column": "NH3",
+        "nulls": 10328,
+        "non_null": 19203,
+        "null_pct": 34.973
+      },
+      {
+        "column": "CO",
+        "nulls": 2059,
+        "non_null": 27472,
+        "null_pct": 6.972
+      },
+      {
+        "column": "SO2",
+        "nulls": 3854,
+        "non_null": 25677,
+        "null_pct": 13.051
+      },
+      {
+        "column": "O3",
+        "nulls": 4022,
+        "non_null": 25509,
+        "null_pct": 13.62
+      },
+      {
+        "column": "Benzene",
+        "nulls": 5623,
+        "non_null": 23908,
+        "null_pct": 19.041
+      },
+      {
+        "column": "Toluene",
+        "nulls": 8041,
+        "non_null": 21490,
+        "null_pct": 27.229
+      },
+      {
+        "column": "Xylene",
+        "nulls": 18109,
+        "non_null": 11422,
+        "null_pct": 61.322
+      },
+      {
+        "column": "AQI",
+        "nulls": 4681,
+        "non_null": 24850,
+        "null_pct": 15.851
+      },
+      {
+        "column": "AQI_Bucket",
+        "nulls": 4681,
+        "non_null": 24850,
+        "null_pct": 15.851
+      }
+    ],
+    "rows_complete_on_all_pollutants_and_aqi": 6236,
+    "rows_complete_pct": 21.117,
+    "per_city": [
+      {
+        "city": "Ahmedabad",
+        "records": 2009,
+        "calendar_span_days": 2009,
+        "aqi_non_null": 1334,
+        "aqi_completeness_vs_span": 0.664,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 39.13,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Aizawl",
+        "records": 113,
+        "calendar_span_days": 113,
+        "aqi_non_null": 111,
+        "aqi_completeness_vs_span": 0.9823,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 11.43,
+        "first_date": "2020-03-11",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Amaravati",
+        "records": 951,
+        "calendar_span_days": 951,
+        "aqi_non_null": 841,
+        "aqi_completeness_vs_span": 0.8843,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 8.5,
+        "first_date": "2017-11-24",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Amritsar",
+        "records": 1221,
+        "calendar_span_days": 1221,
+        "aqi_non_null": 1126,
+        "aqi_completeness_vs_span": 0.9222,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 11.18,
+        "first_date": "2017-02-27",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Bengaluru",
+        "records": 2009,
+        "calendar_span_days": 2009,
+        "aqi_non_null": 1910,
+        "aqi_completeness_vs_span": 0.9507,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 13.5,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Bhopal",
+        "records": 289,
+        "calendar_span_days": 289,
+        "aqi_non_null": 278,
+        "aqi_completeness_vs_span": 0.9619,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 27.34,
+        "first_date": "2019-09-17",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Brajrajnagar",
+        "records": 938,
+        "calendar_span_days": 938,
+        "aqi_non_null": 713,
+        "aqi_completeness_vs_span": 0.7601,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 34.04,
+        "first_date": "2017-12-07",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Chandigarh",
+        "records": 304,
+        "calendar_span_days": 304,
+        "aqi_non_null": 299,
+        "aqi_completeness_vs_span": 0.9836,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 1.01,
+        "first_date": "2019-09-02",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Chennai",
+        "records": 2009,
+        "calendar_span_days": 2009,
+        "aqi_non_null": 1884,
+        "aqi_completeness_vs_span": 0.9378,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 20.95,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Coimbatore",
+        "records": 386,
+        "calendar_span_days": 386,
+        "aqi_non_null": 344,
+        "aqi_completeness_vs_span": 0.8912,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 13.15,
+        "first_date": "2019-06-12",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Delhi",
+        "records": 2009,
+        "calendar_span_days": 2009,
+        "aqi_non_null": 1999,
+        "aqi_completeness_vs_span": 0.995,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 4.43,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Ernakulam",
+        "records": 162,
+        "calendar_span_days": 162,
+        "aqi_non_null": 153,
+        "aqi_completeness_vs_span": 0.9444,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 13.22,
+        "first_date": "2020-01-22",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Gurugram",
+        "records": 1679,
+        "calendar_span_days": 1679,
+        "aqi_non_null": 1453,
+        "aqi_completeness_vs_span": 0.8654,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 31.72,
+        "first_date": "2015-11-27",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Guwahati",
+        "records": 502,
+        "calendar_span_days": 502,
+        "aqi_non_null": 495,
+        "aqi_completeness_vs_span": 0.9861,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 16.92,
+        "first_date": "2019-02-16",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Hyderabad",
+        "records": 2006,
+        "calendar_span_days": 2006,
+        "aqi_non_null": 1880,
+        "aqi_completeness_vs_span": 0.9372,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 5.53,
+        "first_date": "2015-01-04",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Jaipur",
+        "records": 1114,
+        "calendar_span_days": 1114,
+        "aqi_non_null": 1094,
+        "aqi_completeness_vs_span": 0.982,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 10.29,
+        "first_date": "2017-06-14",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Jorapokhar",
+        "records": 1169,
+        "calendar_span_days": 1169,
+        "aqi_non_null": 771,
+        "aqi_completeness_vs_span": 0.6595,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 55.65,
+        "first_date": "2017-04-20",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Kochi",
+        "records": 162,
+        "calendar_span_days": 162,
+        "aqi_non_null": 158,
+        "aqi_completeness_vs_span": 0.9753,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 17.9,
+        "first_date": "2020-01-22",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Kolkata",
+        "records": 814,
+        "calendar_span_days": 814,
+        "aqi_non_null": 754,
+        "aqi_completeness_vs_span": 0.9263,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 7.13,
+        "first_date": "2018-04-10",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Lucknow",
+        "records": 2009,
+        "calendar_span_days": 2009,
+        "aqi_non_null": 1893,
+        "aqi_completeness_vs_span": 0.9423,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 24.27,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Mumbai",
+        "records": 2009,
+        "calendar_span_days": 2009,
+        "aqi_non_null": 775,
+        "aqi_completeness_vs_span": 0.3858,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 48.67,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Patna",
+        "records": 1858,
+        "calendar_span_days": 1858,
+        "aqi_non_null": 1459,
+        "aqi_completeness_vs_span": 0.7853,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 24.29,
+        "first_date": "2015-06-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Shillong",
+        "records": 310,
+        "calendar_span_days": 310,
+        "aqi_non_null": 205,
+        "aqi_completeness_vs_span": 0.6613,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 23.2,
+        "first_date": "2019-08-27",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Talcher",
+        "records": 925,
+        "calendar_span_days": 925,
+        "aqi_non_null": 698,
+        "aqi_completeness_vs_span": 0.7546,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 32.07,
+        "first_date": "2017-12-20",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Thiruvananthapuram",
+        "records": 1112,
+        "calendar_span_days": 1112,
+        "aqi_non_null": 1052,
+        "aqi_completeness_vs_span": 0.946,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 27.62,
+        "first_date": "2017-06-16",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Visakhapatnam",
+        "records": 1462,
+        "calendar_span_days": 1462,
+        "aqi_non_null": 1171,
+        "aqi_completeness_vs_span": 0.801,
+        "row_completeness_vs_span": 1.0,
+        "mean_pollutant_null_pct": 10.26,
+        "first_date": "2016-07-01",
+        "last_date": "2020-07-01"
+      }
+    ]
+  },
+  "duplicates": {
+    "fully_duplicated_rows": 0,
+    "duplicated_city_date_keys": 0,
+    "duplicated_key_examples": [],
+    "primary_key_is_unique": true
+  },
+  "invalid_values": {
+    "per_pollutant": [
+      {
+        "pollutant": "PM2.5",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 0,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 1000.0,
+        "observed_min": 0.04,
+        "observed_max": 949.99
+      },
+      {
+        "pollutant": "PM10",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 0,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 1200.0,
+        "observed_min": 0.01,
+        "observed_max": 1000.0
+      },
+      {
+        "pollutant": "NO",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 0,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 500.0,
+        "observed_min": 0.02,
+        "observed_max": 390.68
+      },
+      {
+        "pollutant": "NO2",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 0,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 500.0,
+        "observed_min": 0.01,
+        "observed_max": 362.21
+      },
+      {
+        "pollutant": "NOx",
+        "unit": "ppb",
+        "negative_values": 0,
+        "exact_zeros": 740,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 600.0,
+        "observed_min": 0.0,
+        "observed_max": 467.63
+      },
+      {
+        "pollutant": "NH3",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 0,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 600.0,
+        "observed_min": 0.01,
+        "observed_max": 352.89
+      },
+      {
+        "pollutant": "CO",
+        "unit": "mg/m3",
+        "negative_values": 0,
+        "exact_zeros": 2328,
+        "above_plausible_ceiling": 120,
+        "plausible_ceiling": 50.0,
+        "observed_min": 0.0,
+        "observed_max": 175.81
+      },
+      {
+        "pollutant": "SO2",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 0,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 800.0,
+        "observed_min": 0.01,
+        "observed_max": 193.86
+      },
+      {
+        "pollutant": "O3",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 0,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 400.0,
+        "observed_min": 0.01,
+        "observed_max": 257.73
+      },
+      {
+        "pollutant": "Benzene",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 3802,
+        "above_plausible_ceiling": 54,
+        "plausible_ceiling": 100.0,
+        "observed_min": 0.0,
+        "observed_max": 455.03
+      },
+      {
+        "pollutant": "Toluene",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 2861,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 500.0,
+        "observed_min": 0.0,
+        "observed_max": 454.85
+      },
+      {
+        "pollutant": "Xylene",
+        "unit": "ug/m3",
+        "negative_values": 0,
+        "exact_zeros": 1747,
+        "above_plausible_ceiling": 0,
+        "plausible_ceiling": 200.0,
+        "observed_min": 0.0,
+        "observed_max": 170.37
+      }
+    ],
+    "aqi": {
+      "negative_aqi": 0,
+      "aqi_below_scale_min": 0,
+      "aqi_above_scale_max_500": 543,
+      "aqi_above_scale_max_500_pct": 2.185,
+      "observed_aqi_min": 13.0,
+      "observed_aqi_max": 2049.0,
+      "note": "The CPCB National AQI scale is defined on 0-500. Values above 500 arise because the dataset compiler extrapolated the topmost sub-index breakpoint linearly instead of capping at 500. Such rows are retained: they mark genuine extreme-pollution days, and truncating them would erase the very events the advisory system exists to warn about. They are flagged in data/processed/ via the column aqi_above_scale."
+    },
+    "bucket_consistency": {
+      "rows_checked": 24850,
+      "mismatches": 0,
+      "agreement_pct": 100.0,
+      "examples": [],
+      "implication": "AQI_Bucket is reproducible from AQI by the CPCB cut points alone. AQI must therefore be excluded from the feature matrix of the bucket-classification task, otherwise the model trivially recovers the label.",
+      "aqi_null_but_bucket_present": 0,
+      "bucket_null_but_aqi_present": 0
+    },
+    "dates": {
+      "nulls": 0,
+      "min": "2015-01-01",
+      "max": "2020-07-01",
+      "outside_plausible_window": 0,
+      "plausible_window": [
+        "2015-01-01",
+        "2020-12-31"
+      ],
+      "future_dates": 0,
+      "calendar_gaps_by_city": [
+        {
+          "city": "Ahmedabad",
+          "observed_days": 2009,
+          "expected_days_in_span": 2009,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Aizawl",
+          "observed_days": 113,
+          "expected_days_in_span": 113,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Amaravati",
+          "observed_days": 951,
+          "expected_days_in_span": 951,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Amritsar",
+          "observed_days": 1221,
+          "expected_days_in_span": 1221,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Bengaluru",
+          "observed_days": 2009,
+          "expected_days_in_span": 2009,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Bhopal",
+          "observed_days": 289,
+          "expected_days_in_span": 289,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Brajrajnagar",
+          "observed_days": 938,
+          "expected_days_in_span": 938,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Chandigarh",
+          "observed_days": 304,
+          "expected_days_in_span": 304,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Chennai",
+          "observed_days": 2009,
+          "expected_days_in_span": 2009,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Coimbatore",
+          "observed_days": 386,
+          "expected_days_in_span": 386,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Delhi",
+          "observed_days": 2009,
+          "expected_days_in_span": 2009,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Ernakulam",
+          "observed_days": 162,
+          "expected_days_in_span": 162,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Gurugram",
+          "observed_days": 1679,
+          "expected_days_in_span": 1679,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Guwahati",
+          "observed_days": 502,
+          "expected_days_in_span": 502,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Hyderabad",
+          "observed_days": 2006,
+          "expected_days_in_span": 2006,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Jaipur",
+          "observed_days": 1114,
+          "expected_days_in_span": 1114,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Jorapokhar",
+          "observed_days": 1169,
+          "expected_days_in_span": 1169,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Kochi",
+          "observed_days": 162,
+          "expected_days_in_span": 162,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Kolkata",
+          "observed_days": 814,
+          "expected_days_in_span": 814,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Lucknow",
+          "observed_days": 2009,
+          "expected_days_in_span": 2009,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Mumbai",
+          "observed_days": 2009,
+          "expected_days_in_span": 2009,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Patna",
+          "observed_days": 1858,
+          "expected_days_in_span": 1858,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Shillong",
+          "observed_days": 310,
+          "expected_days_in_span": 310,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Talcher",
+          "observed_days": 925,
+          "expected_days_in_span": 925,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Thiruvananthapuram",
+          "observed_days": 1112,
+          "expected_days_in_span": 1112,
+          "missing_calendar_days": 0
+        },
+        {
+          "city": "Visakhapatnam",
+          "observed_days": 1462,
+          "expected_days_in_span": 1462,
+          "missing_calendar_days": 0
+        }
+      ],
+      "total_missing_calendar_days": 0
+    }
+  },
+  "city_naming": {
+    "n_cities": 26,
+    "cities": [
+      "Ahmedabad",
+      "Aizawl",
+      "Amaravati",
+      "Amritsar",
+      "Bengaluru",
+      "Bhopal",
+      "Brajrajnagar",
+      "Chandigarh",
+      "Chennai",
+      "Coimbatore",
+      "Delhi",
+      "Ernakulam",
+      "Gurugram",
+      "Guwahati",
+      "Hyderabad",
+      "Jaipur",
+      "Jorapokhar",
+      "Kochi",
+      "Kolkata",
+      "Lucknow",
+      "Mumbai",
+      "Patna",
+      "Shillong",
+      "Talcher",
+      "Thiruvananthapuram",
+      "Visakhapatnam"
+    ],
+    "normalisation_collisions": {},
+    "leading_or_trailing_whitespace": [],
+    "non_title_case": [],
+    "stations_cross_check": {
+      "cities_in_city_day_not_in_stations": [],
+      "n_cities_in_stations": 127,
+      "n_cities_matched": 26
+    },
+    "verdict": "consistent"
+  },
+  "unit_sanity": {
+    "checks": [
+      {
+        "pollutant": "PM2.5",
+        "declared_unit": "ug/m3",
+        "median": 48.57,
+        "expected_median_range": [
+          5.0,
+          300.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "PM10",
+        "declared_unit": "ug/m3",
+        "median": 95.68,
+        "expected_median_range": [
+          10.0,
+          500.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "NO",
+        "declared_unit": "ug/m3",
+        "median": 9.89,
+        "expected_median_range": [
+          0.5,
+          150.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "NO2",
+        "declared_unit": "ug/m3",
+        "median": 21.69,
+        "expected_median_range": [
+          2.0,
+          150.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "NOx",
+        "declared_unit": "ppb",
+        "median": 23.52,
+        "expected_median_range": [
+          2.0,
+          200.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "NH3",
+        "declared_unit": "ug/m3",
+        "median": 15.85,
+        "expected_median_range": [
+          1.0,
+          150.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "CO",
+        "declared_unit": "mg/m3",
+        "median": 0.89,
+        "expected_median_range": [
+          0.05,
+          10.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "SO2",
+        "declared_unit": "ug/m3",
+        "median": 9.16,
+        "expected_median_range": [
+          1.0,
+          100.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "O3",
+        "declared_unit": "ug/m3",
+        "median": 30.84,
+        "expected_median_range": [
+          2.0,
+          150.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "Benzene",
+        "declared_unit": "ug/m3",
+        "median": 1.07,
+        "expected_median_range": [
+          0.0,
+          50.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "Toluene",
+        "declared_unit": "ug/m3",
+        "median": 2.97,
+        "expected_median_range": [
+          0.0,
+          100.0
+        ],
+        "status": "plausible"
+      },
+      {
+        "pollutant": "Xylene",
+        "declared_unit": "ug/m3",
+        "median": 0.98,
+        "expected_median_range": [
+          0.0,
+          50.0
+        ],
+        "status": "plausible"
+      }
+    ],
+    "n_flagged": 0
+  },
+  "outliers": {
+    "method_iqr": "Tukey fence, k = 1.5 on Q1/Q3",
+    "method_zscore": "|z| > 3 on the column mean and standard deviation",
+    "per_column": [
+      {
+        "column": "PM2.5",
+        "n": 24933,
+        "q1": 28.82,
+        "q3": 80.59,
+        "iqr": 51.77,
+        "iqr_lower_fence": -48.835,
+        "iqr_upper_fence": 158.245,
+        "iqr_outliers": 1982,
+        "iqr_outlier_pct": 7.949,
+        "z_outliers_gt_3": 497,
+        "z_outlier_pct": 1.993,
+        "skew": 3.37,
+        "kurtosis": 21.132,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "PM10",
+        "n": 18391,
+        "q1": 56.255,
+        "q3": 149.745,
+        "iqr": 93.49,
+        "iqr_lower_fence": -83.98,
+        "iqr_upper_fence": 289.98,
+        "iqr_outliers": 1057,
+        "iqr_outlier_pct": 5.747,
+        "z_outliers_gt_3": 358,
+        "z_outlier_pct": 1.947,
+        "skew": 2.053,
+        "kurtosis": 6.748,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "NO",
+        "n": 25949,
+        "q1": 5.63,
+        "q3": 19.95,
+        "iqr": 14.32,
+        "iqr_lower_fence": -15.85,
+        "iqr_upper_fence": 41.43,
+        "iqr_outliers": 2459,
+        "iqr_outlier_pct": 9.476,
+        "z_outliers_gt_3": 595,
+        "z_outlier_pct": 2.293,
+        "skew": 3.883,
+        "kurtosis": 25.164,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "NO2",
+        "n": 25946,
+        "q1": 11.75,
+        "q3": 37.62,
+        "iqr": 25.87,
+        "iqr_lower_fence": -27.055,
+        "iqr_upper_fence": 76.425,
+        "iqr_outliers": 1188,
+        "iqr_outlier_pct": 4.579,
+        "z_outliers_gt_3": 469,
+        "z_outlier_pct": 1.808,
+        "skew": 2.465,
+        "kurtosis": 11.211,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "NOx",
+        "n": 25346,
+        "q1": 12.82,
+        "q3": 40.127,
+        "iqr": 27.307,
+        "iqr_lower_fence": -28.141,
+        "iqr_upper_fence": 81.089,
+        "iqr_outliers": 1868,
+        "iqr_outlier_pct": 7.37,
+        "z_outliers_gt_3": 562,
+        "z_outlier_pct": 2.217,
+        "skew": 2.57,
+        "kurtosis": 10.836,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "NH3",
+        "n": 19203,
+        "q1": 8.58,
+        "q3": 30.02,
+        "iqr": 21.44,
+        "iqr_lower_fence": -23.58,
+        "iqr_upper_fence": 62.18,
+        "iqr_outliers": 1015,
+        "iqr_outlier_pct": 5.286,
+        "z_outliers_gt_3": 355,
+        "z_outlier_pct": 1.849,
+        "skew": 4.084,
+        "kurtosis": 27.965,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "CO",
+        "n": 27472,
+        "q1": 0.51,
+        "q3": 1.45,
+        "iqr": 0.94,
+        "iqr_lower_fence": -0.9,
+        "iqr_upper_fence": 2.86,
+        "iqr_outliers": 2475,
+        "iqr_outlier_pct": 9.009,
+        "z_outliers_gt_3": 546,
+        "z_outlier_pct": 1.987,
+        "skew": 8.878,
+        "kurtosis": 109.488,
+        "above_plausible_ceiling": 120
+      },
+      {
+        "column": "SO2",
+        "n": 25677,
+        "q1": 5.67,
+        "q3": 15.22,
+        "iqr": 9.55,
+        "iqr_lower_fence": -8.655,
+        "iqr_upper_fence": 29.545,
+        "iqr_outliers": 2578,
+        "iqr_outlier_pct": 10.04,
+        "z_outliers_gt_3": 581,
+        "z_outlier_pct": 2.263,
+        "skew": 4.084,
+        "kurtosis": 22.067,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "O3",
+        "n": 25509,
+        "q1": 18.86,
+        "q3": 45.57,
+        "iqr": 26.71,
+        "iqr_lower_fence": -21.205,
+        "iqr_upper_fence": 85.635,
+        "iqr_outliers": 713,
+        "iqr_outlier_pct": 2.795,
+        "z_outliers_gt_3": 346,
+        "z_outlier_pct": 1.356,
+        "skew": 1.33,
+        "kurtosis": 3.429,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "Benzene",
+        "n": 23908,
+        "q1": 0.12,
+        "q3": 3.08,
+        "iqr": 2.96,
+        "iqr_lower_fence": -4.32,
+        "iqr_upper_fence": 7.52,
+        "iqr_outliers": 1668,
+        "iqr_outlier_pct": 6.977,
+        "z_outliers_gt_3": 97,
+        "z_outlier_pct": 0.406,
+        "skew": 21.304,
+        "kurtosis": 530.171,
+        "above_plausible_ceiling": 54
+      },
+      {
+        "column": "Toluene",
+        "n": 21490,
+        "q1": 0.6,
+        "q3": 9.15,
+        "iqr": 8.55,
+        "iqr_lower_fence": -12.225,
+        "iqr_upper_fence": 21.975,
+        "iqr_outliers": 2427,
+        "iqr_outlier_pct": 11.294,
+        "z_outliers_gt_3": 242,
+        "z_outlier_pct": 1.126,
+        "skew": 11.666,
+        "kurtosis": 216.746,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "Xylene",
+        "n": 11422,
+        "q1": 0.14,
+        "q3": 3.35,
+        "iqr": 3.21,
+        "iqr_lower_fence": -4.675,
+        "iqr_upper_fence": 8.165,
+        "iqr_outliers": 1119,
+        "iqr_outlier_pct": 9.797,
+        "z_outliers_gt_3": 186,
+        "z_outlier_pct": 1.628,
+        "skew": 7.892,
+        "kurtosis": 119.98,
+        "above_plausible_ceiling": 0
+      },
+      {
+        "column": "AQI",
+        "n": 24850,
+        "q1": 81.0,
+        "q3": 208.0,
+        "iqr": 127.0,
+        "iqr_lower_fence": -109.5,
+        "iqr_upper_fence": 398.5,
+        "iqr_outliers": 1358,
+        "iqr_outlier_pct": 5.465,
+        "z_outliers_gt_3": 321,
+        "z_outlier_pct": 1.292,
+        "skew": 3.397,
+        "kurtosis": 21.424,
+        "above_plausible_ceiling": null
+      }
+    ]
+  },
+  "class_balance": {
+    "labelled_rows": 24850,
+    "distribution": [
+      {
+        "bucket": "Good",
+        "count": 1341,
+        "pct": 5.396
+      },
+      {
+        "bucket": "Satisfactory",
+        "count": 8224,
+        "pct": 33.095
+      },
+      {
+        "bucket": "Moderate",
+        "count": 8829,
+        "pct": 35.529
+      },
+      {
+        "bucket": "Poor",
+        "count": 2781,
+        "pct": 11.191
+      },
+      {
+        "bucket": "Very Poor",
+        "count": 2337,
+        "pct": 9.404
+      },
+      {
+        "bucket": "Severe",
+        "count": 1338,
+        "pct": 5.384
+      }
+    ],
+    "imbalance_ratio_max_over_min": 6.6,
+    "implication": "The bucket distribution is markedly uneven, so overall accuracy is not an adequate summary: a model that never predicts the rarest class can still score well. Macro-averaged F1 is therefore declared the primary classification metric, with per-class F1 reported alongside it."
+  },
+  "city_retention": {
+    "threshold_completeness": 0.8,
+    "threshold_min_labelled_days": 730,
+    "threshold_justification": "Two independent gates are applied. The completeness gate (80% of the calendar days in a city's own observation span must carry a labelled AQI) ensures that per-city lag and rolling features are computed over a near-contiguous series rather than across long gaps, since a lag of one row is only a lag of one day when the series is dense. The volume gate (at least 730 labelled days, i.e. two years) ensures each retained city contributes at least two full annual cycles, so that seasonal structure is estimable and a time-ordered split leaves a usable test period. Both thresholds were fixed before any model was fitted and are not tuned against model performance.",
+    "decisions": [
+      {
+        "city": "Ahmedabad",
+        "labelled_days": 1334,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.664,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 66.4% < 80%."
+      },
+      {
+        "city": "Aizawl",
+        "labelled_days": 111,
+        "calendar_span_days": 113,
+        "aqi_completeness": 0.9823,
+        "first_date": "2020-03-11",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 111 labelled days < 730."
+      },
+      {
+        "city": "Amaravati",
+        "labelled_days": 841,
+        "calendar_span_days": 951,
+        "aqi_completeness": 0.8843,
+        "first_date": "2017-11-24",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 88.4% >= 80% and 841 labelled days >= 730."
+      },
+      {
+        "city": "Amritsar",
+        "labelled_days": 1126,
+        "calendar_span_days": 1221,
+        "aqi_completeness": 0.9222,
+        "first_date": "2017-02-27",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 92.2% >= 80% and 1,126 labelled days >= 730."
+      },
+      {
+        "city": "Bengaluru",
+        "labelled_days": 1910,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.9507,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 95.1% >= 80% and 1,910 labelled days >= 730."
+      },
+      {
+        "city": "Bhopal",
+        "labelled_days": 278,
+        "calendar_span_days": 289,
+        "aqi_completeness": 0.9619,
+        "first_date": "2019-09-17",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 278 labelled days < 730."
+      },
+      {
+        "city": "Brajrajnagar",
+        "labelled_days": 713,
+        "calendar_span_days": 938,
+        "aqi_completeness": 0.7601,
+        "first_date": "2017-12-07",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 76.0% < 80%; only 713 labelled days < 730."
+      },
+      {
+        "city": "Chandigarh",
+        "labelled_days": 299,
+        "calendar_span_days": 304,
+        "aqi_completeness": 0.9836,
+        "first_date": "2019-09-02",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 299 labelled days < 730."
+      },
+      {
+        "city": "Chennai",
+        "labelled_days": 1884,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.9378,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 93.8% >= 80% and 1,884 labelled days >= 730."
+      },
+      {
+        "city": "Coimbatore",
+        "labelled_days": 344,
+        "calendar_span_days": 386,
+        "aqi_completeness": 0.8912,
+        "first_date": "2019-06-12",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 344 labelled days < 730."
+      },
+      {
+        "city": "Delhi",
+        "labelled_days": 1999,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.995,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 99.5% >= 80% and 1,999 labelled days >= 730."
+      },
+      {
+        "city": "Ernakulam",
+        "labelled_days": 153,
+        "calendar_span_days": 162,
+        "aqi_completeness": 0.9444,
+        "first_date": "2020-01-22",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 153 labelled days < 730."
+      },
+      {
+        "city": "Gurugram",
+        "labelled_days": 1453,
+        "calendar_span_days": 1679,
+        "aqi_completeness": 0.8654,
+        "first_date": "2015-11-27",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 86.5% >= 80% and 1,453 labelled days >= 730."
+      },
+      {
+        "city": "Guwahati",
+        "labelled_days": 495,
+        "calendar_span_days": 502,
+        "aqi_completeness": 0.9861,
+        "first_date": "2019-02-16",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 495 labelled days < 730."
+      },
+      {
+        "city": "Hyderabad",
+        "labelled_days": 1880,
+        "calendar_span_days": 2006,
+        "aqi_completeness": 0.9372,
+        "first_date": "2015-01-04",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 93.7% >= 80% and 1,880 labelled days >= 730."
+      },
+      {
+        "city": "Jaipur",
+        "labelled_days": 1094,
+        "calendar_span_days": 1114,
+        "aqi_completeness": 0.982,
+        "first_date": "2017-06-14",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 98.2% >= 80% and 1,094 labelled days >= 730."
+      },
+      {
+        "city": "Jorapokhar",
+        "labelled_days": 771,
+        "calendar_span_days": 1169,
+        "aqi_completeness": 0.6595,
+        "first_date": "2017-04-20",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 66.0% < 80%."
+      },
+      {
+        "city": "Kochi",
+        "labelled_days": 158,
+        "calendar_span_days": 162,
+        "aqi_completeness": 0.9753,
+        "first_date": "2020-01-22",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 158 labelled days < 730."
+      },
+      {
+        "city": "Kolkata",
+        "labelled_days": 754,
+        "calendar_span_days": 814,
+        "aqi_completeness": 0.9263,
+        "first_date": "2018-04-10",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 92.6% >= 80% and 754 labelled days >= 730."
+      },
+      {
+        "city": "Lucknow",
+        "labelled_days": 1893,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.9423,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 94.2% >= 80% and 1,893 labelled days >= 730."
+      },
+      {
+        "city": "Mumbai",
+        "labelled_days": 775,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.3858,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 38.6% < 80%."
+      },
+      {
+        "city": "Patna",
+        "labelled_days": 1459,
+        "calendar_span_days": 1858,
+        "aqi_completeness": 0.7853,
+        "first_date": "2015-06-01",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 78.5% < 80%."
+      },
+      {
+        "city": "Shillong",
+        "labelled_days": 205,
+        "calendar_span_days": 310,
+        "aqi_completeness": 0.6613,
+        "first_date": "2019-08-27",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 66.1% < 80%; only 205 labelled days < 730."
+      },
+      {
+        "city": "Talcher",
+        "labelled_days": 698,
+        "calendar_span_days": 925,
+        "aqi_completeness": 0.7546,
+        "first_date": "2017-12-20",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 75.5% < 80%; only 698 labelled days < 730."
+      },
+      {
+        "city": "Thiruvananthapuram",
+        "labelled_days": 1052,
+        "calendar_span_days": 1112,
+        "aqi_completeness": 0.946,
+        "first_date": "2017-06-16",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 94.6% >= 80% and 1,052 labelled days >= 730."
+      },
+      {
+        "city": "Visakhapatnam",
+        "labelled_days": 1171,
+        "calendar_span_days": 1462,
+        "aqi_completeness": 0.801,
+        "first_date": "2016-07-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 80.1% >= 80% and 1,171 labelled days >= 730."
+      }
+    ],
+    "n_retained": 12,
+    "n_excluded": 14,
+    "retained_cities": [
+      "Amaravati",
+      "Amritsar",
+      "Bengaluru",
+      "Chennai",
+      "Delhi",
+      "Gurugram",
+      "Hyderabad",
+      "Jaipur",
+      "Kolkata",
+      "Lucknow",
+      "Thiruvananthapuram",
+      "Visakhapatnam"
+    ],
+    "excluded_cities": [
+      "Ahmedabad",
+      "Aizawl",
+      "Bhopal",
+      "Brajrajnagar",
+      "Chandigarh",
+      "Coimbatore",
+      "Ernakulam",
+      "Guwahati",
+      "Jorapokhar",
+      "Kochi",
+      "Mumbai",
+      "Patna",
+      "Shillong",
+      "Talcher"
+    ]
+  },
+  "figures": [
+    "01_missingness_matrix.png",
+    "02_city_availability_heatmap.png",
+    "03_null_percentage_bar.png",
+    "04_outlier_counts.png"
+  ]
+}

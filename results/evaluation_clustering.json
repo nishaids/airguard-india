@@ -1,0 +1,708 @@
+{
+  "generated_by": "src/models/train_clustering.py",
+  "generated_at_utc": "2026-09-28T19:20:10Z",
+  "task": "clustering",
+  "unit_of_analysis": "city",
+  "n_cities": 12,
+  "features": [
+    "PM2.5",
+    "PM10",
+    "NO2",
+    "SO2",
+    "CO",
+    "O3"
+  ],
+  "representation": "Each city is represented by its mean concentration over the six principal pollutants, standardised across cities. Standardising makes the distance respond to the shape of the pollutant mix rather than to overall pollution level, which is the property that separates kinds of problem from degrees of severity.",
+  "k_selection": {
+    "candidates": [
+      {
+        "k": 2,
+        "inertia": 41.6903,
+        "silhouette": 0.3553,
+        "davies_bouldin": 1.0464,
+        "calinski_harabasz": 7.2702,
+        "cluster_sizes": [
+          9,
+          3
+        ]
+      },
+      {
+        "k": 3,
+        "inertia": 30.2244,
+        "silhouette": 0.2259,
+        "davies_bouldin": 1.0703,
+        "calinski_harabasz": 6.2198,
+        "cluster_sizes": [
+          4,
+          5,
+          3
+        ]
+      },
+      {
+        "k": 4,
+        "inertia": 19.4887,
+        "silhouette": 0.2418,
+        "davies_bouldin": 0.8596,
+        "calinski_harabasz": 7.1852,
+        "cluster_sizes": [
+          1,
+          5,
+          4,
+          2
+        ]
+      },
+      {
+        "k": 5,
+        "inertia": 15.0559,
+        "silhouette": 0.178,
+        "davies_bouldin": 0.8999,
+        "calinski_harabasz": 6.6188,
+        "cluster_sizes": [
+          3,
+          3,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "index_votes": {
+      "silhouette": 2,
+      "davies_bouldin": 4,
+      "calinski_harabasz": 2,
+      "inertia_elbow": 4
+    },
+    "indices_disagree": true,
+    "rejected_for_singleton_cluster": [
+      {
+        "k": 4,
+        "cluster_sizes": [
+          1,
+          5,
+          4,
+          2
+        ],
+        "reason": "contains a singleton cluster"
+      },
+      {
+        "k": 5,
+        "cluster_sizes": [
+          3,
+          3,
+          1,
+          2,
+          3
+        ],
+        "reason": "contains a singleton cluster"
+      }
+    ],
+    "best_by_silhouette": 2,
+    "elbow_k": 4,
+    "selected_k": 2,
+    "selection_rule": "The rule was fixed before the indices were inspected. Any k whose partition contains a singleton cluster is discarded, because a cluster of one city cannot support a generalisable archetype claim; among the remaining candidates the highest silhouette coefficient decides. Silhouette is the decisive index because it measures separation relative to cohesion and is comparable across k, whereas inertia falls monotonically with k by construction and cannot select k on its own. The four indices do not agree here, and the full vote tally is reported rather than only the winner.",
+    "power_caveat": "Twelve cities is a small sample for a clustering problem. Silhouette coefficients in the 0.2 to 0.4 range indicate real but moderate separation, and the partition should be read as an interpretive organising device for policy discussion rather than as a claim of sharply bounded natural classes. Every candidate partition is reported below with its scores so that this is visible rather than implied."
+  },
+  "selected_k": 2,
+  "algorithms": {
+    "KMeans": {
+      "params": {
+        "n_clusters": 2,
+        "n_init": 50,
+        "random_state": 42
+      },
+      "silhouette": 0.3553,
+      "davies_bouldin": 1.0464,
+      "calinski_harabasz": 7.2702,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    "Agglomerative (Ward)": {
+      "params": {
+        "n_clusters": 2,
+        "linkage": "ward"
+      },
+      "silhouette": 0.3553,
+      "davies_bouldin": 1.0464,
+      "calinski_harabasz": 7.2702,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  },
+  "algorithm_agreement": {
+    "adjusted_rand_index": 1.0,
+    "interpretation": "An adjusted Rand index of 1.000 between K-Means and Ward agglomerative clustering indicates that the partition is reproduced almost exactly by an algorithm with a different objective, which is evidence that it reflects structure in the data rather than an artefact of the method."
+  },
+  "archetypes": [
+    {
+      "cluster": 0,
+      "archetype": "Lower-burden, vehicular NOx led",
+      "burden_level": "Lower-burden",
+      "mean_level_z": -0.351,
+      "composition": "vehicular NOx led",
+      "defining_pollutant": "NO2",
+      "defining_pollutant_shape_score": 0.128,
+      "policy_lever": "Oxidised nitrogen leads the mix, which is the signature of live traffic exhaust. The effective levers are traffic demand management, public-transport capacity, congestion control at corridors, and tightened in-use vehicle emission testing.",
+      "cities": [
+        "Amaravati",
+        "Amritsar",
+        "Bengaluru",
+        "Chennai",
+        "Hyderabad",
+        "Jaipur",
+        "Kolkata",
+        "Thiruvananthapuram",
+        "Visakhapatnam"
+      ],
+      "n_cities": 9,
+      "mean_aqi": 111.18,
+      "mean_profile": {
+        "PM2.5": 46.103,
+        "PM10": 95.951,
+        "NO2": 25.784,
+        "SO2": 9.106,
+        "CO": 0.856,
+        "O3": 34.1
+      },
+      "standardised_profile": {
+        "PM2.5": -0.551,
+        "PM10": -0.435,
+        "NO2": -0.223,
+        "SO2": -0.227,
+        "CO": -0.441,
+        "O3": -0.231
+      },
+      "composition_profile": {
+        "PM2.5": -0.2,
+        "PM10": -0.083,
+        "NO2": 0.128,
+        "SO2": 0.124,
+        "CO": -0.09,
+        "O3": 0.12
+      },
+      "mean_pm_ratio": 0.483
+    },
+    {
+      "cluster": 1,
+      "archetype": "High-burden, fine-particulate led",
+      "burden_level": "High-burden",
+      "mean_level_z": 1.054,
+      "composition": "fine-particulate led",
+      "defining_pollutant": "PM2.5",
+      "defining_pollutant_shape_score": 0.6,
+      "policy_lever": "Fine particulate leads the mix, which points to combustion rather than mechanical sources. The effective levers are fuel-quality and vehicle-fleet standards, control of biomass and solid-fuel burning, and seasonal crop-residue management.",
+      "cities": [
+        "Delhi",
+        "Gurugram",
+        "Lucknow"
+      ],
+      "n_cities": 3,
+      "mean_aqi": 234.19,
+      "mean_profile": {
+        "PM2.5": 114.556,
+        "PM10": 182.13,
+        "NO2": 35.532,
+        "SO2": 11.878,
+        "CO": 1.742,
+        "O3": 40.619
+      },
+      "standardised_profile": {
+        "PM2.5": 1.654,
+        "PM10": 1.304,
+        "NO2": 0.669,
+        "SO2": 0.681,
+        "CO": 1.323,
+        "O3": 0.694
+      },
+      "composition_profile": {
+        "PM2.5": 0.6,
+        "PM10": 0.25,
+        "NO2": -0.385,
+        "SO2": -0.373,
+        "CO": 0.269,
+        "O3": -0.36
+      },
+      "mean_pm_ratio": 0.696
+    }
+  ],
+  "alternative_partitions": [
+    {
+      "k": 2,
+      "selected": true,
+      "silhouette": 0.3553,
+      "davies_bouldin": 1.0464,
+      "calinski_harabasz": 7.2702,
+      "archetypes": [
+        {
+          "cluster": 0,
+          "archetype": "Lower-burden, vehicular NOx led",
+          "defining_pollutant": "NO2",
+          "cities": [
+            "Amaravati",
+            "Amritsar",
+            "Bengaluru",
+            "Chennai",
+            "Hyderabad",
+            "Jaipur",
+            "Kolkata",
+            "Thiruvananthapuram",
+            "Visakhapatnam"
+          ]
+        },
+        {
+          "cluster": 1,
+          "archetype": "High-burden, fine-particulate led",
+          "defining_pollutant": "PM2.5",
+          "cities": [
+            "Delhi",
+            "Gurugram",
+            "Lucknow"
+          ]
+        }
+      ]
+    },
+    {
+      "k": 3,
+      "selected": false,
+      "silhouette": 0.2259,
+      "davies_bouldin": 1.0703,
+      "calinski_harabasz": 6.2198,
+      "archetypes": [
+        {
+          "cluster": 0,
+          "archetype": "Lower-burden, incomplete-combustion led",
+          "defining_pollutant": "CO",
+          "cities": [
+            "Amritsar",
+            "Bengaluru",
+            "Chennai",
+            "Thiruvananthapuram"
+          ]
+        },
+        {
+          "cluster": 1,
+          "archetype": "Mid-burden, industrial sulfur led",
+          "defining_pollutant": "SO2",
+          "cities": [
+            "Amaravati",
+            "Hyderabad",
+            "Jaipur",
+            "Kolkata",
+            "Visakhapatnam"
+          ]
+        },
+        {
+          "cluster": 2,
+          "archetype": "High-burden, fine-particulate led",
+          "defining_pollutant": "PM2.5",
+          "cities": [
+            "Delhi",
+            "Gurugram",
+            "Lucknow"
+          ]
+        }
+      ]
+    },
+    {
+      "k": 4,
+      "selected": false,
+      "silhouette": 0.2418,
+      "davies_bouldin": 0.8596,
+      "calinski_harabasz": 7.1852,
+      "archetypes": [
+        {
+          "cluster": 0,
+          "archetype": "High-burden, coarse-particulate led",
+          "defining_pollutant": "PM10",
+          "cities": [
+            "Delhi"
+          ]
+        },
+        {
+          "cluster": 1,
+          "archetype": "Mid-burden, industrial sulfur led",
+          "defining_pollutant": "SO2",
+          "cities": [
+            "Amaravati",
+            "Hyderabad",
+            "Jaipur",
+            "Kolkata",
+            "Visakhapatnam"
+          ]
+        },
+        {
+          "cluster": 2,
+          "archetype": "Lower-burden, incomplete-combustion led",
+          "defining_pollutant": "CO",
+          "cities": [
+            "Amritsar",
+            "Bengaluru",
+            "Chennai",
+            "Thiruvananthapuram"
+          ]
+        },
+        {
+          "cluster": 3,
+          "archetype": "High-burden, fine-particulate led",
+          "defining_pollutant": "PM2.5",
+          "cities": [
+            "Gurugram",
+            "Lucknow"
+          ]
+        }
+      ]
+    },
+    {
+      "k": 5,
+      "selected": false,
+      "silhouette": 0.178,
+      "davies_bouldin": 0.8999,
+      "calinski_harabasz": 6.6188,
+      "archetypes": [
+        {
+          "cluster": 0,
+          "archetype": "Lower-burden, incomplete-combustion led",
+          "defining_pollutant": "CO",
+          "cities": [
+            "Bengaluru",
+            "Chennai",
+            "Thiruvananthapuram"
+          ]
+        },
+        {
+          "cluster": 1,
+          "archetype": "Lower-burden, vehicular NOx led",
+          "defining_pollutant": "NO2",
+          "cities": [
+            "Amritsar",
+            "Hyderabad",
+            "Kolkata"
+          ]
+        },
+        {
+          "cluster": 2,
+          "archetype": "High-burden, coarse-particulate led",
+          "defining_pollutant": "PM10",
+          "cities": [
+            "Delhi"
+          ]
+        },
+        {
+          "cluster": 3,
+          "archetype": "High-burden, fine-particulate led",
+          "defining_pollutant": "PM2.5",
+          "cities": [
+            "Gurugram",
+            "Lucknow"
+          ]
+        },
+        {
+          "cluster": 4,
+          "archetype": "Mid-burden, industrial sulfur led",
+          "defining_pollutant": "SO2",
+          "cities": [
+            "Amaravati",
+            "Jaipur",
+            "Visakhapatnam"
+          ]
+        }
+      ]
+    }
+  ],
+  "city_profiles": [
+    {
+      "City": "Amaravati",
+      "PM2.5": 37.199,
+      "PM10": 76.0535,
+      "NO2": 21.9671,
+      "SO2": 14.0661,
+      "CO": 0.6234,
+      "O3": 37.6456,
+      "PM2.5_z": -0.838,
+      "PM10_z": -0.8362,
+      "NO2_z": -0.572,
+      "SO2_z": 1.3988,
+      "CO_z": -0.9035,
+      "O3_z": 0.2718,
+      "mean_aqi": 95.2996,
+      "median_aqi": 78.0,
+      "pm_ratio": 0.4891,
+      "so2_share": 0.075,
+      "o3_share": 0.2007,
+      "no2_share": 0.1171
+    },
+    {
+      "City": "Amritsar",
+      "PM2.5": 53.9748,
+      "PM10": 115.4532,
+      "NO2": 18.1017,
+      "SO2": 7.7284,
+      "CO": 0.5485,
+      "O3": 22.3591,
+      "PM2.5_z": -0.2977,
+      "PM10_z": -0.0412,
+      "NO2_z": -0.9256,
+      "SO2_z": -0.6789,
+      "CO_z": -1.0526,
+      "O3_z": -1.8968,
+      "mean_aqi": 119.921,
+      "median_aqi": 101.0,
+      "pm_ratio": 0.4675,
+      "so2_share": 0.0354,
+      "o3_share": 0.1025,
+      "no2_share": 0.083
+    },
+    {
+      "City": "Bengaluru",
+      "PM2.5": 35.0934,
+      "PM10": 83.5442,
+      "NO2": 27.963,
+      "SO2": 5.4636,
+      "CO": 1.6225,
+      "O3": 32.7848,
+      "PM2.5_z": -0.9058,
+      "PM10_z": -0.6851,
+      "NO2_z": -0.0236,
+      "SO2_z": -1.4213,
+      "CO_z": 1.0842,
+      "O3_z": -0.4178,
+      "mean_aqi": 94.3183,
+      "median_aqi": 86.0,
+      "pm_ratio": 0.4201,
+      "so2_share": 0.0293,
+      "o3_share": 0.1758,
+      "no2_share": 0.15
+    },
+    {
+      "City": "Chennai",
+      "PM2.5": 50.0307,
+      "PM10": 100.6107,
+      "NO2": 16.7909,
+      "SO2": 7.8188,
+      "CO": 1.0317,
+      "O3": 32.4073,
+      "PM2.5_z": -0.4247,
+      "PM10_z": -0.3407,
+      "NO2_z": -1.0455,
+      "SO2_z": -0.6492,
+      "CO_z": -0.0912,
+      "O3_z": -0.4713,
+      "mean_aqi": 114.5027,
+      "median_aqi": 100.0,
+      "pm_ratio": 0.4973,
+      "so2_share": 0.0375,
+      "o3_share": 0.1553,
+      "no2_share": 0.0805
+    },
+    {
+      "City": "Delhi",
+      "PM2.5": 117.1012,
+      "PM10": 233.3367,
+      "NO2": 50.7699,
+      "SO2": 15.8895,
+      "CO": 1.9592,
+      "O3": 51.1324,
+      "PM2.5_z": 1.7356,
+      "PM10_z": 2.3374,
+      "NO2_z": 2.0624,
+      "SO2_z": 1.9966,
+      "CO_z": 1.7541,
+      "O3_z": 2.1852,
+      "mean_aqi": 259.4877,
+      "median_aqi": 257.0,
+      "pm_ratio": 0.5019,
+      "so2_share": 0.0338,
+      "o3_share": 0.1087,
+      "no2_share": 0.108
+    },
+    {
+      "City": "Gurugram",
+      "PM2.5": 117.8538,
+      "PM10": 205.6132,
+      "NO2": 22.6276,
+      "SO2": 9.0925,
+      "CO": 1.2298,
+      "O3": 33.5915,
+      "PM2.5_z": 1.7598,
+      "PM10_z": 1.778,
+      "NO2_z": -0.5116,
+      "SO2_z": -0.2317,
+      "CO_z": 0.3028,
+      "O3_z": -0.3033,
+      "mean_aqi": 225.1239,
+      "median_aqi": 208.0,
+      "pm_ratio": 0.5732,
+      "so2_share": 0.0233,
+      "o3_share": 0.0861,
+      "no2_share": 0.058
+    },
+    {
+      "City": "Hyderabad",
+      "PM2.5": 46.5743,
+      "PM10": 92.9276,
+      "NO2": 28.3022,
+      "SO2": 9.1547,
+      "CO": 0.5903,
+      "O3": 33.595,
+      "PM2.5_z": -0.536,
+      "PM10_z": -0.4957,
+      "NO2_z": 0.0074,
+      "SO2_z": -0.2113,
+      "CO_z": -0.9693,
+      "O3_z": -0.3028,
+      "mean_aqi": 109.2074,
+      "median_aqi": 104.0,
+      "pm_ratio": 0.5012,
+      "so2_share": 0.0434,
+      "o3_share": 0.1591,
+      "no2_share": 0.134
+    },
+    {
+      "City": "Jaipur",
+      "PM2.5": 54.2556,
+      "PM10": 123.2293,
+      "NO2": 32.3443,
+      "SO2": 11.0379,
+      "CO": 0.7996,
+      "O3": 46.5454,
+      "PM2.5_z": -0.2886,
+      "PM10_z": 0.1157,
+      "NO2_z": 0.3771,
+      "SO2_z": 0.4061,
+      "CO_z": -0.5529,
+      "O3_z": 1.5344,
+      "mean_aqi": 133.6792,
+      "median_aqi": 122.0,
+      "pm_ratio": 0.4403,
+      "so2_share": 0.0412,
+      "o3_share": 0.1735,
+      "no2_share": 0.1206
+    },
+    {
+      "City": "Kolkata",
+      "PM2.5": 63.1555,
+      "PM10": 113.6848,
+      "NO2": 40.2399,
+      "SO2": 8.6366,
+      "CO": 0.7993,
+      "O3": 30.6273,
+      "PM2.5_z": -0.002,
+      "PM10_z": -0.0769,
+      "NO2_z": 1.0993,
+      "SO2_z": -0.3811,
+      "CO_z": -0.5537,
+      "O3_z": -0.7239,
+      "mean_aqi": 140.5663,
+      "median_aqi": 94.0,
+      "pm_ratio": 0.5555,
+      "so2_share": 0.0336,
+      "o3_share": 0.1191,
+      "no2_share": 0.1565
+    },
+    {
+      "City": "Lucknow",
+      "PM2.5": 108.714,
+      "PM10": 107.44,
+      "NO2": 33.1995,
+      "SO2": 10.6513,
+      "CO": 2.0382,
+      "O3": 37.1326,
+      "PM2.5_z": 1.4654,
+      "PM10_z": -0.2029,
+      "NO2_z": 0.4553,
+      "SO2_z": 0.2794,
+      "CO_z": 1.9112,
+      "O3_z": 0.199,
+      "mean_aqi": 217.9731,
+      "median_aqi": 198.0,
+      "pm_ratio": 1.0119,
+      "so2_share": 0.0356,
+      "o3_share": 0.1241,
+      "no2_share": 0.111
+    },
+    {
+      "City": "Thiruvananthapuram",
+      "PM2.5": 27.7621,
+      "PM10": 52.3884,
+      "NO2": 9.2956,
+      "SO2": 5.5882,
+      "CO": 0.9492,
+      "O3": 34.3328,
+      "PM2.5_z": -1.1419,
+      "PM10_z": -1.3137,
+      "NO2_z": -1.731,
+      "SO2_z": -1.3805,
+      "CO_z": -0.2553,
+      "O3_z": -0.1982,
+      "mean_aqi": 75.8783,
+      "median_aqi": 68.0,
+      "pm_ratio": 0.5299,
+      "so2_share": 0.0429,
+      "o3_share": 0.2635,
+      "no2_share": 0.0713
+    },
+    {
+      "City": "Visakhapatnam",
+      "PM2.5": 46.8784,
+      "PM10": 105.6673,
+      "NO2": 37.0544,
+      "SO2": 12.4625,
+      "CO": 0.7389,
+      "O3": 36.6005,
+      "PM2.5_z": -0.5262,
+      "PM10_z": -0.2387,
+      "NO2_z": 0.8079,
+      "SO2_z": 0.8731,
+      "CO_z": -0.6737,
+      "O3_z": 0.1236,
+      "mean_aqi": 117.2699,
+      "median_aqi": 106.0,
+      "pm_ratio": 0.4436,
+      "so2_share": 0.0521,
+      "o3_share": 0.1529,
+      "no2_share": 0.1548
+    }
+  ],
+  "city_to_cluster": {
+    "Amaravati": 0,
+    "Amritsar": 0,
+    "Bengaluru": 0,
+    "Chennai": 0,
+    "Delhi": 1,
+    "Gurugram": 1,
+    "Hyderabad": 0,
+    "Jaipur": 0,
+    "Kolkata": 0,
+    "Lucknow": 1,
+    "Thiruvananthapuram": 0,
+    "Visakhapatnam": 0
+  },
+  "artifact": "models\\clustering_kmeans.joblib",
+  "figures": [
+    "24_clustering_selection.png",
+    "25_cluster_profiles.png"
+  ]
+}

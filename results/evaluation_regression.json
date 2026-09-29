@@ -1,0 +1,1596 @@
+{
+  "generated_by": "src/models/train_regression.py",
+  "generated_at_utc": "2026-09-28T18:08:51Z",
+  "task": "regression",
+  "target": "AQI_next",
+  "primary_metric": "MAE",
+  "primary_metric_justification": "Mean absolute error is the primary regression metric. The AQI distribution is strongly right-skewed (skewness above 2), so RMSE is dominated by a small number of extreme days and would rank models largely by their behaviour on that tail. MAE is in the same units as the target, is directly interpretable as 'the typical miss in AQI points', and treats every day's error proportionally. RMSE, R-squared and MAPE are reported alongside it, and the tail behaviour that RMSE emphasises is examined separately through the residual analysis and the per-band error breakdown.",
+  "n_features": 100,
+  "features": [
+    "AQI_delta1",
+    "PM2.5_delta1",
+    "AQI",
+    "PM2.5_dev_roll7",
+    "NO2_delta1",
+    "AQI_dev_roll7",
+    "CO_delta1",
+    "PM2.5",
+    "PM10_delta1",
+    "CO_dev_roll7",
+    "pm_ratio",
+    "SO2_delta1",
+    "PM2.5_roll3_std",
+    "AQI_roll3_std",
+    "SO2_dev_roll7",
+    "O3_delta1",
+    "AQI_roll7_mean",
+    "PM10_dev_roll7",
+    "NO2_dev_roll7",
+    "doy_cos",
+    "total_pollutant_load",
+    "pm_coarse",
+    "AQI_roll14_std",
+    "NO",
+    "AQI_roll7_std",
+    "no2_nox_ratio",
+    "O3_dev_roll7",
+    "SO2_roll3_std",
+    "AQI_lag1",
+    "O3_lag7",
+    "AQI_lag2",
+    "CO_roll3_std",
+    "Toluene",
+    "day_of_month",
+    "CO_lag3",
+    "CO_roll7_std",
+    "NOx",
+    "CO_lag7",
+    "HAI_healthy_adult",
+    "NO2_roll14_std",
+    "AQI_lag7",
+    "O3_roll7_std",
+    "CO_lag2",
+    "NH3_delta1",
+    "o3_no2_ratio",
+    "so2_pm25_ratio",
+    "Benzene",
+    "O3_roll3_std",
+    "SO2_roll7_std",
+    "PM2.5_lag3",
+    "NH3_roll7_std",
+    "SO2_lag7",
+    "PM2.5_lag2",
+    "City_target_enc",
+    "SO2_lag3",
+    "CO_roll14_std",
+    "O3_roll14_std",
+    "NO2_roll3_std",
+    "SO2",
+    "PM2.5_roll7_std",
+    "AQI_lag3",
+    "NH3_dev_roll7",
+    "PM2.5_roll3_mean",
+    "NH3_lag7",
+    "O3_lag2",
+    "CO",
+    "PM2.5_lag7",
+    "O3_roll14_mean",
+    "NO2_roll7_std",
+    "NO2_lag7",
+    "PM2.5_roll14_std",
+    "NH3_roll14_std",
+    "NO2_lag3",
+    "O3_lag3",
+    "SO2_roll3_mean",
+    "SO2_lag2",
+    "day_of_week",
+    "SO2_roll14_std",
+    "NH3_roll3_std",
+    "CO_roll3_mean",
+    "PM10_roll7_std",
+    "NO2_lag2",
+    "PM10_roll3_std",
+    "SO2_roll7_mean",
+    "CO_roll14_mean",
+    "PM2.5_roll14_mean",
+    "O3_roll3_mean",
+    "NH3_roll14_mean",
+    "PM10_lag1",
+    "PM10_roll14_std",
+    "NH3_lag1",
+    "NO2_roll3_mean",
+    "NH3_lag3",
+    "PM10_roll7_mean",
+    "PM10_lag2",
+    "PM10_lag3",
+    "NO2_roll14_mean",
+    "month_sin",
+    "NH3_lag2",
+    "PM10_lag7"
+  ],
+  "split": {
+    "boundary": "2019-05-26",
+    "n_train": 10331,
+    "n_test": 4397
+  },
+  "validation": "TimeSeriesSplit with 4 expanding-window folds on the training period. Shuffled k-fold is not used, because it would place future observations in training folds and inflate every score.",
+  "results": [
+    {
+      "model": "Persistence baseline (tomorrow = today)",
+      "family": "baseline",
+      "test": {
+        "MAE": 18.9049,
+        "RMSE": 31.5564,
+        "R2": 0.8411,
+        "MAPE_pct": 16.3565,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 10.0,
+        "bias": 0.0871,
+        "n": 4397
+      },
+      "note": "Not a fitted model. Today's observed value is carried forward as the forecast for tomorrow. Any learned model must beat this to justify itself.",
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "MAE": 12.7647,
+            "RMSE": 19.1958,
+            "R2": 0.7101,
+            "MAPE_pct": 17.8121,
+            "MAPE_n_used": 306,
+            "median_absolute_error": 7.0,
+            "bias": 0.1699,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "MAE": 25.9881,
+            "RMSE": 46.5274,
+            "R2": 0.496,
+            "MAPE_pct": 24.4307,
+            "MAPE_n_used": 336,
+            "median_absolute_error": 14.0,
+            "bias": -0.0774,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "MAE": 8.0,
+            "RMSE": 11.4151,
+            "R2": 0.6606,
+            "MAPE_pct": 10.1101,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 6.0,
+            "bias": 0.1194,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "MAE": 16.2164,
+            "RMSE": 26.6741,
+            "R2": 0.4515,
+            "MAPE_pct": 17.062,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.0,
+            "bias": 0.097,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "MAE": 31.4627,
+            "RMSE": 44.969,
+            "R2": 0.8428,
+            "MAPE_pct": 16.5838,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 20.0,
+            "bias": 0.0846,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "MAE": 30.6615,
+            "RMSE": 45.0061,
+            "R2": 0.803,
+            "MAPE_pct": 19.0351,
+            "MAPE_n_used": 387,
+            "median_absolute_error": 20.0,
+            "bias": -0.093,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "MAE": 9.8458,
+            "RMSE": 14.035,
+            "R2": 0.839,
+            "MAPE_pct": 12.4977,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 7.0,
+            "bias": 0.1891,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "MAE": 15.2438,
+            "RMSE": 24.3856,
+            "R2": 0.6069,
+            "MAPE_pct": 13.2435,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.0,
+            "bias": 0.0697,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "MAE": 19.7239,
+            "RMSE": 31.0705,
+            "R2": 0.8357,
+            "MAPE_pct": 17.7376,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.5,
+            "bias": 0.0522,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "MAE": 28.1269,
+            "RMSE": 40.0047,
+            "R2": 0.8306,
+            "MAPE_pct": 17.982,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 19.0,
+            "bias": 0.1219,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "MAE": 8.7857,
+            "RMSE": 17.0689,
+            "R2": 0.321,
+            "MAPE_pct": 12.5483,
+            "MAPE_n_used": 350,
+            "median_absolute_error": 6.0,
+            "bias": 0.14,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "MAE": 18.8284,
+            "RMSE": 27.2576,
+            "R2": 0.4915,
+            "MAPE_pct": 20.6108,
+            "MAPE_n_used": 204,
+            "median_absolute_error": 13.0,
+            "bias": 0.2402,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "MAE": 20.3604,
+            "RMSE": 33.3115,
+            "R2": 0.8618,
+            "MAPE_pct": 17.0737,
+            "MAPE_n_used": 2331,
+            "median_absolute_error": 11.0,
+            "bias": -0.5671,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "MAE": 23.3225,
+            "RMSE": 35.3318,
+            "R2": 0.7917,
+            "MAPE_pct": 17.0086,
+            "MAPE_n_used": 927,
+            "median_absolute_error": 13.0,
+            "bias": 1.5167,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "MAE": 11.3261,
+            "RMSE": 17.2492,
+            "R2": 0.748,
+            "MAPE_pct": 13.4647,
+            "MAPE_n_used": 779,
+            "median_absolute_error": 7.0,
+            "bias": 0.3556,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "MAE": 14.5056,
+            "RMSE": 33.4563,
+            "R2": 0.3764,
+            "MAPE_pct": 16.2908,
+            "MAPE_n_used": 360,
+            "median_absolute_error": 7.0,
+            "bias": 0.0611,
+            "n": 360
+          }
+        }
+      }
+    },
+    {
+      "model": "Linear Regression",
+      "family": "linear",
+      "rationale": "Interpretable reference model. Provides the coefficient-level reading of the problem and the benchmark against which any gain from non-linearity is measured.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 28.6281,
+        "mae_std": 8.8923,
+        "rmse_mean": 42.1572,
+        "r2_mean": 0.84,
+        "fold_mae": [
+          39.7341,
+          34.8345,
+          18.4599,
+          21.484
+        ],
+        "seconds": 0.41
+      },
+      "train": {
+        "MAE": 22.8609,
+        "RMSE": 34.5067,
+        "R2": 0.895,
+        "MAPE_pct": 15.9658,
+        "MAPE_n_used": 10331,
+        "median_absolute_error": 14.7995,
+        "bias": 0.0,
+        "n": 10331
+      },
+      "test": {
+        "MAE": 15.9045,
+        "RMSE": 24.6183,
+        "R2": 0.9033,
+        "MAPE_pct": 15.1222,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 10.0853,
+        "bias": 3.2962,
+        "n": 4397
+      },
+      "generalisation_gap": {
+        "mae_test_minus_train": -6.9564,
+        "r2_train_minus_test": -0.0083,
+        "overfitting_flag": false
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "MAE": 11.8591,
+            "RMSE": 16.1338,
+            "R2": 0.7952,
+            "MAPE_pct": 17.513,
+            "MAPE_n_used": 306,
+            "median_absolute_error": 8.6687,
+            "bias": -0.4507,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "MAE": 21.0803,
+            "RMSE": 36.1999,
+            "R2": 0.6949,
+            "MAPE_pct": 20.5976,
+            "MAPE_n_used": 336,
+            "median_absolute_error": 12.7487,
+            "bias": 2.3502,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "MAE": 6.7986,
+            "RMSE": 9.2969,
+            "R2": 0.7749,
+            "MAPE_pct": 8.7272,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 5.299,
+            "bias": 1.5523,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "MAE": 15.739,
+            "RMSE": 23.2291,
+            "R2": 0.584,
+            "MAPE_pct": 17.9276,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.176,
+            "bias": 4.5254,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "MAE": 24.9402,
+            "RMSE": 34.4381,
+            "R2": 0.9078,
+            "MAPE_pct": 14.3125,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 19.506,
+            "bias": 5.008,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "MAE": 25.1077,
+            "RMSE": 35.2484,
+            "R2": 0.8792,
+            "MAPE_pct": 18.242,
+            "MAPE_n_used": 387,
+            "median_absolute_error": 18.78,
+            "bias": 7.0017,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "MAE": 7.6847,
+            "RMSE": 10.361,
+            "R2": 0.9123,
+            "MAPE_pct": 10.1742,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 5.7905,
+            "bias": 1.8616,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "MAE": 12.7424,
+            "RMSE": 18.5462,
+            "R2": 0.7726,
+            "MAPE_pct": 12.0002,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 9.5984,
+            "bias": 4.1032,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "MAE": 16.182,
+            "RMSE": 22.9361,
+            "R2": 0.9104,
+            "MAPE_pct": 16.5718,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.9284,
+            "bias": 3.6659,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "MAE": 24.0978,
+            "RMSE": 30.7259,
+            "R2": 0.9001,
+            "MAPE_pct": 18.1118,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 20.3331,
+            "bias": 6.1905,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "MAE": 8.6754,
+            "RMSE": 15.2941,
+            "R2": 0.4548,
+            "MAPE_pct": 12.3332,
+            "MAPE_n_used": 350,
+            "median_absolute_error": 6.1815,
+            "bias": 0.8265,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "MAE": 14.5931,
+            "RMSE": 19.9676,
+            "R2": 0.7271,
+            "MAPE_pct": 17.2075,
+            "MAPE_n_used": 204,
+            "median_absolute_error": 11.5405,
+            "bias": 0.1272,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "MAE": 16.8927,
+            "RMSE": 25.728,
+            "R2": 0.9175,
+            "MAPE_pct": 15.4739,
+            "MAPE_n_used": 2331,
+            "median_absolute_error": 10.7867,
+            "bias": 2.5166,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "MAE": 18.2137,
+            "RMSE": 26.5297,
+            "R2": 0.8825,
+            "MAPE_pct": 14.3382,
+            "MAPE_n_used": 927,
+            "median_absolute_error": 11.8264,
+            "bias": 4.5646,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "MAE": 11.383,
+            "RMSE": 16.4633,
+            "R2": 0.7705,
+            "MAPE_pct": 14.6144,
+            "MAPE_n_used": 779,
+            "median_absolute_error": 8.1458,
+            "bias": 4.1615,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "MAE": 13.3439,
+            "RMSE": 26.7863,
+            "R2": 0.6002,
+            "MAPE_pct": 15.9621,
+            "MAPE_n_used": 360,
+            "median_absolute_error": 9.0499,
+            "bias": 3.2053,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 0.14,
+      "artifact": "models\\regression_linear_regression.joblib"
+    },
+    {
+      "model": "Ridge Regression",
+      "family": "linear",
+      "rationale": "L2 regularisation stabilises coefficients under the severe multicollinearity documented in the correlation analysis.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 28.5014,
+        "mae_std": 8.7714,
+        "rmse_mean": 41.8193,
+        "r2_mean": 0.8427,
+        "fold_mae": [
+          39.4801,
+          34.5867,
+          18.4535,
+          21.4851
+        ],
+        "seconds": 0.22
+      },
+      "train": {
+        "MAE": 22.8611,
+        "RMSE": 34.5067,
+        "R2": 0.895,
+        "MAPE_pct": 15.9662,
+        "MAPE_n_used": 10331,
+        "median_absolute_error": 14.7944,
+        "bias": 0.0,
+        "n": 10331
+      },
+      "test": {
+        "MAE": 15.9062,
+        "RMSE": 24.6193,
+        "R2": 0.9033,
+        "MAPE_pct": 15.1249,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 10.1053,
+        "bias": 3.3005,
+        "n": 4397
+      },
+      "generalisation_gap": {
+        "mae_test_minus_train": -6.9549,
+        "r2_train_minus_test": -0.0083,
+        "overfitting_flag": false
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "MAE": 11.8617,
+            "RMSE": 16.1358,
+            "R2": 0.7951,
+            "MAPE_pct": 17.5172,
+            "MAPE_n_used": 306,
+            "median_absolute_error": 8.6859,
+            "bias": -0.4404,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "MAE": 21.0822,
+            "RMSE": 36.1989,
+            "R2": 0.6949,
+            "MAPE_pct": 20.6035,
+            "MAPE_n_used": 336,
+            "median_absolute_error": 12.7457,
+            "bias": 2.3543,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "MAE": 6.7985,
+            "RMSE": 9.2966,
+            "R2": 0.7749,
+            "MAPE_pct": 8.7268,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 5.3037,
+            "bias": 1.5518,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "MAE": 15.7374,
+            "RMSE": 23.2263,
+            "R2": 0.5841,
+            "MAPE_pct": 17.9255,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.1725,
+            "bias": 4.5247,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "MAE": 24.9437,
+            "RMSE": 34.4413,
+            "R2": 0.9078,
+            "MAPE_pct": 14.3155,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 19.5228,
+            "bias": 5.0121,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "MAE": 25.1113,
+            "RMSE": 35.2514,
+            "R2": 0.8791,
+            "MAPE_pct": 18.2471,
+            "MAPE_n_used": 387,
+            "median_absolute_error": 18.7791,
+            "bias": 7.0099,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "MAE": 7.6856,
+            "RMSE": 10.3614,
+            "R2": 0.9123,
+            "MAPE_pct": 10.1766,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 5.7938,
+            "bias": 1.8669,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "MAE": 12.7441,
+            "RMSE": 18.5472,
+            "R2": 0.7726,
+            "MAPE_pct": 12.0027,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 9.6068,
+            "bias": 4.1088,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "MAE": 16.1851,
+            "RMSE": 22.9384,
+            "R2": 0.9104,
+            "MAPE_pct": 16.5778,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.9287,
+            "bias": 3.6731,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "MAE": 24.1023,
+            "RMSE": 30.7286,
+            "R2": 0.9,
+            "MAPE_pct": 18.1181,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 20.358,
+            "bias": 6.1973,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "MAE": 8.6751,
+            "RMSE": 15.2935,
+            "R2": 0.4549,
+            "MAPE_pct": 12.3324,
+            "MAPE_n_used": 350,
+            "median_absolute_error": 6.181,
+            "bias": 0.8248,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "MAE": 14.5931,
+            "RMSE": 19.9671,
+            "R2": 0.7271,
+            "MAPE_pct": 17.2069,
+            "MAPE_n_used": 204,
+            "median_absolute_error": 11.5491,
+            "bias": 0.1298,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "MAE": 16.8943,
+            "RMSE": 25.7293,
+            "R2": 0.9175,
+            "MAPE_pct": 15.4765,
+            "MAPE_n_used": 2331,
+            "median_absolute_error": 10.7995,
+            "bias": 2.5194,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "MAE": 18.216,
+            "RMSE": 26.5309,
+            "R2": 0.8825,
+            "MAPE_pct": 14.341,
+            "MAPE_n_used": 927,
+            "median_absolute_error": 11.8275,
+            "bias": 4.571,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "MAE": 11.3841,
+            "RMSE": 16.4634,
+            "R2": 0.7705,
+            "MAPE_pct": 14.6163,
+            "MAPE_n_used": 779,
+            "median_absolute_error": 8.1292,
+            "bias": 4.1671,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "MAE": 13.3458,
+            "RMSE": 26.7863,
+            "R2": 0.6002,
+            "MAPE_pct": 15.9671,
+            "MAPE_n_used": 360,
+            "median_absolute_error": 9.0492,
+            "bias": 3.2104,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 0.06,
+      "artifact": "models\\regression_ridge_regression.joblib"
+    },
+    {
+      "model": "Random Forest",
+      "family": "bagged trees",
+      "rationale": "Bagging reduces variance and captures pollutant interactions and the city-by-season structure without either being specified.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 29.8832,
+        "mae_std": 10.4446,
+        "rmse_mean": 44.1681,
+        "r2_mean": 0.8171,
+        "fold_mae": [
+          44.0419,
+          35.7225,
+          18.9271,
+          20.8412
+        ],
+        "seconds": 134.68
+      },
+      "train": {
+        "MAE": 8.8735,
+        "RMSE": 14.5563,
+        "R2": 0.9813,
+        "MAPE_pct": 6.1436,
+        "MAPE_n_used": 10331,
+        "median_absolute_error": 5.3119,
+        "bias": 0.1908,
+        "n": 10331
+      },
+      "test": {
+        "MAE": 15.2834,
+        "RMSE": 23.9581,
+        "R2": 0.9084,
+        "MAPE_pct": 14.5995,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 9.6277,
+        "bias": 2.6553,
+        "n": 4397
+      },
+      "generalisation_gap": {
+        "mae_test_minus_train": 6.4099,
+        "r2_train_minus_test": 0.0729,
+        "overfitting_flag": false
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "MAE": 12.4475,
+            "RMSE": 15.619,
+            "R2": 0.8081,
+            "MAPE_pct": 20.4772,
+            "MAPE_n_used": 306,
+            "median_absolute_error": 11.4051,
+            "bias": 6.947,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "MAE": 20.4985,
+            "RMSE": 34.9748,
+            "R2": 0.7152,
+            "MAPE_pct": 20.2275,
+            "MAPE_n_used": 336,
+            "median_absolute_error": 13.622,
+            "bias": 3.3573,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "MAE": 6.8427,
+            "RMSE": 9.5084,
+            "R2": 0.7645,
+            "MAPE_pct": 8.7174,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 5.3597,
+            "bias": 0.7598,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "MAE": 15.5303,
+            "RMSE": 24.1968,
+            "R2": 0.5487,
+            "MAPE_pct": 17.1994,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 9.6845,
+            "bias": 1.3143,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "MAE": 23.7077,
+            "RMSE": 33.5569,
+            "R2": 0.9125,
+            "MAPE_pct": 13.0809,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 17.0846,
+            "bias": 2.1095,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "MAE": 23.8517,
+            "RMSE": 33.9991,
+            "R2": 0.8876,
+            "MAPE_pct": 16.5137,
+            "MAPE_n_used": 387,
+            "median_absolute_error": 16.0106,
+            "bias": 3.4743,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "MAE": 8.0152,
+            "RMSE": 10.502,
+            "R2": 0.9099,
+            "MAPE_pct": 11.1557,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 6.4,
+            "bias": 2.679,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "MAE": 12.2456,
+            "RMSE": 19.1403,
+            "R2": 0.7578,
+            "MAPE_pct": 11.2099,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 7.8866,
+            "bias": 2.4523,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "MAE": 15.5719,
+            "RMSE": 22.0766,
+            "R2": 0.917,
+            "MAPE_pct": 15.5071,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.5018,
+            "bias": 0.3403,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "MAE": 20.5935,
+            "RMSE": 27.8024,
+            "R2": 0.9182,
+            "MAPE_pct": 14.2889,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 15.812,
+            "bias": 3.4165,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "MAE": 8.8117,
+            "RMSE": 16.0265,
+            "R2": 0.4014,
+            "MAPE_pct": 12.872,
+            "MAPE_n_used": 350,
+            "median_absolute_error": 5.9965,
+            "bias": 2.5796,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "MAE": 14.6171,
+            "RMSE": 19.5882,
+            "R2": 0.7374,
+            "MAPE_pct": 17.5951,
+            "MAPE_n_used": 204,
+            "median_absolute_error": 11.9264,
+            "bias": 4.5055,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "MAE": 15.8102,
+            "RMSE": 24.3801,
+            "R2": 0.926,
+            "MAPE_pct": 14.3851,
+            "MAPE_n_used": 2331,
+            "median_absolute_error": 9.8646,
+            "bias": 1.2442,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "MAE": 18.2114,
+            "RMSE": 26.2753,
+            "R2": 0.8848,
+            "MAPE_pct": 14.7123,
+            "MAPE_n_used": 927,
+            "median_absolute_error": 12.2669,
+            "bias": 5.5005,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "MAE": 11.2912,
+            "RMSE": 17.4,
+            "R2": 0.7436,
+            "MAPE_pct": 14.4974,
+            "MAPE_n_used": 779,
+            "median_absolute_error": 7.5935,
+            "bias": 3.5931,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "MAE": 12.9707,
+            "RMSE": 27.0016,
+            "R2": 0.5938,
+            "MAPE_pct": 15.9184,
+            "MAPE_n_used": 360,
+            "median_absolute_error": 7.9826,
+            "bias": 2.4363,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 67.65,
+      "artifact": "models\\regression_random_forest.joblib"
+    },
+    {
+      "model": "XGBoost",
+      "family": "gradient boosting",
+      "rationale": "Level-wise gradient boosting, a strong default for tabular regression with mixed feature types.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 31.9789,
+        "mae_std": 11.999,
+        "rmse_mean": 47.9522,
+        "r2_mean": 0.7778,
+        "fold_mae": [
+          48.7446,
+          37.9004,
+          19.5401,
+          21.7305
+        ],
+        "seconds": 54.64
+      },
+      "train": {
+        "MAE": 10.1118,
+        "RMSE": 13.6426,
+        "R2": 0.9836,
+        "MAPE_pct": 7.8074,
+        "MAPE_n_used": 10331,
+        "median_absolute_error": 7.6414,
+        "bias": -0.0079,
+        "n": 10331
+      },
+      "test": {
+        "MAE": 15.4436,
+        "RMSE": 23.8794,
+        "R2": 0.909,
+        "MAPE_pct": 15.1466,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 9.9054,
+        "bias": 3.309,
+        "n": 4397
+      },
+      "generalisation_gap": {
+        "mae_test_minus_train": 5.3318,
+        "r2_train_minus_test": 0.0746,
+        "overfitting_flag": false
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "MAE": 12.5783,
+            "RMSE": 15.7919,
+            "R2": 0.8038,
+            "MAPE_pct": 20.9887,
+            "MAPE_n_used": 306,
+            "median_absolute_error": 10.7793,
+            "bias": 5.862,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "MAE": 21.4999,
+            "RMSE": 35.5335,
+            "R2": 0.706,
+            "MAPE_pct": 22.1065,
+            "MAPE_n_used": 336,
+            "median_absolute_error": 14.457,
+            "bias": 4.2766,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "MAE": 6.8238,
+            "RMSE": 9.2828,
+            "R2": 0.7756,
+            "MAPE_pct": 8.6991,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 5.0514,
+            "bias": 0.894,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "MAE": 15.8888,
+            "RMSE": 24.807,
+            "R2": 0.5256,
+            "MAPE_pct": 17.9262,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 9.8156,
+            "bias": 2.6693,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "MAE": 22.9631,
+            "RMSE": 32.5091,
+            "R2": 0.9178,
+            "MAPE_pct": 12.9522,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 16.0957,
+            "bias": 3.5937,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "MAE": 25.0673,
+            "RMSE": 34.8115,
+            "R2": 0.8821,
+            "MAPE_pct": 18.0519,
+            "MAPE_n_used": 387,
+            "median_absolute_error": 18.4694,
+            "bias": 5.8606,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "MAE": 7.9121,
+            "RMSE": 10.3494,
+            "R2": 0.9125,
+            "MAPE_pct": 11.0346,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 6.342,
+            "bias": 1.7929,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "MAE": 12.3794,
+            "RMSE": 18.7831,
+            "R2": 0.7668,
+            "MAPE_pct": 11.3124,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 8.8744,
+            "bias": 2.5942,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "MAE": 16.1042,
+            "RMSE": 21.7957,
+            "R2": 0.9191,
+            "MAPE_pct": 17.9243,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 11.7363,
+            "bias": 3.002,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "MAE": 20.701,
+            "RMSE": 27.5122,
+            "R2": 0.9199,
+            "MAPE_pct": 14.5654,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 16.4895,
+            "bias": 4.2709,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "MAE": 8.8527,
+            "RMSE": 15.4875,
+            "R2": 0.441,
+            "MAPE_pct": 12.9195,
+            "MAPE_n_used": 350,
+            "median_absolute_error": 5.5704,
+            "bias": 2.5965,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "MAE": 13.3267,
+            "RMSE": 18.0931,
+            "R2": 0.7759,
+            "MAPE_pct": 16.1119,
+            "MAPE_n_used": 204,
+            "median_absolute_error": 10.9735,
+            "bias": 2.8324,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "MAE": 16.2258,
+            "RMSE": 24.6309,
+            "R2": 0.9244,
+            "MAPE_pct": 15.273,
+            "MAPE_n_used": 2331,
+            "median_absolute_error": 10.6907,
+            "bias": 2.1313,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "MAE": 17.6348,
+            "RMSE": 25.2826,
+            "R2": 0.8933,
+            "MAPE_pct": 14.3018,
+            "MAPE_n_used": 927,
+            "median_absolute_error": 11.7755,
+            "bias": 5.3243,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "MAE": 11.7286,
+            "RMSE": 18.0354,
+            "R2": 0.7245,
+            "MAPE_pct": 15.3777,
+            "MAPE_n_used": 779,
+            "median_absolute_error": 7.6312,
+            "bias": 4.4853,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "MAE": 12.7754,
+            "RMSE": 26.203,
+            "R2": 0.6175,
+            "MAPE_pct": 16.0033,
+            "MAPE_n_used": 360,
+            "median_absolute_error": 8.3227,
+            "bias": 3.2001,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 10.14,
+      "artifact": "models\\regression_xgboost.joblib"
+    },
+    {
+      "model": "LightGBM",
+      "family": "gradient boosting",
+      "rationale": "Leaf-wise gradient boosting. Grows asymmetric trees, so it can reach deeper interactions at equal leaf count and often differs from XGBoost on heavily skewed targets.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 29.9257,
+        "mae_std": 9.9545,
+        "rmse_mean": 44.1841,
+        "r2_mean": 0.8194,
+        "fold_mae": [
+          43.2038,
+          35.8173,
+          19.4443,
+          21.2372
+        ],
+        "seconds": 21.17
+      },
+      "train": {
+        "MAE": 11.906,
+        "RMSE": 16.7084,
+        "R2": 0.9754,
+        "MAPE_pct": 9.1283,
+        "MAPE_n_used": 10331,
+        "median_absolute_error": 8.8804,
+        "bias": -0.0,
+        "n": 10331
+      },
+      "test": {
+        "MAE": 15.1028,
+        "RMSE": 23.4986,
+        "R2": 0.9119,
+        "MAPE_pct": 14.5791,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 9.7133,
+        "bias": 2.7921,
+        "n": 4397
+      },
+      "generalisation_gap": {
+        "mae_test_minus_train": 3.1968,
+        "r2_train_minus_test": 0.0635,
+        "overfitting_flag": false
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "MAE": 11.5651,
+            "RMSE": 15.0213,
+            "R2": 0.8225,
+            "MAPE_pct": 18.651,
+            "MAPE_n_used": 306,
+            "median_absolute_error": 9.1913,
+            "bias": 4.5418,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "MAE": 21.0687,
+            "RMSE": 35.5724,
+            "R2": 0.7054,
+            "MAPE_pct": 21.1571,
+            "MAPE_n_used": 336,
+            "median_absolute_error": 13.1363,
+            "bias": 2.6453,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "MAE": 6.7049,
+            "RMSE": 9.0882,
+            "R2": 0.7849,
+            "MAPE_pct": 8.6387,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 5.4986,
+            "bias": 0.6751,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "MAE": 15.7674,
+            "RMSE": 23.7995,
+            "R2": 0.5634,
+            "MAPE_pct": 17.7229,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 11.121,
+            "bias": 1.9063,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "MAE": 23.0803,
+            "RMSE": 32.603,
+            "R2": 0.9174,
+            "MAPE_pct": 12.9786,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 15.9407,
+            "bias": 3.3644,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "MAE": 24.5121,
+            "RMSE": 33.8649,
+            "R2": 0.8885,
+            "MAPE_pct": 17.2047,
+            "MAPE_n_used": 387,
+            "median_absolute_error": 17.2507,
+            "bias": 5.152,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "MAE": 7.9409,
+            "RMSE": 10.6097,
+            "R2": 0.908,
+            "MAPE_pct": 11.2092,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 6.0891,
+            "bias": 2.306,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "MAE": 11.9985,
+            "RMSE": 18.1481,
+            "R2": 0.7823,
+            "MAPE_pct": 10.9993,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 8.3068,
+            "bias": 2.1469,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "MAE": 15.1456,
+            "RMSE": 20.8491,
+            "R2": 0.926,
+            "MAPE_pct": 15.8378,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 10.7029,
+            "bias": 1.7849,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "MAE": 20.0693,
+            "RMSE": 27.2751,
+            "R2": 0.9212,
+            "MAPE_pct": 14.1569,
+            "MAPE_n_used": 402,
+            "median_absolute_error": 14.7995,
+            "bias": 4.434,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "MAE": 8.7059,
+            "RMSE": 15.4703,
+            "R2": 0.4422,
+            "MAPE_pct": 12.7699,
+            "MAPE_n_used": 350,
+            "median_absolute_error": 5.7206,
+            "bias": 2.5534,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "MAE": 13.5855,
+            "RMSE": 18.0519,
+            "R2": 0.777,
+            "MAPE_pct": 16.4719,
+            "MAPE_n_used": 204,
+            "median_absolute_error": 10.4688,
+            "bias": 2.1095,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "MAE": 15.7274,
+            "RMSE": 23.965,
+            "R2": 0.9285,
+            "MAPE_pct": 14.4563,
+            "MAPE_n_used": 2331,
+            "median_absolute_error": 10.2387,
+            "bias": 1.4099,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "MAE": 17.3291,
+            "RMSE": 25.2119,
+            "R2": 0.8939,
+            "MAPE_pct": 14.0068,
+            "MAPE_n_used": 927,
+            "median_absolute_error": 10.7528,
+            "bias": 5.4459,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "MAE": 11.4816,
+            "RMSE": 17.5676,
+            "R2": 0.7386,
+            "MAPE_pct": 14.8859,
+            "MAPE_n_used": 779,
+            "median_absolute_error": 7.737,
+            "bias": 3.947,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "MAE": 13.1616,
+            "RMSE": 26.851,
+            "R2": 0.5983,
+            "MAPE_pct": 16.1841,
+            "MAPE_n_used": 360,
+            "median_absolute_error": 9.0736,
+            "bias": 2.4087,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 5.02,
+      "artifact": "models\\regression_lightgbm.joblib"
+    }
+  ],
+  "best_model": "LightGBM",
+  "best_test_metrics": {
+    "MAE": 15.1028,
+    "RMSE": 23.4986,
+    "R2": 0.9119,
+    "MAPE_pct": 14.5791,
+    "MAPE_n_used": 4397,
+    "median_absolute_error": 9.7133,
+    "bias": 2.7921,
+    "n": 4397
+  },
+  "baseline_comparison": {
+    "baseline_mae": 18.9049,
+    "best_mae": 15.1028,
+    "improvement_over_persistence_pct": 20.11,
+    "verdict": "LightGBM reduces mean absolute error by 20.1% relative to the persistence baseline, so the learned model earns its complexity."
+  },
+  "residual_analysis": {
+    "model": "LightGBM",
+    "mean_residual": 2.7921,
+    "std_residual": 23.3321,
+    "skew_residual": -1.3073,
+    "by_observed_band": [
+      {
+        "band": "Good",
+        "n": 424,
+        "mae": 10.191,
+        "bias": 9.667,
+        "mean_observed": 43.24
+      },
+      {
+        "band": "Satisfactory",
+        "n": 2189,
+        "mae": 10.107,
+        "bias": 5.665,
+        "mean_observed": 74.06
+      },
+      {
+        "band": "Moderate",
+        "n": 1261,
+        "mae": 19.201,
+        "bias": 0.56,
+        "mean_observed": 134.66
+      },
+      {
+        "band": "Poor",
+        "n": 313,
+        "mae": 28.374,
+        "bias": -6.023,
+        "mean_observed": 246.57
+      },
+      {
+        "band": "Very Poor",
+        "n": 166,
+        "mae": 25.795,
+        "bias": -12.343,
+        "mean_observed": 339.74
+      },
+      {
+        "band": "Severe",
+        "n": 44,
+        "mae": 58.798,
+        "bias": -22.583,
+        "mean_observed": 471.0
+      }
+    ],
+    "interpretation": "Residual bias turns negative in the upper bands, meaning the model under-predicts the most severe days. This is the expected consequence of fitting a squared or absolute loss on a right-skewed target: the optimiser buys accuracy on the many ordinary days at the cost of the few extreme ones. It is stated plainly because it is precisely the regime in which an advisory system must not be over-confident, and it is the reason the deployed application presents the predicted band with its classification confidence rather than the point estimate alone."
+  }
+}

@@ -1,8 +1,8 @@
 {
   "generated_by": "src/report/audit.py",
-  "generated_at_utc": "2026-09-29T02:32:53Z",
+  "generated_at_utc": "2026-09-29T02:37:00Z",
   "n_checks": 13,
-  "n_passed": 11,
+  "n_passed": 12,
   "all_passed": false,
   "checks": [
     {
@@ -53,7 +53,7 @@
     {
       "check": "Data card and model card complete with limitations and disclaimer",
       "passed": true,
-      "detail": "data_card.md (9 KB, limitations: False, disclaimer: False); model_card.md (11 KB, limitations: True, disclaimer: True)"
+      "detail": "data_card.md (11 KB, limitations: True, disclaimer: True); model_card.md (11 KB, limitations: True, disclaimer: True)"
     },
     {
       "check": "Smoke tests cover the no-exception guarantee",
@@ -67,8 +67,8 @@
     },
     {
       "check": "Phase-wise git history",
-      "passed": false,
-      "detail": "not a git repository yet"
+      "passed": true,
+      "detail": "15 commits; history tells the phase story rather than landing as a single change."
     }
   ]
 }

@@ -52,10 +52,6 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -260,6 +256,11 @@ def simulate(
 
 def plot_simulation(payload: Dict[str, Any]) -> str:
     """Render the scenario comparison and the distribution shift of the headline case."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     scenarios = payload["scenarios"]
     names = [s["name"] for s in scenarios]
     unsafe_removed = [s["result"]["unsafe_days"]["reduction_pct"] for s in scenarios]

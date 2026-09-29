@@ -60,10 +60,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -261,6 +257,11 @@ def seasonal_fallback(daily: pd.DataFrame) -> Dict[str, Any]:
 # --------------------------------------------------------------------------- #
 def plot_hourly_climatology(climatology: pd.DataFrame, payload: Dict[str, Any]) -> Path:
     """Render the diurnal exposure cycle per season for six cities, with contrast."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     counts = climatology.groupby("City")["n_AQI"].sum().sort_values(ascending=False)
     cities = counts.head(6).index.tolist()
 

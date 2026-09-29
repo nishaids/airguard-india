@@ -43,10 +43,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Tuple
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy import stats as sp_stats
@@ -608,7 +604,12 @@ def compare_imputation_strategies(
 # --------------------------------------------------------------------------- #
 # Figures
 # --------------------------------------------------------------------------- #
-def _save(fig: plt.Figure, name: str) -> Path:
+def _save(fig: "plt.Figure", name: str) -> Path:
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     path = config.FIGURES_DIR / name
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=config.FIG_DPI, bbox_inches="tight", facecolor="white")
@@ -619,6 +620,11 @@ def _save(fig: plt.Figure, name: str) -> Path:
 
 def plot_imputation_comparison(comparison: Dict[str, Any]) -> Path:
     """Render the strategy bake-off: reconstruction error against shift."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     rows = comparison["results"]
     names = [r["strategy"] for r in rows]
     mae = [r["mean_mae_over_iqr"] for r in rows]
@@ -668,6 +674,11 @@ def plot_distribution_shift(
     before: pd.DataFrame, after: pd.DataFrame, columns: List[str]
 ) -> Path:
     """Overlay pre- and post-imputation distributions for six pollutants."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     chosen = [c for c in ["PM2.5", "PM10", "NO2", "SO2", "CO", "O3"] if c in columns]
     fig, axes = plt.subplots(2, 3, figsize=(15, 7.5))
     for ax, column in zip(axes.ravel(), chosen):

@@ -1,0 +1,573 @@
+{
+  "artifact_version": "1.0",
+  "generated_by": "src/data/acquire.py",
+  "downloaded_at_utc": "2026-09-28T17:29:24Z",
+  "dataset": {
+    "title_configured": "Air Quality Data in India (2015 - 2020)",
+    "title_scraped": "Air Quality Data in India (2015 - 2020)",
+    "kaggle_slug": "rohanrao/air-quality-data-in-india",
+    "kaggle_url": "https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india",
+    "kaggle_uploader_handle": "rohanrao",
+    "kaggle_uploader_display_name": "Vopani",
+    "kaggle_uploader_url": "https://www.kaggle.com/rohanrao",
+    "kaggle_date_modified": "2020-07-28T12:33:10.347Z",
+    "local_version_directory": "C:\\Users\\Nishanth R\\.cache\\kagglehub\\datasets\\rohanrao\\air-quality-data-in-india\\versions\\12"
+  },
+  "license": {
+    "string_as_displayed_on_kaggle": "CC0: Public Domain",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "verified_live": true,
+    "verification_method": "Licence string read verbatim from the schema.org JSON-LD block embedded in the live Kaggle dataset page.",
+    "verification_url": "https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india",
+    "code_license_this_repository": "MIT (see LICENSE)"
+  },
+  "upstream_source": {
+    "organisation": "Central Pollution Control Board (CPCB), Ministry of Environment, Forest and Climate Change, Government of India",
+    "url": "https://cpcb.nic.in/",
+    "realtime_portal": "https://app.cpcbccr.com/AQI_India/",
+    "attribution_basis": "Stated in the Acknowledgements section of the Kaggle dataset description: 'The data has been made publicly available by the Central Pollution Control Board: https://cpcb.nic.in/ which is the official portal of Government of India.'"
+  },
+  "access": {
+    "method": "Path A - programmatic download via kagglehub (anonymous)",
+    "mirrored_into_data_raw": [
+      "city_day.csv",
+      "city_hour.csv",
+      "station_day.csv",
+      "stations.csv"
+    ],
+    "not_mirrored": [
+      "station_hour.csv"
+    ]
+  },
+  "files": [
+    {
+      "filename": "city_day.csv",
+      "present": true,
+      "hashed_path": "D:\\PODS Project\\airguard-india\\data\\raw\\city_day.csv",
+      "retained_in_data_raw": true,
+      "bytes": 2574056,
+      "size_mb": 2.574,
+      "sha256": "0d84b21c3e4878bbad8df362f2ab05f61ad959538dddf5918e714077ed3c1847",
+      "rows": 29531,
+      "columns": 16
+    },
+    {
+      "filename": "city_hour.csv",
+      "present": true,
+      "hashed_path": "D:\\PODS Project\\airguard-india\\data\\raw\\city_hour.csv",
+      "retained_in_data_raw": true,
+      "bytes": 65648581,
+      "size_mb": 65.649,
+      "sha256": "fae474062ec6b10af7c5b2ac4e32f5c240a0ef80835ee3a50332fec06e2190a4",
+      "rows": 707875,
+      "columns": 16
+    },
+    {
+      "filename": "station_day.csv",
+      "present": true,
+      "hashed_path": "D:\\PODS Project\\airguard-india\\data\\raw\\station_day.csv",
+      "retained_in_data_raw": true,
+      "bytes": 8634105,
+      "size_mb": 8.634,
+      "sha256": "f07787eb4c36c53b07763f591ee29fa01fbaa4d18df1a470447d04def79677b9",
+      "rows": 108035,
+      "columns": 16
+    },
+    {
+      "filename": "station_hour.csv",
+      "present": true,
+      "hashed_path": "C:\\Users\\Nishanth R\\.cache\\kagglehub\\datasets\\rohanrao\\air-quality-data-in-india\\versions\\12\\station_hour.csv",
+      "retained_in_data_raw": false,
+      "bytes": 219675434,
+      "size_mb": 219.675,
+      "sha256": "26a423c66fe9763064d580ffb007150375cfa2056e62b29d52b1b7857af54fde",
+      "rows": 2589083,
+      "columns": 16
+    },
+    {
+      "filename": "stations.csv",
+      "present": true,
+      "hashed_path": "D:\\PODS Project\\airguard-india\\data\\raw\\stations.csv",
+      "retained_in_data_raw": true,
+      "bytes": 14467,
+      "size_mb": 0.014,
+      "sha256": "ce2b7081c3e3c89145613eb724d7d2149ef79c6e16f36bb8a835747a673ed410",
+      "rows": 230,
+      "columns": 5
+    }
+  ],
+  "primary_file": {
+    "filename": "city_day.csv",
+    "rows": 29531,
+    "columns": 16,
+    "column_names": [
+      "City",
+      "Date",
+      "PM2.5",
+      "PM10",
+      "NO",
+      "NO2",
+      "NOx",
+      "NH3",
+      "CO",
+      "SO2",
+      "O3",
+      "Benzene",
+      "Toluene",
+      "Xylene",
+      "AQI",
+      "AQI_Bucket"
+    ],
+    "date_min": "2015-01-01",
+    "date_max": "2020-07-01",
+    "n_cities": 26,
+    "schema": [
+      {
+        "column": "City",
+        "dtype": "object",
+        "non_null": 29531,
+        "nulls": 0,
+        "null_pct": 0.0,
+        "kind": "categorical",
+        "cardinality": 26,
+        "top_5": [
+          {
+            "value": "Ahmedabad",
+            "count": 2009
+          },
+          {
+            "value": "Bengaluru",
+            "count": 2009
+          },
+          {
+            "value": "Chennai",
+            "count": 2009
+          },
+          {
+            "value": "Mumbai",
+            "count": 2009
+          },
+          {
+            "value": "Lucknow",
+            "count": 2009
+          }
+        ]
+      },
+      {
+        "column": "Date",
+        "dtype": "datetime64[ns]",
+        "non_null": 29531,
+        "nulls": 0,
+        "null_pct": 0.0,
+        "kind": "categorical",
+        "cardinality": 2009,
+        "top_5": [
+          {
+            "value": "2020-03-14 00:00:00",
+            "count": 26
+          },
+          {
+            "value": "2020-04-10 00:00:00",
+            "count": 26
+          },
+          {
+            "value": "2020-04-11 00:00:00",
+            "count": 26
+          },
+          {
+            "value": "2020-04-12 00:00:00",
+            "count": 26
+          },
+          {
+            "value": "2020-04-13 00:00:00",
+            "count": 26
+          }
+        ]
+      },
+      {
+        "column": "PM2.5",
+        "dtype": "float64",
+        "non_null": 24933,
+        "nulls": 4598,
+        "null_pct": 15.57,
+        "kind": "numeric",
+        "min": 0.04,
+        "max": 949.99,
+        "mean": 67.4506,
+        "std": 64.6614
+      },
+      {
+        "column": "PM10",
+        "dtype": "float64",
+        "non_null": 18391,
+        "nulls": 11140,
+        "null_pct": 37.723,
+        "kind": "numeric",
+        "min": 0.01,
+        "max": 1000.0,
+        "mean": 118.1271,
+        "std": 90.6051
+      },
+      {
+        "column": "NO",
+        "dtype": "float64",
+        "non_null": 25949,
+        "nulls": 3582,
+        "null_pct": 12.13,
+        "kind": "numeric",
+        "min": 0.02,
+        "max": 390.68,
+        "mean": 17.5747,
+        "std": 22.7858
+      },
+      {
+        "column": "NO2",
+        "dtype": "float64",
+        "non_null": 25946,
+        "nulls": 3585,
+        "null_pct": 12.14,
+        "kind": "numeric",
+        "min": 0.01,
+        "max": 362.21,
+        "mean": 28.5607,
+        "std": 24.4747
+      },
+      {
+        "column": "NOx",
+        "dtype": "float64",
+        "non_null": 25346,
+        "nulls": 4185,
+        "null_pct": 14.172,
+        "kind": "numeric",
+        "min": 0.0,
+        "max": 467.63,
+        "mean": 32.3091,
+        "std": 31.646
+      },
+      {
+        "column": "NH3",
+        "dtype": "float64",
+        "non_null": 19203,
+        "nulls": 10328,
+        "null_pct": 34.973,
+        "kind": "numeric",
+        "min": 0.01,
+        "max": 352.89,
+        "mean": 23.4835,
+        "std": 25.6843
+      },
+      {
+        "column": "CO",
+        "dtype": "float64",
+        "non_null": 27472,
+        "nulls": 2059,
+        "null_pct": 6.972,
+        "kind": "numeric",
+        "min": 0.0,
+        "max": 175.81,
+        "mean": 2.2486,
+        "std": 6.9629
+      },
+      {
+        "column": "SO2",
+        "dtype": "float64",
+        "non_null": 25677,
+        "nulls": 3854,
+        "null_pct": 13.051,
+        "kind": "numeric",
+        "min": 0.01,
+        "max": 193.86,
+        "mean": 14.532,
+        "std": 18.1338
+      },
+      {
+        "column": "O3",
+        "dtype": "float64",
+        "non_null": 25509,
+        "nulls": 4022,
+        "null_pct": 13.62,
+        "kind": "numeric",
+        "min": 0.01,
+        "max": 257.73,
+        "mean": 34.4914,
+        "std": 21.6949
+      },
+      {
+        "column": "Benzene",
+        "dtype": "float64",
+        "non_null": 23908,
+        "nulls": 5623,
+        "null_pct": 19.041,
+        "kind": "numeric",
+        "min": 0.0,
+        "max": 455.03,
+        "mean": 3.2808,
+        "std": 15.8111
+      },
+      {
+        "column": "Toluene",
+        "dtype": "float64",
+        "non_null": 21490,
+        "nulls": 8041,
+        "null_pct": 27.229,
+        "kind": "numeric",
+        "min": 0.0,
+        "max": 454.85,
+        "mean": 8.701,
+        "std": 19.9692
+      },
+      {
+        "column": "Xylene",
+        "dtype": "float64",
+        "non_null": 11422,
+        "nulls": 18109,
+        "null_pct": 61.322,
+        "kind": "numeric",
+        "min": 0.0,
+        "max": 170.37,
+        "mean": 3.0701,
+        "std": 6.3232
+      },
+      {
+        "column": "AQI",
+        "dtype": "float64",
+        "non_null": 24850,
+        "nulls": 4681,
+        "null_pct": 15.851,
+        "kind": "numeric",
+        "min": 13.0,
+        "max": 2049.0,
+        "mean": 166.4636,
+        "std": 140.6966
+      },
+      {
+        "column": "AQI_Bucket",
+        "dtype": "object",
+        "non_null": 24850,
+        "nulls": 4681,
+        "null_pct": 15.851,
+        "kind": "categorical",
+        "cardinality": 6,
+        "top_5": [
+          {
+            "value": "Moderate",
+            "count": 8829
+          },
+          {
+            "value": "Satisfactory",
+            "count": 8224
+          },
+          {
+            "value": "Poor",
+            "count": 2781
+          },
+          {
+            "value": "Very Poor",
+            "count": 2337
+          },
+          {
+            "value": "Good",
+            "count": 1341
+          }
+        ]
+      }
+    ],
+    "per_city": [
+      {
+        "city": "Ahmedabad",
+        "records": 2009,
+        "aqi_non_null": 1334,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Aizawl",
+        "records": 113,
+        "aqi_non_null": 111,
+        "first_date": "2020-03-11",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Amaravati",
+        "records": 951,
+        "aqi_non_null": 841,
+        "first_date": "2017-11-24",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Amritsar",
+        "records": 1221,
+        "aqi_non_null": 1126,
+        "first_date": "2017-02-27",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Bengaluru",
+        "records": 2009,
+        "aqi_non_null": 1910,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Bhopal",
+        "records": 289,
+        "aqi_non_null": 278,
+        "first_date": "2019-09-17",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Brajrajnagar",
+        "records": 938,
+        "aqi_non_null": 713,
+        "first_date": "2017-12-07",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Chandigarh",
+        "records": 304,
+        "aqi_non_null": 299,
+        "first_date": "2019-09-02",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Chennai",
+        "records": 2009,
+        "aqi_non_null": 1884,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Coimbatore",
+        "records": 386,
+        "aqi_non_null": 344,
+        "first_date": "2019-06-12",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Delhi",
+        "records": 2009,
+        "aqi_non_null": 1999,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Ernakulam",
+        "records": 162,
+        "aqi_non_null": 153,
+        "first_date": "2020-01-22",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Gurugram",
+        "records": 1679,
+        "aqi_non_null": 1453,
+        "first_date": "2015-11-27",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Guwahati",
+        "records": 502,
+        "aqi_non_null": 495,
+        "first_date": "2019-02-16",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Hyderabad",
+        "records": 2006,
+        "aqi_non_null": 1880,
+        "first_date": "2015-01-04",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Jaipur",
+        "records": 1114,
+        "aqi_non_null": 1094,
+        "first_date": "2017-06-14",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Jorapokhar",
+        "records": 1169,
+        "aqi_non_null": 771,
+        "first_date": "2017-04-20",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Kochi",
+        "records": 162,
+        "aqi_non_null": 158,
+        "first_date": "2020-01-22",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Kolkata",
+        "records": 814,
+        "aqi_non_null": 754,
+        "first_date": "2018-04-10",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Lucknow",
+        "records": 2009,
+        "aqi_non_null": 1893,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Mumbai",
+        "records": 2009,
+        "aqi_non_null": 775,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Patna",
+        "records": 1858,
+        "aqi_non_null": 1459,
+        "first_date": "2015-06-01",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Shillong",
+        "records": 310,
+        "aqi_non_null": 205,
+        "first_date": "2019-08-27",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Talcher",
+        "records": 925,
+        "aqi_non_null": 698,
+        "first_date": "2017-12-20",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Thiruvananthapuram",
+        "records": 1112,
+        "aqi_non_null": 1052,
+        "first_date": "2017-06-16",
+        "last_date": "2020-07-01"
+      },
+      {
+        "city": "Visakhapatnam",
+        "records": 1462,
+        "aqi_non_null": 1171,
+        "first_date": "2016-07-01",
+        "last_date": "2020-07-01"
+      }
+    ]
+  },
+  "station_metadata": {
+    "columns": [
+      "StationId",
+      "StationName",
+      "City",
+      "State",
+      "Status"
+    ],
+    "n_stations": 230,
+    "n_cities": 127,
+    "n_states": 21
+  },
+  "open_data_compliance": "The measurements analysed in this project were produced by the Central Pollution Control Board (CPCB), Government of India, and released into the public domain by that agency. They were obtained for this work from the Kaggle mirror maintained by Rohan Rao, whose dataset page declares the licence recorded verbatim in the 'license' block above. That declaration places the compiled dataset in the public domain, which permits unrestricted reproduction, redistribution, adaptation and commercial or academic reuse without a requirement of permission. No authentication, paid subscription or scraping of access-controlled pages was involved: the archive was retrieved through the publicly documented Kaggle dataset API. Use in this project is therefore fully compliant with the terms under which the data was published. Attribution to CPCB and to the Kaggle uploader is nevertheless given throughout this repository as a matter of academic practice. The raw files in data/raw/ are treated as immutable: no script in this repository writes to that directory except the acquisition module, and every transformation is written to data/interim/ or data/processed/."
+}

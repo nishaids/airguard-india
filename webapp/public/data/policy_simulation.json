@@ -1,0 +1,1829 @@
+{
+  "generated_by": "src/simulate/policy.py",
+  "generated_at_utc": "2026-09-29T02:31:21Z",
+  "method": "Each scenario applies a proportional reduction to the historical concentrations and recomputes the CPCB sub-indices, the AQI, the AQI bucket and every cohort HAI value and band from first principles. The baseline is produced by the same code path with a zero reduction, so both sides of every comparison are computed identically.",
+  "what_this_is_not": "The reduction is an input supplied by the user, not a prediction. The simulator states what the advisory burden would be at a given concentration; it does not claim that any particular intervention would achieve that concentration. Atmospheric chemistry is not simulated: each pollutant is reduced independently, so ozone-led scenarios in particular should be read with caution, because reducing nitrogen oxides can raise local ozone under some urban conditions.",
+  "restrictive_bands": [
+    "High",
+    "Very High",
+    "Extreme"
+  ],
+  "unsafe_buckets": [
+    "Poor",
+    "Very Poor",
+    "Severe"
+  ],
+  "advisory_day_definition": "One advisory-day is one cohort, in one city, on one day, moved out of a restrictive HAI band. Summing across the seven cohorts gives the total advisory-day burden averted.",
+  "scenarios": [
+    {
+      "name": "PM2.5 reduced by 10%",
+      "reductions": {
+        "PM2.5": 0.1
+      },
+      "context": "A modest fine-particulate reduction, of the order achievable by fuel-quality and fleet measures over a few years.",
+      "result": {
+        "reductions": {
+          "PM2.5": 0.1
+        },
+        "n_city_days": 18395,
+        "aqi": {
+          "mean_before": 144.14,
+          "mean_after": 137.68,
+          "mean_change": -6.46,
+          "mean_change_pct": -4.48,
+          "median_before": 104.96,
+          "median_after": 104.96
+        },
+        "band_migration": {
+          "days_improved": 1094,
+          "days_unchanged": 17301,
+          "days_worsened": 0,
+          "pct_improved": 5.95
+        },
+        "unsafe_days": {
+          "definition": "AQI bucket in ['Poor', 'Very Poor', 'Severe']",
+          "before": 3880,
+          "after": 3403,
+          "removed": 477,
+          "reduction_pct": 12.29
+        },
+        "cohort_advisory_days": {
+          "definition": "HAI band in ['High', 'Very High', 'Extreme']",
+          "total_averted_across_cohorts": 4372,
+          "per_cohort": [
+            {
+              "cohort": "healthy_adult",
+              "cohort_label": "Healthy adult",
+              "restrictive_days_before": 4230,
+              "restrictive_days_after": 3749,
+              "advisory_days_averted": 481,
+              "advisory_days_created": 0,
+              "net_averted": 481,
+              "reduction_pct": 11.37,
+              "mean_hai_before": 31.056,
+              "mean_hai_after": 29.711
+            },
+            {
+              "cohort": "children",
+              "cohort_label": "Children (under 14)",
+              "restrictive_days_before": 6098,
+              "restrictive_days_after": 5460,
+              "advisory_days_averted": 638,
+              "advisory_days_created": 0,
+              "net_averted": 638,
+              "reduction_pct": 10.46,
+              "mean_hai_before": 39.529,
+              "mean_hai_after": 37.579
+            },
+            {
+              "cohort": "elderly_60plus",
+              "cohort_label": "Elderly (60+)",
+              "restrictive_days_before": 6791,
+              "restrictive_days_after": 6102,
+              "advisory_days_averted": 689,
+              "advisory_days_created": 0,
+              "net_averted": 689,
+              "reduction_pct": 10.15,
+              "mean_hai_before": 42.952,
+              "mean_hai_after": 40.749
+            },
+            {
+              "cohort": "asthma_copd",
+              "cohort_label": "Asthma / COPD",
+              "restrictive_days_before": 6337,
+              "restrictive_days_after": 5682,
+              "advisory_days_averted": 655,
+              "advisory_days_created": 0,
+              "net_averted": 655,
+              "reduction_pct": 10.34,
+              "mean_hai_before": 40.895,
+              "mean_hai_after": 38.927
+            },
+            {
+              "cohort": "cardiac",
+              "cohort_label": "Cardiac patients",
+              "restrictive_days_before": 7199,
+              "restrictive_days_after": 6433,
+              "advisory_days_averted": 766,
+              "advisory_days_created": 0,
+              "net_averted": 766,
+              "reduction_pct": 10.64,
+              "mean_hai_before": 44.691,
+              "mean_hai_after": 42.135
+            },
+            {
+              "cohort": "pregnant",
+              "cohort_label": "Pregnant women",
+              "restrictive_days_before": 6566,
+              "restrictive_days_after": 5837,
+              "advisory_days_averted": 729,
+              "advisory_days_created": 0,
+              "net_averted": 729,
+              "reduction_pct": 11.1,
+              "mean_hai_before": 41.77,
+              "mean_hai_after": 39.517
+            },
+            {
+              "cohort": "outdoor_worker",
+              "cohort_label": "Outdoor workers",
+              "restrictive_days_before": 6695,
+              "restrictive_days_after": 6281,
+              "advisory_days_averted": 414,
+              "advisory_days_created": 0,
+              "net_averted": 414,
+              "reduction_pct": 6.18,
+              "mean_hai_before": 42.233,
+              "mean_hai_after": 40.695
+            }
+          ]
+        },
+        "per_city": [
+          {
+            "city": "Amaravati",
+            "n_days": 951,
+            "mean_aqi_before": 85.16,
+            "mean_aqi_after": 80.48,
+            "days_improved_band": 33,
+            "pct_days_improved_band": 3.47
+          },
+          {
+            "city": "Amritsar",
+            "n_days": 1221,
+            "mean_aqi_before": 120.52,
+            "mean_aqi_after": 115.85,
+            "days_improved_band": 45,
+            "pct_days_improved_band": 3.69
+          },
+          {
+            "city": "Bengaluru",
+            "n_days": 2009,
+            "mean_aqi_before": 97.18,
+            "mean_aqi_after": 95.35,
+            "days_improved_band": 60,
+            "pct_days_improved_band": 2.99
+          },
+          {
+            "city": "Chennai",
+            "n_days": 2009,
+            "mean_aqi_before": 116.57,
+            "mean_aqi_after": 111.09,
+            "days_improved_band": 79,
+            "pct_days_improved_band": 3.93
+          },
+          {
+            "city": "Delhi",
+            "n_days": 2009,
+            "mean_aqi_before": 237.29,
+            "mean_aqi_after": 227.8,
+            "days_improved_band": 193,
+            "pct_days_improved_band": 9.61
+          },
+          {
+            "city": "Gurugram",
+            "n_days": 1679,
+            "mean_aqi_before": 236.39,
+            "mean_aqi_after": 223.9,
+            "days_improved_band": 178,
+            "pct_days_improved_band": 10.6
+          },
+          {
+            "city": "Hyderabad",
+            "n_days": 2006,
+            "mean_aqi_before": 101.3,
+            "mean_aqi_after": 97.57,
+            "days_improved_band": 73,
+            "pct_days_improved_band": 3.64
+          },
+          {
+            "city": "Jaipur",
+            "n_days": 1114,
+            "mean_aqi_before": 123.6,
+            "mean_aqi_after": 119.36,
+            "days_improved_band": 49,
+            "pct_days_improved_band": 4.4
+          },
+          {
+            "city": "Kolkata",
+            "n_days": 814,
+            "mean_aqi_before": 129.81,
+            "mean_aqi_after": 121.95,
+            "days_improved_band": 65,
+            "pct_days_improved_band": 7.99
+          },
+          {
+            "city": "Lucknow",
+            "n_days": 2009,
+            "mean_aqi_before": 220.48,
+            "mean_aqi_after": 207.29,
+            "days_improved_band": 235,
+            "pct_days_improved_band": 11.7
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "n_days": 1112,
+            "mean_aqi_before": 63.01,
+            "mean_aqi_after": 61.02,
+            "days_improved_band": 27,
+            "pct_days_improved_band": 2.43
+          },
+          {
+            "city": "Visakhapatnam",
+            "n_days": 1462,
+            "mean_aqi_before": 109.89,
+            "mean_aqi_after": 105.38,
+            "days_improved_band": 57,
+            "pct_days_improved_band": 3.9
+          }
+        ]
+      }
+    },
+    {
+      "name": "PM2.5 reduced by 20%",
+      "reductions": {
+        "PM2.5": 0.2
+      },
+      "context": "The scale of reduction targeted by the National Clean Air Programme for participating cities.",
+      "result": {
+        "reductions": {
+          "PM2.5": 0.2
+        },
+        "n_city_days": 18395,
+        "aqi": {
+          "mean_before": 144.14,
+          "mean_after": 132.19,
+          "mean_change": -11.95,
+          "mean_change_pct": -8.29,
+          "median_before": 104.96,
+          "median_after": 104.96
+        },
+        "band_migration": {
+          "days_improved": 2082,
+          "days_unchanged": 16313,
+          "days_worsened": 0,
+          "pct_improved": 11.32
+        },
+        "unsafe_days": {
+          "definition": "AQI bucket in ['Poor', 'Very Poor', 'Severe']",
+          "before": 3880,
+          "after": 2888,
+          "removed": 992,
+          "reduction_pct": 25.57
+        },
+        "cohort_advisory_days": {
+          "definition": "HAI band in ['High', 'Very High', 'Extreme']",
+          "total_averted_across_cohorts": 8133,
+          "per_cohort": [
+            {
+              "cohort": "healthy_adult",
+              "cohort_label": "Healthy adult",
+              "restrictive_days_before": 4230,
+              "restrictive_days_after": 3228,
+              "advisory_days_averted": 1002,
+              "advisory_days_created": 0,
+              "net_averted": 1002,
+              "reduction_pct": 23.69,
+              "mean_hai_before": 31.056,
+              "mean_hai_after": 28.547
+            },
+            {
+              "cohort": "children",
+              "cohort_label": "Children (under 14)",
+              "restrictive_days_before": 6098,
+              "restrictive_days_after": 4950,
+              "advisory_days_averted": 1148,
+              "advisory_days_created": 0,
+              "net_averted": 1148,
+              "reduction_pct": 18.83,
+              "mean_hai_before": 39.529,
+              "mean_hai_after": 35.862
+            },
+            {
+              "cohort": "elderly_60plus",
+              "cohort_label": "Elderly (60+)",
+              "restrictive_days_before": 6791,
+              "restrictive_days_after": 5528,
+              "advisory_days_averted": 1263,
+              "advisory_days_created": 0,
+              "net_averted": 1263,
+              "reduction_pct": 18.6,
+              "mean_hai_before": 42.952,
+              "mean_hai_after": 38.811
+            },
+            {
+              "cohort": "asthma_copd",
+              "cohort_label": "Asthma / COPD",
+              "restrictive_days_before": 6337,
+              "restrictive_days_after": 5185,
+              "advisory_days_averted": 1152,
+              "advisory_days_created": 0,
+              "net_averted": 1152,
+              "reduction_pct": 18.18,
+              "mean_hai_before": 40.895,
+              "mean_hai_after": 37.197
+            },
+            {
+              "cohort": "cardiac",
+              "cohort_label": "Cardiac patients",
+              "restrictive_days_before": 7199,
+              "restrictive_days_after": 5726,
+              "advisory_days_averted": 1473,
+              "advisory_days_created": 0,
+              "net_averted": 1473,
+              "reduction_pct": 20.46,
+              "mean_hai_before": 44.691,
+              "mean_hai_after": 39.849
+            },
+            {
+              "cohort": "pregnant",
+              "cohort_label": "Pregnant women",
+              "restrictive_days_before": 6566,
+              "restrictive_days_after": 5236,
+              "advisory_days_averted": 1330,
+              "advisory_days_created": 0,
+              "net_averted": 1330,
+              "reduction_pct": 20.26,
+              "mean_hai_before": 41.77,
+              "mean_hai_after": 37.498
+            },
+            {
+              "cohort": "outdoor_worker",
+              "cohort_label": "Outdoor workers",
+              "restrictive_days_before": 6695,
+              "restrictive_days_after": 5930,
+              "advisory_days_averted": 765,
+              "advisory_days_created": 0,
+              "net_averted": 765,
+              "reduction_pct": 11.43,
+              "mean_hai_before": 42.233,
+              "mean_hai_after": 39.381
+            }
+          ]
+        },
+        "per_city": [
+          {
+            "city": "Amaravati",
+            "n_days": 951,
+            "mean_aqi_before": 85.16,
+            "mean_aqi_after": 77.26,
+            "days_improved_band": 54,
+            "pct_days_improved_band": 5.68
+          },
+          {
+            "city": "Amritsar",
+            "n_days": 1221,
+            "mean_aqi_before": 120.52,
+            "mean_aqi_after": 112.09,
+            "days_improved_band": 109,
+            "pct_days_improved_band": 8.93
+          },
+          {
+            "city": "Bengaluru",
+            "n_days": 2009,
+            "mean_aqi_before": 97.18,
+            "mean_aqi_after": 94.1,
+            "days_improved_band": 85,
+            "pct_days_improved_band": 4.23
+          },
+          {
+            "city": "Chennai",
+            "n_days": 2009,
+            "mean_aqi_before": 116.57,
+            "mean_aqi_after": 106.94,
+            "days_improved_band": 125,
+            "pct_days_improved_band": 6.22
+          },
+          {
+            "city": "Delhi",
+            "n_days": 2009,
+            "mean_aqi_before": 237.29,
+            "mean_aqi_after": 219.21,
+            "days_improved_band": 380,
+            "pct_days_improved_band": 18.91
+          },
+          {
+            "city": "Gurugram",
+            "n_days": 1679,
+            "mean_aqi_before": 236.39,
+            "mean_aqi_after": 212.35,
+            "days_improved_band": 446,
+            "pct_days_improved_band": 26.56
+          },
+          {
+            "city": "Hyderabad",
+            "n_days": 2006,
+            "mean_aqi_before": 101.3,
+            "mean_aqi_after": 95.69,
+            "days_improved_band": 106,
+            "pct_days_improved_band": 5.28
+          },
+          {
+            "city": "Jaipur",
+            "n_days": 1114,
+            "mean_aqi_before": 123.6,
+            "mean_aqi_after": 116.3,
+            "days_improved_band": 82,
+            "pct_days_improved_band": 7.36
+          },
+          {
+            "city": "Kolkata",
+            "n_days": 814,
+            "mean_aqi_before": 129.81,
+            "mean_aqi_after": 115.15,
+            "days_improved_band": 112,
+            "pct_days_improved_band": 13.76
+          },
+          {
+            "city": "Lucknow",
+            "n_days": 2009,
+            "mean_aqi_before": 220.48,
+            "mean_aqi_after": 193.5,
+            "days_improved_band": 458,
+            "pct_days_improved_band": 22.8
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "n_days": 1112,
+            "mean_aqi_before": 63.01,
+            "mean_aqi_after": 59.92,
+            "days_improved_band": 37,
+            "pct_days_improved_band": 3.33
+          },
+          {
+            "city": "Visakhapatnam",
+            "n_days": 1462,
+            "mean_aqi_before": 109.89,
+            "mean_aqi_after": 102.52,
+            "days_improved_band": 88,
+            "pct_days_improved_band": 6.02
+          }
+        ]
+      }
+    },
+    {
+      "name": "PM2.5 and PM10 reduced by 20%",
+      "reductions": {
+        "PM2.5": 0.2,
+        "PM10": 0.2
+      },
+      "context": "Combined combustion and dust control, addressing both particulate fractions together.",
+      "result": {
+        "reductions": {
+          "PM2.5": 0.2,
+          "PM10": 0.2
+        },
+        "n_city_days": 18395,
+        "aqi": {
+          "mean_before": 144.14,
+          "mean_after": 120.33,
+          "mean_change": -23.8,
+          "mean_change_pct": -16.51,
+          "median_before": 104.96,
+          "median_after": 86.3
+        },
+        "band_migration": {
+          "days_improved": 7050,
+          "days_unchanged": 11345,
+          "days_worsened": 0,
+          "pct_improved": 38.33
+        },
+        "unsafe_days": {
+          "definition": "AQI bucket in ['Poor', 'Very Poor', 'Severe']",
+          "before": 3880,
+          "after": 2723,
+          "removed": 1157,
+          "reduction_pct": 29.82
+        },
+        "cohort_advisory_days": {
+          "definition": "HAI band in ['High', 'Very High', 'Extreme']",
+          "total_averted_across_cohorts": 12432,
+          "per_cohort": [
+            {
+              "cohort": "healthy_adult",
+              "cohort_label": "Healthy adult",
+              "restrictive_days_before": 4230,
+              "restrictive_days_after": 3011,
+              "advisory_days_averted": 1219,
+              "advisory_days_created": 0,
+              "net_averted": 1219,
+              "reduction_pct": 28.82,
+              "mean_hai_before": 31.056,
+              "mean_hai_after": 26.091
+            },
+            {
+              "cohort": "children",
+              "cohort_label": "Children (under 14)",
+              "restrictive_days_before": 6098,
+              "restrictive_days_after": 4229,
+              "advisory_days_averted": 1869,
+              "advisory_days_created": 0,
+              "net_averted": 1869,
+              "reduction_pct": 30.65,
+              "mean_hai_before": 39.529,
+              "mean_hai_after": 33.36
+            },
+            {
+              "cohort": "elderly_60plus",
+              "cohort_label": "Elderly (60+)",
+              "restrictive_days_before": 6791,
+              "restrictive_days_after": 5030,
+              "advisory_days_averted": 1761,
+              "advisory_days_created": 0,
+              "net_averted": 1761,
+              "reduction_pct": 25.93,
+              "mean_hai_before": 42.952,
+              "mean_hai_after": 36.219
+            },
+            {
+              "cohort": "asthma_copd",
+              "cohort_label": "Asthma / COPD",
+              "restrictive_days_before": 6337,
+              "restrictive_days_after": 4476,
+              "advisory_days_averted": 1861,
+              "advisory_days_created": 0,
+              "net_averted": 1861,
+              "reduction_pct": 29.37,
+              "mean_hai_before": 40.895,
+              "mean_hai_after": 34.605
+            },
+            {
+              "cohort": "cardiac",
+              "cohort_label": "Cardiac patients",
+              "restrictive_days_before": 7199,
+              "restrictive_days_after": 5149,
+              "advisory_days_averted": 2050,
+              "advisory_days_created": 0,
+              "net_averted": 2050,
+              "reduction_pct": 28.48,
+              "mean_hai_before": 44.691,
+              "mean_hai_after": 37.911
+            },
+            {
+              "cohort": "pregnant",
+              "cohort_label": "Pregnant women",
+              "restrictive_days_before": 6566,
+              "restrictive_days_after": 4580,
+              "advisory_days_averted": 1986,
+              "advisory_days_created": 0,
+              "net_averted": 1986,
+              "reduction_pct": 30.25,
+              "mean_hai_before": 41.77,
+              "mean_hai_after": 35.322
+            },
+            {
+              "cohort": "outdoor_worker",
+              "cohort_label": "Outdoor workers",
+              "restrictive_days_before": 6695,
+              "restrictive_days_after": 5009,
+              "advisory_days_averted": 1686,
+              "advisory_days_created": 0,
+              "net_averted": 1686,
+              "reduction_pct": 25.18,
+              "mean_hai_before": 42.233,
+              "mean_hai_after": 35.64
+            }
+          ]
+        },
+        "per_city": [
+          {
+            "city": "Amaravati",
+            "n_days": 951,
+            "mean_aqi_before": 85.16,
+            "mean_aqi_after": 68.21,
+            "days_improved_band": 233,
+            "pct_days_improved_band": 24.5
+          },
+          {
+            "city": "Amritsar",
+            "n_days": 1221,
+            "mean_aqi_before": 120.52,
+            "mean_aqi_after": 98.16,
+            "days_improved_band": 407,
+            "pct_days_improved_band": 33.33
+          },
+          {
+            "city": "Bengaluru",
+            "n_days": 2009,
+            "mean_aqi_before": 97.18,
+            "mean_aqi_after": 83.22,
+            "days_improved_band": 526,
+            "pct_days_improved_band": 26.18
+          },
+          {
+            "city": "Chennai",
+            "n_days": 2009,
+            "mean_aqi_before": 116.57,
+            "mean_aqi_after": 93.89,
+            "days_improved_band": 1496,
+            "pct_days_improved_band": 74.46
+          },
+          {
+            "city": "Delhi",
+            "n_days": 2009,
+            "mean_aqi_before": 237.29,
+            "mean_aqi_after": 202.77,
+            "days_improved_band": 718,
+            "pct_days_improved_band": 35.74
+          },
+          {
+            "city": "Gurugram",
+            "n_days": 1679,
+            "mean_aqi_before": 236.39,
+            "mean_aqi_after": 199.14,
+            "days_improved_band": 566,
+            "pct_days_improved_band": 33.71
+          },
+          {
+            "city": "Hyderabad",
+            "n_days": 2006,
+            "mean_aqi_before": 101.3,
+            "mean_aqi_after": 81.73,
+            "days_improved_band": 561,
+            "pct_days_improved_band": 27.97
+          },
+          {
+            "city": "Jaipur",
+            "n_days": 1114,
+            "mean_aqi_before": 123.6,
+            "mean_aqi_after": 100.35,
+            "days_improved_band": 358,
+            "pct_days_improved_band": 32.14
+          },
+          {
+            "city": "Kolkata",
+            "n_days": 814,
+            "mean_aqi_before": 129.81,
+            "mean_aqi_after": 107.31,
+            "days_improved_band": 261,
+            "pct_days_improved_band": 32.06
+          },
+          {
+            "city": "Lucknow",
+            "n_days": 2009,
+            "mean_aqi_before": 220.48,
+            "mean_aqi_after": 187.75,
+            "days_improved_band": 1112,
+            "pct_days_improved_band": 55.35
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "n_days": 1112,
+            "mean_aqi_before": 63.01,
+            "mean_aqi_after": 55.63,
+            "days_improved_band": 153,
+            "pct_days_improved_band": 13.76
+          },
+          {
+            "city": "Visakhapatnam",
+            "n_days": 1462,
+            "mean_aqi_before": 109.89,
+            "mean_aqi_after": 88.31,
+            "days_improved_band": 659,
+            "pct_days_improved_band": 45.08
+          }
+        ]
+      }
+    },
+    {
+      "name": "PM2.5 and PM10 reduced by 30%",
+      "reductions": {
+        "PM2.5": 0.3,
+        "PM10": 0.3
+      },
+      "context": "An ambitious particulate programme sustained over a decade.",
+      "result": {
+        "reductions": {
+          "PM2.5": 0.3,
+          "PM10": 0.3
+        },
+        "n_city_days": 18395,
+        "aqi": {
+          "mean_before": 144.14,
+          "mean_after": 108.33,
+          "mean_change": -35.8,
+          "mean_change_pct": -24.84,
+          "median_before": 104.96,
+          "median_after": 77.3
+        },
+        "band_migration": {
+          "days_improved": 9388,
+          "days_unchanged": 9007,
+          "days_worsened": 0,
+          "pct_improved": 51.04
+        },
+        "unsafe_days": {
+          "definition": "AQI bucket in ['Poor', 'Very Poor', 'Severe']",
+          "before": 3880,
+          "after": 2237,
+          "removed": 1643,
+          "reduction_pct": 42.35
+        },
+        "cohort_advisory_days": {
+          "definition": "HAI band in ['High', 'Very High', 'Extreme']",
+          "total_averted_across_cohorts": 18070,
+          "per_cohort": [
+            {
+              "cohort": "healthy_adult",
+              "cohort_label": "Healthy adult",
+              "restrictive_days_before": 4230,
+              "restrictive_days_after": 2459,
+              "advisory_days_averted": 1771,
+              "advisory_days_created": 0,
+              "net_averted": 1771,
+              "reduction_pct": 41.87,
+              "mean_hai_before": 31.056,
+              "mean_hai_after": 23.583
+            },
+            {
+              "cohort": "children",
+              "cohort_label": "Children (under 14)",
+              "restrictive_days_before": 6098,
+              "restrictive_days_after": 3503,
+              "advisory_days_averted": 2595,
+              "advisory_days_created": 0,
+              "net_averted": 2595,
+              "reduction_pct": 42.55,
+              "mean_hai_before": 39.529,
+              "mean_hai_after": 30.25
+            },
+            {
+              "cohort": "elderly_60plus",
+              "cohort_label": "Elderly (60+)",
+              "restrictive_days_before": 6791,
+              "restrictive_days_after": 3932,
+              "advisory_days_averted": 2859,
+              "advisory_days_created": 0,
+              "net_averted": 2859,
+              "reduction_pct": 42.1,
+              "mean_hai_before": 42.952,
+              "mean_hai_after": 32.754
+            },
+            {
+              "cohort": "asthma_copd",
+              "cohort_label": "Asthma / COPD",
+              "restrictive_days_before": 6337,
+              "restrictive_days_after": 3668,
+              "advisory_days_averted": 2669,
+              "advisory_days_created": 0,
+              "net_averted": 2669,
+              "reduction_pct": 42.12,
+              "mean_hai_before": 40.895,
+              "mean_hai_after": 31.449
+            },
+            {
+              "cohort": "cardiac",
+              "cohort_label": "Cardiac patients",
+              "restrictive_days_before": 7199,
+              "restrictive_days_after": 4225,
+              "advisory_days_averted": 2974,
+              "advisory_days_created": 0,
+              "net_averted": 2974,
+              "reduction_pct": 41.31,
+              "mean_hai_before": 44.691,
+              "mean_hai_after": 34.463
+            },
+            {
+              "cohort": "pregnant",
+              "cohort_label": "Pregnant women",
+              "restrictive_days_before": 6566,
+              "restrictive_days_after": 3805,
+              "advisory_days_averted": 2761,
+              "advisory_days_created": 0,
+              "net_averted": 2761,
+              "reduction_pct": 42.05,
+              "mean_hai_before": 41.77,
+              "mean_hai_after": 32.034
+            },
+            {
+              "cohort": "outdoor_worker",
+              "cohort_label": "Outdoor workers",
+              "restrictive_days_before": 6695,
+              "restrictive_days_after": 4254,
+              "advisory_days_averted": 2441,
+              "advisory_days_created": 0,
+              "net_averted": 2441,
+              "reduction_pct": 36.46,
+              "mean_hai_before": 42.233,
+              "mean_hai_after": 32.216
+            }
+          ]
+        },
+        "per_city": [
+          {
+            "city": "Amaravati",
+            "n_days": 951,
+            "mean_aqi_before": 85.16,
+            "mean_aqi_after": 61.14,
+            "days_improved_band": 361,
+            "pct_days_improved_band": 37.96
+          },
+          {
+            "city": "Amritsar",
+            "n_days": 1221,
+            "mean_aqi_before": 120.52,
+            "mean_aqi_after": 86.53,
+            "days_improved_band": 606,
+            "pct_days_improved_band": 49.63
+          },
+          {
+            "city": "Bengaluru",
+            "n_days": 2009,
+            "mean_aqi_before": 97.18,
+            "mean_aqi_after": 77.0,
+            "days_improved_band": 738,
+            "pct_days_improved_band": 36.73
+          },
+          {
+            "city": "Chennai",
+            "n_days": 2009,
+            "mean_aqi_before": 116.57,
+            "mean_aqi_after": 83.27,
+            "days_improved_band": 1632,
+            "pct_days_improved_band": 81.23
+          },
+          {
+            "city": "Delhi",
+            "n_days": 2009,
+            "mean_aqi_before": 237.29,
+            "mean_aqi_after": 183.67,
+            "days_improved_band": 1056,
+            "pct_days_improved_band": 52.56
+          },
+          {
+            "city": "Gurugram",
+            "n_days": 1679,
+            "mean_aqi_before": 236.39,
+            "mean_aqi_after": 178.85,
+            "days_improved_band": 805,
+            "pct_days_improved_band": 47.95
+          },
+          {
+            "city": "Hyderabad",
+            "n_days": 2006,
+            "mean_aqi_before": 101.3,
+            "mean_aqi_after": 72.75,
+            "days_improved_band": 844,
+            "pct_days_improved_band": 42.07
+          },
+          {
+            "city": "Jaipur",
+            "n_days": 1114,
+            "mean_aqi_before": 123.6,
+            "mean_aqi_after": 88.94,
+            "days_improved_band": 543,
+            "pct_days_improved_band": 48.74
+          },
+          {
+            "city": "Kolkata",
+            "n_days": 814,
+            "mean_aqi_before": 129.81,
+            "mean_aqi_after": 96.21,
+            "days_improved_band": 348,
+            "pct_days_improved_band": 42.75
+          },
+          {
+            "city": "Lucknow",
+            "n_days": 2009,
+            "mean_aqi_before": 220.48,
+            "mean_aqi_after": 169.32,
+            "days_improved_band": 1421,
+            "pct_days_improved_band": 70.73
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "n_days": 1112,
+            "mean_aqi_before": 63.01,
+            "mean_aqi_after": 53.32,
+            "days_improved_band": 207,
+            "pct_days_improved_band": 18.62
+          },
+          {
+            "city": "Visakhapatnam",
+            "n_days": 1462,
+            "mean_aqi_before": 109.89,
+            "mean_aqi_after": 78.61,
+            "days_improved_band": 827,
+            "pct_days_improved_band": 56.57
+          }
+        ]
+      }
+    },
+    {
+      "name": "NO2 reduced by 30%",
+      "reductions": {
+        "NO2": 0.3
+      },
+      "context": "Traffic demand management and tightened in-use vehicle emission testing.",
+      "result": {
+        "reductions": {
+          "NO2": 0.3
+        },
+        "n_city_days": 18395,
+        "aqi": {
+          "mean_before": 144.14,
+          "mean_after": 144.05,
+          "mean_change": -0.08,
+          "mean_change_pct": -0.06,
+          "median_before": 104.96,
+          "median_after": 104.96
+        },
+        "band_migration": {
+          "days_improved": 33,
+          "days_unchanged": 18362,
+          "days_worsened": 0,
+          "pct_improved": 0.18
+        },
+        "unsafe_days": {
+          "definition": "AQI bucket in ['Poor', 'Very Poor', 'Severe']",
+          "before": 3880,
+          "after": 3878,
+          "removed": 2,
+          "reduction_pct": 0.05
+        },
+        "cohort_advisory_days": {
+          "definition": "HAI band in ['High', 'Very High', 'Extreme']",
+          "total_averted_across_cohorts": 243,
+          "per_cohort": [
+            {
+              "cohort": "healthy_adult",
+              "cohort_label": "Healthy adult",
+              "restrictive_days_before": 4230,
+              "restrictive_days_after": 4193,
+              "advisory_days_averted": 37,
+              "advisory_days_created": 0,
+              "net_averted": 37,
+              "reduction_pct": 0.87,
+              "mean_hai_before": 31.056,
+              "mean_hai_after": 30.934
+            },
+            {
+              "cohort": "children",
+              "cohort_label": "Children (under 14)",
+              "restrictive_days_before": 6098,
+              "restrictive_days_after": 6060,
+              "advisory_days_averted": 38,
+              "advisory_days_created": 0,
+              "net_averted": 38,
+              "reduction_pct": 0.62,
+              "mean_hai_before": 39.529,
+              "mean_hai_after": 39.319
+            },
+            {
+              "cohort": "elderly_60plus",
+              "cohort_label": "Elderly (60+)",
+              "restrictive_days_before": 6791,
+              "restrictive_days_after": 6764,
+              "advisory_days_averted": 27,
+              "advisory_days_created": 0,
+              "net_averted": 27,
+              "reduction_pct": 0.4,
+              "mean_hai_before": 42.952,
+              "mean_hai_after": 42.836
+            },
+            {
+              "cohort": "asthma_copd",
+              "cohort_label": "Asthma / COPD",
+              "restrictive_days_before": 6337,
+              "restrictive_days_after": 6293,
+              "advisory_days_averted": 44,
+              "advisory_days_created": 0,
+              "net_averted": 44,
+              "reduction_pct": 0.69,
+              "mean_hai_before": 40.895,
+              "mean_hai_after": 40.685
+            },
+            {
+              "cohort": "cardiac",
+              "cohort_label": "Cardiac patients",
+              "restrictive_days_before": 7199,
+              "restrictive_days_after": 7169,
+              "advisory_days_averted": 30,
+              "advisory_days_created": 0,
+              "net_averted": 30,
+              "reduction_pct": 0.42,
+              "mean_hai_before": 44.691,
+              "mean_hai_after": 44.581
+            },
+            {
+              "cohort": "pregnant",
+              "cohort_label": "Pregnant women",
+              "restrictive_days_before": 6566,
+              "restrictive_days_after": 6531,
+              "advisory_days_averted": 35,
+              "advisory_days_created": 0,
+              "net_averted": 35,
+              "reduction_pct": 0.53,
+              "mean_hai_before": 41.77,
+              "mean_hai_after": 41.625
+            },
+            {
+              "cohort": "outdoor_worker",
+              "cohort_label": "Outdoor workers",
+              "restrictive_days_before": 6695,
+              "restrictive_days_after": 6663,
+              "advisory_days_averted": 32,
+              "advisory_days_created": 0,
+              "net_averted": 32,
+              "reduction_pct": 0.48,
+              "mean_hai_before": 42.233,
+              "mean_hai_after": 42.102
+            }
+          ]
+        },
+        "per_city": [
+          {
+            "city": "Amaravati",
+            "n_days": 951,
+            "mean_aqi_before": 85.16,
+            "mean_aqi_after": 85.06,
+            "days_improved_band": 2,
+            "pct_days_improved_band": 0.21
+          },
+          {
+            "city": "Amritsar",
+            "n_days": 1221,
+            "mean_aqi_before": 120.52,
+            "mean_aqi_after": 120.4,
+            "days_improved_band": 0,
+            "pct_days_improved_band": 0.0
+          },
+          {
+            "city": "Bengaluru",
+            "n_days": 2009,
+            "mean_aqi_before": 97.18,
+            "mean_aqi_after": 97.11,
+            "days_improved_band": 2,
+            "pct_days_improved_band": 0.1
+          },
+          {
+            "city": "Chennai",
+            "n_days": 2009,
+            "mean_aqi_before": 116.57,
+            "mean_aqi_after": 116.56,
+            "days_improved_band": 0,
+            "pct_days_improved_band": 0.0
+          },
+          {
+            "city": "Delhi",
+            "n_days": 2009,
+            "mean_aqi_before": 237.29,
+            "mean_aqi_after": 237.27,
+            "days_improved_band": 1,
+            "pct_days_improved_band": 0.05
+          },
+          {
+            "city": "Gurugram",
+            "n_days": 1679,
+            "mean_aqi_before": 236.39,
+            "mean_aqi_after": 236.31,
+            "days_improved_band": 3,
+            "pct_days_improved_band": 0.18
+          },
+          {
+            "city": "Hyderabad",
+            "n_days": 2006,
+            "mean_aqi_before": 101.3,
+            "mean_aqi_after": 101.05,
+            "days_improved_band": 13,
+            "pct_days_improved_band": 0.65
+          },
+          {
+            "city": "Jaipur",
+            "n_days": 1114,
+            "mean_aqi_before": 123.6,
+            "mean_aqi_after": 123.6,
+            "days_improved_band": 0,
+            "pct_days_improved_band": 0.0
+          },
+          {
+            "city": "Kolkata",
+            "n_days": 814,
+            "mean_aqi_before": 129.81,
+            "mean_aqi_after": 129.52,
+            "days_improved_band": 8,
+            "pct_days_improved_band": 0.98
+          },
+          {
+            "city": "Lucknow",
+            "n_days": 2009,
+            "mean_aqi_before": 220.48,
+            "mean_aqi_after": 220.47,
+            "days_improved_band": 0,
+            "pct_days_improved_band": 0.0
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "n_days": 1112,
+            "mean_aqi_before": 63.01,
+            "mean_aqi_after": 63.01,
+            "days_improved_band": 0,
+            "pct_days_improved_band": 0.0
+          },
+          {
+            "city": "Visakhapatnam",
+            "n_days": 1462,
+            "mean_aqi_before": 109.89,
+            "mean_aqi_after": 109.75,
+            "days_improved_band": 4,
+            "pct_days_improved_band": 0.27
+          }
+        ]
+      }
+    },
+    {
+      "name": "All pollutants reduced by 20%",
+      "reductions": {
+        "PM2.5": 0.2,
+        "PM10": 0.2,
+        "NO2": 0.2,
+        "SO2": 0.2,
+        "CO": 0.2,
+        "O3": 0.2
+      },
+      "context": "A broad economy-wide reduction, comparable in breadth to the 2020 lockdown though far smaller in depth.",
+      "result": {
+        "reductions": {
+          "PM2.5": 0.2,
+          "PM10": 0.2,
+          "NO2": 0.2,
+          "SO2": 0.2,
+          "CO": 0.2,
+          "O3": 0.2
+        },
+        "n_city_days": 18395,
+        "aqi": {
+          "mean_before": 144.14,
+          "mean_after": 118.43,
+          "mean_change": -25.71,
+          "mean_change_pct": -17.84,
+          "median_before": 104.96,
+          "median_after": 85.95
+        },
+        "band_migration": {
+          "days_improved": 7819,
+          "days_unchanged": 10576,
+          "days_worsened": 0,
+          "pct_improved": 42.51
+        },
+        "unsafe_days": {
+          "definition": "AQI bucket in ['Poor', 'Very Poor', 'Severe']",
+          "before": 3880,
+          "after": 2656,
+          "removed": 1224,
+          "reduction_pct": 31.55
+        },
+        "cohort_advisory_days": {
+          "definition": "HAI band in ['High', 'Very High', 'Extreme']",
+          "total_averted_across_cohorts": 13413,
+          "per_cohort": [
+            {
+              "cohort": "healthy_adult",
+              "cohort_label": "Healthy adult",
+              "restrictive_days_before": 4230,
+              "restrictive_days_after": 2915,
+              "advisory_days_averted": 1315,
+              "advisory_days_created": 0,
+              "net_averted": 1315,
+              "reduction_pct": 31.09,
+              "mean_hai_before": 31.056,
+              "mean_hai_after": 25.473
+            },
+            {
+              "cohort": "children",
+              "cohort_label": "Children (under 14)",
+              "restrictive_days_before": 6098,
+              "restrictive_days_after": 4092,
+              "advisory_days_averted": 2006,
+              "advisory_days_created": 0,
+              "net_averted": 2006,
+              "reduction_pct": 32.9,
+              "mean_hai_before": 39.529,
+              "mean_hai_after": 32.484
+            },
+            {
+              "cohort": "elderly_60plus",
+              "cohort_label": "Elderly (60+)",
+              "restrictive_days_before": 6791,
+              "restrictive_days_after": 4901,
+              "advisory_days_averted": 1890,
+              "advisory_days_created": 0,
+              "net_averted": 1890,
+              "reduction_pct": 27.83,
+              "mean_hai_before": 42.952,
+              "mean_hai_after": 35.507
+            },
+            {
+              "cohort": "asthma_copd",
+              "cohort_label": "Asthma / COPD",
+              "restrictive_days_before": 6337,
+              "restrictive_days_after": 4268,
+              "advisory_days_averted": 2069,
+              "advisory_days_created": 0,
+              "net_averted": 2069,
+              "reduction_pct": 32.65,
+              "mean_hai_before": 40.895,
+              "mean_hai_after": 33.644
+            },
+            {
+              "cohort": "cardiac",
+              "cohort_label": "Cardiac patients",
+              "restrictive_days_before": 7199,
+              "restrictive_days_after": 5009,
+              "advisory_days_averted": 2190,
+              "advisory_days_created": 0,
+              "net_averted": 2190,
+              "reduction_pct": 30.42,
+              "mean_hai_before": 44.691,
+              "mean_hai_after": 37.044
+            },
+            {
+              "cohort": "pregnant",
+              "cohort_label": "Pregnant women",
+              "restrictive_days_before": 6566,
+              "restrictive_days_after": 4466,
+              "advisory_days_averted": 2100,
+              "advisory_days_created": 0,
+              "net_averted": 2100,
+              "reduction_pct": 31.98,
+              "mean_hai_before": 41.77,
+              "mean_hai_after": 34.469
+            },
+            {
+              "cohort": "outdoor_worker",
+              "cohort_label": "Outdoor workers",
+              "restrictive_days_before": 6695,
+              "restrictive_days_after": 4852,
+              "advisory_days_averted": 1843,
+              "advisory_days_created": 0,
+              "net_averted": 1843,
+              "reduction_pct": 27.53,
+              "mean_hai_before": 42.233,
+              "mean_hai_after": 34.938
+            }
+          ]
+        },
+        "per_city": [
+          {
+            "city": "Amaravati",
+            "n_days": 951,
+            "mean_aqi_before": 85.16,
+            "mean_aqi_after": 65.74,
+            "days_improved_band": 274,
+            "pct_days_improved_band": 28.81
+          },
+          {
+            "city": "Amritsar",
+            "n_days": 1221,
+            "mean_aqi_before": 120.52,
+            "mean_aqi_after": 97.72,
+            "days_improved_band": 413,
+            "pct_days_improved_band": 33.82
+          },
+          {
+            "city": "Bengaluru",
+            "n_days": 2009,
+            "mean_aqi_before": 97.18,
+            "mean_aqi_after": 79.46,
+            "days_improved_band": 649,
+            "pct_days_improved_band": 32.3
+          },
+          {
+            "city": "Chennai",
+            "n_days": 2009,
+            "mean_aqi_before": 116.57,
+            "mean_aqi_after": 92.38,
+            "days_improved_band": 1591,
+            "pct_days_improved_band": 79.19
+          },
+          {
+            "city": "Delhi",
+            "n_days": 2009,
+            "mean_aqi_before": 237.29,
+            "mean_aqi_after": 201.57,
+            "days_improved_band": 760,
+            "pct_days_improved_band": 37.83
+          },
+          {
+            "city": "Gurugram",
+            "n_days": 1679,
+            "mean_aqi_before": 236.39,
+            "mean_aqi_after": 198.57,
+            "days_improved_band": 583,
+            "pct_days_improved_band": 34.72
+          },
+          {
+            "city": "Hyderabad",
+            "n_days": 2006,
+            "mean_aqi_before": 101.3,
+            "mean_aqi_after": 80.89,
+            "days_improved_band": 591,
+            "pct_days_improved_band": 29.46
+          },
+          {
+            "city": "Jaipur",
+            "n_days": 1114,
+            "mean_aqi_before": 123.6,
+            "mean_aqi_after": 99.5,
+            "days_improved_band": 379,
+            "pct_days_improved_band": 34.02
+          },
+          {
+            "city": "Kolkata",
+            "n_days": 814,
+            "mean_aqi_before": 129.81,
+            "mean_aqi_after": 105.07,
+            "days_improved_band": 329,
+            "pct_days_improved_band": 40.42
+          },
+          {
+            "city": "Lucknow",
+            "n_days": 2009,
+            "mean_aqi_before": 220.48,
+            "mean_aqi_after": 185.19,
+            "days_improved_band": 1228,
+            "pct_days_improved_band": 61.12
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "n_days": 1112,
+            "mean_aqi_before": 63.01,
+            "mean_aqi_after": 49.88,
+            "days_improved_band": 324,
+            "pct_days_improved_band": 29.14
+          },
+          {
+            "city": "Visakhapatnam",
+            "n_days": 1462,
+            "mean_aqi_before": 109.89,
+            "mean_aqi_after": 86.8,
+            "days_improved_band": 698,
+            "pct_days_improved_band": 47.74
+          }
+        ]
+      }
+    },
+    {
+      "name": "All pollutants reduced by 40%",
+      "reductions": {
+        "PM2.5": 0.4,
+        "PM10": 0.4,
+        "NO2": 0.4,
+        "SO2": 0.4,
+        "CO": 0.4,
+        "O3": 0.4
+      },
+      "context": "Approximately the depth of reduction observed during the 2020 national lockdown, applied to the whole record.",
+      "result": {
+        "reductions": {
+          "PM2.5": 0.4,
+          "PM10": 0.4,
+          "NO2": 0.4,
+          "SO2": 0.4,
+          "CO": 0.4,
+          "O3": 0.4
+        },
+        "n_city_days": 18395,
+        "aqi": {
+          "mean_before": 144.14,
+          "mean_after": 90.82,
+          "mean_change": -53.32,
+          "mean_change_pct": -36.99,
+          "median_before": 104.96,
+          "median_after": 64.46
+        },
+        "band_migration": {
+          "days_improved": 13108,
+          "days_unchanged": 5287,
+          "days_worsened": 0,
+          "pct_improved": 71.26
+        },
+        "unsafe_days": {
+          "definition": "AQI bucket in ['Poor', 'Very Poor', 'Severe']",
+          "before": 3880,
+          "after": 1631,
+          "removed": 2249,
+          "reduction_pct": 57.96
+        },
+        "cohort_advisory_days": {
+          "definition": "HAI band in ['High', 'Very High', 'Extreme']",
+          "total_averted_across_cohorts": 25461,
+          "per_cohort": [
+            {
+              "cohort": "healthy_adult",
+              "cohort_label": "Healthy adult",
+              "restrictive_days_before": 4230,
+              "restrictive_days_after": 1776,
+              "advisory_days_averted": 2454,
+              "advisory_days_created": 0,
+              "net_averted": 2454,
+              "reduction_pct": 58.01,
+              "mean_hai_before": 31.056,
+              "mean_hai_after": 19.504
+            },
+            {
+              "cohort": "children",
+              "cohort_label": "Children (under 14)",
+              "restrictive_days_before": 6098,
+              "restrictive_days_after": 2501,
+              "advisory_days_averted": 3597,
+              "advisory_days_created": 0,
+              "net_averted": 3597,
+              "reduction_pct": 58.99,
+              "mean_hai_before": 39.529,
+              "mean_hai_after": 24.829
+            },
+            {
+              "cohort": "elderly_60plus",
+              "cohort_label": "Elderly (60+)",
+              "restrictive_days_before": 6791,
+              "restrictive_days_after": 2863,
+              "advisory_days_averted": 3928,
+              "advisory_days_created": 0,
+              "net_averted": 3928,
+              "reduction_pct": 57.84,
+              "mean_hai_before": 42.952,
+              "mean_hai_after": 27.322
+            },
+            {
+              "cohort": "asthma_copd",
+              "cohort_label": "Asthma / COPD",
+              "restrictive_days_before": 6337,
+              "restrictive_days_after": 2589,
+              "advisory_days_averted": 3748,
+              "advisory_days_created": 0,
+              "net_averted": 3748,
+              "reduction_pct": 59.14,
+              "mean_hai_before": 40.895,
+              "mean_hai_after": 25.744
+            },
+            {
+              "cohort": "cardiac",
+              "cohort_label": "Cardiac patients",
+              "restrictive_days_before": 7199,
+              "restrictive_days_after": 3175,
+              "advisory_days_averted": 4024,
+              "advisory_days_created": 0,
+              "net_averted": 4024,
+              "reduction_pct": 55.9,
+              "mean_hai_before": 44.691,
+              "mean_hai_after": 28.672
+            },
+            {
+              "cohort": "pregnant",
+              "cohort_label": "Pregnant women",
+              "restrictive_days_before": 6566,
+              "restrictive_days_after": 2834,
+              "advisory_days_averted": 3732,
+              "advisory_days_created": 0,
+              "net_averted": 3732,
+              "reduction_pct": 56.84,
+              "mean_hai_before": 41.77,
+              "mean_hai_after": 26.458
+            },
+            {
+              "cohort": "outdoor_worker",
+              "cohort_label": "Outdoor workers",
+              "restrictive_days_before": 6695,
+              "restrictive_days_after": 2717,
+              "advisory_days_averted": 3978,
+              "advisory_days_created": 0,
+              "net_averted": 3978,
+              "reduction_pct": 59.42,
+              "mean_hai_before": 42.233,
+              "mean_hai_after": 26.916
+            }
+          ]
+        },
+        "per_city": [
+          {
+            "city": "Amaravati",
+            "n_days": 951,
+            "mean_aqi_before": 85.16,
+            "mean_aqi_after": 48.13,
+            "days_improved_band": 586,
+            "pct_days_improved_band": 61.62
+          },
+          {
+            "city": "Amritsar",
+            "n_days": 1221,
+            "mean_aqi_before": 120.52,
+            "mean_aqi_after": 73.41,
+            "days_improved_band": 895,
+            "pct_days_improved_band": 73.3
+          },
+          {
+            "city": "Bengaluru",
+            "n_days": 2009,
+            "mean_aqi_before": 97.18,
+            "mean_aqi_after": 61.27,
+            "days_improved_band": 1250,
+            "pct_days_improved_band": 62.22
+          },
+          {
+            "city": "Chennai",
+            "n_days": 2009,
+            "mean_aqi_before": 116.57,
+            "mean_aqi_after": 68.79,
+            "days_improved_band": 1866,
+            "pct_days_improved_band": 92.88
+          },
+          {
+            "city": "Delhi",
+            "n_days": 2009,
+            "mean_aqi_before": 237.29,
+            "mean_aqi_after": 159.35,
+            "days_improved_band": 1424,
+            "pct_days_improved_band": 70.88
+          },
+          {
+            "city": "Gurugram",
+            "n_days": 1679,
+            "mean_aqi_before": 236.39,
+            "mean_aqi_after": 155.52,
+            "days_improved_band": 1047,
+            "pct_days_improved_band": 62.36
+          },
+          {
+            "city": "Hyderabad",
+            "n_days": 2006,
+            "mean_aqi_before": 101.3,
+            "mean_aqi_after": 61.1,
+            "days_improved_band": 1195,
+            "pct_days_improved_band": 59.57
+          },
+          {
+            "city": "Jaipur",
+            "n_days": 1114,
+            "mean_aqi_before": 123.6,
+            "mean_aqi_after": 75.02,
+            "days_improved_band": 806,
+            "pct_days_improved_band": 72.35
+          },
+          {
+            "city": "Kolkata",
+            "n_days": 814,
+            "mean_aqi_before": 129.81,
+            "mean_aqi_after": 79.24,
+            "days_improved_band": 545,
+            "pct_days_improved_band": 66.95
+          },
+          {
+            "city": "Lucknow",
+            "n_days": 2009,
+            "mean_aqi_before": 220.48,
+            "mean_aqi_after": 142.37,
+            "days_improved_band": 1817,
+            "pct_days_improved_band": 90.44
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "n_days": 1112,
+            "mean_aqi_before": 63.01,
+            "mean_aqi_after": 37.45,
+            "days_improved_band": 571,
+            "pct_days_improved_band": 51.35
+          },
+          {
+            "city": "Visakhapatnam",
+            "n_days": 1462,
+            "mean_aqi_before": 109.89,
+            "mean_aqi_after": 64.51,
+            "days_improved_band": 1106,
+            "pct_days_improved_band": 75.65
+          }
+        ]
+      }
+    }
+  ],
+  "headline_scenario": {
+    "name": "PM2.5 and PM10 reduced by 20%",
+    "reductions": {
+      "PM2.5": 0.2,
+      "PM10": 0.2
+    },
+    "context": "Combined combustion and dust control, addressing both particulate fractions together.",
+    "result": {
+      "reductions": {
+        "PM2.5": 0.2,
+        "PM10": 0.2
+      },
+      "n_city_days": 18395,
+      "aqi": {
+        "mean_before": 144.14,
+        "mean_after": 120.33,
+        "mean_change": -23.8,
+        "mean_change_pct": -16.51,
+        "median_before": 104.96,
+        "median_after": 86.3
+      },
+      "band_migration": {
+        "days_improved": 7050,
+        "days_unchanged": 11345,
+        "days_worsened": 0,
+        "pct_improved": 38.33
+      },
+      "unsafe_days": {
+        "definition": "AQI bucket in ['Poor', 'Very Poor', 'Severe']",
+        "before": 3880,
+        "after": 2723,
+        "removed": 1157,
+        "reduction_pct": 29.82
+      },
+      "cohort_advisory_days": {
+        "definition": "HAI band in ['High', 'Very High', 'Extreme']",
+        "total_averted_across_cohorts": 12432,
+        "per_cohort": [
+          {
+            "cohort": "healthy_adult",
+            "cohort_label": "Healthy adult",
+            "restrictive_days_before": 4230,
+            "restrictive_days_after": 3011,
+            "advisory_days_averted": 1219,
+            "advisory_days_created": 0,
+            "net_averted": 1219,
+            "reduction_pct": 28.82,
+            "mean_hai_before": 31.056,
+            "mean_hai_after": 26.091
+          },
+          {
+            "cohort": "children",
+            "cohort_label": "Children (under 14)",
+            "restrictive_days_before": 6098,
+            "restrictive_days_after": 4229,
+            "advisory_days_averted": 1869,
+            "advisory_days_created": 0,
+            "net_averted": 1869,
+            "reduction_pct": 30.65,
+            "mean_hai_before": 39.529,
+            "mean_hai_after": 33.36
+          },
+          {
+            "cohort": "elderly_60plus",
+            "cohort_label": "Elderly (60+)",
+            "restrictive_days_before": 6791,
+            "restrictive_days_after": 5030,
+            "advisory_days_averted": 1761,
+            "advisory_days_created": 0,
+            "net_averted": 1761,
+            "reduction_pct": 25.93,
+            "mean_hai_before": 42.952,
+            "mean_hai_after": 36.219
+          },
+          {
+            "cohort": "asthma_copd",
+            "cohort_label": "Asthma / COPD",
+            "restrictive_days_before": 6337,
+            "restrictive_days_after": 4476,
+            "advisory_days_averted": 1861,
+            "advisory_days_created": 0,
+            "net_averted": 1861,
+            "reduction_pct": 29.37,
+            "mean_hai_before": 40.895,
+            "mean_hai_after": 34.605
+          },
+          {
+            "cohort": "cardiac",
+            "cohort_label": "Cardiac patients",
+            "restrictive_days_before": 7199,
+            "restrictive_days_after": 5149,
+            "advisory_days_averted": 2050,
+            "advisory_days_created": 0,
+            "net_averted": 2050,
+            "reduction_pct": 28.48,
+            "mean_hai_before": 44.691,
+            "mean_hai_after": 37.911
+          },
+          {
+            "cohort": "pregnant",
+            "cohort_label": "Pregnant women",
+            "restrictive_days_before": 6566,
+            "restrictive_days_after": 4580,
+            "advisory_days_averted": 1986,
+            "advisory_days_created": 0,
+            "net_averted": 1986,
+            "reduction_pct": 30.25,
+            "mean_hai_before": 41.77,
+            "mean_hai_after": 35.322
+          },
+          {
+            "cohort": "outdoor_worker",
+            "cohort_label": "Outdoor workers",
+            "restrictive_days_before": 6695,
+            "restrictive_days_after": 5009,
+            "advisory_days_averted": 1686,
+            "advisory_days_created": 0,
+            "net_averted": 1686,
+            "reduction_pct": 25.18,
+            "mean_hai_before": 42.233,
+            "mean_hai_after": 35.64
+          }
+        ]
+      },
+      "per_city": [
+        {
+          "city": "Amaravati",
+          "n_days": 951,
+          "mean_aqi_before": 85.16,
+          "mean_aqi_after": 68.21,
+          "days_improved_band": 233,
+          "pct_days_improved_band": 24.5
+        },
+        {
+          "city": "Amritsar",
+          "n_days": 1221,
+          "mean_aqi_before": 120.52,
+          "mean_aqi_after": 98.16,
+          "days_improved_band": 407,
+          "pct_days_improved_band": 33.33
+        },
+        {
+          "city": "Bengaluru",
+          "n_days": 2009,
+          "mean_aqi_before": 97.18,
+          "mean_aqi_after": 83.22,
+          "days_improved_band": 526,
+          "pct_days_improved_band": 26.18
+        },
+        {
+          "city": "Chennai",
+          "n_days": 2009,
+          "mean_aqi_before": 116.57,
+          "mean_aqi_after": 93.89,
+          "days_improved_band": 1496,
+          "pct_days_improved_band": 74.46
+        },
+        {
+          "city": "Delhi",
+          "n_days": 2009,
+          "mean_aqi_before": 237.29,
+          "mean_aqi_after": 202.77,
+          "days_improved_band": 718,
+          "pct_days_improved_band": 35.74
+        },
+        {
+          "city": "Gurugram",
+          "n_days": 1679,
+          "mean_aqi_before": 236.39,
+          "mean_aqi_after": 199.14,
+          "days_improved_band": 566,
+          "pct_days_improved_band": 33.71
+        },
+        {
+          "city": "Hyderabad",
+          "n_days": 2006,
+          "mean_aqi_before": 101.3,
+          "mean_aqi_after": 81.73,
+          "days_improved_band": 561,
+          "pct_days_improved_band": 27.97
+        },
+        {
+          "city": "Jaipur",
+          "n_days": 1114,
+          "mean_aqi_before": 123.6,
+          "mean_aqi_after": 100.35,
+          "days_improved_band": 358,
+          "pct_days_improved_band": 32.14
+        },
+        {
+          "city": "Kolkata",
+          "n_days": 814,
+          "mean_aqi_before": 129.81,
+          "mean_aqi_after": 107.31,
+          "days_improved_band": 261,
+          "pct_days_improved_band": 32.06
+        },
+        {
+          "city": "Lucknow",
+          "n_days": 2009,
+          "mean_aqi_before": 220.48,
+          "mean_aqi_after": 187.75,
+          "days_improved_band": 1112,
+          "pct_days_improved_band": 55.35
+        },
+        {
+          "city": "Thiruvananthapuram",
+          "n_days": 1112,
+          "mean_aqi_before": 63.01,
+          "mean_aqi_after": 55.63,
+          "days_improved_band": 153,
+          "pct_days_improved_band": 13.76
+        },
+        {
+          "city": "Visakhapatnam",
+          "n_days": 1462,
+          "mean_aqi_before": 109.89,
+          "mean_aqi_after": 88.31,
+          "days_improved_band": 659,
+          "pct_days_improved_band": 45.08
+        }
+      ]
+    }
+  },
+  "lockdown_anchor": {
+    "event": "2020 national lockdown, phases 1 to 4",
+    "measured_aqi_change_pct": -33.99,
+    "measured_mean_before": 123.57,
+    "measured_mean_during": 81.57,
+    "cities_with_significant_decline": 12,
+    "use": "The lockdown is the only episode in this record that delivered an abrupt, broad emission reduction, so it is the closest available empirical check on a whole-economy scenario. The simulator's 'all pollutants reduced by 40%' case is the nearest comparator."
+  }
+}

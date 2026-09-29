@@ -1,0 +1,4887 @@
+{
+  "generated_by": "src/models/train_classification.py",
+  "generated_at_utc": "2026-09-28T19:23:35Z",
+  "task": "classification",
+  "target": "AQI_Bucket_next",
+  "primary_metric": "macro_f1",
+  "primary_metric_justification": "Macro-averaged F1 is the primary classification metric, declared before any model was fitted. The six CPCB buckets are imbalanced by a factor of 6.6 between the most and least frequent class, and the rarest classes are Good and Severe. Severe is the class on which the entire public-health purpose of the system rests: failing to warn on a Severe day is the costliest error the system can make, and it is also the error that overall accuracy is least sensitive to. Macro-F1 gives every class equal weight regardless of frequency, so a model cannot score well by ignoring the rare and dangerous classes. Accuracy, weighted F1, per-class F1, balanced accuracy, Cohen's kappa and one-versus-rest ROC-AUC are all reported alongside it, together with an ordinal error that measures how many severity bands a wrong prediction lands away from the truth.",
+  "n_features": 102,
+  "features": [
+    "PM2.5_delta1",
+    "PM2.5",
+    "AQI",
+    "NO2_delta1",
+    "O3_delta1",
+    "SO2_dev_roll7",
+    "PM2.5_dev_roll7",
+    "AQI_delta1",
+    "SO2_delta1",
+    "total_pollutant_load",
+    "CO_delta1",
+    "AQI_lag7",
+    "PM2.5_roll3_std",
+    "days_since_start",
+    "NO2_roll3_std",
+    "O3_roll3_std",
+    "AQI_roll14_std",
+    "NOx",
+    "O3_dev_roll7",
+    "AQI_roll3_std",
+    "NO",
+    "NO2_dev_roll7",
+    "NH3_delta1",
+    "CO_dev_roll7",
+    "O3_roll7_std",
+    "doy_cos",
+    "SO2_roll3_std",
+    "PM2.5_lag3",
+    "SO2_lag7",
+    "CO",
+    "PM10_delta1",
+    "AQI_lag1",
+    "day_of_month",
+    "CO_lag7",
+    "AQI_dev_roll7",
+    "AQI_lag3",
+    "AQI_lag2",
+    "AQI_roll7_std",
+    "SO2_roll14_std",
+    "no2_nox_ratio",
+    "CO_roll3_std",
+    "O3_lag7",
+    "Benzene",
+    "O3",
+    "Toluene",
+    "O3_lag3",
+    "PM2.5_roll7_std",
+    "PM2.5_lag7",
+    "CO_roll7_std",
+    "HAI_healthy_adult",
+    "NH3_dev_roll7",
+    "CO_roll14_std",
+    "SO2_lag3",
+    "NO2_roll14_std",
+    "pm_ratio",
+    "AQI_roll7_mean",
+    "O3_roll14_std",
+    "PM2.5_lag2",
+    "PM10_dev_roll7",
+    "so2_pm25_ratio",
+    "NO2_lag3",
+    "SO2_lag2",
+    "PM2.5_roll14_std",
+    "NO2_roll7_std",
+    "SO2_roll7_std",
+    "o3_no2_ratio",
+    "CO_lag3",
+    "pm_coarse",
+    "NH3_roll14_std",
+    "NO2_lag7",
+    "O3_lag2",
+    "SO2",
+    "NH3_roll3_std",
+    "CO_lag2",
+    "NH3_lag7",
+    "PM2.5_roll14_mean",
+    "NH3_roll7_std",
+    "NO2_lag2",
+    "PM10_roll3_std",
+    "PM2.5_roll3_mean",
+    "PM10_lag7",
+    "day_of_week",
+    "PM10_roll14_std",
+    "NO2_roll14_mean",
+    "NH3_lag3",
+    "NH3_lag1",
+    "SO2_roll3_mean",
+    "O3_roll14_mean",
+    "PM10_lag2",
+    "CO_roll14_mean",
+    "O3_roll3_mean",
+    "PM10_lag3",
+    "PM10_roll7_std",
+    "NH3_lag2",
+    "PM10_lag1",
+    "SO2_roll7_mean",
+    "CO_roll3_mean",
+    "NH3_roll14_mean",
+    "NO2_roll3_mean",
+    "PM10_roll7_mean",
+    "City_target_enc",
+    "n_imputed_pollutants"
+  ],
+  "split": {
+    "boundary": "2019-05-26",
+    "n_train": 10331,
+    "n_test": 4397
+  },
+  "class_distribution_train": {
+    "Moderate": 4060,
+    "Satisfactory": 3104,
+    "Poor": 1330,
+    "Very Poor": 1197,
+    "Severe": 376,
+    "Good": 264
+  },
+  "class_distribution_test": {
+    "Satisfactory": 2189,
+    "Moderate": 1261,
+    "Good": 424,
+    "Poor": 313,
+    "Very Poor": 166,
+    "Severe": 44
+  },
+  "validation": "TimeSeriesSplit with 4 expanding-window folds, scored by macro-F1. SMOTE is applied inside the imbalanced-learn pipeline so that resampling occurs within each training fold only.",
+  "results": [
+    {
+      "model": "Persistence baseline (tomorrow = today)",
+      "family": "baseline",
+      "test": {
+        "accuracy": 0.7512,
+        "balanced_accuracy": 0.6798,
+        "macro_precision": 0.6807,
+        "macro_recall": 0.6798,
+        "macro_f1": 0.6803,
+        "weighted_precision": 0.7511,
+        "weighted_recall": 0.7512,
+        "weighted_f1": 0.7511,
+        "cohen_kappa": 0.6193,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.6874,
+            "recall": 0.6792,
+            "f1": 0.6833,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.8223,
+            "recall": 0.8246,
+            "f1": 0.8234,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.7188,
+            "recall": 0.7177,
+            "f1": 0.7183,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.5414,
+            "recall": 0.5431,
+            "f1": 0.5423,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.6325,
+            "recall": 0.6325,
+            "f1": 0.6325,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.6818,
+            "recall": 0.6818,
+            "f1": 0.6818,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            288,
+            134,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            129,
+            1805,
+            250,
+            5,
+            0,
+            0
+          ],
+          [
+            2,
+            253,
+            905,
+            94,
+            6,
+            1
+          ],
+          [
+            0,
+            2,
+            97,
+            170,
+            42,
+            2
+          ],
+          [
+            0,
+            0,
+            5,
+            45,
+            105,
+            11
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            13,
+            30
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.6792,
+            0.316,
+            0.0047,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0589,
+            0.8246,
+            0.1142,
+            0.0023,
+            0.0,
+            0.0
+          ],
+          [
+            0.0016,
+            0.2006,
+            0.7177,
+            0.0745,
+            0.0048,
+            0.0008
+          ],
+          [
+            0.0,
+            0.0064,
+            0.3099,
+            0.5431,
+            0.1342,
+            0.0064
+          ],
+          [
+            0.0,
+            0.0,
+            0.0301,
+            0.2711,
+            0.6325,
+            0.0663
+          ],
+          [
+            0.0,
+            0.0227,
+            0.0,
+            0.0,
+            0.2955,
+            0.6818
+          ]
+        ],
+        "n": 4397,
+        "mean_absolute_ordinal_error": 0.2554,
+        "pct_within_one_band": 99.41,
+        "pct_underestimating_severity": 12.44
+      },
+      "note": "Not a fitted model. Today's observed value is carried forward as the forecast for tomorrow. Any learned model must beat this to justify itself.",
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.7059,
+            "balanced_accuracy": 0.6986,
+            "macro_f1": 0.6989,
+            "weighted_f1": 0.7059,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.6696,
+            "balanced_accuracy": 0.4648,
+            "macro_f1": 0.4649,
+            "weighted_f1": 0.6694,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.8433,
+            "balanced_accuracy": 0.6103,
+            "macro_f1": 0.6135,
+            "weighted_f1": 0.8427,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.7736,
+            "balanced_accuracy": 0.4557,
+            "macro_f1": 0.4554,
+            "weighted_f1": 0.7739,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.6866,
+            "balanced_accuracy": 0.668,
+            "macro_f1": 0.668,
+            "weighted_f1": 0.6866,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.6899,
+            "balanced_accuracy": 0.6102,
+            "macro_f1": 0.6099,
+            "weighted_f1": 0.69,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.8657,
+            "balanced_accuracy": 0.8563,
+            "macro_f1": 0.8567,
+            "weighted_f1": 0.8657,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.8184,
+            "balanced_accuracy": 0.5181,
+            "macro_f1": 0.5181,
+            "weighted_f1": 0.8184,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.6915,
+            "balanced_accuracy": 0.6484,
+            "macro_f1": 0.6487,
+            "weighted_f1": 0.6915,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.7164,
+            "balanced_accuracy": 0.6729,
+            "macro_f1": 0.673,
+            "weighted_f1": 0.7166,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.82,
+            "balanced_accuracy": 0.467,
+            "macro_f1": 0.4689,
+            "weighted_f1": 0.8194,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.6814,
+            "balanced_accuracy": 0.4014,
+            "macro_f1": 0.4009,
+            "weighted_f1": 0.6833,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.7362,
+            "balanced_accuracy": 0.677,
+            "macro_f1": 0.6814,
+            "weighted_f1": 0.736,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.7249,
+            "balanced_accuracy": 0.7133,
+            "macro_f1": 0.6562,
+            "weighted_f1": 0.7253,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.8241,
+            "balanced_accuracy": 0.636,
+            "macro_f1": 0.637,
+            "weighted_f1": 0.8239,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.7583,
+            "balanced_accuracy": 0.4605,
+            "macro_f1": 0.4605,
+            "weighted_f1": 0.7583,
+            "n": 360
+          }
+        }
+      }
+    },
+    {
+      "model": "Logistic Regression",
+      "family": "linear",
+      "imbalance_strategy": "class_weight='balanced'",
+      "rationale": "Linear reference classifier. Establishes how much of the problem is linearly separable in the engineered feature space.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.4414,
+        "std": 0.1213,
+        "folds": [
+          0.2473,
+          0.4324,
+          0.5588,
+          0.5269
+        ],
+        "seconds": 4.43
+      },
+      "train": {
+        "accuracy": 0.7157,
+        "balanced_accuracy": 0.7564,
+        "macro_precision": 0.6421,
+        "macro_recall": 0.7564,
+        "macro_f1": 0.6698,
+        "weighted_precision": 0.7493,
+        "weighted_recall": 0.7157,
+        "weighted_f1": 0.7254,
+        "cohen_kappa": 0.6199,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.2961,
+            "recall": 0.8939,
+            "f1": 0.4449,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.7688,
+            "recall": 0.6943,
+            "f1": 0.7296,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.8296,
+            "recall": 0.7232,
+            "f1": 0.7727,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 0.579,
+            "recall": 0.6835,
+            "f1": 0.6269,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.7545,
+            "recall": 0.7034,
+            "f1": 0.7281,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 0.6245,
+            "recall": 0.8404,
+            "f1": 0.7166,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            236,
+            27,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            504,
+            2155,
+            423,
+            22,
+            0,
+            0
+          ],
+          [
+            54,
+            602,
+            2936,
+            452,
+            12,
+            4
+          ],
+          [
+            2,
+            15,
+            172,
+            909,
+            212,
+            20
+          ],
+          [
+            1,
+            4,
+            6,
+            178,
+            842,
+            166
+          ],
+          [
+            0,
+            0,
+            1,
+            9,
+            50,
+            316
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.3002,
+        "pct_within_one_band": 98.54,
+        "pct_underestimating_severity": 15.47
+      },
+      "test": {
+        "accuracy": 0.7589,
+        "balanced_accuracy": 0.7393,
+        "macro_precision": 0.7189,
+        "macro_recall": 0.7393,
+        "macro_f1": 0.7236,
+        "weighted_precision": 0.7699,
+        "weighted_recall": 0.7589,
+        "weighted_f1": 0.7586,
+        "cohen_kappa": 0.6328,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.5749,
+            "recall": 0.7335,
+            "f1": 0.6446,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.7952,
+            "recall": 0.8392,
+            "f1": 0.8166,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.8274,
+            "recall": 0.6273,
+            "f1": 0.7136,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.6308,
+            "recall": 0.7859,
+            "f1": 0.6999,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.7742,
+            "recall": 0.7229,
+            "f1": 0.7477,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.7111,
+            "recall": 0.7273,
+            "f1": 0.7191,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            311,
+            113,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            225,
+            1837,
+            124,
+            3,
+            0,
+            0
+          ],
+          [
+            5,
+            357,
+            791,
+            107,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            40,
+            246,
+            23,
+            2
+          ],
+          [
+            0,
+            0,
+            1,
+            34,
+            120,
+            11
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            11,
+            32
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.7335,
+            0.2665,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.1028,
+            0.8392,
+            0.0566,
+            0.0014,
+            0.0,
+            0.0
+          ],
+          [
+            0.004,
+            0.2831,
+            0.6273,
+            0.0849,
+            0.0008,
+            0.0
+          ],
+          [
+            0.0,
+            0.0064,
+            0.1278,
+            0.7859,
+            0.0735,
+            0.0064
+          ],
+          [
+            0.0,
+            0.0,
+            0.006,
+            0.2048,
+            0.7229,
+            0.0663
+          ],
+          [
+            0.0,
+            0.0227,
+            0.0,
+            0.0,
+            0.25,
+            0.7273
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": 0.9514,
+        "roc_auc_ovr_weighted": 0.9159,
+        "roc_auc_per_class": {
+          "Good": 0.9453,
+          "Moderate": 0.9217,
+          "Poor": 0.9715,
+          "Satisfactory": 0.8919,
+          "Severe": 0.9896,
+          "Very Poor": 0.9886
+        },
+        "mean_absolute_ordinal_error": 0.2449,
+        "pct_within_one_band": 99.66,
+        "pct_underestimating_severity": 15.37
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": -0.0538,
+        "accuracy_train_minus_test": -0.0432,
+        "overfitting_flag": false
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.7124,
+            "balanced_accuracy": 0.7285,
+            "macro_f1": 0.7252,
+            "weighted_f1": 0.712,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.6875,
+            "balanced_accuracy": 0.4401,
+            "macro_f1": 0.4577,
+            "weighted_f1": 0.6824,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.8483,
+            "balanced_accuracy": 0.6806,
+            "macro_f1": 0.6438,
+            "weighted_f1": 0.8507,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.7637,
+            "balanced_accuracy": 0.4355,
+            "macro_f1": 0.4433,
+            "weighted_f1": 0.7334,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.7413,
+            "balanced_accuracy": 0.7728,
+            "macro_f1": 0.6296,
+            "weighted_f1": 0.7493,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.708,
+            "balanced_accuracy": 0.6706,
+            "macro_f1": 0.6376,
+            "weighted_f1": 0.7136,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.8433,
+            "balanced_accuracy": 0.8502,
+            "macro_f1": 0.835,
+            "weighted_f1": 0.8449,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.8333,
+            "balanced_accuracy": 0.4811,
+            "macro_f1": 0.3823,
+            "weighted_f1": 0.8399,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.7164,
+            "balanced_accuracy": 0.7854,
+            "macro_f1": 0.7726,
+            "weighted_f1": 0.7113,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.7363,
+            "balanced_accuracy": 0.6828,
+            "macro_f1": 0.5748,
+            "weighted_f1": 0.7319,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.7714,
+            "balanced_accuracy": 0.393,
+            "macro_f1": 0.3644,
+            "weighted_f1": 0.7658,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.6863,
+            "balanced_accuracy": 0.5279,
+            "macro_f1": 0.4854,
+            "weighted_f1": 0.6839,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.749,
+            "balanced_accuracy": 0.7356,
+            "macro_f1": 0.7171,
+            "weighted_f1": 0.7506,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.7735,
+            "balanced_accuracy": 0.7367,
+            "macro_f1": 0.7438,
+            "weighted_f1": 0.7684,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.8036,
+            "balanced_accuracy": 0.632,
+            "macro_f1": 0.6388,
+            "weighted_f1": 0.7995,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.6889,
+            "balanced_accuracy": 0.6182,
+            "macro_f1": 0.497,
+            "weighted_f1": 0.686,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 1.85,
+      "artifact": "models\\classification_logistic_regression.joblib"
+    },
+    {
+      "model": "Decision Tree",
+      "family": "tree",
+      "imbalance_strategy": "class_weight='balanced'",
+      "rationale": "A single interpretable tree. Its decision path can be read directly, which is valuable for a health advisory, and the gap to the ensembles quantifies the variance a single tree suffers.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.5121,
+        "std": 0.1229,
+        "folds": [
+          0.3317,
+          0.4704,
+          0.6499,
+          0.5965
+        ],
+        "seconds": 3.87
+      },
+      "train": {
+        "accuracy": 0.7605,
+        "balanced_accuracy": 0.8155,
+        "macro_precision": 0.6795,
+        "macro_recall": 0.8155,
+        "macro_f1": 0.7157,
+        "weighted_precision": 0.7962,
+        "weighted_recall": 0.7605,
+        "weighted_f1": 0.7689,
+        "cohen_kappa": 0.6812,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.3674,
+            "recall": 0.9811,
+            "f1": 0.5346,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.8302,
+            "recall": 0.7658,
+            "f1": 0.7967,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.8796,
+            "recall": 0.7286,
+            "f1": 0.797,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 0.6046,
+            "recall": 0.7887,
+            "f1": 0.6845,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.7944,
+            "recall": 0.7327,
+            "f1": 0.7623,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 0.6007,
+            "recall": 0.8963,
+            "f1": 0.7193,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            259,
+            4,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            355,
+            2377,
+            329,
+            36,
+            0,
+            7
+          ],
+          [
+            76,
+            469,
+            2958,
+            500,
+            40,
+            17
+          ],
+          [
+            12,
+            11,
+            66,
+            1049,
+            160,
+            32
+          ],
+          [
+            2,
+            2,
+            10,
+            138,
+            877,
+            168
+          ],
+          [
+            1,
+            0,
+            0,
+            11,
+            27,
+            337
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.2696,
+        "pct_within_one_band": 97.5,
+        "pct_underestimating_severity": 11.42
+      },
+      "test": {
+        "accuracy": 0.7118,
+        "balanced_accuracy": 0.733,
+        "macro_precision": 0.6289,
+        "macro_recall": 0.733,
+        "macro_f1": 0.6647,
+        "weighted_precision": 0.7438,
+        "weighted_recall": 0.7118,
+        "weighted_f1": 0.7195,
+        "cohen_kappa": 0.5803,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.4647,
+            "recall": 0.8066,
+            "f1": 0.5897,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.8276,
+            "recall": 0.73,
+            "f1": 0.7757,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.769,
+            "recall": 0.6574,
+            "f1": 0.7088,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.5194,
+            "recall": 0.6837,
+            "f1": 0.5903,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.6337,
+            "recall": 0.6566,
+            "f1": 0.645,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.5588,
+            "recall": 0.8636,
+            "f1": 0.6786,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            342,
+            82,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            379,
+            1598,
+            202,
+            10,
+            0,
+            0
+          ],
+          [
+            15,
+            250,
+            829,
+            161,
+            6,
+            0
+          ],
+          [
+            0,
+            1,
+            44,
+            214,
+            52,
+            2
+          ],
+          [
+            0,
+            0,
+            2,
+            27,
+            109,
+            28
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            5,
+            38
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.8066,
+            0.1934,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.1731,
+            0.73,
+            0.0923,
+            0.0046,
+            0.0,
+            0.0
+          ],
+          [
+            0.0119,
+            0.1983,
+            0.6574,
+            0.1277,
+            0.0048,
+            0.0
+          ],
+          [
+            0.0,
+            0.0032,
+            0.1406,
+            0.6837,
+            0.1661,
+            0.0064
+          ],
+          [
+            0.0,
+            0.0,
+            0.012,
+            0.1627,
+            0.6566,
+            0.1687
+          ],
+          [
+            0.0,
+            0.0,
+            0.0227,
+            0.0,
+            0.1136,
+            0.8636
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": 0.9212,
+        "roc_auc_ovr_weighted": 0.8912,
+        "roc_auc_per_class": {
+          "Good": 0.8947,
+          "Moderate": 0.9,
+          "Poor": 0.9277,
+          "Satisfactory": 0.8735,
+          "Severe": 0.974,
+          "Very Poor": 0.9575
+        },
+        "mean_absolute_ordinal_error": 0.2968,
+        "pct_within_one_band": 99.16,
+        "pct_underestimating_severity": 16.47
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": 0.051,
+        "accuracy_train_minus_test": 0.0487,
+        "overfitting_flag": false
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.6471,
+            "balanced_accuracy": 0.6735,
+            "macro_f1": 0.4955,
+            "weighted_f1": 0.6508,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.6339,
+            "balanced_accuracy": 0.5044,
+            "macro_f1": 0.4711,
+            "weighted_f1": 0.6499,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.8234,
+            "balanced_accuracy": 0.679,
+            "macro_f1": 0.4632,
+            "weighted_f1": 0.8378,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.6791,
+            "balanced_accuracy": 0.4472,
+            "macro_f1": 0.3583,
+            "weighted_f1": 0.6882,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.704,
+            "balanced_accuracy": 0.7385,
+            "macro_f1": 0.5848,
+            "weighted_f1": 0.7083,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.7003,
+            "balanced_accuracy": 0.7384,
+            "macro_f1": 0.6661,
+            "weighted_f1": 0.7055,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.7935,
+            "balanced_accuracy": 0.8336,
+            "macro_f1": 0.5977,
+            "weighted_f1": 0.8068,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.801,
+            "balanced_accuracy": 0.5648,
+            "macro_f1": 0.5003,
+            "weighted_f1": 0.8122,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.6642,
+            "balanced_accuracy": 0.6447,
+            "macro_f1": 0.4777,
+            "weighted_f1": 0.6681,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.6915,
+            "balanced_accuracy": 0.6734,
+            "macro_f1": 0.5122,
+            "weighted_f1": 0.693,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.6686,
+            "balanced_accuracy": 0.4073,
+            "macro_f1": 0.3582,
+            "weighted_f1": 0.6886,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.6912,
+            "balanced_accuracy": 0.5251,
+            "macro_f1": 0.451,
+            "weighted_f1": 0.7031,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.7079,
+            "balanced_accuracy": 0.7272,
+            "macro_f1": 0.6708,
+            "weighted_f1": 0.7142,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.7271,
+            "balanced_accuracy": 0.7719,
+            "macro_f1": 0.6241,
+            "weighted_f1": 0.7337,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.7189,
+            "balanced_accuracy": 0.6986,
+            "macro_f1": 0.5937,
+            "weighted_f1": 0.7404,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.6833,
+            "balanced_accuracy": 0.6238,
+            "macro_f1": 0.4638,
+            "weighted_f1": 0.6847,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 2.02,
+      "artifact": "models\\classification_decision_tree.joblib"
+    },
+    {
+      "model": "Random Forest",
+      "family": "bagged trees",
+      "imbalance_strategy": "class_weight='balanced_subsample'",
+      "rationale": "Bagging reduces the variance of the single tree while keeping non-linearity.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.5472,
+        "std": 0.1349,
+        "folds": [
+          0.3439,
+          0.5187,
+          0.7064,
+          0.6199
+        ],
+        "seconds": 19.61
+      },
+      "train": {
+        "accuracy": 0.9941,
+        "balanced_accuracy": 0.9967,
+        "macro_precision": 0.9922,
+        "macro_recall": 0.9967,
+        "macro_f1": 0.9944,
+        "weighted_precision": 0.9941,
+        "weighted_recall": 0.9941,
+        "weighted_f1": 0.9941,
+        "cohen_kappa": 0.9918,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.9925,
+            "recall": 1.0,
+            "f1": 0.9962,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.9939,
+            "recall": 0.9971,
+            "f1": 0.9955,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.9983,
+            "recall": 0.9892,
+            "f1": 0.9937,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 0.9866,
+            "recall": 0.9962,
+            "f1": 0.9914,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.99,
+            "recall": 0.9975,
+            "f1": 0.9938,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 0.9921,
+            "recall": 1.0,
+            "f1": 0.996,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            264,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            3095,
+            7,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            19,
+            4016,
+            17,
+            7,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1325,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1194,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            376
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.0068,
+        "pct_within_one_band": 99.91,
+        "pct_underestimating_severity": 0.2
+      },
+      "test": {
+        "accuracy": 0.7789,
+        "balanced_accuracy": 0.704,
+        "macro_precision": 0.7618,
+        "macro_recall": 0.704,
+        "macro_f1": 0.7184,
+        "weighted_precision": 0.7787,
+        "weighted_recall": 0.7789,
+        "weighted_f1": 0.7695,
+        "cohen_kappa": 0.6504,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.7853,
+            "recall": 0.3538,
+            "f1": 0.4878,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.7935,
+            "recall": 0.8867,
+            "f1": 0.8375,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.7809,
+            "recall": 0.7573,
+            "f1": 0.7689,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.6825,
+            "recall": 0.6869,
+            "f1": 0.6847,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.7238,
+            "recall": 0.7892,
+            "f1": 0.755,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.8049,
+            "recall": 0.75,
+            "f1": 0.7765,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            150,
+            273,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            41,
+            1941,
+            207,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            230,
+            955,
+            75,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            58,
+            215,
+            39,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            25,
+            131,
+            8
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            10,
+            33
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.3538,
+            0.6439,
+            0.0024,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0187,
+            0.8867,
+            0.0946,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.1824,
+            0.7573,
+            0.0595,
+            0.0008,
+            0.0
+          ],
+          [
+            0.0,
+            0.0032,
+            0.1853,
+            0.6869,
+            0.1246,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.012,
+            0.1506,
+            0.7892,
+            0.0482
+          ],
+          [
+            0.0,
+            0.0227,
+            0.0,
+            0.0,
+            0.2273,
+            0.75
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": 0.9602,
+        "roc_auc_ovr_weighted": 0.9304,
+        "roc_auc_per_class": {
+          "Good": 0.9619,
+          "Moderate": 0.93,
+          "Poor": 0.9705,
+          "Satisfactory": 0.9129,
+          "Severe": 0.9959,
+          "Very Poor": 0.9897
+        },
+        "mean_absolute_ordinal_error": 0.2229,
+        "pct_within_one_band": 99.86,
+        "pct_underestimating_severity": 8.37
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": 0.276,
+        "accuracy_train_minus_test": 0.2152,
+        "overfitting_flag": true
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.5784,
+            "balanced_accuracy": 0.5874,
+            "macro_f1": 0.4887,
+            "weighted_f1": 0.4635,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.4652,
+            "macro_f1": 0.4952,
+            "weighted_f1": 0.7331,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.8706,
+            "balanced_accuracy": 0.6485,
+            "macro_f1": 0.6512,
+            "weighted_f1": 0.8695,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.7537,
+            "balanced_accuracy": 0.3657,
+            "macro_f1": 0.3816,
+            "weighted_f1": 0.7249,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.7612,
+            "balanced_accuracy": 0.7733,
+            "macro_f1": 0.7562,
+            "weighted_f1": 0.7627,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.7597,
+            "balanced_accuracy": 0.6373,
+            "macro_f1": 0.6361,
+            "weighted_f1": 0.7524,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.8856,
+            "balanced_accuracy": 0.8543,
+            "macro_f1": 0.8697,
+            "weighted_f1": 0.8838,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.8632,
+            "balanced_accuracy": 0.5908,
+            "macro_f1": 0.5909,
+            "weighted_f1": 0.8617,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.704,
+            "balanced_accuracy": 0.7533,
+            "macro_f1": 0.6608,
+            "weighted_f1": 0.7017,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.801,
+            "balanced_accuracy": 0.7189,
+            "macro_f1": 0.7315,
+            "weighted_f1": 0.7998,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.8143,
+            "balanced_accuracy": 0.3987,
+            "macro_f1": 0.4262,
+            "weighted_f1": 0.7933,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.7353,
+            "balanced_accuracy": 0.361,
+            "macro_f1": 0.3709,
+            "weighted_f1": 0.7129,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.7804,
+            "balanced_accuracy": 0.7081,
+            "macro_f1": 0.73,
+            "weighted_f1": 0.7718,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.7702,
+            "balanced_accuracy": 0.6809,
+            "macro_f1": 0.6085,
+            "weighted_f1": 0.7618,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.81,
+            "balanced_accuracy": 0.565,
+            "macro_f1": 0.6089,
+            "weighted_f1": 0.787,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.725,
+            "balanced_accuracy": 0.4221,
+            "macro_f1": 0.4319,
+            "weighted_f1": 0.7191,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 9.53,
+      "artifact": "models\\classification_random_forest.joblib"
+    },
+    {
+      "model": "SVM (RBF)",
+      "family": "kernel",
+      "imbalance_strategy": "class_weight='balanced'",
+      "rationale": "A non-linear kernel boundary, included because the pairwise structure in the exploratory analysis showed curved class boundaries that a linear model cannot express.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.4593,
+        "std": 0.1615,
+        "folds": [
+          0.2007,
+          0.4451,
+          0.5954,
+          0.5959
+        ],
+        "seconds": 18.79
+      },
+      "train": {
+        "accuracy": 0.9017,
+        "balanced_accuracy": 0.9476,
+        "macro_precision": 0.8856,
+        "macro_recall": 0.9476,
+        "macro_f1": 0.9099,
+        "weighted_precision": 0.9071,
+        "weighted_recall": 0.9017,
+        "weighted_f1": 0.9023,
+        "cohen_kappa": 0.8658,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.6542,
+            "recall": 0.9962,
+            "f1": 0.7898,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.8634,
+            "recall": 0.8921,
+            "f1": 0.8775,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.9362,
+            "recall": 0.849,
+            "f1": 0.8905,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 0.8689,
+            "recall": 0.9617,
+            "f1": 0.9129,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.9908,
+            "recall": 0.9866,
+            "f1": 0.9887,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            263,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            136,
+            2769,
+            195,
+            4,
+            0,
+            0
+          ],
+          [
+            3,
+            434,
+            3447,
+            175,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            38,
+            1279,
+            10,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            14,
+            1181,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            376
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.0996,
+        "pct_within_one_band": 99.87,
+        "pct_underestimating_severity": 6.1
+      },
+      "test": {
+        "accuracy": 0.7196,
+        "balanced_accuracy": 0.6487,
+        "macro_precision": 0.6448,
+        "macro_recall": 0.6487,
+        "macro_f1": 0.6359,
+        "weighted_precision": 0.7405,
+        "weighted_recall": 0.7196,
+        "weighted_f1": 0.7244,
+        "cohen_kappa": 0.5862,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.4915,
+            "recall": 0.8184,
+            "f1": 0.6142,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.8282,
+            "recall": 0.7355,
+            "f1": 0.7791,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.7292,
+            "recall": 0.709,
+            "f1": 0.7189,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.5736,
+            "recall": 0.6102,
+            "f1": 0.5913,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.6604,
+            "recall": 0.6325,
+            "f1": 0.6462,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.5862,
+            "recall": 0.3864,
+            "f1": 0.4658,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            347,
+            73,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            351,
+            1610,
+            227,
+            0,
+            0,
+            1
+          ],
+          [
+            8,
+            260,
+            894,
+            96,
+            1,
+            2
+          ],
+          [
+            0,
+            1,
+            90,
+            191,
+            28,
+            3
+          ],
+          [
+            0,
+            0,
+            10,
+            45,
+            105,
+            6
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            25,
+            17
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.8184,
+            0.1722,
+            0.0094,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.1603,
+            0.7355,
+            0.1037,
+            0.0,
+            0.0,
+            0.0005
+          ],
+          [
+            0.0063,
+            0.2062,
+            0.709,
+            0.0761,
+            0.0008,
+            0.0016
+          ],
+          [
+            0.0,
+            0.0032,
+            0.2875,
+            0.6102,
+            0.0895,
+            0.0096
+          ],
+          [
+            0.0,
+            0.0,
+            0.0602,
+            0.2711,
+            0.6325,
+            0.0361
+          ],
+          [
+            0.0,
+            0.0,
+            0.0227,
+            0.0227,
+            0.5682,
+            0.3864
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": null,
+        "roc_auc_note": "not computable: Target scores need to be probabilities for multiclass roc_auc, i.e. they should sum up to 1.0 over classes",
+        "mean_absolute_ordinal_error": 0.2888,
+        "pct_within_one_band": 99.27,
+        "pct_underestimating_severity": 18.01
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": 0.274,
+        "accuracy_train_minus_test": 0.1821,
+        "overfitting_flag": true
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.6895,
+            "balanced_accuracy": 0.7353,
+            "macro_f1": 0.7069,
+            "weighted_f1": 0.6866,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.6548,
+            "balanced_accuracy": 0.4633,
+            "macro_f1": 0.4626,
+            "weighted_f1": 0.6562,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.7811,
+            "balanced_accuracy": 0.7885,
+            "macro_f1": 0.6221,
+            "weighted_f1": 0.8099,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.699,
+            "balanced_accuracy": 0.4075,
+            "macro_f1": 0.3185,
+            "weighted_f1": 0.7002,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.7338,
+            "balanced_accuracy": 0.7133,
+            "macro_f1": 0.5895,
+            "weighted_f1": 0.7368,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.6382,
+            "balanced_accuracy": 0.5507,
+            "macro_f1": 0.5341,
+            "weighted_f1": 0.6368,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.7985,
+            "balanced_accuracy": 0.853,
+            "macro_f1": 0.802,
+            "weighted_f1": 0.8056,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.8308,
+            "balanced_accuracy": 0.6051,
+            "macro_f1": 0.4225,
+            "weighted_f1": 0.8429,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.607,
+            "balanced_accuracy": 0.4816,
+            "macro_f1": 0.4741,
+            "weighted_f1": 0.6045,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.7562,
+            "balanced_accuracy": 0.5984,
+            "macro_f1": 0.5872,
+            "weighted_f1": 0.7509,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.72,
+            "balanced_accuracy": 0.4534,
+            "macro_f1": 0.4125,
+            "weighted_f1": 0.7348,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.6912,
+            "balanced_accuracy": 0.442,
+            "macro_f1": 0.4065,
+            "weighted_f1": 0.699,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.7117,
+            "balanced_accuracy": 0.6341,
+            "macro_f1": 0.6309,
+            "weighted_f1": 0.7159,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.74,
+            "balanced_accuracy": 0.668,
+            "macro_f1": 0.656,
+            "weighted_f1": 0.7415,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.7484,
+            "balanced_accuracy": 0.671,
+            "macro_f1": 0.4993,
+            "weighted_f1": 0.7605,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.6556,
+            "balanced_accuracy": 0.4162,
+            "macro_f1": 0.4014,
+            "weighted_f1": 0.6497,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 10.45,
+      "artifact": "models\\classification_svm_rbf.joblib"
+    },
+    {
+      "model": "XGBoost",
+      "family": "gradient boosting",
+      "imbalance_strategy": "none (compared against a SMOTE variant below)",
+      "rationale": "Gradient boosting, the strongest default family for tabular classification.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.5545,
+        "std": 0.1405,
+        "folds": [
+          0.3572,
+          0.4916,
+          0.718,
+          0.6511
+        ],
+        "seconds": 178.21
+      },
+      "train": {
+        "accuracy": 0.9987,
+        "balanced_accuracy": 0.9992,
+        "macro_precision": 0.9994,
+        "macro_recall": 0.9992,
+        "macro_f1": 0.9993,
+        "weighted_precision": 0.9987,
+        "weighted_recall": 0.9987,
+        "weighted_f1": 0.9987,
+        "cohen_kappa": 0.9983,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.9977,
+            "recall": 0.9987,
+            "f1": 0.9982,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.9985,
+            "recall": 0.9983,
+            "f1": 0.9984,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 1.0,
+            "recall": 0.9985,
+            "f1": 0.9992,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            264,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3100,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            7,
+            4053,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            1328,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1197,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            376
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.0013,
+        "pct_within_one_band": 100.0,
+        "pct_underestimating_severity": 0.09
+      },
+      "test": {
+        "accuracy": 0.7846,
+        "balanced_accuracy": 0.7075,
+        "macro_precision": 0.7777,
+        "macro_recall": 0.7075,
+        "macro_f1": 0.7342,
+        "weighted_precision": 0.7844,
+        "weighted_recall": 0.7846,
+        "weighted_f1": 0.7809,
+        "cohen_kappa": 0.6643,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.7845,
+            "recall": 0.5236,
+            "f1": 0.628,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.8227,
+            "recall": 0.8561,
+            "f1": 0.839,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.7404,
+            "recall": 0.7962,
+            "f1": 0.7673,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.7088,
+            "recall": 0.5911,
+            "f1": 0.6446,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.7312,
+            "recall": 0.8193,
+            "f1": 0.7727,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.8788,
+            "recall": 0.6591,
+            "f1": 0.7532,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            222,
+            201,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            60,
+            1874,
+            255,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            202,
+            1004,
+            52,
+            2,
+            0
+          ],
+          [
+            0,
+            1,
+            92,
+            185,
+            34,
+            1
+          ],
+          [
+            0,
+            0,
+            3,
+            24,
+            136,
+            3
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            14,
+            29
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.5236,
+            0.4741,
+            0.0024,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0274,
+            0.8561,
+            0.1165,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0008,
+            0.1602,
+            0.7962,
+            0.0412,
+            0.0016,
+            0.0
+          ],
+          [
+            0.0,
+            0.0032,
+            0.2939,
+            0.5911,
+            0.1086,
+            0.0032
+          ],
+          [
+            0.0,
+            0.0,
+            0.0181,
+            0.1446,
+            0.8193,
+            0.0181
+          ],
+          [
+            0.0,
+            0.0,
+            0.0227,
+            0.0,
+            0.3182,
+            0.6591
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": 0.9615,
+        "roc_auc_ovr_weighted": 0.9314,
+        "roc_auc_per_class": {
+          "Good": 0.9665,
+          "Moderate": 0.9303,
+          "Poor": 0.9718,
+          "Satisfactory": 0.9137,
+          "Severe": 0.9964,
+          "Very Poor": 0.9906
+        },
+        "mean_absolute_ordinal_error": 0.2179,
+        "pct_within_one_band": 99.77,
+        "pct_underestimating_severity": 9.05
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": 0.2651,
+        "accuracy_train_minus_test": 0.2141,
+        "overfitting_flag": true
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.6667,
+            "balanced_accuracy": 0.6772,
+            "macro_f1": 0.6517,
+            "weighted_f1": 0.6367,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.7381,
+            "balanced_accuracy": 0.4448,
+            "macro_f1": 0.4799,
+            "weighted_f1": 0.728,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.8483,
+            "balanced_accuracy": 0.6589,
+            "macro_f1": 0.6378,
+            "weighted_f1": 0.8522,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.7488,
+            "balanced_accuracy": 0.2684,
+            "macro_f1": 0.2666,
+            "weighted_f1": 0.7226,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.7761,
+            "balanced_accuracy": 0.7766,
+            "macro_f1": 0.7757,
+            "weighted_f1": 0.7768,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.7649,
+            "balanced_accuracy": 0.6366,
+            "macro_f1": 0.648,
+            "weighted_f1": 0.7587,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.9005,
+            "balanced_accuracy": 0.8931,
+            "macro_f1": 0.8928,
+            "weighted_f1": 0.9004,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.8607,
+            "balanced_accuracy": 0.4906,
+            "macro_f1": 0.4813,
+            "weighted_f1": 0.8582,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.7114,
+            "balanced_accuracy": 0.7567,
+            "macro_f1": 0.664,
+            "weighted_f1": 0.7118,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.7811,
+            "balanced_accuracy": 0.6626,
+            "macro_f1": 0.6852,
+            "weighted_f1": 0.7763,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.8114,
+            "balanced_accuracy": 0.4602,
+            "macro_f1": 0.462,
+            "weighted_f1": 0.8056,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.7647,
+            "balanced_accuracy": 0.4214,
+            "macro_f1": 0.4416,
+            "weighted_f1": 0.7604,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.7786,
+            "balanced_accuracy": 0.7037,
+            "macro_f1": 0.7354,
+            "weighted_f1": 0.7756,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.7702,
+            "balanced_accuracy": 0.7161,
+            "macro_f1": 0.6777,
+            "weighted_f1": 0.7665,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.8421,
+            "balanced_accuracy": 0.6384,
+            "macro_f1": 0.6969,
+            "weighted_f1": 0.8343,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.7361,
+            "balanced_accuracy": 0.4335,
+            "macro_f1": 0.4412,
+            "weighted_f1": 0.7323,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 49.55,
+      "artifact": "models\\classification_xgboost.joblib"
+    },
+    {
+      "model": "KNN (k=15)",
+      "family": "instance-based",
+      "imbalance_strategy": "distance weighting (no class weighting available)",
+      "rationale": "A purely local, non-parametric benchmark. Its performance relative to the ensembles indicates how much of the signal is captured by local similarity alone.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.4327,
+        "std": 0.0678,
+        "folds": [
+          0.3171,
+          0.463,
+          0.4603,
+          0.4904
+        ],
+        "seconds": 7.74
+      },
+      "train": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "weighted_precision": 1.0,
+        "weighted_recall": 1.0,
+        "weighted_f1": 1.0,
+        "cohen_kappa": 1.0,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            264,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3104,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            4060,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1330,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1197,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            376
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.0,
+        "pct_within_one_band": 100.0,
+        "pct_underestimating_severity": 0.0
+      },
+      "test": {
+        "accuracy": 0.6848,
+        "balanced_accuracy": 0.5421,
+        "macro_precision": 0.6898,
+        "macro_recall": 0.5421,
+        "macro_f1": 0.5635,
+        "weighted_precision": 0.6928,
+        "weighted_recall": 0.6848,
+        "weighted_f1": 0.6602,
+        "cohen_kappa": 0.496,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.7692,
+            "recall": 0.0943,
+            "f1": 0.1681,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.7344,
+            "recall": 0.7972,
+            "f1": 0.7645,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.6262,
+            "recall": 0.7518,
+            "f1": 0.6832,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.6024,
+            "recall": 0.4888,
+            "f1": 0.5397,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.592,
+            "recall": 0.6205,
+            "f1": 0.6059,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.8148,
+            "recall": 0.5,
+            "f1": 0.6197,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            40,
+            374,
+            10,
+            0,
+            0,
+            0
+          ],
+          [
+            12,
+            1745,
+            430,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            255,
+            948,
+            49,
+            9,
+            0
+          ],
+          [
+            0,
+            2,
+            114,
+            153,
+            42,
+            2
+          ],
+          [
+            0,
+            0,
+            11,
+            49,
+            103,
+            3
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            20,
+            22
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.0943,
+            0.8821,
+            0.0236,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0055,
+            0.7972,
+            0.1964,
+            0.0009,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.2022,
+            0.7518,
+            0.0389,
+            0.0071,
+            0.0
+          ],
+          [
+            0.0,
+            0.0064,
+            0.3642,
+            0.4888,
+            0.1342,
+            0.0064
+          ],
+          [
+            0.0,
+            0.0,
+            0.0663,
+            0.2952,
+            0.6205,
+            0.0181
+          ],
+          [
+            0.0,
+            0.0,
+            0.0227,
+            0.0227,
+            0.4545,
+            0.5
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": 0.9052,
+        "roc_auc_ovr_weighted": 0.8647,
+        "roc_auc_per_class": {
+          "Good": 0.8836,
+          "Moderate": 0.8732,
+          "Poor": 0.9416,
+          "Satisfactory": 0.8367,
+          "Severe": 0.9399,
+          "Very Poor": 0.9562
+        },
+        "mean_absolute_ordinal_error": 0.3241,
+        "pct_within_one_band": 99.14,
+        "pct_underestimating_severity": 10.58
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": 0.4365,
+        "accuracy_train_minus_test": 0.3152,
+        "overfitting_flag": true
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.5294,
+            "balanced_accuracy": 0.5387,
+            "macro_f1": 0.4337,
+            "weighted_f1": 0.4196,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.6518,
+            "balanced_accuracy": 0.3448,
+            "macro_f1": 0.3662,
+            "weighted_f1": 0.6162,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.7736,
+            "balanced_accuracy": 0.5435,
+            "macro_f1": 0.4537,
+            "weighted_f1": 0.7795,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.6443,
+            "balanced_accuracy": 0.2819,
+            "macro_f1": 0.2981,
+            "weighted_f1": 0.6454,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.694,
+            "balanced_accuracy": 0.6561,
+            "macro_f1": 0.6664,
+            "weighted_f1": 0.695,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.6408,
+            "balanced_accuracy": 0.4764,
+            "macro_f1": 0.5053,
+            "weighted_f1": 0.6265,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.801,
+            "balanced_accuracy": 0.7207,
+            "macro_f1": 0.7332,
+            "weighted_f1": 0.7801,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.7886,
+            "balanced_accuracy": 0.531,
+            "macro_f1": 0.5724,
+            "weighted_f1": 0.784,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.5348,
+            "balanced_accuracy": 0.5969,
+            "macro_f1": 0.4069,
+            "weighted_f1": 0.4818,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.699,
+            "balanced_accuracy": 0.5867,
+            "macro_f1": 0.6107,
+            "weighted_f1": 0.6942,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.7143,
+            "balanced_accuracy": 0.305,
+            "macro_f1": 0.2612,
+            "weighted_f1": 0.6515,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.7255,
+            "balanced_accuracy": 0.4914,
+            "macro_f1": 0.4912,
+            "weighted_f1": 0.719,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.6825,
+            "balanced_accuracy": 0.5406,
+            "macro_f1": 0.5693,
+            "weighted_f1": 0.659,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.6839,
+            "balanced_accuracy": 0.5474,
+            "macro_f1": 0.5236,
+            "weighted_f1": 0.6764,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.7433,
+            "balanced_accuracy": 0.4783,
+            "macro_f1": 0.4721,
+            "weighted_f1": 0.7146,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.575,
+            "balanced_accuracy": 0.5087,
+            "macro_f1": 0.4899,
+            "weighted_f1": 0.5137,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 0.07,
+      "artifact": "models\\classification_knn_k15.joblib"
+    },
+    {
+      "model": "Random Forest + SMOTE",
+      "family": "bagged trees",
+      "imbalance_strategy": "SMOTE oversampling inside each training fold",
+      "rationale": "Head-to-head comparison against the class-weighted Random Forest.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.5599,
+        "std": 0.1479,
+        "folds": [
+          0.338,
+          0.5158,
+          0.7137,
+          0.6722
+        ],
+        "seconds": 47.31
+      },
+      "train": {
+        "accuracy": 0.9964,
+        "balanced_accuracy": 0.9976,
+        "macro_precision": 0.9961,
+        "macro_recall": 0.9976,
+        "macro_f1": 0.9968,
+        "weighted_precision": 0.9964,
+        "weighted_recall": 0.9964,
+        "weighted_f1": 0.9964,
+        "cohen_kappa": 0.995,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.9925,
+            "recall": 1.0,
+            "f1": 0.9962,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.9945,
+            "recall": 0.9977,
+            "f1": 0.9961,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.9975,
+            "recall": 0.9948,
+            "f1": 0.9962,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 0.997,
+            "recall": 0.9955,
+            "f1": 0.9962,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.9975,
+            "recall": 0.9975,
+            "f1": 0.9975,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 0.9973,
+            "recall": 1.0,
+            "f1": 0.9987,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            264,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            3097,
+            6,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            14,
+            4039,
+            4,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            1324,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0,
+            1194,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            376
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.0044,
+        "pct_within_one_band": 99.93,
+        "pct_underestimating_severity": 0.22
+      },
+      "test": {
+        "accuracy": 0.7771,
+        "balanced_accuracy": 0.7543,
+        "macro_precision": 0.7283,
+        "macro_recall": 0.7543,
+        "macro_f1": 0.739,
+        "weighted_precision": 0.7775,
+        "weighted_recall": 0.7771,
+        "weighted_f1": 0.7759,
+        "cohen_kappa": 0.6575,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.6492,
+            "recall": 0.5849,
+            "f1": 0.6154,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.8139,
+            "recall": 0.8529,
+            "f1": 0.8329,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.7977,
+            "recall": 0.7129,
+            "f1": 0.7529,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.6423,
+            "recall": 0.7572,
+            "f1": 0.695,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.7414,
+            "recall": 0.7771,
+            "f1": 0.7588,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.7255,
+            "recall": 0.8409,
+            "f1": 0.7789,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            248,
+            174,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            133,
+            1867,
+            189,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            251,
+            899,
+            109,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            35,
+            237,
+            38,
+            2
+          ],
+          [
+            0,
+            0,
+            2,
+            23,
+            129,
+            12
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            6,
+            37
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.5849,
+            0.4104,
+            0.0047,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0608,
+            0.8529,
+            0.0863,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0008,
+            0.199,
+            0.7129,
+            0.0864,
+            0.0008,
+            0.0
+          ],
+          [
+            0.0,
+            0.0032,
+            0.1118,
+            0.7572,
+            0.1214,
+            0.0064
+          ],
+          [
+            0.0,
+            0.0,
+            0.012,
+            0.1386,
+            0.7771,
+            0.0723
+          ],
+          [
+            0.0,
+            0.0227,
+            0.0,
+            0.0,
+            0.1364,
+            0.8409
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": 0.9594,
+        "roc_auc_ovr_weighted": 0.9304,
+        "roc_auc_per_class": {
+          "Good": 0.9593,
+          "Moderate": 0.9287,
+          "Poor": 0.9696,
+          "Satisfactory": 0.9144,
+          "Severe": 0.994,
+          "Very Poor": 0.9902
+        },
+        "mean_absolute_ordinal_error": 0.2256,
+        "pct_within_one_band": 99.77,
+        "pct_underestimating_severity": 10.3
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": 0.2578,
+        "accuracy_train_minus_test": 0.2193,
+        "overfitting_flag": true
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.6176,
+            "balanced_accuracy": 0.6329,
+            "macro_f1": 0.5906,
+            "weighted_f1": 0.5691,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.7351,
+            "balanced_accuracy": 0.4984,
+            "macro_f1": 0.5063,
+            "weighted_f1": 0.7315,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.8433,
+            "balanced_accuracy": 0.7301,
+            "macro_f1": 0.6617,
+            "weighted_f1": 0.8543,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.7562,
+            "balanced_accuracy": 0.4423,
+            "macro_f1": 0.3831,
+            "weighted_f1": 0.733,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.7637,
+            "balanced_accuracy": 0.7977,
+            "macro_f1": 0.767,
+            "weighted_f1": 0.7653,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.7623,
+            "balanced_accuracy": 0.6902,
+            "macro_f1": 0.6859,
+            "weighted_f1": 0.7608,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.8632,
+            "balanced_accuracy": 0.8758,
+            "macro_f1": 0.8556,
+            "weighted_f1": 0.8653,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.8507,
+            "balanced_accuracy": 0.542,
+            "macro_f1": 0.411,
+            "weighted_f1": 0.8545,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.7313,
+            "balanced_accuracy": 0.7891,
+            "macro_f1": 0.6953,
+            "weighted_f1": 0.7274,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.7736,
+            "balanced_accuracy": 0.7484,
+            "macro_f1": 0.747,
+            "weighted_f1": 0.7714,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.8114,
+            "balanced_accuracy": 0.4282,
+            "macro_f1": 0.4419,
+            "weighted_f1": 0.8033,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.7745,
+            "balanced_accuracy": 0.5475,
+            "macro_f1": 0.5437,
+            "weighted_f1": 0.7746,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.7765,
+            "balanced_accuracy": 0.7581,
+            "macro_f1": 0.7483,
+            "weighted_f1": 0.7752,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.7616,
+            "balanced_accuracy": 0.7167,
+            "macro_f1": 0.6584,
+            "weighted_f1": 0.7594,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.819,
+            "balanced_accuracy": 0.6282,
+            "macro_f1": 0.6531,
+            "weighted_f1": 0.8146,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.7306,
+            "balanced_accuracy": 0.6374,
+            "macro_f1": 0.6415,
+            "weighted_f1": 0.7306,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 22.58,
+      "artifact": "models\\classification_random_forest_plus_smote.joblib"
+    },
+    {
+      "model": "XGBoost + SMOTE",
+      "family": "gradient boosting",
+      "imbalance_strategy": "SMOTE oversampling inside each training fold",
+      "rationale": "Head-to-head comparison against the unweighted XGBoost.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.5709,
+        "std": 0.1427,
+        "folds": [
+          0.3549,
+          0.5302,
+          0.7091,
+          0.6895
+        ],
+        "seconds": 253.31
+      },
+      "train": {
+        "accuracy": 0.9923,
+        "balanced_accuracy": 0.9955,
+        "macro_precision": 0.995,
+        "macro_recall": 0.9955,
+        "macro_f1": 0.9952,
+        "weighted_precision": 0.9923,
+        "weighted_recall": 0.9923,
+        "weighted_f1": 0.9923,
+        "cohen_kappa": 0.9893,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.9844,
+            "recall": 0.9974,
+            "f1": 0.9909,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.9955,
+            "recall": 0.9855,
+            "f1": 0.9905,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 0.9917,
+            "recall": 0.9902,
+            "f1": 0.991,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.9983,
+            "recall": 1.0,
+            "f1": 0.9992,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            264,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3096,
+            8,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            48,
+            4001,
+            11,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            10,
+            1317,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1197,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            376
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.0078,
+        "pct_within_one_band": 99.99,
+        "pct_underestimating_severity": 0.57
+      },
+      "test": {
+        "accuracy": 0.7783,
+        "balanced_accuracy": 0.7453,
+        "macro_precision": 0.7429,
+        "macro_recall": 0.7453,
+        "macro_f1": 0.7411,
+        "weighted_precision": 0.7818,
+        "weighted_recall": 0.7783,
+        "weighted_f1": 0.7794,
+        "cohen_kappa": 0.6648,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.6421,
+            "recall": 0.6981,
+            "f1": 0.6689,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.8432,
+            "recall": 0.8104,
+            "f1": 0.8265,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.7608,
+            "recall": 0.7692,
+            "f1": 0.765,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.6656,
+            "recall": 0.6869,
+            "f1": 0.6761,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.6884,
+            "recall": 0.8253,
+            "f1": 0.7507,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.8571,
+            "recall": 0.6818,
+            "f1": 0.7595,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            296,
+            127,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            163,
+            1774,
+            252,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            202,
+            970,
+            85,
+            2,
+            0
+          ],
+          [
+            0,
+            1,
+            50,
+            215,
+            47,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            23,
+            137,
+            5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            13,
+            30
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.6981,
+            0.2995,
+            0.0024,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0745,
+            0.8104,
+            0.1151,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0016,
+            0.1602,
+            0.7692,
+            0.0674,
+            0.0016,
+            0.0
+          ],
+          [
+            0.0,
+            0.0032,
+            0.1597,
+            0.6869,
+            0.1502,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.006,
+            0.1386,
+            0.8253,
+            0.0301
+          ],
+          [
+            0.0,
+            0.0,
+            0.0227,
+            0.0,
+            0.2955,
+            0.6818
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": 0.9591,
+        "roc_auc_ovr_weighted": 0.9298,
+        "roc_auc_per_class": {
+          "Good": 0.958,
+          "Moderate": 0.9276,
+          "Poor": 0.968,
+          "Satisfactory": 0.9143,
+          "Severe": 0.9964,
+          "Very Poor": 0.9903
+        },
+        "mean_absolute_ordinal_error": 0.2238,
+        "pct_within_one_band": 99.82,
+        "pct_underestimating_severity": 10.37
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": 0.2541,
+        "accuracy_train_minus_test": 0.214,
+        "overfitting_flag": true
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.719,
+            "balanced_accuracy": 0.7404,
+            "macro_f1": 0.7237,
+            "weighted_f1": 0.7123,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.744,
+            "balanced_accuracy": 0.5385,
+            "macro_f1": 0.5449,
+            "weighted_f1": 0.7444,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.8383,
+            "balanced_accuracy": 0.7602,
+            "macro_f1": 0.678,
+            "weighted_f1": 0.8505,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.7338,
+            "balanced_accuracy": 0.3553,
+            "macro_f1": 0.3747,
+            "weighted_f1": 0.7231,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.7612,
+            "balanced_accuracy": 0.7734,
+            "macro_f1": 0.6382,
+            "weighted_f1": 0.7634,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.7442,
+            "balanced_accuracy": 0.658,
+            "macro_f1": 0.666,
+            "weighted_f1": 0.7439,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.8607,
+            "balanced_accuracy": 0.8859,
+            "macro_f1": 0.8553,
+            "weighted_f1": 0.8627,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.8433,
+            "balanced_accuracy": 0.5382,
+            "macro_f1": 0.4985,
+            "weighted_f1": 0.8489,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.7114,
+            "balanced_accuracy": 0.7719,
+            "macro_f1": 0.6454,
+            "weighted_f1": 0.7136,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.7711,
+            "balanced_accuracy": 0.6645,
+            "macro_f1": 0.5552,
+            "weighted_f1": 0.7709,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.8229,
+            "balanced_accuracy": 0.5298,
+            "macro_f1": 0.5045,
+            "weighted_f1": 0.8266,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.7696,
+            "balanced_accuracy": 0.654,
+            "macro_f1": 0.6142,
+            "weighted_f1": 0.7672,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.7739,
+            "balanced_accuracy": 0.7452,
+            "macro_f1": 0.7459,
+            "weighted_f1": 0.7754,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.7648,
+            "balanced_accuracy": 0.7702,
+            "macro_f1": 0.712,
+            "weighted_f1": 0.7668,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.8216,
+            "balanced_accuracy": 0.6724,
+            "macro_f1": 0.6818,
+            "weighted_f1": 0.8219,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.7472,
+            "balanced_accuracy": 0.4507,
+            "macro_f1": 0.4521,
+            "weighted_f1": 0.7455,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 90.99,
+      "artifact": "models\\classification_xgboost_plus_smote.joblib"
+    },
+    {
+      "model": "Logistic Regression + SMOTE",
+      "family": "linear",
+      "imbalance_strategy": "SMOTE oversampling inside each training fold",
+      "rationale": "Head-to-head comparison against the class-weighted logistic model.",
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "scoring": "f1_macro",
+        "mean": 0.4402,
+        "std": 0.1284,
+        "folds": [
+          0.2487,
+          0.4012,
+          0.5801,
+          0.531
+        ],
+        "seconds": 13.85
+      },
+      "train": {
+        "accuracy": 0.724,
+        "balanced_accuracy": 0.7533,
+        "macro_precision": 0.6471,
+        "macro_recall": 0.7533,
+        "macro_f1": 0.6759,
+        "weighted_precision": 0.7513,
+        "weighted_recall": 0.724,
+        "weighted_f1": 0.7319,
+        "cohen_kappa": 0.6293,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.3261,
+            "recall": 0.8598,
+            "f1": 0.4729,
+            "support": 264
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.7733,
+            "recall": 0.7197,
+            "f1": 0.7455,
+            "support": 3104
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.8275,
+            "recall": 0.73,
+            "f1": 0.7757,
+            "support": 4060
+          },
+          {
+            "class": "Poor",
+            "precision": 0.5848,
+            "recall": 0.6842,
+            "f1": 0.6306,
+            "support": 1330
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.758,
+            "recall": 0.6959,
+            "f1": 0.7256,
+            "support": 1197
+          },
+          {
+            "class": "Severe",
+            "precision": 0.613,
+            "recall": 0.8298,
+            "f1": 0.7051,
+            "support": 376
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            227,
+            35,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            421,
+            2234,
+            431,
+            17,
+            0,
+            1
+          ],
+          [
+            46,
+            601,
+            2964,
+            432,
+            12,
+            5
+          ],
+          [
+            1,
+            15,
+            179,
+            910,
+            201,
+            24
+          ],
+          [
+            1,
+            4,
+            6,
+            186,
+            833,
+            167
+          ],
+          [
+            0,
+            0,
+            1,
+            10,
+            53,
+            312
+          ]
+        ],
+        "n": 10331,
+        "mean_absolute_ordinal_error": 0.2915,
+        "pct_within_one_band": 98.6,
+        "pct_underestimating_severity": 14.75
+      },
+      "test": {
+        "accuracy": 0.7598,
+        "balanced_accuracy": 0.7378,
+        "macro_precision": 0.7128,
+        "macro_recall": 0.7378,
+        "macro_f1": 0.7197,
+        "weighted_precision": 0.7697,
+        "weighted_recall": 0.7598,
+        "weighted_f1": 0.7593,
+        "cohen_kappa": 0.6331,
+        "per_class": [
+          {
+            "class": "Good",
+            "precision": 0.5803,
+            "recall": 0.7241,
+            "f1": 0.6443,
+            "support": 424
+          },
+          {
+            "class": "Satisfactory",
+            "precision": 0.7947,
+            "recall": 0.8451,
+            "f1": 0.8191,
+            "support": 2189
+          },
+          {
+            "class": "Moderate",
+            "precision": 0.8283,
+            "recall": 0.6312,
+            "f1": 0.7165,
+            "support": 1261
+          },
+          {
+            "class": "Poor",
+            "precision": 0.6332,
+            "recall": 0.7668,
+            "f1": 0.6936,
+            "support": 313
+          },
+          {
+            "class": "Very Poor",
+            "precision": 0.76,
+            "recall": 0.6867,
+            "f1": 0.7215,
+            "support": 166
+          },
+          {
+            "class": "Severe",
+            "precision": 0.68,
+            "recall": 0.7727,
+            "f1": 0.7234,
+            "support": 44
+          }
+        ],
+        "labels": [
+          "Good",
+          "Satisfactory",
+          "Moderate",
+          "Poor",
+          "Very Poor",
+          "Severe"
+        ],
+        "confusion_matrix": [
+          [
+            307,
+            117,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            217,
+            1850,
+            120,
+            2,
+            0,
+            0
+          ],
+          [
+            5,
+            358,
+            796,
+            100,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            44,
+            240,
+            25,
+            2
+          ],
+          [
+            0,
+            0,
+            1,
+            37,
+            114,
+            14
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            9,
+            34
+          ]
+        ],
+        "confusion_matrix_normalised": [
+          [
+            0.7241,
+            0.2759,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0991,
+            0.8451,
+            0.0548,
+            0.0009,
+            0.0,
+            0.0
+          ],
+          [
+            0.004,
+            0.2839,
+            0.6312,
+            0.0793,
+            0.0016,
+            0.0
+          ],
+          [
+            0.0,
+            0.0064,
+            0.1406,
+            0.7668,
+            0.0799,
+            0.0064
+          ],
+          [
+            0.0,
+            0.0,
+            0.006,
+            0.2229,
+            0.6867,
+            0.0843
+          ],
+          [
+            0.0,
+            0.0227,
+            0.0,
+            0.0,
+            0.2045,
+            0.7727
+          ]
+        ],
+        "n": 4397,
+        "roc_auc_ovr_macro": 0.9519,
+        "roc_auc_ovr_weighted": 0.9171,
+        "roc_auc_per_class": {
+          "Good": 0.9454,
+          "Moderate": 0.9226,
+          "Poor": 0.9703,
+          "Satisfactory": 0.8941,
+          "Severe": 0.991,
+          "Very Poor": 0.9882
+        },
+        "mean_absolute_ordinal_error": 0.244,
+        "pct_within_one_band": 99.66,
+        "pct_underestimating_severity": 15.33
+      },
+      "generalisation_gap": {
+        "macro_f1_train_minus_test": -0.0438,
+        "accuracy_train_minus_test": -0.0358,
+        "overfitting_flag": false
+      },
+      "slices": {
+        "by_city": [
+          {
+            "city": "Amaravati",
+            "accuracy": 0.7124,
+            "balanced_accuracy": 0.7285,
+            "macro_f1": 0.7252,
+            "weighted_f1": 0.712,
+            "n": 306
+          },
+          {
+            "city": "Amritsar",
+            "accuracy": 0.6994,
+            "balanced_accuracy": 0.4516,
+            "macro_f1": 0.4711,
+            "weighted_f1": 0.6944,
+            "n": 336
+          },
+          {
+            "city": "Bengaluru",
+            "accuracy": 0.8483,
+            "balanced_accuracy": 0.6871,
+            "macro_f1": 0.6471,
+            "weighted_f1": 0.8522,
+            "n": 402
+          },
+          {
+            "city": "Chennai",
+            "accuracy": 0.7637,
+            "balanced_accuracy": 0.4166,
+            "macro_f1": 0.44,
+            "weighted_f1": 0.736,
+            "n": 402
+          },
+          {
+            "city": "Delhi",
+            "accuracy": 0.7438,
+            "balanced_accuracy": 0.7817,
+            "macro_f1": 0.6349,
+            "weighted_f1": 0.7514,
+            "n": 402
+          },
+          {
+            "city": "Gurugram",
+            "accuracy": 0.7183,
+            "balanced_accuracy": 0.6767,
+            "macro_f1": 0.6415,
+            "weighted_f1": 0.7242,
+            "n": 387
+          },
+          {
+            "city": "Hyderabad",
+            "accuracy": 0.8358,
+            "balanced_accuracy": 0.8438,
+            "macro_f1": 0.8274,
+            "weighted_f1": 0.8374,
+            "n": 402
+          },
+          {
+            "city": "Jaipur",
+            "accuracy": 0.8284,
+            "balanced_accuracy": 0.479,
+            "macro_f1": 0.3813,
+            "weighted_f1": 0.8371,
+            "n": 402
+          },
+          {
+            "city": "Kolkata",
+            "accuracy": 0.7139,
+            "balanced_accuracy": 0.7786,
+            "macro_f1": 0.6875,
+            "weighted_f1": 0.7114,
+            "n": 402
+          },
+          {
+            "city": "Lucknow",
+            "accuracy": 0.7239,
+            "balanced_accuracy": 0.6657,
+            "macro_f1": 0.5511,
+            "weighted_f1": 0.7169,
+            "n": 402
+          },
+          {
+            "city": "Thiruvananthapuram",
+            "accuracy": 0.78,
+            "balanced_accuracy": 0.3927,
+            "macro_f1": 0.3679,
+            "weighted_f1": 0.7725,
+            "n": 350
+          },
+          {
+            "city": "Visakhapatnam",
+            "accuracy": 0.701,
+            "balanced_accuracy": 0.4364,
+            "macro_f1": 0.4172,
+            "weighted_f1": 0.6989,
+            "n": 204
+          }
+        ],
+        "by_period": {
+          "pre_2020": {
+            "date_range": [
+              "2019-05-26",
+              "2019-12-31"
+            ],
+            "accuracy": 0.7503,
+            "balanced_accuracy": 0.7349,
+            "macro_f1": 0.7176,
+            "weighted_f1": 0.7518,
+            "n": 2331
+          },
+          "2020_before_lockdown": {
+            "date_range": [
+              "2020-01-01",
+              "2020-03-24"
+            ],
+            "accuracy": 0.7659,
+            "balanced_accuracy": 0.7216,
+            "macro_f1": 0.6892,
+            "weighted_f1": 0.7609,
+            "n": 927
+          },
+          "lockdown_stress_test": {
+            "date_range": [
+              "2020-03-25",
+              "2020-05-31"
+            ],
+            "accuracy": 0.8074,
+            "balanced_accuracy": 0.6313,
+            "macro_f1": 0.6447,
+            "weighted_f1": 0.8026,
+            "n": 779
+          },
+          "post_lockdown": {
+            "date_range": [
+              "2020-06-01",
+              "2020-06-30"
+            ],
+            "accuracy": 0.7028,
+            "balanced_accuracy": 0.6268,
+            "macro_f1": 0.5567,
+            "weighted_f1": 0.6976,
+            "n": 360
+          }
+        }
+      },
+      "fit_seconds": 4.89,
+      "artifact": "models\\classification_logistic_regression_plus_smote.joblib"
+    }
+  ],
+  "best_model": "XGBoost + SMOTE",
+  "best_test_metrics": {
+    "accuracy": 0.7783,
+    "balanced_accuracy": 0.7453,
+    "macro_precision": 0.7429,
+    "macro_recall": 0.7453,
+    "macro_f1": 0.7411,
+    "weighted_precision": 0.7818,
+    "weighted_recall": 0.7783,
+    "weighted_f1": 0.7794,
+    "cohen_kappa": 0.6648,
+    "per_class": [
+      {
+        "class": "Good",
+        "precision": 0.6421,
+        "recall": 0.6981,
+        "f1": 0.6689,
+        "support": 424
+      },
+      {
+        "class": "Satisfactory",
+        "precision": 0.8432,
+        "recall": 0.8104,
+        "f1": 0.8265,
+        "support": 2189
+      },
+      {
+        "class": "Moderate",
+        "precision": 0.7608,
+        "recall": 0.7692,
+        "f1": 0.765,
+        "support": 1261
+      },
+      {
+        "class": "Poor",
+        "precision": 0.6656,
+        "recall": 0.6869,
+        "f1": 0.6761,
+        "support": 313
+      },
+      {
+        "class": "Very Poor",
+        "precision": 0.6884,
+        "recall": 0.8253,
+        "f1": 0.7507,
+        "support": 166
+      },
+      {
+        "class": "Severe",
+        "precision": 0.8571,
+        "recall": 0.6818,
+        "f1": 0.7595,
+        "support": 44
+      }
+    ],
+    "labels": [
+      "Good",
+      "Satisfactory",
+      "Moderate",
+      "Poor",
+      "Very Poor",
+      "Severe"
+    ],
+    "confusion_matrix": [
+      [
+        296,
+        127,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        163,
+        1774,
+        252,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        202,
+        970,
+        85,
+        2,
+        0
+      ],
+      [
+        0,
+        1,
+        50,
+        215,
+        47,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        23,
+        137,
+        5
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        13,
+        30
+      ]
+    ],
+    "confusion_matrix_normalised": [
+      [
+        0.6981,
+        0.2995,
+        0.0024,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0745,
+        0.8104,
+        0.1151,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0016,
+        0.1602,
+        0.7692,
+        0.0674,
+        0.0016,
+        0.0
+      ],
+      [
+        0.0,
+        0.0032,
+        0.1597,
+        0.6869,
+        0.1502,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.006,
+        0.1386,
+        0.8253,
+        0.0301
+      ],
+      [
+        0.0,
+        0.0,
+        0.0227,
+        0.0,
+        0.2955,
+        0.6818
+      ]
+    ],
+    "n": 4397,
+    "roc_auc_ovr_macro": 0.9591,
+    "roc_auc_ovr_weighted": 0.9298,
+    "roc_auc_per_class": {
+      "Good": 0.958,
+      "Moderate": 0.9276,
+      "Poor": 0.968,
+      "Satisfactory": 0.9143,
+      "Severe": 0.9964,
+      "Very Poor": 0.9903
+    },
+    "mean_absolute_ordinal_error": 0.2238,
+    "pct_within_one_band": 99.82,
+    "pct_underestimating_severity": 10.37
+  },
+  "baseline_comparison": {
+    "baseline_macro_f1": 0.6803,
+    "best_macro_f1": 0.7411,
+    "improvement_over_persistence_pct": 8.94
+  },
+  "smote_head_to_head": [
+    {
+      "pair": "Random Forest vs Random Forest + SMOTE",
+      "baseline_strategy": "class_weight='balanced_subsample'",
+      "macro_f1_weighted_or_plain": 0.7184,
+      "macro_f1_smote": 0.739,
+      "delta_macro_f1": 0.0206,
+      "severe_f1_weighted_or_plain": 0.7765,
+      "severe_f1_smote": 0.7789,
+      "winner": "Random Forest + SMOTE"
+    },
+    {
+      "pair": "XGBoost vs XGBoost + SMOTE",
+      "baseline_strategy": "none (compared against a SMOTE variant below)",
+      "macro_f1_weighted_or_plain": 0.7342,
+      "macro_f1_smote": 0.7411,
+      "delta_macro_f1": 0.0069,
+      "severe_f1_weighted_or_plain": 0.7532,
+      "severe_f1_smote": 0.7595,
+      "winner": "XGBoost + SMOTE"
+    },
+    {
+      "pair": "Logistic Regression vs Logistic Regression + SMOTE",
+      "baseline_strategy": "class_weight='balanced'",
+      "macro_f1_weighted_or_plain": 0.7236,
+      "macro_f1_smote": 0.7197,
+      "delta_macro_f1": -0.0039,
+      "severe_f1_weighted_or_plain": 0.7191,
+      "severe_f1_smote": 0.7234,
+      "winner": "Logistic Regression"
+    }
+  ],
+  "leakage_demonstration": {
+    "experiment": "Three LightGBM classifiers fitted on identical time-ordered splits, differing only in the target and the feature set.",
+    "same_day_nowcast_with_aqi": {
+      "macro_f1": 1.0,
+      "accuracy": 1.0,
+      "weighted_f1": 1.0,
+      "n_features": 103,
+      "description": "Predicting today's bucket from a feature set containing today's AQI and its derived sub-indices and HAI values."
+    },
+    "same_day_nowcast_without_aqi": {
+      "macro_f1": 0.9666,
+      "accuracy": 0.977,
+      "weighted_f1": 0.9769,
+      "n_features": 100,
+      "description": "The same target with AQI, the CPCB sub-indices and every HAI column removed. Columns removed: 3."
+    },
+    "next_day_forecast_this_project": {
+      "macro_f1": 0.7077,
+      "accuracy": 0.7785,
+      "weighted_f1": 0.774,
+      "n_features": 102,
+      "description": "The formulation this project uses. The target is tomorrow's bucket, so today's AQI is information genuinely available at prediction time and is retained."
+    },
+    "leakage_magnitude_macro_f1": 0.0334,
+    "columns_removed_for_honest_nowcast": [
+      "AQI",
+      "HAI_healthy_adult",
+      "AQI_Bucket_ordinal"
+    ],
+    "conclusion": "Predicting the same day's bucket with same-day AQI present yields a macro-F1 of 1.0000. A score at or near 1.0 is not a result; it is the signature of a model reading its own label, because the CPCB bucket is a deterministic step function of the AQI. The more instructive finding is what happens after the obvious culprits are removed: dropping AQI, the CPCB sub-indices and every HAI column still leaves macro-F1 at 0.9666. The leak is therefore not confined to a single column that a diligent analyst could blacklist. The AQI is by definition the maximum sub-index, and each sub-index is a fixed piecewise-linear function of a pollutant concentration, so the *concentrations themselves* determine the label exactly. Same-day bucket prediction is arithmetic dressed as machine learning, and no choice of feature filter rescues it. That is the reason this project does not attempt it. Forecasting the next day changes the problem substantively: tomorrow's bucket is genuinely unknown today, today's AQI becomes legitimate information rather than a restatement of the answer, and the achieved macro-F1 of 0.7077 measures real predictive skill. The gap between 0.9666 and 0.7077 is the difference between recomputing a known quantity and forecasting an unknown one."
+  }
+}

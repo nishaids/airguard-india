@@ -1,0 +1,215 @@
+{
+  "model": "XGBoost + SMOTE",
+  "n_test": 4397,
+  "n_wrong": 975,
+  "error_rate_pct": 22.17,
+  "n_wrong_by_two_or_more_bands": 8,
+  "pct_wrong_by_two_or_more_bands": 0.182,
+  "n_understating_severity_by_two_or_more": 5,
+  "pct_understating_severity_by_two_or_more": 0.114,
+  "signed_band_error_distribution": {
+    "-3": 1,
+    "-2": 4,
+    "-1": 451,
+    "0": 3422,
+    "1": 516,
+    "2": 3
+  },
+  "most_frequent_transitions": [
+    {
+      "actual": "Satisfactory",
+      "predicted": "Moderate",
+      "count": 252
+    },
+    {
+      "actual": "Moderate",
+      "predicted": "Satisfactory",
+      "count": 202
+    },
+    {
+      "actual": "Satisfactory",
+      "predicted": "Good",
+      "count": 163
+    },
+    {
+      "actual": "Good",
+      "predicted": "Satisfactory",
+      "count": 127
+    },
+    {
+      "actual": "Moderate",
+      "predicted": "Poor",
+      "count": 85
+    },
+    {
+      "actual": "Poor",
+      "predicted": "Moderate",
+      "count": 50
+    },
+    {
+      "actual": "Poor",
+      "predicted": "Very Poor",
+      "count": 47
+    },
+    {
+      "actual": "Very Poor",
+      "predicted": "Poor",
+      "count": 23
+    },
+    {
+      "actual": "Severe",
+      "predicted": "Very Poor",
+      "count": 13
+    },
+    {
+      "actual": "Very Poor",
+      "predicted": "Severe",
+      "count": 5
+    }
+  ],
+  "by_city": [
+    {
+      "City": "Kolkata",
+      "n": 402,
+      "errors": 116,
+      "mean_abs_ordinal": 0.2885572139303483,
+      "error_rate_pct": 28.86
+    },
+    {
+      "City": "Amaravati",
+      "n": 306,
+      "errors": 86,
+      "mean_abs_ordinal": 0.28431372549019607,
+      "error_rate_pct": 28.1
+    },
+    {
+      "City": "Chennai",
+      "n": 402,
+      "errors": 107,
+      "mean_abs_ordinal": 0.27114427860696516,
+      "error_rate_pct": 26.62
+    },
+    {
+      "City": "Amritsar",
+      "n": 336,
+      "errors": 86,
+      "mean_abs_ordinal": 0.2619047619047619,
+      "error_rate_pct": 25.6
+    },
+    {
+      "City": "Gurugram",
+      "n": 387,
+      "errors": 99,
+      "mean_abs_ordinal": 0.26098191214470284,
+      "error_rate_pct": 25.58
+    },
+    {
+      "City": "Delhi",
+      "n": 402,
+      "errors": 96,
+      "mean_abs_ordinal": 0.23880597014925373,
+      "error_rate_pct": 23.88
+    },
+    {
+      "City": "Visakhapatnam",
+      "n": 204,
+      "errors": 47,
+      "mean_abs_ordinal": 0.23039215686274508,
+      "error_rate_pct": 23.04
+    },
+    {
+      "City": "Lucknow",
+      "n": 402,
+      "errors": 92,
+      "mean_abs_ordinal": 0.22885572139303484,
+      "error_rate_pct": 22.89
+    },
+    {
+      "City": "Thiruvananthapuram",
+      "n": 350,
+      "errors": 62,
+      "mean_abs_ordinal": 0.18285714285714286,
+      "error_rate_pct": 17.71
+    },
+    {
+      "City": "Bengaluru",
+      "n": 402,
+      "errors": 65,
+      "mean_abs_ordinal": 0.16169154228855723,
+      "error_rate_pct": 16.17
+    },
+    {
+      "City": "Jaipur",
+      "n": 402,
+      "errors": 63,
+      "mean_abs_ordinal": 0.15671641791044777,
+      "error_rate_pct": 15.67
+    },
+    {
+      "City": "Hyderabad",
+      "n": 402,
+      "errors": 56,
+      "mean_abs_ordinal": 0.13930348258706468,
+      "error_rate_pct": 13.93
+    }
+  ],
+  "worst_examples": [
+    {
+      "City": "Amritsar",
+      "Date": "2020-06-02",
+      "actual": "Severe",
+      "predicted": "Moderate",
+      "ordinal_error": -3
+    },
+    {
+      "City": "Amaravati",
+      "Date": "2020-03-24",
+      "actual": "Moderate",
+      "predicted": "Good",
+      "ordinal_error": -2
+    },
+    {
+      "City": "Chennai",
+      "Date": "2019-08-27",
+      "actual": "Moderate",
+      "predicted": "Good",
+      "ordinal_error": -2
+    },
+    {
+      "City": "Chennai",
+      "Date": "2019-10-26",
+      "actual": "Very Poor",
+      "predicted": "Moderate",
+      "ordinal_error": -2
+    },
+    {
+      "City": "Gurugram",
+      "Date": "2020-01-22",
+      "actual": "Moderate",
+      "predicted": "Very Poor",
+      "ordinal_error": 2
+    },
+    {
+      "City": "Gurugram",
+      "Date": "2020-02-12",
+      "actual": "Moderate",
+      "predicted": "Very Poor",
+      "ordinal_error": 2
+    },
+    {
+      "City": "Thiruvananthapuram",
+      "Date": "2019-07-31",
+      "actual": "Good",
+      "predicted": "Moderate",
+      "ordinal_error": 2
+    },
+    {
+      "City": "Thiruvananthapuram",
+      "Date": "2020-02-09",
+      "actual": "Poor",
+      "predicted": "Satisfactory",
+      "ordinal_error": -2
+    }
+  ],
+  "interpretation": "The signed error distribution is sharply peaked at zero and decays fast, and almost all remaining error is a single band in either direction. The subset that matters operationally is the tail that understates severity by two bands or more, because that is the case in which a reader is told the air is acceptable when it is not. Its size is reported above as an explicit safety statistic rather than being left implicit inside the macro-F1."
+}

@@ -1,0 +1,357 @@
+{
+  "generated_by": "src/deploy/fit_deployment_classifier.py",
+  "generated_at_utc": "2026-09-29T17:19:36Z",
+  "purpose": "Serves the Vercel serverless deployment only. XGBoost + SMOTE remains the reported best model in every review document and remains what the Streamlit application deploys; this LightGBM + SMOTE pipeline exists because XGBoost's installed size (~145 MB) exceeds Vercel's 250 MB per-function limit once combined with numpy, pandas and scikit-learn.",
+  "model": "LightGBM + SMOTE",
+  "reference_model": "XGBoost + SMOTE",
+  "same_split_same_features": true,
+  "n_features": 102,
+  "fit_seconds": 17.68,
+  "artifact": "models\\deployment_classification_lightgbm.joblib",
+  "artifact_size_mb": 9.26,
+  "test_metrics": {
+    "accuracy": 0.7685,
+    "balanced_accuracy": 0.7038,
+    "macro_precision": 0.739,
+    "macro_recall": 0.7038,
+    "macro_f1": 0.7145,
+    "weighted_precision": 0.769,
+    "weighted_recall": 0.7685,
+    "weighted_f1": 0.7675,
+    "cohen_kappa": 0.6455,
+    "per_class": [
+      {
+        "class": "Good",
+        "precision": 0.6172,
+        "recall": 0.6274,
+        "f1": 0.6222,
+        "support": 424
+      },
+      {
+        "class": "Satisfactory",
+        "precision": 0.8277,
+        "recall": 0.8232,
+        "f1": 0.8255,
+        "support": 2189
+      },
+      {
+        "class": "Moderate",
+        "precision": 0.7515,
+        "recall": 0.7772,
+        "f1": 0.7641,
+        "support": 1261
+      },
+      {
+        "class": "Poor",
+        "precision": 0.6707,
+        "recall": 0.5272,
+        "f1": 0.5903,
+        "support": 313
+      },
+      {
+        "class": "Very Poor",
+        "precision": 0.6635,
+        "recall": 0.8313,
+        "f1": 0.738,
+        "support": 166
+      },
+      {
+        "class": "Severe",
+        "precision": 0.9032,
+        "recall": 0.6364,
+        "f1": 0.7467,
+        "support": 44
+      }
+    ],
+    "labels": [
+      "Good",
+      "Satisfactory",
+      "Moderate",
+      "Poor",
+      "Very Poor",
+      "Severe"
+    ],
+    "confusion_matrix": [
+      [
+        266,
+        157,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        163,
+        1802,
+        224,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        217,
+        980,
+        59,
+        3,
+        0
+      ],
+      [
+        0,
+        1,
+        95,
+        165,
+        52,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        22,
+        138,
+        3
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        15,
+        28
+      ]
+    ],
+    "confusion_matrix_normalised": [
+      [
+        0.6274,
+        0.3703,
+        0.0024,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0745,
+        0.8232,
+        0.1023,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0016,
+        0.1721,
+        0.7772,
+        0.0468,
+        0.0024,
+        0.0
+      ],
+      [
+        0.0,
+        0.0032,
+        0.3035,
+        0.5272,
+        0.1661,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0181,
+        0.1325,
+        0.8313,
+        0.0181
+      ],
+      [
+        0.0,
+        0.0,
+        0.0227,
+        0.0,
+        0.3409,
+        0.6364
+      ]
+    ],
+    "n": 4397,
+    "mean_absolute_ordinal_error": 0.2343,
+    "pct_within_one_band": 99.75,
+    "pct_underestimating_severity": 11.8
+  },
+  "reference_test_metrics": {
+    "accuracy": 0.7783,
+    "balanced_accuracy": 0.7453,
+    "macro_precision": 0.7429,
+    "macro_recall": 0.7453,
+    "macro_f1": 0.7411,
+    "weighted_precision": 0.7818,
+    "weighted_recall": 0.7783,
+    "weighted_f1": 0.7794,
+    "cohen_kappa": 0.6648,
+    "per_class": [
+      {
+        "class": "Good",
+        "precision": 0.6421,
+        "recall": 0.6981,
+        "f1": 0.6689,
+        "support": 424
+      },
+      {
+        "class": "Satisfactory",
+        "precision": 0.8432,
+        "recall": 0.8104,
+        "f1": 0.8265,
+        "support": 2189
+      },
+      {
+        "class": "Moderate",
+        "precision": 0.7608,
+        "recall": 0.7692,
+        "f1": 0.765,
+        "support": 1261
+      },
+      {
+        "class": "Poor",
+        "precision": 0.6656,
+        "recall": 0.6869,
+        "f1": 0.6761,
+        "support": 313
+      },
+      {
+        "class": "Very Poor",
+        "precision": 0.6884,
+        "recall": 0.8253,
+        "f1": 0.7507,
+        "support": 166
+      },
+      {
+        "class": "Severe",
+        "precision": 0.8571,
+        "recall": 0.6818,
+        "f1": 0.7595,
+        "support": 44
+      }
+    ],
+    "labels": [
+      "Good",
+      "Satisfactory",
+      "Moderate",
+      "Poor",
+      "Very Poor",
+      "Severe"
+    ],
+    "confusion_matrix": [
+      [
+        296,
+        127,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        163,
+        1774,
+        252,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        202,
+        970,
+        85,
+        2,
+        0
+      ],
+      [
+        0,
+        1,
+        50,
+        215,
+        47,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        23,
+        137,
+        5
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        13,
+        30
+      ]
+    ],
+    "confusion_matrix_normalised": [
+      [
+        0.6981,
+        0.2995,
+        0.0024,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0745,
+        0.8104,
+        0.1151,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0016,
+        0.1602,
+        0.7692,
+        0.0674,
+        0.0016,
+        0.0
+      ],
+      [
+        0.0,
+        0.0032,
+        0.1597,
+        0.6869,
+        0.1502,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.006,
+        0.1386,
+        0.8253,
+        0.0301
+      ],
+      [
+        0.0,
+        0.0,
+        0.0227,
+        0.0,
+        0.2955,
+        0.6818
+      ]
+    ],
+    "n": 4397,
+    "roc_auc_ovr_macro": 0.9591,
+    "roc_auc_ovr_weighted": 0.9298,
+    "roc_auc_per_class": {
+      "Good": 0.958,
+      "Moderate": 0.9276,
+      "Poor": 0.968,
+      "Satisfactory": 0.9143,
+      "Severe": 0.9964,
+      "Very Poor": 0.9903
+    },
+    "mean_absolute_ordinal_error": 0.2238,
+    "pct_within_one_band": 99.82,
+    "pct_underestimating_severity": 10.37
+  },
+  "macro_f1_gap_vs_reference": -0.0266
+}

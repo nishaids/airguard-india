@@ -1,0 +1,499 @@
+{
+  "generated_by": "src/models/explain.py",
+  "generated_at_utc": "2026-09-29T02:31:19Z",
+  "method": "TreeSHAP exact Shapley values. Shapley attribution is used because it is the only additive feature attribution satisfying efficiency: for any single prediction the contributions sum exactly to the difference between that prediction and the model's base value, so a local explanation is complete rather than merely indicative.",
+  "regression": {
+    "model": "LightGBM",
+    "rows_explained": 2500,
+    "global_importance": [
+      {
+        "feature": "HAI_healthy_adult",
+        "mean_abs_shap": 30.49104131411987,
+        "share_pct": 26.033,
+        "rank": 1
+      },
+      {
+        "feature": "PM2.5",
+        "mean_abs_shap": 19.152865187884093,
+        "share_pct": 16.353,
+        "rank": 2
+      },
+      {
+        "feature": "AQI",
+        "mean_abs_shap": 15.325860203662756,
+        "share_pct": 13.085,
+        "rank": 3
+      },
+      {
+        "feature": "AQI_roll7_mean",
+        "mean_abs_shap": 9.3676270237903,
+        "share_pct": 7.998,
+        "rank": 4
+      },
+      {
+        "feature": "total_pollutant_load",
+        "mean_abs_shap": 4.411790661887867,
+        "share_pct": 3.767,
+        "rank": 5
+      },
+      {
+        "feature": "City_target_enc",
+        "mean_abs_shap": 3.14540910951279,
+        "share_pct": 2.686,
+        "rank": 6
+      },
+      {
+        "feature": "PM2.5_delta1",
+        "mean_abs_shap": 2.220496238085745,
+        "share_pct": 1.896,
+        "rank": 7
+      },
+      {
+        "feature": "AQI_delta1",
+        "mean_abs_shap": 1.7967020580510242,
+        "share_pct": 1.534,
+        "rank": 8
+      },
+      {
+        "feature": "AQI_lag7",
+        "mean_abs_shap": 1.587428013412893,
+        "share_pct": 1.355,
+        "rank": 9
+      },
+      {
+        "feature": "PM2.5_roll14_mean",
+        "mean_abs_shap": 1.2651353728430519,
+        "share_pct": 1.08,
+        "rank": 10
+      },
+      {
+        "feature": "PM2.5_dev_roll7",
+        "mean_abs_shap": 1.23891234513439,
+        "share_pct": 1.058,
+        "rank": 11
+      },
+      {
+        "feature": "NO2_delta1",
+        "mean_abs_shap": 1.2263646875635241,
+        "share_pct": 1.047,
+        "rank": 12
+      },
+      {
+        "feature": "PM10_delta1",
+        "mean_abs_shap": 1.1570144889469498,
+        "share_pct": 0.988,
+        "rank": 13
+      },
+      {
+        "feature": "AQI_lag1",
+        "mean_abs_shap": 0.9507201025187989,
+        "share_pct": 0.812,
+        "rank": 14
+      },
+      {
+        "feature": "NO",
+        "mean_abs_shap": 0.9054191576110024,
+        "share_pct": 0.773,
+        "rank": 15
+      },
+      {
+        "feature": "PM10_dev_roll7",
+        "mean_abs_shap": 0.8156623064202017,
+        "share_pct": 0.696,
+        "rank": 16
+      },
+      {
+        "feature": "AQI_dev_roll7",
+        "mean_abs_shap": 0.7957553311008402,
+        "share_pct": 0.679,
+        "rank": 17
+      },
+      {
+        "feature": "CO_delta1",
+        "mean_abs_shap": 0.7625665385099566,
+        "share_pct": 0.651,
+        "rank": 18
+      },
+      {
+        "feature": "doy_cos",
+        "mean_abs_shap": 0.6327603427476324,
+        "share_pct": 0.54,
+        "rank": 19
+      },
+      {
+        "feature": "AQI_lag2",
+        "mean_abs_shap": 0.6127602107196203,
+        "share_pct": 0.523,
+        "rank": 20
+      },
+      {
+        "feature": "PM2.5_roll3_std",
+        "mean_abs_shap": 0.6099936429611224,
+        "share_pct": 0.521,
+        "rank": 21
+      },
+      {
+        "feature": "O3_delta1",
+        "mean_abs_shap": 0.5682913585427395,
+        "share_pct": 0.485,
+        "rank": 22
+      },
+      {
+        "feature": "o3_no2_ratio",
+        "mean_abs_shap": 0.5634707636333753,
+        "share_pct": 0.481,
+        "rank": 23
+      },
+      {
+        "feature": "NOx",
+        "mean_abs_shap": 0.5392577199255147,
+        "share_pct": 0.46,
+        "rank": 24
+      },
+      {
+        "feature": "CO",
+        "mean_abs_shap": 0.5352813726911051,
+        "share_pct": 0.457,
+        "rank": 25
+      },
+      {
+        "feature": "no2_nox_ratio",
+        "mean_abs_shap": 0.5038786325900425,
+        "share_pct": 0.43,
+        "rank": 26
+      },
+      {
+        "feature": "O3_dev_roll7",
+        "mean_abs_shap": 0.482791335290221,
+        "share_pct": 0.412,
+        "rank": 27
+      },
+      {
+        "feature": "SO2",
+        "mean_abs_shap": 0.46154100424092137,
+        "share_pct": 0.394,
+        "rank": 28
+      },
+      {
+        "feature": "PM2.5_lag2",
+        "mean_abs_shap": 0.4377654945139754,
+        "share_pct": 0.374,
+        "rank": 29
+      },
+      {
+        "feature": "month_sin",
+        "mean_abs_shap": 0.42594340813178205,
+        "share_pct": 0.364,
+        "rank": 30
+      }
+    ],
+    "top_10_features": [
+      "HAI_healthy_adult",
+      "PM2.5",
+      "AQI",
+      "AQI_roll7_mean",
+      "total_pollutant_load",
+      "City_target_enc",
+      "PM2.5_delta1",
+      "AQI_delta1",
+      "AQI_lag7",
+      "PM2.5_roll14_mean"
+    ]
+  },
+  "classification": {
+    "model": "XGBoost + SMOTE",
+    "rows_explained": 1200,
+    "global_importance": [
+      {
+        "feature": "HAI_healthy_adult",
+        "mean_abs_shap": 0.9490349292755127,
+        "share_pct": 14.380000114440918,
+        "rank": 1
+      },
+      {
+        "feature": "AQI",
+        "mean_abs_shap": 0.7357147932052612,
+        "share_pct": 11.147000312805176,
+        "rank": 2
+      },
+      {
+        "feature": "PM2.5",
+        "mean_abs_shap": 0.6007546186447144,
+        "share_pct": 9.102999687194824,
+        "rank": 3
+      },
+      {
+        "feature": "total_pollutant_load",
+        "mean_abs_shap": 0.3927856385707855,
+        "share_pct": 5.951000213623047,
+        "rank": 4
+      },
+      {
+        "feature": "days_since_start",
+        "mean_abs_shap": 0.2625560760498047,
+        "share_pct": 3.9779999256134033,
+        "rank": 5
+      },
+      {
+        "feature": "AQI_roll7_mean",
+        "mean_abs_shap": 0.1452929824590683,
+        "share_pct": 2.2009999752044678,
+        "rank": 6
+      },
+      {
+        "feature": "PM2.5_delta1",
+        "mean_abs_shap": 0.10651317983865738,
+        "share_pct": 1.6139999628067017,
+        "rank": 7
+      },
+      {
+        "feature": "AQI_lag7",
+        "mean_abs_shap": 0.10164306312799454,
+        "share_pct": 1.5399999618530273,
+        "rank": 8
+      },
+      {
+        "feature": "PM2.5_roll3_std",
+        "mean_abs_shap": 0.10108817368745804,
+        "share_pct": 1.531999945640564,
+        "rank": 9
+      },
+      {
+        "feature": "AQI_lag2",
+        "mean_abs_shap": 0.08270159363746643,
+        "share_pct": 1.253000020980835,
+        "rank": 10
+      },
+      {
+        "feature": "PM2.5_roll7_std",
+        "mean_abs_shap": 0.08028661459684372,
+        "share_pct": 1.215999960899353,
+        "rank": 11
+      },
+      {
+        "feature": "CO",
+        "mean_abs_shap": 0.07964026182889938,
+        "share_pct": 1.2070000171661377,
+        "rank": 12
+      },
+      {
+        "feature": "City_target_enc",
+        "mean_abs_shap": 0.07686302065849304,
+        "share_pct": 1.1649999618530273,
+        "rank": 13
+      },
+      {
+        "feature": "PM10_delta1",
+        "mean_abs_shap": 0.07270442694425583,
+        "share_pct": 1.1019999980926514,
+        "rank": 14
+      },
+      {
+        "feature": "AQI_roll14_std",
+        "mean_abs_shap": 0.07255714386701584,
+        "share_pct": 1.0989999771118164,
+        "rank": 15
+      },
+      {
+        "feature": "doy_cos",
+        "mean_abs_shap": 0.07101583480834961,
+        "share_pct": 1.0759999752044678,
+        "rank": 16
+      },
+      {
+        "feature": "AQI_roll7_std",
+        "mean_abs_shap": 0.07071340829133987,
+        "share_pct": 1.0709999799728394,
+        "rank": 17
+      },
+      {
+        "feature": "PM2.5_dev_roll7",
+        "mean_abs_shap": 0.06982838362455368,
+        "share_pct": 1.0579999685287476,
+        "rank": 18
+      },
+      {
+        "feature": "AQI_lag1",
+        "mean_abs_shap": 0.06784173846244812,
+        "share_pct": 1.027999997138977,
+        "rank": 19
+      },
+      {
+        "feature": "NOx",
+        "mean_abs_shap": 0.06157323718070984,
+        "share_pct": 0.9330000281333923,
+        "rank": 20
+      },
+      {
+        "feature": "PM10_dev_roll7",
+        "mean_abs_shap": 0.06024554744362831,
+        "share_pct": 0.9129999876022339,
+        "rank": 21
+      },
+      {
+        "feature": "AQI_lag3",
+        "mean_abs_shap": 0.054166290909051895,
+        "share_pct": 0.8209999799728394,
+        "rank": 22
+      },
+      {
+        "feature": "SO2_lag3",
+        "mean_abs_shap": 0.05010649189352989,
+        "share_pct": 0.7590000033378601,
+        "rank": 23
+      },
+      {
+        "feature": "NH3_lag3",
+        "mean_abs_shap": 0.04723716527223587,
+        "share_pct": 0.7160000205039978,
+        "rank": 24
+      },
+      {
+        "feature": "CO_delta1",
+        "mean_abs_shap": 0.04714424908161163,
+        "share_pct": 0.7139999866485596,
+        "rank": 25
+      },
+      {
+        "feature": "Benzene",
+        "mean_abs_shap": 0.04687104374170303,
+        "share_pct": 0.7099999785423279,
+        "rank": 26
+      },
+      {
+        "feature": "day_of_week",
+        "mean_abs_shap": 0.04593505710363388,
+        "share_pct": 0.6959999799728394,
+        "rank": 27
+      },
+      {
+        "feature": "PM2.5_lag3",
+        "mean_abs_shap": 0.04551459476351738,
+        "share_pct": 0.6899999976158142,
+        "rank": 28
+      },
+      {
+        "feature": "O3_delta1",
+        "mean_abs_shap": 0.04441278055310249,
+        "share_pct": 0.6729999780654907,
+        "rank": 29
+      },
+      {
+        "feature": "day_of_month",
+        "mean_abs_shap": 0.04402785375714302,
+        "share_pct": 0.6669999957084656,
+        "rank": 30
+      }
+    ],
+    "top_10_features": [
+      "HAI_healthy_adult",
+      "AQI",
+      "PM2.5",
+      "total_pollutant_load",
+      "days_since_start",
+      "AQI_roll7_mean",
+      "PM2.5_delta1",
+      "AQI_lag7",
+      "PM2.5_roll3_std",
+      "AQI_lag2"
+    ]
+  },
+  "local_example": {
+    "city": "Gurugram",
+    "date": "2019-10-29",
+    "base_value": 166.891,
+    "prediction": 374.761,
+    "actual": 369.0,
+    "top_contributions": [
+      {
+        "feature": "HAI_healthy_adult",
+        "value": 79.5743,
+        "shap": 93.7082,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "PM2.5",
+        "value": 217.34,
+        "shap": 49.6667,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "AQI",
+        "value": 375.0,
+        "shap": 21.2691,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "AQI_roll7_mean",
+        "value": 311.0,
+        "shap": 13.2843,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "total_pollutant_load",
+        "value": 641.93,
+        "shap": 8.1693,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "SO2_delta1",
+        "value": -39.5,
+        "shap": 6.9367,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "PM2.5_delta1",
+        "value": -41.33,
+        "shap": -6.8363,
+        "direction": "decreases forecast"
+      },
+      {
+        "feature": "PM10_dev_roll7",
+        "value": 84.7529,
+        "shap": 4.5957,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "PM2.5_dev_roll7",
+        "value": 53.9714,
+        "shap": 3.5477,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "AQI_lag1",
+        "value": 396.0,
+        "shap": 3.1596,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "PM2.5_roll3_std",
+        "value": 43.9251,
+        "shap": 2.9552,
+        "direction": "increases forecast"
+      },
+      {
+        "feature": "O3_delta1",
+        "value": -19.45,
+        "shap": -2.9549,
+        "direction": "decreases forecast"
+      },
+      {
+        "feature": "AQI_dev_roll7",
+        "value": 64.0,
+        "shap": -2.7951,
+        "direction": "decreases forecast"
+      },
+      {
+        "feature": "NO2_delta1",
+        "value": 7.57,
+        "shap": 2.4172,
+        "direction": "increases forecast"
+      }
+    ]
+  },
+  "figures": [
+    "36_shap_global.png",
+    "37_shap_local_waterfall.png"
+  ],
+  "interpretation": "The global view is dominated by same-day particulate concentration and by short-horizon change features, which is consistent with the exploratory finding that PM2.5 is the strongest single correlate of the AQI and with the strong day-to-day autocorrelation that makes persistence a competitive baseline. The presence of the change and deviation features near the top is the more interesting result: the model is not simply carrying today forward, it is reading the direction and the momentum of the last few days, which is exactly the information the persistence baseline lacks and the source of the margin over it."
+}

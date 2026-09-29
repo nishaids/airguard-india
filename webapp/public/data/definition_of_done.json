@@ -1,0 +1,74 @@
+{
+  "generated_by": "src/report/audit.py",
+  "generated_at_utc": "2026-09-29T02:37:00Z",
+  "n_checks": 13,
+  "n_passed": 12,
+  "all_passed": false,
+  "checks": [
+    {
+      "check": "`python run_all.py` reproduces everything from a fresh clone",
+      "passed": true,
+      "detail": "`python run_all.py` orchestrates 20 stages in dependency order: acquire, quality, clean, features, safe_windows, eda, regression, classification, clustering, tuning, evaluation, explain, policy, cards, diagrams, notebooks, reports, readme, smoke, audit."
+    },
+    {
+      "check": "PROVENANCE.json with SHA-256 checksums and a verified licence string",
+      "passed": true,
+      "detail": "5 files checksummed with SHA-256; licence recorded as 'CC0: Public Domain' (verified live: True)."
+    },
+    {
+      "check": "At least 14 figures, all at 300 DPI",
+      "passed": true,
+      "detail": "41 figures, all at 300 DPI."
+    },
+    {
+      "check": "Every figure referenced in a report, notebook or the application",
+      "passed": true,
+      "detail": "41 of 41 figures are cited by a report, a notebook or the application."
+    },
+    {
+      "check": "Three review documents generated",
+      "passed": true,
+      "detail": "3 of 3 generated: Review1_Problem_and_Dataset.docx (1.4 MB); Review2_Preprocessing_and_EDA.docx (11.6 MB); Review3_Modeling_and_Comparison.docx (5.1 MB)."
+    },
+    {
+      "check": "Zero hardcoded metrics in the report builders",
+      "passed": true,
+      "detail": "No transcribed metric literals found in the report builders; every figure is read from results/*.json at generation time."
+    },
+    {
+      "check": "Regression, classification and clustering trained, tuned and compared",
+      "passed": true,
+      "detail": "Regression: 5 fitted families plus a persistence baseline (best LightGBM, MAE 15.1028). Classification: 9 configurations plus a baseline (best XGBoost + SMOTE, macro-F1 0.7411). Clustering: K-Means k=2 with Ward comparison. Tuning report present: True."
+    },
+    {
+      "check": "Every leakage hazard has a documented control",
+      "passed": true,
+      "detail": "5 controls documented (encoder, imputation, scaler, target, temporal); the same-day leakage is additionally demonstrated by experiment (macro-F1 1.0 with the target's own inputs against 0.7077 for the honest forecasting task)."
+    },
+    {
+      "check": "All ten novelty features implemented with artefacts behind them",
+      "passed": true,
+      "detail": "10 of 10 implemented. Health Advisory Index: 7 cohorts; band differs from the AQI for at least one cohort on 66.92% of city-days | Next-day forecasting: targets AQI_next and AQI_Bucket_next; split at 2019-05-26 | Three ML paradigms: all three evaluation artefacts present | Safe-exposure window: degraded=False; 12 cities covered | Event-aware anomaly handling: lockdown -33.99%; Diwali 72.93% | SHAP explainability: 2500 rows explained globally plus one local decomposition | Counterfactual policy simulator: 7 scenarios re-scored | Accessibility and reach: advisory text in English, \u0ba4\u0bae\u0bbf\u0bb4\u0bcd, \u0939\u093f\u0928\u094d\u0926\u0940; Okabe-Ito colour-blind-safe palette throughout | Responsible-AI artefacts: data card and model card generated from results | Production hygiene: 17 versioned joblib artefacts; cached inference, input validation, graceful fallback and a drift check in app/utils/inference.py"
+    },
+    {
+      "check": "Data card and model card complete with limitations and disclaimer",
+      "passed": true,
+      "detail": "data_card.md (11 KB, limitations: True, disclaimer: True); model_card.md (11 KB, limitations: True, disclaimer: True)"
+    },
+    {
+      "check": "Smoke tests cover the no-exception guarantee",
+      "passed": true,
+      "detail": "14 smoke checks defined, including the city/cohort/date grid exercise that backs the no-exception claim."
+    },
+    {
+      "check": "Deployment URL recorded",
+      "passed": false,
+      "detail": "No deployment URL recorded yet. DEPLOY.md documents the steps; run `python -m src.report.readme --url <url>` after deploying and regenerate the reports so the URL propagates."
+    },
+    {
+      "check": "Phase-wise git history",
+      "passed": true,
+      "detail": "15 commits; history tells the phase story rather than landing as a single change."
+    }
+  ]
+}

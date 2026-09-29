@@ -1,0 +1,808 @@
+{
+  "descriptive": {
+    "per_column": [
+      {
+        "column": "PM2.5",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 66.785,
+        "std": 63.919,
+        "min": 1.72,
+        "q1": 30.325,
+        "median": 48.07,
+        "q3": 77.765,
+        "p95": 190.393,
+        "p99": 309.148,
+        "max": 949.99,
+        "skew": 3.622,
+        "kurtosis": 24.099,
+        "coefficient_of_variation": 0.957,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "PM10",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 121.885,
+        "std": 79.621,
+        "min": 0.21,
+        "q1": 75.825,
+        "median": 107.44,
+        "q3": 138.465,
+        "p95": 276.455,
+        "p99": 417.064,
+        "max": 917.08,
+        "skew": 2.136,
+        "kurtosis": 7.286,
+        "coefficient_of_variation": 0.653,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "NO",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 14.946,
+        "std": 19.58,
+        "min": 0.09,
+        "q1": 5.195,
+        "median": 9.13,
+        "q3": 15.545,
+        "p95": 52.232,
+        "p99": 103.762,
+        "max": 287.14,
+        "skew": 3.85,
+        "kurtosis": 20.298,
+        "coefficient_of_variation": 1.31,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "NO2",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 28.794,
+        "std": 20.141,
+        "min": 0.01,
+        "q1": 13.98,
+        "median": 23.99,
+        "q3": 38.0,
+        "p95": 67.64,
+        "p99": 96.545,
+        "max": 220.26,
+        "skew": 1.6,
+        "kurtosis": 4.126,
+        "coefficient_of_variation": 0.699,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "NOx",
+        "unit": "ppb",
+        "n": 18395,
+        "mean": 28.101,
+        "std": 27.461,
+        "min": 0.0,
+        "q1": 11.58,
+        "median": 21.64,
+        "q3": 35.0,
+        "p95": 80.131,
+        "p99": 143.722,
+        "max": 293.1,
+        "skew": 2.784,
+        "kurtosis": 11.455,
+        "coefficient_of_variation": 0.977,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "NH3",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 25.993,
+        "std": 25.137,
+        "min": 0.02,
+        "q1": 11.62,
+        "median": 20.45,
+        "q3": 34.09,
+        "p95": 60.869,
+        "p99": 132.69,
+        "max": 352.89,
+        "skew": 4.226,
+        "kurtosis": 30.197,
+        "coefficient_of_variation": 0.967,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "CO",
+        "unit": "mg/m3",
+        "n": 18395,
+        "mean": 1.172,
+        "std": 1.932,
+        "min": 0.0,
+        "q1": 0.55,
+        "median": 0.84,
+        "q3": 1.2,
+        "p95": 2.56,
+        "p99": 10.472,
+        "max": 47.93,
+        "skew": 8.676,
+        "kurtosis": 113.02,
+        "coefficient_of_variation": 1.649,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "SO2",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 9.797,
+        "std": 9.175,
+        "min": 0.21,
+        "q1": 5.175,
+        "median": 7.69,
+        "q3": 11.79,
+        "p95": 22.319,
+        "p99": 38.531,
+        "max": 187.02,
+        "skew": 7.678,
+        "kurtosis": 108.016,
+        "coefficient_of_variation": 0.937,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "O3",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 36.078,
+        "std": 20.273,
+        "min": 0.02,
+        "q1": 22.375,
+        "median": 32.53,
+        "q3": 45.63,
+        "p95": 72.674,
+        "p99": 106.19,
+        "max": 257.73,
+        "skew": 1.596,
+        "kurtosis": 5.26,
+        "coefficient_of_variation": 0.562,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "Benzene",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 2.565,
+        "std": 4.864,
+        "min": 0.0,
+        "q1": 0.28,
+        "median": 1.22,
+        "q3": 2.94,
+        "p95": 8.356,
+        "p99": 24.764,
+        "max": 80.72,
+        "skew": 6.315,
+        "kurtosis": 60.677,
+        "coefficient_of_variation": 1.896,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "Toluene",
+        "unit": "ug/m3",
+        "n": 18395,
+        "mean": 6.683,
+        "std": 11.31,
+        "min": 0.0,
+        "q1": 1.29,
+        "median": 3.18,
+        "q3": 7.645,
+        "p95": 25.839,
+        "p99": 45.586,
+        "max": 411.52,
+        "skew": 8.482,
+        "kurtosis": 167.577,
+        "coefficient_of_variation": 1.692,
+        "shapiro_normality_rejected": true
+      },
+      {
+        "column": "AQI",
+        "unit": "AQI index",
+        "n": 17057,
+        "mean": 149.158,
+        "std": 101.907,
+        "min": 20.0,
+        "q1": 78.0,
+        "median": 112.0,
+        "q3": 184.0,
+        "p95": 366.0,
+        "p99": 462.44,
+        "max": 891.0,
+        "skew": 1.541,
+        "kurtosis": 2.309,
+        "coefficient_of_variation": 0.683,
+        "shapiro_normality_rejected": true
+      }
+    ],
+    "n_rows": 18395
+  },
+  "pollutant_vs_aqi": [
+    {
+      "pollutant": "PM2.5",
+      "pearson_r": 0.8976,
+      "spearman_rho": 0.8784,
+      "n": 17057
+    },
+    {
+      "pollutant": "PM10",
+      "pearson_r": 0.7317,
+      "spearman_rho": 0.7569,
+      "n": 17057
+    },
+    {
+      "pollutant": "NO2",
+      "pearson_r": 0.5235,
+      "spearman_rho": 0.4888,
+      "n": 17057
+    },
+    {
+      "pollutant": "SO2",
+      "pearson_r": 0.3071,
+      "spearman_rho": 0.344,
+      "n": 17057
+    },
+    {
+      "pollutant": "CO",
+      "pearson_r": 0.3027,
+      "spearman_rho": 0.4754,
+      "n": 17057
+    },
+    {
+      "pollutant": "O3",
+      "pearson_r": 0.2944,
+      "spearman_rho": 0.3582,
+      "n": 17057
+    }
+  ],
+  "correlation": {
+    "method": "Spearman rank correlation",
+    "strongest_pairs": [
+      {
+        "a": "PM2.5",
+        "b": "AQI",
+        "spearman_rho": 0.8784
+      },
+      {
+        "a": "PM2.5",
+        "b": "PM10",
+        "spearman_rho": 0.7684
+      },
+      {
+        "a": "PM10",
+        "b": "AQI",
+        "spearman_rho": 0.7569
+      },
+      {
+        "a": "Benzene",
+        "b": "Toluene",
+        "spearman_rho": 0.7009
+      },
+      {
+        "a": "NO",
+        "b": "NOx",
+        "spearman_rho": 0.6581
+      },
+      {
+        "a": "NO2",
+        "b": "NOx",
+        "spearman_rho": 0.6116
+      },
+      {
+        "a": "NO",
+        "b": "NO2",
+        "spearman_rho": 0.5835
+      },
+      {
+        "a": "NO2",
+        "b": "AQI",
+        "spearman_rho": 0.4888
+      }
+    ],
+    "aqi_correlations": {
+      "PM2.5": 0.8784,
+      "PM10": 0.7569,
+      "NO": 0.4629,
+      "NO2": 0.4888,
+      "NOx": 0.4344,
+      "NH3": 0.4055,
+      "CO": 0.4754,
+      "SO2": 0.344,
+      "O3": 0.3582,
+      "Benzene": 0.2327,
+      "Toluene": 0.2795
+    }
+  },
+  "pca": {
+    "n_components": 6,
+    "explained_variance_ratio": [
+      0.3787,
+      0.1155,
+      0.1013,
+      0.0833,
+      0.0737,
+      0.0646
+    ],
+    "cumulative": [
+      0.3787,
+      0.4943,
+      0.5956,
+      0.6789,
+      0.7525,
+      0.8171
+    ],
+    "n_components_for_80pct": 6,
+    "pc1_loadings": {
+      "PM2.5": 0.3528,
+      "PM10": 0.3907,
+      "NO": 0.4164,
+      "NO2": 0.3957,
+      "NOx": 0.4046,
+      "NH3": 0.1371,
+      "CO": 0.1116,
+      "SO2": 0.2586,
+      "O3": 0.1642,
+      "Benzene": 0.1934,
+      "Toluene": 0.2582
+    },
+    "pc2_loadings": {
+      "PM2.5": -0.1444,
+      "PM10": -0.153,
+      "NO": 0.0447,
+      "NO2": -0.0858,
+      "NOx": 0.1106,
+      "NH3": -0.3095,
+      "CO": 0.1987,
+      "SO2": -0.2499,
+      "O3": -0.4136,
+      "Benzene": 0.5919,
+      "Toluene": 0.4637
+    }
+  },
+  "decomposition": {
+    "city": "Delhi",
+    "seasonal_strength": 0.6985,
+    "trend_strength": 0.2405,
+    "seasonal_amplitude": 629.4,
+    "residual_std": 63.25
+  },
+  "seasonal": {
+    "seasonal_mean_aqi": {
+      "Monsoon": 97.1,
+      "Post-Monsoon": 190.13,
+      "Summer": 133.02,
+      "Winter": 195.07
+    },
+    "monthly_mean_aqi": {
+      "1": 207.36,
+      "2": 173.06,
+      "3": 137.8,
+      "4": 133.7,
+      "5": 138.99,
+      "6": 121.52,
+      "7": 96.81,
+      "8": 92.55,
+      "9": 101.95,
+      "10": 169.53,
+      "11": 209.88,
+      "12": 203.28
+    },
+    "worst_season": "Winter",
+    "best_season": "Monsoon",
+    "seasonal_ratio": 2.009,
+    "worst_month": 11,
+    "best_month": 8
+  },
+  "covid": {
+    "lockdown_window": [
+      "2020-03-25",
+      "2020-05-31"
+    ],
+    "comparison_window_days_before": 60,
+    "national_mean_before": 123.57,
+    "national_mean_during": 81.57,
+    "national_change_pct": -33.99,
+    "per_city": [
+      {
+        "city": "Amaravati",
+        "mean_aqi_60d_before": 59.43,
+        "mean_aqi_during_lockdown": 53.99,
+        "change_pct": -9.17,
+        "mannwhitney_u": 2442.5,
+        "p_value": 0.02740746070964441,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Amritsar",
+        "mean_aqi_60d_before": 107.98,
+        "mean_aqi_during_lockdown": 68.84,
+        "change_pct": -36.25,
+        "mannwhitney_u": 3114.0,
+        "p_value": 3.913687681316055e-13,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Bengaluru",
+        "mean_aqi_60d_before": 97.87,
+        "mean_aqi_during_lockdown": 70.56,
+        "change_pct": -27.9,
+        "mannwhitney_u": 3994.5,
+        "p_value": 5.06262334554797e-21,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Chennai",
+        "mean_aqi_60d_before": 77.75,
+        "mean_aqi_during_lockdown": 69.6,
+        "change_pct": -10.48,
+        "mannwhitney_u": 2817.5,
+        "p_value": 0.00010291110309949577,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Delhi",
+        "mean_aqi_60d_before": 219.42,
+        "mean_aqi_during_lockdown": 125.43,
+        "change_pct": -42.84,
+        "mannwhitney_u": 3472.5,
+        "p_value": 4.015544712565168e-12,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Gurugram",
+        "mean_aqi_60d_before": 171.93,
+        "mean_aqi_during_lockdown": 123.32,
+        "change_pct": -28.27,
+        "mannwhitney_u": 3093.0,
+        "p_value": 2.5032194654911605e-07,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Hyderabad",
+        "mean_aqi_60d_before": 93.67,
+        "mean_aqi_during_lockdown": 71.75,
+        "change_pct": -23.4,
+        "mannwhitney_u": 3278.0,
+        "p_value": 1.7002245331347609e-09,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Jaipur",
+        "mean_aqi_60d_before": 117.5,
+        "mean_aqi_during_lockdown": 96.46,
+        "change_pct": -17.91,
+        "mannwhitney_u": 2965.0,
+        "p_value": 5.0412891403384594e-06,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Kolkata",
+        "mean_aqi_60d_before": 169.83,
+        "mean_aqi_during_lockdown": 65.79,
+        "change_pct": -61.26,
+        "mannwhitney_u": 3917.5,
+        "p_value": 1.5753566375821584e-19,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Lucknow",
+        "mean_aqi_60d_before": 193.52,
+        "mean_aqi_during_lockdown": 111.87,
+        "change_pct": -42.19,
+        "mannwhitney_u": 3414.5,
+        "p_value": 2.6687667974381834e-11,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Thiruvananthapuram",
+        "mean_aqi_60d_before": 83.17,
+        "mean_aqi_during_lockdown": 57.63,
+        "change_pct": -30.7,
+        "mannwhitney_u": 3885.5,
+        "p_value": 6.083928315681261e-19,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Visakhapatnam",
+        "mean_aqi_60d_before": 94.65,
+        "mean_aqi_during_lockdown": 62.8,
+        "change_pct": -33.65,
+        "mannwhitney_u": 3078.5,
+        "p_value": 6.309414322626688e-10,
+        "significant_at_0_05": true
+      }
+    ],
+    "n_cities_significant_decline": 12,
+    "test": "One-sided Mann-Whitney U test per city, alternative hypothesis that the pre-lockdown distribution is stochastically greater than the lockdown distribution. A rank test is used because the AQI is strongly right-skewed, which violates the normality assumption of a t-test."
+  },
+  "festival": {
+    "window_days_either_side": 3,
+    "baseline_definition": "the span 21 to 35 days before each Diwali, which holds the season and the meteorological regime approximately constant while excluding the festival itself",
+    "national_mean_festival": 214.92,
+    "national_mean_baseline": 124.28,
+    "national_uplift_pct": 72.93,
+    "per_city": [
+      {
+        "city": "Amaravati",
+        "n_festival_days": 13,
+        "n_baseline_days": 11,
+        "mean_festival_aqi": 64.08,
+        "mean_baseline_aqi": 104.82,
+        "uplift_pct": -38.87,
+        "p_value": 0.9991257739303766,
+        "significant_at_0_05": false
+      },
+      {
+        "city": "Amritsar",
+        "n_festival_days": 16,
+        "n_baseline_days": 45,
+        "mean_festival_aqi": 232.38,
+        "mean_baseline_aqi": 126.78,
+        "uplift_pct": 83.29,
+        "p_value": 0.00016462920329205123,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Bengaluru",
+        "n_festival_days": 35,
+        "n_baseline_days": 75,
+        "mean_festival_aqi": 93.23,
+        "mean_baseline_aqi": 87.69,
+        "uplift_pct": 6.31,
+        "p_value": 0.4425827478336863,
+        "significant_at_0_05": false
+      },
+      {
+        "city": "Chennai",
+        "n_festival_days": 35,
+        "n_baseline_days": 74,
+        "mean_festival_aqi": 149.94,
+        "mean_baseline_aqi": 103.36,
+        "uplift_pct": 45.06,
+        "p_value": 0.001638201974409001,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Delhi",
+        "n_festival_days": 35,
+        "n_baseline_days": 75,
+        "mean_festival_aqi": 422.31,
+        "mean_baseline_aqi": 212.59,
+        "uplift_pct": 98.66,
+        "p_value": 1.2170347090062235e-13,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Gurugram",
+        "n_festival_days": 26,
+        "n_baseline_days": 58,
+        "mean_festival_aqi": 343.38,
+        "mean_baseline_aqi": 167.74,
+        "uplift_pct": 104.71,
+        "p_value": 5.6250881357340064e-11,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Hyderabad",
+        "n_festival_days": 34,
+        "n_baseline_days": 75,
+        "mean_festival_aqi": 120.0,
+        "mean_baseline_aqi": 104.16,
+        "uplift_pct": 15.21,
+        "p_value": 0.0031568674879004434,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Jaipur",
+        "n_festival_days": 21,
+        "n_baseline_days": 44,
+        "mean_festival_aqi": 213.43,
+        "mean_baseline_aqi": 110.14,
+        "uplift_pct": 93.79,
+        "p_value": 5.887301006255536e-09,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Kolkata",
+        "n_festival_days": 14,
+        "n_baseline_days": 30,
+        "mean_festival_aqi": 206.71,
+        "mean_baseline_aqi": 98.2,
+        "uplift_pct": 110.5,
+        "p_value": 0.004898128350000609,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Lucknow",
+        "n_festival_days": 35,
+        "n_baseline_days": 75,
+        "mean_festival_aqi": 350.43,
+        "mean_baseline_aqi": 145.44,
+        "uplift_pct": 140.94,
+        "p_value": 2.2096395555943245e-15,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Thiruvananthapuram",
+        "n_festival_days": 14,
+        "n_baseline_days": 45,
+        "mean_festival_aqi": 82.29,
+        "mean_baseline_aqi": 67.16,
+        "uplift_pct": 22.53,
+        "p_value": 0.0003091628290961492,
+        "significant_at_0_05": true
+      },
+      {
+        "city": "Visakhapatnam",
+        "n_festival_days": 20,
+        "n_baseline_days": 42,
+        "mean_festival_aqi": 120.15,
+        "mean_baseline_aqi": 104.0,
+        "uplift_pct": 15.53,
+        "p_value": 0.6467624812603714,
+        "significant_at_0_05": false
+      }
+    ],
+    "n_cities_significant_uplift": 9,
+    "peak_offset_days": 1,
+    "profile": {
+      "-10": 176.44,
+      "-9": 175.65,
+      "-8": 162.79,
+      "-7": 164.58,
+      "-6": 177.38,
+      "-5": 176.95,
+      "-4": 176.6,
+      "-3": 178.62,
+      "-2": 180.88,
+      "-1": 193.4,
+      "0": 210.81,
+      "1": 277.95,
+      "2": 233.27,
+      "3": 224.75,
+      "4": 227.66,
+      "5": 219.23,
+      "6": 229.44,
+      "7": 250.98,
+      "8": 243.98,
+      "9": 231.57,
+      "10": 216.25
+    }
+  },
+  "hai_burden": {
+    "restrictive_bands": [
+      "High",
+      "Very High",
+      "Extreme"
+    ],
+    "per_city_per_cohort_pct": {
+      "Healthy adult": {
+        "Gurugram": 53.41,
+        "Delhi": 61.08,
+        "Lucknow": 50.71,
+        "Kolkata": 26.92,
+        "Jaipur": 12.07,
+        "Amritsar": 12.97,
+        "Visakhapatnam": 10.08,
+        "Chennai": 7.06,
+        "Amaravati": 7.61,
+        "Hyderabad": 4.15,
+        "Bengaluru": 4.82,
+        "Thiruvananthapuram": 0.48
+      },
+      "Children (under 14)": {
+        "Gurugram": 80.32,
+        "Delhi": 74.04,
+        "Lucknow": 61.01,
+        "Kolkata": 33.42,
+        "Jaipur": 24.13,
+        "Amritsar": 21.14,
+        "Visakhapatnam": 19.73,
+        "Chennai": 16.3,
+        "Amaravati": 16.77,
+        "Hyderabad": 13.56,
+        "Bengaluru": 9.01,
+        "Thiruvananthapuram": 3.61
+      },
+      "Elderly (60+)": {
+        "Gurugram": 82.04,
+        "Delhi": 77.19,
+        "Lucknow": 64.08,
+        "Kolkata": 35.94,
+        "Jaipur": 31.63,
+        "Amritsar": 26.47,
+        "Visakhapatnam": 24.94,
+        "Chennai": 21.23,
+        "Amaravati": 19.02,
+        "Hyderabad": 20.37,
+        "Bengaluru": 12.09,
+        "Thiruvananthapuram": 5.04
+      },
+      "Asthma / COPD": {
+        "Gurugram": 81.49,
+        "Delhi": 75.04,
+        "Lucknow": 61.54,
+        "Kolkata": 33.69,
+        "Jaipur": 27.97,
+        "Amritsar": 23.45,
+        "Visakhapatnam": 21.78,
+        "Chennai": 17.73,
+        "Amaravati": 17.72,
+        "Hyderabad": 15.64,
+        "Bengaluru": 9.9,
+        "Thiruvananthapuram": 4.09
+      },
+      "Cardiac patients": {
+        "Gurugram": 83.48,
+        "Delhi": 77.49,
+        "Lucknow": 67.56,
+        "Kolkata": 37.8,
+        "Jaipur": 33.0,
+        "Amritsar": 27.44,
+        "Visakhapatnam": 27.92,
+        "Chennai": 24.47,
+        "Amaravati": 20.45,
+        "Hyderabad": 24.26,
+        "Bengaluru": 15.18,
+        "Thiruvananthapuram": 6.65
+      },
+      "Pregnant women": {
+        "Gurugram": 81.21,
+        "Delhi": 75.79,
+        "Lucknow": 63.6,
+        "Kolkata": 35.28,
+        "Jaipur": 28.34,
+        "Amritsar": 24.07,
+        "Visakhapatnam": 22.97,
+        "Chennai": 20.12,
+        "Amaravati": 18.07,
+        "Hyderabad": 18.03,
+        "Bengaluru": 11.47,
+        "Thiruvananthapuram": 5.13
+      },
+      "Outdoor workers": {
+        "Gurugram": 82.79,
+        "Delhi": 78.59,
+        "Lucknow": 60.96,
+        "Kolkata": 34.35,
+        "Jaipur": 36.2,
+        "Amritsar": 28.33,
+        "Visakhapatnam": 23.65,
+        "Chennai": 16.99,
+        "Amaravati": 18.07,
+        "Hyderabad": 18.4,
+        "Bengaluru": 12.46,
+        "Thiruvananthapuram": 3.71
+      }
+    },
+    "national_pct_by_cohort": {
+      "Healthy adult": 23.03,
+      "Children (under 14)": 33.42,
+      "Elderly (60+)": 37.42,
+      "Asthma / COPD": 34.81,
+      "Cardiac patients": 39.7,
+      "Pregnant women": 36.1,
+      "Outdoor workers": 36.78
+    }
+  },
+  "generated_by": "src/eda/plots.py",
+  "generated_at_utc": "2026-09-28T17:55:58Z",
+  "figures": [
+    "11_univariate_distributions.png",
+    "12_pollutant_boxplots.png",
+    "13_city_ranking.png",
+    "14_pollutant_vs_aqi.png",
+    "15_correlation_heatmap.png",
+    "16_pairplot.png",
+    "17_pca_projection.png",
+    "18_stl_decomposition.png",
+    "19_seasonal_boxplots.png",
+    "20_city_month_heatmap.png",
+    "21_covid_interrupted_series.png",
+    "22_diwali_festival_impact.png",
+    "23_hai_advisory_burden.png"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "generated_by": "src/eda/plots.py",
+  "generated_at_utc": "2026-09-28T17:55:58Z",
+  "n_insights": 14,
+  "insights": [
+    {
+      "id": 1,
+      "figure": "11_univariate_distributions.png",
+      "observation": "Every pollutant distribution is right-skewed. PM2.5 has skewness 3.622 and kurtosis 24.099; the AQI has skewness 1.541. The mean exceeds the median in every panel, and a Shapiro-Wilk test rejects normality for all 12 columns tested.",
+      "modelling_consequence": "Error metrics must be reported in pairs. RMSE is dominated by the long upper tail, so MAE is reported alongside it, and the primary regression metric is stated explicitly rather than left implicit. Linear models fitted on untransformed targets will be pulled by the tail, which is one reason a tree ensemble is expected to win."
+    },
+    {
+      "id": 2,
+      "figure": "12_pollutant_boxplots.png",
+      "observation": "The six principal pollutants occupy different orders of magnitude: median CO is 0.84 mg/m3 while median PM10 is 107.44 ug/m3, a ratio of roughly 128 before any unit conversion.",
+      "modelling_consequence": "Distance-based and gradient-based learners (KNN, SVM with an RBF kernel, logistic regression) require standardisation, which is applied inside a Pipeline so that the scaler is fitted on training folds only. Tree ensembles are scale-invariant and are fitted without it."
+    },
+    {
+      "id": 3,
+      "figure": "13_city_ranking.png",
+      "observation": "Mean AQI varies more than threefold across the twelve retained cities, and the bucket composition varies far more than the mean suggests: cities with similar means differ substantially in how often they reach the Severe band.",
+      "modelling_consequence": "City identity carries real signal, so both a one-hot encoding and a train-only target encoding are constructed and compared. Error is additionally reported per city rather than pooled, because a national average would hide systematic failure in any one city."
+    },
+    {
+      "id": 4,
+      "figure": "14_pollutant_vs_aqi.png",
+      "observation": "PM2.5 is the strongest single correlate of the AQI (Spearman rho = 0.8784), followed by PM10 (rho = 0.7569). Gaseous species are markedly weaker: SO2 reaches only rho = 0.344 and O3 rho = 0.3582.",
+      "modelling_consequence": "Tree ensembles will split heavily on the particulate features, which the measured feature importances confirm. It also means a policy lever acting on particulates moves the index far more than one acting on a gaseous species, which is the assumption the policy simulator is built on."
+    },
+    {
+      "id": 5,
+      "figure": "15_correlation_heatmap.png",
+      "observation": "The nitrogen oxide species form a tightly correlated block: PM2.5 with AQI at rho = 0.8784, PM2.5 with PM10 at rho = 0.7684, PM10 with AQI at rho = 0.7569.",
+      "modelling_consequence": "Multicollinearity of this magnitude destabilises linear coefficients and inflates their standard errors. A correlation-redundancy filter at |r| > 0.95 is therefore applied before model fitting, and Ridge regression is included specifically to regularise what survives."
+    },
+    {
+      "id": 6,
+      "figure": "16_pairplot.png",
+      "observation": "Bucket classes separate visibly along the particulate axes but overlap almost completely along the ozone axis, and the class boundaries are curved rather than straight.",
+      "modelling_consequence": "A linear decision boundary is unlikely to be adequate, which motivates including an RBF-kernel SVM and tree ensembles alongside logistic regression rather than relying on a linear classifier."
+    },
+    {
+      "id": 7,
+      "figure": "17_pca_projection.png",
+      "observation": "The first two principal components retain 49.4% of the pollutant variance, and 6 components are needed to reach 80%. PC1 loads positively on every pollutant, so it behaves as a general pollution-load axis.",
+      "modelling_consequence": "The feature space has genuine multi-dimensional structure and does not collapse to one factor, so dimensionality reduction is not used as a preprocessing step for the supervised models. PC1 does, however, justify the engineered total-pollutant-load feature."
+    },
+    {
+      "id": 8,
+      "figure": "18_stl_decomposition.png",
+      "observation": "STL decomposition of the Delhi series gives a seasonal strength of 0.6985 against a trend strength of 0.2405, with a seasonal amplitude of 629.4 AQI points.",
+      "modelling_consequence": "The annual cycle dominates the secular trend, so calendar position is engineered explicitly as sine and cosine pairs on month and day of year, which lets a model treat December and January as adjacent."
+    },
+    {
+      "id": 9,
+      "figure": "19_seasonal_boxplots.png",
+      "observation": "The worst season is Winter (mean AQI 195.07) and the cleanest is Monsoon (mean AQI 97.1), a 2.009-fold swing within the same cities.",
+      "modelling_consequence": "A time-ordered split must not cut mid-season, or the test period would be systematically harder or easier than training. The chosen boundary leaves more than a full annual cycle in the test period, so every season is represented on both sides."
+    },
+    {
+      "id": 10,
+      "figure": "20_city_month_heatmap.png",
+      "observation": "The seasonal pattern is not national. Northern cities show an extreme winter maximum, while southern coastal cities are comparatively flat across the year.",
+      "modelling_consequence": "The city-by-season interaction is real, so a purely additive model is mis-specified. Tree ensembles capture the interaction without it being stated, which is a further reason to expect them to outperform the linear baseline."
+    },
+    {
+      "id": 11,
+      "figure": "21_covid_interrupted_series.png",
+      "observation": "National mean AQI changed by -33.99% during the lockdown against the preceding 60 days, and the decline is significant at the 5% level in 12 of 12 cities by a one-sided Mann-Whitney U test.",
+      "modelling_consequence": "2020 is a genuine regime change, not noise. It is handled with an explicit lockdown flag rather than deletion, and test-set error is additionally broken out for the lockdown period so that its contribution is visible. It also provides the empirical anchor for the policy simulator: a large, abrupt emission reduction did move the index, by a measured amount."
+    },
+    {
+      "id": 12,
+      "figure": "22_diwali_festival_impact.png",
+      "observation": "AQI in the Diwali window is 72.93% above a matched baseline drawn from the same season three to five weeks earlier, and the uplift is significant at the 5% level in 9 of 12 cities. The pooled profile peaks 1 day(s) from Diwali itself.",
+      "modelling_consequence": "These spikes are real signal and must not be removed as outliers. The outlier policy explicitly exempts documented event windows from the statistical spike rule, and a festival flag is supplied as a feature so the model can anticipate rather than merely absorb them."
+    },
+    {
+      "id": 13,
+      "figure": "23_hai_advisory_burden.png",
+      "observation": "Under the HAI the share of days requiring a restrictive advisory differs sharply by cohort: Healthy adult 23.03%, Children (under 14) 33.42%, Elderly (60+) 37.42%, Asthma / COPD 34.81%, Cardiac patients 39.7%, Pregnant women 36.1%, Outdoor workers 36.78%.",
+      "modelling_consequence": "A single population-average index under-serves the most exposed groups by a measurable margin. This is the quantitative justification for the cohort-resolved advisory that the application delivers, and it is the outcome the policy simulator reports against."
+    },
+    {
+      "id": 14,
+      "figure": "10_hourly_exposure_climatology.png",
+      "observation": "Within-day exposure varies by roughly 40% of the daily mean once it is computed from instantaneous hourly concentrations, whereas the supplied hourly AQI column varies by only about 8% because it is a 24-hour rolling quantity.",
+      "modelling_consequence": "A daily index cannot support a within-day recommendation. The safest outdoor window is therefore computed from hourly concentrations and is presented as a relative exposure indicator, explicitly distinguished from the official AQI."
+    }
+  ]
+}

@@ -1,0 +1,1313 @@
+{
+  "generated_by": "src/data/clean.py",
+  "generated_at_utc": "2026-09-28T17:36:12Z",
+  "inputs": {
+    "raw_file": "D:\\PODS Project\\airguard-india\\data\\raw\\city_day.csv"
+  },
+  "outputs": {
+    "structural": "D:\\PODS Project\\airguard-india\\data\\interim\\city_day_structural.csv",
+    "clean": "D:\\PODS Project\\airguard-india\\data\\processed\\city_day_clean.csv"
+  },
+  "city_name_normalisation": {
+    "n_cities_before": 26,
+    "n_cities_after": 26,
+    "labels_changed": [],
+    "no_op": true
+  },
+  "deduplication": {
+    "rows_before": 29531,
+    "exact_duplicate_rows_removed": 0,
+    "conflicting_key_rows_resolved": 0,
+    "rows_after": 29531,
+    "policy": "Exact duplicates collapsed to the first occurrence. Conflicting (City, Date) keys resolved in favour of the row with more non-null pollutant readings, ties broken by first occurrence."
+  },
+  "city_retention": {
+    "threshold_completeness": 0.8,
+    "threshold_min_labelled_days": 730,
+    "threshold_justification": "Two independent gates are applied. The completeness gate (80% of the calendar days in a city's own observation span must carry a labelled AQI) ensures that per-city lag and rolling features are computed over a near-contiguous series rather than across long gaps, since a lag of one row is only a lag of one day when the series is dense. The volume gate (at least 730 labelled days, i.e. two years) ensures each retained city contributes at least two full annual cycles, so that seasonal structure is estimable and a time-ordered split leaves a usable test period. Both thresholds were fixed before any model was fitted and are not tuned against model performance.",
+    "decisions": [
+      {
+        "city": "Ahmedabad",
+        "labelled_days": 1334,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.664,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 66.4% < 80%."
+      },
+      {
+        "city": "Aizawl",
+        "labelled_days": 111,
+        "calendar_span_days": 113,
+        "aqi_completeness": 0.9823,
+        "first_date": "2020-03-11",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 111 labelled days < 730."
+      },
+      {
+        "city": "Amaravati",
+        "labelled_days": 841,
+        "calendar_span_days": 951,
+        "aqi_completeness": 0.8843,
+        "first_date": "2017-11-24",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 88.4% >= 80% and 841 labelled days >= 730."
+      },
+      {
+        "city": "Amritsar",
+        "labelled_days": 1126,
+        "calendar_span_days": 1221,
+        "aqi_completeness": 0.9222,
+        "first_date": "2017-02-27",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 92.2% >= 80% and 1,126 labelled days >= 730."
+      },
+      {
+        "city": "Bengaluru",
+        "labelled_days": 1910,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.9507,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 95.1% >= 80% and 1,910 labelled days >= 730."
+      },
+      {
+        "city": "Bhopal",
+        "labelled_days": 278,
+        "calendar_span_days": 289,
+        "aqi_completeness": 0.9619,
+        "first_date": "2019-09-17",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 278 labelled days < 730."
+      },
+      {
+        "city": "Brajrajnagar",
+        "labelled_days": 713,
+        "calendar_span_days": 938,
+        "aqi_completeness": 0.7601,
+        "first_date": "2017-12-07",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 76.0% < 80%; only 713 labelled days < 730."
+      },
+      {
+        "city": "Chandigarh",
+        "labelled_days": 299,
+        "calendar_span_days": 304,
+        "aqi_completeness": 0.9836,
+        "first_date": "2019-09-02",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 299 labelled days < 730."
+      },
+      {
+        "city": "Chennai",
+        "labelled_days": 1884,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.9378,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 93.8% >= 80% and 1,884 labelled days >= 730."
+      },
+      {
+        "city": "Coimbatore",
+        "labelled_days": 344,
+        "calendar_span_days": 386,
+        "aqi_completeness": 0.8912,
+        "first_date": "2019-06-12",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 344 labelled days < 730."
+      },
+      {
+        "city": "Delhi",
+        "labelled_days": 1999,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.995,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 99.5% >= 80% and 1,999 labelled days >= 730."
+      },
+      {
+        "city": "Ernakulam",
+        "labelled_days": 153,
+        "calendar_span_days": 162,
+        "aqi_completeness": 0.9444,
+        "first_date": "2020-01-22",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 153 labelled days < 730."
+      },
+      {
+        "city": "Gurugram",
+        "labelled_days": 1453,
+        "calendar_span_days": 1679,
+        "aqi_completeness": 0.8654,
+        "first_date": "2015-11-27",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 86.5% >= 80% and 1,453 labelled days >= 730."
+      },
+      {
+        "city": "Guwahati",
+        "labelled_days": 495,
+        "calendar_span_days": 502,
+        "aqi_completeness": 0.9861,
+        "first_date": "2019-02-16",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 495 labelled days < 730."
+      },
+      {
+        "city": "Hyderabad",
+        "labelled_days": 1880,
+        "calendar_span_days": 2006,
+        "aqi_completeness": 0.9372,
+        "first_date": "2015-01-04",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 93.7% >= 80% and 1,880 labelled days >= 730."
+      },
+      {
+        "city": "Jaipur",
+        "labelled_days": 1094,
+        "calendar_span_days": 1114,
+        "aqi_completeness": 0.982,
+        "first_date": "2017-06-14",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 98.2% >= 80% and 1,094 labelled days >= 730."
+      },
+      {
+        "city": "Jorapokhar",
+        "labelled_days": 771,
+        "calendar_span_days": 1169,
+        "aqi_completeness": 0.6595,
+        "first_date": "2017-04-20",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 66.0% < 80%."
+      },
+      {
+        "city": "Kochi",
+        "labelled_days": 158,
+        "calendar_span_days": 162,
+        "aqi_completeness": 0.9753,
+        "first_date": "2020-01-22",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: only 158 labelled days < 730."
+      },
+      {
+        "city": "Kolkata",
+        "labelled_days": 754,
+        "calendar_span_days": 814,
+        "aqi_completeness": 0.9263,
+        "first_date": "2018-04-10",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 92.6% >= 80% and 754 labelled days >= 730."
+      },
+      {
+        "city": "Lucknow",
+        "labelled_days": 1893,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.9423,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 94.2% >= 80% and 1,893 labelled days >= 730."
+      },
+      {
+        "city": "Mumbai",
+        "labelled_days": 775,
+        "calendar_span_days": 2009,
+        "aqi_completeness": 0.3858,
+        "first_date": "2015-01-01",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 38.6% < 80%."
+      },
+      {
+        "city": "Patna",
+        "labelled_days": 1459,
+        "calendar_span_days": 1858,
+        "aqi_completeness": 0.7853,
+        "first_date": "2015-06-01",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 78.5% < 80%."
+      },
+      {
+        "city": "Shillong",
+        "labelled_days": 205,
+        "calendar_span_days": 310,
+        "aqi_completeness": 0.6613,
+        "first_date": "2019-08-27",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 66.1% < 80%; only 205 labelled days < 730."
+      },
+      {
+        "city": "Talcher",
+        "labelled_days": 698,
+        "calendar_span_days": 925,
+        "aqi_completeness": 0.7546,
+        "first_date": "2017-12-20",
+        "last_date": "2020-07-01",
+        "retained": false,
+        "reason": "Excluded: completeness 75.5% < 80%; only 698 labelled days < 730."
+      },
+      {
+        "city": "Thiruvananthapuram",
+        "labelled_days": 1052,
+        "calendar_span_days": 1112,
+        "aqi_completeness": 0.946,
+        "first_date": "2017-06-16",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 94.6% >= 80% and 1,052 labelled days >= 730."
+      },
+      {
+        "city": "Visakhapatnam",
+        "labelled_days": 1171,
+        "calendar_span_days": 1462,
+        "aqi_completeness": 0.801,
+        "first_date": "2016-07-01",
+        "last_date": "2020-07-01",
+        "retained": true,
+        "reason": "AQI completeness 80.1% >= 80% and 1,171 labelled days >= 730."
+      }
+    ],
+    "n_retained": 12,
+    "n_excluded": 14,
+    "retained_cities": [
+      "Amaravati",
+      "Amritsar",
+      "Bengaluru",
+      "Chennai",
+      "Delhi",
+      "Gurugram",
+      "Hyderabad",
+      "Jaipur",
+      "Kolkata",
+      "Lucknow",
+      "Thiruvananthapuram",
+      "Visakhapatnam"
+    ],
+    "excluded_cities": [
+      "Ahmedabad",
+      "Aizawl",
+      "Bhopal",
+      "Brajrajnagar",
+      "Chandigarh",
+      "Coimbatore",
+      "Ernakulam",
+      "Guwahati",
+      "Jorapokhar",
+      "Kochi",
+      "Mumbai",
+      "Patna",
+      "Shillong",
+      "Talcher"
+    ],
+    "rows_retained": 18395,
+    "rows_dropped": 11136
+  },
+  "columns_dropped": {
+    "columns": [
+      "Xylene"
+    ],
+    "reason": "Xylene is missing in 61.3% of raw records. Imputing the majority of a column would inject more modelled values than measured ones, so the column is dropped rather than reconstructed."
+  },
+  "calendar_reindex": {
+    "inserted_calendar_days_total": 0,
+    "per_city": [
+      {
+        "city": "Amaravati",
+        "days_in_span": 951,
+        "inserted_days": 0
+      },
+      {
+        "city": "Amritsar",
+        "days_in_span": 1221,
+        "inserted_days": 0
+      },
+      {
+        "city": "Bengaluru",
+        "days_in_span": 2009,
+        "inserted_days": 0
+      },
+      {
+        "city": "Chennai",
+        "days_in_span": 2009,
+        "inserted_days": 0
+      },
+      {
+        "city": "Delhi",
+        "days_in_span": 2009,
+        "inserted_days": 0
+      },
+      {
+        "city": "Gurugram",
+        "days_in_span": 1679,
+        "inserted_days": 0
+      },
+      {
+        "city": "Hyderabad",
+        "days_in_span": 2006,
+        "inserted_days": 0
+      },
+      {
+        "city": "Jaipur",
+        "days_in_span": 1114,
+        "inserted_days": 0
+      },
+      {
+        "city": "Kolkata",
+        "days_in_span": 814,
+        "inserted_days": 0
+      },
+      {
+        "city": "Lucknow",
+        "days_in_span": 2009,
+        "inserted_days": 0
+      },
+      {
+        "city": "Thiruvananthapuram",
+        "days_in_span": 1112,
+        "inserted_days": 0
+      },
+      {
+        "city": "Visakhapatnam",
+        "days_in_span": 1462,
+        "inserted_days": 0
+      }
+    ],
+    "rows_after_reindex": 18395
+  },
+  "artefact_policy": {
+    "rule": {
+      "A": "negative concentration",
+      "B": "above per-pollutant plausible ceiling (config.POLLUTANT_PLAUSIBLE_MAX)",
+      "C": "exactly zero for PM2.5 or PM10",
+      "D": "isolated spike: |x - median(+/-3d)| > 8.0 scaled MAD with both adjacent days in range, and the day is outside every documented event window"
+    },
+    "event_window_protected_days": 3633,
+    "per_pollutant": {
+      "PM2.5": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 14,
+        "total_set_to_missing": 14
+      },
+      "PM10": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 2,
+        "total_set_to_missing": 2
+      },
+      "NO": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 47,
+        "total_set_to_missing": 47
+      },
+      "NO2": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 7,
+        "total_set_to_missing": 7
+      },
+      "NOx": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 1,
+        "total_set_to_missing": 1
+      },
+      "NH3": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 3,
+        "total_set_to_missing": 3
+      },
+      "CO": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 131,
+        "total_set_to_missing": 131
+      },
+      "SO2": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 17,
+        "total_set_to_missing": 17
+      },
+      "O3": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 0,
+        "total_set_to_missing": 0
+      },
+      "Benzene": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 14,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 80,
+        "total_set_to_missing": 93
+      },
+      "Toluene": {
+        "rule_A_negative": 0,
+        "rule_B_above_ceiling": 0,
+        "rule_C_impossible_zero": 0,
+        "rule_D_isolated_spike": 56,
+        "total_set_to_missing": 56
+      }
+    },
+    "total_values_set_to_missing": 371,
+    "aqi_values_removed_as_impossible": 0,
+    "aqi_above_scale_retained_and_flagged": 93,
+    "retention_principle": "Genuine pollution episodes are retained in full. The event-window exemption means that no Diwali, stubble-burning or lockdown observation is ever removed by the statistical spike rule."
+  },
+  "split_boundary": "2019-05-26",
+  "split_policy": "The boundary is placed at the 80% point of the calendar span, so the training period strictly precedes the test period. Every imputation statistic, scaler and encoder in this project is estimated on pre-boundary rows only.",
+  "imputation_comparison": {
+    "method": "Masking experiment on the training portion only: 15% of observed cells per column hidden at random with seed 42, then reconstructed. Scored on MAE normalised by the column interquartile range and on distribution shift (KS statistic, Wasserstein distance, moment changes).",
+    "mask_fraction": 0.15,
+    "n_train_rows": 13559,
+    "results": [
+      {
+        "strategy": "global_median",
+        "description": "Single median per column",
+        "causal": true,
+        "mean_mae_over_iqr": 0.7571,
+        "mean_ks_statistic": 0.1309,
+        "mean_abs_std_shift_pct": 13.105,
+        "per_column": [
+          {
+            "column": "PM2.5",
+            "n_masked": 1870,
+            "mae": 39.994,
+            "rmse": 68.9987,
+            "mae_over_iqr": 0.7577,
+            "ks_statistic": 0.1116,
+            "wasserstein": 8.8486,
+            "mean_shift_pct": -5.506,
+            "std_shift_pct": -10.416,
+            "skew_before": 3.099,
+            "skew_after": 3.642
+          },
+          {
+            "column": "PM10",
+            "n_masked": 1241,
+            "mae": 69.1041,
+            "rmse": 106.0046,
+            "mae_over_iqr": 0.7311,
+            "ks_statistic": 0.2417,
+            "wasserstein": 31.9626,
+            "mean_shift_pct": -10.216,
+            "std_shift_pct": -27.289,
+            "skew_before": 1.797,
+            "skew_after": 2.928
+          },
+          {
+            "column": "NO",
+            "n_masked": 1936,
+            "mae": 10.4785,
+            "rmse": 21.2867,
+            "mae_over_iqr": 0.914,
+            "ks_statistic": 0.0969,
+            "wasserstein": 2.0159,
+            "mean_shift_pct": -7.464,
+            "std_shift_pct": -8.479,
+            "skew_before": 3.684,
+            "skew_after": 4.18
+          },
+          {
+            "column": "NO2",
+            "n_masked": 1946,
+            "mae": 15.8361,
+            "rmse": 21.718,
+            "mae_over_iqr": 0.6074,
+            "ks_statistic": 0.0945,
+            "wasserstein": 2.9554,
+            "mean_shift_pct": -2.817,
+            "std_shift_pct": -9.128,
+            "skew_before": 1.547,
+            "skew_after": 1.856
+          },
+          {
+            "column": "NOx",
+            "n_masked": 1844,
+            "mae": 18.7206,
+            "rmse": 30.2719,
+            "mae_over_iqr": 0.7079,
+            "ks_statistic": 0.1153,
+            "wasserstein": 4.3228,
+            "mean_shift_pct": -6.201,
+            "std_shift_pct": -10.953,
+            "skew_before": 2.61,
+            "skew_after": 3.13
+          },
+          {
+            "column": "NH3",
+            "n_masked": 1484,
+            "mae": 17.1878,
+            "rmse": 30.2509,
+            "mae_over_iqr": 0.7023,
+            "ks_statistic": 0.1904,
+            "wasserstein": 6.6618,
+            "mean_shift_pct": -10.454,
+            "std_shift_pct": -19.517,
+            "skew_before": 3.814,
+            "skew_after": 5.018
+          },
+          {
+            "column": "CO",
+            "n_masked": 1968,
+            "mae": 0.7918,
+            "rmse": 2.0585,
+            "mae_over_iqr": 1.0419,
+            "ks_statistic": 0.0884,
+            "wasserstein": 0.1408,
+            "mean_shift_pct": -5.505,
+            "std_shift_pct": -7.964,
+            "skew_before": 7.916,
+            "skew_after": 9.012
+          },
+          {
+            "column": "SO2",
+            "n_masked": 1896,
+            "mae": 5.2095,
+            "rmse": 10.5792,
+            "mae_over_iqr": 0.7561,
+            "ks_statistic": 0.1038,
+            "wasserstein": 1.0684,
+            "mean_shift_pct": -5.239,
+            "std_shift_pct": -11.868,
+            "skew_before": 7.797,
+            "skew_after": 8.744
+          },
+          {
+            "column": "O3",
+            "n_masked": 1906,
+            "mae": 15.9676,
+            "rmse": 22.5107,
+            "mae_over_iqr": 0.6142,
+            "ks_statistic": 0.1031,
+            "wasserstein": 3.2553,
+            "mean_shift_pct": -2.165,
+            "std_shift_pct": -10.484,
+            "skew_before": 1.543,
+            "skew_after": 1.823
+          },
+          {
+            "column": "Benzene",
+            "n_masked": 1693,
+            "mae": 1.945,
+            "rmse": 3.5967,
+            "mae_over_iqr": 0.6644,
+            "ks_statistic": 0.1466,
+            "wasserstein": 0.5799,
+            "mean_shift_pct": -13.832,
+            "std_shift_pct": -12.97,
+            "skew_before": 6.734,
+            "skew_after": 8.178
+          },
+          {
+            "column": "Toluene",
+            "n_masked": 1695,
+            "mae": 5.9261,
+            "rmse": 12.941,
+            "mae_over_iqr": 0.8317,
+            "ks_statistic": 0.1481,
+            "wasserstein": 1.6826,
+            "mean_shift_pct": -16.106,
+            "std_shift_pct": -15.087,
+            "skew_before": 9.04,
+            "skew_after": 10.812
+          }
+        ]
+      },
+      {
+        "strategy": "per_city_median",
+        "description": "Median per city per column",
+        "causal": true,
+        "mean_mae_over_iqr": 0.6249,
+        "mean_ks_statistic": 0.0683,
+        "mean_abs_std_shift_pct": 11.093,
+        "per_column": [
+          {
+            "column": "PM2.5",
+            "n_masked": 1870,
+            "mae": 34.4925,
+            "rmse": 58.0447,
+            "mae_over_iqr": 0.6535,
+            "ks_statistic": 0.0456,
+            "wasserstein": 4.9578,
+            "mean_shift_pct": -3.614,
+            "std_shift_pct": -8.978,
+            "skew_before": 3.099,
+            "skew_after": 3.399
+          },
+          {
+            "column": "PM10",
+            "n_masked": 1241,
+            "mae": 53.4651,
+            "rmse": 78.5283,
+            "mae_over_iqr": 0.5656,
+            "ks_statistic": 0.1515,
+            "wasserstein": 19.5379,
+            "mean_shift_pct": -3.638,
+            "std_shift_pct": -20.621,
+            "skew_before": 1.797,
+            "skew_after": 2.097
+          },
+          {
+            "column": "NO",
+            "n_masked": 1936,
+            "mae": 8.6384,
+            "rmse": 18.3621,
+            "mae_over_iqr": 0.7535,
+            "ks_statistic": 0.0557,
+            "wasserstein": 1.2979,
+            "mean_shift_pct": -5.651,
+            "std_shift_pct": -7.838,
+            "skew_before": 3.684,
+            "skew_after": 4.053
+          },
+          {
+            "column": "NO2",
+            "n_masked": 1946,
+            "mae": 12.3285,
+            "rmse": 17.8863,
+            "mae_over_iqr": 0.4729,
+            "ks_statistic": 0.0449,
+            "wasserstein": 1.3486,
+            "mean_shift_pct": -1.774,
+            "std_shift_pct": -6.661,
+            "skew_before": 1.547,
+            "skew_after": 1.661
+          },
+          {
+            "column": "NOx",
+            "n_masked": 1844,
+            "mae": 14.6935,
+            "rmse": 24.5305,
+            "mae_over_iqr": 0.5556,
+            "ks_statistic": 0.0353,
+            "wasserstein": 1.9504,
+            "mean_shift_pct": -4.529,
+            "std_shift_pct": -8.566,
+            "skew_before": 2.61,
+            "skew_after": 2.839
+          },
+          {
+            "column": "NH3",
+            "n_masked": 1484,
+            "mae": 12.1292,
+            "rmse": 24.0088,
+            "mae_over_iqr": 0.4956,
+            "ks_statistic": 0.088,
+            "wasserstein": 3.0791,
+            "mean_shift_pct": -2.662,
+            "std_shift_pct": -15.936,
+            "skew_before": 3.814,
+            "skew_after": 4.197
+          },
+          {
+            "column": "CO",
+            "n_masked": 1968,
+            "mae": 0.7203,
+            "rmse": 1.9903,
+            "mae_over_iqr": 0.9477,
+            "ks_statistic": 0.0428,
+            "wasserstein": 0.1003,
+            "mean_shift_pct": -5.396,
+            "std_shift_pct": -7.782,
+            "skew_before": 7.916,
+            "skew_after": 8.955
+          },
+          {
+            "column": "SO2",
+            "n_masked": 1896,
+            "mae": 4.3482,
+            "rmse": 9.8222,
+            "mae_over_iqr": 0.6311,
+            "ks_statistic": 0.048,
+            "wasserstein": 0.5541,
+            "mean_shift_pct": -3.244,
+            "std_shift_pct": -10.756,
+            "skew_before": 7.797,
+            "skew_after": 8.357
+          },
+          {
+            "column": "O3",
+            "n_masked": 1906,
+            "mae": 14.7043,
+            "rmse": 20.7285,
+            "mae_over_iqr": 0.5656,
+            "ks_statistic": 0.0666,
+            "wasserstein": 2.2464,
+            "mean_shift_pct": -2.201,
+            "std_shift_pct": -9.34,
+            "skew_before": 1.543,
+            "skew_after": 1.751
+          },
+          {
+            "column": "Benzene",
+            "n_masked": 1693,
+            "mae": 1.5509,
+            "rmse": 3.2343,
+            "mae_over_iqr": 0.5298,
+            "ks_statistic": 0.0898,
+            "wasserstein": 0.3244,
+            "mean_shift_pct": -12.967,
+            "std_shift_pct": -11.071,
+            "skew_before": 6.734,
+            "skew_after": 7.644
+          },
+          {
+            "column": "Toluene",
+            "n_masked": 1695,
+            "mae": 5.0113,
+            "rmse": 11.9638,
+            "mae_over_iqr": 0.7033,
+            "ks_statistic": 0.0832,
+            "wasserstein": 1.244,
+            "mean_shift_pct": -15.476,
+            "std_shift_pct": -14.473,
+            "skew_before": 9.04,
+            "skew_after": 10.564
+          }
+        ]
+      },
+      {
+        "strategy": "per_city_linear_interpolation",
+        "description": "Linear interpolation in time within city, 7-day limit",
+        "causal": false,
+        "mean_mae_over_iqr": 0.2547,
+        "mean_ks_statistic": 0.0358,
+        "mean_abs_std_shift_pct": 7.46,
+        "per_column": [
+          {
+            "column": "PM2.5",
+            "n_masked": 1870,
+            "mae": 15.8577,
+            "rmse": 39.2654,
+            "mae_over_iqr": 0.3004,
+            "ks_statistic": 0.0173,
+            "wasserstein": 1.512,
+            "mean_shift_pct": -0.76,
+            "std_shift_pct": 2.129,
+            "skew_before": 3.099,
+            "skew_after": 3.635
+          },
+          {
+            "column": "PM10",
+            "n_masked": 1241,
+            "mae": 21.3877,
+            "rmse": 35.5297,
+            "mae_over_iqr": 0.2263,
+            "ks_statistic": 0.1321,
+            "wasserstein": 16.2761,
+            "mean_shift_pct": -2.899,
+            "std_shift_pct": -16.319,
+            "skew_before": 1.797,
+            "skew_after": 2.037
+          },
+          {
+            "column": "NO",
+            "n_masked": 1936,
+            "mae": 4.4641,
+            "rmse": 9.4614,
+            "mae_over_iqr": 0.3894,
+            "ks_statistic": 0.0131,
+            "wasserstein": 0.2286,
+            "mean_shift_pct": -0.422,
+            "std_shift_pct": -1.752,
+            "skew_before": 3.684,
+            "skew_after": 3.703
+          },
+          {
+            "column": "NO2",
+            "n_masked": 1946,
+            "mae": 4.4761,
+            "rmse": 7.6791,
+            "mae_over_iqr": 0.1717,
+            "ks_statistic": 0.0082,
+            "wasserstein": 0.328,
+            "mean_shift_pct": -0.172,
+            "std_shift_pct": -1.375,
+            "skew_before": 1.547,
+            "skew_after": 1.553
+          },
+          {
+            "column": "NOx",
+            "n_masked": 1844,
+            "mae": 4.8749,
+            "rmse": 9.3366,
+            "mae_over_iqr": 0.1843,
+            "ks_statistic": 0.0198,
+            "wasserstein": 0.8338,
+            "mean_shift_pct": -1.765,
+            "std_shift_pct": -2.803,
+            "skew_before": 2.61,
+            "skew_after": 2.745
+          },
+          {
+            "column": "NH3",
+            "n_masked": 1484,
+            "mae": 4.599,
+            "rmse": 12.7076,
+            "mae_over_iqr": 0.1879,
+            "ks_statistic": 0.0847,
+            "wasserstein": 2.452,
+            "mean_shift_pct": -0.916,
+            "std_shift_pct": -11.665,
+            "skew_before": 3.814,
+            "skew_after": 3.992
+          },
+          {
+            "column": "CO",
+            "n_masked": 1968,
+            "mae": 0.2774,
+            "rmse": 0.7417,
+            "mae_over_iqr": 0.365,
+            "ks_statistic": 0.0101,
+            "wasserstein": 0.038,
+            "mean_shift_pct": 2.771,
+            "std_shift_pct": 1.729,
+            "skew_before": 7.916,
+            "skew_after": 7.463
+          },
+          {
+            "column": "SO2",
+            "n_masked": 1896,
+            "mae": 2.0571,
+            "rmse": 3.8278,
+            "mae_over_iqr": 0.2986,
+            "ks_statistic": 0.013,
+            "wasserstein": 0.3373,
+            "mean_shift_pct": 3.386,
+            "std_shift_pct": 14.094,
+            "skew_before": 7.797,
+            "skew_after": 7.252
+          },
+          {
+            "column": "O3",
+            "n_masked": 1906,
+            "mae": 5.9971,
+            "rmse": 9.4597,
+            "mae_over_iqr": 0.2307,
+            "ks_statistic": 0.0112,
+            "wasserstein": 0.365,
+            "mean_shift_pct": -0.559,
+            "std_shift_pct": -1.354,
+            "skew_before": 1.543,
+            "skew_after": 1.589
+          },
+          {
+            "column": "Benzene",
+            "n_masked": 1693,
+            "mae": 0.5483,
+            "rmse": 1.2794,
+            "mae_over_iqr": 0.1873,
+            "ks_statistic": 0.0373,
+            "wasserstein": 0.2167,
+            "mean_shift_pct": 4.759,
+            "std_shift_pct": 23.32,
+            "skew_before": 6.734,
+            "skew_after": 7.309
+          },
+          {
+            "column": "Toluene",
+            "n_masked": 1695,
+            "mae": 1.8524,
+            "rmse": 6.3902,
+            "mae_over_iqr": 0.26,
+            "ks_statistic": 0.0474,
+            "wasserstein": 0.5815,
+            "mean_shift_pct": -5.993,
+            "std_shift_pct": -5.524,
+            "skew_before": 9.04,
+            "skew_after": 8.846
+          }
+        ]
+      },
+      {
+        "strategy": "per_city_ffill_limit3",
+        "description": "3-day limited forward fill within city, then per-city median",
+        "causal": true,
+        "mean_mae_over_iqr": 0.3223,
+        "mean_ks_statistic": 0.0391,
+        "mean_abs_std_shift_pct": 5.214,
+        "per_column": [
+          {
+            "column": "PM2.5",
+            "n_masked": 1870,
+            "mae": 20.1827,
+            "rmse": 45.9974,
+            "mae_over_iqr": 0.3824,
+            "ks_statistic": 0.0197,
+            "wasserstein": 1.7063,
+            "mean_shift_pct": -1.293,
+            "std_shift_pct": 0.009,
+            "skew_before": 3.099,
+            "skew_after": 3.518
+          },
+          {
+            "column": "PM10",
+            "n_masked": 1241,
+            "mae": 27.6297,
+            "rmse": 43.6096,
+            "mae_over_iqr": 0.2923,
+            "ks_statistic": 0.1368,
+            "wasserstein": 16.4324,
+            "mean_shift_pct": -2.797,
+            "std_shift_pct": -16.215,
+            "skew_before": 1.797,
+            "skew_after": 2.049
+          },
+          {
+            "column": "NO",
+            "n_masked": 1936,
+            "mae": 5.6176,
+            "rmse": 12.0324,
+            "mae_over_iqr": 0.49,
+            "ks_statistic": 0.0103,
+            "wasserstein": 0.2446,
+            "mean_shift_pct": -0.875,
+            "std_shift_pct": -1.407,
+            "skew_before": 3.684,
+            "skew_after": 3.703
+          },
+          {
+            "column": "NO2",
+            "n_masked": 1946,
+            "mae": 6.0058,
+            "rmse": 10.3355,
+            "mae_over_iqr": 0.2304,
+            "ks_statistic": 0.0094,
+            "wasserstein": 0.2822,
+            "mean_shift_pct": -0.404,
+            "std_shift_pct": -0.931,
+            "skew_before": 1.547,
+            "skew_after": 1.585
+          },
+          {
+            "column": "NOx",
+            "n_masked": 1844,
+            "mae": 6.6143,
+            "rmse": 12.6749,
+            "mae_over_iqr": 0.2501,
+            "ks_statistic": 0.0221,
+            "wasserstein": 0.9076,
+            "mean_shift_pct": -2.146,
+            "std_shift_pct": -2.918,
+            "skew_before": 2.61,
+            "skew_after": 2.756
+          },
+          {
+            "column": "NH3",
+            "n_masked": 1484,
+            "mae": 5.4498,
+            "rmse": 14.3087,
+            "mae_over_iqr": 0.2227,
+            "ks_statistic": 0.0816,
+            "wasserstein": 2.4673,
+            "mean_shift_pct": -1.404,
+            "std_shift_pct": -11.892,
+            "skew_before": 3.814,
+            "skew_after": 4.014
+          },
+          {
+            "column": "CO",
+            "n_masked": 1968,
+            "mae": 0.3366,
+            "rmse": 0.9689,
+            "mae_over_iqr": 0.4429,
+            "ks_statistic": 0.0047,
+            "wasserstein": 0.0247,
+            "mean_shift_pct": 1.824,
+            "std_shift_pct": 2.219,
+            "skew_before": 7.916,
+            "skew_after": 7.587
+          },
+          {
+            "column": "SO2",
+            "n_masked": 1896,
+            "mae": 2.5301,
+            "rmse": 4.6541,
+            "mae_over_iqr": 0.3672,
+            "ks_statistic": 0.011,
+            "wasserstein": 0.1609,
+            "mean_shift_pct": 0.991,
+            "std_shift_pct": 5.243,
+            "skew_before": 7.797,
+            "skew_after": 7.667
+          },
+          {
+            "column": "O3",
+            "n_masked": 1906,
+            "mae": 7.6041,
+            "rmse": 11.8345,
+            "mae_over_iqr": 0.2925,
+            "ks_statistic": 0.015,
+            "wasserstein": 0.4989,
+            "mean_shift_pct": -0.93,
+            "std_shift_pct": -1.336,
+            "skew_before": 1.543,
+            "skew_after": 1.629
+          },
+          {
+            "column": "Benzene",
+            "n_masked": 1693,
+            "mae": 0.6782,
+            "rmse": 1.6454,
+            "mae_over_iqr": 0.2317,
+            "ks_statistic": 0.058,
+            "wasserstein": 0.1798,
+            "mean_shift_pct": -3.935,
+            "std_shift_pct": 9.223,
+            "skew_before": 6.734,
+            "skew_after": 8.207
+          },
+          {
+            "column": "Toluene",
+            "n_masked": 1695,
+            "mae": 2.4451,
+            "rmse": 8.5081,
+            "mae_over_iqr": 0.3432,
+            "ks_statistic": 0.0619,
+            "wasserstein": 0.73,
+            "mean_shift_pct": -8.698,
+            "std_shift_pct": -5.966,
+            "skew_before": 9.04,
+            "skew_after": 9.532
+          }
+        ]
+      },
+      {
+        "strategy": "knn_k5",
+        "description": "KNN (k=5, distance weighted) on scaled pollutants",
+        "causal": false,
+        "mean_mae_over_iqr": 0.6922,
+        "mean_ks_statistic": 0.0434,
+        "mean_abs_std_shift_pct": 8.604,
+        "per_column": [
+          {
+            "column": "PM2.5",
+            "n_masked": 1870,
+            "mae": 41.4935,
+            "rmse": 69.6129,
+            "mae_over_iqr": 0.7861,
+            "ks_statistic": 0.0272,
+            "wasserstein": 2.7335,
+            "mean_shift_pct": -1.158,
+            "std_shift_pct": -5.427,
+            "skew_before": 3.099,
+            "skew_after": 3.278
+          },
+          {
+            "column": "PM10",
+            "n_masked": 1241,
+            "mae": 35.38,
+            "rmse": 56.3818,
+            "mae_over_iqr": 0.3743,
+            "ks_statistic": 0.0793,
+            "wasserstein": 14.949,
+            "mean_shift_pct": -9.318,
+            "std_shift_pct": -16.916,
+            "skew_before": 1.797,
+            "skew_after": 2.172
+          },
+          {
+            "column": "NO",
+            "n_masked": 1936,
+            "mae": 8.4667,
+            "rmse": 14.994,
+            "mae_over_iqr": 0.7385,
+            "ks_statistic": 0.0302,
+            "wasserstein": 0.9371,
+            "mean_shift_pct": -2.475,
+            "std_shift_pct": -6.111,
+            "skew_before": 3.684,
+            "skew_after": 3.907
+          },
+          {
+            "column": "NO2",
+            "n_masked": 1946,
+            "mae": 13.0335,
+            "rmse": 19.1292,
+            "mae_over_iqr": 0.4999,
+            "ks_statistic": 0.0393,
+            "wasserstein": 1.4674,
+            "mean_shift_pct": -3.438,
+            "std_shift_pct": -5.996,
+            "skew_before": 1.547,
+            "skew_after": 1.722
+          },
+          {
+            "column": "NOx",
+            "n_masked": 1844,
+            "mae": 15.7056,
+            "rmse": 24.8703,
+            "mae_over_iqr": 0.5939,
+            "ks_statistic": 0.0439,
+            "wasserstein": 2.2795,
+            "mean_shift_pct": -7.772,
+            "std_shift_pct": -6.105,
+            "skew_before": 2.61,
+            "skew_after": 2.754
+          },
+          {
+            "column": "NH3",
+            "n_masked": 1484,
+            "mae": 17.0769,
+            "rmse": 29.7708,
+            "mae_over_iqr": 0.6977,
+            "ks_statistic": 0.0533,
+            "wasserstein": 3.0782,
+            "mean_shift_pct": -10.77,
+            "std_shift_pct": -13.666,
+            "skew_before": 3.814,
+            "skew_after": 4.148
+          },
+          {
+            "column": "CO",
+            "n_masked": 1968,
+            "mae": 1.0187,
+            "rmse": 2.2123,
+            "mae_over_iqr": 1.3404,
+            "ks_statistic": 0.0421,
+            "wasserstein": 0.0778,
+            "mean_shift_pct": -6.125,
+            "std_shift_pct": -5.674,
+            "skew_before": 7.916,
+            "skew_after": 8.46
+          },
+          {
+            "column": "SO2",
+            "n_masked": 1896,
+            "mae": 5.5502,
+            "rmse": 11.3338,
+            "mae_over_iqr": 0.8055,
+            "ks_statistic": 0.0469,
+            "wasserstein": 0.6183,
+            "mean_shift_pct": -6.305,
+            "std_shift_pct": -8.86,
+            "skew_before": 7.797,
+            "skew_after": 8.098
+          },
+          {
+            "column": "O3",
+            "n_masked": 1906,
+            "mae": 15.4013,
+            "rmse": 21.4539,
+            "mae_over_iqr": 0.5924,
+            "ks_statistic": 0.0385,
+            "wasserstein": 1.3516,
+            "mean_shift_pct": -3.193,
+            "std_shift_pct": -5.859,
+            "skew_before": 1.543,
+            "skew_after": 1.642
+          },
+          {
+            "column": "Benzene",
+            "n_masked": 1693,
+            "mae": 1.6894,
+            "rmse": 3.4502,
+            "mae_over_iqr": 0.5771,
+            "ks_statistic": 0.0428,
+            "wasserstein": 0.2103,
+            "mean_shift_pct": -6.799,
+            "std_shift_pct": -7.765,
+            "skew_before": 6.734,
+            "skew_after": 7.084
+          },
+          {
+            "column": "Toluene",
+            "n_masked": 1695,
+            "mae": 4.3307,
+            "rmse": 10.6172,
+            "mae_over_iqr": 0.6078,
+            "ks_statistic": 0.0343,
+            "wasserstein": 0.7177,
+            "mean_shift_pct": -10.01,
+            "std_shift_pct": -12.263,
+            "skew_before": 9.04,
+            "skew_after": 9.801
+          }
+        ]
+      }
+    ],
+    "best_overall": "per_city_linear_interpolation",
+    "best_causal": "per_city_ffill_limit3",
+    "selected": "per_city_ffill_limit3",
+    "selection_rationale": "per_city_linear_interpolation attains the lowest normalised MAE overall (0.2547), but it is non-causal: it reconstructs a gap using observations that follow it. Because the modelling task is to forecast tomorrow from information available today, the adopted strategy is per_city_ffill_limit3, the best of the causal candidates (0.3223 normalised MAE). Adopting a non-causal imputer would inflate reported test performance without improving real forecasting skill."
+  },
+  "imputation_applied": {
+    "strategy": "per_city_ffill_limit3",
+    "statistics_estimated_on": "rows with Date < 2019-05-26",
+    "n_train_rows_used_for_statistics": 13559,
+    "cells_imputed_per_column": {
+      "PM2.5": 1176,
+      "PM10": 5910,
+      "NO": 728,
+      "NO2": 656,
+      "NOx": 1335,
+      "NH3": 4039,
+      "CO": 544,
+      "SO2": 999,
+      "O3": 941,
+      "Benzene": 2755,
+      "Toluene": 2736
+    },
+    "cells_imputed_total": 21819,
+    "cells_total": 202345,
+    "cells_imputed_pct": 10.783
+  },
+  "validation": {
+    "primary_key_unique": true,
+    "no_nulls_in_pollutants": true,
+    "no_negative_pollutants": true,
+    "calendar_complete_per_city": true,
+    "train_test_date_boundary_respected": true,
+    "n_train_rows": 13559,
+    "n_test_rows": 4836,
+    "split_boundary": "2019-05-26",
+    "shape": {
+      "rows": 18395,
+      "columns": 18
+    },
+    "cities": 12,
+    "date_range": [
+      "2015-01-01",
+      "2020-07-01"
+    ],
+    "aqi_nulls_remaining": 1338,
+    "aqi_null_note": "AQI is the supervised target and is deliberately NOT imputed. Rows without a labelled AQI are excluded when a supervised matrix is built, and retained here so that per-city lag features can still be computed over a gap-free calendar."
+  },
+  "figures": [
+    "05_imputation_strategy_comparison.png",
+    "06_imputation_distribution_shift.png"
+  ]
+}

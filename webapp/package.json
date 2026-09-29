@@ -1,0 +1,16 @@
+{
+  "name": "airguard-india-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "16.3.7",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "recharts": "2.15.4"
+  }
+}

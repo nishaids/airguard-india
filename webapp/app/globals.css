@@ -1,0 +1,203 @@
+:root {
+  --bg: #0e1117;
+  --bg-panel: #161a23;
+  --bg-panel-2: #1c212c;
+  --border: #2a2f3a;
+  --text: #e6e6e6;
+  --text-dim: #9aa1ad;
+  --accent: #56b4e9;
+  --accent-2: #d55e00;
+  --good: #009e73;
+  --warn: #e69f00;
+  --bad: #cc79a7;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+a { color: var(--accent); }
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 20px 60px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-panel);
+  flex-wrap: wrap;
+}
+
+.navbar .brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-right: 12px;
+}
+
+.navbar a {
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+}
+
+.navbar a:hover, .navbar a.active {
+  background: var(--bg-panel-2);
+  color: var(--text);
+}
+
+h1 { font-size: 1.9rem; margin: 6px 0 4px; }
+h2 { font-size: 1.3rem; margin: 28px 0 10px; }
+h3 { font-size: 1.05rem; margin: 16px 0 8px; }
+
+.caption { color: var(--text-dim); font-size: 0.9rem; }
+
+.card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 12px 0;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-1-4 { grid-template-columns: 1.4fr 1fr; }
+.grid-1-1_5 { grid-template-columns: 1fr 1.5fr; }
+
+@media (max-width: 900px) {
+  .grid-2, .grid-3, .grid-4, .grid-1-4, .grid-1-1_5 { grid-template-columns: 1fr; }
+}
+
+.metric {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.metric .label { color: var(--text-dim); font-size: 0.82rem; margin-bottom: 4px; }
+.metric .value { font-size: 1.6rem; font-weight: 700; }
+.metric .delta { font-size: 0.82rem; margin-top: 2px; }
+.metric .delta.good { color: var(--good); }
+.metric .delta.bad { color: var(--accent-2); }
+
+select, input[type="date"], input[type="text"] {
+  background: var(--bg-panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 0.92rem;
+  width: 100%;
+}
+
+label { display: block; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 4px; }
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+th { color: var(--text-dim); font-weight: 600; }
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs button.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.banner {
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 0.95rem;
+}
+
+.banner.info { background: #16324a; border: 1px solid #1f4d6e; }
+.banner.warn { background: #4a3416; border: 1px solid #6e4d1f; }
+.banner.error { background: #4a1620; border: 1px solid #6e1f2d; }
+.banner.success { background: #163a2c; border: 1px solid #1f6e4d; }
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-row .slider-value {
+  min-width: 42px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+img.figure {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.footer-note {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}

@@ -1,0 +1,12 @@
+{
+  "functions": {
+    "api/forecast.py": {
+      "maxDuration": 30,
+      "includeFiles": "{../src/**,../app/**,../data/processed/features_full.csv,../results/safe_windows.json,../models/deploy/**}"
+    },
+    "api/policy_simulate.py": {
+      "maxDuration": 30,
+      "includeFiles": "{../src/**,../data/processed/city_day_clean.csv}"
+    }
+  }
+}

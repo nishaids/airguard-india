@@ -33,6 +33,19 @@ def _baseline() -> pd.DataFrame:
     return rescore(_clean_frame(), {})
 
 
+def handle(payload: dict) -> tuple[int, dict]:
+    """Request handling, independent of the transport.
+
+    ``handler`` below is what Vercel invokes; ``webapp/dev_api_server.py``
+    calls this same function so the local development server and the deployed
+    function cannot drift apart.
+    """
+    reductions = {k: float(v) for k, v in (payload.get("reductions") or {}).items() if float(v) > 0}
+    if not reductions:
+        return 400, {"ok": False, "messages": ["Set at least one reduction above zero."]}
+    return 200, {"ok": True, "result": simulate(_clean_frame(), _baseline(), reductions)}
+
+
 class handler(BaseHTTPRequestHandler):
     def _send_json(self, status: int, payload: dict) -> None:
         body = json.dumps(payload).encode("utf-8")
@@ -54,11 +67,7 @@ class handler(BaseHTTPRequestHandler):
         try:
             length = int(self.headers.get("Content-Length", 0))
             payload = json.loads(self.rfile.read(length) or b"{}")
-            reductions = {k: float(v) for k, v in (payload.get("reductions") or {}).items() if float(v) > 0}
-            if not reductions:
-                self._send_json(400, {"ok": False, "messages": ["Set at least one reduction above zero."]})
-                return
-            result = simulate(_clean_frame(), _baseline(), reductions)
-            self._send_json(200, {"ok": True, "result": result})
+            status, result = handle(payload)
+            self._send_json(status, result)
         except Exception as exc:  # noqa: BLE001
             self._send_json(500, {"ok": False, "messages": [f"Internal error: {exc}"]})

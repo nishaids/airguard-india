@@ -62,6 +62,27 @@ Only Forecast and Policy Simulator are live Python functions, because they
 depend on user input (city, date, cohort, what-if sliders, reduction
 sliders).
 
+## Running it locally
+
+Two processes, because `next dev` does not run the Python functions and
+`vercel dev` cannot start them on a path containing a space (see the last
+section). In two terminals, from `webapp/`:
+
+```bash
+npm run dev:api
+```
+
+```bash
+npm run dev
+```
+
+Then open <http://localhost:3000>. `next.config.mjs` rewrites `/api/*` to the
+Python server on port 8787 **in development only**, so the whole application —
+including the Forecast and Policy Simulator — works locally exactly as it will
+in production. `dev_api_server.py` calls the same `handle()` functions the
+deployed Vercel handlers call, so the two cannot drift apart. In a production
+build no rewrite is emitted and Vercel routes `/api/*` to the real functions.
+
 ## Steps
 
 1. **Push this repository to GitHub** (see `DEPLOY.md` for the git remote
@@ -110,7 +131,7 @@ Verified directly, without needing a live server:
 - The real installed size of every dependency was measured from actual Linux
   wheels, not estimated.
 
-**Not verified locally**: the full request over an actual HTTP connection
+**Verified locally since**: the full request path now runs end to end against `dev_api_server.py`, which calls the same `handle()` functions the Vercel handlers call. **Still not verified**: the request over an actual HTTP connection
 through Vercel's own Python runtime, and the `includeFiles` bundling in
 `webapp/vercel.json`. Local `vercel dev` could not be used to close this gap
 on this machine — its Python-function bootstrap invokes `uv` through a

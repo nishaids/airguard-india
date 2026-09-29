@@ -1,26 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Metric, Banner, Table, Figure } from "../components/ui";
+import { Metric, Banner, Table, Figure, Loading, Markdown, SectionTitle, Badge } from "../components/ui";
 
-const TABS = ["Comparison", "Confusion and errors", "Explainability", "Tuning", "Leakage controls", "Metric glossary", "Data and model cards"];
+const TABS = [
+  "Comparison",
+  "Confusion and errors",
+  "Explainability",
+  "Tuning",
+  "Leakage controls",
+  "Metric glossary",
+  "Data and model cards",
+];
 
 const METRIC_GLOSSARY = {
-  MAE: "Mean absolute error. The average size of the miss, in AQI points.",
-  RMSE: "Root mean squared error. Like MAE, but large misses count disproportionately.",
-  "R-squared": "The share of the variation in next-day AQI the model accounts for. 1.0 is perfect.",
-  MAPE: "Mean absolute percentage error. The typical miss as a percentage of the true value.",
-  Accuracy: "The share of days whose band was predicted exactly right. Misleading alone, since bands are uneven.",
-  "Macro F1": "The average F1 across all six bands, equal weight regardless of rarity. The primary metric.",
-  "Weighted F1": "The same average, weighted by how common each band is. Closer to accuracy.",
-  "Balanced accuracy": "The average recall across bands.",
-  "Cohen's kappa": "Agreement corrected for chance. 0 is chance-level; 1 is perfect.",
-  "ROC-AUC (OvR)": "Probability a random day of one band scores higher than a random day of another. 0.5 is random.",
-  Silhouette: "How well each city sits in its own cluster vs the nearest other. -1 to 1, higher better.",
-  "Davies-Bouldin": "Average similarity between each cluster and its closest rival. Lower is better.",
+  MAE: "Mean absolute error. The average size of the miss, in AQI points. An MAE of 15 means the forecast is typically 15 AQI points away from what happened.",
+  RMSE: "Root mean squared error. Like MAE, but large misses count disproportionately, so it is sensitive to a handful of extreme days.",
+  "R-squared": "The share of the variation in next-day AQI that the model accounts for. 1.0 is perfect; 0 is no better than always predicting the average.",
+  MAPE: "Mean absolute percentage error. The typical miss expressed as a percentage of the true value.",
+  Accuracy: "The share of days whose band was predicted exactly right. Misleading on its own here, because the bands are unevenly common.",
+  "Macro F1": "The average F1 score across all six bands, giving each band equal weight no matter how rare. This is the primary metric, chosen so a model cannot score well by ignoring the rare Severe band.",
+  "Weighted F1": "The same average, but weighted by how common each band is. Closer to accuracy in behaviour.",
+  "Balanced accuracy": "The average recall across bands. Another way of refusing to let common bands dominate the score.",
+  "Cohen's kappa": "Agreement corrected for the agreement that chance alone would produce. 0 is chance-level; 1 is perfect.",
+  "ROC-AUC (OvR)": "For each band in turn, the probability that a randomly chosen day of that band is scored higher than a randomly chosen day that is not. 0.5 is random.",
+  Silhouette: "How well each city sits inside its own cluster compared with the nearest other cluster. Runs from −1 to 1; higher is better.",
+  "Davies-Bouldin": "Average similarity between each cluster and the one most like it. Lower is better.",
   "Calinski-Harabasz": "Ratio of between-cluster to within-cluster dispersion. Higher is better.",
-  "Persistence baseline": "The naive forecast that tomorrow equals today.",
-  "Ordinal error": "How many severity bands away a wrong prediction landed.",
+  "Persistence baseline": "The naive forecast that tomorrow equals today. Any model that cannot beat it has added nothing.",
+  "Ordinal error": "How many severity bands away a wrong prediction landed. An error of one band is far less serious than an error of three.",
 };
 
 export default function ModelInsightsPage() {
@@ -28,31 +36,39 @@ export default function ModelInsightsPage() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
+    const json = (p) => fetch(p).then((r) => r.json()).catch(() => null);
+    const text = (p) => fetch(p).then((r) => r.text()).catch(() => "");
     Promise.all([
-      fetch("/data/evaluation_regression.json").then((r) => r.json()),
-      fetch("/data/evaluation_classification.json").then((r) => r.json()),
-      fetch("/data/evaluation_clustering.json").then((r) => r.json()),
-      fetch("/data/tuning_report.json").then((r) => r.json()),
-      fetch("/data/explainability.json").then((r) => r.json()),
-      fetch("/data/error_analysis.json").then((r) => r.json()),
-      fetch("/data/master_comparison_regression.json").then((r) => r.json()).catch(() => []),
-      fetch("/data/master_comparison_classification.json").then((r) => r.json()).catch(() => []),
-      fetch("/data/master_comparison_clustering.json").then((r) => r.json()).catch(() => []),
-      fetch("/data/feature_engineering_report.json").then((r) => r.json()).catch(() => null),
-      fetch("/data/cleaning_report.json").then((r) => r.json()).catch(() => null),
-      fetch("/data/data_card.md").then((r) => r.text()).catch(() => ""),
-      fetch("/data/model_card.md").then((r) => r.text()).catch(() => ""),
-      fetch("/data/deployment_classifier.json").then((r) => r.json()).catch(() => null),
-    ]).then(([regression, classification, clustering, tuning, explain, errors, masterReg, masterClf, masterClust, featuresReport, cleaning, dataCard, modelCard, deploymentClassifier]) => {
-      setData({ regression, classification, clustering, tuning, explain, errors, masterReg, masterClf, masterClust, featuresReport, cleaning, dataCard, modelCard, deploymentClassifier });
-    });
+      json("/data/evaluation_regression.json"),
+      json("/data/evaluation_classification.json"),
+      json("/data/evaluation_clustering.json"),
+      json("/data/tuning_report.json"),
+      json("/data/explainability.json"),
+      json("/data/error_analysis.json"),
+      json("/data/master_comparison_regression.json"),
+      json("/data/master_comparison_classification.json"),
+      json("/data/master_comparison_clustering.json"),
+      json("/data/feature_engineering_report.json"),
+      json("/data/cleaning_report.json"),
+      text("/data/data_card.md"),
+      text("/data/model_card.md"),
+      json("/data/deployment_classifier.json"),
+    ]).then((v) =>
+      setData({
+        regression: v[0], classification: v[1], clustering: v[2], tuning: v[3], explain: v[4],
+        errors: v[5], masterReg: v[6] || [], masterClf: v[7] || [], masterClust: v[8] || [],
+        featuresReport: v[9], cleaning: v[10], dataCard: v[11], modelCard: v[12], deployed: v[13],
+      })
+    );
   }, []);
 
-  if (!data) return <p className="caption">Loading...</p>;
+  if (!data) return <Loading />;
 
   return (
     <div>
+      <span className="eyebrow">Evidence behind every number</span>
       <h1>Model Insights</h1>
+
       <div className="tabs">
         {TABS.map((t, i) => (
           <button key={t} className={i === tab ? "active" : ""} onClick={() => setTab(i)}>{t}</button>
@@ -71,34 +87,40 @@ export default function ModelInsightsPage() {
 }
 
 function ComparisonTab({ data }) {
-  const { regression, classification, masterReg, masterClf, masterClust, deploymentClassifier } = data;
+  const { regression, classification, masterReg, masterClf, masterClust, deployed } = data;
   return (
     <div>
-      <h2>Regression: next-day AQI value</h2>
-      <p className="caption">{regression.primary_metric_justification}</p>
+      <SectionTitle eyebrow="Task 1" caption={regression.primary_metric_justification}>
+        Regression — next-day AQI value
+      </SectionTitle>
       <Table rows={masterReg} />
       <Figure src="/figures/27_regression_comparison.png" />
 
-      <h2>Classification: next-day AQI band</h2>
-      <p className="caption">{classification.primary_metric_justification}</p>
+      <SectionTitle eyebrow="Task 2" caption={classification.primary_metric_justification}>
+        Classification — next-day AQI band
+      </SectionTitle>
       <Table rows={masterClf} />
       <Figure src="/figures/28_classification_comparison.png" />
 
-      {deploymentClassifier && (
+      {deployed && (
         <Banner kind="info">
-          <strong>Vercel deployment note.</strong> {deploymentClassifier.purpose} Measured gap:
-          macro-F1 {deploymentClassifier.test_metrics.macro_f1.toFixed(4)} for the deployed
-          LightGBM + SMOTE model vs {deploymentClassifier.reference_test_metrics.macro_f1.toFixed(4)}{" "}
-          for the reported XGBoost + SMOTE model ({deploymentClassifier.macro_f1_gap_vs_reference}).
+          <strong>What this deployment actually serves.</strong> {deployed.purpose} Measured on the
+          same split and feature set: macro-F1{" "}
+          <strong>{deployed.test_metrics.macro_f1.toFixed(4)}</strong> for the deployed{" "}
+          {deployed.model}, against <strong>{deployed.reference_test_metrics.macro_f1.toFixed(4)}</strong>{" "}
+          for the reported {deployed.reference_model} — a gap of{" "}
+          <strong>{deployed.macro_f1_gap_vs_reference}</strong>.
         </Banner>
       )}
 
-      <h2>Clustering: city archetypes</h2>
+      <SectionTitle eyebrow="Task 3">Clustering — city archetypes</SectionTitle>
       <Table rows={masterClust} />
-      <Figure src="/figures/24_clustering_selection.png" />
-      <Figure src="/figures/25_cluster_profiles.png" />
+      <div className="grid grid-2">
+        <Figure src="/figures/24_clustering_selection.png" />
+        <Figure src="/figures/25_cluster_profiles.png" />
+      </div>
 
-      <h2>Generalisation and learning behaviour</h2>
+      <SectionTitle>Generalisation and learning behaviour</SectionTitle>
       <div className="grid grid-2">
         <Figure src="/figures/34_train_test_gap.png" />
         <Figure src="/figures/32_learning_curves.png" />
@@ -111,33 +133,39 @@ function ErrorsTab({ data }) {
   const { regression, errors } = data;
   return (
     <div>
-      <h2>Confusion matrices</h2>
+      <SectionTitle>Confusion matrices</SectionTitle>
       <Figure src="/figures/29_confusion_matrices.png" />
 
-      <h2>Discrimination by class</h2>
+      <SectionTitle>Discrimination by class</SectionTitle>
       <Figure src="/figures/30_roc_curves.png" />
 
-      <h2>Residual diagnostics</h2>
+      <SectionTitle caption={regression.residual_analysis?.interpretation}>
+        Residual diagnostics
+      </SectionTitle>
       <Figure src="/figures/31_residual_analysis.png" />
-      <p><strong>Interpretation.</strong> {regression.residual_analysis?.interpretation}</p>
 
-      <h2>Error analysis</h2>
-      <Figure src="/figures/35_error_analysis.png" />
+      <SectionTitle>Error analysis</SectionTitle>
       {errors && (
         <>
           <div className="grid grid-4">
-            <Metric label="Test predictions" value={errors.n_test.toLocaleString()} />
-            <Metric label="Wrong" value={`${errors.n_wrong.toLocaleString()}`} delta={`${errors.error_rate_pct}%`} />
-            <Metric label="Wrong by 2+ bands" value={errors.n_wrong_by_two_or_more_bands.toLocaleString()} delta={`${errors.pct_wrong_by_two_or_more_bands}%`} />
-            <Metric label="Understating severity by 2+" value={errors.n_understating_severity_by_two_or_more.toLocaleString()} delta={`${errors.pct_understating_severity_by_two_or_more}%`} />
+            <Metric hero label="Test predictions" value={errors.n_test.toLocaleString()} />
+            <Metric hero label="Wrong" value={errors.n_wrong.toLocaleString()} delta={`${errors.error_rate_pct}% of days`} />
+            <Metric hero label="Wrong by 2+ bands" value={errors.n_wrong_by_two_or_more_bands.toLocaleString()} delta={`${errors.pct_wrong_by_two_or_more_bands}%`} />
+            <Metric
+              hero
+              label="Understating severity by 2+"
+              value={errors.n_understating_severity_by_two_or_more.toLocaleString()}
+              delta={`${errors.pct_understating_severity_by_two_or_more}% — the health-critical failure`}
+            />
           </div>
-          <p><strong>Interpretation.</strong> {errors.interpretation}</p>
+          <p>{errors.interpretation}</p>
+          <Figure src="/figures/35_error_analysis.png" />
           <h3>Most frequent misclassification transitions</h3>
           <Table rows={errors.most_frequent_transitions} />
         </>
       )}
 
-      <h2>Error by city</h2>
+      <SectionTitle>Error by city</SectionTitle>
       <Figure src="/figures/33_per_city_error.png" />
     </div>
   );
@@ -149,18 +177,17 @@ function ExplainTab({ data }) {
   const local = explain.local_example;
   return (
     <div>
-      <h2>Why the model predicts what it predicts</h2>
-      <p><strong>Method.</strong> {explain.method}</p>
+      <SectionTitle caption={explain.method}>Why the model predicts what it predicts</SectionTitle>
       <Figure src="/figures/36_shap_global.png" />
-      <p><strong>Interpretation.</strong> {explain.interpretation}</p>
+      <Banner kind="success">{explain.interpretation}</Banner>
 
-      <h2>A single day, decomposed</h2>
+      <SectionTitle>A single day, decomposed</SectionTitle>
+      <div className="grid grid-3">
+        <Metric hero label="Base value" value={local.base_value.toFixed(0)} delta="dataset mean" />
+        <Metric hero label="Forecast" value={local.prediction.toFixed(0)} delta={`${local.city}, ${local.date}`} />
+        <Metric hero label="Actual" value={local.actual.toFixed(0)} delta={`error ${(local.prediction - local.actual > 0 ? "+" : "") + (local.prediction - local.actual).toFixed(0)}`} />
+      </div>
       <Figure src="/figures/37_shap_local_waterfall.png" />
-      <p>
-        On <strong>{local.date}</strong> in <strong>{local.city}</strong>, the model forecast{" "}
-        <strong>{local.prediction.toFixed(0)}</strong> against an actual{" "}
-        <strong>{local.actual.toFixed(0)}</strong>, starting from a base value of {local.base_value.toFixed(0)}.
-      </p>
       <Table rows={local.top_contributions} />
     </div>
   );
@@ -171,40 +198,57 @@ function TuningTab({ data }) {
   if (!tuning) return <Banner kind="info">Tuning results not found.</Banner>;
   return (
     <div>
-      <h2>Hyperparameter optimisation</h2>
-      <p><strong>Strategy.</strong> {tuning.strategy}</p>
+      <SectionTitle caption={tuning.strategy}>Hyperparameter optimisation</SectionTitle>
       <Figure src="/figures/26_tuning_before_after.png" />
 
       <div className="grid grid-2">
-        <div>
-          <h3>Regression: {tuning.regression.model}</h3>
+        <div className="card">
+          <h3 style={{ marginTop: 0 }}>
+            <Badge colour="#009E73">Regression</Badge> {tuning.regression.model}
+          </h3>
           <Table
+            columns={["Setting", "MAE", "RMSE", "R2", "MAPE_pct"]}
             rows={[
               { Setting: "Default", ...tuning.regression.untuned_test },
               { Setting: "Tuned", ...tuning.regression.tuned_test },
             ]}
-            columns={["Setting", "MAE", "RMSE", "R2", "MAPE_pct"]}
           />
-          <pre className="caption" style={{ whiteSpace: "pre-wrap" }}>{JSON.stringify(tuning.regression.best_params, null, 2)}</pre>
+          <details>
+            <summary className="caption" style={{ cursor: "pointer" }}>Best parameters</summary>
+            <pre>{JSON.stringify(tuning.regression.best_params, null, 2)}</pre>
+          </details>
         </div>
-        <div>
-          <h3>Classification: {tuning.classification.model}</h3>
-          <Table rows={[{ Setting: "Default", ...tuning.classification.untuned_test }, { Setting: "Tuned", ...tuning.classification.tuned_test }]} />
-          <pre className="caption" style={{ whiteSpace: "pre-wrap" }}>{JSON.stringify(tuning.classification.best_params, null, 2)}</pre>
+        <div className="card">
+          <h3 style={{ marginTop: 0 }}>
+            <Badge colour="#E69F00">Classification</Badge> {tuning.classification.model}
+          </h3>
+          <Table
+            rows={[
+              { Setting: "Default", ...tuning.classification.untuned_test },
+              { Setting: "Tuned", ...tuning.classification.tuned_test },
+            ]}
+          />
+          <details>
+            <summary className="caption" style={{ cursor: "pointer" }}>Best parameters</summary>
+            <pre>{JSON.stringify(tuning.classification.best_params, null, 2)}</pre>
+          </details>
         </div>
       </div>
 
-      <h3>Cost against gain</h3>
-      <Banner kind="info" icon="⏱">{tuning.cost_vs_gain.assessment}</Banner>
+      <Banner kind="info" icon="⏱">
+        <strong>Cost against gain.</strong> {tuning.cost_vs_gain.assessment}
+      </Banner>
 
       <details className="card">
-        <summary style={{ cursor: "pointer", fontWeight: 600 }}>Search spaces and why each parameter was included</summary>
-        {Object.entries(tuning.search_space_rationale).map(([name, reason]) => (
-          <p key={name}><strong>{name}</strong> — {reason}</p>
-        ))}
+        <summary>Search spaces and why each parameter was included</summary>
+        <div style={{ marginTop: 12 }}>
+          {Object.entries(tuning.search_space_rationale).map(([name, reason]) => (
+            <p key={name}><strong>{name}</strong> — {reason}</p>
+          ))}
+        </div>
         <h3>Exhaustive grid over the Ridge penalty</h3>
         <Table rows={tuning.ridge_exhaustive.cv_curve} />
-        <p className="caption">{tuning.ridge_exhaustive.note}</p>
+        <p className="caption" style={{ marginBottom: 0 }}>{tuning.ridge_exhaustive.note}</p>
       </details>
     </div>
   );
@@ -215,42 +259,47 @@ function LeakageTab({ data }) {
   const leak = classification.leakage_demonstration;
   return (
     <div>
-      <h2>Leakage: demonstrated, not merely asserted</h2>
+      <SectionTitle caption={leak?.experiment}>Leakage: demonstrated, not merely asserted</SectionTitle>
       {leak && (
         <>
-          <p><strong>Experiment.</strong> {leak.experiment}</p>
           <Table
             rows={["same_day_nowcast_with_aqi", "same_day_nowcast_without_aqi", "next_day_forecast_this_project"].map((key) => ({
               Setup: key.replace(/_/g, " "),
               "Macro F1": leak[key].macro_f1,
               Accuracy: leak[key].accuracy,
               Features: leak[key].n_features,
-              Description: leak[key].description,
             }))}
           />
-          <Banner kind="error" icon="🚨">{leak.conclusion}</Banner>
+          <Banner kind="error">{leak.conclusion}</Banner>
         </>
       )}
 
       {featuresReport && (
         <>
-          <h2>Every leakage control applied in this project</h2>
+          <SectionTitle>Every leakage control applied in this project</SectionTitle>
           {Object.entries(featuresReport.leakage_controls).map(([name, description]) => (
-            <p key={name}><strong>{name[0].toUpperCase() + name.slice(1)}.</strong> {description}</p>
+            <div className="card" key={name}>
+              <h3 style={{ marginTop: 0, textTransform: "capitalize" }}>{name}</h3>
+              <p style={{ margin: 0, fontSize: "0.9rem" }}>{description}</p>
+            </div>
           ))}
         </>
       )}
 
       {cleaning && (
         <>
-          <h2>Imputation chosen by measurement</h2>
+          <SectionTitle caption={cleaning.imputation_comparison.selection_rationale}>
+            Imputation chosen by measurement
+          </SectionTitle>
           <Table
             rows={cleaning.imputation_comparison.results.map((r) => ({
-              Strategy: r.strategy, Causal: r.causal, "MAE / IQR": r.mean_mae_over_iqr,
-              "KS statistic": r.mean_ks_statistic, "Mean |std shift| (%)": r.mean_abs_std_shift_pct,
+              Strategy: r.strategy,
+              Causal: r.causal,
+              "MAE / IQR": r.mean_mae_over_iqr,
+              "KS statistic": r.mean_ks_statistic,
+              "Mean |std shift| (%)": r.mean_abs_std_shift_pct,
             }))}
           />
-          <p><strong>Selection.</strong> {cleaning.imputation_comparison.selection_rationale}</p>
         </>
       )}
     </div>
@@ -260,10 +309,15 @@ function LeakageTab({ data }) {
 function GlossaryTab() {
   return (
     <div>
-      <h2>What each metric means, in plain language</h2>
-      {Object.entries(METRIC_GLOSSARY).map(([name, desc]) => (
-        <p key={name}><strong>{name}.</strong> {desc}</p>
-      ))}
+      <SectionTitle>What each metric means, in plain language</SectionTitle>
+      <div className="grid grid-2">
+        {Object.entries(METRIC_GLOSSARY).map(([name, desc]) => (
+          <div className="card" key={name} style={{ margin: 0 }}>
+            <h3 style={{ marginTop: 0 }}>{name}</h3>
+            <p className="caption" style={{ margin: 0 }}>{desc}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -271,8 +325,8 @@ function GlossaryTab() {
 function CardsTab({ data }) {
   return (
     <div className="grid grid-2">
-      <div><pre style={{ whiteSpace: "pre-wrap", fontFamily: "inherit" }}>{data.dataCard}</pre></div>
-      <div><pre style={{ whiteSpace: "pre-wrap", fontFamily: "inherit" }}>{data.modelCard}</pre></div>
+      <div className="card"><Markdown text={data.dataCard} /></div>
+      <div className="card"><Markdown text={data.modelCard} /></div>
     </div>
   );
 }

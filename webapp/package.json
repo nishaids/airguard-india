@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:api": "python dev_api_server.py",
     "build": "next build",
     "start": "next start"
   },

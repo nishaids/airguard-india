@@ -459,7 +459,7 @@ def _find_chrome() -> Optional[str]:
     return None
 
 
-def _stamp_footers(pdf_path: Path) -> None:
+def _stamp_footers(pdf_path: Path, label: str = "AirGuard India — Project Explained") -> None:
     """Draw a running footer on every page except the cover.
 
     Chrome's ``--print-to-pdf`` either omits the footer entirely or prints its
@@ -488,7 +488,7 @@ def _stamp_footers(pdf_path: Path) -> None:
             overlay.setFillColor(HexColor("#8b93a1"))
             margin = 48.0
             baseline = 30.0
-            overlay.drawString(margin, baseline, "AirGuard India — Project Explained")
+            overlay.drawString(margin, baseline, label)
             overlay.drawRightString(width - margin, baseline, f"{index} / {total - 1}")
             overlay.setStrokeColor(HexColor("#e3e7ee"))
             overlay.setLineWidth(0.5)
@@ -505,7 +505,7 @@ def _stamp_footers(pdf_path: Path) -> None:
         writer.write(handle)
 
 
-def _render_chrome_cli(html_path: Path) -> bool:
+def _render_chrome_cli(html_path: Path, output: Path = OUTPUT) -> bool:
     chrome = _find_chrome()
     if not chrome:
         return False
@@ -521,7 +521,7 @@ def _render_chrome_cli(html_path: Path) -> bool:
                 f"--user-data-dir={profile}",
                 "--no-first-run",
                 "--no-pdf-header-footer",
-                f"--print-to-pdf={OUTPUT}",
+                f"--print-to-pdf={output}",
                 "--virtual-time-budget=8000",
                 html_path.as_uri(),
             ],
@@ -529,7 +529,7 @@ def _render_chrome_cli(html_path: Path) -> bool:
             capture_output=True,
             timeout=120,
         )
-    return OUTPUT.exists()
+    return output.exists()
 
 
 def main() -> Path:

@@ -1,0 +1,582 @@
+{
+  "generated_by": "src/research/pilot_trust.py",
+  "generated_at_utc": "2026-10-07T14:55:34Z",
+  "status": "PILOT. Historical 2015-2020 record only; refitted models, not the deployed artefacts. Indicates whether each research gap is real on data in hand -- not a result to publish.",
+  "classifier_calibration": {
+    "deployed_on_vercel_lightgbm_smote": {
+      "accuracy": 0.7685,
+      "mean_confidence": 0.8617,
+      "overconfidence_gap": 0.0932,
+      "expected_calibration_error": 0.0932,
+      "brier_multiclass": 0.3476,
+      "share_shown_as_95pct_or_more": 41.3,
+      "accuracy_when_shown_as_95pct_or_more": 88.9,
+      "reliability": [
+        {
+          "bin": "0.3-0.4",
+          "n": 3,
+          "mean_confidence": 0.377,
+          "accuracy": 0.333
+        },
+        {
+          "bin": "0.4-0.5",
+          "n": 25,
+          "mean_confidence": 0.478,
+          "accuracy": 0.44
+        },
+        {
+          "bin": "0.5-0.6",
+          "n": 360,
+          "mean_confidence": 0.552,
+          "accuracy": 0.539
+        },
+        {
+          "bin": "0.6-0.7",
+          "n": 384,
+          "mean_confidence": 0.652,
+          "accuracy": 0.586
+        },
+        {
+          "bin": "0.7-0.8",
+          "n": 471,
+          "mean_confidence": 0.753,
+          "accuracy": 0.648
+        },
+        {
+          "bin": "0.8-0.9",
+          "n": 695,
+          "mean_confidence": 0.853,
+          "accuracy": 0.705
+        },
+        {
+          "bin": "0.9-1.0",
+          "n": 2459,
+          "mean_confidence": 0.967,
+          "accuracy": 0.876
+        }
+      ]
+    },
+    "reported_best_xgboost_smote_tuned": {
+      "accuracy": 0.7933,
+      "mean_confidence": 0.7965,
+      "overconfidence_gap": 0.0033,
+      "expected_calibration_error": 0.0189,
+      "brier_multiclass": 0.2921,
+      "share_shown_as_95pct_or_more": 11.4,
+      "accuracy_when_shown_as_95pct_or_more": 98.0,
+      "reliability": [
+        {
+          "bin": "0.2-0.3",
+          "n": 1,
+          "mean_confidence": 0.282,
+          "accuracy": 1.0
+        },
+        {
+          "bin": "0.3-0.4",
+          "n": 1,
+          "mean_confidence": 0.394,
+          "accuracy": 1.0
+        },
+        {
+          "bin": "0.4-0.5",
+          "n": 95,
+          "mean_confidence": 0.483,
+          "accuracy": 0.453
+        },
+        {
+          "bin": "0.5-0.6",
+          "n": 502,
+          "mean_confidence": 0.548,
+          "accuracy": 0.568
+        },
+        {
+          "bin": "0.6-0.7",
+          "n": 577,
+          "mean_confidence": 0.652,
+          "accuracy": 0.643
+        },
+        {
+          "bin": "0.7-0.8",
+          "n": 688,
+          "mean_confidence": 0.751,
+          "accuracy": 0.734
+        },
+        {
+          "bin": "0.8-0.9",
+          "n": 1060,
+          "mean_confidence": 0.854,
+          "accuracy": 0.826
+        },
+        {
+          "bin": "0.9-1.0",
+          "n": 1473,
+          "mean_confidence": 0.939,
+          "accuracy": 0.955
+        }
+      ]
+    }
+  },
+  "intervals": {
+    "nominal_coverage_pct": 90.0,
+    "calibration_rows": 2073,
+    "calibration_period": [
+      "2018-11-18",
+      "2019-05-25"
+    ],
+    "point_model_test_mae": 15.204,
+    "methods": {
+      "split_conformal_absolute": {
+        "note": "constant half-width 48.0 AQI points",
+        "overall": {
+          "coverage_pct": 94.68,
+          "mean_width": 96.05,
+          "median_width": 96.05
+        },
+        "by_observed_band": [
+          {
+            "group": "Good",
+            "n": 424,
+            "coverage_pct": 99.3,
+            "mean_width": 96.1
+          },
+          {
+            "group": "Satisfactory",
+            "n": 2189,
+            "coverage_pct": 99.0,
+            "mean_width": 96.1
+          },
+          {
+            "group": "Moderate",
+            "n": 1261,
+            "coverage_pct": 91.0,
+            "mean_width": 96.1
+          },
+          {
+            "group": "Poor",
+            "n": 313,
+            "coverage_pct": 82.7,
+            "mean_width": 96.1
+          },
+          {
+            "group": "Very Poor",
+            "n": 166,
+            "coverage_pct": 86.1,
+            "mean_width": 96.1
+          },
+          {
+            "group": "Severe",
+            "n": 44,
+            "coverage_pct": 56.8,
+            "mean_width": 96.1
+          }
+        ],
+        "by_period": [
+          {
+            "group": "before lockdown",
+            "n": 3258,
+            "coverage_pct": 93.6,
+            "mean_width": 96.1
+          },
+          {
+            "group": "lockdown",
+            "n": 779,
+            "coverage_pct": 97.8,
+            "mean_width": 96.1
+          },
+          {
+            "group": "after lockdown",
+            "n": 360,
+            "coverage_pct": 97.8,
+            "mean_width": 96.1
+          }
+        ]
+      },
+      "conformalised_quantile_regression": {
+        "note": "quantile models widened by 2.6",
+        "overall": {
+          "coverage_pct": 90.24,
+          "mean_width": 67.48,
+          "median_width": 54.45
+        },
+        "by_observed_band": [
+          {
+            "group": "Good",
+            "n": 424,
+            "coverage_pct": 79.0,
+            "mean_width": 40.9
+          },
+          {
+            "group": "Satisfactory",
+            "n": 2189,
+            "coverage_pct": 93.3,
+            "mean_width": 48.4
+          },
+          {
+            "group": "Moderate",
+            "n": 1261,
+            "coverage_pct": 89.5,
+            "mean_width": 81.4
+          },
+          {
+            "group": "Poor",
+            "n": 313,
+            "coverage_pct": 89.1,
+            "mean_width": 133.9
+          },
+          {
+            "group": "Very Poor",
+            "n": 166,
+            "coverage_pct": 90.4,
+            "mean_width": 122.3
+          },
+          {
+            "group": "Severe",
+            "n": 44,
+            "coverage_pct": 75.0,
+            "mean_width": 196.1
+          }
+        ],
+        "by_period": [
+          {
+            "group": "before lockdown",
+            "n": 3258,
+            "coverage_pct": 89.7,
+            "mean_width": 72.5
+          },
+          {
+            "group": "lockdown",
+            "n": 779,
+            "coverage_pct": 91.7,
+            "mean_width": 52.0
+          },
+          {
+            "group": "after lockdown",
+            "n": 360,
+            "coverage_pct": 91.9,
+            "mean_width": 55.9
+          }
+        ]
+      },
+      "mondrian_by_predicted_band": {
+        "note": "half-widths {Satisfactory: 21, Moderate: 40, Poor: 83, Very Poor: 59, Severe: 64}",
+        "overall": {
+          "coverage_pct": 91.04,
+          "mean_width": 70.29,
+          "median_width": 42.68
+        },
+        "by_observed_band": [
+          {
+            "group": "Good",
+            "n": 424,
+            "coverage_pct": 94.3,
+            "mean_width": 68.6
+          },
+          {
+            "group": "Satisfactory",
+            "n": 2189,
+            "coverage_pct": 94.2,
+            "mean_width": 48.4
+          },
+          {
+            "group": "Moderate",
+            "n": 1261,
+            "coverage_pct": 86.1,
+            "mean_width": 80.0
+          },
+          {
+            "group": "Poor",
+            "n": 313,
+            "coverage_pct": 86.6,
+            "mean_width": 148.1
+          },
+          {
+            "group": "Very Poor",
+            "n": 166,
+            "coverage_pct": 93.4,
+            "mean_width": 128.4
+          },
+          {
+            "group": "Severe",
+            "n": 44,
+            "coverage_pct": 65.9,
+            "mean_width": 126.1
+          }
+        ],
+        "by_period": [
+          {
+            "group": "before lockdown",
+            "n": 3258,
+            "coverage_pct": 90.3,
+            "mean_width": 74.4
+          },
+          {
+            "group": "lockdown",
+            "n": 779,
+            "coverage_pct": 94.1,
+            "mean_width": 56.8
+          },
+          {
+            "group": "after lockdown",
+            "n": 360,
+            "coverage_pct": 91.4,
+            "mean_width": 62.2
+          }
+        ]
+      }
+    }
+  },
+  "leave_one_city_out": {
+    "protocol": "For each city, a model is fitted on the other eleven cities' training-period rows and scored on the held-out city's test-period rows. The city-identity feature ['City_target_enc'] is removed from both arms so the comparison is like for like.",
+    "per_city": [
+      {
+        "city": "Amaravati",
+        "n_test": 306,
+        "mae_city_seen_in_training": 12.24,
+        "mae_city_unseen": 12.19,
+        "degradation_pct": -0.5,
+        "mae_persistence": 12.76,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Amritsar",
+        "n_test": 336,
+        "mae_city_seen_in_training": 20.64,
+        "mae_city_unseen": 21.25,
+        "degradation_pct": 2.9,
+        "mae_persistence": 25.99,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Bengaluru",
+        "n_test": 402,
+        "mae_city_seen_in_training": 6.83,
+        "mae_city_unseen": 6.83,
+        "degradation_pct": -0.1,
+        "mae_persistence": 8.0,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Chennai",
+        "n_test": 402,
+        "mae_city_seen_in_training": 15.02,
+        "mae_city_unseen": 15.92,
+        "degradation_pct": 6.0,
+        "mae_persistence": 16.22,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Delhi",
+        "n_test": 402,
+        "mae_city_seen_in_training": 22.86,
+        "mae_city_unseen": 23.07,
+        "degradation_pct": 0.9,
+        "mae_persistence": 31.46,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Gurugram",
+        "n_test": 387,
+        "mae_city_seen_in_training": 24.11,
+        "mae_city_unseen": 24.24,
+        "degradation_pct": 0.6,
+        "mae_persistence": 30.66,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Hyderabad",
+        "n_test": 402,
+        "mae_city_seen_in_training": 8.38,
+        "mae_city_unseen": 8.12,
+        "degradation_pct": -3.1,
+        "mae_persistence": 9.85,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Jaipur",
+        "n_test": 402,
+        "mae_city_seen_in_training": 12.01,
+        "mae_city_unseen": 12.04,
+        "degradation_pct": 0.3,
+        "mae_persistence": 15.24,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Kolkata",
+        "n_test": 402,
+        "mae_city_seen_in_training": 15.31,
+        "mae_city_unseen": 15.74,
+        "degradation_pct": 2.9,
+        "mae_persistence": 19.72,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Lucknow",
+        "n_test": 402,
+        "mae_city_seen_in_training": 20.76,
+        "mae_city_unseen": 24.08,
+        "degradation_pct": 16.0,
+        "mae_persistence": 28.13,
+        "unseen_still_beats_persistence": true
+      },
+      {
+        "city": "Thiruvananthapuram",
+        "n_test": 350,
+        "mae_city_seen_in_training": 8.77,
+        "mae_city_unseen": 9.16,
+        "degradation_pct": 4.5,
+        "mae_persistence": 8.79,
+        "unseen_still_beats_persistence": false
+      },
+      {
+        "city": "Visakhapatnam",
+        "n_test": 204,
+        "mae_city_seen_in_training": 13.86,
+        "mae_city_unseen": 14.17,
+        "degradation_pct": 2.2,
+        "mae_persistence": 18.83,
+        "unseen_still_beats_persistence": true
+      }
+    ],
+    "weighted_mae_seen": 15.14,
+    "weighted_mae_unseen": 15.67,
+    "weighted_mae_persistence": 18.91,
+    "cities_where_unseen_beats_persistence": 11,
+    "mean_degradation_pct": 3.5
+  },
+  "selective_prediction": {
+    "baseline": {
+      "mae_all": 15.2,
+      "polluted_days": 523,
+      "under_warned_polluted_days": 94
+    },
+    "rules": {
+      "interval_width": [
+        {
+          "abstain_pct": 10.0,
+          "mae_on_answered": 12.89,
+          "mae_on_declined": 35.99,
+          "pct_of_declined_that_were_polluted_days": 64.3,
+          "pct_of_all_polluted_days_declined": 54.1,
+          "pct_of_severe_days_declined": 81.8,
+          "under_warned_polluted_days_still_answered": 58
+        },
+        {
+          "abstain_pct": 20.0,
+          "mae_on_answered": 11.18,
+          "mae_on_declined": 31.31,
+          "pct_of_declined_that_were_polluted_days": 54.5,
+          "pct_of_all_polluted_days_declined": 91.8,
+          "pct_of_severe_days_declined": 100.0,
+          "under_warned_polluted_days_still_answered": 11
+        }
+      ],
+      "relative_interval_width": [
+        {
+          "abstain_pct": 10.0,
+          "mae_on_answered": 14.8,
+          "mae_on_declined": 18.86,
+          "pct_of_declined_that_were_polluted_days": 3.0,
+          "pct_of_all_polluted_days_declined": 2.5,
+          "pct_of_severe_days_declined": 2.3,
+          "under_warned_polluted_days_still_answered": 91
+        },
+        {
+          "abstain_pct": 20.0,
+          "mae_on_answered": 14.82,
+          "mae_on_declined": 16.73,
+          "pct_of_declined_that_were_polluted_days": 3.4,
+          "pct_of_all_polluted_days_declined": 5.7,
+          "pct_of_severe_days_declined": 2.3,
+          "under_warned_polluted_days_still_answered": 82
+        }
+      ],
+      "input_novelty_max_abs_z": [
+        {
+          "abstain_pct": 10.0,
+          "mae_on_answered": 14.33,
+          "mae_on_declined": 23.05,
+          "pct_of_declined_that_were_polluted_days": 43.6,
+          "pct_of_all_polluted_days_declined": 36.7,
+          "pct_of_severe_days_declined": 97.7,
+          "under_warned_polluted_days_still_answered": 84
+        },
+        {
+          "abstain_pct": 20.0,
+          "mae_on_answered": 14.34,
+          "mae_on_declined": 18.68,
+          "pct_of_declined_that_were_polluted_days": 28.1,
+          "pct_of_all_polluted_days_declined": 47.2,
+          "pct_of_severe_days_declined": 100.0,
+          "under_warned_polluted_days_still_answered": 75
+        }
+      ]
+    }
+  },
+  "risk_averse_advisory": {
+    "severe_days": 44,
+    "rules": [
+      {
+        "rule": "point_forecast",
+        "exact_band_pct": 78.9,
+        "under_warned_pct_of_all_days": 7.4,
+        "over_warned_pct_of_all_days": 13.7,
+        "under_warned_polluted_days": 94,
+        "under_warned_pct_of_polluted_days": 18.0,
+        "under_warned_severe_days": 8,
+        "over_warned_by_two_or_more_bands_pct": 0.02
+      },
+      {
+        "rule": "upper_bound_of_90pct_interval",
+        "exact_band_pct": 47.6,
+        "under_warned_pct_of_all_days": 0.5,
+        "over_warned_pct_of_all_days": 51.9,
+        "under_warned_polluted_days": 10,
+        "under_warned_pct_of_polluted_days": 1.9,
+        "under_warned_severe_days": 2,
+        "over_warned_by_two_or_more_bands_pct": 2.25
+      },
+      {
+        "rule": "quantile_65",
+        "exact_band_pct": 77.3,
+        "under_warned_pct_of_all_days": 5.8,
+        "over_warned_pct_of_all_days": 17.0,
+        "under_warned_polluted_days": 78,
+        "under_warned_pct_of_polluted_days": 14.9,
+        "under_warned_severe_days": 6,
+        "over_warned_by_two_or_more_bands_pct": 0.11
+      },
+      {
+        "rule": "quantile_75",
+        "exact_band_pct": 72.5,
+        "under_warned_pct_of_all_days": 3.8,
+        "over_warned_pct_of_all_days": 23.7,
+        "under_warned_polluted_days": 47,
+        "under_warned_pct_of_polluted_days": 9.0,
+        "under_warned_severe_days": 5,
+        "over_warned_by_two_or_more_bands_pct": 0.27
+      },
+      {
+        "rule": "quantile_85",
+        "exact_band_pct": 64.4,
+        "under_warned_pct_of_all_days": 1.7,
+        "over_warned_pct_of_all_days": 33.9,
+        "under_warned_polluted_days": 24,
+        "under_warned_pct_of_polluted_days": 4.6,
+        "under_warned_severe_days": 3,
+        "over_warned_by_two_or_more_bands_pct": 0.59
+      }
+    ]
+  },
+  "event_flags": {
+    "candidates_offered_to_selection": [
+      "festival_flag",
+      "days_from_diwali",
+      "stubble_season_flag",
+      "lockdown_flag",
+      "post_lockdown_flag",
+      "covid_year_flag"
+    ],
+    "retained_in_regression_model": [],
+    "retained_in_classification_model": []
+  }
+}

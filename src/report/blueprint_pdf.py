@@ -155,16 +155,53 @@ def build_html() -> str:
 </body></html>"""
 
 
-def main() -> Path:
+def _print(markup: str, output: Path, label: str) -> Path:
     config.ensure_dirs()
     with tempfile.TemporaryDirectory() as tmp:
-        page = Path(tmp) / "blueprint.html"
-        page.write_text(build_html(), encoding="utf-8")
-        if not _render_chrome_cli(page, OUTPUT):
+        page = Path(tmp) / "document.html"
+        page.write_text(markup, encoding="utf-8")
+        if not _render_chrome_cli(page, output):
             raise RuntimeError("No Chrome or Edge installation found to print the PDF.")
-    _stamp_footers(OUTPUT, "AirGuard India 2.0 — Evidence and Blueprint")
-    print(f"Wrote {OUTPUT.relative_to(config.PROJECT_ROOT)} ({OUTPUT.stat().st_size / 1e6:.2f} MB)")
-    return OUTPUT
+    _stamp_footers(output, label)
+    print(f"Wrote {output.relative_to(config.PROJECT_ROOT)} ({output.stat().st_size / 1e6:.2f} MB)")
+    return output
+
+
+def render_single(source: Path, output: Path) -> Path:
+    """Typeset one Markdown document on its own, with a plain title page."""
+    text = _resolve_includes(source.read_text(encoding="utf-8"))
+    title = re.search(r"^#\s+(.*)$", text, flags=re.MULTILINE)
+    name = title.group(1).strip() if title else source.stem
+    cover = f"""
+<section class="cover">
+  <div class="cover-inner">
+    <div class="eyebrow">AirGuard India 2.0</div>
+    <h1 style="border:none;page-break-before:auto;font-size:34pt;color:#fff;margin:0 0 6mm;padding:0">{html.escape(name)}</h1>
+  </div>
+  <div class="cover-meta"><table>
+    <tr><td>Date</td><td>{date.today().strftime('%d %B %Y')}</td></tr>
+    <tr><td>Source</td><td>{html.escape(str(source.relative_to(config.PROJECT_ROOT)).replace(chr(92), '/'))}</td></tr>
+    <tr><td>Repository</td><td><a href="{config.REPO_URL}">{config.REPO_URL}</a></td></tr>
+  </table></div>
+</section>"""
+    body = _render_part(re.sub(r"^#\s+.*$", "", text, count=1, flags=re.MULTILINE))
+    markup = f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>{html.escape(name)}</title>
+{_embedded_font_css()}
+<style>{STYLE}{EXTRA_STYLE} h2:first-of-type {{ margin-top: 0; }}</style>
+</head><body>{cover}{body}</body></html>"""
+    return _print(markup, output, f"AirGuard India 2.0 — {name}")
+
+
+def main(argv: List[str] = None) -> Path:
+    import sys
+
+    argv = sys.argv[1:] if argv is None else argv
+    if len(argv) >= 2 and argv[0] == "--single":
+        source = (config.PROJECT_ROOT / argv[1]).resolve()
+        output = config.REPORTS_DIR / (argv[2] if len(argv) > 2 else f"AirGuard2_{source.stem}.pdf")
+        return render_single(source, output)
+    return _print(build_html(), OUTPUT, "AirGuard India 2.0 — Evidence and Blueprint")
 
 
 if __name__ == "__main__":

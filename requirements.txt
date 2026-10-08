@@ -28,6 +28,10 @@ plotly==6.5.2
 kagglehub==1.0.2
 requests==2.32.3
 
+# --- live ingestion (AirGuard 2.0; not needed by the deployed 1.0 app) ------- #
+psycopg2-binary==2.9.11
+pytest==9.0.2
+
 # --- reporting -------------------------------------------------------------- #
 python-docx==1.2.0
 

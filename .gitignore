@@ -15,6 +15,13 @@ data/processed/*.parquet
 # above the GitHub soft limit stays out of the repository.
 models/*.joblib.large
 
+# --- secrets ---------------------------------------------------------------- #
+# Credentials live only in .env (or the scheduler's secret store). The template
+# with variable names and no values is the one env file that is tracked.
+.env
+.env.*
+!.env.example
+
 # --- python ----------------------------------------------------------------- #
 __pycache__/
 *.py[cod]

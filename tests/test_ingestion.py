@@ -341,8 +341,9 @@ class WeatherTests(unittest.TestCase):
         }
         return [block, block]
 
-    def parse(self, retrieved=NOW):
-        issued = datetime(2026, 10, 7, 18, 0, tzinfo=timezone.utc)
+    RUN = datetime(2026, 10, 7, 18, 0, tzinfo=timezone.utc)
+
+    def parse(self, retrieved=NOW, issued=RUN):
         return weather.parse_forecast(self.payload(), self.locations, "gfs_seamless", retrieved, issued, {})
 
     def test_only_future_hours_are_kept_with_lead_times(self):
@@ -359,15 +360,37 @@ class WeatherTests(unittest.TestCase):
         self.assertEqual(tomorrow.quality_state, QualityState.FLAGGED)
         self.assertIsNone(tomorrow.variables["boundary_layer_height"])
 
-    def test_a_later_retrieval_is_a_new_record_never_an_overwrite(self):
+    def test_a_later_model_run_is_a_new_record_never_an_overwrite(self):
         earlier = self.parse(NOW).records[2]
-        later = self.parse(NOW + timedelta(hours=6)).records[-1]
+        later = self.parse(NOW + timedelta(hours=6), self.RUN + timedelta(hours=6)).records[-1]
         self.assertEqual(earlier.valid_at, later.valid_at)
         self.assertNotEqual(earlier.unique_key, later.unique_key)
         store = db.MemoryStore()
         store.insert_forecasts([earlier], IngestionRun("Open-Meteo", NOW))
         store.insert_forecasts([later], IngestionRun("Open-Meteo", NOW))
         self.assertEqual(len(store.forecasts), 2)
+
+    def tomorrow(self, retrieved, issued=RUN):
+        """Delhi's forecast for the same valid hour, whenever it was fetched."""
+        return next(f for f in self.parse(retrieved, issued).records if f.location_label == "Delhi" and f.valid_at == NOW + timedelta(hours=24))
+
+    def test_fetching_the_same_model_run_again_adds_nothing_and_keeps_the_first_copy(self):
+        first = self.tomorrow(NOW)
+        again = self.tomorrow(NOW + timedelta(minutes=20))
+        self.assertEqual(first.unique_key, again.unique_key)
+        store = db.MemoryStore()
+        self.assertEqual(store.insert_forecasts([first], IngestionRun("Open-Meteo", NOW)), 1)
+        self.assertEqual(store.insert_forecasts([again], IngestionRun("Open-Meteo", NOW)), 0)
+        self.assertEqual(next(iter(store.forecasts.values())).retrieved_at, NOW)
+
+    def test_an_unknown_model_run_falls_back_to_the_retrieval_hour(self):
+        first = self.tomorrow(NOW + timedelta(minutes=5), None)
+        same_hour = self.tomorrow(NOW + timedelta(minutes=40), None)
+        next_hour = self.tomorrow(NOW + timedelta(minutes=65), None)
+        self.assertIsNone(first.issued_at)
+        self.assertEqual(first.vintage_at, NOW)  # NOW is on the hour
+        self.assertEqual(first.unique_key, same_hour.unique_key)
+        self.assertNotEqual(first.unique_key, next_hour.unique_key)
 
     def test_run_time_comes_from_model_metadata(self):
         http, _, _ = client(ok({"last_run_initialisation_time": 1791396000, "last_run_availability_time": 1791416057}))
@@ -560,19 +583,44 @@ class MatchingTests(unittest.TestCase):
         self.assertLess(near.match_distance_m, 30)
         self.assertIsNone(far.same_as)
 
-    def test_one_copy_is_kept_for_modelling_and_both_keep_provenance(self):
+    def pair(self, **official_fields):
         official, near, _ = self.stations()
         matching.link_stations([official], [near], 300)
         when = NOW - timedelta(minutes=30)
-        raw = observation(source="CPCB/data.gov.in", source_station_id=official.source_station_id, raw_value="97", raw_unit=None, value_kind=ValueKind.UNKNOWN, observed_at=when)
-        measured = observation(source="OpenAQ", source_station_id="8118", observed_at=when)
-        for item in (raw, measured):
+        first = observation(source="CPCB/data.gov.in", source_station_id=official.source_station_id, observed_at=when, **official_fields)
+        second = observation(source="OpenAQ", source_station_id="8118", observed_at=when)
+        for item in (first, second):
             validation.validate_observation(item, NOW, SETTINGS)
-        self.assertEqual(matching.resolve_modelling_preference([raw], [measured], [near]), 1)
-        self.assertFalse(raw.use_for_modelling)  # it could not be normalised, so the usable copy is preferred
-        self.assertTrue(measured.use_for_modelling)
-        self.assertEqual(raw.provenance["superseded_by"]["source"], "OpenAQ")
-        self.assertEqual(raw.source, "CPCB/data.gov.in")  # never relabelled
+        return first, second, near
+
+    def test_the_official_copy_wins_when_both_can_be_modelled(self):
+        first, second, near = self.pair()
+        self.assertEqual(matching.resolve_modelling_preference([first], [second], [near]), 1)
+        self.assertFalse(second.use_for_modelling)
+        self.assertEqual(second.provenance["superseded_by"]["source"], "CPCB/data.gov.in")
+        self.assertIn("SAME_MONITOR_OTHER_SOURCE", [f.code for f in second.quality_flags])
+        self.assertEqual(second.source, "OpenAQ")  # never relabelled
+
+    def test_an_official_copy_that_cannot_be_modelled_does_not_displace_one_that_can(self):
+        first, second, near = self.pair(raw_value="97", raw_unit=None, value_kind=ValueKind.UNKNOWN)
+        self.assertIsNone(first.normalized_value)
+        self.assertEqual(matching.resolve_modelling_preference([first], [second], [near]), 0)
+        self.assertTrue(second.use_for_modelling)
+        self.assertEqual(second.provenance["also_held_from"]["source"], "CPCB/data.gov.in")
+
+    def test_the_stored_official_copy_is_never_changed_after_the_fact(self):
+        for fields in ({}, {"raw_value": "97", "raw_unit": None, "value_kind": ValueKind.UNKNOWN}):
+            first, second, near = self.pair(**fields)
+            before = (first.use_for_modelling, dict(first.provenance), [f.code for f in first.quality_flags])
+            matching.resolve_modelling_preference([first], [second], [near])
+            self.assertEqual(before, (first.use_for_modelling, dict(first.provenance), [f.code for f in first.quality_flags]))
+
+    def test_a_rejected_official_reading_counts_for_nothing(self):
+        first, second, near = self.pair(raw_value="-4")
+        self.assertEqual(first.quality_state, QualityState.REJECTED)
+        self.assertEqual(matching.resolve_modelling_preference([first], [second], [near]), 0)
+        self.assertTrue(second.use_for_modelling)
+        self.assertNotIn("also_held_from", second.provenance)
 
 
 class StoreAndOrchestratorTests(unittest.TestCase):

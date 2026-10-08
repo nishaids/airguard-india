@@ -9,16 +9,23 @@ Nothing here is connected to the forecasting models or to the deployed applicati
 | Item | State |
 | --- | --- |
 | Connectors for four sources, validation, provenance, storage layer, orchestrator, tests | **Built** |
-| Unit tests (54, all providers mocked) | **Passing** |
-| Open-Meteo weather forecast, live | **Verified**: 828 future forecast hours for 12 cities retrieved and validated in a dry run |
+| Unit tests (59, all providers mocked) | **Passing** |
+| Open-Meteo weather forecast, live | **Verified end to end**: 804 future forecast hours for 12 cities retrieved, validated, written to PostgreSQL and read back; a second run wrote nothing |
 | OpenAQ, live | **Not run.** The service is reachable and answers 401 without a key; no key was configured on the machine |
 | NASA FIRMS, live | **Not run.** The service is reachable; no key was configured on the machine |
 | CPCB / data.gov.in, live | **Not run, and the host is unreachable.** `api.data.gov.in` refused TCP connections on ports 443 and 80 from the development network on 7 and 8 October 2026, independent of any key |
-| Database migration | **Written, never executed.** No PostgreSQL server was available and no connection string was configured |
-| Writing to PostgreSQL and reading back | **Not run** |
+| Database migration | **Verified on a local PostgreSQL 17** (a throwaway Docker container). It applied cleanly and a second application was a no-op. **Not yet applied to Supabase**: no connection string was configured |
+| Writing to PostgreSQL and reading back | **Verified locally** for live weather. The station, observation, fire, flag and rejection paths were verified with the test fixtures' provider responses, not live data. Every second pass wrote nothing |
+| Supabase specifically (pooler, TLS, its roles) | **Not run** |
 | Scheduled, unattended ingestion | **Not built** |
 
 The acceptance tests that need credentials run with one command once `.env` exists; see *Commands*.
+
+Running against a real database, rather than the in-memory stand-in the unit tests use, found three defects, all corrected:
+
+- A second weather run stored every forecast hour again, because a forecast was identified by the instant it was fetched. It is now identified by the model run.
+- The table that records applied migrations was created without row-level security.
+- When one monitor arrived from both sources, the rule that picks a copy for modelling changed the official reading after it had been saved, so the change never reached the database, and it counted rejected readings as held.
 
 ## Providers
 
@@ -56,20 +63,22 @@ Defined in `src/ingestion/schemas.py`. Each provider's dialect is translated int
 | --- | --- | --- |
 | `Station` | source, provider's station id | name, city, state, coordinates, timezone, owner, upstream provider, link to the same monitor in another source |
 | `AirQualityObservation` | source, station id, pollutant, averaging period, observed time | raw value, raw unit, raw minimum and maximum, value kind, normalised value and unit, observed and retrieved times (UTC), local timezone, quality state, flags, freshness, provenance |
-| `WeatherForecast` | source, model, location, valid time, **retrieval time** | issue time, lead time, seven variables with units |
+| `WeatherForecast` | source, model, location, valid time, **model run** | issue time, first retrieval time, lead time, seven variables with units |
 | `FireDetection` | source, hash of product, position, time and satellite | satellite, instrument, acquisition time, confidence, fire radiative power, brightness |
 | `DataQualityFlag` | — | code, severity (info, warning, reject), message, field |
 | `IngestionRun` | — | source, start and end, status, counts retrieved, accepted, flagged, rejected, duplicate, written, redacted error |
 
 All timestamps are timezone-aware and stored in UTC. A naive datetime is refused rather than assumed. The CPCB feed reports Indian Standard Time without saying so; it is converted, and the original text is kept in provenance.
 
-### Why a weather forecast's identity includes when it was retrieved
+### Why a weather forecast's identity includes the model run
 
 A model predicting tomorrow may use tomorrow's forecast weather, because that exists today. It may not use tomorrow's observed weather. If a stored forecast were overwritten when a newer one arrived, the archive would drift toward observations and a model trained on it would test better than it can ever perform.
 
-So a later retrieval of the same valid hour is a **new row**. Forecast rows are never updated. To reconstruct what was known at a past issue time, read the rows with the latest `retrieved_at` not after it.
+So a later model run's forecast for the same valid hour is a **new row**. Forecast rows are never updated.
 
-`retrieved_at` is always recorded and is the leakage-safe anchor. `issued_at` is the weather model's own run-initialisation time, taken from Open-Meteo's model metadata; it is left empty when the provider publishes none, rather than guessed.
+Fetching the same model run again is the same row, and adds nothing. The copy kept is the first one, so its `retrieved_at` is the earliest moment AirGuard is known to have held that forecast. To reconstruct what was known at a past issue time, read, for each valid hour, the row with the latest `retrieved_at` not after it.
+
+`issued_at` is the weather model's own run-initialisation time, taken from Open-Meteo's model metadata. When the provider publishes none it is left empty rather than guessed, and the edition is identified by the hour of retrieval instead; the column `vintage_at` holds whichever of the two was used.
 
 ## Data-quality checks
 
@@ -127,20 +136,20 @@ Carbon monoxide is the case most likely to go wrong: a provider reporting 1,400 
 
 Two readings are not treated as duplicates because they share a city. Stations are linked only on evidence: within 300 metres of each other (`AIRGUARD_STATION_MATCH_M`), or within two kilometres with near-identical names. The link stores its method and distance. Both records are kept with their own source and provenance; neither is merged, deleted or relabelled.
 
-What changes is which copy a model may read. Within a run, the copy that could not be normalised gives way to the one that could, and the official source wins a tie. Across runs, the link is stored on the station and the view `airguard.observations_for_modelling` returns one reading per physical monitor, pollutant and hour.
+What changes is which copy a model may read. If both copies have a normalised concentration, the official one is used and the aggregator's is stored with a flag and excluded. If the official copy could not be normalised it cannot be modelled, so the aggregator's copy stays usable and records that an official copy exists. A rejected reading counts for nothing. The official reading is never altered by this rule. The link is stored on the station, and the view `airguard.observations_for_modelling` returns one reading per physical monitor, pollutant and hour whatever order the sources arrived in.
 
-**This matcher is preliminary.** It has not been checked against a hand-verified list of station pairs, and it has not yet seen real data from both sources at once.
+**This matcher is preliminary.** It has not been checked against a hand-verified list of station pairs, and it has not yet seen real data from both sources at once. Against PostgreSQL it has been exercised only with the test fixtures.
 
 ## Database
 
-`db/migrations/001_live_ingestion.sql`, applied with `python -m src.ingestion.db migrate`. Everything is in a schema of its own, `airguard`. On Supabase the generated REST API serves only the `public` schema, so these tables cannot be reached with the project's anonymous key; row-level security is also enabled on every table with no policies, as a second barrier.
+`db/migrations/001_live_ingestion.sql`, applied with `python -m src.ingestion.db migrate`. Everything is in a schema of its own, `airguard`. On Supabase the generated REST API serves only the `public` schema, so these tables cannot be reached with the project's anonymous key; row-level security is also enabled on every table with no policies, as a second barrier. That reasoning about Supabase is from its documentation; it has not been tested against a Supabase project.
 
 | Table | Holds | Uniqueness |
 | --- | --- | --- |
 | `source_registry` | The five sources, their kind, whether official, attribution | source id |
 | `stations` | One row per source station, with an optional link to the same monitor elsewhere | source, station id |
 | `air_quality_observations` | Raw and normalised values, times, quality state, provenance | source, station, pollutant, averaging period, observed time |
-| `weather_forecasts` | One row per location, model, valid hour and retrieval | those four plus coordinates |
+| `weather_forecasts` | One row per location, model, valid hour and model run | those four plus coordinates |
 | `fire_detections` | Hotspots | source, record hash |
 | `data_quality_flags` | Flags on stored rows, and the reasons for rejected ones | per row and code |
 | `ingestion_runs` | One row per source per invocation | — |
@@ -198,7 +207,7 @@ OpenAQ's free tier allows 60 requests a minute and 2,000 an hour and warns that 
 
 ## What remains before real-time forecasting
 
-1. Put credentials in `.env`; run the dry run; apply the migration; run a real ingestion; confirm idempotency against PostgreSQL.
+1. Put credentials in `.env`; run the dry run for the three keyed sources; apply the migration to Supabase; run a real ingestion there and confirm a second run writes nothing.
 2. Establish what the CPCB feed's numbers mean, or settle on OpenAQ as the measured source.
 3. Run ingestion unattended on a schedule, and watch it for a week.
 4. Validate the station matcher against real pairs.

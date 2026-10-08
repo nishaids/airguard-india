@@ -168,12 +168,16 @@ class AirQualityObservation(_Flaggable):
 
 @dataclass
 class WeatherForecast(_Flaggable):
-    """One forecast hour, as it stood when it was retrieved.
+    """One forecast hour from one run of the weather model.
 
-    ``retrieved_at`` is part of the record's identity. A later retrieval of the
-    same valid hour is a *different* record and never overwrites this one: for
-    training, the model may only ever see the forecast that existed at the
+    The model run is part of the record's identity. A later run's forecast for
+    the same valid hour is a *different* record and never overwrites this one:
+    for training, the model may only ever see the forecast that existed at the
     moment a prediction would have been issued.
+
+    Fetching the same run again is the same record, so re-running ingestion
+    adds nothing. The copy kept is the first one, and its ``retrieved_at`` is
+    the earliest moment AirGuard is known to have held that forecast.
     """
 
     source: str
@@ -193,8 +197,13 @@ class WeatherForecast(_Flaggable):
     provenance: Dict[str, Any] = field(default_factory=dict)
 
     @property
+    def vintage_at(self) -> datetime:
+        """Which edition of the forecast this is: the model run, or the retrieval hour if the run is unknown."""
+        return self.issued_at or self.retrieved_at.replace(minute=0, second=0, microsecond=0)
+
+    @property
     def unique_key(self) -> tuple:
-        return (self.source, self.model, round(self.latitude, 4), round(self.longitude, 4), self.valid_at, self.retrieved_at)
+        return (self.source, self.model, round(self.latitude, 4), round(self.longitude, 4), self.valid_at, self.vintage_at)
 
 
 @dataclass

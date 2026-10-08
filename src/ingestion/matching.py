@@ -14,8 +14,8 @@ A link records *how* it was made and the distance involved. Both records are
 kept with their own provenance; nothing is merged or deleted. What changes is
 which copy may be used for modelling:
 
-* within one run, :func:`resolve_modelling_preference` marks the less useful
-  copy ``use_for_modelling = False``;
+* within one run, :func:`resolve_modelling_preference` excludes the
+  aggregator's copy when the official copy of the same hour can be modelled;
 * across runs, the link is stored on the station, and the database view
   ``airguard.observations_for_modelling`` keeps one reading per physical
   station, pollutant and hour.
@@ -31,7 +31,7 @@ import re
 from difflib import SequenceMatcher
 from typing import Dict, Iterable, List, Optional, Tuple
 
-from src.ingestion.schemas import AirQualityObservation, Severity, Station
+from src.ingestion.schemas import AirQualityObservation, QualityState, Severity, Station
 
 NAME_SIMILARITY = 0.82
 NAME_MATCH_MAX_METRES = 2000.0
@@ -92,9 +92,14 @@ def resolve_modelling_preference(
 ) -> int:
     """Where one monitor reported through both sources, keep one copy for modelling.
 
-    The copy with a normalised concentration is preferred, because a value that
-    could not be normalised cannot be modelled; if both have one, the official
-    source wins. Returns the number of observations marked as superseded.
+    If both copies have a normalised concentration the official source wins and
+    the candidate is excluded. If the official copy could not be normalised it
+    cannot be modelled anyway, so the candidate stays usable and only records
+    that the official copy exists.
+
+    Only candidates are changed: the reference readings have already been
+    stored, so a change made to one here would never reach the database.
+    Returns the number of candidates excluded from modelling.
     """
     links: Dict[str, Tuple[str, str]] = {s.source_station_id: s.same_as for s in candidate_stations if s.same_as}
     by_station: Dict[Tuple[str, Optional[str]], List[AirQualityObservation]] = {}
@@ -111,18 +116,19 @@ def resolve_modelling_preference(
                 continue
             if abs((official.observed_at - candidate.observed_at).total_seconds()) > 3600:
                 continue  # different hours are different measurements
-            loser, winner = (
-                (official, candidate)
-                if official.normalized_value is None and candidate.normalized_value is not None
-                else (candidate, official)
-            )
-            if loser.use_for_modelling:
-                loser.use_for_modelling = False
-                loser.provenance["superseded_by"] = {"source": winner.source, "station": winner.source_station_id}
-                loser.add_flag(
+            if official.quality_state is QualityState.REJECTED:
+                continue  # a rejected reading is not held at all
+            also = {"source": official.source, "station": official.source_station_id}
+            if official.normalized_value is None:
+                candidate.provenance["also_held_from"] = also
+                continue
+            if candidate.use_for_modelling:
+                candidate.use_for_modelling = False
+                candidate.provenance["superseded_by"] = also
+                candidate.add_flag(
                     "SAME_MONITOR_OTHER_SOURCE",
                     Severity.INFO,
-                    f"the same monitor and hour is also held from {winner.source}; this copy is kept for provenance and excluded from modelling",
+                    f"the same monitor and hour is also held from {official.source}; this copy is kept for provenance and excluded from modelling",
                 )
                 superseded += 1
     return superseded

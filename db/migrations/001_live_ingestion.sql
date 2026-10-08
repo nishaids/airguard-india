@@ -149,7 +149,8 @@ create table if not exists airguard.weather_forecasts (
     latitude               double precision not null,
     longitude              double precision not null,
     issued_at              timestamptz,                 -- model run initialisation, when published
-    retrieved_at           timestamptz not null,        -- when AirGuard obtained it: the leakage-safe anchor
+    vintage_at             timestamptz not null,        -- which edition: issued_at, or the retrieval hour if the run is unknown
+    retrieved_at           timestamptz not null,        -- when AirGuard first obtained this edition: the leakage-safe anchor
     valid_at               timestamptz not null,
     lead_time_hours        double precision not null check (lead_time_hours >= 0),
     temperature_2m         double precision,
@@ -164,7 +165,7 @@ create table if not exists airguard.weather_forecasts (
     provenance             jsonb       not null default '{}',
     ingestion_run_id       bigint      references airguard.ingestion_runs,
     created_at             timestamptz not null default now(),
-    unique (source_id, model, latitude, longitude, valid_at, retrieved_at)
+    unique (source_id, model, latitude, longitude, valid_at, vintage_at)
 );
 create index if not exists wf_location_valid on airguard.weather_forecasts (location_label, valid_at);
 create index if not exists wf_retrieved on airguard.weather_forecasts (retrieved_at desc);

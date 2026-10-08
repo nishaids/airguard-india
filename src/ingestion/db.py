@@ -159,6 +159,8 @@ def migrate(connection=None) -> List[str]:
                 "create table if not exists airguard.schema_migrations "
                 "(filename text primary key, applied_at timestamptz not null default now())"
             )
+            # Created here, not by a migration, so it needs the same lock the migration gives every other table.
+            cursor.execute("alter table airguard.schema_migrations enable row level security")
             cursor.execute("select filename from airguard.schema_migrations")
             done = {row[0] for row in cursor.fetchall()}
         for path in sorted(MIGRATIONS_DIR.glob("*.sql")):
@@ -322,7 +324,7 @@ class PostgresStore:
         columns = ", ".join(WEATHER_VARIABLES)
         rows = [
             (
-                f.source, f.model, f.location_label, round(f.latitude, 4), round(f.longitude, 4), f.issued_at, f.retrieved_at,
+                f.source, f.model, f.location_label, round(f.latitude, 4), round(f.longitude, 4), f.issued_at, f.vintage_at, f.retrieved_at,
                 f.valid_at, f.lead_time_hours, *[f.variables.get(v) for v in WEATHER_VARIABLES], _json(f.units),
                 f.quality_state.value, _json(f.provenance), run.run_id,
             )
@@ -331,9 +333,9 @@ class PostgresStore:
         with self.connection, self.connection.cursor() as cursor:
             returned = execute_values(
                 cursor,
-                "insert into airguard.weather_forecasts (source_id, model, location_label, latitude, longitude, issued_at, retrieved_at, "
+                "insert into airguard.weather_forecasts (source_id, model, location_label, latitude, longitude, issued_at, vintage_at, retrieved_at, "
                 f"valid_at, lead_time_hours, {columns}, units, quality_state, provenance, ingestion_run_id) values %s "
-                "on conflict (source_id, model, latitude, longitude, valid_at, retrieved_at) do nothing "
+                "on conflict (source_id, model, latitude, longitude, valid_at, vintage_at) do nothing "
                 "returning forecast_id, location_label, valid_at, retrieved_at",
                 rows,
                 page_size=1000,

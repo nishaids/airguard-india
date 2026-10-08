@@ -115,7 +115,7 @@ def run_source(
             if reference_batch:
                 superseded = matching.resolve_modelling_preference(reference_batch.records, batch.records, batch.stations)
                 if superseded:
-                    run.notes.append(f"{superseded} readings held from both sources; one copy of each excluded from modelling")
+                    run.notes.append(f"{superseded} readings duplicate an official reading for the same monitor and hour; excluded from modelling")
 
         clean, flagged, rejected = validation.split(batch.records)
         duplicates = [r for r in rejected if any(f.code == "DUPLICATE_IN_BATCH" for f in r.quality_flags)]

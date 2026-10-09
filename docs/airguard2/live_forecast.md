@@ -9,10 +9,10 @@ The short version: it works, it is honest about its inputs, and it is not accura
 | Item | State |
 | --- | --- |
 | Live forecast for 12 cities (`python -m src.live.forecast`) | **Working** |
-| API endpoint and page (`/api/live_forecast`, `/live`) | **Built, tested locally** in an isolated copy of the deployment bundle |
+| API endpoint and page (`/api/live_forecast`, `/live`) | **Live** at https://webapp-phi-taupe.vercel.app/live; all twelve cities answered on the public site, and the response is cached at the edge for half an hour |
 | Tested against measurements | **Done**: 474 held-out city-days, 24 August to 7 October 2026 |
 | Seven corrections the audit said the site owed | **Applied** to the pages |
-| Deployed to the public site | **Not done.** The Vercel command-line login on this machine had expired; deployment needs the account owner to log in |
+| Deployed to the public site | **Done on 10 October 2026.** The older pages and their two endpoints were checked afterwards and still work |
 | Live ingestion into Supabase | **Verified**: 133 stations, 1,498 readings, 774 fire detections, 624 forecast hours stored; a second run wrote nothing |
 | Ingestion running by itself every day | **Not built** |
 

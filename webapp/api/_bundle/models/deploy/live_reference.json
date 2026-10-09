@@ -1,0 +1,1271 @@
+{
+  "generated_by": "src/live/features.py::build_reference",
+  "training_period_end": "2019-05-25",
+  "typical_by_city_month": {
+    "Amaravati": {
+      "1": {
+        "NO": 5.755,
+        "NOx": 32.425,
+        "NH3": 19.51,
+        "Benzene": 0.12,
+        "Toluene": 0.84
+      },
+      "2": {
+        "NO": 4.75,
+        "NOx": 16.465,
+        "NH3": 14.565,
+        "Benzene": 0.065,
+        "Toluene": 1.1
+      },
+      "3": {
+        "NO": 4.3,
+        "NOx": 9.88,
+        "NH3": 11.535,
+        "Benzene": 0.09,
+        "Toluene": 2.31
+      },
+      "4": {
+        "NO": 2.905,
+        "NOx": 6.995,
+        "NH3": 6.42,
+        "Benzene": 0.035,
+        "Toluene": 1.405
+      },
+      "5": {
+        "NO": 2.87,
+        "NOx": 10.415,
+        "NH3": 7.87,
+        "Benzene": 0.255,
+        "Toluene": 1.255
+      },
+      "6": {
+        "NO": 3.505,
+        "NOx": 9.385,
+        "NH3": 10.82,
+        "Benzene": 0.38,
+        "Toluene": 0.36
+      },
+      "7": {
+        "NO": 4.66,
+        "NOx": 10.56,
+        "NH3": 13.78,
+        "Benzene": 0.22,
+        "Toluene": 0.12
+      },
+      "8": {
+        "NO": 4.66,
+        "NOx": 11.08,
+        "NH3": 18.05,
+        "Benzene": 0.1,
+        "Toluene": 0.07
+      },
+      "9": {
+        "NO": 6.555,
+        "NOx": 16.58,
+        "NH3": 19.73,
+        "Benzene": 0.05,
+        "Toluene": 0.07
+      },
+      "10": {
+        "NO": 6.04,
+        "NOx": 19.71,
+        "NH3": 16.96,
+        "Benzene": 0.06,
+        "Toluene": 0.09
+      },
+      "11": {
+        "NO": 6.56,
+        "NOx": 37.34,
+        "NH3": 4.5,
+        "Benzene": 0.05,
+        "Toluene": 0.1
+      },
+      "12": {
+        "NO": 5.195,
+        "NOx": 31.875,
+        "NH3": 17.5,
+        "Benzene": 0.14,
+        "Toluene": 1.645
+      }
+    },
+    "Amritsar": {
+      "1": {
+        "NO": 16.555,
+        "NOx": 46.0,
+        "NH3": 9.4,
+        "Benzene": 5.8,
+        "Toluene": 2.84
+      },
+      "2": {
+        "NO": 15.685,
+        "NOx": 34.86,
+        "NH3": 7.095,
+        "Benzene": 7.05,
+        "Toluene": 6.89
+      },
+      "3": {
+        "NO": 11.93,
+        "NOx": 29.85,
+        "NH3": 10.14,
+        "Benzene": 4.59,
+        "Toluene": 2.28
+      },
+      "4": {
+        "NO": 14.47,
+        "NOx": 35.065,
+        "NH3": 11.395,
+        "Benzene": 4.59,
+        "Toluene": 2.28
+      },
+      "5": {
+        "NO": 13.77,
+        "NOx": 35.065,
+        "NH3": 18.23,
+        "Benzene": 4.59,
+        "Toluene": 2.28
+      },
+      "6": {
+        "NO": 20.855,
+        "NOx": 35.065,
+        "NH3": 22.285,
+        "Benzene": 1.105,
+        "Toluene": 2.46
+      },
+      "7": {
+        "NO": 17.635,
+        "NOx": 34.6925,
+        "NH3": 7.685,
+        "Benzene": 2.185,
+        "Toluene": 2.07
+      },
+      "8": {
+        "NO": 10.82,
+        "NOx": 35.065,
+        "NH3": 7.975,
+        "Benzene": 2.01,
+        "Toluene": 1.445
+      },
+      "9": {
+        "NO": 10.565,
+        "NOx": 33.5775,
+        "NH3": 10.7,
+        "Benzene": 3.97,
+        "Toluene": 4.825
+      },
+      "10": {
+        "NO": 14.47,
+        "NOx": 42.71,
+        "NH3": 18.765,
+        "Benzene": 9.855,
+        "Toluene": 1.71
+      },
+      "11": {
+        "NO": 29.11,
+        "NOx": 59.775,
+        "NH3": 12.54,
+        "Benzene": 6.26,
+        "Toluene": 5.42
+      },
+      "12": {
+        "NO": 26.245,
+        "NOx": 52.185,
+        "NH3": 7.165,
+        "Benzene": 6.3,
+        "Toluene": 3.125
+      }
+    },
+    "Bengaluru": {
+      "1": {
+        "NO": 8.81,
+        "NOx": 24.32,
+        "NH3": 23.34,
+        "Benzene": 0.97,
+        "Toluene": 1.35
+      },
+      "2": {
+        "NO": 8.91,
+        "NOx": 20.93,
+        "NH3": 21.44,
+        "Benzene": 0.94,
+        "Toluene": 1.55
+      },
+      "3": {
+        "NO": 6.74,
+        "NOx": 19.89,
+        "NH3": 23.34,
+        "Benzene": 1.07,
+        "Toluene": 2.09
+      },
+      "4": {
+        "NO": 6.025,
+        "NOx": 14.915,
+        "NH3": 23.34,
+        "Benzene": 1.325,
+        "Toluene": 2.065
+      },
+      "5": {
+        "NO": 6.35,
+        "NOx": 14.69,
+        "NH3": 18.55,
+        "Benzene": 1.28,
+        "Toluene": 1.49
+      },
+      "6": {
+        "NO": 5.335,
+        "NOx": 8.43,
+        "NH3": 23.72,
+        "Benzene": 0.91,
+        "Toluene": 1.445
+      },
+      "7": {
+        "NO": 9.635,
+        "NOx": 9.32,
+        "NH3": 21.58,
+        "Benzene": 0.765,
+        "Toluene": 2.095
+      },
+      "8": {
+        "NO": 7.605,
+        "NOx": 7.745,
+        "NH3": 24.3,
+        "Benzene": 0.94,
+        "Toluene": 1.825
+      },
+      "9": {
+        "NO": 8.21,
+        "NOx": 8.545,
+        "NH3": 24.44,
+        "Benzene": 0.94,
+        "Toluene": 2.015
+      },
+      "10": {
+        "NO": 10.65,
+        "NOx": 18.74,
+        "NH3": 26.155,
+        "Benzene": 0.94,
+        "Toluene": 1.675
+      },
+      "11": {
+        "NO": 10.15,
+        "NOx": 22.645,
+        "NH3": 25.925,
+        "Benzene": 0.78,
+        "Toluene": 1.88
+      },
+      "12": {
+        "NO": 11.95,
+        "NOx": 29.625,
+        "NH3": 23.34,
+        "Benzene": 0.94,
+        "Toluene": 1.72
+      }
+    },
+    "Chennai": {
+      "1": {
+        "NO": 7.54,
+        "NOx": 14.64,
+        "NH3": 63.11,
+        "Benzene": 0.17,
+        "Toluene": 1.2
+      },
+      "2": {
+        "NO": 8.63,
+        "NOx": 15.09,
+        "NH3": 56.36,
+        "Benzene": 0.17,
+        "Toluene": 1.2
+      },
+      "3": {
+        "NO": 8.36,
+        "NOx": 12.99,
+        "NH3": 29.09,
+        "Benzene": 0.17,
+        "Toluene": 2.16
+      },
+      "4": {
+        "NO": 7.65,
+        "NOx": 14.705,
+        "NH3": 29.955,
+        "Benzene": 0.17,
+        "Toluene": 3.405
+      },
+      "5": {
+        "NO": 6.78,
+        "NOx": 17.59,
+        "NH3": 54.03,
+        "Benzene": 0.39,
+        "Toluene": 2.09
+      },
+      "6": {
+        "NO": 7.14,
+        "NOx": 15.575,
+        "NH3": 54.03,
+        "Benzene": 0.15,
+        "Toluene": 1.635
+      },
+      "7": {
+        "NO": 7.125,
+        "NOx": 15.445,
+        "NH3": 54.03,
+        "Benzene": 0.1,
+        "Toluene": 0.73
+      },
+      "8": {
+        "NO": 7.625,
+        "NOx": 16.78,
+        "NH3": 54.03,
+        "Benzene": 0.17,
+        "Toluene": 2.015
+      },
+      "9": {
+        "NO": 9.615,
+        "NOx": 18.32,
+        "NH3": 49.19,
+        "Benzene": 0.17,
+        "Toluene": 1.195
+      },
+      "10": {
+        "NO": 10.575,
+        "NOx": 17.21,
+        "NH3": 54.03,
+        "Benzene": 0.17,
+        "Toluene": 0.47
+      },
+      "11": {
+        "NO": 7.33,
+        "NOx": 17.5,
+        "NH3": 100.44,
+        "Benzene": 0.195,
+        "Toluene": 1.035
+      },
+      "12": {
+        "NO": 8.52,
+        "NOx": 17.24,
+        "NH3": 60.37,
+        "Benzene": 0.17,
+        "Toluene": 1.2
+      }
+    },
+    "Delhi": {
+      "1": {
+        "NO": 39.9,
+        "NOx": 57.64,
+        "NH3": 55.07,
+        "Benzene": 4.36,
+        "Toluene": 11.12
+      },
+      "2": {
+        "NO": 37.54,
+        "NOx": 61.64,
+        "NH3": 46.22,
+        "Benzene": 3.48,
+        "Toluene": 8.6
+      },
+      "3": {
+        "NO": 26.28,
+        "NOx": 45.3,
+        "NH3": 34.32,
+        "Benzene": 3.13,
+        "Toluene": 7.45
+      },
+      "4": {
+        "NO": 29.89,
+        "NOx": 54.03,
+        "NH3": 34.695,
+        "Benzene": 3.16,
+        "Toluene": 10.08
+      },
+      "5": {
+        "NO": 25.55,
+        "NOx": 57.05,
+        "NH3": 39.74,
+        "Benzene": 2.99,
+        "Toluene": 10.97
+      },
+      "6": {
+        "NO": 15.935,
+        "NOx": 38.545,
+        "NH3": 42.4,
+        "Benzene": 2.38,
+        "Toluene": 7.025
+      },
+      "7": {
+        "NO": 15.965,
+        "NOx": 34.47,
+        "NH3": 38.24,
+        "Benzene": 1.515,
+        "Toluene": 8.4
+      },
+      "8": {
+        "NO": 21.95,
+        "NOx": 34.085,
+        "NH3": 31.285,
+        "Benzene": 1.55,
+        "Toluene": 9.575
+      },
+      "9": {
+        "NO": 21.88,
+        "NOx": 46.205,
+        "NH3": 28.4,
+        "Benzene": 2.055,
+        "Toluene": 8.94
+      },
+      "10": {
+        "NO": 52.15,
+        "NOx": 75.255,
+        "NH3": 39.19,
+        "Benzene": 3.71,
+        "Toluene": 12.48
+      },
+      "11": {
+        "NO": 66.07,
+        "NOx": 86.205,
+        "NH3": 53.1,
+        "Benzene": 5.57,
+        "Toluene": 20.055
+      },
+      "12": {
+        "NO": 68.625,
+        "NOx": 67.835,
+        "NH3": 55.545,
+        "Benzene": 6.0,
+        "Toluene": 17.095
+      }
+    },
+    "Gurugram": {
+      "1": {
+        "NO": 17.31,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "2": {
+        "NO": 12.21,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "3": {
+        "NO": 9.33,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "4": {
+        "NO": 9.845,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "5": {
+        "NO": 10.955,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "6": {
+        "NO": 5.945,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "7": {
+        "NO": 5.93,
+        "NOx": 22.53,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "8": {
+        "NO": 4.22,
+        "NOx": 22.3,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "9": {
+        "NO": 9.2,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 0.04,
+        "Toluene": 2.56
+      },
+      "10": {
+        "NO": 9.2,
+        "NOx": 23.46,
+        "NH3": 20.45,
+        "Benzene": 0.86,
+        "Toluene": 3.78
+      },
+      "11": {
+        "NO": 9.89,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 2.22,
+        "Toluene": 5.735
+      },
+      "12": {
+        "NO": 11.05,
+        "NOx": 22.58,
+        "NH3": 20.45,
+        "Benzene": 0.465,
+        "Toluene": 2.54
+      }
+    },
+    "Hyderabad": {
+      "1": {
+        "NO": 9.005,
+        "NOx": 25.77,
+        "NH3": 16.825,
+        "Benzene": 1.385,
+        "Toluene": 8.445
+      },
+      "2": {
+        "NO": 6.07,
+        "NOx": 23.07,
+        "NH3": 15.79,
+        "Benzene": 0.86,
+        "Toluene": 5.71
+      },
+      "3": {
+        "NO": 5.67,
+        "NOx": 21.47,
+        "NH3": 14.78,
+        "Benzene": 0.92,
+        "Toluene": 5.53
+      },
+      "4": {
+        "NO": 7.055,
+        "NOx": 22.04,
+        "NH3": 14.97,
+        "Benzene": 0.76,
+        "Toluene": 4.41
+      },
+      "5": {
+        "NO": 5.47,
+        "NOx": 19.29,
+        "NH3": 16.18,
+        "Benzene": 0.76,
+        "Toluene": 4.3
+      },
+      "6": {
+        "NO": 7.355,
+        "NOx": 15.835,
+        "NH3": 14.78,
+        "Benzene": 0.245,
+        "Toluene": 1.865
+      },
+      "7": {
+        "NO": 6.735,
+        "NOx": 14.645,
+        "NH3": 14.78,
+        "Benzene": 0.38,
+        "Toluene": 2.715
+      },
+      "8": {
+        "NO": 7.235,
+        "NOx": 14.39,
+        "NH3": 14.78,
+        "Benzene": 0.54,
+        "Toluene": 2.68
+      },
+      "9": {
+        "NO": 7.99,
+        "NOx": 15.45,
+        "NH3": 14.78,
+        "Benzene": 0.525,
+        "Toluene": 3.68
+      },
+      "10": {
+        "NO": 7.97,
+        "NOx": 12.66,
+        "NH3": 12.275,
+        "Benzene": 1.195,
+        "Toluene": 6.765
+      },
+      "11": {
+        "NO": 8.7,
+        "NOx": 22.625,
+        "NH3": 12.025,
+        "Benzene": 1.75,
+        "Toluene": 10.07
+      },
+      "12": {
+        "NO": 7.565,
+        "NOx": 22.59,
+        "NH3": 13.6,
+        "Benzene": 1.985,
+        "Toluene": 9.37
+      }
+    },
+    "Jaipur": {
+      "1": {
+        "NO": 18.74,
+        "NOx": 37.405,
+        "NH3": 25.57,
+        "Benzene": 1.745,
+        "Toluene": 6.555
+      },
+      "2": {
+        "NO": 13.61,
+        "NOx": 38.585,
+        "NH3": 24.665,
+        "Benzene": 1.015,
+        "Toluene": 6.655
+      },
+      "3": {
+        "NO": 10.335,
+        "NOx": 40.88,
+        "NH3": 23.465,
+        "Benzene": 0.775,
+        "Toluene": 4.415
+      },
+      "4": {
+        "NO": 11.7,
+        "NOx": 39.12,
+        "NH3": 24.615,
+        "Benzene": 0.61,
+        "Toluene": 5.36
+      },
+      "5": {
+        "NO": 11.365,
+        "NOx": 34.255,
+        "NH3": 21.005,
+        "Benzene": 0.915,
+        "Toluene": 5.1
+      },
+      "6": {
+        "NO": 9.58,
+        "NOx": 27.78,
+        "NH3": 18.84,
+        "Benzene": 0.46,
+        "Toluene": 2.34
+      },
+      "7": {
+        "NO": 9.48,
+        "NOx": 35.525,
+        "NH3": 10.24,
+        "Benzene": 0.42,
+        "Toluene": 1.32
+      },
+      "8": {
+        "NO": 8.945,
+        "NOx": 35.835,
+        "NH3": 16.34,
+        "Benzene": 0.305,
+        "Toluene": 1.16
+      },
+      "9": {
+        "NO": 11.56,
+        "NOx": 36.76,
+        "NH3": 17.86,
+        "Benzene": 0.53,
+        "Toluene": 2.36
+      },
+      "10": {
+        "NO": 17.1,
+        "NOx": 44.69,
+        "NH3": 25.635,
+        "Benzene": 1.37,
+        "Toluene": 9.555
+      },
+      "11": {
+        "NO": 30.695,
+        "NOx": 73.44,
+        "NH3": 20.335,
+        "Benzene": 2.595,
+        "Toluene": 6.995
+      },
+      "12": {
+        "NO": 23.495,
+        "NOx": 41.89,
+        "NH3": 20.885,
+        "Benzene": 2.275,
+        "Toluene": 6.81
+      }
+    },
+    "Kolkata": {
+      "1": {
+        "NO": 96.3,
+        "NOx": 181.53,
+        "NH3": 27.42,
+        "Benzene": 19.3,
+        "Toluene": 35.68
+      },
+      "2": {
+        "NO": 51.025,
+        "NOx": 151.06,
+        "NH3": 36.575,
+        "Benzene": 3.745,
+        "Toluene": 8.335
+      },
+      "3": {
+        "NO": 7.58,
+        "NOx": 68.85,
+        "NH3": 28.02,
+        "Benzene": 7.01,
+        "Toluene": 11.81
+      },
+      "4": {
+        "NO": 4.11,
+        "NOx": 33.55,
+        "NH3": 15.32,
+        "Benzene": 4.3,
+        "Toluene": 7.46
+      },
+      "5": {
+        "NO": 3.435,
+        "NOx": 27.425,
+        "NH3": 7.735,
+        "Benzene": 2.045,
+        "Toluene": 4.305
+      },
+      "6": {
+        "NO": 6.995,
+        "NOx": 36.92,
+        "NH3": 7.3,
+        "Benzene": 2.03,
+        "Toluene": 2.545
+      },
+      "7": {
+        "NO": 6.68,
+        "NOx": 38.44,
+        "NH3": 4.07,
+        "Benzene": 2.36,
+        "Toluene": 4.23
+      },
+      "8": {
+        "NO": 6.41,
+        "NOx": 37.31,
+        "NH3": 9.57,
+        "Benzene": 1.89,
+        "Toluene": 10.43
+      },
+      "9": {
+        "NO": 7.89,
+        "NOx": 41.66,
+        "NH3": 9.825,
+        "Benzene": 2.545,
+        "Toluene": 8.66
+      },
+      "10": {
+        "NO": 34.67,
+        "NOx": 90.11,
+        "NH3": 14.98,
+        "Benzene": 4.83,
+        "Toluene": 8.67
+      },
+      "11": {
+        "NO": 55.665,
+        "NOx": 116.07,
+        "NH3": 39.365,
+        "Benzene": 11.415,
+        "Toluene": 22.495
+      },
+      "12": {
+        "NO": 89.06,
+        "NOx": 168.94,
+        "NH3": 35.79,
+        "Benzene": 12.51,
+        "Toluene": 21.45
+      }
+    },
+    "Lucknow": {
+      "1": {
+        "NO": 12.06,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 1.92,
+        "Toluene": 4.77
+      },
+      "2": {
+        "NO": 8.49,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 1.4,
+        "Toluene": 2.48
+      },
+      "3": {
+        "NO": 9.78,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 1.12,
+        "Toluene": 2.98
+      },
+      "4": {
+        "NO": 10.16,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 1.225,
+        "Toluene": 1.69
+      },
+      "5": {
+        "NO": 7.58,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 1.15,
+        "Toluene": 1.61
+      },
+      "6": {
+        "NO": 6.01,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 0.87,
+        "Toluene": 0.91
+      },
+      "7": {
+        "NO": 8.315,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 0.26,
+        "Toluene": 0.275
+      },
+      "8": {
+        "NO": 8.72,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 0.215,
+        "Toluene": 0.3
+      },
+      "9": {
+        "NO": 6.74,
+        "NOx": 6.24,
+        "NH3": 34.09,
+        "Benzene": 0.43,
+        "Toluene": 0.53
+      },
+      "10": {
+        "NO": 15.525,
+        "NOx": 19.83,
+        "NH3": 34.09,
+        "Benzene": 0.89,
+        "Toluene": 1.61
+      },
+      "11": {
+        "NO": 25.0,
+        "NOx": 20.68,
+        "NH3": 34.09,
+        "Benzene": 1.17,
+        "Toluene": 1.61
+      },
+      "12": {
+        "NO": 22.33,
+        "NOx": 17.875,
+        "NH3": 34.09,
+        "Benzene": 1.555,
+        "Toluene": 1.84
+      }
+    },
+    "Thiruvananthapuram": {
+      "1": {
+        "NO": 1.905,
+        "NOx": 7.585,
+        "NH3": 6.9,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "2": {
+        "NO": 1.385,
+        "NOx": 6.32,
+        "NH3": 5.44,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "3": {
+        "NO": 1.3,
+        "NOx": 5.38,
+        "NH3": 4.12,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "4": {
+        "NO": 1.665,
+        "NOx": 5.76,
+        "NH3": 3.225,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "5": {
+        "NO": 2.81,
+        "NOx": 6.91,
+        "NH3": 2.67,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "6": {
+        "NO": 3.04,
+        "NOx": 7.0,
+        "NH3": 2.87,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "7": {
+        "NO": 2.475,
+        "NOx": 5.52,
+        "NH3": 3.55,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "8": {
+        "NO": 2.48,
+        "NOx": 5.0,
+        "NH3": 3.045,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "9": {
+        "NO": 2.545,
+        "NOx": 5.365,
+        "NH3": 2.935,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "10": {
+        "NO": 2.315,
+        "NOx": 4.32,
+        "NH3": 2.84,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "11": {
+        "NO": 2.425,
+        "NOx": 6.98,
+        "NH3": 4.22,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      },
+      "12": {
+        "NO": 2.47,
+        "NOx": 5.815,
+        "NH3": 5.395,
+        "Benzene": 1.22,
+        "Toluene": 3.18
+      }
+    },
+    "Visakhapatnam": {
+      "1": {
+        "NO": 19.01,
+        "NOx": 44.97,
+        "NH3": 14.36,
+        "Benzene": 4.89,
+        "Toluene": 7.16
+      },
+      "2": {
+        "NO": 15.425,
+        "NOx": 33.465,
+        "NH3": 12.15,
+        "Benzene": 4.65,
+        "Toluene": 8.535
+      },
+      "3": {
+        "NO": 11.92,
+        "NOx": 27.27,
+        "NH3": 9.57,
+        "Benzene": 3.68,
+        "Toluene": 7.74
+      },
+      "4": {
+        "NO": 11.59,
+        "NOx": 22.795,
+        "NH3": 9.055,
+        "Benzene": 2.96,
+        "Toluene": 5.63
+      },
+      "5": {
+        "NO": 11.45,
+        "NOx": 17.1,
+        "NH3": 11.455,
+        "Benzene": 2.39,
+        "Toluene": 4.07
+      },
+      "6": {
+        "NO": 11.59,
+        "NOx": 7.545,
+        "NH3": 11.455,
+        "Benzene": 1.51,
+        "Toluene": 3.115
+      },
+      "7": {
+        "NO": 11.59,
+        "NOx": 27.76,
+        "NH3": 11.455,
+        "Benzene": 4.59,
+        "Toluene": 10.03
+      },
+      "8": {
+        "NO": 11.59,
+        "NOx": 24.45,
+        "NH3": 11.455,
+        "Benzene": 4.49,
+        "Toluene": 9.36
+      },
+      "9": {
+        "NO": 11.59,
+        "NOx": 25.45,
+        "NH3": 10.185,
+        "Benzene": 4.48,
+        "Toluene": 10.53
+      },
+      "10": {
+        "NO": 10.22,
+        "NOx": 25.08,
+        "NH3": 12.52,
+        "Benzene": 4.28,
+        "Toluene": 9.67
+      },
+      "11": {
+        "NO": 6.625,
+        "NOx": 17.455,
+        "NH3": 10.285,
+        "Benzene": 3.74,
+        "Toluene": 6.785
+      },
+      "12": {
+        "NO": 6.82,
+        "NOx": 25.09,
+        "NH3": 13.0,
+        "Benzene": 4.43,
+        "Toluene": 7.63
+      }
+    }
+  },
+  "typical_overall": {
+    "NO": 9.54,
+    "NOx": 22.07,
+    "NH3": 20.45,
+    "Benzene": 1.2,
+    "Toluene": 3.09
+  },
+  "city_target_enc": {
+    "Amaravati": 114.1122,
+    "Amritsar": 128.2306,
+    "Bengaluru": 98.8169,
+    "Chennai": 120.8656,
+    "Delhi": 274.5451,
+    "Gurugram": 245.4881,
+    "Hyderabad": 117.1002,
+    "Jaipur": 148.4501,
+    "Kolkata": 172.0342,
+    "Lucknow": 231.1235,
+    "Thiruvananthapuram": 81.6878,
+    "Visakhapatnam": 127.2639
+  },
+  "city_target_enc_overall": 163.0624,
+  "bias": {
+    "Amaravati": {
+      "PM2.5": 1.049,
+      "PM10": 1.8046,
+      "O3": 0.2774
+    },
+    "Amritsar": {
+      "PM2.5": 0.7337,
+      "PM10": 1.1194,
+      "O3": 0.247
+    },
+    "Bengaluru": {
+      "PM2.5": 1.519,
+      "PM10": 2.9168,
+      "O3": 0.328
+    },
+    "Chennai": {
+      "PM2.5": 1.3879,
+      "PM10": 3.2295,
+      "O3": 0.2
+    },
+    "Delhi": {
+      "PM2.5": 0.7059,
+      "PM10": 1.3098,
+      "O3": 0.2436
+    },
+    "Gurugram": {
+      "PM2.5": 0.6916,
+      "PM10": 1.001,
+      "O3": 0.2624
+    },
+    "Hyderabad": {
+      "PM2.5": 0.9848,
+      "PM10": 1.6645,
+      "O3": 0.2003
+    },
+    "Jaipur": {
+      "PM2.5": 1.4354,
+      "PM10": 2.301,
+      "O3": 0.4724
+    },
+    "Kolkata": {
+      "PM2.5": 1.0377,
+      "PM10": 1.8744,
+      "O3": 0.3038
+    },
+    "Lucknow": {
+      "PM2.5": 0.954,
+      "PM10": 1.6083,
+      "O3": 0.3275
+    },
+    "Thiruvananthapuram": {
+      "PM2.5": 1.791,
+      "PM10": 2.6397,
+      "O3": 0.4183
+    },
+    "Visakhapatnam": {
+      "PM2.5": 0.9608,
+      "PM10": 2.3662,
+      "O3": 0.4029
+    }
+  },
+  "bias_note": "PM2.5, PM10 and ozone are scaled per city to match the median of CPCB monitors over the 30 days to 2026-10-07 (measurements via OpenAQ)",
+  "bias_fitted_until": "2026-10-07",
+  "backtest": {
+    "summary": "On 474 held-out city-days (2026-08-24 to 2026-10-07) the forecast missed the measured AQI by 30.7 points on average and named the right category 53.2% of the time.",
+    "holdout": {
+      "airguard_corrected_inputs": {
+        "n": 474,
+        "mae": 30.7,
+        "bias": 17.7,
+        "rmse": 48.5,
+        "same_category_percent": 53.2,
+        "within_one_category_percent": 94.9
+      },
+      "airguard_correction_14_days_old": {
+        "n": 474,
+        "mae": 32.9,
+        "bias": 19.8,
+        "rmse": 51.5,
+        "same_category_percent": 51.5,
+        "within_one_category_percent": 93.2
+      },
+      "airguard_uncorrected_inputs": {
+        "n": 474,
+        "mae": 37.5,
+        "bias": 30.8,
+        "rmse": 53.3,
+        "same_category_percent": 46.4,
+        "within_one_category_percent": 94.1
+      },
+      "baseline_same_as_today_modelled": {
+        "n": 474,
+        "mae": 35.8,
+        "bias": 14.4,
+        "rmse": 63.2,
+        "same_category_percent": 50.8,
+        "within_one_category_percent": 92.6
+      },
+      "baseline_atmospheric_model_next_day": {
+        "n": 474,
+        "mae": 32.2,
+        "bias": 14.7,
+        "rmse": 56.7,
+        "same_category_percent": 55.1,
+        "within_one_category_percent": 96.2
+      },
+      "baseline_same_as_today_measured": {
+        "n": 447,
+        "mae": 12.8,
+        "bias": -0.7,
+        "rmse": 18.9,
+        "same_category_percent": 74.9,
+        "within_one_category_percent": 98.9
+      }
+    },
+    "measured_inputs": {
+      "what": "the same model fed measured PM2.5, PM10 and ozone; fewer days, because every look-back day must have a measurement",
+      "airguard": {
+        "n": 229,
+        "mae": 12.9,
+        "bias": 5.3,
+        "rmse": 18.6,
+        "same_category_percent": 76.0,
+        "within_one_category_percent": 99.6
+      },
+      "same_as_today_measured": {
+        "n": 229,
+        "mae": 12.6,
+        "bias": -1.6,
+        "rmse": 18.3,
+        "same_category_percent": 76.4,
+        "within_one_category_percent": 99.6
+      }
+    },
+    "window": {
+      "first_day": "2026-06-22",
+      "last_day": "2026-10-07",
+      "holdout_from": "2026-08-24"
+    },
+    "truth": "an AQI from measured PM2.5, PM10 and ozone, averaged over CPCB monitors in each city (OpenAQ daily aggregates)",
+    "error_quantiles": {
+      "definition": "forecast minus measured, held-out days",
+      "q10": -24.4,
+      "q50": 9.8,
+      "q90": 66.8,
+      "by_city": {
+        "Amaravati": {
+          "q10": -7.8,
+          "q90": 47.5,
+          "n": 40
+        },
+        "Amritsar": {
+          "q10": -22.4,
+          "q90": 38.7,
+          "n": 40
+        },
+        "Bengaluru": {
+          "q10": -15.6,
+          "q90": 45.7,
+          "n": 40
+        },
+        "Chennai": {
+          "q10": -27.9,
+          "q90": 28.6,
+          "n": 40
+        },
+        "Delhi": {
+          "q10": -34.3,
+          "q90": 170.1,
+          "n": 40
+        },
+        "Gurugram": {
+          "q10": -51.1,
+          "q90": 136.6,
+          "n": 40
+        },
+        "Hyderabad": {
+          "q10": 0.3,
+          "q90": 35.0,
+          "n": 40
+        },
+        "Jaipur": {
+          "q10": -50.5,
+          "q90": 46.4,
+          "n": 40
+        },
+        "Kolkata": {
+          "q10": -2.8,
+          "q90": 84.2,
+          "n": 40
+        },
+        "Lucknow": {
+          "q10": -9.1,
+          "q90": 74.0,
+          "n": 40
+        },
+        "Thiruvananthapuram": {
+          "q10": -4.0,
+          "q90": 24.2,
+          "n": 40
+        },
+        "Visakhapatnam": {
+          "q10": -27.0,
+          "q90": 73.5,
+          "n": 34
+        }
+      }
+    },
+    "optimism_note": "Past modelled values are analyses; a live run uses a same-day forecast for the hours still to come, so live accuracy is likely somewhat worse than this."
+  }
+}

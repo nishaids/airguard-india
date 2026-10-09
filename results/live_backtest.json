@@ -1,0 +1,328 @@
+{
+  "window": {
+    "first_day": "2026-06-22",
+    "last_day": "2026-10-07",
+    "holdout_from": "2026-08-24"
+  },
+  "truth": "an AQI from measured PM2.5, PM10 and ozone, averaged over CPCB monitors in each city (OpenAQ daily aggregates)",
+  "holdout": {
+    "airguard_corrected_inputs": {
+      "n": 474,
+      "mae": 30.7,
+      "bias": 17.7,
+      "rmse": 48.5,
+      "same_category_percent": 53.2,
+      "within_one_category_percent": 94.9
+    },
+    "airguard_correction_14_days_old": {
+      "n": 474,
+      "mae": 32.9,
+      "bias": 19.8,
+      "rmse": 51.5,
+      "same_category_percent": 51.5,
+      "within_one_category_percent": 93.2
+    },
+    "airguard_uncorrected_inputs": {
+      "n": 474,
+      "mae": 37.5,
+      "bias": 30.8,
+      "rmse": 53.3,
+      "same_category_percent": 46.4,
+      "within_one_category_percent": 94.1
+    },
+    "baseline_same_as_today_modelled": {
+      "n": 474,
+      "mae": 35.8,
+      "bias": 14.4,
+      "rmse": 63.2,
+      "same_category_percent": 50.8,
+      "within_one_category_percent": 92.6
+    },
+    "baseline_atmospheric_model_next_day": {
+      "n": 474,
+      "mae": 32.2,
+      "bias": 14.7,
+      "rmse": 56.7,
+      "same_category_percent": 55.1,
+      "within_one_category_percent": 96.2
+    },
+    "baseline_same_as_today_measured": {
+      "n": 447,
+      "mae": 12.8,
+      "bias": -0.7,
+      "rmse": 18.9,
+      "same_category_percent": 74.9,
+      "within_one_category_percent": 98.9
+    }
+  },
+  "holdout_by_city": {
+    "Amaravati": {
+      "n": 40,
+      "mae": 19.2,
+      "bias": 14.6,
+      "rmse": 26.6,
+      "same_category_percent": 67.5,
+      "within_one_category_percent": 97.5
+    },
+    "Amritsar": {
+      "n": 40,
+      "mae": 19.6,
+      "bias": 8.1,
+      "rmse": 25.9,
+      "same_category_percent": 52.5,
+      "within_one_category_percent": 100.0
+    },
+    "Bengaluru": {
+      "n": 40,
+      "mae": 21.3,
+      "bias": 13.8,
+      "rmse": 28.1,
+      "same_category_percent": 52.5,
+      "within_one_category_percent": 97.5
+    },
+    "Chennai": {
+      "n": 40,
+      "mae": 16.8,
+      "bias": -1.9,
+      "rmse": 20.9,
+      "same_category_percent": 77.5,
+      "within_one_category_percent": 100.0
+    },
+    "Delhi": {
+      "n": 40,
+      "mae": 61.4,
+      "bias": 41.8,
+      "rmse": 85.2,
+      "same_category_percent": 40.0,
+      "within_one_category_percent": 82.5
+    },
+    "Gurugram": {
+      "n": 40,
+      "mae": 67.5,
+      "bias": 38.9,
+      "rmse": 96.6,
+      "same_category_percent": 40.0,
+      "within_one_category_percent": 85.0
+    },
+    "Hyderabad": {
+      "n": 40,
+      "mae": 19.4,
+      "bias": 18.8,
+      "rmse": 25.7,
+      "same_category_percent": 72.5,
+      "within_one_category_percent": 100.0
+    },
+    "Jaipur": {
+      "n": 40,
+      "mae": 28.1,
+      "bias": -8.6,
+      "rmse": 34.5,
+      "same_category_percent": 45.0,
+      "within_one_category_percent": 100.0
+    },
+    "Kolkata": {
+      "n": 40,
+      "mae": 36.0,
+      "bias": 32.7,
+      "rmse": 53.0,
+      "same_category_percent": 45.0,
+      "within_one_category_percent": 92.5
+    },
+    "Lucknow": {
+      "n": 40,
+      "mae": 28.5,
+      "bias": 22.2,
+      "rmse": 39.8,
+      "same_category_percent": 55.0,
+      "within_one_category_percent": 92.5
+    },
+    "Thiruvananthapuram": {
+      "n": 40,
+      "mae": 14.7,
+      "bias": 12.3,
+      "rmse": 20.1,
+      "same_category_percent": 50.0,
+      "within_one_category_percent": 97.5
+    },
+    "Visakhapatnam": {
+      "n": 34,
+      "mae": 37.2,
+      "bias": 19.5,
+      "rmse": 48.5,
+      "same_category_percent": 38.2,
+      "within_one_category_percent": 94.1
+    }
+  },
+  "measured_inputs": {
+    "what": "the same model fed measured PM2.5, PM10 and ozone; fewer days, because every look-back day must have a measurement",
+    "airguard": {
+      "n": 229,
+      "mae": 12.9,
+      "bias": 5.3,
+      "rmse": 18.6,
+      "same_category_percent": 76.0,
+      "within_one_category_percent": 99.6
+    },
+    "same_as_today_measured": {
+      "n": 229,
+      "mae": 12.6,
+      "bias": -1.6,
+      "rmse": 18.3,
+      "same_category_percent": 76.4,
+      "within_one_category_percent": 99.6
+    }
+  },
+  "input_quality": {
+    "modelled_vs_measured_same_day_corrected": {
+      "n": 447,
+      "mae": 30.8,
+      "bias": 12.5,
+      "rmse": 55.8,
+      "same_category_percent": 55.3,
+      "within_one_category_percent": 96.6
+    },
+    "modelled_vs_measured_same_day_uncorrected": {
+      "n": 447,
+      "mae": 33.9,
+      "bias": 25.9,
+      "rmse": 52.2,
+      "same_category_percent": 48.3,
+      "within_one_category_percent": 95.5
+    }
+  },
+  "error_quantiles": {
+    "definition": "forecast minus measured, held-out days",
+    "q10": -24.4,
+    "q50": 9.8,
+    "q90": 66.8,
+    "by_city": {
+      "Amaravati": {
+        "q10": -7.8,
+        "q90": 47.5,
+        "n": 40
+      },
+      "Amritsar": {
+        "q10": -22.4,
+        "q90": 38.7,
+        "n": 40
+      },
+      "Bengaluru": {
+        "q10": -15.6,
+        "q90": 45.7,
+        "n": 40
+      },
+      "Chennai": {
+        "q10": -27.9,
+        "q90": 28.6,
+        "n": 40
+      },
+      "Delhi": {
+        "q10": -34.3,
+        "q90": 170.1,
+        "n": 40
+      },
+      "Gurugram": {
+        "q10": -51.1,
+        "q90": 136.6,
+        "n": 40
+      },
+      "Hyderabad": {
+        "q10": 0.3,
+        "q90": 35.0,
+        "n": 40
+      },
+      "Jaipur": {
+        "q10": -50.5,
+        "q90": 46.4,
+        "n": 40
+      },
+      "Kolkata": {
+        "q10": -2.8,
+        "q90": 84.2,
+        "n": 40
+      },
+      "Lucknow": {
+        "q10": -9.1,
+        "q90": 74.0,
+        "n": 40
+      },
+      "Thiruvananthapuram": {
+        "q10": -4.0,
+        "q90": 24.2,
+        "n": 40
+      },
+      "Visakhapatnam": {
+        "q10": -27.0,
+        "q90": 73.5,
+        "n": 34
+      }
+    }
+  },
+  "generated_by": "src/live/backtest.py",
+  "generated_at_utc": "2026-10-09T19:15:19Z",
+  "measured_monitor_days": 28849,
+  "measured_city_days": 1199,
+  "factors_deployed": {
+    "Amaravati": {
+      "PM2.5": 1.049,
+      "PM10": 1.8046,
+      "O3": 0.2774
+    },
+    "Amritsar": {
+      "PM2.5": 0.7337,
+      "PM10": 1.1194,
+      "O3": 0.247
+    },
+    "Bengaluru": {
+      "PM2.5": 1.519,
+      "PM10": 2.9168,
+      "O3": 0.328
+    },
+    "Chennai": {
+      "PM2.5": 1.3879,
+      "PM10": 3.2295,
+      "O3": 0.2
+    },
+    "Delhi": {
+      "PM2.5": 0.7059,
+      "PM10": 1.3098,
+      "O3": 0.2436
+    },
+    "Gurugram": {
+      "PM2.5": 0.6916,
+      "PM10": 1.001,
+      "O3": 0.2624
+    },
+    "Hyderabad": {
+      "PM2.5": 0.9848,
+      "PM10": 1.6645,
+      "O3": 0.2003
+    },
+    "Jaipur": {
+      "PM2.5": 1.4354,
+      "PM10": 2.301,
+      "O3": 0.4724
+    },
+    "Kolkata": {
+      "PM2.5": 1.0377,
+      "PM10": 1.8744,
+      "O3": 0.3038
+    },
+    "Lucknow": {
+      "PM2.5": 0.954,
+      "PM10": 1.6083,
+      "O3": 0.3275
+    },
+    "Thiruvananthapuram": {
+      "PM2.5": 1.791,
+      "PM10": 2.6397,
+      "O3": 0.4183
+    },
+    "Visakhapatnam": {
+      "PM2.5": 0.9608,
+      "PM10": 2.3662,
+      "O3": 0.4029
+    }
+  },
+  "factors_fitted_until": "2026-10-07"
+}

@@ -28,11 +28,15 @@ API_DIR = Path(__file__).resolve().parent / "api"
 sys.path.insert(0, str(API_DIR))
 
 import forecast as forecast_function  # noqa: E402
+import live_forecast as live_function  # noqa: E402
 import policy_simulate as policy_function  # noqa: E402
 
 ROUTES = {
     "/api/forecast": forecast_function.handle,
     "/api/policy_simulate": policy_function.handle,
+}
+GET_ROUTES = {
+    "/api/live_forecast": live_function.handle,
 }
 
 
@@ -55,6 +59,20 @@ class DevHandler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Content-Length", "0")
         self.end_headers()
+
+    def do_GET(self) -> None:
+        from urllib.parse import parse_qs, urlparse
+
+        parsed = urlparse(self.path)
+        handle = GET_ROUTES.get(parsed.path.rstrip("/"))
+        if handle is None:
+            self._send_json(404, {"ok": False, "messages": [f"No route {parsed.path}"]})
+            return
+        try:
+            status, result = handle({k: v[0] for k, v in parse_qs(parsed.query).items()})
+            self._send_json(status, result)
+        except Exception as exc:  # noqa: BLE001
+            self._send_json(500, {"ok": False, "message": f"Internal error: {exc}"})
 
     def do_POST(self) -> None:
         route = self.path.split("?")[0].rstrip("/")

@@ -1003,8 +1003,9 @@ def build_insights(stats: Dict[str, Any]) -> List[Dict[str, Any]]:
                 f"{len(covid['per_city'])} cities by a one-sided Mann-Whitney U test."
             ),
             "modelling_consequence": (
-                "2020 is a genuine regime change, not noise. It is handled with an "
-                "explicit lockdown flag rather than deletion, and test-set error is "
+                "2020 is a genuine regime change, not noise. It is kept in the data "
+                "rather than deleted (a lockdown flag was offered to the models, but "
+                "feature selection did not retain it), and test-set error is "
                 "additionally broken out for the lockdown period so that its "
                 "contribution is visible. It also provides the empirical anchor for "
                 "the policy simulator: a large, abrupt emission reduction did move "

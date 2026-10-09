@@ -4,7 +4,7 @@ Phases 2 and 3 of the AirGuard 2.0 roadmap: data access, and the foundation for 
 
 Nothing here is connected to the forecasting models or to the deployed application. The 1.0 site is unchanged.
 
-## Status on 9 October 2026
+## Status on 10 October 2026
 
 | Item | State |
 | --- | --- |
@@ -16,10 +16,12 @@ Nothing here is connected to the forecasting models or to the deployed applicati
 | CPCB / data.gov.in, live | **Official measured source unavailable.** `api.data.gov.in` refused connections on 7, 8 and 9 October 2026, before any key is sent; the website `www.data.gov.in` answered normally from the same machine. No CPCB record has been retrieved |
 | Database migration | **Verified on a local PostgreSQL 17** (a throwaway Docker container). It applied cleanly and a second application was a no-op |
 | Idempotency | **Verified locally with live data**: a second run of every source wrote nothing; no duplicate keys in the tables |
-| Supabase (pooler, TLS, its roles) | **Not run.** The connection string supplied still contained the template words `PROJECT_REF` and `POOLER_HOST` |
+| Supabase (session pooler, TLS) | **Verified on 10 October**: the migration applied and a second application was a no-op; a live run stored 133 stations, 1,498 readings, 774 fire detections and 624 forecast hours; a second run wrote nothing; the integration test passes against it |
 | Scheduled, unattended ingestion | **Not built** |
 
-So the success condition is met for a third-party measured source, a satellite source and a weather source, into a local PostgreSQL. It is **not** met for the official Indian source, and not yet on the hosted database.
+So the success condition is met for a third-party measured source, a satellite source and a weather source, into the hosted Supabase database. It is **not** met for the official Indian source.
+
+What was then built on top of this, a live next-day forecast and its test against measurements, is described in `live_forecast.md`.
 
 ### What the live data showed
 
@@ -164,7 +166,7 @@ What changes is which copy a model may read. If both copies have a normalised co
 
 ## Database
 
-`db/migrations/001_live_ingestion.sql`, applied with `python -m src.ingestion.db migrate`. Everything is in a schema of its own, `airguard`. On Supabase the generated REST API serves only the `public` schema, so these tables cannot be reached with the project's anonymous key; row-level security is also enabled on every table with no policies, as a second barrier. That reasoning about Supabase is from its documentation; it has not been tested against a Supabase project.
+`db/migrations/001_live_ingestion.sql`, applied with `python -m src.ingestion.db migrate`. Everything is in a schema of its own, `airguard`. On Supabase the generated REST API serves only the `public` schema, so these tables cannot be reached with the project's anonymous key; row-level security is also enabled on every table with no policies, as a second barrier. The tables now exist in the project's Supabase database; that the anonymous key cannot read them is from Supabase's documentation and has not been tested.
 
 | Table | Holds | Uniqueness |
 | --- | --- | --- |
@@ -232,7 +234,7 @@ OpenAQ's free tier allows 60 requests a minute and 2,000 an hour and warns that 
 ## What remains before real-time forecasting
 
 1. **A current measured source.** This is now the main obstacle. Reach `api.data.gov.in` from another network, and separately watch whether OpenAQ's copy of the CPCB monitors starts advancing again. Without one of them there are about ten current readings a run, none from a reference-grade government monitor.
-2. Supply the real Supabase connection string, apply the migration there, run a real ingestion and confirm a second run writes nothing.
+2. ~~Supabase~~ done on 10 October.
 3. Establish what the CPCB feed's numbers mean, and which units OpenAQ's gas values for those monitors are really in.
 4. Run ingestion unattended on a schedule, on a machine that does not sleep, and watch it for a week.
 5. Validate the station matcher against real pairs. It has still never seen both sources at once.

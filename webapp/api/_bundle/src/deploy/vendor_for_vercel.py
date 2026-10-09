@@ -48,6 +48,7 @@ PLAIN_FILES = [
     "models/deploy/regression_booster.json",
     "models/deploy/classification_classes.json",
     "models/deploy/feature_order.json",
+    "models/deploy/live_reference.json",
 ]
 
 #: Files large enough to be worth gzipping. The readers accept either form.

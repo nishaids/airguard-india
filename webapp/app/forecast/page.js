@@ -184,6 +184,10 @@ export default function ForecastPage() {
 
       {ok && (
         <div style={{ opacity: loading ? 0.55 : 1, transition: "opacity 0.2s" }}>
+          <Banner kind="warn">
+            This page replays the historical record, which ends on 1 July 2020. It does not describe today&apos;s air.
+            For tomorrow&apos;s forecast from current conditions, open <a href="/live">Live forecast</a>.
+          </Banner>
           {result.messages.length > 0 && <Banner kind="info">{result.messages.join(" ")}</Banner>}
           {activeWhatIf.length > 0 && (
             <Banner kind="success">
@@ -196,7 +200,7 @@ export default function ForecastPage() {
           <h2 style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
             {result.city}
             <span className="caption" style={{ fontSize: "0.95rem" }}>
-              forecast for{" "}
+              historical replay &middot; forecast for{" "}
               {new Date(result.forecast_date).toLocaleDateString("en-GB", {
                 day: "numeric", month: "long", year: "numeric",
               })}
@@ -205,7 +209,7 @@ export default function ForecastPage() {
 
           <div className="grid grid-4">
             <Metric hero label="Predicted AQI" value={result.predicted_aqi.toFixed(0)} delta={`observed today ${result.observed_aqi_today?.toFixed(0) ?? "—"}`} />
-            <Metric hero label="Predicted band" value={result.predicted_bucket} delta={result.confidence !== null ? `${Math.round(result.confidence * 100)}% confidence` : undefined} />
+            <Metric hero label="Predicted band" value={result.predicted_bucket} delta={result.confidence !== null ? `model score ${Math.round(result.confidence * 100)}%` : undefined} help="The classifier's top-class score. It is not a calibrated probability: on test data, forecasts shown at 95% or more were right about 89% of the time." />
             <Metric hero label={`HAI · ${meta.cohort_labels[cohort]}`} value={result.cohort.hai.toFixed(0)} delta={band} help={result.cohort.rationale} />
             <Metric hero label="Dominant pollutant" value={result.cohort.dominant_pollutant || "n/a"} delta={result.safe_window ? `cleanest ${result.safe_window}` : undefined} />
           </div>

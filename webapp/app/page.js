@@ -6,9 +6,14 @@ import { Metric, Banner, Loading, Badge } from "./components/ui";
 
 const PAGES = [
   {
+    href: "/live",
+    title: "Live forecast",
+    body: "Tomorrow's AQI for twelve cities, computed now from current conditions. The inputs are modelled, not measured, and the page says how accurate the forecast was when tested against government monitors.",
+  },
+  {
     href: "/forecast",
-    title: "Forecast",
-    body: "Pick a city, a date and a cohort. Returns tomorrow's predicted AQI, the predicted band with the model's confidence, the cohort's Health Advisory Index, the dominant pollutant, the cleanest outdoor window and plain-language advice. Includes what-if sliders.",
+    title: "Historical explorer",
+    body: "Replays the 2015-2020 record. Pick a city, a date and a cohort. Returns the next day's predicted AQI, the predicted band with the model's score, the cohort's Health Advisory Index, the dominant pollutant, the cleanest outdoor window and plain-language advice. Includes what-if sliders.",
   },
   {
     href: "/city-atlas",

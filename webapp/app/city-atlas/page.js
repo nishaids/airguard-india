@@ -319,8 +319,9 @@ function LockdownTab({ eda }) {
 
       <Banner kind="info">
         <strong>How this is handled in modelling.</strong> 2020 is a genuine regime change rather
-        than noise, so it is modelled with an explicit lockdown flag rather than deleted, and
-        test-set error is reported separately for the lockdown period as a stress test.
+        than noise, so it is kept in the data rather than deleted, and test-set error is reported
+        separately for the lockdown period as a stress test. A lockdown flag was offered to the
+        models, but feature selection did not retain it.
       </Banner>
     </div>
   );

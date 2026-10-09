@@ -180,6 +180,11 @@ function ExplainTab({ data }) {
       <SectionTitle caption={explain.method}>Why the model predicts what it predicts</SectionTitle>
       <Figure src="/figures/36_shap_global.png" />
       <Banner kind="success">{explain.interpretation}</Banner>
+      <Banner kind="warn">
+        <strong>How not to read this ranking.</strong> The healthy-adult Health Advisory Index is computed from
+        today&apos;s sub-indices, so it is strongly correlated with the AQI and with PM2.5. A high rank shows how the
+        attribution is shared among correlated inputs. It is not independent evidence that the index is valid.
+      </Banner>
 
       <SectionTitle>A single day, decomposed</SectionTitle>
       <div className="grid grid-3">
@@ -213,6 +218,11 @@ function TuningTab({ data }) {
               { Setting: "Tuned", ...tuning.regression.tuned_test },
             ]}
           />
+          <p className="caption">
+            These are errors on one held-out year. Four-fold expanding-window cross-validation gives a larger MAE,
+            29.9 &plusmn; 10.0. The test year is cleaner than the training years and includes the lockdown, so the
+            single-year figure flatters the model.
+          </p>
           <details>
             <summary className="caption" style={{ cursor: "pointer" }}>Best parameters</summary>
             <pre>{JSON.stringify(tuning.regression.best_params, null, 2)}</pre>

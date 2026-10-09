@@ -4,6 +4,10 @@
       "maxDuration": 60,
       "includeFiles": "api/_bundle/**"
     },
+    "api/live_forecast.py": {
+      "maxDuration": 60,
+      "includeFiles": "api/_bundle/**"
+    },
     "api/policy_simulate.py": {
       "maxDuration": 60,
       "includeFiles": "api/_bundle/**"

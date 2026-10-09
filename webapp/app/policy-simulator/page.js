@@ -202,13 +202,17 @@ function SimResult({ result, stored }) {
 
           {anchor && (
             <>
-              <h3>Sanity check against a real reduction</h3>
+              <h3>Compared with a real reduction (not a validation)</h3>
               <div className="card">
                 <div className="grid grid-2">
                   <Metric label="Measured lockdown effect" value={`${anchor.measured_aqi_change_pct.toFixed(1)}%`} />
                   <Metric label="This scenario" value={`${result.aqi.mean_change_pct.toFixed(1)}%`} />
                 </div>
                 <p className="caption" style={{ marginTop: 12, marginBottom: 0 }}>{anchor.use}</p>
+                <p className="caption" style={{ marginTop: 8, marginBottom: 0 }}>
+                  The lockdown changed traffic, industry and behaviour all at once, in one season. A similar number
+                  here does not show the simulator is right, and nothing on this page is a causal estimate.
+                </p>
               </div>
             </>
           )}

@@ -99,14 +99,27 @@ def _check_coordinates(record: Any, lat: Optional[float], lon: Optional[float]) 
         record.add_flag("COORDINATES_OUTSIDE_INDIA", Severity.WARNING, f"coordinates ({lat}, {lon}) fall outside the India bounding box", "latitude")
 
 
+# A provider's unit label can be wrong, and a wrong label turns into a wrong number
+# the moment it is converted. Carbon monoxide has a hard floor that exposes this:
+# even the cleanest remote air holds roughly 0.05 mg/m3, so a positive reading far
+# below that was reported in some other unit than the one stated. Canonical units.
+AMBIENT_FLOOR = {"CO": 0.02}
+
+
 def validate_observation(
     obs: AirQualityObservation,
     now: Optional[datetime] = None,
     settings: Optional[Settings] = None,
     seen: Optional[Set[tuple]] = None,
 ) -> AirQualityObservation:
-    """Attach quality flags to one observation and fill its normalised value."""
-    now = now or utc_now()
+    """Attach quality flags to one observation and fill its normalised value.
+
+    Freshness and the future-timestamp check are judged against the moment the
+    reading was retrieved, not the moment this function runs: validation can
+    happen long after retrieval when a run is paused. ``now`` is used only for
+    a record that carries no retrieval time.
+    """
+    now = obs.retrieved_at or now or utc_now()
     settings = settings or get_settings()
 
     if not obs.source_station_id:
@@ -137,10 +150,23 @@ def validate_observation(
     # --- unit normalisation -------------------------------------------------- #
     if obs.value_kind is ValueKind.CONCENTRATION:
         try:
-            obs.normalized_value, obs.normalized_unit, note = units.normalise(obs.pollutant, value, obs.raw_unit)
-            if note:
-                obs.provenance["unit_conversion"] = note
-                obs.add_flag("UNIT_CONVERTED", Severity.INFO, f"{obs.raw_unit} -> {obs.normalized_unit}; {note}", "raw_unit")
+            converted, unit, note = units.normalise(obs.pollutant, value, obs.raw_unit)
+            floor = AMBIENT_FLOOR.get(obs.pollutant)
+            if floor is not None and 0 < converted < floor:
+                # Not corrected by guessing the real unit: kept raw, like any value whose unit is unknown.
+                obs.provenance["unit_suspect"] = {"stated_unit": obs.raw_unit, "would_be": converted, "in": unit, "floor": floor}
+                obs.add_flag(
+                    "UNIT_SUSPECT",
+                    Severity.WARNING,
+                    f"{value:g} {obs.raw_unit} would be {converted:g} {unit}, below any ambient level; "
+                    "the stated unit is probably wrong, so the value is stored raw and not normalised",
+                    "raw_unit",
+                )
+            else:
+                obs.normalized_value, obs.normalized_unit = converted, unit
+                if note:
+                    obs.provenance["unit_conversion"] = note
+                    obs.add_flag("UNIT_CONVERTED", Severity.INFO, f"{obs.raw_unit} -> {obs.normalized_unit}; {note}", "raw_unit")
         except units.UnsupportedUnit as exc:
             obs.add_flag("UNSUPPORTED_UNIT", Severity.WARNING, str(exc), "raw_unit")
     else:

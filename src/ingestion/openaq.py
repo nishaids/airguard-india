@@ -34,6 +34,7 @@ from src import config
 from src.ingestion import units
 from src.ingestion.base import Batch, CredentialMissing
 from src.ingestion.http import HttpClient, HttpError, as_dict, header_int
+from src.ingestion.matching import haversine_m
 from src.ingestion.schemas import (
     AirQualityObservation,
     RejectedRecord,
@@ -89,13 +90,22 @@ def _get(client: HttpClient, path: str, key: str, params: Optional[Dict[str, Any
     return payload
 
 
+def _locality(location: Dict[str, Any]) -> Optional[str]:
+    """The provider's place name, unless it only names the country, as it does for embassy monitors."""
+    locality = str(location.get("locality") or "").strip()
+    country = location.get("country") or {}
+    if locality.lower() in {"", str(country.get("name") or "").lower(), str(country.get("code") or "").lower()}:
+        return None
+    return locality
+
+
 def station_from_location(location: Dict[str, Any], city_hint: Optional[str] = None) -> Station:
     coordinates = location.get("coordinates") or {}
     return Station(
         source=SOURCE,
         source_station_id=str(location.get("id")),
         name=location.get("name"),
-        city=location.get("locality") or city_hint,
+        city=_locality(location) or city_hint,
         country=(location.get("country") or {}).get("code") or "IN",
         latitude=coordinates.get("latitude"),
         longitude=coordinates.get("longitude"),
@@ -106,6 +116,7 @@ def station_from_location(location: Dict[str, Any], city_hint: Optional[str] = N
             "is_monitor": location.get("isMonitor"),
             "is_mobile": location.get("isMobile"),
             "search_city": city_hint,
+            "provider_locality": location.get("locality"),
             "datetime_last_utc": (location.get("datetimeLast") or {}).get("utc"),
             "sensors": {
                 str(s.get("id")): {
@@ -138,8 +149,16 @@ def discover_locations(client: HttpClient, key: str, settings: Settings, cities:
             results = payload.get("results") or []
             for location in results:
                 if isinstance(location, dict) and location.get("id") is not None:
-                    location["_search_city"] = city
-                    found.setdefault(str(location["id"]), location)
+                    # Search circles overlap (Delhi and Gurugram): a station belongs to the nearest centre.
+                    coordinates = location.get("coordinates") or {}
+                    try:
+                        distance = haversine_m(lat, lon, float(coordinates["latitude"]), float(coordinates["longitude"]))
+                    except (KeyError, TypeError, ValueError):
+                        distance = float("inf")
+                    known = found.get(str(location["id"]))
+                    if known is None or distance < known["_search_distance_m"]:
+                        location["_search_city"], location["_search_distance_m"] = city, distance
+                        found[str(location["id"])] = location
             if len(results) < PAGE_LIMIT:
                 break
     return list(found.values()), partial
@@ -217,7 +236,6 @@ def collect(
         raise CredentialMissing("OPENAQ_API_KEY")
 
     now = utc_now()
-    retrieved_at = now.replace(microsecond=0)
     batch = Batch(source=SOURCE, kind="air_quality")
 
     locations, batch.partial = discover_locations(client, key, settings, cities or TARGET_CITIES)
@@ -225,6 +243,7 @@ def collect(
     batch.notes.append(f"{len(locations)} locations found near target cities; {len(active)} reported in the last {settings.openaq_active_within_days} days")
     batch.stations = [station_from_location(loc, loc.get("_search_city")) for loc in active]
 
+    out_of_scope = 0
     for location in active[:limit] if limit else active:
         try:
             payload = _get(client, f"/locations/{location['id']}/latest", key, {"limit": PAGE_LIMIT}, label="openaq latest")
@@ -237,8 +256,12 @@ def collect(
             continue
         results = payload.get("results") or []
         batch.retrieved += len(results)
-        observations, rejected = observations_from_latest(location, results, retrieved_at)
+        # Stamped per response, not per run: a run can be paused for minutes by the rate limit, or for hours by a sleeping machine.
+        observations, rejected = observations_from_latest(location, results, utc_now().replace(microsecond=0))
         batch.records.extend(observations)
         batch.rejected.extend(rejected)
+        out_of_scope += len(results) - len(observations) - len(rejected)
 
+    if out_of_scope:
+        batch.notes.append(f"{out_of_scope} latest values were from sensors that are not pollutants (weather, particle counts) and were not ingested")
     return batch

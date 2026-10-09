@@ -4,28 +4,49 @@ Phases 2 and 3 of the AirGuard 2.0 roadmap: data access, and the foundation for 
 
 Nothing here is connected to the forecasting models or to the deployed application. The 1.0 site is unchanged.
 
-## Status on 8 October 2026
+## Status on 9 October 2026
 
 | Item | State |
 | --- | --- |
 | Connectors for four sources, validation, provenance, storage layer, orchestrator, tests | **Built** |
-| Unit tests (59, all providers mocked) | **Passing** |
-| Open-Meteo weather forecast, live | **Verified end to end**: 804 future forecast hours for 12 cities retrieved, validated, written to PostgreSQL and read back; a second run wrote nothing |
-| OpenAQ, live | **Not run.** The service is reachable and answers 401 without a key; no key was configured on the machine |
-| NASA FIRMS, live | **Not run.** The service is reachable; no key was configured on the machine |
-| CPCB / data.gov.in, live | **Not run, and the host is unreachable.** `api.data.gov.in` refused TCP connections on ports 443 and 80 from the development network on 7 and 8 October 2026, independent of any key |
-| Database migration | **Verified on a local PostgreSQL 17** (a throwaway Docker container). It applied cleanly and a second application was a no-op. **Not yet applied to Supabase**: no connection string was configured |
-| Writing to PostgreSQL and reading back | **Verified locally** for live weather. The station, observation, fire, flag and rejection paths were verified with the test fixtures' provider responses, not live data. Every second pass wrote nothing |
-| Supabase specifically (pooler, TLS, its roles) | **Not run** |
+| Unit tests (68, all providers mocked) | **Passing** |
+| Open-Meteo weather forecast, live | **Verified end to end**: 636 future forecast hours for 12 cities retrieved, validated, written to PostgreSQL and read back |
+| OpenAQ, live, with the project's key | **Verified end to end**: 133 active stations near the 12 cities, 1,498 pollutant readings written and read back. **Only 10 of them were current**; see *What the live data showed* |
+| NASA FIRMS, live, with the project's key | **Verified end to end**: 774 VIIRS detections (NOAA-20 and NOAA-21) for 9 October written and read back |
+| CPCB / data.gov.in, live | **Official measured source unavailable.** `api.data.gov.in` refused connections on 7, 8 and 9 October 2026, before any key is sent; the website `www.data.gov.in` answered normally from the same machine. No CPCB record has been retrieved |
+| Database migration | **Verified on a local PostgreSQL 17** (a throwaway Docker container). It applied cleanly and a second application was a no-op |
+| Idempotency | **Verified locally with live data**: a second run of every source wrote nothing; no duplicate keys in the tables |
+| Supabase (pooler, TLS, its roles) | **Not run.** The connection string supplied still contained the template words `PROJECT_REF` and `POOLER_HOST` |
 | Scheduled, unattended ingestion | **Not built** |
 
-The acceptance tests that need credentials run with one command once `.env` exists; see *Commands*.
+So the success condition is met for a third-party measured source, a satellite source and a weather source, into a local PostgreSQL. It is **not** met for the official Indian source, and not yet on the hosted database.
 
-Running against a real database, rather than the in-memory stand-in the unit tests use, found three defects, all corrected:
+### What the live data showed
+
+These are observations from one day, 9 October 2026, not general properties of the providers.
+
+- **OpenAQ's copy of India's government monitors was two days behind.** 112 of the 133 active stations come from CPCB. Of their 1,400 readings, none was newer than 7 October 14:30 UTC, at checks made at 08:51 and 18:34 UTC on 9 October, and 518 were more than a year old (OpenAQ's "latest" is per sensor, and many sensors are dormant). All were stored and flagged `UNAVAILABLE`.
+- **The only current readings came from other networks**: 10 readings from 10 monitors in Delhi, Gurugram, Bengaluru and Chennai, supplied by AirGradient and Clarity (low-cost sensors, not reference monitors) and AirNow (the US embassy monitors).
+- **On that day there was therefore no current government-monitor measurement from either route**: the official API could not be reached and the aggregator's copy had stopped advancing. Whether the two have a common cause is not known.
+- **OpenAQ's unit label for carbon monoxide is wrong for these monitors.** 120 current readings were labelled `ppb` with values from 0.02 to 7.71 and a median of 0.96. Carbon monoxide in a city is of the order of 1 mg/m³, which is about 870 ppb; the numbers are plainly in mg/m³. Converted as labelled they would have been stored roughly 870 times too small. A check was added (`UNIT_SUSPECT`): such a value is kept raw and is not normalised. It caught 126 readings.
+- **Nitrogen oxides (`NOx`) look mislabelled too**: labelled `ppb`, median 0.03, which is the magnitude of ppm. There is no physical floor to prove it with, so these are stored as labelled and are not to be trusted until checked. NO, NO₂ and SO₂ are labelled `ppb` with values that are plausible either as ppb or as µg/m³; the magnitudes cannot settle which.
+- PM2.5, PM10 and ozone arrive in µg/m³ and look consistent. One PM10 reading of exactly 999.99 was stored unflagged; it is probably an instrument ceiling, not a measurement.
+- FIRMS returned 774 detections for the day inside the bounding box, 11 of them in a rough box over Indian Punjab.
+
+### Defects found by running for real, all corrected
+
+Against a real database, on 8 October:
 
 - A second weather run stored every forecast hour again, because a forecast was identified by the instant it was fetched. It is now identified by the model run.
 - The table that records applied migrations was created without row-level security.
 - When one monitor arrived from both sources, the rule that picks a copy for modelling changed the official reading after it had been saved, so the change never reached the database, and it counted rejected readings as held.
+
+Against live providers, on 9 October:
+
+- The carbon monoxide unit problem above.
+- A station's city was taken from OpenAQ's `locality`, which for the embassy monitors is just "India". A locality that only names the country now gives way to the target city, and a station inside two cities' search circles is assigned to the nearer centre. What the provider said is kept in the station's metadata.
+- Every reading in a run carried the time the run started. The laptop slept in the middle of one run and readings fetched nine hours later were stamped with the earlier time. Each response is now stamped when it arrives, and freshness is judged against that moment, not against when validation happens to run. That run was otherwise handled correctly: the four stations whose requests failed were skipped, the run was reported `PARTIAL`, and everything else was stored.
+- Values from sensors that are not pollutants were skipped without saying so; the run now reports how many.
 
 ## Providers
 
@@ -91,14 +112,15 @@ Fetching the same model run again is the same row, and adds nothing. The copy ke
 | `MISSING_POLLUTANT` | reject | The pollutant is not recognised |
 | `UNPARSABLE_VALUE` | reject | The value is not a number (`NA`, empty, text) |
 | `NEGATIVE_VALUE` | reject | A negative concentration |
-| `FUTURE_TIMESTAMP` | reject | Measurement time later than now plus a tolerance (30 minutes by default) |
+| `FUTURE_TIMESTAMP` | reject | Measurement time later than the moment it was retrieved, plus a tolerance (30 minutes by default) |
 | `DUPLICATE_IN_BATCH` | reject | Same station, pollutant and time twice in one batch; counted separately as a duplicate |
 | `MALFORMED_RECORD` | reject | The provider's record is not the expected shape |
 | `UNIT_UNSPECIFIED` | warning | The provider gives no unit; stored raw, not normalised |
 | `UNSUPPORTED_UNIT` | warning | The unit is not one that can be converted for this pollutant |
+| `UNIT_SUSPECT` | warning | The stated unit cannot be true: converted as labelled, the value falls below any ambient level (carbon monoxide under 0.02 mg/m³). Stored raw, not normalised, and not corrected by guessing |
 | `IMPLAUSIBLE_VALUE` | warning | Above the plausibility ceiling already used by the 1.0 cleaning stage |
 | `COORDINATES_MISSING`, `COORDINATES_INVALID`, `COORDINATES_OUTSIDE_INDIA` | warning | Position absent, impossible, or outside the India bounding box |
-| `STALE`, `UNAVAILABLE` | warning | Older than the stale or unavailable threshold |
+| `STALE`, `UNAVAILABLE` | warning | Older than the stale or unavailable threshold when it was retrieved |
 | `DELAYED`, `UNIT_CONVERTED`, `SAME_MONITOR_OTHER_SOURCE` | info | Recorded for the audit trail; the record stays `ok` |
 
 Provider and API failures are not record flags; they fail the run for that source and are stored on the run.
@@ -181,7 +203,7 @@ OpenAQ's free tier allows 60 requests a minute and 2,000 an hour and warns that 
 
 **CPCB / data.gov.in**
 
-- *Unreachable from the development network.* The API host resolves but refuses connections. Whether this is the network, the service, or a restriction on where requests may come from is not known. It should be tried from a second network before anything else is concluded.
+- *Unreachable from the development network* on three consecutive days. The API host resolves but refuses connections, while the data.gov.in website answers. Whether this is the network, the service, or a restriction on where requests may come from is not known. It should be tried from a second network before anything else is concluded.
 - *What the numbers are is not established.* The feed gives a minimum, maximum and average per station and pollutant. In the releases seen it publishes no unit, and its title describes an index. The connector therefore does **not** assume concentrations: values are stored raw with `value_kind = unknown` and flagged `UNIT_UNSPECIFIED`, which also keeps them out of the modelling view. Whether they are sub-indices or concentrations, and over what window, must be settled by comparing one station against the CPCB portal. Until then this feed can show that a station is reporting, but it cannot feed a model.
 - *The resource identifier may change.* Every run reads the dataset's own metadata and refuses anything that is not an air-quality dataset with the expected fields, so a retired identifier fails loudly.
 - The feed has no station identifier; one is derived from state, city and station name.
@@ -190,13 +212,15 @@ OpenAQ's free tier allows 60 requests a minute and 2,000 an hour and warns that 
 
 - An aggregator, with its own delay behind each upstream network. OpenAQ states that "latest" is the last value in a sensor's series, which is not always the most recently ingested.
 - Coverage is discovered within 25 km of each of twelve city centres. Stations elsewhere are not collected yet.
-- The response shapes are implemented from OpenAQ's documentation and exercised only through mocks. The first real run is the test of that.
+- The response shapes were implemented from OpenAQ's documentation and have now parsed a full live run without a rejected record.
+- Its unit labels for Indian government monitors are not reliable for gases, and its copy of those monitors can be days old; see *What the live data showed*. It supplied current measurements only from non-government sensors.
 
 **NASA FIRMS**
 
 - A hotspot is a thermal anomaly, not a measure of smoke or of air quality. Detections are missed under cloud and between overpasses.
 - The India bounding box is a rectangle and includes parts of neighbouring countries. That is deliberate — smoke crosses borders — but it is not "fires in India".
-- The CSV column names are implemented from the published format and exercised only through mocks.
+- The CSV format was implemented from the published description and has now parsed a full live day without a rejected record.
+- With a day range of 1 the feed returns the current UTC day so far, so the count grows through the day; each run adds only the detections it has not seen.
 
 **Open-Meteo**
 
@@ -207,8 +231,9 @@ OpenAQ's free tier allows 60 requests a minute and 2,000 an hour and warns that 
 
 ## What remains before real-time forecasting
 
-1. Put credentials in `.env`; run the dry run for the three keyed sources; apply the migration to Supabase; run a real ingestion there and confirm a second run writes nothing.
-2. Establish what the CPCB feed's numbers mean, or settle on OpenAQ as the measured source.
-3. Run ingestion unattended on a schedule, and watch it for a week.
-4. Validate the station matcher against real pairs.
-5. Backfill history, then rebuild the training set from point-in-time snapshots. None of this ingestion feeds a model yet.
+1. **A current measured source.** This is now the main obstacle. Reach `api.data.gov.in` from another network, and separately watch whether OpenAQ's copy of the CPCB monitors starts advancing again. Without one of them there are about ten current readings a run, none from a reference-grade government monitor.
+2. Supply the real Supabase connection string, apply the migration there, run a real ingestion and confirm a second run writes nothing.
+3. Establish what the CPCB feed's numbers mean, and which units OpenAQ's gas values for those monitors are really in.
+4. Run ingestion unattended on a schedule, on a machine that does not sleep, and watch it for a week.
+5. Validate the station matcher against real pairs. It has still never seen both sources at once.
+6. Backfill history, then rebuild the training set from point-in-time snapshots. None of this ingestion feeds a model yet.

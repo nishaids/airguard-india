@@ -105,7 +105,6 @@ def collect(
     if not key:
         raise CredentialMissing("NASA_FIRMS_MAP_KEY")
 
-    retrieved_at = utc_now().replace(microsecond=0)
     area = ",".join(f"{v:g}" for v in bbox)
     days = max(1, min(5, settings.firms_day_range))
     batch = Batch(source=SOURCE, kind="fire")
@@ -114,7 +113,8 @@ def collect(
     for product in settings.firms_sources:
         url = f"{BASE_URL}/{key}/{product}/{area}/{days}"
         try:
-            detections = parse_csv(client.get(url, label=f"firms {product}").text, product, retrieved_at)
+            body = client.get(url, label=f"firms {product}").text
+            detections = parse_csv(body, product, utc_now().replace(microsecond=0))
         except HttpError as exc:
             failures.append(f"{product}: {exc}")
             LOGGER.warning("firms: %s failed (%s)", product, exc.kind)

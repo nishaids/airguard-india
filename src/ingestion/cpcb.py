@@ -182,7 +182,6 @@ def collect(client: Optional[HttpClient] = None, settings: Optional[Settings] = 
         raise CredentialMissing("DATA_GOV_API_KEY")
 
     url = BASE_URL.format(resource_id=settings.data_gov_resource_id)
-    retrieved_at = utc_now().replace(microsecond=0)
     page_size = min(PAGE_SIZE, limit) if limit else PAGE_SIZE
 
     records: List[Dict[str, Any]] = []
@@ -216,7 +215,8 @@ def collect(client: Optional[HttpClient] = None, settings: Optional[Settings] = 
     else:
         partial = True
 
-    batch = parse_records(records[:limit] if limit else records, metadata, settings.data_gov_resource_id, retrieved_at)
+    # Stamped when the last page arrived: never earlier than the moment the data was really held.
+    batch = parse_records(records[:limit] if limit else records, metadata, settings.data_gov_resource_id, utc_now().replace(microsecond=0))
     batch.partial = partial
     batch.notes.append(f"dataset: {metadata.get('dataset_title')!r}, last updated {metadata.get('dataset_updated')}")
     return batch

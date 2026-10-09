@@ -294,6 +294,37 @@ class OpenAqTests(unittest.TestCase):
         self.assertEqual(len(transport.calls), 1)
         self.assertEqual(batch.records, [])
 
+    def test_a_locality_that_only_names_the_country_gives_way_to_the_target_city(self):
+        embassy = dict(OPENAQ_LOCATION, name="New Delhi", locality="India")
+        batch, _, _ = self.collect(ok({"results": [embassy]}), ok(OPENAQ_LATEST))
+        self.assertEqual(batch.stations[0].city, "Delhi")
+        self.assertEqual(batch.stations[0].metadata["provider_locality"], "India")  # what the provider said is kept
+        self.assertEqual(batch.records[0].city, "Delhi")
+
+    def test_a_station_inside_two_search_circles_belongs_to_the_nearer_city(self):
+        cities = {"Delhi": (28.6139, 77.2090), "Gurugram": (28.4595, 77.0266)}
+        near_gurugram = dict(OPENAQ_LOCATION, locality=None, coordinates={"latitude": 28.47, "longitude": 77.03})
+        http, _, _ = client(ok({"results": [near_gurugram]}))
+        with mock.patch.dict(os.environ, FAKE):
+            locations, partial = openaq.discover_locations(http, FAKE["OPENAQ_API_KEY"], SETTINGS, cities)
+        self.assertEqual((len(locations), partial), (1, False))
+        self.assertEqual(locations[0]["_search_city"], "Gurugram")  # found first from Delhi, but Gurugram is closer
+
+    def test_each_location_is_stamped_when_its_own_response_arrived(self):
+        ticks = iter(NOW + timedelta(hours=n) for n in range(100))  # a clock that jumps, as it does when a laptop sleeps mid-run
+        second = dict(OPENAQ_LOCATION, id=8119, name="Somewhere else")
+        http, _, _ = client(ok({"results": [OPENAQ_LOCATION, second]}), ok(OPENAQ_LATEST))
+        with mock.patch.dict(os.environ, FAKE), mock.patch.object(openaq, "utc_now", side_effect=lambda: next(ticks)):
+            batch = openaq.collect(http, SETTINGS, cities=self.cities)
+        stamps = {r.source_station_id: r.retrieved_at for r in batch.records}
+        self.assertEqual(set(stamps), {"8118", "8119"})
+        self.assertGreater(stamps["8119"], stamps["8118"])
+
+    def test_values_from_sensors_that_are_not_pollutants_are_counted_in_a_note(self):
+        batch, _, _ = self.collect(ok({"results": [OPENAQ_LOCATION]}), ok(OPENAQ_LATEST))
+        self.assertEqual((batch.retrieved, len(batch.records)), (3, 2))
+        self.assertTrue(any(note.startswith("1 latest values were from sensors that are not pollutants") for note in batch.notes))
+
 
 class FirmsTests(unittest.TestCase):
     def test_detections_are_parsed_and_labelled(self):
@@ -409,6 +440,33 @@ class ValidationTests(unittest.TestCase):
         lenient = settings_mod.Settings(fresh_minutes=60, stale_minutes=720, unavailable_hours=24)
         self.assertEqual(validation.classify_freshness(NOW - timedelta(minutes=600), NOW, lenient), Freshness.DELAYED)
         self.assertEqual(validation.classify_freshness(None, NOW, strict), Freshness.UNAVAILABLE)
+
+    def test_freshness_is_judged_at_retrieval_not_at_validation(self):
+        reading = observation(observed_at=NOW - timedelta(minutes=30), retrieved_at=NOW)
+        validation.validate_observation(reading, NOW + timedelta(hours=9), SETTINGS)  # validated long after it was fetched
+        self.assertEqual((reading.freshness, reading.quality_state), (Freshness.FRESH, QualityState.OK))
+
+    def test_a_reading_timed_after_its_own_retrieval_is_rejected(self):
+        reading = observation(observed_at=NOW + timedelta(hours=2), retrieved_at=NOW)
+        validation.validate_observation(reading, NOW + timedelta(hours=9), SETTINGS)
+        self.assertIn("FUTURE_TIMESTAMP", [f.code for f in reading.quality_flags])
+
+    def test_a_unit_label_that_cannot_be_true_is_not_converted(self):
+        # Seen live: OpenAQ labels Indian government monitors' carbon monoxide "ppb" while the numbers are in mg/m3.
+        mislabelled = validation.validate_observation(observation(pollutant="CO", raw_pollutant="co", raw_value=0.96, raw_unit="ppb"), NOW, SETTINGS)
+        self.assertIn("UNIT_SUSPECT", [f.code for f in mislabelled.quality_flags])
+        self.assertNotIn("UNIT_CONVERTED", [f.code for f in mislabelled.quality_flags])
+        self.assertEqual((mislabelled.normalized_value, mislabelled.normalized_unit), (None, None))
+        self.assertEqual((mislabelled.raw_value, mislabelled.raw_unit), (0.96, "ppb"))  # kept exactly as received
+        self.assertEqual(mislabelled.quality_state, QualityState.FLAGGED)
+
+    def test_believable_carbon_monoxide_is_still_converted(self):
+        for raw, unit, expected in ((800.0, "ppb", 0.9166), (1400.0, "µg/m³", 1.4), (1.2, "mg/m³", 1.2)):
+            checked = validation.validate_observation(observation(pollutant="CO", raw_pollutant="co", raw_value=raw, raw_unit=unit), NOW, SETTINGS)
+            self.assertNotIn("UNIT_SUSPECT", [f.code for f in checked.quality_flags])
+            self.assertAlmostEqual(checked.normalized_value, expected, places=3)
+        zero = validation.validate_observation(observation(pollutant="CO", raw_pollutant="co", raw_value=0.0, raw_unit="ppb"), NOW, SETTINGS)
+        self.assertNotIn("UNIT_SUSPECT", [f.code for f in zero.quality_flags])  # a zero says nothing about its unit
 
     def test_stale_reading_is_kept_and_flagged(self):
         checked = validation.validate_observation(observation(observed_at=NOW - timedelta(hours=5)), NOW, SETTINGS)
@@ -688,7 +746,7 @@ class PostgresIntegrationTests(unittest.TestCase):
             the_run = IngestionRun("OpenAQ", utc_now())
             store.start_run(the_run)
             station = Station("OpenAQ", marker, name="Integration test", city="Test", latitude=28.6, longitude=77.2)
-            reading = validation.validate_observation(observation(source_station_id=marker, observed_at=utc_now() - timedelta(minutes=10)), utc_now(), SETTINGS)
+            reading = validation.validate_observation(observation(source_station_id=marker, observed_at=utc_now() - timedelta(minutes=10), retrieved_at=utc_now()), utc_now(), SETTINGS)
             store.upsert_stations([station])
             self.assertEqual(store.insert_observations([reading], the_run), 1)
             self.assertEqual(store.insert_observations([reading], the_run), 0)

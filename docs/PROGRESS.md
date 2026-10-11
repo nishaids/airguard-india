@@ -1,5 +1,34 @@
 # AirGuard India — progress ledger
 
+## Research continuation — 2026-10-12 (IST)
+
+Recovered `research/station-calibration` at `5790c3a`, including Claude's
+uncommitted metrics/splits and live OpenAQ/weather download processes. No reset,
+branch switch, protocol rewrite, production merge, push or deployment occurred.
+The historical entries below remain a record of their earlier checkpoints.
+
+- v3.1 lock verified: `e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8`.
+- FIRMS completed all 123 windows. OpenAQ and weather remain live; see
+  `results/research/recovery_checkpoint.json` for the exact audited snapshot.
+- Cache/file and decompressed-content checksums verified without API calls.
+- Added incremental measured targets and rejection ledgers. Every selected
+  completed station retains all 596 study days, including insufficient targets.
+  Existing exact-zero and six-hour stuck rules are preserved. Missing coverage
+  and timezone information are refused as implementation of the existing rules.
+- Feature stuck-run detection uses only the prefix available before its cutoff.
+  Full-window QC is used for later measured outcomes only.
+- Non-CAMS plan frozen before fitting in `results/research/non_cams_plan.json`.
+  No CAMS proxy, reanalysis, target support or target quality flag is a predictor.
+  Historical measured-history features remain a labelled latency sensitivity.
+- 421 Python tests passed, including 30 new checkpoint/leakage/QC tests.
+- Production audit found 12 immutable forecasts, zero verified days, no bound
+  station and no recorded Git SHA. Future metadata recording is fixed in source;
+  production was not deployed. Station-free records cannot be retroactively paired.
+
+Next: execute preliminary rolling/spatial/calibration diagnostics, add research
+readiness evidence and paper assets, then continue acquisitions idempotently.
+The full primary comparison remains `PENDING_MANUAL_ADS_CREDENTIAL`.
+
 Updated 2026-10-11. Branch `codex/airguard-research-production`. Every entry
 names the artefact or file that proves it; regenerate the audit with
 `python -m scripts.confirm_phase0`, which fails if any cited anchor no longer

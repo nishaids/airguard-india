@@ -3,6 +3,8 @@ from __future__ import annotations
 from datetime import timedelta, datetime, timezone
 from pathlib import Path
 import json
+import os
+import re
 from psycopg2.extras import Json as PgJson
 from src.nationwide.store import Store, digest
 from src.research.protocol import PROTOCOL, VERSION, aware, cutoff_for, period, build_features, daily_target
@@ -10,6 +12,15 @@ from src.research.protocol import PROTOCOL, VERSION, aware, cutoff_for, period, 
 
 def Json(value):
     return PgJson(value,dumps=lambda x:json.dumps(x,default=str,allow_nan=False))
+
+
+def issuance_identity():
+    """Use deployment-supplied identity only; never infer an old issuance SHA."""
+    sha = os.environ.get('AIRGUARD_GIT_SHA') or os.environ.get('VERCEL_GIT_COMMIT_SHA')
+    sha = sha if sha and re.fullmatch(r'[0-9a-fA-F]{40}', sha) else None
+    return {'git_sha': sha, 'feature_version': PROTOCOL['feature_version'],
+            'protocol_version': VERSION, 'model_version': 'RAW_CAMS_UPSTREAM_VERSION_NOT_EXPOSED',
+            'correction_status': 'NOT_VALIDATED', 'interval': None}
 
 
 class ResearchStore:
@@ -86,10 +97,10 @@ class ResearchStore:
                 (key,VERSION,PROTOCOL['feature_version'],location['key'],station_pk,now,cutoff,latest,features['target_date'],features['target_start'],features['target_end'],
                  Json(features['features']),Json(features)))
             c.execute('''insert into airguard.research_forecast_runs(protocol_version,location_key,station_pk,feature_snapshot_hash,forecast_mode,
-                issued_at,feature_cutoff,target_date,target_start,target_end,cams_aqi,predicted_aqi,methodology_version,artifact)
-                values(%s,%s,%s,%s,'CAMS_BASED_NATIONWIDE',%s,%s,%s,%s,%s,%s,%s,%s,%s) on conflict do nothing returning id''',
+                issued_at,feature_cutoff,target_date,target_start,target_end,cams_aqi,predicted_aqi,methodology_version,git_sha,artifact)
+                values(%s,%s,%s,%s,'CAMS_BASED_NATIONWIDE',%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) on conflict do nothing returning id''',
                 (VERSION,location['key'],station_pk,key,now,cutoff,features['target_date'],features['target_start'],features['target_end'],features['cams_aqi'],features['cams_aqi'],
-                 PROTOCOL['methodology_version'],Json({'location':location,'features':features,'correction_status':'NOT_VALIDATED','interval':None})))
+                 PROTOCOL['methodology_version'],issuance_identity()['git_sha'],Json({'location':location,'features':features,**issuance_identity()})))
             r=c.fetchone()
         return {'status':'ISSUED' if r else 'ALREADY_ISSUED','forecast_run_id':r['id'] if r else None,'location':location['key']}
 

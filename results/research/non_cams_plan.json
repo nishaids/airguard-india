@@ -1,0 +1,50 @@
+{
+  "experiment": "NON_CAMS_PRELIMINARY",
+  "version": "non-cams-plan-v1",
+  "seed": 42,
+  "primary_experiment_completed": false,
+  "final_test": "SEALED; no scoring or selection",
+  "station_selection": ">=30 valid measured targets in that fold training window only; never test coverage",
+  "minimum_training_valid_days": 30,
+  "ridge_alpha": 10.0,
+  "strict_features": [
+    "wx_temp_mean",
+    "wx_temp_range",
+    "wx_rh_mean",
+    "wx_wind_mean",
+    "wx_wind_min",
+    "wx_u_mean",
+    "wx_v_mean",
+    "wx_precip_sum",
+    "wx_pressure_mean",
+    "wx_shortwave_mean",
+    "wx_cloud_mean",
+    "doy_sin",
+    "doy_cos",
+    "month",
+    "dow",
+    "weekend",
+    "season_index",
+    "latitude",
+    "longitude"
+  ],
+  "conditional_features": [
+    "obs24_aqi",
+    "obs_pm25_last6_mean",
+    "obs_pm25_last6_slope"
+  ],
+  "comparisons": "strict Ridge versus climatology; conditional history Ridge versus persistence and climatology",
+  "ablation": "calendar/coordinates; add forecast weather; conditional add measured history",
+  "quantile_model": {
+    "family": "GradientBoostingRegressor",
+    "estimators": 60,
+    "depth": 2,
+    "min_samples_leaf": 60,
+    "learning_rate": 0.05
+  },
+  "uncertainty": "80/90% split conformal; 90% CQR; forecast-band Mondrian >=30 exact calibration pairs",
+  "risk_policy": "v3.1 candidate quantiles; (k+1)/(n+1); calibration only; no guarantee under dependent days",
+  "publication_caveat": "historical station labels and local history assume healthy-feed 3-hour latency; unavailable release logs prevent strict operational validation",
+  "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8"
+}

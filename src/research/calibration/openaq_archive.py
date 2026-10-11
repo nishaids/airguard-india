@@ -156,13 +156,29 @@ def rows_of(results, start, end):
     return rows
 
 
-def fetch_sensor(client, sensor, start, end):
+def fetch_sensor(client, sensor, start, end, checkpoint_dir=None):
     lower = max(start, parse(sensor['first_utc']).replace(minute=0, second=0, microsecond=0))
     upper = min(end, parse(sensor['last_utc']) + timedelta(hours=1))
     collected, log = {}, []
     for begin, finish in windows(lower, upper):
-        payload = client.get(f"/sensors/{int(sensor['sensor_id'])}/hours", {
-            'datetime_from': begin.isoformat(), 'datetime_to': finish.isoformat(), 'limit': PAGE})
+        params = {'datetime_from': begin.isoformat(), 'datetime_to': finish.isoformat(), 'limit': PAGE}
+        cache = None
+        if checkpoint_dir is not None:
+            identity = hashlib.sha256(json.dumps([sensor['sensor_id'], params],sort_keys=True).encode()).hexdigest()
+            cache = Path(checkpoint_dir) / f'{identity}.json'
+        if cache is not None and cache.exists():
+            stored = json.loads(cache.read_text(encoding='utf-8'))
+            raw = json.dumps(stored['payload'],sort_keys=True,separators=(',', ':')).encode()
+            if hashlib.sha256(raw).hexdigest() != stored['sha256']:
+                raise ValueError('OpenAQ window cache checksum mismatch')
+            payload = stored['payload']
+        else:
+            payload = client.get(f"/sensors/{int(sensor['sensor_id'])}/hours", params)
+            if cache is not None:
+                from src.research.calibration.checkpoint import write_json
+                raw = json.dumps(payload,sort_keys=True,separators=(',', ':')).encode()
+                write_json(cache, {'payload': payload,'sha256':hashlib.sha256(raw).hexdigest(),
+                                  'request':params,'retrieved_at':datetime.now(timezone.utc).isoformat()})
         results = payload.get('results') or []
         for row in rows_of(results, begin, finish):
             collected[row[0]] = row
@@ -197,6 +213,10 @@ def already_done():
         if path.exists():
             for key, entry in json.loads(path.read_text(encoding='utf-8')).get('stations', {}).items():
                 if entry.get('complete'):
+                    from src.research.calibration.checkpoint import verify
+                    for record in entry.get('sensors', {}).values():
+                        if record.get('file'):
+                            verify(record)
                     done[key] = entry
     return done
 
@@ -251,10 +271,18 @@ def run(start, end, limit=None, per_minute=42, shard=None, of=1):
         chosen, considered = choose_sensors(payload.get('results') or [], start, end)
         entry = {'name': station['name'], 'city': station['city'], 'sensors': {}, 'not_used': considered,
                  'retrieved_at': datetime.now(timezone.utc).isoformat(), 'complete': False}
+        previous = manifest['stations'].get(key, {})
         failed = False
         for pollutant, sensor in sorted(chosen.items()):
+            old = previous.get('sensors', {}).get(pollutant, {})
+            if old.get('file') and old.get('sensor_id') == sensor['sensor_id']:
+                from src.research.calibration.checkpoint import verify
+                verify(old)
+                entry['sensors'][pollutant] = old
+                continue
             try:
-                rows, log = fetch_sensor(client, sensor, start, end)
+                rows, log = fetch_sensor(client, sensor, start, end,
+                                         checkpoint_dir=ROOT / key / 'windows')
             except Exception as error:  # noqa: BLE001
                 entry['sensors'][pollutant] = dict(sensor, error=type(error).__name__)
                 failed = True
@@ -265,12 +293,18 @@ def run(start, end, limit=None, per_minute=42, shard=None, of=1):
                 sensor, file=config.portable(path), rows=len(rows), sha256=file_hash,
                 content_sha256=content_hash, requests=log,
                 first_row=rows[0][0] if rows else None, last_row=rows[-1][0] if rows else None)
+            # Save each completed sensor, not only the station, so interruption
+            # cannot trigger a repeat download of completed sensor history.
+            from src.research.calibration.checkpoint import write_json
+            manifest['stations'][key] = entry
+            write_json(target, manifest)
         entry['complete'] = not failed
         manifest['stations'][key] = entry
         manifest['updated_at'] = datetime.now(timezone.utc).isoformat()
         manifest['requests_this_run'] = client.requests
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(json.dumps(manifest, indent=1), encoding='utf-8')
+        from src.research.calibration.checkpoint import write_json
+        write_json(target, manifest)
         elapsed = time.monotonic() - began
         print(f"[{index}/{len(stations)}] {station['name'][:44]:44s} "
               f"{ {p: s.get('rows') for p, s in entry['sensors'].items()} } "

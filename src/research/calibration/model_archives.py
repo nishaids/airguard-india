@@ -76,7 +76,8 @@ def fetch(url, params=None, attempts=5, pause=0.0, text=False):
             raise
         except (urllib.error.URLError, TimeoutError, ConnectionError):
             time.sleep(10 * (attempt + 1))
-    raise RuntimeError(f'request kept failing: {url}')
+    # FIRMS credentials appear in the URL path. Never include it in an error.
+    raise RuntimeError('Archive request kept failing after bounded retries')
 
 
 def store(path, raw):
@@ -101,7 +102,8 @@ def load_manifest(name, header):
 def save_manifest(path, manifest):
     manifest['updated_at'] = datetime.now(timezone.utc).isoformat()
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(manifest, indent=1), encoding='utf-8')
+    from src.research.calibration.checkpoint import write_json
+    write_json(path, manifest)
 
 
 def cams(pause=4.0):
@@ -198,7 +200,7 @@ def firms(pause=2.0, span=5):
                    f'{INDIA_BOX}/{span}/{name}')
             text, raw = fetch(url, pause=pause, text=True)
             if not text.startswith('latitude') and 'latitude' not in text[:200]:
-                raise RuntimeError(f'FIRMS returned an unexpected body for {name}: {text[:80]!r}')
+                raise RuntimeError(f'FIRMS returned an unexpected body for {name}')
             record = store(ROOT / 'firms' / f'{name}.csv.gz', raw)
             manifest['files'][name] = dict(record, days=span, detections=max(0, text.count('\n') - 1),
                                            retrieved_at=datetime.now(timezone.utc).isoformat())

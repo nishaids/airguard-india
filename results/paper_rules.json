@@ -1,0 +1,65 @@
+{
+ "generated_at": "2026-10-11T16:28:50.475272+00:00",
+ "latex_toolchain": null,
+ "citations": [
+  "cams2024forecasts",
+  "cpcb2014aqi",
+  "debont2024india",
+  "diebold1995comparing",
+  "george2025aqhi",
+  "gibbs2021aci",
+  "gneiting2007scoring",
+  "grange2018normalisation",
+  "inness2019camsra",
+  "jena2021delhi",
+  "kushwaha2025nowcasting",
+  "lundberg2017shap",
+  "openaq2026",
+  "openmeteo2026",
+  "orellano2020shortterm",
+  "pommier2018india",
+  "shi2021lockdown",
+  "stieb2008aqhi",
+  "who2021guidelines",
+  "xu2021enbpi"
+ ],
+ "bibliography_entries": 21,
+ "figures": [
+  "figures/evidence_coverage.pdf"
+ ],
+ "generated_tables": [
+  "tables/evidence.tex",
+  "tables/hai_factors.tex"
+ ],
+ "checks": {
+  "ieee_conference_class": true,
+  "no_clickable_links": true,
+  "no_page_style_override": true,
+  "every_figure_is_an_existing_pdf": true,
+  "every_table_is_generated": true,
+  "bibliography_is_generated": true,
+  "every_citation_resolves": true,
+  "every_citation_was_verified": true,
+  "no_dropped_reference_is_cited": true,
+  "ai_use_disclosed_in_acknowledgment": true,
+  "ethics_statement_present": true,
+  "authors_resolved": false
+ },
+ "failed": [
+  "authors_resolved"
+ ],
+ "unchecked": {
+  "page_count_at_most_six": "needs a LaTeX run; no TeX toolchain is installed here",
+  "fonts_embedded": "needs pdffonts on a compiled PDF",
+  "figure_text_at_least_8pt": "needs a compiled PDF to measure",
+  "similarity_check": "venue tool; run before submission",
+  "paper_size_per_cfp": "no conference has been chosen (HUMAN_ACTIONS.md)"
+ },
+ "submission_ready": false,
+ "submission_blockers": [
+  "author details unresolved",
+  "authors_resolved",
+  "empirical results are pending",
+  "no conference chosen"
+ ]
+}

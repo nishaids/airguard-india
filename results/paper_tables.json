@@ -1,0 +1,55 @@
+{
+ "generated_at": "2026-10-11T16:28:50.229092+00:00",
+ "tables": {
+  "paper/tables/evidence.tex": [
+   {
+    "label": "Measured hourly records audited",
+    "artefact": "results/data_coverage.json",
+    "key": "measured_rows_audited",
+    "value": 267
+   },
+   {
+    "label": "Eligible issue-time forecast/target pairs",
+    "artefact": "results/data_coverage.json",
+    "key": "eligible_paired_rows",
+    "value": 0
+   },
+   {
+    "label": "Stations with 365 candidate complete days",
+    "artefact": "results/data_coverage.json",
+    "key": "stations_with_365_complete_candidate_days",
+    "value": 0
+   },
+   {
+    "label": "Archive hourly records collected",
+    "artefact": "results/archive_coverage.json",
+    "key": "rows",
+    "value": 72339
+   },
+   {
+    "label": "Station-days with a valid CPCB-style daily AQI",
+    "artefact": "results/archive_coverage.json",
+    "key": "station_days_with_valid_daily_aqi",
+    "value": 861
+   },
+   {
+    "label": "Stations with one year of valid daily targets",
+    "artefact": "results/archive_coverage.json",
+    "key": "stations_with_one_year_of_valid_targets",
+    "value": 0
+   },
+   {
+    "label": "Fixed-time prospective forecasts issued",
+    "artefact": "results/release/database_audit.json",
+    "key": "counts.research_forecast_runs",
+    "value": 12
+   },
+   {
+    "label": "Verified prospective outcomes",
+    "artefact": "results/release/database_audit.json",
+    "key": "counts.research_forecast_verifications",
+    "value": 0
+   }
+  ]
+ }
+}

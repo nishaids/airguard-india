@@ -1,0 +1,17 @@
+{
+ "generated_at": "2026-10-11T16:30:40.110022+00:00",
+ "article": "article/medium.md",
+ "words": 1619,
+ "word_range": [
+  1200,
+  1800
+ ],
+ "within_word_range": true,
+ "window": 8,
+ "shared_phrases": [],
+ "shared_phrase_count": 0,
+ "compared_against": [
+  "paper/main.tex"
+ ],
+ "notice": "This compares wording only. It is not a substitute for the venue's similarity check, and it says nothing about whether the article overclaims."
+}

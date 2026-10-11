@@ -73,3 +73,50 @@ def test_provenance_stays_small_enough_for_years_of_hourly_rows():
     records, _ = hourly_records(STATION, sensor, 'PM2.5', [bin_at(NOW - timedelta(hours=2))], NOW,
                                 (NOW - timedelta(days=1), NOW))
     assert len(json.dumps(records[0]['provenance'])) < 500
+
+
+class FakeProviders:
+    """Records the URLs a walk requests, so request thrift is testable."""
+
+    def __init__(self, sensor_payloads, hour_payloads=None):
+        self.sensor_payloads = sensor_payloads
+        self.hour_payloads = hour_payloads or {}
+        self.calls = []
+
+    def get_json(self, provider, url, params=None, headers=None):
+        self.calls.append(url)
+        if url.endswith('/hours'):
+            return self.hour_payloads.get(url, {'results': []})
+        return self.sensor_payloads.get(url, {'results': []})
+
+
+def sensor_url(sensor_id):
+    from src.ingestion.archive import OPENAQ_URL
+    return f'{OPENAQ_URL}/sensors/{sensor_id}'
+
+
+def test_sensor_declaring_no_data_is_detected_rather_than_walked():
+    from src.ingestion.archive import EMPTY_SENSOR, sensor_coverage
+    providers = FakeProviders({sensor_url(11): {'results': [
+        {'datetimeFirst': None, 'datetimeLast': None, 'coverage': {'observedCount': 0}}]}})
+    assert sensor_coverage(providers, {'id': 11}, {}) is EMPTY_SENSOR
+
+
+def test_unknown_coverage_is_not_treated_as_absent_coverage():
+    from src.ingestion.archive import sensor_coverage
+    assert sensor_coverage(FakeProviders({}), {'id': 11}, {}) is None
+    broken = FakeProviders({sensor_url(11): {'results': [{'datetimeFirst': {'utc': 'not a time'}}]}})
+    assert sensor_coverage(broken, {'id': 11}, {}) is None
+
+
+def test_clip_keeps_only_windows_that_can_hold_data():
+    from src.ingestion.archive import clip
+    spans = windows(90, now=NOW)
+    first = NOW - timedelta(days=20)
+    last = NOW - timedelta(days=5)
+    kept = clip(spans, (first, last))
+    assert kept and len(kept) < len(spans)
+    for start, end in kept:
+        assert end > first and start <= last
+    # Unknown coverage must keep every window.
+    assert clip(spans, None) == list(spans)

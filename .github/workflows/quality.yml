@@ -25,6 +25,9 @@ jobs:
       # A generated artefact that names D:\... or /Users/<name>/... leaks the
       # operator's machine and cannot be reproduced elsewhere. Fail, never fix.
       - run: python -m scripts.check_generated_paths
+      # The article must not share sentences with the manuscript, or publishing
+      # it would put the paper's own text into a venue similarity check.
+      - run: python -m scripts.check_article_originality
       - run: npm ci
         working-directory: webapp
       - run: npm test && npm run typecheck && npm run lint && npm run build

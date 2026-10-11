@@ -1,0 +1,336 @@
+{
+ "generated_at": "2026-10-11T16:24:17.459210+00:00",
+ "candidates": 21,
+ "verified": 21,
+ "dropped": 0,
+ "bibliography": "paper/refs.bib",
+ "verified_entries": [
+  {
+   "key": "stieb2008aqhi",
+   "role": "AQHI prior art",
+   "title": "A New Multipollutant, No-Threshold Air Quality Health Index Based on Short-Term Associations Observed in Daily Time-Series Analyses",
+   "year": 2008,
+   "container": "Journal of the Air &amp; Waste Management Association",
+   "authors": [
+    "Stieb, David M.",
+    "Burnett, Richard T.",
+    "Smith-Doiron, Marc",
+    "Brion, Orly",
+    "Shin, Hwashin Hyun",
+    "Economou, Vanita"
+   ],
+   "doi": "10.3155/1047-3289.58.3.435",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "george2025aqhi",
+   "role": "Indian AQHI prior art",
+   "title": "A framework for city-specific air quality health index: a comparative assessment of Delhi and Varanasi, India",
+   "year": 2025,
+   "container": "Environmental Research Letters",
+   "authors": [
+    "George, Franciosalgeo",
+    "Joshi, Pallavi",
+    "Dey, Sagnik",
+    "Mall, R K",
+    "Ghosh, Santu"
+   ],
+   "doi": "10.1088/1748-9326/aded26",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "jena2021delhi",
+   "role": "Indian operational forecasting",
+   "title": "Performance of high resolution (400\u00a0m) PM2.5 forecast over Delhi",
+   "year": 2021,
+   "container": "Scientific Reports",
+   "authors": [
+    "Jena, Chinmay",
+    "Ghude, Sachin D.",
+    "Kumar, Rajesh",
+    "Debnath, Sreyashi",
+    "Govardhan, Gaurav",
+    "Soni, Vijay K.",
+    "Kulkarni, Santosh H.",
+    "Beig, G."
+   ],
+   "doi": "10.1038/s41598-021-83467-8",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "pommier2018india",
+   "role": "model ozone bias over India",
+   "title": "Impact of regional climate change and future emission scenarios on surface O\n                    <sub>3</sub>\n                    and PM\n                    <sub>2.5</sub>\n                    over India",
+   "year": 2018,
+   "container": "Atmospheric Chemistry and Physics",
+   "authors": [
+    "Pommier, Matthieu",
+    "Fagerli, Hilde",
+    "Gauss, Michael",
+    "Simpson, David",
+    "Sharma, Sumit",
+    "Sinha, Vinay",
+    "Ghude, Sachin D.",
+    "Landgren, Oskar"
+   ],
+   "doi": "10.5194/acp-18-103-2018",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "grange2018normalisation",
+   "role": "deweathering method",
+   "title": "Random forest meteorological normalisation models for Swiss PM\n                    <sub>10</sub>\n                    trend analysis",
+   "year": 2018,
+   "container": "Atmospheric Chemistry and Physics",
+   "authors": [
+    "Grange, Stuart K.",
+    "Carslaw, David C.",
+    "Lewis, Alastair C.",
+    "Boleti, Eirini",
+    "Hueglin, Christoph"
+   ],
+   "doi": "10.5194/acp-18-6223-2018",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "shi2021lockdown",
+   "role": "event analysis method",
+   "title": "Abrupt but smaller than expected changes in surface air quality attributable to COVID-19 lockdowns",
+   "year": 2021,
+   "container": "Science Advances",
+   "authors": [
+    "Shi, Zongbo",
+    "Song, Congbo",
+    "Liu, Bowen",
+    "Lu, Gongda",
+    "Xu, Jingsha",
+    "Van Vu, Tuan",
+    "Elliott, Robert J. R.",
+    "Li, Weijun"
+   ],
+   "doi": "10.1126/sciadv.abd6696",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "inness2019camsra",
+   "role": "CAMS reanalysis description",
+   "title": "The CAMS reanalysis of atmospheric composition",
+   "year": 2019,
+   "container": "Atmospheric Chemistry and Physics",
+   "authors": [
+    "Inness, Antje",
+    "Ades, Melanie",
+    "Agust\u00ed-Panareda, Anna",
+    "Barr\u00e9, J\u00e9r\u00f4me",
+    "Benedictow, Anna",
+    "Blechschmidt, Anne-Marlene",
+    "Dominguez, Juan Jose",
+    "Engelen, Richard"
+   ],
+   "doi": "10.5194/acp-19-3515-2019",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "orellano2020shortterm",
+   "role": "concentration-response review",
+   "title": "Short-term exposure to particulate matter (PM10 and PM2.5), nitrogen dioxide (NO2), and ozone (O3) and all-cause and cause-specific mortality: Systematic review and meta-analysis",
+   "year": 2020,
+   "container": "Environment International",
+   "authors": [
+    "Orellano, Pablo",
+    "Reynoso, Julieta",
+    "Quaranta, Nancy",
+    "Bardach, Ariel",
+    "Ciapponi, Agustin"
+   ],
+   "doi": "10.1016/j.envint.2020.105876",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "diebold1995comparing",
+   "role": "forecast comparison test",
+   "title": "Comparing Predictive Accuracy",
+   "year": 1995,
+   "container": "Journal of Business &amp; Economic Statistics",
+   "authors": [
+    "Diebold, Francis X.",
+    "Mariano, Roberto S."
+   ],
+   "doi": "10.1080/07350015.1995.10524599",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "gneiting2007scoring",
+   "role": "probabilistic evaluation",
+   "title": "Strictly Proper Scoring Rules, Prediction, and Estimation",
+   "year": 2007,
+   "container": "Journal of the American Statistical Association",
+   "authors": [
+    "Gneiting, Tilmann",
+    "Raftery, Adrian E"
+   ],
+   "doi": "10.1198/016214506000001437",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "debont2024india",
+   "role": "Indian mortality coefficients",
+   "title": "Ambient air pollution and daily mortality in ten cities of India: a causal modelling study",
+   "year": 2024,
+   "container": "The Lancet Planetary Health",
+   "authors": [
+    "de Bont, Jeroen",
+    "Krishna, Bhargav",
+    "Stafoggia, Massimo",
+    "Banerjee, Tirthankar",
+    "Dholakia, Hem",
+    "Garg, Amit",
+    "Ingole, Vijendra",
+    "Jaganathan, Suganthi"
+   ],
+   "doi": "10.1016/S2542-5196(24)00114-1",
+   "verified_by": "crossref",
+   "http_status": 200
+  },
+  {
+   "key": "xu2021enbpi",
+   "role": "conformal time series",
+   "title": "Conformal prediction for time series",
+   "year": "2020",
+   "container": "arXiv",
+   "authors": [
+    "Chen Xu",
+    "Yao Xie"
+   ],
+   "arxiv": "2010.09107",
+   "verified_by": "arxiv_api",
+   "http_status": 200
+  },
+  {
+   "key": "gibbs2021aci",
+   "role": "online conformal calibration",
+   "title": "Adaptive Conformal Inference Under Distribution Shift",
+   "year": "2021",
+   "container": "arXiv",
+   "authors": [
+    "Isaac Gibbs",
+    "Emmanuel Cand\u00e8s"
+   ],
+   "arxiv": "2106.00170",
+   "verified_by": "arxiv_api",
+   "http_status": 200
+  },
+  {
+   "key": "lundberg2017shap",
+   "role": "attribution method",
+   "title": "A Unified Approach to Interpreting Model Predictions",
+   "year": "2017",
+   "container": "arXiv",
+   "authors": [
+    "Scott Lundberg",
+    "Su-In Lee"
+   ],
+   "arxiv": "1705.07874",
+   "verified_by": "arxiv_api",
+   "http_status": 200
+  },
+  {
+   "key": "kushwaha2025nowcasting",
+   "role": "Indian subcontinent nowcasting",
+   "title": "A Comparison of Lightweight Deep Learning Models for Particulate-Matter Nowcasting in the Indian Subcontinent & Surrounding Regions",
+   "year": "2025",
+   "container": "arXiv",
+   "authors": [
+    "Ansh Kushwaha",
+    "Kaushik Gopalan"
+   ],
+   "arxiv": "2511.11185",
+   "verified_by": "arxiv_api",
+   "http_status": 200
+  },
+  {
+   "key": "pandey2024spatiotemporal",
+   "role": "Indian spatio-temporal forecasting",
+   "title": "Spatio-Temporal Forecasting of PM2.5 via Spatial-Diffusion guided Encoder-Decoder Architecture",
+   "year": "2024",
+   "container": "arXiv",
+   "authors": [
+    "Malay Pandey",
+    "Vaishali Jain",
+    "Nimit Godhani",
+    "Sachchida Nand Tripathi",
+    "Piyush Rai"
+   ],
+   "arxiv": "2412.13935",
+   "verified_by": "arxiv_api",
+   "http_status": 200
+  },
+  {
+   "key": "cpcb2014aqi",
+   "role": "CPCB AQI method",
+   "title": "National Air Quality Index",
+   "year": "2014",
+   "container": "Central Pollution Control Board, Ministry of Environment, Forest and Climate Change, India",
+   "url": "https://cpcb.nic.in/National-Air-Quality-Index/",
+   "page_title": "CPCB | Central Pollution Control Board",
+   "verified_by": "official_url",
+   "http_status": 200
+  },
+  {
+   "key": "who2021guidelines",
+   "role": "exposure guideline values",
+   "title": "WHO global air quality guidelines: particulate matter, ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide",
+   "year": "2021",
+   "container": "World Health Organization",
+   "url": "https://www.who.int/publications/i/item/9789240034228",
+   "page_title": "WHO global air quality guidelines: particulate matter (\u200ePM2.5 and PM10)\u200e, ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide",
+   "verified_by": "official_url",
+   "http_status": 200
+  },
+  {
+   "key": "cams2024forecasts",
+   "role": "forecast input dataset",
+   "title": "CAMS global atmospheric composition forecasts",
+   "year": "2024",
+   "container": "Copernicus Atmosphere Data Store",
+   "url": "https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts",
+   "page_title": "CAMS global atmospheric composition forecasts",
+   "verified_by": "official_url",
+   "http_status": 200
+  },
+  {
+   "key": "openaq2026",
+   "role": "measured data source",
+   "title": "OpenAQ API version 3 documentation",
+   "year": "2026",
+   "container": "OpenAQ",
+   "url": "https://docs.openaq.org/",
+   "page_title": "OpenAQ API Docs | OpenAQ Docs",
+   "verified_by": "official_url",
+   "http_status": 200
+  },
+  {
+   "key": "openmeteo2026",
+   "role": "forecast delivery source",
+   "title": "Air Quality API documentation",
+   "year": "2026",
+   "container": "Open-Meteo",
+   "url": "https://open-meteo.com/en/docs/air-quality-api",
+   "page_title": "\ud83d\udca8 Air Quality API | Open-Meteo.com",
+   "verified_by": "official_url",
+   "http_status": 200
+  }
+ ],
+ "dropped_entries": [],
+ "notice": "Verification confirms that a record exists and matches its title. Whether a source supports a particular claim, and whether a coefficient from it may be adopted, remains a human judgement (HUMAN_ACTIONS.md)."
+}

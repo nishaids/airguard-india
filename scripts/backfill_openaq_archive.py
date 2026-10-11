@@ -11,9 +11,8 @@ import json
 import sys
 
 from src import config
-from src.ingestion.archive import FileSink, backfill
+from src.ingestion.archive import ArchiveProviders, FileSink, backfill
 from src.ingestion.settings import load_env
-from src.nationwide.providers import Providers
 from src.nationwide.store import Store
 
 
@@ -21,6 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--days', type=int, default=30, help='how far back to ask for (default 30)')
     parser.add_argument('--stations', type=int, default=None, help='cap the number of stations queried')
+    parser.add_argument('--offset', type=int, default=0, help='skip this many stations, to continue a walk')
     parser.add_argument('--pollutants', type=int, default=None, help='cap sensors per station')
     parser.add_argument('--pace', type=float, default=1.0, help='seconds to wait before each request')
     parser.add_argument('--sink', choices=('database', 'files'), default='database',
@@ -30,8 +30,9 @@ def main():
     load_env()
     store = Store()
     sink = FileSink(config.PROJECT_ROOT / 'data/archive') if args.sink == 'files' else None
-    summary = backfill(store, Providers(store), days=args.days, station_limit=args.stations,
-                       pollutant_limit=args.pollutants, pace=args.pace, sink=sink)
+    summary = backfill(store, ArchiveProviders(store), days=args.days, station_limit=args.stations,
+                       pollutant_limit=args.pollutants, pace=args.pace, sink=sink,
+                       station_offset=args.offset)
     out = config.PROJECT_ROOT / 'results/openaq_archive_backfill.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(summary, indent=1, default=str), encoding='utf-8')

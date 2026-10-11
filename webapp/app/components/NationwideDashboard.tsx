@@ -3,6 +3,7 @@ import { useState, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { cohorts, copy, type Cohort } from "../lib/i18n";
+import { reviewState } from "../lib/messages";
 import type { AQI } from "../lib/live-types";
 
 const HourlyChart = dynamic(() => import("./HourlyChart"), { ssr: false, loading: () => <p>Preparing chart. Hourly values are available in the table.</p> });
@@ -11,6 +12,17 @@ import LocationPicker from "./LocationPicker";
 import { advisory } from "../lib/advisory";
 
 const descriptions: Record<string, string> = { "PM2.5": "Fine particles that can reach deep into the lungs.", PM10: "Larger particles, including dust, that affect breathing.", NO2: "A gas associated with combustion and traffic.", SO2: "A gas produced when sulphur-containing fuels burn.", CO: "A combustion gas that interferes with oxygen transport.", O3: "Ground-level ozone formed through atmospheric chemistry.", NH3: "Ammonia, often associated with agriculture.", Pb: "Lead particles; not provided by CAMS global here." };
+// The language claim is computed from the review ledger rather than typed into
+// the footer, so it cannot say "reviewed" while the gate is still refusing to
+// serve those strings. docs/I18N_REVIEW.md holds the ledger.
+function languageNotice() {
+  const state = reviewState();
+  const served = state.filter(row => row.servable).map(row => row.name);
+  const pending = state.filter(row => !row.servable).map(row => row.name);
+  if (!pending.length) return `Guidance available in ${served.join(", ")}.`;
+  return `Guidance in ${served.join(", ")}; ${pending.join(" and ")} await named-reviewer approval.`;
+}
+
 export function ist(time?: string | null) {
   if (!time) return "Unavailable";
   return new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }).format(new Date(time)) + " IST";
@@ -52,6 +64,6 @@ export default function NationwideDashboard({ mode = "live", children }: { mode?
       <details className="live-section"><summary>How was this calculated?</summary><p>Current: {data.current.measured_or_modelled} · {data.current.source} · retrieved {ist(data.current.fetched_at)}</p><p>Tomorrow: modelled forecast — not an official CPCB forecast. Issued {ist(tomorrow?.issued_at)}; valid on {tomorrow?.date} in IST.</p><p>Method: {data.provenance.methodology_version}. At least three pollutants, including PM2.5 or PM10, and 16 hourly bins per pollutant. CO/O3 need complete eight-hour windows; high ozone uses one-hour mathematical bands. Severe values above the last closed breakpoint display a lower bound.</p><p>{data.provenance.current_averaging}</p><p>{data.provenance.tomorrow_averaging}</p><p>{data.provenance.issue_time_basis}</p><p>Provider states: {Object.entries(data.provider_status).map(([provider,state]) => `${provider}: ${state.status} (${state.cache || "no cache"})`).join(" · ")}</p><p>Satellite context: {data.fire_context.detections.length} stored FIRMS detections within 50 km in the last 24 hours. {data.fire_context.meaning}</p><p>Last refreshed {ist(data.refreshed_at)} · forecast record {tomorrow?.forecast_run_id ?? "not issued"}</p><Link href="/methods">Read methods, sources and limitations</Link></details>
       <section className="live-section"><h2>Live forecast track record</h2>{data.track_record.length ? <div className="live-table-scroll"><table><thead><tr><th>Region / lead / category</th><th>Pairs</th><th>MAE</th><th>RMSE</th><th>Bias</th><th>Category agreement</th><th>Within one category</th></tr></thead><tbody>{data.track_record.map(m => <tr key={`${m.region}-${m.lead}-${m.predicted_category}`}><td>{m.region} · {m.lead} · {m.predicted_category}</td><td>{m.n}</td><td>{Number(m.mae).toFixed(1)}</td><td>{Number(m.rmse).toFixed(1)}</td><td>{Number(m.bias).toFixed(1)}</td><td>{(m.category_accuracy*100).toFixed(0)}%</td><td>{(m.within_one_category*100).toFixed(0)}%</td></tr>)}</tbody></table></div> : <p>No eligible forecast–measurement pairs yet. Forecasts are saved before their target day; scores appear only after adequate measured station data becomes available. Historical model scores are separate.</p>}</section>
     </>}
-    <footer className="live-footer">AirGuard transforms model concentrations into a CPCB-style estimate. Data: <a href="https://open-meteo.com/">Open-Meteo</a> / <a href="https://atmosphere.copernicus.eu/">CAMS Copernicus</a> · Geocoding: <a href="https://www.geonames.org/">GeoNames</a> · Measurements: <a href="https://openaq.org/">OpenAQ</a> and upstream providers · Fire context: <a href="https://firms.modaps.eosdis.nasa.gov/">NASA FIRMS</a>. English guidance; Hindi and Tamil await review. <Link href="/research/legacy">Historical research</Link>.</footer>
+    <footer className="live-footer">AirGuard transforms model concentrations into a CPCB-style estimate. Data: <a href="https://open-meteo.com/">Open-Meteo</a> / <a href="https://atmosphere.copernicus.eu/">CAMS Copernicus</a> · Geocoding: <a href="https://www.geonames.org/">GeoNames</a> · Measurements: <a href="https://openaq.org/">OpenAQ</a> and upstream providers · Fire context: <a href="https://firms.modaps.eosdis.nasa.gov/">NASA FIRMS</a>. {languageNotice()} <Link href="/research/legacy">Historical research</Link>.</footer>
   </div>;
 }

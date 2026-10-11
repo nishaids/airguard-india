@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-11T16:09:24.140733+00:00",
+ "generated_at": "2026-10-11T16:34:24.808285+00:00",
  "source": "docs/MASTER_SPEC.md",
  "tally": {
   "FIXED": 11,
-  "PARTIAL": 20,
-  "OPEN": 5,
-  "BLOCKED": 16,
+  "PARTIAL": 25,
+  "OPEN": 3,
+  "BLOCKED": 13,
   "REFUTED": 0
  },
  "evidence": {
@@ -54,18 +54,43 @@
   "readiness_passed": 5,
   "readiness_total": 17,
   "screens": 29,
+  "archive_rows": 72339,
+  "archive_stations": 6,
+  "archive_target_days": 861,
+  "archive_pollutant_days": {
+   "O3": 878,
+   "PM10": 943,
+   "PM2.5": 1094
+  },
+  "archive_qa_flags": {
+   "DUPLICATE_HOUR": 47,
+   "FLATLINE_6H": 6766,
+   "INCOMPLETE_DAY": 13496,
+   "MAD_SPIKE": 3448,
+   "PM25_GT_PM10": 14,
+   "ZERO_MAD_CHANGE": 4809,
+   "ZERO_SUSPECT": 1200
+  },
+  "archive_rows_deleted": 0,
+  "references_verified": 21,
+  "references_dropped": 0,
+  "paper_rule_failures": [
+   "authors_resolved"
+  ],
+  "article_words": 1619,
+  "article_shared_phrases": 0,
   "path_leaks": [],
   "path_guard_in_ci": true
  },
  "limitations": {
   "L01": {
    "severity": "C",
-   "status": "BLOCKED",
+   "status": "PARTIAL",
    "limitation": "**No CPCB CAAQMS station data reaches the live system.** The \"measured\" path depends on OpenAQ, which returned only US-embassy AirNow (PM2.5-only) and AirGradient low-cost sensors in the places tested.",
-   "finding": "Station metadata now exists (135 rows), but the measured path is still OpenAQ only: 267 rows across 5 stations and 0 daily station targets. Licensed CPCB hourly exports remain the blocker.",
+   "finding": "Still no CPCB export, but the claim that no station history is reachable no longer holds: an OpenAQ archive walk collected 72,339 hourly rows for 6 Indian stations and 861 of those station-days produce a valid CPCB-style daily AQI. Coverage is the binding limit, not effort: of the first 20 registered stations walked, 7 returned any history, and one of those reports a single pollutant and so can never yield a daily index.",
    "evidence": [
-    "results/release/database_audit.json",
-    "src/ingestion/openaq.py",
+    "src/ingestion/archive.py:315",
+    "results/archive_coverage.json",
     "HUMAN_ACTIONS.md:9"
    ],
    "fix": "WP1"
@@ -85,9 +110,10 @@
    "severity": "H",
    "status": "PARTIAL",
    "limitation": "**Stale observations.**",
-   "finding": "Freshness is computed per provider and surfaced as FRESH/STALE/DELAYED with configurable thresholds, so stale readings are labelled instead of silently used. Upstream staleness itself persists.",
+   "finding": "Freshness is computed per provider and surfaced as FRESH/STALE/DELAYED with configurable thresholds, so stale readings are labelled instead of silently used. Staleness also matters less now that history is fetched as history rather than inferred from whatever happened to be latest.",
    "evidence": [
-    "src/nationwide/service.py:44"
+    "src/nationwide/service.py:44",
+    "src/ingestion/archive.py:8"
    ],
    "fix": "WP1"
   },
@@ -104,12 +130,12 @@
   },
   "L05": {
    "severity": "H",
-   "status": "BLOCKED",
+   "status": "PARTIAL",
    "limitation": "**Research dataset is old and narrow.** Ends 1 Jul 2020; city-level daily averages (not stations); only 12 of 26 cities used.",
-   "finding": "The legacy Kaggle city-day record still ends 2020-07-01 and is confined to clearly labelled legacy routes. Replacing it needs the licensed station archive of L01.",
+   "finding": "The legacy Kaggle city-day record still ends 2020-07-01 and stays on clearly labelled legacy routes, but it is no longer the only record available: the archive walk provides modern station-level hourly data, at a scale still far short of national.",
    "evidence": [
     "webapp/public/data/meta.json",
-    "webapp/app/research/legacy/page.js"
+    "results/archive_coverage.json"
    ],
    "fix": "WP1, WP5"
   },
@@ -139,10 +165,10 @@
    "severity": "M",
    "status": "FIXED",
    "limitation": "**No data QA/QC layer is visible for station data** (flat-lines, spikes, PM2.5 > PM10, unit errors). CPCB real-time data is not quality-checked at source.",
-   "finding": "A QA/QC layer flags without deleting: negative and zero values, flat lines, rolling-MAD spikes with event exemption, PM2.5 above PM10, unit sanity and daily completeness, exported per station.",
+   "finding": "A QA/QC layer flags without deleting, and it has now been run over real history: 72,339 archive rows produced 29,780 flags across 7 codes and 0 deletions.",
    "evidence": [
     "src/qa/hourly.py",
-    "results/qa_summary.json",
+    "results/archive_coverage.json",
     "tests/test_hourly_qa.py"
    ],
    "fix": "WP1"
@@ -257,9 +283,9 @@
    "severity": "H",
    "status": "PARTIAL",
    "limitation": "**Uncalibrated class probabilities.** Replay shows \"model score 99%\". SMOTE distorts probabilities; SMOTE on time-ordered data creates synthetic days that never existed.",
-   "finding": "SMOTE is confined to the legacy classifier; the operational product publishes no calibrated probability and makes no claim to one.",
+   "finding": "SMOTE is confined to the legacy classifier, and the uncalibrated top-class score is no longer displayed as a percentage: the interface withholds it and says why, because a number shown that way is read as a probability whatever the caption says. Real intervals await conformal calibration.",
    "evidence": [
-    "src/models/train_classification.py:17",
+    "webapp/app/historical-replay/page.js:212",
     "results/uncertainty.json"
    ],
    "fix": "WP3"
@@ -333,12 +359,12 @@
   },
   "L26": {
    "severity": "H",
-   "status": "OPEN",
+   "status": "PARTIAL",
    "limitation": "**Prior work overlaps**: a city-specific AQHI for Delhi and Varanasi built from Indian mortality time series (George et al., ERL 2025) and Canada's AQHI (Stieb et al., 2008). Novelty must be re-scoped (cohort + forecast + uncertainty), not \"first health-weighted index\".",
-   "finding": "The literature-review gate is still unpassed, so the novelty claim has not been re-scoped in writing against AQHI prior art.",
+   "finding": "The manuscript now states plainly that it claims no first health-weighted index, and places the work against the Canadian and the Delhi/Varanasi AQHI precedents by citation. The readiness gate stays unpassed because a stated re-scoping is not a completed literature review.",
    "evidence": [
-    "results/research/research_readiness.json:4",
-    "paper/main.tex"
+    "paper/main.tex:35",
+    "results/research/research_readiness.json:4"
    ],
    "fix": "Part C, WP4"
   },
@@ -575,11 +601,13 @@
   },
   "L48": {
    "severity": "M",
-   "status": "BLOCKED",
+   "status": "PARTIAL",
    "limitation": "**English only**; Hindi and Tamil \"await review\".",
-   "finding": "Health guidance is English only. No named native Tamil or Hindi reviewer has approved a version, and unreviewed translation would be worse than none.",
+   "finding": "Health guidance is still English only, which is correct while no reviewer exists, but the machinery that will change that is in place: review is tracked per string rather than per locale, the gate refuses any string without a named reviewer and falls back to English, the footer computes its language claim from that ledger, and docs/I18N_REVIEW.md records the process and the empty log.",
    "evidence": [
-    "webapp/app/lib/i18n.ts",
+    "webapp/app/lib/messages.ts:86",
+    "webapp/tests/messages.test.ts",
+    "docs/I18N_REVIEW.md",
     "HUMAN_ACTIONS.md:17"
    ],
    "fix": "WP7"
@@ -620,11 +648,13 @@
   },
   "L52": {
    "severity": "C",
-   "status": "OPEN",
+   "status": "PARTIAL",
    "limitation": "**Paper blockers**: Kaggle 2015\u20132020 AQI prediction is a saturated topic; author placeholders; AI-use disclosure needed in Acknowledgment; 6-page limit forces focus.",
-   "finding": "The manuscript carries author placeholders, no chosen call for papers, no verified bibliography and no empirical result. It is explicitly an unsubmitted draft.",
+   "finding": "The bibliography is no longer a blocker: 21 of 21 candidates verified against Crossref, the arXiv API or the official page, and generated rather than typed. The format rules are checked statically and the only failure is authors_resolved. The article is separate prose: 1619 words sharing 0 eight-word runs with the paper. Author details, a chosen call for papers and empirical results remain outstanding.",
    "evidence": [
-    "paper/main.tex:5",
+    "paper/refs.bib",
+    "paper/CHECKLIST.md",
+    "results/paper_rules.json",
     "HUMAN_ACTIONS.md:14"
    ],
    "fix": "Part C, Part E"

@@ -1,6 +1,9 @@
 \documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{booktabs}
+% No hyperref: the call forbids embedded links, so URLs stay plain text.
+\usepackage{url}
 \title{AirGuard India: A Provenance-Aware Prospective Air-Quality Forecasting System}
 \author{\IEEEauthorblockN{Nishanth R, NAME, NAME}
 \IEEEauthorblockA{Affiliations and author consent pending human confirmation}}
@@ -22,6 +25,40 @@ forecast is also distinct from a measured station observation. AirGuard's
 operational interface keeps source identity, freshness and aggregation method
 visible. This draft describes implementation and preregistration, not completed
 national validation.
+\section{Related Work}
+Health-weighted indices are not new. The Canadian AQHI combines pollutants
+through short-term mortality associations rather than a maximum sub-index
+\cite{stieb2008aqhi}, and a city-specific AQHI has been constructed for Delhi and
+Varanasi from Indian mortality series \cite{george2025aqhi}. Indian short-term
+mortality coefficients are available at multi-city scale \cite{debont2024india},
+alongside systematic-review estimates \cite{orellano2020shortterm}. This work
+therefore claims no first health-weighted index. The intended contribution is the
+combination of a forecast, station calibration, calibrated uncertainty and cohort
+advisories under an issue-time protocol, and that combination is not yet
+evidenced.
+
+Operational forecasting in India exists at city scale, including a
+high-resolution Delhi system \cite{jena2021delhi}, and regional models are
+reported to overestimate surface ozone over India \cite{pommier2018india}. Recent
+work forecasts particulate matter over the subcontinent from CAMS fields without
+ground stations \cite{kushwaha2025nowcasting}. The global forecast used here is
+the CAMS composition product \cite{cams2024forecasts}, which is distinct from the
+CAMS reanalysis \cite{inness2019camsra}: the reanalysis may be used
+retrospectively but never as a forecast input. Measured observations arrive
+through OpenAQ \cite{openaq2026} and forecast fields through Open-Meteo
+\cite{openmeteo2026}; neither is a CPCB export.
+
+Planned uncertainty quantification follows adaptive conformal inference
+\cite{gibbs2021aci}, with an ensemble batch alternative for time series
+\cite{xu2021enbpi}. Model comparison will use Diebold--Mariano tests
+\cite{diebold1995comparing} and proper scoring rules \cite{gneiting2007scoring};
+feature attribution, where reported, is descriptive \cite{lundberg2017shap}.
+Retrospective event analysis will use random-forest meteorological normalisation
+\cite{grange2018normalisation}, as applied to lockdown air quality
+\cite{shi2021lockdown}. The index definition follows the CPCB national method
+\cite{cpcb2014aqi}, and guideline values are those of the World Health
+Organization \cite{who2021guidelines}.
+
 \section{Data and Provenance}
 OpenAQ measurements preserve upstream station identity and licence metadata.
 Open-Meteo supplies CAMS global pollutant concentrations and weather forecasts.
@@ -54,10 +91,52 @@ forecast remains a clearly labelled CAMS-based estimate. Source resolution,
 missing station coverage, correlated samples and availability timestamps limit
 interpretation. Prospective evidence must accumulate before deployment of an
 India-specific correction.
+\section{Cohort Advisory Index}
+The legacy advisory index multiplied CPCB sub-indices by cohort factors chosen by
+hand, so its divergence from the official index followed in part from that
+choice. The replacement is an excess-risk form, $\mathrm{ER} = \sum_p
+(\exp(\beta_p C_p) - 1)$, reported on the official 0--500 scale and anchored so
+that a reference adult on a CPCB band boundary reads that boundary. The anchoring
+matters: without it, changing the index form produces a difference from the
+official index by itself. Every coefficient $\beta_p$ and every cohort modifier
+is unadopted pending evidence review, the framework returns no value until one is
+adopted, and Table~\ref{tab:hai_factors} is generated from that register rather
+than typed.
+\input{tables/hai_factors.tex}
+A cohort reading that differs from the official index is a property of the index.
+It is not evidence of health benefit, and no outcome validation is claimed.
+
 \section{Conclusion and Submission Gate}
 The live system and evidence ledger are implemented. Submission requires real
-matched evaluation evidence, verified references, author consent, an applicable
-conference call and a checked six-page PDF. This source is intentionally not
-presented as a finished six-page paper. The final bibliography is reserved for
-human editing under the supplied request.
+matched evaluation evidence, author consent, an applicable conference call and a
+checked six-page PDF. This source is intentionally not presented as a finished
+six-page paper. The bibliography is generated from Crossref, the arXiv API and
+official publisher pages and each entry was checked against its expected title;
+whether a cited source supports the claim attached to it remains the authors'
+judgement.
+
+\section*{Ethics Statement}
+No human-subject data was collected. The comprehension study described in the
+repository's study protocol is not authorised to collect data and will not run
+before institutional ethics approval and informed consent. The cohort advisory
+index is a heuristic, not medical advice, and it is not validated against any
+health outcome.
+
+\section*{Acknowledgment}
+Measured observations are provided by OpenAQ and its upstream operators,
+forecast fields by Open-Meteo from the Copernicus Atmosphere Monitoring Service,
+and fire detections by NASA FIRMS. The index method follows the Central
+Pollution Control Board.
+
+\textbf{AI use disclosure.} Anthropic Claude (Claude Code) and OpenAI Codex were
+used as coding and drafting assistants: for the software, tests and evidence
+scripts described here, and for drafting prose in the Related Work, Method,
+Cohort Advisory Index, Limitations and Conclusion sections, which the authors
+then revised. Every number in this paper is produced by a committed script from
+versioned data; no result was typed by hand. Bibliography entries were retrieved
+programmatically and verified against publisher records rather than edited by
+hand. The authors are responsible for the entire content of this paper.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
 \end{document}

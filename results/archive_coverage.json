@@ -1,0 +1,132 @@
+{
+ "generated_at": "2026-10-11T16:15:44.897804+00:00",
+ "source": "data/archive (OpenAQ v3 hourly backfill)",
+ "rows": 72339,
+ "stations": 6,
+ "rule": "CPCB daily aggregation: >=16 distinct hourly bins per pollutant per IST day; CO and O3 from full 8-hour windows; a daily AQI needs at least 3 qualifying pollutants.",
+ "station_days_with_valid_daily_aqi": 861,
+ "pollutant_days": {
+  "O3": 878,
+  "PM10": 943,
+  "PM2.5": 1094
+ },
+ "stations_with_one_year_of_valid_targets": 0,
+ "wp1_acceptance": {
+  "required_stations": 100,
+  "required_days_each": 365,
+  "met": false,
+  "blocker": "Upstream pollutant coverage and OpenAQ request limits; the licensed CPCB CCR export remains the first-choice source and is not held."
+ },
+ "qa_sample": {
+  "rows_audited": 72339,
+  "flags_by_code": {
+   "DUPLICATE_HOUR": 47,
+   "FLATLINE_6H": 6766,
+   "INCOMPLETE_DAY": 13496,
+   "MAD_SPIKE": 3448,
+   "PM25_GT_PM10": 14,
+   "ZERO_MAD_CHANGE": 4809,
+   "ZERO_SUSPECT": 1200
+  },
+  "flagged_row_count": 25075,
+  "rows_deleted": 0,
+  "note": "QA flags are advisory and no row is deleted. Sampled, not exhaustive."
+ },
+ "stations_detail": [
+  {
+   "station_pk": 1,
+   "name": "5408",
+   "rows": 18985,
+   "first_day": "2025-10-11",
+   "last_day": "2026-10-07",
+   "calendar_days_spanned": 362,
+   "days_with_any_data": 344,
+   "pollutant_days": {
+    "O3": 258,
+    "PM10": 276,
+    "PM2.5": 269
+   },
+   "days_with_valid_daily_aqi": 251,
+   "meets_one_year": false
+  },
+  {
+   "station_pk": 2,
+   "name": "3409492",
+   "rows": 17162,
+   "first_day": "2025-10-11",
+   "last_day": "2026-10-07",
+   "calendar_days_spanned": 362,
+   "days_with_any_data": 348,
+   "pollutant_days": {
+    "O3": 226,
+    "PM10": 237,
+    "PM2.5": 236
+   },
+   "days_with_valid_daily_aqi": 224,
+   "meets_one_year": false
+  },
+  {
+   "station_pk": 3,
+   "name": "3409493",
+   "rows": 9193,
+   "first_day": "2025-10-11",
+   "last_day": "2026-10-07",
+   "calendar_days_spanned": 362,
+   "days_with_any_data": 296,
+   "pollutant_days": {
+    "O3": 114,
+    "PM10": 122,
+    "PM2.5": 122
+   },
+   "days_with_valid_daily_aqi": 112,
+   "meets_one_year": false
+  },
+  {
+   "station_pk": 4,
+   "name": "3409518",
+   "rows": 16578,
+   "first_day": "2025-10-11",
+   "last_day": "2026-10-07",
+   "calendar_days_spanned": 362,
+   "days_with_any_data": 350,
+   "pollutant_days": {
+    "O3": 186,
+    "PM10": 211,
+    "PM2.5": 213
+   },
+   "days_with_valid_daily_aqi": 185,
+   "meets_one_year": false
+  },
+  {
+   "station_pk": 5,
+   "name": "6267806",
+   "rows": 6488,
+   "first_day": "2026-06-25",
+   "last_day": "2026-10-07",
+   "calendar_days_spanned": 105,
+   "days_with_any_data": 104,
+   "pollutant_days": {
+    "O3": 94,
+    "PM10": 97,
+    "PM2.5": 92
+   },
+   "days_with_valid_daily_aqi": 89,
+   "meets_one_year": false
+  },
+  {
+   "station_pk": 22,
+   "name": "8558",
+   "rows": 3933,
+   "first_day": "2026-05-01",
+   "last_day": "2026-10-11",
+   "calendar_days_spanned": 164,
+   "days_with_any_data": 164,
+   "pollutant_days": {
+    "PM2.5": 162
+   },
+   "days_with_valid_daily_aqi": 0,
+   "meets_one_year": false
+  }
+ ],
+ "notice": "Rows per station are not the same as usable daily targets. A station-year of one pollutant cannot produce a CPCB daily AQI."
+}

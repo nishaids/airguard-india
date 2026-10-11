@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import gzip
 import json
+import os
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -28,6 +29,7 @@ from src import config
 
 from src.ingestion.settings import get_settings, secret
 from src.nationwide.aqi import normalize, parse_time
+from src.nationwide.providers import Providers
 from src.nationwide.store import digest, BudgetExceeded
 
 OPENAQ_URL = 'https://api.openaq.org/v3'
@@ -40,13 +42,90 @@ PAGE_LIMIT = 1000
 WINDOW_HOURS = 24 * 30
 
 
-def station_rows(store, limit=None):
+#: Returned when a sensor itself reports that it holds no observations.
+EMPTY_SENSOR = object()
+
+
+def sensor_coverage(providers, sensor, headers, pace=0.0):
+    """The sensor's declared first and last observation, or EMPTY_SENSOR.
+
+    Returns None when the sensor does not say, in which case the caller must
+    assume coverage rather than skip: an unanswered question is not a no.
+    """
+    try:
+        if pace:
+            time.sleep(pace)
+        payload = providers.get_json(
+            'openaq', f"{OPENAQ_URL}/sensors/{int(sensor['id'])}", None, headers)
+    except BudgetExceeded:
+        raise
+    except Exception:  # noqa: BLE001 - unknown coverage must not skip the sensor
+        return None
+    results = payload.get('results') or []
+    if not results:
+        return None
+    record = results[0]
+    first = ((record.get('datetimeFirst') or {}) or {}).get('utc')
+    last = ((record.get('datetimeLast') or {}) or {}).get('utc')
+    if not first and not last:
+        # An explicit null on both ends, with a zero observation count, is the
+        # sensor saying it holds nothing.
+        if (record.get('coverage') or {}).get('observedCount') in (0, None) and record.get('datetimeLast') is None:
+            return EMPTY_SENSOR
+        return None
+    try:
+        return (parse_time(first) if first else None, parse_time(last) if last else None)
+    except (TypeError, ValueError):
+        return None
+
+
+def clip(spans, coverage):
+    """Keep only the windows that can contain data, given declared coverage."""
+    if not coverage:
+        return list(spans)
+    first, last = coverage
+    kept = []
+    for start, end in spans:
+        if last is not None and start > last:
+            continue
+        if first is not None and end <= first:
+            continue
+        kept.append((start, end))
+    return kept
+
+
+class ArchiveProviders(Providers):
+    """Provider access with the backfill's own request pool.
+
+    A multi-hour operator job must not spend the live product's upstream
+    allowance: if the archive walk exhausts `provider-hour:openaq`, the public
+    site stops being able to show measured data. Same politeness, separate pool.
+    The default hourly cap matches the product's, because raising it is a claim
+    about what OpenAQ permits for this key and that needs confirming first
+    (HUMAN_ACTIONS.md).
+    """
+
+    def request_budget(self, provider):
+        self.store.budget('archive-hour:' + provider, _int_env('AIRGUARD_ARCHIVE_HOURLY', 200))
+        self.store.budget('archive-day:' + provider, _int_env('AIRGUARD_ARCHIVE_DAILY', 4000), 86400)
+        self.store.budget('archive-minute:' + provider, _int_env('AIRGUARD_ARCHIVE_PER_MINUTE', 40), 60)
+
+
+def _int_env(name, default):
+    try:
+        return int(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return default
+
+
+def station_rows(store, limit=None, offset=0):
     """Registered Indian OpenAQ stations, newest metadata first."""
     with store.cursor() as cursor:
         cursor.execute("""select station_pk,source_station_id,name,latitude,longitude,metadata
             from airguard.stations where source_id='OpenAQ' and country='IN'
             order by last_seen_at desc nulls last,station_pk""")
         rows = [dict(r) for r in cursor.fetchall()]
+    rows = rows[offset:]
     return rows[:limit] if limit else rows
 
 
@@ -234,7 +313,7 @@ class FileSink:
 
 
 def backfill(store, providers, days=30, station_limit=None, pollutant_limit=None, now=None, pace=1.0,
-             sink=None, catalogue=None):
+             sink=None, catalogue=None, station_offset=0):
     """Fetch and store the reachable archive. Returns a summary, never a claim."""
     key = secret('OPENAQ_API_KEY')
     if not key:
@@ -243,7 +322,7 @@ def backfill(store, providers, days=30, station_limit=None, pollutant_limit=None
     headers = {'X-API-Key': key}
     started = datetime.now(timezone.utc)
     spans = windows(days, now=now)
-    stations = station_rows(store, station_limit)
+    stations = station_rows(store, station_limit, station_offset)
     writer = sink or store
     if catalogue:
         stations = [s for s in stations if str(s['source_station_id']) in {str(c) for c in catalogue}]
@@ -251,7 +330,7 @@ def backfill(store, providers, days=30, station_limit=None, pollutant_limit=None
         'status': 'COMPLETE', 'generated_at': started.isoformat(), 'source': 'OpenAQ v3 /sensors/{id}/hours',
         'requested_days': days, 'windows': len(spans), 'stations_considered': len(stations),
         'stations_with_usable_sensors': 0, 'requests': 0, 'stored': 0, 'retrieved': 0,
-        'per_pollutant': {}, 'per_station': [], 'rejected': {}, 'errors': {},
+        'per_pollutant': {}, 'per_station': [], 'rejected': {}, 'errors': {}, 'skipped': {},
         'earliest_valid_at': None, 'latest_valid_at': None,
         'notice': 'Upstream coverage bounds this, not effort. OpenAQ provenance is preserved and is not CPCB.',
         'radius_note': 'Only stations already registered from India are queried; no new discovery happens here.',
@@ -268,7 +347,20 @@ def backfill(store, providers, days=30, station_limit=None, pollutant_limit=None
         chosen = list(sensors.items())[:pollutant_limit] if pollutant_limit else list(sensors.items())
         station_total, station_first, station_last = 0, None, None
         for pollutant, sensor in chosen:
-            for start, end in spans:
+            # One request for the sensor's own declared coverage saves up to
+            # thirteen window requests against a sensor that holds nothing. The
+            # station record can say data exists while the sensor the station
+            # lists has none, and at 200 requests an hour that difference is
+            # hours of wall time.
+            coverage_window = sensor_coverage(providers, sensor, headers, pace)
+            if coverage_window is EMPTY_SENSOR:
+                note('skipped', 'sensor_declares_no_data')
+                continue
+            sensor_spans = clip(spans, coverage_window)
+            if not sensor_spans:
+                note('skipped', 'sensor_coverage_outside_requested_window')
+                continue
+            for start, end in sensor_spans:
                 try:
                     payload, failure = fetch_window(providers, sensor, (start, end), headers, pace)
                 except BudgetExceeded:

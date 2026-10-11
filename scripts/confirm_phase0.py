@@ -75,6 +75,10 @@ def evidence():
     qa = load('results/qa_summary.json', {}) or {}
     readiness = load('results/research/research_readiness.json', {}) or {}
     screens = sorted((ROOT / 'docs/screens').glob('*.png'))
+    archive = load('results/archive_coverage.json', {}) or {}
+    references = load('results/reference_verification.json', {}) or {}
+    paper_rules = load('results/paper_rules.json', {}) or {}
+    article = load('results/article_originality.json', {}) or {}
     return {
         'db_generated_at': db.get('generated_at'),
         'counts': counts,
@@ -98,6 +102,17 @@ def evidence():
         'readiness_passed': readiness.get('passed'),
         'readiness_total': readiness.get('total'),
         'screens': len(screens),
+        'archive_rows': archive.get('rows', 0),
+        'archive_stations': archive.get('stations', 0),
+        'archive_target_days': archive.get('station_days_with_valid_daily_aqi', 0),
+        'archive_pollutant_days': archive.get('pollutant_days', {}),
+        'archive_qa_flags': (archive.get('qa_sample') or {}).get('flags_by_code', {}),
+        'archive_rows_deleted': (archive.get('qa_sample') or {}).get('rows_deleted'),
+        'references_verified': references.get('verified', 0),
+        'references_dropped': references.get('dropped', 0),
+        'paper_rule_failures': paper_rules.get('failed', []),
+        'article_words': article.get('words'),
+        'article_shared_phrases': article.get('shared_phrase_count'),
         'path_leaks': path_leaks(),
         'path_guard_in_ci': 'check_generated_paths' in (
             ROOT / '.github/workflows/quality.yml').read_text(encoding='utf-8'),
@@ -108,31 +123,38 @@ def verdicts(e):
     leaks = e['path_leaks']
     published_leaks = [p for p in leaks if p.startswith(('webapp/public', 'data/'))]
     return {
-        1: ('BLOCKED', f"Station metadata now exists ({e['stations']} rows), but the measured path is still "
-            f"OpenAQ only: {e['measured_rows']} rows across {e['measured_stations']} stations and "
-            f"{e['station_daily_targets']} daily station targets. Licensed CPCB hourly exports remain the blocker.",
-            ['results/release/database_audit.json', 'src/ingestion/openaq.py', 'HUMAN_ACTIONS.md::CPCB historical station records']),
+        1: ('PARTIAL', f"Still no CPCB export, but the claim that no station history is reachable no longer holds: "
+            f"an OpenAQ archive walk collected {e['archive_rows']:,} hourly rows for {e['archive_stations']} Indian "
+            f"stations and {e['archive_target_days']} of those station-days produce a valid CPCB-style daily AQI. "
+            f"Coverage is the binding limit, not effort: of the first 20 registered stations walked, 7 returned any "
+            f"history, and one of those reports a single pollutant and so can never yield a daily index.",
+            ['src/ingestion/archive.py::def backfill', 'results/archive_coverage.json',
+             'HUMAN_ACTIONS.md::CPCB historical station records']),
         2: ('OPEN', 'The data.gov.in real-time path is still unavailable. Its exact failure is preserved rather than '
             'hidden, and no other provider is relabelled CPCB.',
             ['results/optional_provider_checks.json', 'scripts/provision_optional_cloud_sources.py']),
         3: ('PARTIAL', 'Freshness is computed per provider and surfaced as FRESH/STALE/DELAYED with configurable '
-            'thresholds, so stale readings are labelled instead of silently used. Upstream staleness itself persists.',
-            ['src/nationwide/service.py::STALE']),
+            'thresholds, so stale readings are labelled instead of silently used. Staleness also matters less now '
+            'that history is fetched as history rather than inferred from whatever happened to be latest.',
+            ['src/nationwide/service.py::STALE', 'src/ingestion/archive.py::It does not require a station']),
         4: ('BLOCKED', 'No archived issue-time CAMS forecast exists. ADS credential and terms acceptance are pending '
             'and were explicitly skipped; current fields and reanalysis are refused as substitutes.',
             ['results/backtest_main.json', 'HUMAN_ACTIONS.md::Copernicus ADS historical forecasts']),
-        5: ('BLOCKED', 'The legacy Kaggle city-day record still ends 2020-07-01 and is confined to clearly labelled '
-            'legacy routes. Replacing it needs the licensed station archive of L01.',
-            ['webapp/public/data/meta.json', 'webapp/app/research/legacy/page.js']),
+        5: ('PARTIAL', 'The legacy Kaggle city-day record still ends 2020-07-01 and stays on clearly labelled legacy '
+            'routes, but it is no longer the only record available: the archive walk provides modern station-level '
+            'hourly data, at a scale still far short of national.',
+            ['webapp/public/data/meta.json', 'results/archive_coverage.json']),
         6: ('BLOCKED', 'The supplied-versus-recomputed AQI disagreement is measured and published rather than '
             'smoothed over; only station hourly data removes its cause.',
             ['results/hai_divergence.json', 'docs/DATA_SOURCES.md']),
         7: ('PARTIAL', 'NH3 and Pb absence is disclosed in the API payload and the data-source register, and the '
             'understatement risk is stated. The pollutants remain unavailable.',
             ['src/nationwide/service.py::missing_CAMS_pollutants', 'docs/DATA_SOURCES.md']),
-        8: ('FIXED', 'A QA/QC layer flags without deleting: negative and zero values, flat lines, rolling-MAD spikes '
-            'with event exemption, PM2.5 above PM10, unit sanity and daily completeness, exported per station.',
-            ['src/qa/hourly.py', 'results/qa_summary.json', 'tests/test_hourly_qa.py']),
+        8: ('FIXED', f"A QA/QC layer flags without deleting, and it has now been run over real history: "
+            f"{e['archive_rows']:,} archive rows produced "
+            f"{sum((e['archive_qa_flags'] or {}).values()):,} flags across "
+            f"{len(e['archive_qa_flags'] or {})} codes and {e['archive_rows_deleted']} deletions.",
+            ['src/qa/hourly.py', 'results/archive_coverage.json', 'tests/test_hourly_qa.py']),
         9: ('PARTIAL', 'Issued weather is stored with its retrieval time and issue-time eligibility is tested, but no '
             'historical issued-weather archive exists for training.',
             ['results/issue_time_features.json', 'src/research/protocol.py::def check_inputs']),
@@ -163,9 +185,10 @@ def verdicts(e):
         18: ('PARTIAL', 'Within-one-category survives only as a legacy diagnostic and is not a headline. POD, FAR and '
              'CSI for Poor-and-above await the backtest.',
              ['src/research/evaluation.py::within_one_category']),
-        19: ('PARTIAL', 'SMOTE is confined to the legacy classifier; the operational product publishes no calibrated '
-             'probability and makes no claim to one.',
-             ['src/models/train_classification.py::SMOTE', 'results/uncertainty.json']),
+        19: ('PARTIAL', 'SMOTE is confined to the legacy classifier, and the uncalibrated top-class score is no '
+             'longer displayed as a percentage: the interface withholds it and says why, because a number shown that '
+             'way is read as a probability whatever the caption says. Real intervals await conformal calibration.',
+             ['webapp/app/historical-replay/page.js::confidence withheld', 'results/uncertainty.json']),
         20: ('PARTIAL', f"Inference no longer runs inside the size-limited serverless function, but the model registry "
              f"is empty ({e['model_versions']} registered versions), so no release is pinned yet.",
              ['src/research/serving.py::def', 'results/release/database_audit.json']),
@@ -190,9 +213,10 @@ def verdicts(e):
              'published confidence intervals to sample from before it can produce a result.',
              ['src/features/hai_v2.py::def monte_carlo', 'tests/test_hai_v2.py::vulnerability',
               'results/hai_sensitivity.json']),
-        26: ('OPEN', 'The literature-review gate is still unpassed, so the novelty claim has not been re-scoped in '
-             'writing against AQHI prior art.',
-             ['results/research/research_readiness.json::literature_review_complete', 'paper/main.tex']),
+        26: ('PARTIAL', 'The manuscript now states plainly that it claims no first health-weighted index, and places '
+             'the work against the Canadian and the Delhi/Varanasi AQHI precedents by citation. The readiness gate '
+             'stays unpassed because a stated re-scoping is not a completed literature review.',
+             ['paper/main.tex::claims no first', 'results/research/research_readiness.json::literature_review_complete']),
         27: ('PARTIAL', 'The index is labelled an advisory heuristic throughout and no health-outcome validation is '
              'claimed. The missing validation is itself disclosed.',
              ['src/features/hai.py', 'docs/PROTOCOL.md']),
@@ -270,9 +294,12 @@ def verdicts(e):
         47: ('FIXED', f"Navigation collapses on small screens, wide tables become card lists, and {e['screens']} "
              f"screenshots at 375 px and 1280 px cover every route.",
              ['webapp/app/components/NavBar.js', 'docs/screens']),
-        48: ('BLOCKED', 'Health guidance is English only. No named native Tamil or Hindi reviewer has approved a '
-             'version, and unreviewed translation would be worse than none.',
-             ['webapp/app/lib/i18n.ts', 'HUMAN_ACTIONS.md::Tamil/Hindi review']),
+        48: ('PARTIAL', 'Health guidance is still English only, which is correct while no reviewer exists, but the '
+             'machinery that will change that is in place: review is tracked per string rather than per locale, the '
+             'gate refuses any string without a named reviewer and falls back to English, the footer computes its '
+             'language claim from that ledger, and docs/I18N_REVIEW.md records the process and the empty log.',
+             ['webapp/app/lib/messages.ts::isServable', 'webapp/tests/messages.test.ts',
+              'docs/I18N_REVIEW.md', 'HUMAN_ACTIONS.md::Tamil/Hindi review']),
         49: ('PARTIAL', 'A PWA manifest, OpenGraph and Twitter card metadata ship. Opt-in alerts are not built because '
              'no channel or recipient is authorised.',
              ['webapp/app/manifest.js', 'webapp/app/layout.js::openGraph', 'HUMAN_ACTIONS.md::Alerts']),
@@ -282,9 +309,14 @@ def verdicts(e):
         51: ('BLOCKED', 'No population-exposure estimate, usage study or stakeholder pilot exists. Population counts '
              'need licensed gridded data and human-subject work needs ethics approval.',
              ['results/population_exposure.json', 'HUMAN_ACTIONS.md::User study']),
-        52: ('OPEN', 'The manuscript carries author placeholders, no chosen call for papers, no verified bibliography '
-             'and no empirical result. It is explicitly an unsubmitted draft.',
-             ['paper/main.tex::IEEEauthorblockN', 'HUMAN_ACTIONS.md::Target conference']),
+        52: ('PARTIAL', f"The bibliography is no longer a blocker: {e['references_verified']} of "
+             f"{e['references_verified'] + e['references_dropped']} candidates verified against Crossref, the arXiv "
+             f"API or the official page, and generated rather than typed. The format rules are checked statically "
+             f"and the only failure is {', '.join(e['paper_rule_failures']) or 'none'}. The article is separate "
+             f"prose: {e['article_words']} words sharing {e['article_shared_phrases']} eight-word runs with the "
+             f"paper. Author details, a chosen call for papers and empirical results remain outstanding.",
+             ['paper/refs.bib', 'paper/CHECKLIST.md', 'results/paper_rules.json',
+              'HUMAN_ACTIONS.md::Target conference']),
     }
 
 

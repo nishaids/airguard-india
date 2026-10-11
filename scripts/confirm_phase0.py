@@ -76,6 +76,8 @@ def evidence():
     readiness = load('results/research/research_readiness.json', {}) or {}
     screens = sorted((ROOT / 'docs/screens').glob('*.png'))
     archive = load('results/archive_coverage.json', {}) or {}
+    static = load('results/static_features.json', {}) or {}
+    baselines = load('results/baselines_measured.json', {}) or {}
     references = load('results/reference_verification.json', {}) or {}
     paper_rules = load('results/paper_rules.json', {}) or {}
     article = load('results/article_originality.json', {}) or {}
@@ -102,6 +104,14 @@ def evidence():
         'readiness_passed': readiness.get('passed'),
         'readiness_total': readiness.get('total'),
         'screens': len(screens),
+        'static_stations': static.get('stations', 0),
+        'static_cells': static.get('distinct_cams_cells', 0),
+        'static_sharing_a_cell': static.get('stations_sharing_a_cell', 0),
+        'persistence_mae': ((baselines.get('baselines') or {}).get('persistence') or {}).get('mae'),
+        'persistence_n': ((baselines.get('baselines') or {}).get('persistence') or {}).get('n'),
+        'climatology_mae': ((baselines.get('baselines') or {}).get('climatology') or {}).get('mae'),
+        'persistence_band_agreement': ((baselines.get('baselines') or {}).get('persistence') or {}).get('band_agreement'),
+        'severe_lower_bound_days': baselines.get('severe_lower_bound_days'),
         'archive_rows': archive.get('rows', 0),
         'archive_stations': archive.get('stations', 0),
         'archive_target_days': archive.get('station_days_with_valid_daily_aqi', 0),
@@ -170,18 +180,25 @@ def verdicts(e):
         13: ('BLOCKED', 'The PM2.5 under-prediction evidence is still a single anecdotal sample; the same pending '
              'atlas would settle it.',
              ['results/bias_atlas.json']),
-        14: ('PARTIAL', 'The 0.4 degree grid, its interpolation and its inability to describe street-level exposure '
-             'are disclosed on /methods, and every grid-derived value is badged MODELLED.',
-             ['webapp/app/methods/page.js::0.4', 'webapp/app/components/AtlasMap.tsx::maplibre']),
+        14: ('PARTIAL', f"The grid limitation is now measured rather than described: {e['static_stations']} "
+             f"registered stations fall into {e['static_cells']} distinct 0.4 degree cells and "
+             f"{e['static_sharing_a_cell']} of them share a cell with another station, so a modelled per-station "
+             f"value is a cell value. Still disclosed on /methods and badged MODELLED; the fix is station-level "
+             f"correction, which needs the pending pairs.",
+             ['src/features/static_site.py::def cams_cell', 'results/static_features.json',
+              'webapp/app/methods/page.js::0.4']),
         15: ('BLOCKED', 'The provider exposes no model-run initialisation, so retrieval time is kept distinct from '
              'issue time instead of being relabelled. Run time arrives with the ADS archive.',
              ['src/nationwide/service.py::issue_time_basis']),
         16: ('PARTIAL', 'The city-ordered leakage is audited and whole-date splitting is implemented, but the new '
              'protocol has never been evaluated on real pairs.',
              ['src/research/legacy_cv_audit.py::def audit', 'src/research/protocol.py']),
-        17: ('PARTIAL', 'The legacy linear-versus-boosting comparison is retained and labelled legacy. Restating it '
-             'against a baseline ladder belongs to the pending backtest.',
-             ['results/master_comparison_regression.csv', 'results/backtest_main.json']),
+        17: ('PARTIAL', f"There is now a real floor to beat, scored on measured station-days rather than on the "
+             f"legacy panel: persistence reaches MAE {e['persistence_mae']} on {e['persistence_n']} day pairs with "
+             f"{e['persistence_band_agreement']} band agreement, and prior-only monthly climatology reaches MAE "
+             f"{e['climatology_mae']}. No model is evaluated against them yet, and these are not forecast skill.",
+             ['scripts/evaluate_measured_baselines.py', 'results/baselines_measured.json',
+              'docs/research/BASELINES.md']),
         18: ('PARTIAL', 'Within-one-category survives only as a legacy diagnostic and is not a headline. POD, FAR and '
              'CSI for Poor-and-above await the backtest.',
              ['src/research/evaluation.py::within_one_category']),
@@ -195,9 +212,10 @@ def verdicts(e):
         21: ('PARTIAL', 'The UI reads model provenance from the research payload instead of hard-coding it; it shows '
              'an unknown version precisely because the registry is empty.',
              ['webapp/app/components/OperationalResearchPanel.tsx::model_version']),
-        22: ('BLOCKED', 'Severity-stratified skill, including the censored Severe band, needs the pending matched '
-             'pairs; the censoring rule itself is implemented.',
-             ['src/research/evaluation.py', 'results/backtest_main.json']),
+        22: ('BLOCKED', f"Severity-stratified skill needs the pending matched pairs. The censoring is real and now "
+             f"counted: {e['severe_lower_bound_days']} of the measured station-days are open-band lower bounds, "
+             f"which flatters any method on exactly the days that matter most.",
+             ['src/research/evaluation.py', 'results/baselines_measured.json']),
         23: ('BLOCKED', 'Diebold-Mariano and bootstrap intervals have nothing to compare until the backtest produces '
              'daily loss differentials.',
              ['results/backtest_main.json']),
@@ -306,9 +324,13 @@ def verdicts(e):
         50: ('BLOCKED', 'Users still see a daily min-max range, correctly labelled as not a confidence interval. Real '
              'intervals need the pending conformal calibration.',
              ['results/uncertainty.json', 'src/nationwide/service.py::NOT_VALIDATED']),
-        51: ('BLOCKED', 'No population-exposure estimate, usage study or stakeholder pilot exists. Population counts '
-             'need licensed gridded data and human-subject work needs ethics approval.',
-             ['results/population_exposure.json', 'HUMAN_ACTIONS.md::User study']),
+        51: ('PARTIAL', 'Still no measured impact, and there should not be: population counts need licensed gridded '
+             'data and human-subject work needs ethics approval. What exists now is the part that can exist '
+             'honestly beforehand: a comprehension-study protocol with its measures, consent terms, what will not '
+             'be collected and its analysis fixed in advance, and a pilot log whose rules forbid recording anything '
+             'about the people. Both are explicitly unauthorised to run.',
+             ['docs/USER_STUDY.md::NOT AUTHORISED', 'docs/PILOT_LOG.md::no outreach has taken place',
+              'results/population_exposure.json', 'HUMAN_ACTIONS.md::User study']),
         52: ('PARTIAL', f"The bibliography is no longer a blocker: {e['references_verified']} of "
              f"{e['references_verified'] + e['references_dropped']} candidates verified against Crossref, the arXiv "
              f"API or the official page, and generated rather than typed. The format rules are checked statically "

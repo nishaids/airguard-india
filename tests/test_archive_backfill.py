@@ -120,3 +120,29 @@ def test_clip_keeps_only_windows_that_can_hold_data():
         assert end > first and start <= last
     # Unknown coverage must keep every window.
     assert clip(spans, None) == list(spans)
+
+
+def test_an_exhausted_request_budget_ends_the_walk_with_a_summary(monkeypatch):
+    from src.ingestion import archive
+    from src.nationwide.store import BudgetExceeded
+
+    class Broke:
+        def get_json(self, *args, **kwargs):
+            raise BudgetExceeded('archive-hour:openaq')
+
+    class NoSink:
+        def sensor(self, *args):
+            return None
+
+        def records(self, rows):
+            return len(rows)
+
+    monkeypatch.setattr(archive, 'secret', lambda name: 'test-key')
+    monkeypatch.setattr(archive, 'station_rows', lambda store, limit=None, offset=0: [dict(STATION)])
+    monkeypatch.setattr(archive, 'get_settings', lambda: type('S', (), {'openaq_search_radius_m': 1})())
+    summary = archive.backfill(NoSink(), Broke(), days=30, pace=0, now=NOW)
+    # Running out of allowance is an expected end to a long walk. It must leave a
+    # summary behind rather than a traceback.
+    assert summary['status'] == 'STOPPED_REQUEST_BUDGET'
+    assert summary['errors'] == {'request_budget_exhausted': 1}
+    assert summary['stored'] == 0

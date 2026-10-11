@@ -352,7 +352,15 @@ def backfill(store, providers, days=30, station_limit=None, pollutant_limit=None
             # station record can say data exists while the sensor the station
             # lists has none, and at 200 requests an hour that difference is
             # hours of wall time.
-            coverage_window = sensor_coverage(providers, sensor, headers, pace)
+            try:
+                coverage_window = sensor_coverage(providers, sensor, headers, pace)
+            except BudgetExceeded:
+                # Running out of allowance is an expected end to a long walk, not
+                # a crash: stop, record why, and keep the summary and the rows
+                # already written.
+                summary['status'] = 'STOPPED_REQUEST_BUDGET'
+                note('errors', 'request_budget_exhausted')
+                break
             if coverage_window is EMPTY_SENSOR:
                 note('skipped', 'sensor_declares_no_data')
                 continue

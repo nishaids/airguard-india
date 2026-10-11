@@ -1,0 +1,2735 @@
+{
+ "generated_at": "2026-10-11T16:38:06.100192+00:00",
+ "resolution_degrees": 0.4,
+ "stations": 135,
+ "with_elevation": 135,
+ "distinct_cams_cells": 22,
+ "cells_with_multiple_stations": {
+  "0.4deg-257-0200": [
+   22,
+   20,
+   21,
+   23,
+   24,
+   25,
+   26
+  ],
+  "0.4deg-266-0201": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "0.4deg-257-0193": [
+   7,
+   8,
+   9,
+   10,
+   11,
+   13,
+   14,
+   17
+  ],
+  "0.4deg-257-0194": [
+   12,
+   15,
+   16,
+   19,
+   968
+  ],
+  "0.4deg-296-0192": [
+   27,
+   28,
+   30,
+   32,
+   35,
+   38,
+   39,
+   41,
+   43,
+   45,
+   50,
+   61,
+   64,
+   66,
+   67,
+   68,
+   69,
+   71,
+   72,
+   73,
+   76,
+   80,
+   81,
+   82,
+   85,
+   88,
+   90,
+   91,
+   94,
+   95
+  ],
+  "0.4deg-296-0193": [
+   29,
+   31,
+   33,
+   34,
+   36,
+   37,
+   40,
+   42,
+   44,
+   46,
+   47,
+   48,
+   49,
+   52,
+   53,
+   54,
+   55,
+   56,
+   57,
+   58,
+   59,
+   60,
+   62,
+   63,
+   65,
+   70,
+   74,
+   75,
+   77,
+   78,
+   79,
+   83,
+   84,
+   86,
+   87
+  ],
+  "0.4deg-295-0192": [
+   89,
+   92,
+   93
+  ],
+  "0.4deg-268-0196": [
+   96,
+   99,
+   100,
+   101,
+   102,
+   103,
+   105
+  ],
+  "0.4deg-268-0195": [
+   97,
+   98,
+   104
+  ],
+  "0.4deg-292-0189": [
+   106,
+   107,
+   108,
+   109,
+   110
+  ],
+  "0.4deg-281-0220": [
+   112,
+   113,
+   114,
+   115,
+   116,
+   117,
+   119,
+   120,
+   121,
+   122,
+   123,
+   124
+  ],
+  "0.4deg-292-0202": [
+   125,
+   126,
+   127,
+   129,
+   130
+  ],
+  "0.4deg-246-0192": [
+   131,
+   132
+  ]
+ },
+ "stations_sharing_a_cell": 126,
+ "pending_features": {
+  "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+  "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+  "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+ },
+ "sites": [
+  {
+   "station_pk": 22,
+   "name": "Chennai",
+   "source_station_id": "8558",
+   "latitude": 13.08784,
+   "longitude": 80.278475,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0200",
+    "row": 257,
+    "column": 200,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 80.2
+   },
+   "elevation_m": 15.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 1,
+   "name": "Secretariat, Amaravati - APPCB",
+   "source_station_id": "5408",
+   "latitude": 16.5150833,
+   "longitude": 80.5181667,
+   "cams_cell": {
+    "cell_id": "0.4deg-266-0201",
+    "row": 266,
+    "column": 201,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 16.6,
+    "centre_longitude": 80.6
+   },
+   "elevation_m": 21.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 2,
+   "name": "HB Colony, Vijayawada - APPCB",
+   "source_station_id": "3409492",
+   "latitude": 16.536107,
+   "longitude": 80.594233,
+   "cams_cell": {
+    "cell_id": "0.4deg-266-0201",
+    "row": 266,
+    "column": 201,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 16.6,
+    "centre_longitude": 80.6
+   },
+   "elevation_m": 22.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 3,
+   "name": "Rajiv Gandhi Park, Vijayawada - APPCB",
+   "source_station_id": "3409493",
+   "latitude": 16.509717,
+   "longitude": 80.612222,
+   "cams_cell": {
+    "cell_id": "0.4deg-266-0201",
+    "row": 266,
+    "column": 201,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 16.6,
+    "centre_longitude": 80.6
+   },
+   "elevation_m": 26.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 4,
+   "name": "Rajiv Nagar, Vijayawada - APPCB",
+   "source_station_id": "3409518",
+   "latitude": 16.554731,
+   "longitude": 80.64911,
+   "cams_cell": {
+    "cell_id": "0.4deg-266-0201",
+    "row": 266,
+    "column": 201,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 16.6,
+    "centre_longitude": 80.6
+   },
+   "elevation_m": 20.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 5,
+   "name": "Rajendra Nagar North, Guntur - APPCB",
+   "source_station_id": "6267806",
+   "latitude": 16.316553,
+   "longitude": 80.413302,
+   "cams_cell": {
+    "cell_id": "0.4deg-265-0201",
+    "row": 265,
+    "column": 201,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 16.2,
+    "centre_longitude": 80.6
+   },
+   "elevation_m": 47.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 6,
+   "name": "Golden Temple, Amritsar - PPCB",
+   "source_station_id": "5551",
+   "latitude": 31.62,
+   "longitude": 74.876512,
+   "cams_cell": {
+    "cell_id": "0.4deg-304-0187",
+    "row": 304,
+    "column": 187,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 31.8,
+    "centre_longitude": 75.0
+   },
+   "elevation_m": 235.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 7,
+   "name": "BTM Layout, Bengaluru - CPCB",
+   "source_station_id": "5548",
+   "latitude": 12.9135218,
+   "longitude": 77.5950804,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0193",
+    "row": 257,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 915.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 8,
+   "name": "Peenya, Bengaluru - CPCB",
+   "source_station_id": "5607",
+   "latitude": 13.0270199,
+   "longitude": 77.494094,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0193",
+    "row": 257,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 898.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 9,
+   "name": "Sanegurava Halli, Bengaluru - KSPCB",
+   "source_station_id": "5644",
+   "latitude": 12.990328,
+   "longitude": 77.5431385,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0193",
+    "row": 257,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 900.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 10,
+   "name": "Jayanagar 5th Block, Bengaluru - KSPCB",
+   "source_station_id": "6973",
+   "latitude": 12.920984,
+   "longitude": 77.584908,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0193",
+    "row": 257,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 915.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 11,
+   "name": "Bapuji Nagar, Bengaluru - KSPCB",
+   "source_station_id": "6974",
+   "latitude": 12.951913,
+   "longitude": 77.539784,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0193",
+    "row": 257,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 840.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 12,
+   "name": "Silk Board, Bengaluru - KSPCB",
+   "source_station_id": "6975",
+   "latitude": 12.917348,
+   "longitude": 77.622813,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0194",
+    "row": 257,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.8
+   },
+   "elevation_m": 884.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 13,
+   "name": "Hombegowda Nagar, Bengaluru - KSPCB",
+   "source_station_id": "6983",
+   "latitude": 12.938539,
+   "longitude": 77.5901,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0193",
+    "row": 257,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 913.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 14,
+   "name": "Hebbal, Bengaluru - KSPCB",
+   "source_station_id": "6984",
+   "latitude": 13.029152,
+   "longitude": 77.585901,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0193",
+    "row": 257,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 921.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 15,
+   "name": "BWSSB Kadabesanahalli, Bengaluru - CPCB",
+   "source_station_id": "3409312",
+   "latitude": 12.9352049,
+   "longitude": 77.6814488,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0194",
+    "row": 257,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.8
+   },
+   "elevation_m": 871.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 16,
+   "name": "Kasturi Nagar, Bengaluru - KSPCB",
+   "source_station_id": "3409388",
+   "latitude": 13.003872,
+   "longitude": 77.664217,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0194",
+    "row": 257,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.8
+   },
+   "elevation_m": 901.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 17,
+   "name": "Shivapura_Peenya, Bengaluru - KSPCB",
+   "source_station_id": "3409393",
+   "latitude": 13.0246342,
+   "longitude": 77.5080115,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0193",
+    "row": 257,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 908.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 18,
+   "name": "Jigani, Bengaluru - KSPCB",
+   "source_station_id": "3409434",
+   "latitude": 12.7816279,
+   "longitude": 77.6299145,
+   "cams_cell": {
+    "cell_id": "0.4deg-256-0194",
+    "row": 256,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 12.6,
+    "centre_longitude": 77.8
+   },
+   "elevation_m": 922.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 19,
+   "name": "Koramangala",
+   "source_station_id": "6206921",
+   "latitude": 12.9370223,
+   "longitude": 77.6115928,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0194",
+    "row": 257,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.8
+   },
+   "elevation_m": 908.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 20,
+   "name": "Manali, Chennai - CPCB",
+   "source_station_id": "2586",
+   "latitude": 13.164544,
+   "longitude": 80.26285,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0200",
+    "row": 257,
+    "column": 200,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 80.2
+   },
+   "elevation_m": 6.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 21,
+   "name": "Velachery Res. Area, Chennai - CPCB",
+   "source_station_id": "5655",
+   "latitude": 13.0052189,
+   "longitude": 80.2398125,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0200",
+    "row": 257,
+    "column": 200,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 80.2
+   },
+   "elevation_m": 20.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 23,
+   "name": "Manali Village, Chennai - TNPCB",
+   "source_station_id": "10780",
+   "latitude": 13.1662,
+   "longitude": 80.2584,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0200",
+    "row": 257,
+    "column": 200,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 80.2
+   },
+   "elevation_m": 10.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 24,
+   "name": "Royapuram, Chennai - TNPCB",
+   "source_station_id": "11578",
+   "latitude": 13.1036,
+   "longitude": 80.2909,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0200",
+    "row": 257,
+    "column": 200,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 80.2
+   },
+   "elevation_m": 8.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 25,
+   "name": "Kodungaiyur, Chennai - TNPCB",
+   "source_station_id": "11579",
+   "latitude": 13.1278,
+   "longitude": 80.2642,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0200",
+    "row": 257,
+    "column": 200,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 80.2
+   },
+   "elevation_m": 6.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 26,
+   "name": "Arumbakkam, Chennai - TNPCB",
+   "source_station_id": "11581",
+   "latitude": 13.0664,
+   "longitude": 80.2112,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0200",
+    "row": 257,
+    "column": 200,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 80.2
+   },
+   "elevation_m": 13.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 27,
+   "name": "R K Puram, Delhi - DPCC",
+   "source_station_id": "17",
+   "latitude": 28.563262,
+   "longitude": 77.186937,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 228.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 28,
+   "name": "Punjabi Bagh, Delhi - DPCC",
+   "source_station_id": "50",
+   "latitude": 28.674045,
+   "longitude": 77.131023,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 220.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 29,
+   "name": "Anand Vihar, New Delhi - DPCC",
+   "source_station_id": "235",
+   "latitude": 28.646835,
+   "longitude": 77.316032,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 205.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 30,
+   "name": "Pusa, Delhi - IMD",
+   "source_station_id": "5404",
+   "latitude": 28.639645,
+   "longitude": 77.146263,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 220.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 31,
+   "name": "Burari Crossing, New Delhi - IMD",
+   "source_station_id": "5541",
+   "latitude": 28.7256504,
+   "longitude": 77.2011573,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 208.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 32,
+   "name": "Aya Nagar, New Delhi - IMD",
+   "source_station_id": "5570",
+   "latitude": 28.474261,
+   "longitude": 77.131606,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 273.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 33,
+   "name": "Sirifort, Delhi - CPCB",
+   "source_station_id": "5586",
+   "latitude": 28.5504249,
+   "longitude": 77.2159377,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 228.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 34,
+   "name": "Sector - 125, Noida, UP - UPPCB",
+   "source_station_id": "5598",
+   "latitude": 28.5447608,
+   "longitude": 77.3231257,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 201.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 35,
+   "name": "North Campus, DU, Delhi - IMD",
+   "source_station_id": "5610",
+   "latitude": 28.6573814,
+   "longitude": 77.1585447,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 233.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 36,
+   "name": "ITO, New Delhi - CPCB",
+   "source_station_id": "5613",
+   "latitude": 28.628624,
+   "longitude": 77.24106,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 210.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 37,
+   "name": "Sector - 62, Noida, UP - IMD",
+   "source_station_id": "5616",
+   "latitude": 28.6245479,
+   "longitude": 77.3577104,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 202.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 38,
+   "name": "NSIT Dwarka, Delhi - CPCB",
+   "source_station_id": "5622",
+   "latitude": 28.60909,
+   "longitude": 77.0325413,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 216.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 39,
+   "name": "DTU, New Delhi - CPCB",
+   "source_station_id": "5626",
+   "latitude": 28.7500499,
+   "longitude": 77.1112615,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 216.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 40,
+   "name": "CRRI Mathura Road, New Delhi - IMD",
+   "source_station_id": "5627",
+   "latitude": 28.5512005,
+   "longitude": 77.2735737,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 218.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 41,
+   "name": "Shadipur, Delhi - CPCB",
+   "source_station_id": "5630",
+   "latitude": 28.6514781,
+   "longitude": 77.1473105,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 223.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 42,
+   "name": "Lodhi Road, New Delhi - IMD",
+   "source_station_id": "5634",
+   "latitude": 28.5918245,
+   "longitude": 77.2273074,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 214.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 43,
+   "name": "IGI Airport (T3), Delhi - IMD",
+   "source_station_id": "5650",
+   "latitude": 28.5627763,
+   "longitude": 77.1180053,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 232.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 44,
+   "name": "Vasundhara, Ghaziabad - UPPCB",
+   "source_station_id": "5665",
+   "latitude": 28.6603346,
+   "longitude": 77.3572563,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 205.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 45,
+   "name": "Pusa, Delhi - DPCC",
+   "source_station_id": "6356",
+   "latitude": 28.639645,
+   "longitude": 77.146262,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 220.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 46,
+   "name": "Mandir Marg, New Delhi - DPCC",
+   "source_station_id": "6358",
+   "latitude": 28.636429,
+   "longitude": 77.201067,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 229.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 47,
+   "name": "IHBAS, Dilshad Garden,New Delhi - CPCB",
+   "source_station_id": "6359",
+   "latitude": 28.6811736,
+   "longitude": 77.3025234,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 208.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 48,
+   "name": "Indirapuram, Ghaziabad - UPPCB",
+   "source_station_id": "6924",
+   "latitude": 28.646233,
+   "longitude": 77.358075,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 206.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 49,
+   "name": "Major Dhyan Chand National Stadium, Delhi - DPCC",
+   "source_station_id": "6929",
+   "latitude": 28.611281,
+   "longitude": 77.237738,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 213.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 50,
+   "name": "Dwarka-Sector 8, Delhi - DPCC",
+   "source_station_id": "6931",
+   "latitude": 28.5710274,
+   "longitude": 77.0719006,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 217.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 51,
+   "name": "Alipur, Delhi - DPCC",
+   "source_station_id": "6932",
+   "latitude": 28.815329,
+   "longitude": 77.15301,
+   "cams_cell": {
+    "cell_id": "0.4deg-297-0192",
+    "row": 297,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 29.0,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 215.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 52,
+   "name": "Dr. Karni Singh Shooting Range, Delhi - DPCC",
+   "source_station_id": "6934",
+   "latitude": 28.498571,
+   "longitude": 77.26484,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 251.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 53,
+   "name": "Vivek Vihar, Delhi - DPCC",
+   "source_station_id": "6938",
+   "latitude": 28.672342,
+   "longitude": 77.31526,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 205.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 54,
+   "name": "Jawaharlal Nehru Stadium, Delhi - DPCC",
+   "source_station_id": "6957",
+   "latitude": 28.58028,
+   "longitude": 77.233829,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 209.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 55,
+   "name": "Patparganj, Delhi - DPCC",
+   "source_station_id": "6960",
+   "latitude": 28.623748,
+   "longitude": 77.287205,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 205.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 56,
+   "name": "Sector-1, Noida - UPPCB",
+   "source_station_id": "6980",
+   "latitude": 28.589247,
+   "longitude": 77.321962,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 207.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 57,
+   "name": "Knowledge Park - V, Greater Noida - UPPCB",
+   "source_station_id": "6986",
+   "latitude": 28.557054,
+   "longitude": 77.453663,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 211.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 58,
+   "name": "Sector-116, Noida - UPPCB",
+   "source_station_id": "6988",
+   "latitude": 28.56923,
+   "longitude": 77.393848,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 200.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 59,
+   "name": "Loni, Ghaziabad - UPPCB",
+   "source_station_id": "7005",
+   "latitude": 28.757294,
+   "longitude": 77.278792,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 209.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 60,
+   "name": "New Delhi",
+   "source_station_id": "8118",
+   "latitude": 28.63576,
+   "longitude": 77.22445,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 218.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 61,
+   "name": "Jahangirpuri, Delhi - DPCC",
+   "source_station_id": "8235",
+   "latitude": 28.73282,
+   "longitude": 77.170633,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 213.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 62,
+   "name": "Okhla Phase-2, Delhi - DPCC",
+   "source_station_id": "8239",
+   "latitude": 28.530785,
+   "longitude": 77.271255,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 230.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 63,
+   "name": "Nehru Nagar, Delhi - DPCC",
+   "source_station_id": "8365",
+   "latitude": 28.56789,
+   "longitude": 77.250515,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 218.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 64,
+   "name": "Bawana, Delhi - DPCC",
+   "source_station_id": "8472",
+   "latitude": 28.7762,
+   "longitude": 77.051074,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 219.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 65,
+   "name": "Sonia Vihar, Delhi - DPCC",
+   "source_station_id": "8475",
+   "latitude": 28.710508,
+   "longitude": 77.249485,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 208.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 66,
+   "name": "Wazirpur, Delhi - DPCC",
+   "source_station_id": "8915",
+   "latitude": 28.699793,
+   "longitude": 77.165453,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 218.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 67,
+   "name": "Ashok Vihar, Delhi - DPCC",
+   "source_station_id": "8917",
+   "latitude": 28.695381,
+   "longitude": 77.181665,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 219.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 68,
+   "name": "Sri Aurobindo Marg, Delhi - DPCC",
+   "source_station_id": "10484",
+   "latitude": 28.531346,
+   "longitude": 77.190156,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 237.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 69,
+   "name": "Mundka, Delhi - DPCC",
+   "source_station_id": "10486",
+   "latitude": 28.684678,
+   "longitude": 77.076574,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 213.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 70,
+   "name": "Sector 30, Faridabad - HSPCB",
+   "source_station_id": "10820",
+   "latitude": 28.4417,
+   "longitude": 77.3217,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 201.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 71,
+   "name": "Rohini, Delhi - DPCC",
+   "source_station_id": "10831",
+   "latitude": 28.732528,
+   "longitude": 77.11992,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 214.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 72,
+   "name": "Teri Gram, Gurugram - HSPCB",
+   "source_station_id": "10900",
+   "latitude": 28.4275,
+   "longitude": 77.1465,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 254.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 73,
+   "name": "NISE Gwal Pahari, Gurugram - IMD",
+   "source_station_id": "10921",
+   "latitude": 28.422681,
+   "longitude": 77.148944,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 254.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 74,
+   "name": "Chandni Chowk, Delhi - IITM",
+   "source_station_id": "11603",
+   "latitude": 28.656756,
+   "longitude": 77.227234,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 227.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 75,
+   "name": "GK1 (Oberoi Terrace)",
+   "source_station_id": "2860223",
+   "latitude": 28.5500047,
+   "longitude": 77.2431058,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 231.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 76,
+   "name": "Santushti Apartments, Vasant Kunj",
+   "source_station_id": "4663956",
+   "latitude": 28.5266,
+   "longitude": 77.1493,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 275.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 77,
+   "name": "Air Check",
+   "source_station_id": "4712609",
+   "latitude": 28.623056,
+   "longitude": 77.234167,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 217.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 78,
+   "name": "Sector 1, Noida extension",
+   "source_station_id": "6105800",
+   "latitude": 28.583491,
+   "longitude": 77.431714,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 200.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 79,
+   "name": "Anand Lok",
+   "source_station_id": "6145551",
+   "latitude": 28.5587,
+   "longitude": 77.21886,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 224.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 80,
+   "name": "IIT Delhi, Delhi - IITM",
+   "source_station_id": "6148686",
+   "latitude": 28.54246,
+   "longitude": 77.191651,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 233.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 81,
+   "name": "Talkatora Garden, Delhi - DPCC",
+   "source_station_id": "6254594",
+   "latitude": 28.62181,
+   "longitude": 77.1944633,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 230.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 82,
+   "name": "JNU, Delhi - DPCC",
+   "source_station_id": "6254663",
+   "latitude": 28.540721,
+   "longitude": 77.168544,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 263.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 83,
+   "name": "Commonwealth Sports Complex, Delhi - DPCC",
+   "source_station_id": "6254665",
+   "latitude": 28.615828,
+   "longitude": 77.271992,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 206.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 84,
+   "name": "IGNOU_Maidan Garhi, Delhi - DPCC",
+   "source_station_id": "6254666",
+   "latitude": 28.493624,
+   "longitude": 77.201159,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 270.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 85,
+   "name": "Cantonment Area, Delhi - DPCC",
+   "source_station_id": "6257818",
+   "latitude": 28.594169,
+   "longitude": 77.1251,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 228.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 86,
+   "name": "Prashant Garden, Khora - UPPCB",
+   "source_station_id": "6299494",
+   "latitude": 28.61119,
+   "longitude": 77.34206,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 204.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 87,
+   "name": "Ved Vihar-Loni, Ghaziabad - UPPCB",
+   "source_station_id": "6299678",
+   "latitude": 28.739153,
+   "longitude": 77.273668,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0193",
+    "row": 296,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.4
+   },
+   "elevation_m": 207.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 88,
+   "name": "Vikas Sadan, Gurugram - HSPCB",
+   "source_station_id": "301",
+   "latitude": 28.4501238,
+   "longitude": 77.0263051,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 222.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 89,
+   "name": "Sector-2 IMT, Manesar - HSPCB",
+   "source_station_id": "6953",
+   "latitude": 28.360699,
+   "longitude": 76.93609,
+   "cams_cell": {
+    "cell_id": "0.4deg-295-0192",
+    "row": 295,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.2,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 248.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 90,
+   "name": "Najafgarh, Delhi - DPCC",
+   "source_station_id": "10488",
+   "latitude": 28.570173,
+   "longitude": 76.933762,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 213.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 91,
+   "name": "Sector-51, Gurugram - HSPCB",
+   "source_station_id": "10825",
+   "latitude": 28.4227,
+   "longitude": 77.0667,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 233.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 92,
+   "name": "NASA GSFC Rutgers Calib. N8",
+   "source_station_id": "3024966",
+   "latitude": 28.31733,
+   "longitude": 76.91603,
+   "cams_cell": {
+    "cell_id": "0.4deg-295-0192",
+    "row": 295,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.2,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 271.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 93,
+   "name": "Amity University, Panchgaon - IITM",
+   "source_station_id": "3410004",
+   "latitude": 28.3153,
+   "longitude": 76.9143,
+   "cams_cell": {
+    "cell_id": "0.4deg-295-0192",
+    "row": 295,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.2,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 273.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 94,
+   "name": "Uptitude Cloud Pvt Ltd - Sector 62, GGN",
+   "source_station_id": "6125489",
+   "latitude": 28.402408470538,
+   "longitude": 77.0847746482668,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 236.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 95,
+   "name": "NSUT Jaffarpur, Delhi - DPCC",
+   "source_station_id": "6254664",
+   "latitude": 28.594004,
+   "longitude": 76.909423,
+   "cams_cell": {
+    "cell_id": "0.4deg-296-0192",
+    "row": 296,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 215.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 96,
+   "name": "Zoo Park, Hyderabad - TSPCB",
+   "source_station_id": "407",
+   "latitude": 17.349694,
+   "longitude": 78.451437,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0196",
+    "row": 268,
+    "column": 196,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.6
+   },
+   "elevation_m": 514.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 97,
+   "name": "Bollaram Industrial Area, Hyderabad - TSPCB",
+   "source_station_id": "5599",
+   "latitude": 17.540891,
+   "longitude": 78.358528,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0195",
+    "row": 268,
+    "column": 195,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.2
+   },
+   "elevation_m": 590.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 98,
+   "name": "Central University, Hyderabad - TSPCB",
+   "source_station_id": "5623",
+   "latitude": 17.460103,
+   "longitude": 78.334361,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0195",
+    "row": 268,
+    "column": 195,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.2
+   },
+   "elevation_m": 600.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 99,
+   "name": "Sanathnagar, Hyderabad - TSPCB",
+   "source_station_id": "5647",
+   "latitude": 17.4559458,
+   "longitude": 78.4332152,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0196",
+    "row": 268,
+    "column": 196,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.6
+   },
+   "elevation_m": 552.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 100,
+   "name": "ECIL Kapra, Hyderabad - TSPCB",
+   "source_station_id": "344103",
+   "latitude": 17.470431,
+   "longitude": 78.566959,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0196",
+    "row": 268,
+    "column": 196,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.6
+   },
+   "elevation_m": 560.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 101,
+   "name": "Kompally Municipal Office, Hyderabad - TSPCB",
+   "source_station_id": "344104",
+   "latitude": 17.544899,
+   "longitude": 78.486949,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0196",
+    "row": 268,
+    "column": 196,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.6
+   },
+   "elevation_m": 588.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 102,
+   "name": "Somajiguda, Hyderabad - TSPCB",
+   "source_station_id": "344140",
+   "latitude": 17.417094,
+   "longitude": 78.457437,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0196",
+    "row": 268,
+    "column": 196,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.6
+   },
+   "elevation_m": 525.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 103,
+   "name": "Nacharam_TSIIC IALA, Hyderabad - TSPCB",
+   "source_station_id": "344142",
+   "latitude": 17.429398,
+   "longitude": 78.569354,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0196",
+    "row": 268,
+    "column": 196,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.6
+   },
+   "elevation_m": 502.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 104,
+   "name": "Kokapet, Hyderabad - TSPCB",
+   "source_station_id": "346258",
+   "latitude": 17.393559,
+   "longitude": 78.339194,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0195",
+    "row": 268,
+    "column": 195,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.2
+   },
+   "elevation_m": 532.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 105,
+   "name": "New Malakpet, Hyderabad - TSPCB",
+   "source_station_id": "352465",
+   "latitude": 17.37206,
+   "longitude": 78.50864,
+   "cams_cell": {
+    "cell_id": "0.4deg-268-0196",
+    "row": 268,
+    "column": 196,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.4,
+    "centre_longitude": 78.6
+   },
+   "elevation_m": 506.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 106,
+   "name": "Shastri Nagar, Jaipur - RSPCB",
+   "source_station_id": "5612",
+   "latitude": 26.9502929,
+   "longitude": 75.730943,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0189",
+    "row": 292,
+    "column": 189,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 75.8
+   },
+   "elevation_m": 442.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 107,
+   "name": "Police Commissionerate, Jaipur - RSPCB",
+   "source_station_id": "5633",
+   "latitude": 26.9164092,
+   "longitude": 75.7994901,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0189",
+    "row": 292,
+    "column": 189,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 75.8
+   },
+   "elevation_m": 438.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 108,
+   "name": "Adarsh Nagar, Jaipur - RSPCB",
+   "source_station_id": "5635",
+   "latitude": 26.902909,
+   "longitude": 75.836858,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0189",
+    "row": 292,
+    "column": 189,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 75.8
+   },
+   "elevation_m": 451.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 109,
+   "name": "Mansarovar Sector-12, Jaipur - RSPCB",
+   "source_station_id": "3409430",
+   "latitude": 26.843698,
+   "longitude": 75.766894,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0189",
+    "row": 292,
+    "column": 189,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 75.8
+   },
+   "elevation_m": 398.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 110,
+   "name": "Sector-2 Murlipura, Jaipur - RSPCB",
+   "source_station_id": "3409432",
+   "latitude": 26.960669,
+   "longitude": 75.771817,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0189",
+    "row": 292,
+    "column": 189,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 75.8
+   },
+   "elevation_m": 449.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 111,
+   "name": "RIICO Sitapura, Jaipur - RSPCB",
+   "source_station_id": "3409433",
+   "latitude": 26.786682,
+   "longitude": 75.827928,
+   "cams_cell": {
+    "cell_id": "0.4deg-291-0189",
+    "row": 291,
+    "column": 189,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.6,
+    "centre_longitude": 75.8
+   },
+   "elevation_m": 366.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 112,
+   "name": "Padmapukur, Howrah - WBPCB",
+   "source_station_id": "5614",
+   "latitude": 22.5687319,
+   "longitude": 88.2797276,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 5.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 113,
+   "name": "Belur Math, Howrah - WBPCB",
+   "source_station_id": "6946",
+   "latitude": 22.629801,
+   "longitude": 88.352017,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 8.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 114,
+   "name": "Jadavpur, Kolkata - WBPCB",
+   "source_station_id": "6950",
+   "latitude": 22.49929,
+   "longitude": 88.36917,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 8.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 115,
+   "name": "Fort William, Kolkata - WBPCB",
+   "source_station_id": "6981",
+   "latitude": 22.55664,
+   "longitude": 88.342674,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 11.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 116,
+   "name": "Victoria, Kolkata - WBPCB",
+   "source_station_id": "10633",
+   "latitude": 22.5448082,
+   "longitude": 88.3403691,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 5.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 117,
+   "name": "Ghusuri, Howrah - WBPCB",
+   "source_station_id": "10844",
+   "latitude": 22.611968,
+   "longitude": 88.347422,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 8.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 118,
+   "name": "Bidhannagar, Kolkata - WBPCB",
+   "source_station_id": "10851",
+   "latitude": 22.58157048,
+   "longitude": 88.41002457,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0221",
+    "row": 281,
+    "column": 221,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.6
+   },
+   "elevation_m": 9.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 119,
+   "name": "Rabindra Sarobar, Kolkata - WBPCB",
+   "source_station_id": "10904",
+   "latitude": 22.51106,
+   "longitude": 88.35142,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 12.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 120,
+   "name": "Ballygunge, Kolkata - WBPCB",
+   "source_station_id": "10918",
+   "latitude": 22.5367507,
+   "longitude": 88.3638022,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 11.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 121,
+   "name": "Rabindra Bharati University, Kolkata - WBPCB",
+   "source_station_id": "3409320",
+   "latitude": 22.627875,
+   "longitude": 88.3804,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 11.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 122,
+   "name": "SVSPA Campus, Barrackpore - WBPCB",
+   "source_station_id": "3409509",
+   "latitude": 22.7605581,
+   "longitude": 88.3617589,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 9.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 123,
+   "name": "Botanical Garden, Howrah - WBPCB",
+   "source_station_id": "3409524",
+   "latitude": 22.554954,
+   "longitude": 88.292568,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 10.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 124,
+   "name": "Dasnagar, Howrah - WBPCB",
+   "source_station_id": "3409530",
+   "latitude": 22.6025571,
+   "longitude": 88.3105664,
+   "cams_cell": {
+    "cell_id": "0.4deg-281-0220",
+    "row": 281,
+    "column": 220,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 22.6,
+    "centre_longitude": 88.2
+   },
+   "elevation_m": 4.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 125,
+   "name": "Talkatora District Industries Center, Lucknow - CPCB",
+   "source_station_id": "2456",
+   "latitude": 26.83399722,
+   "longitude": 80.8917361,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0202",
+    "row": 292,
+    "column": 202,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 81.0
+   },
+   "elevation_m": 124.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 126,
+   "name": "Lalbagh, Lucknow - CPCB",
+   "source_station_id": "5659",
+   "latitude": 26.8458805,
+   "longitude": 80.9365541,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0202",
+    "row": 292,
+    "column": 202,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 81.0
+   },
+   "elevation_m": 122.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 127,
+   "name": "Gomti Nagar, Lucknow - UPPCB",
+   "source_station_id": "7140",
+   "latitude": 26.86812,
+   "longitude": 81.005119,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0202",
+    "row": 292,
+    "column": 202,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 81.0
+   },
+   "elevation_m": 118.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 128,
+   "name": "B R Ambedkar University, Lucknow - UPPCB",
+   "source_station_id": "227386",
+   "latitude": 26.766433,
+   "longitude": 80.927299,
+   "cams_cell": {
+    "cell_id": "0.4deg-291-0202",
+    "row": 291,
+    "column": 202,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.6,
+    "centre_longitude": 81.0
+   },
+   "elevation_m": 119.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 129,
+   "name": "Kukrail Picnic Spot-1, Lucknow - UPPCB",
+   "source_station_id": "229404",
+   "latitude": 26.90723,
+   "longitude": 80.98579,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0202",
+    "row": 292,
+    "column": 202,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 81.0
+   },
+   "elevation_m": 123.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 130,
+   "name": "Central School, Lucknow - CPCB",
+   "source_station_id": "3409318",
+   "latitude": 26.8821003,
+   "longitude": 80.9302753,
+   "cams_cell": {
+    "cell_id": "0.4deg-292-0202",
+    "row": 292,
+    "column": 202,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.0,
+    "centre_longitude": 81.0
+   },
+   "elevation_m": 116.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 131,
+   "name": "Plammoodu, Thiruvananthapuram - Kerala PCB",
+   "source_station_id": "5646",
+   "latitude": 8.5149093,
+   "longitude": 76.9435879,
+   "cams_cell": {
+    "cell_id": "0.4deg-246-0192",
+    "row": 246,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 8.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 14.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 132,
+   "name": "Kariavattom, Thiruvananthapuram - Kerala PCB",
+   "source_station_id": "8190",
+   "latitude": 8.5637,
+   "longitude": 76.8865,
+   "cams_cell": {
+    "cell_id": "0.4deg-246-0192",
+    "row": 246,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 8.6,
+    "centre_longitude": 77.0
+   },
+   "elevation_m": 36.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 133,
+   "name": "GVM Corporation, Visakhapatnam - APPCB",
+   "source_station_id": "5628",
+   "latitude": 17.722682,
+   "longitude": 83.308197,
+   "cams_cell": {
+    "cell_id": "0.4deg-269-0208",
+    "row": 269,
+    "column": 208,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 17.8,
+    "centre_longitude": 83.4
+   },
+   "elevation_m": 36.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 968,
+   "name": "Bellandur",
+   "source_station_id": "6146655",
+   "latitude": 12.9178128,
+   "longitude": 77.6955288,
+   "cams_cell": {
+    "cell_id": "0.4deg-257-0194",
+    "row": 257,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 13.0,
+    "centre_longitude": 77.8
+   },
+   "elevation_m": 890.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  },
+  {
+   "station_pk": 811,
+   "name": "Mumbai",
+   "source_station_id": "8039",
+   "latitude": 19.07283,
+   "longitude": 72.88261,
+   "cams_cell": {
+    "cell_id": "0.4deg-272-0182",
+    "row": 272,
+    "column": 182,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 19.0,
+    "centre_longitude": 73.0
+   },
+   "elevation_m": 8.0,
+   "coastal_distance_km": "PENDING \u2014 needs a coastline geometry (for example Natural Earth or OSM coastlines) with its licence recorded.",
+   "urban_fraction": "PENDING \u2014 needs a licensed gridded urban product (GHS-SMOD or similar).",
+   "population_density": "PENDING \u2014 needs a licensed gridded population product (WorldPop or GHS-POP) with vintage and reuse terms; see HUMAN_ACTIONS.md."
+  }
+ ],
+ "notice": "Stations inside one CAMS cell receive an identical modelled input. A per-station modelled value is therefore a cell value, not a site measurement."
+}

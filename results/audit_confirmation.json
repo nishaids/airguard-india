@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-11T16:34:24.808285+00:00",
+ "generated_at": "2026-10-11T16:52:33.777760+00:00",
  "source": "docs/MASTER_SPEC.md",
  "tally": {
   "FIXED": 11,
-  "PARTIAL": 25,
+  "PARTIAL": 26,
   "OPEN": 3,
-  "BLOCKED": 13,
+  "BLOCKED": 12,
   "REFUTED": 0
  },
  "evidence": {
@@ -54,6 +54,14 @@
   "readiness_passed": 5,
   "readiness_total": 17,
   "screens": 29,
+  "static_stations": 135,
+  "static_cells": 22,
+  "static_sharing_a_cell": 126,
+  "persistence_mae": 13.723,
+  "persistence_n": 643,
+  "climatology_mae": 17.992,
+  "persistence_band_agreement": 0.818,
+  "severe_lower_bound_days": 0,
   "archive_rows": 72339,
   "archive_stations": 6,
   "archive_target_days": 861,
@@ -230,10 +238,11 @@
    "severity": "H",
    "status": "PARTIAL",
    "limitation": "**0.4\u00b0 (~45 km) grid** cannot resolve neighbourhoods; one cell spans Avadi and central Chennai.",
-   "finding": "The 0.4 degree grid, its interpolation and its inability to describe street-level exposure are disclosed on /methods, and every grid-derived value is badged MODELLED.",
+   "finding": "The grid limitation is now measured rather than described: 135 registered stations fall into 22 distinct 0.4 degree cells and 126 of them share a cell with another station, so a modelled per-station value is a cell value. Still disclosed on /methods and badged MODELLED; the fix is station-level correction, which needs the pending pairs.",
    "evidence": [
-    "webapp/app/methods/page.js:10",
-    "webapp/app/components/AtlasMap.tsx:3"
+    "src/features/static_site.py:32",
+    "results/static_features.json",
+    "webapp/app/methods/page.js:10"
    ],
    "fix": "WP2 (station-level MOS), WP7 (show grid honestly)"
   },
@@ -262,10 +271,11 @@
    "severity": "H",
    "status": "PARTIAL",
    "limitation": "**ML barely beats linear.** Linear Regression MAE 15.91 vs LightGBM 15.10 (\u22485%). Persistence 18.91. A reviewer will ask why boosting is needed.",
-   "finding": "The legacy linear-versus-boosting comparison is retained and labelled legacy. Restating it against a baseline ladder belongs to the pending backtest.",
+   "finding": "There is now a real floor to beat, scored on measured station-days rather than on the legacy panel: persistence reaches MAE 13.723 on 643 day pairs with 0.818 band agreement, and prior-only monthly climatology reaches MAE 17.992. No model is evaluated against them yet, and these are not forecast skill.",
    "evidence": [
-    "results/master_comparison_regression.csv",
-    "results/backtest_main.json"
+    "scripts/evaluate_measured_baselines.py",
+    "results/baselines_measured.json",
+    "docs/research/BASELINES.md"
    ],
    "fix": "WP2 (state honestly; use as baseline ladder)"
   },
@@ -315,10 +325,10 @@
    "severity": "H",
    "status": "BLOCKED",
    "limitation": "**No severity-stratified skill** (Severe days are censored at \u2265401 and excluded from regression metrics; no POD/CSI for Very Poor+).",
-   "finding": "Severity-stratified skill, including the censored Severe band, needs the pending matched pairs; the censoring rule itself is implemented.",
+   "finding": "Severity-stratified skill needs the pending matched pairs. The censoring is real and now counted: 0 of the measured station-days are open-band lower bounds, which flatters any method on exactly the days that matter most.",
    "evidence": [
     "src/research/evaluation.py",
-    "results/backtest_main.json"
+    "results/baselines_measured.json"
    ],
    "fix": "WP2"
   },
@@ -637,10 +647,12 @@
   },
   "L51": {
    "severity": "H",
-   "status": "BLOCKED",
+   "status": "PARTIAL",
    "limitation": "**No measured user or population impact** (no usage study, no population-exposure estimate, no stakeholder pilot). Human-subject work needs an ethics statement under IEEE policy.",
-   "finding": "No population-exposure estimate, usage study or stakeholder pilot exists. Population counts need licensed gridded data and human-subject work needs ethics approval.",
+   "finding": "Still no measured impact, and there should not be: population counts need licensed gridded data and human-subject work needs ethics approval. What exists now is the part that can exist honestly beforehand: a comprehension-study protocol with its measures, consent terms, what will not be collected and its analysis fixed in advance, and a pilot log whose rules forbid recording anything about the people. Both are explicitly unauthorised to run.",
    "evidence": [
+    "docs/USER_STUDY.md:3",
+    "docs/PILOT_LOG.md:6",
     "results/population_exposure.json",
     "HUMAN_ACTIONS.md:18"
    ],

@@ -1,0 +1,154 @@
+{
+ "generated_at": "2026-10-11T16:37:41.814841+00:00",
+ "source": "data/archive via src/research/archive_targets.py",
+ "status": "MEASURED_BASELINES_ONLY_NOT_FORECAST_SKILL",
+ "accepted_as_research_result": false,
+ "station_days_available": 861,
+ "stations": 5,
+ "excluded_station_days": {
+  "status_INSUFFICIENT_DATA": 744,
+  "target_rejected: Outcome is not complete yet": 1
+ },
+ "severe_lower_bound_days": 0,
+ "baselines": {
+  "persistence": {
+   "definition": "yesterday's measured daily AQI at the same station (B1 in docs/research/BASELINES.md, scored here on measured days only)",
+   "n": 643,
+   "mae": 13.723,
+   "rmse": 31.706,
+   "mean_bias": 0.603,
+   "r2": 0.4342,
+   "observed_mean": 79.1,
+   "band_agreement": 0.818
+  },
+  "climatology": {
+   "definition": "mean of this station's earlier days in the same calendar month, computed from prior days only, minimum five (B0)",
+   "n": 621,
+   "mae": 17.992,
+   "rmse": 31.613,
+   "mean_bias": 0.781,
+   "r2": 0.4373,
+   "observed_mean": 78.75,
+   "band_agreement": 0.7681
+  }
+ },
+ "per_station": [
+  {
+   "station_pk": 1,
+   "days": 251,
+   "first": "2025-10-12",
+   "last": "2026-10-07",
+   "persistence": {
+    "n": 201,
+    "mae": 19.567,
+    "rmse": 28.637,
+    "mean_bias": -1.109,
+    "r2": 0.7363,
+    "observed_mean": 99.24
+   },
+   "climatology": {
+    "n": 191,
+    "mae": 27.555,
+    "rmse": 37.104,
+    "mean_bias": -2.448,
+    "r2": 0.5275,
+    "observed_mean": 97.98
+   }
+  },
+  {
+   "station_pk": 2,
+   "days": 224,
+   "first": "2025-10-14",
+   "last": "2026-10-03",
+   "persistence": {
+    "n": 161,
+    "mae": 9.621,
+    "rmse": 21.299,
+    "mean_bias": 0.081,
+    "r2": -0.2756,
+    "observed_mean": 68.18
+   },
+   "climatology": {
+    "n": 164,
+    "mae": 10.885,
+    "rmse": 18.086,
+    "mean_bias": 2.005,
+    "r2": 0.0205,
+    "observed_mean": 67.09
+   }
+  },
+  {
+   "station_pk": 3,
+   "days": 112,
+   "first": "2025-10-12",
+   "last": "2026-10-07",
+   "persistence": {
+    "n": 82,
+    "mae": 7.598,
+    "rmse": 9.879,
+    "mean_bias": -0.28,
+    "r2": 0.3373,
+    "observed_mean": 67.26
+   },
+   "climatology": {
+    "n": 77,
+    "mae": 9.925,
+    "rmse": 12.204,
+    "mean_bias": -0.052,
+    "r2": -0.0543,
+    "observed_mean": 67.32
+   }
+  },
+  {
+   "station_pk": 4,
+   "days": 185,
+   "first": "2025-10-14",
+   "last": "2026-10-07",
+   "persistence": {
+    "n": 119,
+    "mae": 20.37,
+    "rmse": 57.887,
+    "mean_bias": 5.109,
+    "r2": -0.351,
+    "observed_mean": 81.94
+   },
+   "climatology": {
+    "n": 125,
+    "mae": 23.797,
+    "rmse": 48.103,
+    "mean_bias": 3.671,
+    "r2": 0.1526,
+    "observed_mean": 82.82
+   }
+  },
+  {
+   "station_pk": 5,
+   "days": 89,
+   "first": "2026-06-26",
+   "last": "2026-10-07",
+   "persistence": {
+    "n": 80,
+    "mae": 3.688,
+    "rmse": 4.708,
+    "mean_bias": 0.163,
+    "r2": 0.6649,
+    "observed_mean": 58.39
+   },
+   "climatology": {
+    "n": 64,
+    "mae": 6.033,
+    "rmse": 7.206,
+    "mean_bias": 2.64,
+    "r2": 0.2008,
+    "observed_mean": 57.0
+   }
+  }
+ ],
+ "sufficient_days": true,
+ "limits": [
+  "No model forecast is evaluated here, so nothing in this file is forecast skill.",
+  "Days are consecutive calendar days at one station, so the errors are serially correlated; no confidence interval is reported because an independence assumption would be wrong and a block bootstrap belongs with the preregistered study.",
+  "Severe days are censored at the open band and enter as lower bounds, which flatters any method on those days.",
+  "Station coverage is a handful of sites reached through OpenAQ, not a national sample."
+ ]
+}

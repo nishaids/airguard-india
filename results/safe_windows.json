@@ -2,7 +2,7 @@
   "generated_by": "src/features/safe_window.py",
   "generated_at_utc": "2026-10-11T13:40:29Z",
   "degraded": false,
-  "source": "D:\\PODS Project\\airguard-india\\data\\raw\\city_hour.csv",
+  "source": "data/raw/city_hour.csv",
   "window_hours": 2,
   "exposure_methodology_version": "hourly-relative-practical-window-v2",
   "practical_hours_ist": [

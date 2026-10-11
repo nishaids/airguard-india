@@ -9,24 +9,24 @@
   "coverage": [
     {
       "source_type": "measured",
-      "n": 176,
+      "n": 269,
       "stations": 5,
       "first": "2026-10-09 04:30:00+00:00",
-      "last": "2026-10-10 16:30:00+00:00"
+      "last": "2026-10-11 13:30:00+00:00"
     },
     {
       "source_type": "modelled_forecast",
-      "n": 9421,
+      "n": 22383,
       "stations": 0,
       "first": "2026-10-07 18:30:00+00:00",
-      "last": "2026-10-12 17:30:00+00:00"
+      "last": "2026-10-13 17:30:00+00:00"
     }
   ],
-  "provider_snapshots": 31,
-  "feature_snapshots": 0,
+  "provider_snapshots": 205,
+  "feature_snapshots": 20,
   "missingness": {},
   "source": "Issue-time immutable snapshots paired with same-station measured hourly targets; exact CAMS and target AQI required for regression",
   "archive_experiment": "PENDING \u2014 ADS credential/terms required",
   "legacy_experiment": "Separate 2015\u20132020 reported-AQI baseline; not interchangeable with hourly operational target",
-  "data_version": "997e2f480184d3b9aefd74763ab3eaf8846b1d9a0814405e88a5117de941c2a7"
+  "data_version": "adf80a7c70d8f462df56afd463697925ed0efe935c8511589fe534af926a10ca"
 }

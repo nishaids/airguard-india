@@ -291,7 +291,7 @@ def integrate_station_metadata(frame: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[
 
     return out, {
         "integrated": True,
-        "source": str(path),
+        "source": config.portable(path),
         "n_stations_total": int(stations["StationId"].nunique()),
         "cities_matched": int(out["City"].nunique()),
         "per_city": per_city.loc[per_city["City"].isin(frame["City"].unique())].to_dict(

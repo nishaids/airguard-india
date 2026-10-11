@@ -11,10 +11,10 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+from src.qa.paths import SCAN_ROOTS, scan as path_leaks
+
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = ROOT / 'docs/MASTER_SPEC.md'
-LEAK = re.compile(r'[A-Z]:\\\\|[A-Z]:\\|/Users/')
-SCAN_ROOTS = ('results', 'data', 'webapp/public')
 
 # Verdict vocabulary, deliberately narrow:
 #   FIXED    — the limitation no longer holds and an evidence artefact proves it.
@@ -66,25 +66,6 @@ def part_b():
     return rows
 
 
-def path_leaks():
-    """Files under published or generated trees that still embed a local absolute path."""
-    hits = []
-    for root in SCAN_ROOTS:
-        base = ROOT / root
-        if not base.exists():
-            continue
-        for path in sorted(base.rglob('*')):
-            if not path.is_file() or path.suffix.lower() not in {'.json', '.csv', '.md', '.txt'}:
-                continue
-            try:
-                text = path.read_text(encoding='utf-8')
-            except (UnicodeDecodeError, OSError):
-                continue
-            if LEAK.search(text):
-                hits.append(path.relative_to(ROOT).as_posix())
-    return hits
-
-
 def evidence():
     db = load('results/release/database_audit.json', {}) or {}
     counts = db.get('counts', {})
@@ -118,6 +99,8 @@ def evidence():
         'readiness_total': readiness.get('total'),
         'screens': len(screens),
         'path_leaks': path_leaks(),
+        'path_guard_in_ci': 'check_generated_paths' in (
+            ROOT / '.github/workflows/quality.yml').read_text(encoding='utf-8'),
     }
 
 
@@ -251,12 +234,15 @@ def verdicts(e):
              f"and {e['uncached_p975_ms']} ms uncached (target 4 s), with queued asynchronous fills instead of a "
              f"blocking first request.",
              ['results/perf.json', 'docs/ASYNC_LIVE_DATA.md']),
-        41: ('PARTIAL' if not published_leaks else 'OPEN',
-             f"Published exports are clean and guarded in CI, but {len(leaks)} generated file(s) under "
-             f"{', '.join(SCAN_ROOTS)} still embed a local absolute path"
-             + (f" ({', '.join(published_leaks)} are publicly served)" if published_leaks else '')
-             + '.',
-             ['scripts/check_public_exports.py::def', '.github/workflows/quality.yml']),
+        41: ('FIXED' if not leaks and e['path_guard_in_ci'] else 'OPEN' if published_leaks else 'PARTIAL',
+             (f"No artefact under {', '.join(SCAN_ROOTS)} names a local path, the writers render paths through "
+              f"src.config.portable, and CI fails on a regression."
+              if not leaks and e['path_guard_in_ci'] else
+              f"{len(leaks)} generated file(s) still embed a local absolute path"
+              + (f"; {', '.join(published_leaks)} are publicly served" if published_leaks else '')
+              + ('. CI does not yet guard this.' if not e['path_guard_in_ci'] else '.')),
+             ['src/config.py::def portable', 'src/qa/paths.py::def scan',
+              'scripts/check_generated_paths.py', '.github/workflows/quality.yml::check_generated_paths']),
         42: ('FIXED', f"Charts load lazily behind skeletons with retry paths, and Lighthouse mobile scores "
              f"{e['lighthouse'].get('performance')} for performance on the live route.",
              ['docs/ASYNC_LIVE_DATA.md', 'results/lighthouse/live-mobile-final.report.json']),

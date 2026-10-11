@@ -2,11 +2,11 @@
   "generated_by": "src/data/clean.py",
   "generated_at_utc": "2026-09-29T17:38:59Z",
   "inputs": {
-    "raw_file": "D:\\PODS Project\\airguard-india\\data\\raw\\city_day.csv"
+    "raw_file": "data/raw/city_day.csv"
   },
   "outputs": {
-    "structural": "D:\\PODS Project\\airguard-india\\data\\interim\\city_day_structural.csv",
-    "clean": "D:\\PODS Project\\airguard-india\\data\\processed\\city_day_clean.csv"
+    "structural": "data/interim/city_day_structural.csv",
+    "clean": "data/processed/city_day_clean.csv"
   },
   "city_name_normalisation": {
     "n_cities_before": 26,

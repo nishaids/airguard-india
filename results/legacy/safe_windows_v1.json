@@ -2,7 +2,7 @@
   "generated_by": "src/features/safe_window.py",
   "generated_at_utc": "2026-09-28T17:51:02Z",
   "degraded": false,
-  "source": "D:\\PODS Project\\airguard-india\\data\\raw\\city_hour.csv",
+  "source": "data/raw/city_hour.csv",
   "window_hours": 2,
   "exposure_pollutants": [
     "PM2.5",

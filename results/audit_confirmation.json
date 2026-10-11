@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-11T15:31:06.705379+00:00",
+ "generated_at": "2026-10-11T15:45:42.411893+00:00",
  "source": "docs/MASTER_SPEC.md",
  "tally": {
-  "FIXED": 9,
+  "FIXED": 10,
   "PARTIAL": 18,
-  "OPEN": 8,
+  "OPEN": 7,
   "BLOCKED": 17,
   "REFUTED": 0
  },
@@ -51,17 +51,11 @@
    "accessibility": 1
   },
   "qa_flagged": null,
-  "readiness_passed": 3,
+  "readiness_passed": 5,
   "readiness_total": 17,
   "screens": 29,
-  "path_leaks": [
-   "results/cleaning_report.json",
-   "results/data_quality_report.json",
-   "results/feature_engineering_report.json",
-   "results/legacy/safe_windows_v1.json",
-   "results/safe_windows.json",
-   "data/raw/PROVENANCE.json"
-  ]
+  "path_leaks": [],
+  "path_guard_in_ci": true
  },
  "limitations": {
   "L01": {
@@ -72,7 +66,7 @@
    "evidence": [
     "results/release/database_audit.json",
     "src/ingestion/openaq.py",
-    "HUMAN_ACTIONS.md:10"
+    "HUMAN_ACTIONS.md:9"
    ],
    "fix": "WP1"
   },
@@ -104,7 +98,7 @@
    "finding": "No archived issue-time CAMS forecast exists. ADS credential and terms acceptance are pending and were explicitly skipped; current fields and reanalysis are refused as substitutes.",
    "evidence": [
     "results/backtest_main.json",
-    "HUMAN_ACTIONS.md:9"
+    "HUMAN_ACTIONS.md:8"
    ],
    "fix": "WP1, Part I"
   },
@@ -320,7 +314,7 @@
    "evidence": [
     "src/features/hai.py:31",
     "results/hai_v2.json",
-    "HUMAN_ACTIONS.md:17"
+    "HUMAN_ACTIONS.md:16"
    ],
    "fix": "WP4"
   },
@@ -456,7 +450,7 @@
    "severity": "C",
    "status": "OPEN",
    "limitation": "**Readiness 3/17 gates.** Pending: literature review, issue-time dataset, baselines, rolling-origin, spatial validation, ablation, uncertainty, extreme events, advisory evaluation, prospective logging, 30-day record, statistics, reproducibility, security.",
-   "finding": "Readiness stands at 3 of 17 gates and the artefact predates the first successful fixed-time issuance, so it under-reports prospective logging.",
+   "finding": "Readiness stands at 5 of 17 gates and the artefact predates the first successful fixed-time issuance, so it under-reports prospective logging.",
    "evidence": [
     "results/research/research_readiness.json"
    ],
@@ -498,12 +492,14 @@
   },
   "L41": {
    "severity": "H",
-   "status": "OPEN",
+   "status": "FIXED",
    "limitation": "**Local machine path leaked in public JSON**: `D:\\PODS Project\\airguard-india\\data\\raw\\city_hour.csv`.",
-   "finding": "Published exports are clean and guarded in CI, but 6 generated file(s) under results, data, webapp/public still embed a local absolute path (data/raw/PROVENANCE.json are publicly served).",
+   "finding": "No artefact under results, data, webapp/public, docs, reports, paper names a local path, the writers render paths through src.config.portable, and CI fails on a regression.",
    "evidence": [
-    "scripts/check_public_exports.py:10",
-    ".github/workflows/quality.yml"
+    "src/config.py:64",
+    "src/qa/paths.py:29",
+    "scripts/check_generated_paths.py",
+    ".github/workflows/quality.yml:27"
    ],
    "fix": "WP6"
   },
@@ -536,7 +532,7 @@
    "finding": "Licence terms are recorded per source and the deployment is treated as non-commercial, so MIT code licensing is no longer implied to cover upstream data.",
    "evidence": [
     "docs/LICENSES.md:10",
-    "HUMAN_ACTIONS.md:23"
+    "HUMAN_ACTIONS.md:22"
    ],
    "fix": "WP6, Part I"
   },
@@ -580,7 +576,7 @@
    "finding": "Health guidance is English only. No named native Tamil or Hindi reviewer has approved a version, and unreviewed translation would be worse than none.",
    "evidence": [
     "webapp/app/lib/i18n.ts",
-    "HUMAN_ACTIONS.md:18"
+    "HUMAN_ACTIONS.md:17"
    ],
    "fix": "WP7"
   },
@@ -592,7 +588,7 @@
    "evidence": [
     "webapp/app/manifest.js",
     "webapp/app/layout.js:17",
-    "HUMAN_ACTIONS.md:21"
+    "HUMAN_ACTIONS.md:20"
    ],
    "fix": "WP7"
   },
@@ -614,7 +610,7 @@
    "finding": "No population-exposure estimate, usage study or stakeholder pilot exists. Population counts need licensed gridded data and human-subject work needs ethics approval.",
    "evidence": [
     "results/population_exposure.json",
-    "HUMAN_ACTIONS.md:19"
+    "HUMAN_ACTIONS.md:18"
    ],
    "fix": "WP8"
   },
@@ -625,7 +621,7 @@
    "finding": "The manuscript carries author placeholders, no chosen call for papers, no verified bibliography and no empirical result. It is explicitly an unsubmitted draft.",
    "evidence": [
     "paper/main.tex:5",
-    "HUMAN_ACTIONS.md:15"
+    "HUMAN_ACTIONS.md:14"
    ],
    "fix": "Part C, Part E"
   }

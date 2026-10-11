@@ -1,6 +1,6 @@
 # Research upgrade acceptance report
 
-Status: COLLECTING_NOT_RESEARCH_READY. 3/17 readiness checks have evidence. This is not a forecast accuracy score.
+Status: COLLECTING_NOT_RESEARCH_READY. 5/17 readiness checks have evidence. This is not a forecast accuracy score.
 
 ## A — Architecture audited
 
@@ -60,11 +60,11 @@ Versioned seven-cohort experimental calibration screen, under/over-warning and s
 
 ## O — Prospective
 
-Immutable variable-time CAMS records exist. Fixed-time local tasks are installed; four Supabase cloud schedules are now active following explicit user approval on 11 October 2026. The exact Vault-authenticated enqueue function returned HTTP 200 / SUCCESS from the production endpoint. First actual 20:00 IST issuance and fixed-time outcomes remain pending; no retrospective record counts as prospective. Future scheduled triggers are not represented as completed runs.
+Immutable variable-time CAMS records exist. Fixed-time local tasks installed; first actual issuance pending. Fixed-time outcomes zero. No retrospective record counts as prospective. Cloud cron remains inactive.
 
 ## P — Migrations
 
-20261010174656_research_forecast_protocol.sql (15 private tables and initially inactive schedules); 20261010180429_research_ledger_guards.sql (stronger period/station/outcome/error guards); 20261011075204_research_scheduler_timeout.sql (Vault-authenticated HTTP timeout aligned to the bounded 300-second function). Canonical application migration history retained. The 19:50 IST cloud prefetch now forces fresh inputs across twelve research locations; ordinary hourly warming remains bounded to two.
+20261010174656_research_forecast_protocol.sql (15 private tables and inactive schedules); 20261010180429_research_ledger_guards.sql (stronger period/station/outcome/error guards). Canonical application migration history retained.
 
 ## Q — API/UI
 
@@ -72,15 +72,15 @@ Immutable variable-time CAMS records exist. Fixed-time local tasks are installed
 
 ## R — Tests
 
-294 Python tests passed after three new cloud schedule checks verified prefetch coverage and issuance before any new fetch. The earlier 8 component tests and 12 real local Playwright HTTP checks passed. Before release, previews passed 47 checks across two deployments. The staged production build passed 21 checks; the public production domain passed 27, including eight cities, remote coordinates, PIN search, research routes, Supabase, current next-day target dates and refresh authorization. Scoped lint, strict TypeScript and production builds passed. The secret scan checked 530 Git objects, the working tree and browser assets with zero configured-secret hits. Synthetic fixtures exercise software only and never produce paper metrics. Browser visual/mobile QA remains outstanding. Detailed evidence: results/research/verification.json, staged_production_acceptance.json, production_acceptance.json and cloud_ingestion_activation.json.
+See results/research/verification.json for final executed checks. Synthetic fixtures exercise software only and never produce paper metrics.
 
 ## S — Build
 
-The approved production build dpl_61LbwsPHksTqtR5Xk6A5YL3Y6ad1 was staged, tested and promoted in the existing webapp project. The [public live page](https://webapp-phi-taupe.vercel.app/live) and [public research ledger](https://webapp-phi-taupe.vercel.app/research/track-record) passed requests without a Vercel bypass or login. The previous production deployment is recorded for rollback in results/research/previous_production_deployment.json. The Hobby function limit is respected by routing the public research status URL through the existing read-only provider-status function.
+See final verification artifact; production replacement requires explicit approval. Preview deployment belongs to the existing webapp project.
 
 ## T — Readiness
 
-3/17 evidence checks; NOT RESEARCH READY. Detailed booleans and evidence hashes in research_readiness.json.
+5/17 evidence checks; NOT RESEARCH READY. Detailed booleans and evidence hashes in research_readiness.json.
 
 ## U — Limitations
 
@@ -96,12 +96,4 @@ AirGuard ML beats CAMS; correction generalises nationwide; calibrated Severe unc
 
 ## X — Manual actions
 
-Archive access was skipped per user instruction: **PENDING — ADS credential/terms required**. It does not block prospective collection or the implemented schema, baselines, issue-time feature pipeline, uncertainty/advisory framework or tests. Explicit production approval was granted and fulfilled on 11 October 2026. Cloud jobs run at 19:50/20:00/07:00 IST, plus hourly at minute 47, independently of the PC. Local tasks are also retained and need an awake logged-in PC. The first eligible scheduled issuance is 11 October 2026 at 20:00 IST, targeting 12 October; it has not been backdated. Calendar time and adequate measured station data are needed for experiments; no credential substitutes can manufacture them.
-
-## Live integration and storage evidence
-
-DATABASE_URL was checked without printing it, migrations were applied, and Supabase connectivity passed. OpenAQ measured records, Open-Meteo weather, raw CAMS air-quality forecasts and NASA FIRMS fire detections succeeded. CPCB/data.gov.in failed independently: **ConnectionError / NewConnectionError: [WinError 10061] No connection could be made because the target machine actively refused it**, on **api.data.gov.in:443**. Full credential-redacted network details are in results/optional_provider_checks.json. No substitute is labelled CPCB.
-
-The audited ingestion tables contain 1,594 air-quality observations, 5,680 weather forecast rows and 1,523 fire detections. All have nonempty provenance; all three natural-key duplicate-group counts are zero. Separately, the nationwide store contains 13,300 environmental records (239 measured, 13,061 modelled), 57 immutable research provider snapshots and 56 on-demand forecast records. There are zero valid fixed-time issue/target pairs, zero trained research model versions and zero verified fixed-time outcomes. These counts are separate tables of the same Supabase database, not additive unique-observation totals. Current-state artifacts: results/live_integration_acceptance.json and results/research/database_status.json.
-
-Real station-calibrated tomorrow-AQI prediction still requires eligible measured hourly targets paired with pre-cutoff forecasts, sufficient chronology under the locked protocol, then baseline/residual training, untouched temporal/spatial validation, uncertainty/advisory calibration and prospective verification. The existing tomorrow value is explicitly a raw CAMS estimate. No legacy model was retrained and no forecast skill was invented.
+Archive access was skipped per user instruction and remains optional pending ADS credentials/terms. Production deployment and cloud schedule activation require explicit approval. Calendar time and adequate measured station data are needed for experiments; no credential substitutes can manufacture them.

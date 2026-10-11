@@ -13,20 +13,33 @@
     "uncertainty_complete": false,
     "extreme_event_analysis_complete": false,
     "advisory_evaluation_complete": false,
-    "prospective_logging_active": false,
+    "prospective_logging_active": true,
     "30_day_track_record_complete": false,
     "statistical_comparison_complete": false,
     "reproducibility_passed": false,
-    "security_passed": false
+    "security_passed": true
   },
-  "passed": 3,
+  "passed": 5,
   "total": 17,
   "evidence": {
-    "experiment_id": "2431a5e1c4c12f92ca704adce021f790cf9b869e3292fecf4ebcb292e7720293",
-    "dataset_version": "997e2f480184d3b9aefd74763ab3eaf8846b1d9a0814405e88a5117de941c2a7",
-    "git_sha": "082cb119f9b6496ec4bc945af5da147f94690f16",
-    "working_tree_hash": "7965ec054dc96a822f9be3944d65ab840091b5c3c83640a053dd831a85d2d70a",
-    "protocol_hash": "6edb0157b36770a98621c626860a3145d8dc2f3471640597dd1b01b7b1f04e41"
+    "experiment_id": "d6c8a817339e65e8a7a342e55209798d6dea43f8a91825463624351aec48ea5e",
+    "dataset_version": "adf80a7c70d8f462df56afd463697925ed0efe935c8511589fe534af926a10ca",
+    "git_sha": "4e701aee000f937dd54c65a13dbe3ae67c01d91c",
+    "working_tree_hash": "98e9b639e0ebb38014c2f104a606cf9df7d19469533a9f641bb54512e339b671",
+    "protocol_hash": "6edb0157b36770a98621c626860a3145d8dc2f3471640597dd1b01b7b1f04e41",
+    "fixed_time_issuance": {
+      "forecasts": 12,
+      "target_days": 1,
+      "last_issued_at": "2026-10-11 14:32:03.021671+00:00",
+      "verified_days": 0
+    },
+    "issuance_state": "ISSUED",
+    "security_gate": {
+      "passed": true,
+      "failed": [],
+      "unknown": []
+    },
+    "reproducibility_note": "Requires a clean-clone `make results` run on a machine with no local data; not asserted from this working tree."
   },
   "pending_archive": "PENDING \u2014 ADS credential/terms required",
   "claims_supported": [
@@ -40,5 +53,5 @@
     "Controlled vulnerable-cohort under-warning",
     "Station correction generalises nationwide"
   ],
-  "generated_at": "2026-10-10T18:22:07.902811+00:00"
+  "generated_at": "2026-10-11T15:40:55.630787+00:00"
 }

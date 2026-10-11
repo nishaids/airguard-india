@@ -21,6 +21,8 @@ from src.research.protocol import PROTOCOL,VERSION,period,daily_target,aware
 from src.research.storage import ResearchStore,Json
 from src.research.evaluation import evaluate,drift
 from src.nationwide.store import digest
+from src.nationwide.monitoring import scheduler_health
+from src.qa.security import gate as security_gate
 from src.ingestion.settings import load_env
 
 OUT=config.RESULTS_DIR/'research'
@@ -116,13 +118,18 @@ def monitoring(store):
         c.execute("select pollutant,normalized_value,valid_at from airguard.environmental_records where source_type='measured'")
         modern=pd.DataFrame([dict(r) for r in c.fetchall()])
         c.execute('select count(*) n from airguard.research_forecast_verifications');n=c.fetchone()['n']
+        c.execute("""select count(*) forecasts,count(distinct target_date) target_days,max(issued_at) last_issued_at
+            from airguard.research_forecast_runs where protocol_version=%s""",(VERSION,));fixed=dict(c.fetchone())
+        c.execute("""select count(distinct f.target_date) verified_days from airguard.research_forecast_verifications v
+            join airguard.research_forecast_runs f on f.id=v.forecast_run_id where v.qualifier='EXACT'""");fixed.update(dict(c.fetchone()))
         c.execute("select distinct s.station_pk,s.name,s.latitude,s.longitude from airguard.stations s join airguard.environmental_records r using(station_pk) where r.source_type='measured'")
         station_coverage=[dict(r) for r in c.fetchall()]
     legacy=pd.read_csv(config.RAW_DIR/'city_day.csv');out={}
     for p in ('PM2.5','PM10','NO2','SO2','CO','O3'):
         now=modern[modern.pollutant==p].normalized_value.to_numpy() if len(modern) else []
         out[p]=drift(legacy[p].to_numpy(),now)
-    return {'status':'COLLECTING','prospective_verified_pairs':n,'recent_mae':None,'bias':None,'interval_coverage':None,
+    return {'status':'COLLECTING','prospective_verified_pairs':n,'fixed_time_issuance':fixed,
+        'issuance_health':scheduler_health(store.store)['issuance'],'recent_mae':None,'bias':None,'interval_coverage':None,
         'input_drift':out,'station_coverage':station_coverage,'prediction_drift':'INSUFFICIENT_FIXED_TIME_FORECASTS','residual_drift':'INSUFFICIENT_VERIFIED_OUTCOMES',
         'retraining_recommendation':'COLLECT_MEASURED_STATION_PAIRS','automatic_retraining':False,
         'comparability_notice':'Historical city daily means vs sparse modern station hourly records; descriptive acquisition audit, not like-for-like change estimation.'}
@@ -185,13 +192,25 @@ def run():
     for name,value in [('dataset',manifest),('targets',targets),('experiments',experiment),('legacy_audit',legacy),('monitoring',monitor),('figures',figures)]:write(OUT/(name+'.json'),value)
     if len(frame):frame.to_csv(OUT/'dataset.csv',index=False)
     evaluated=experiment['status']=='EVALUATED_NOT_DEPLOYED'
+    issued=monitor['fixed_time_issuance'];issuance=monitor['issuance_health'];security=security_gate()
+    write(OUT/'security_gate.json',security)
     checks={'literature_review_complete':False,'research_question_locked':True,'protocol_locked':True,'issue_time_dataset_validated':bool(len(frame)),
         'cpcb_method_verified':True,'baseline_complete':evaluated,'rolling_origin_complete':evaluated,'spatial_validation_complete':bool(experiment.get('spatial')),
         'ablation_complete':False,'uncertainty_complete':bool(experiment.get('uncertainty')),'extreme_event_analysis_complete':False,
-        'advisory_evaluation_complete':bool(experiment.get('advisory')),'prospective_logging_active':False,'30_day_track_record_complete':False,
-        'statistical_comparison_complete':bool((experiment.get('comparison') or {}).get('ci95')),'reproducibility_passed':False,'security_passed':False}
+        'advisory_evaluation_complete':bool(experiment.get('advisory')),
+        # Three gates that used to be hard-coded False. A gate is now the fact it names:
+        # fixed-time issuance counts immutable ledger rows and refuses to pass on a missed
+        # cutoff, the 30-day record counts verified target days, and security is the
+        # conjunction in src/qa/security.py. Reproducibility still needs a clean-clone run,
+        # which no artefact here can stand in for.
+        'prospective_logging_active':bool(issued['forecasts']) and issuance['state'] in ('ISSUED','ISSUANCE_WINDOW_OPEN'),
+        '30_day_track_record_complete':issued.get('verified_days',0)>=30,
+        'statistical_comparison_complete':bool((experiment.get('comparison') or {}).get('ci95')),
+        'reproducibility_passed':False,'security_passed':bool(security['passed'])}
     readiness={'status':'COLLECTING_NOT_RESEARCH_READY','checks':checks,'passed':sum(checks.values()),'total':len(checks),
-        'evidence':{'experiment_id':identity,'dataset_version':manifest['data_version'],'git_sha':sha,'working_tree_hash':tree,'protocol_hash':digest(PROTOCOL)},
+        'evidence':{'experiment_id':identity,'dataset_version':manifest['data_version'],'git_sha':sha,'working_tree_hash':tree,'protocol_hash':digest(PROTOCOL),
+            'fixed_time_issuance':issued,'issuance_state':issuance['state'],'security_gate':{'passed':security['passed'],'failed':security['failed'],'unknown':security['unknown']},
+            'reproducibility_note':'Requires a clean-clone `make results` run on a machine with no local data; not asserted from this working tree.'},
         'pending_archive':'PENDING — ADS credential/terms required','claims_supported':['Nationwide raw CAMS estimate','Issue-time guarded research framework','Immutable on-demand baseline forecast collection'],
         'claims_not_supported':['AirGuard improves CAMS','Calibrated operational intervals','Controlled vulnerable-cohort under-warning','Station correction generalises nationwide'],
         'generated_at':completed.isoformat()}
@@ -199,7 +218,7 @@ def run():
     write(config.PROJECT_ROOT/'webapp/public/data/research_readiness.json',readiness)
     from src.research.reporting import generate
     generate(manifest,experiment,legacy,monitor,readiness,figures)
-    print(json.dumps({'status':experiment['status'],'eligible_pairs':len(frame),'target_days_audited':len(targets),'readiness':f"{sum(checks.values())}/{len(checks)}",'artifacts':str(OUT)}))
+    print(json.dumps({'status':experiment['status'],'eligible_pairs':len(frame),'target_days_audited':len(targets),'readiness':f"{sum(checks.values())}/{len(checks)}",'artifacts':config.portable(OUT)}))
     return readiness
 
 

@@ -18,7 +18,7 @@
 | Uploader display name | Vopani |
 | Uploader profile | <https://www.kaggle.com/rohanrao> |
 | Last modified on Kaggle | 2020-07-28T12:33:10.347Z |
-| Local version directory | `C:\Users\Nishanth R\.cache\kagglehub\datasets\rohanrao\air-quality-data-in-india\versions\12` |
+| Local version directory | `<outside-repository>/versions/12` |
 | Access method | Path A - programmatic download via kagglehub (anonymous) |
 
 ## 2. Licence (recorded as displayed, not assumed)

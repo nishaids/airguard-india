@@ -255,7 +255,7 @@
   },
   "station_metadata": {
     "integrated": true,
-    "source": "D:\\PODS Project\\airguard-india\\data\\raw\\stations.csv",
+    "source": "data/raw/stations.csv",
     "n_stations_total": 230,
     "cities_matched": 12,
     "per_city": [

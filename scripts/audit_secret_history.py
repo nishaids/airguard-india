@@ -1,6 +1,7 @@
 """Inspect Git blobs and built browser assets without displaying credentials."""
 import json
 import os
+from datetime import datetime, timezone
 import subprocess
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
@@ -35,5 +36,11 @@ for raw in current:
     if not raw:continue
     path=root/os.fsdecode(raw)
     if path.is_file() and any(n in path.read_bytes() for n in needles):current_hits+=1
-print(json.dumps({"git_objects_checked": len(objects), "history_secret_hits": len(hits), "current_worktree_secret_hits":current_hits,"browser_asset_secret_hits": asset_hits}))
+summary={"generated_at":datetime.now(timezone.utc).isoformat(),"git_objects_checked": len(objects),
+    "history_secret_hits": len(hits), "current_worktree_secret_hits":current_hits,"browser_asset_secret_hits": asset_hits,
+    "browser_assets_checked":sum(1 for p in assets if p.is_file()),
+    "notice":"Counts only. No credential value, path or object id of a hit is recorded here."}
+out=root/"results/release/secret_audit.json";out.parent.mkdir(parents=True,exist_ok=True)
+out.write_text(json.dumps(summary,indent=1),encoding="utf-8")
+print(json.dumps(summary))
 raise SystemExit(1 if hits or asset_hits or current_hits else 0)

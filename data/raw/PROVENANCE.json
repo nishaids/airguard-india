@@ -11,7 +11,7 @@
     "kaggle_uploader_display_name": "Vopani",
     "kaggle_uploader_url": "https://www.kaggle.com/rohanrao",
     "kaggle_date_modified": "2020-07-28T12:33:10.347Z",
-    "local_version_directory": "C:\\Users\\Nishanth R\\.cache\\kagglehub\\datasets\\rohanrao\\air-quality-data-in-india\\versions\\12"
+    "local_version_directory": "<outside-repository>/versions/12"
   },
   "license": {
     "string_as_displayed_on_kaggle": "CC0: Public Domain",
@@ -43,7 +43,7 @@
     {
       "filename": "city_day.csv",
       "present": true,
-      "hashed_path": "D:\\PODS Project\\airguard-india\\data\\raw\\city_day.csv",
+      "hashed_path": "data/raw/city_day.csv",
       "retained_in_data_raw": true,
       "bytes": 2574056,
       "size_mb": 2.574,
@@ -54,7 +54,7 @@
     {
       "filename": "city_hour.csv",
       "present": true,
-      "hashed_path": "D:\\PODS Project\\airguard-india\\data\\raw\\city_hour.csv",
+      "hashed_path": "data/raw/city_hour.csv",
       "retained_in_data_raw": true,
       "bytes": 65648581,
       "size_mb": 65.649,
@@ -65,7 +65,7 @@
     {
       "filename": "station_day.csv",
       "present": true,
-      "hashed_path": "D:\\PODS Project\\airguard-india\\data\\raw\\station_day.csv",
+      "hashed_path": "data/raw/station_day.csv",
       "retained_in_data_raw": true,
       "bytes": 8634105,
       "size_mb": 8.634,
@@ -76,7 +76,7 @@
     {
       "filename": "station_hour.csv",
       "present": true,
-      "hashed_path": "C:\\Users\\Nishanth R\\.cache\\kagglehub\\datasets\\rohanrao\\air-quality-data-in-india\\versions\\12\\station_hour.csv",
+      "hashed_path": "<outside-repository>/12/station_hour.csv",
       "retained_in_data_raw": false,
       "bytes": 219675434,
       "size_mb": 219.675,
@@ -87,7 +87,7 @@
     {
       "filename": "stations.csv",
       "present": true,
-      "hashed_path": "D:\\PODS Project\\airguard-india\\data\\raw\\stations.csv",
+      "hashed_path": "data/raw/stations.csv",
       "retained_in_data_raw": true,
       "bytes": 14467,
       "size_mb": 0.014,

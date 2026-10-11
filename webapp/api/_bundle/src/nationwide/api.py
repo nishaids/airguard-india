@@ -1,9 +1,11 @@
 """Shared API contract, authentication, validation and safe JSON transport."""
 from __future__ import annotations
+from contextlib import nullcontext
 
 import hashlib
 import hmac
 import json
+import uuid
 from http.server import BaseHTTPRequestHandler
 from datetime import timedelta
 from urllib.parse import parse_qs, urlparse
@@ -33,6 +35,13 @@ def cache_headers(operation, status, payload, now=None):
 def dispatch(operation, payload, authorization="", client="anonymous", service=None):
     load_env()
     service = service or Service()
+    with service.store.session() if hasattr(service.store,'session') else nullcontext():
+        return _dispatch(operation,payload,authorization,client,service)
+
+
+def _dispatch(operation, payload, authorization="", client="anonymous", service=None):
+    load_env()
+    service = service or Service()
     try:
         if not isinstance(payload, dict) or any(not isinstance(k,str) or not isinstance(v,str) for k,v in payload.items()):
             raise ValueError("Invalid query parameters.")
@@ -44,7 +53,7 @@ def dispatch(operation, payload, authorization="", client="anonymous", service=N
         if operation=='summary' and payload.get('view') in ('tomorrow','context'):
             operation='forecast' if payload['view']=='tomorrow' else 'context'
             payload={k:v for k,v in payload.items() if k!='view'}
-        allowed = {"search":{"q"},"current":{"lat","lon","name","region"},"forecast":{"lat","lon","name","region"},"summary":{"lat","lon","name","region"},"context":{"lat","lon","name","region"},"status":set(),"health":set(),"refresh":set(),"metrics":set(),"research":set(),"scheduler":set()}
+        allowed = {"search":{"q"},"current":{"lat","lon","name","region"},"forecast":{"lat","lon","name","region"},"summary":{"lat","lon","name","region"},"context":{"lat","lon","name","region"},"status":set(),"health":set(),"refresh":{"task","lat","lon","job_token"},"metrics":set(),"research":set(),"scheduler":set()}
         if operation not in allowed: raise ValueError('Unknown operation.')
         if set(payload)-allowed[operation]:
             raise ValueError("Unexpected query parameters.")
@@ -54,6 +63,12 @@ def dispatch(operation, payload, authorization="", client="anonymous", service=N
             cron_secret = secret("CRON_SECRET")
             if not cron_secret or not hmac.compare_digest(authorization,"Bearer " + cron_secret):
                 return 401,{"ok":False,"error":"UNAUTHORIZED"}
+            if payload:
+                if set(payload)!={'task','lat','lon','job_token'} or payload['task']!='summary':
+                    raise ValueError('Invalid private job.')
+                lat,lon = coordinates(payload['lat'],payload['lon'])
+                uuid.UUID(payload['job_token'])
+                return 200,service.run_summary_job(lat,lon,payload['job_token'])
             from src.nationwide.jobs import refresh
             return 200, refresh(service)
         # Shared across invocations. Salted hashes only, not browser health cohorts.
@@ -78,7 +93,9 @@ def dispatch(operation, payload, authorization="", client="anonymous", service=N
             result = service.search(payload.get("q"))
         else:
             lat,lon = coordinates(payload.get("lat"),payload.get("lon"))
-            result = service.summary(lat,lon,payload.get("name"),payload.get("region"))
+            result = service.summary(lat,lon,payload.get("name"),payload.get("region"),defer=True)
+            if result.get('state') in ('QUEUED','IN_PROGRESS','FAILED'):
+                return (503 if result['state']=='FAILED' else 202),result
             if operation in ("current","forecast"):
                 key = "current" if operation == "current" else "tomorrow"
                 result = {"ok":result[key]["aqi"] is not None,"location":result["location"],key:result[key],"provenance":result["provenance"],"provider_status":result["provider_status"],**({"hourly_forecast":result["hourly_forecast"]} if key=="tomorrow" else {})}
@@ -105,6 +122,8 @@ def make_handler(operation):
             self.send_header("X-Content-Type-Options","nosniff")
             if status == 429:
                 self.send_header("Retry-After","60")
+            if status == 202:
+                self.send_header('Retry-After','5')
             self.send_header("Content-Length",str(len(body)))
             self.end_headers()
             self.wfile.write(body)
@@ -129,17 +148,15 @@ def make_handler(operation):
                 return
             try:
                 length=int(self.headers.get("Content-Length",0))
-                if length<0 or length>256:
+                if length<0 or length>512:
                     self.send_json(413,{"ok":False,"error":"BODY_TOO_LARGE"})
                     return
                 body=self.rfile.read(length)
-                if body.strip() not in (b"",b"{}"):
-                    self.send_json(400,{"ok":False,"error":"REFRESH_DOES_NOT_ACCEPT_INPUT"})
-                    return
-            except ValueError:
+                payload=json.loads(body) if body.strip() else {}
+            except (ValueError,UnicodeError):
                 self.send_json(400,{"ok":False,"error":"INVALID_LENGTH"})
                 return
-            status,payload=dispatch(operation,{},self.headers.get("Authorization",""),self.client_address[0])
+            status,payload=dispatch(operation,payload,self.headers.get("Authorization",""),self.client_address[0])
             self.send_json(status,payload)
 
         def log_message(self,*args):

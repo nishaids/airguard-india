@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import time
 from urllib.parse import urlencode, urlparse
 
 import requests
@@ -31,7 +32,7 @@ def main():
         packages = (Path(os.environ['LOCALAPPDATA']) / 'npm-cache/_npx').glob('*/node_modules/vercel/package.json')
         cli = next(p.parent / 'dist/vc.js' for p in packages if json.loads(p.read_text())['version'] == '63.1.2')
 
-    def request(path, expected=200, marker=None, method='GET', authorized=False):
+    def request(path, expected=200, marker=None, method='GET', authorized=False, attempt=0):
         if args.protected:
             command = [shutil.which('node'), str(cli), 'curl', path, '--deployment', args.url, '--', '--silent', '--show-error', '--max-time', '310', '--request', method, '--write-out', 'HTTP_STATUS:%{http_code}']
             header_input = None
@@ -51,8 +52,13 @@ def main():
             if marker:
                 for name in ('Content-Security-Policy','X-Content-Type-Options','X-Frame-Options','Permissions-Policy'):
                     assert name in response.headers, 'Missing production security header'
-        assert status == expected, f'{path.split("?")[0]} unexpected HTTP {status}'
         assert all(not secret(name) or secret(name) not in body for name in SECRET_NAMES), 'Configured secret in response'
+        if status==202 and expected==200 and method=='GET' and attempt<24:
+            pending=json.loads(body)
+            assert pending['state'] in ('QUEUED','IN_PROGRESS') and 'current' not in pending
+            time.sleep(5)
+            return request(path,expected,marker,method,authorized,attempt+1)
+        assert status == expected, f'{path.split("?")[0]} unexpected HTTP {status}'
         if marker:
             assert marker in body, 'Expected page marker absent'
             value = None

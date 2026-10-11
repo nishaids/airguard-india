@@ -67,8 +67,15 @@ export default function OperationalProvider({ children }: { children: ReactNode 
     const pending = inflight.current.get(key); if (pending?.day === day) return pending.request;
     const request = (async () => {
       const params = new URLSearchParams({ lat: String(v.lat), lon: String(v.lon), name: v.name, ...(v.region ? { region: v.region } : {}) });
-      const response = await fetch(`/api/air-quality/summary?${params}`, { cache: "no-store" });
-      const result: Summary = await response.json();
+      let result: Summary | null = null;
+      for (let attempt = 0; attempt < 24; attempt++) {
+        if (day !== istDay()) throw new Error('The IST day changed. Refreshing current data.');
+        const response = await fetch(`/api/air-quality/summary?${params}`, { cache: "no-store", signal: AbortSignal.timeout(15000) });
+        result = await response.json();
+        if (response.status !== 202) break;
+        await new Promise(resolve => window.setTimeout(resolve, 5000));
+      }
+      if (!result) throw new Error('Live data is temporarily unavailable.');
       if (!result.current || !result.tomorrow) throw new Error(result.message || "Live data is temporarily unavailable.");
       if (day === istDay()) cache.current.set(key, { at: Date.now(), day, data: result });
       // Bounded browser cache; no cohort or provider credentials enter it.

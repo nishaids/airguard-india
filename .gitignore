@@ -41,6 +41,7 @@ Thumbs.db
 *.log
 webapp/test-results/
 webapp/playwright-report/
+supabase/.temp/
 *.tsbuildinfo
 results/ingestion.log.*
 

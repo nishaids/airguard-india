@@ -4,6 +4,7 @@ from __future__ import annotations
 import copy
 import math
 import os
+from contextlib import nullcontext
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import timedelta
 from statistics import mean
@@ -29,6 +30,10 @@ class Service:
         self.providers = providers or Providers(self.store)
 
     def cached(self, key, provider, fetch, seconds, *, stale_seconds=0, force=False):
+        with self.store.session() if hasattr(self.store,'session') else nullcontext():
+            return self._cached(key,provider,fetch,seconds,stale_seconds=stale_seconds,force=force)
+
+    def _cached(self, key, provider, fetch, seconds, *, stale_seconds=0, force=False):
         now = utcnow()
         old = self.store.get(key)
         if old and old["expires_at"] > now and not force:
@@ -68,7 +73,7 @@ class Service:
         data, status = self.cached("geocode:" + query.strip().casefold(), "geocoding", lambda: self.providers.search(query), ttl("AIRGUARD_GEOCODE_TTL",86400*7), stale_seconds=86400*30)
         return {"ok": data is not None, **(data or {"results": []}), "provider_status": status}
 
-    def summary(self, lat, lon, name=None, region=None, force=False):
+    def summary(self, lat, lon, name=None, region=None, force=False, defer=False):
         """Read a precomputed summary first; cache expires at hour/day boundaries.
 
         Scheduler warming uses force=True. A miss uses the existing bounded
@@ -79,8 +84,7 @@ class Service:
             if value is not None and (not isinstance(value,str) or len(value)>limit or any(ord(c)<32 for c in value)):
                 raise ValueError('Invalid location label.')
         now = utcnow()
-        hour = now.astimezone(IST).replace(minute=0,second=0,microsecond=0)
-        key = 'summary:' + METHOD + ':' + EXPOSURE_VERSION + ':' + digest([lat,lon,hour.isoformat()])
+        key = self.summary_key(lat,lon,now)
         if not force:
             hit = self.store.get(key)
             if hit and hit['expires_at'] > now:
@@ -90,6 +94,10 @@ class Service:
                     if region: result['location']['region'] = region
                     result['response_cache'] = {'status':'HIT','computed_at':result['refreshed_at'],'expires_at':hit['expires_at'].isoformat()}
                     return result
+        if defer and not force and hasattr(self.store,'enqueue_summary'):
+            state = self.store.enqueue_summary(key,lat,lon)
+            return {'ok':False,'state':state,'retry_after':5,'location':{'key':f'{lat:.4f},{lon:.4f}','lat':lat,'lon':lon,'name':name or 'Selected coordinates','region':region,'timezone':'Asia/Kolkata'},
+                    'message':'Live providers are being retrieved. No estimated values are shown yet.' if state!='FAILED' else 'Provider retrieval failed. Please retry shortly.'}
         result = self._build_summary(lat,lon,name,region,force)
         # Cache successful values only; failures must be retried and never
         # remain labelled fresh after the next IST hour or calendar day.
@@ -102,6 +110,26 @@ class Service:
                 finally: self.store.release(key,token)
             result['response_cache'] = {'status':'MISS','computed_at':result['refreshed_at'],'expires_at':(now+timedelta(seconds=seconds)).isoformat()}
         return result
+
+    @staticmethod
+    def summary_key(lat,lon,now=None):
+        hour = (now or utcnow()).astimezone(IST).replace(minute=0,second=0,microsecond=0)
+        return 'summary:' + METHOD + ':' + EXPOSURE_VERSION + ':' + digest([lat,lon,hour.isoformat()])
+
+    def run_summary_job(self,lat,lon,token):
+        # Check both possible hours at rollover; computation always uses now.
+        key = self.summary_key(lat,lon)
+        if not self.store.summary_job_owned(key,token):
+            key = self.summary_key(lat,lon,utcnow()-timedelta(hours=1))
+            if not self.store.summary_job_owned(key,token):
+                return {'ok':False,'state':'EXPIRED_JOB'}
+        success = False
+        try:
+            result = self.summary(lat,lon)
+            success = bool(result.get('ok'))
+            return {'ok':success,'state':'COMPLETE' if success else 'FAILED'}
+        finally:
+            self.store.finish_summary_job(key,token,success)
 
     def _build_summary(self, lat, lon, name=None, region=None, force=False):
         lat, lon = coordinates(lat, lon)
@@ -155,7 +183,7 @@ class Service:
         if air:
             tomorrow.update(aggregate(air["rows"],target_start,target_end))
             tomorrow['cams_baseline_aqi']=tomorrow['aqi']
-            tomorrow.update(issued_at=air["issued_at"], provider_issued_at=None, freshness="STALE" if states["air"]["status"] == "STALE" else "FRESH", grid=air["grid"], raw_forecast_reference=air["raw_reference"])
+            tomorrow.update(issued_at=air["issued_at"], fetched_at=air["fetched_at"], provider_issued_at=None, freshness="STALE" if states["air"]["status"] == "STALE" else "FRESH", grid=air["grid"], raw_forecast_reference=air["raw_reference"])
             if tomorrow["aqi"] is None:
                 tomorrow["freshness"]="UNAVAILABLE"
             for row in air["rows"]:

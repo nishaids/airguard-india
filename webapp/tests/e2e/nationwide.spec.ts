@@ -1,4 +1,16 @@
 import { test, expect } from "@playwright/test";
+import type { APIRequestContext } from '@playwright/test';
+
+async function live(request: APIRequestContext, params: Record<string,string|number>) {
+  for (let i=0;i<18;i++) {
+    const response=await request.get('/api/air-quality/summary',{params,timeout:15000});
+    if (response.status()!==202) return response;
+    const pending=await response.json();expect(pending.current).toBeUndefined();
+    expect(pending.state).toMatch(/QUEUED|IN_PROGRESS/);
+    await new Promise(resolve=>setTimeout(resolve,5000));
+  }
+  throw new Error('Background provider retrieval did not complete within 90 seconds');
+}
 
 for (const query of ["Avadi", "Delhi", "Mumbai", "Chennai", "Bengaluru", "Kolkata", "Hyderabad", "Coimbatore", "Kochi"]) {
   test(`real nationwide flow: ${query}`, async ({ request }) => {
@@ -7,7 +19,7 @@ for (const query of ["Avadi", "Delhi", "Mumbai", "Chennai", "Bengaluru", "Kolkat
     const locations = await search.json();
     expect(locations.results.length).toBeGreaterThan(0);
     const location = locations.results[0];
-    const response = await request.get("/api/air-quality/summary", { params: { lat: location.lat, lon: location.lon, name: location.name, region: location.region || "" }, timeout: 85000 });
+    const response = await live(request,{ lat: location.lat, lon: location.lon, name: location.name, region: location.region || "" });
     expect(response.status()).toBe(200);
     const summary = await response.json();
     expect(summary.schema_version).toBe("1.0");
@@ -21,7 +33,7 @@ for (const query of ["Avadi", "Delhi", "Mumbai", "Chennai", "Bengaluru", "Kolkat
     expect(summary.tomorrow.forecast_run_id).toBeGreaterThan(0);
     expect(new Date(summary.tomorrow.issued_at).getTime()).toBeLessThan(new Date(summary.tomorrow.window_start).getTime());
     expect(new Date(summary.refreshed_at).getTime()).toBeGreaterThan(Date.now() - 3600000);
-    if (summary.tomorrow.freshness === 'FRESH') expect(new Date(summary.tomorrow.issued_at).getTime()).toBeGreaterThan(Date.now() - 3600000);
+    if (summary.tomorrow.freshness === 'FRESH') expect(new Date(summary.tomorrow.fetched_at || summary.provider_status.air.fetched_at).getTime()).toBeGreaterThan(Date.now() - 3600000);
     expect(summary.provenance.methodology_version).toBe("airguard-cpcb-2014-v1");
     const day = summary.hourly_forecast.filter((h: { time: string }) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(h.time)) === summary.tomorrow.date);
     expect(day).toHaveLength(24);
@@ -37,8 +49,8 @@ test("postal code returns provider results or an honest empty response", async (
 });
 
 test("Avadi saved live forecast is the exact Policy baseline", async ({ request }) => {
-  const live = await request.get("/api/air-quality/summary?lat=13.1147&lon=80.10981&name=Avadi", { timeout: 85000 });
-  expect(live.status()).toBe(200); const summary = await live.json();
+  const response = await live(request,{lat:13.1147,lon:80.10981,name:'Avadi'});
+  expect(response.status()).toBe(200); const summary = await response.json();
   const reference = { forecast_run_id: summary.tomorrow.forecast_run_id, location_key: summary.location.key };
   const zero = await request.post("/api/air-quality/scenario", { data: { ...reference, reductions: {} } });
   expect(zero.status()).toBe(200); const unchanged = await zero.json();
@@ -50,7 +62,7 @@ test("Avadi saved live forecast is the exact Policy baseline", async ({ request 
   expect((await request.post("/api/air-quality/scenario", { data: { reductions: { "PM2.5": .2 } } })).status()).toBe(400);
 });
 test("remote coordinate works without requiring a measured station", async ({ request }) => {
-  const response = await request.get("/api/air-quality/summary", { params: { lat: 23.4, lon: 70.4, name: "Remote Gujarat coordinate" }, timeout: 85000 });
+  const response = await live(request,{lat:23.4,lon:70.4,name:'Remote Gujarat coordinate'});
   expect(response.status()).toBe(200);
   const result = await response.json();
   expect(result.current.measured_or_modelled).toBe("MODELLED");

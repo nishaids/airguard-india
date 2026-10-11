@@ -5,6 +5,7 @@ import json
 import math
 import os
 import time
+from contextlib import nullcontext
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from dataclasses import replace
@@ -53,6 +54,10 @@ class Providers:
         self.client = client or HttpClient(replace(get_settings(), http_timeout_seconds=8, http_max_retries=1, http_max_backoff_seconds=2))
 
     def get_json(self, provider, url, params=None, headers=None):
+        with self.store.session() if hasattr(self.store,'session') else nullcontext():
+            return self._get_json(provider,url,params,headers)
+
+    def _get_json(self, provider, url, params=None, headers=None):
         started = time.monotonic()
         try:
             result = as_dict(self.client.get(url, params, headers, label=provider, before_attempt=lambda: self.request_budget(provider)).json(), provider)

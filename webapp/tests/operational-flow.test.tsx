@@ -16,6 +16,28 @@ vi.mock("next/link", () => ({ default: ({ children, href, onClick }: { children:
 const response = (data: unknown, ok = true) => Promise.resolve({ ok, json: async () => data });
 beforeEach(() => { localStorage.clear(); window.history.replaceState({}, "", "/live"); });
 afterEach(() => { cleanup(); vi.useRealTimers(); vi.restoreAllMocks(); vi.unstubAllGlobals(); });
+
+test('pending location shows no invented values and polls until real data arrives', async () => {
+  const { act } = await import('@testing-library/react');
+  vi.useFakeTimers();
+  const fetcher=vi.fn().mockResolvedValueOnce({status:202,json:async()=>({ok:false,state:'QUEUED',retry_after:5})})
+    .mockResolvedValue({status:200,json:async()=>operationalSample});
+  vi.stubGlobal('fetch',fetcher);
+  render(<OperationalProvider><NationwideDashboard /></OperationalProvider>);
+  await act(async()=>{await Promise.resolve();});
+  expect(screen.queryByText('120')).toBeNull();
+  expect(screen.getByText('Loading current conditions and tomorrow’s forecast…')).toBeInTheDocument();
+  await act(async()=>{await vi.advanceTimersByTimeAsync(5000);});
+  expect(screen.getByText('120')).toBeInTheDocument();
+  expect(fetcher).toHaveBeenCalledTimes(2);
+});
+
+test('background provider failure ends loading with an honest error', async () => {
+  vi.stubGlobal('fetch',vi.fn().mockResolvedValue({status:503,json:async()=>({ok:false,state:'FAILED',message:'Provider retrieval failed. Please retry shortly.'})}));
+  render(<OperationalProvider><NationwideDashboard /></OperationalProvider>);
+  expect(await screen.findByRole('alert')).toHaveTextContent('Provider retrieval failed');
+  expect(screen.queryByText('120')).toBeNull();
+});
 function Flow() {
   const [mode, setMode] = useState<"live" | "forecast" | "policy">("live"); const { href } = useOperational();
   return <><button onClick={() => setMode("forecast")}>Open Forecast & advisory</button><button onClick={() => setMode("policy")}>Open Policy scenarios</button><a href={href("/forecast")}>Share forecast</a>{mode === "live" ? <LivePage /> : mode === "forecast" ? <ForecastPage /> : <PolicyPage />}</>;

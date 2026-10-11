@@ -1,4 +1,4 @@
-"""One short-lived SSL connection per operation; shared DB cache and budgets.
+"""Bounded, thread-local SSL connections; shared DB cache and budgets.
 
 No application connection pool, named prepared statements or session locks.
 Compatible with session and transaction Supavisor pooling. SQL stays parameterized.
@@ -8,6 +8,7 @@ from __future__ import annotations
 import hashlib
 import json
 import uuid
+import threading
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from psycopg2.extras import Json, RealDictCursor, execute_values
@@ -24,19 +25,58 @@ class BudgetExceeded(Exception):
 
 
 class Store:
+    def __init__(self):
+        self._scope = threading.local()
+
+    @contextmanager
+    def session(self):
+        """Reuse one client connection within a thread's bounded request scope.
+
+        Each cursor still commits/rolls back separately. Nothing survives the
+        outer scope, and concurrent provider workers never share a connection.
+        """
+        self._scope.depth = getattr(self._scope, 'depth', 0) + 1
+        try:
+            yield self
+        finally:
+            self._scope.depth -= 1
+            if not self._scope.depth:
+                connection = getattr(self._scope, 'connection', None)
+                if connection is not None:
+                    connection.close()
+                    del self._scope.connection
+
+    def enqueue_summary(self, key, lat, lon):
+        with self.cursor() as cur:
+            cur.execute('select airguard.enqueue_summary(%s,%s,%s) state', (key,lat,lon))
+            return cur.fetchone()['state']
+
+    def summary_job_owned(self, key, token):
+        with self.cursor() as cur:
+            cur.execute("select 1 from airguard.cache_metadata where cache_key=%s and lease_token=%s and lease_until>now()", ('queue:'+key,token))
+            return bool(cur.fetchone())
+
+    def finish_summary_job(self, key, token, success):
+        with self.cursor() as cur:
+            cur.execute("update airguard.cache_metadata set payload=%s,lease_until=now()+interval '30 seconds' where cache_key=%s and lease_token=%s", (Json({'status':'COMPLETE' if success else 'FAILED'}),'queue:'+key,token))
+
     def research_snapshot(self, payload, lat, lon, station_pk=None):
         from src.research.storage import ResearchStore
         return ResearchStore(self).snapshot(payload,lat,lon,station_pk)
 
     @contextmanager
     def cursor(self):
-        connection = connect()
+        scoped = getattr(self._scope, 'depth', 0) > 0
+        connection = getattr(self._scope, 'connection', None) if scoped else None
+        if connection is None or connection.closed:
+            connection = connect()
+            if scoped: self._scope.connection = connection
         try:
             with connection, connection.cursor(cursor_factory=RealDictCursor) as cursor:
                 cursor.execute("SET LOCAL statement_timeout='8s'")
                 yield cursor
         finally:
-            connection.close()
+            if not scoped: connection.close()
 
     def get(self, key):
         with self.cursor() as cur:

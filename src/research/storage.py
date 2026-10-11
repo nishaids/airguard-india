@@ -64,6 +64,26 @@ class ResearchStore:
             r.update(available_at=r['fetched_at'].isoformat(),retrieved_at=r['fetched_at'].isoformat(),valid_end=(r['valid_at']+timedelta(hours=1)).isoformat())
         return rows
 
+    def candidate_stations(self,lat,lon,cutoff):
+        """Filter eligible nearby pre-issue snapshots before limiting candidates."""
+        with self.store.cursor() as c:
+            c.execute('''with nearby as (
+                select station_pk,payload,available_at,
+                    6371*acos(least(1.0,greatest(-1.0,
+                        sin(radians(%s))*sin(radians(latitude))+
+                        cos(radians(%s))*cos(radians(latitude))*cos(radians(longitude-%s))))) km
+                from airguard.provider_snapshots where source_type='measured' and station_pk is not null
+                    and available_at<=%s and available_at>%s-interval '3 hours'
+                    and abs(latitude-%s)<=0.25 and abs(longitude-%s)<=0.5
+            ), eligible as (
+                select distinct on (station_pk) station_pk,payload,km,available_at from nearby
+                where km<=25 and (select count(distinct item->>'pollutant')
+                    from jsonb_array_elements(coalesce(payload->'latest','[]'::jsonb)) item)>=3
+                order by station_pk,available_at desc
+            ) select station_pk,payload from eligible order by km,station_pk limit 100''',
+                (lat,lat,lon,cutoff,cutoff,lat,lon))
+            return [dict(r) for r in c.fetchall()]
+
     def capture(self,location,issue_day,now=None):
         from src.nationwide.providers import grid,distance
         now=aware(now or datetime.now(timezone.utc));cutoff=cutoff_for(issue_day)
@@ -74,10 +94,7 @@ class ResearchStore:
         weather=self.latest_snapshot('weather_forecast',gx,gy,cutoff)
         if not cams:return {'status':'NO_ISSUE_TIME_CAMS_SNAPSHOT','location':location['key']}
         # Only metadata and measurements actually retrieved before cutoff can bind the outcome station.
-        with self.store.cursor() as c:
-            c.execute('''select station_pk,payload from airguard.provider_snapshots where source_type='measured'
-                and available_at<=%s and available_at>%s-interval '3 hours' order by available_at desc limit 100''',(cutoff,cutoff))
-            candidates=[dict(r) for r in c.fetchall()]
+        candidates=self.candidate_stations(lat,lon,cutoff)
         usable=[]
         for r in candidates:
             st=r['payload'];km=distance(lat,lon,st['coordinates'])

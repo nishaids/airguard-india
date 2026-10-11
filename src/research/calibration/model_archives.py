@@ -95,7 +95,14 @@ def stations():
 def load_manifest(name, header):
     path = MANIFESTS / name
     if path.exists():
-        return path, json.loads(path.read_text(encoding='utf-8'))
+        from src.research.calibration.checkpoint import read_json, verify
+        manifest = read_json(path)
+        for field in ('source', 'window', 'model', 'lead', 'variables'):
+            if field in header and manifest.get(field) != header[field]:
+                raise ValueError(f'Existing archive {field} differs; use a versioned cache')
+        for record in manifest.get('files', {}).values():
+            verify(record)
+        return path, manifest
     return path, dict(header, files={})
 
 

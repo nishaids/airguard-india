@@ -16,8 +16,9 @@ from datetime import datetime, timedelta, timezone
 import numpy as np
 import pandas as pd
 from src import config
+from src.nationwide import aqi
 from src.nationwide.aqi import normalize
-from src.research.calibration import data
+from src.research.calibration import data, availability
 from src.research.calibration.availability import Cutoffs, guard_snapshot, LeakageError
 from src.research.calibration.checkpoint import capture, canonical_hash, write_json, OUT
 from src.research.calibration.dataset import SEASONS, SEASON_INDEX, GROUPS
@@ -27,6 +28,13 @@ FEATURE_VERSION = 'non-cams-preliminary-v1'
 BUILDER_VERSION = 'measured-v3.1-causal-qc-v1'
 STRICT_FEATURES = GROUPS['C'] + GROUPS['D'] + ['latitude', 'longitude']
 CONDITIONAL_FEATURES = ['obs24_aqi', 'obs_pm25_last6_mean', 'obs_pm25_last6_slope']
+
+
+def builder_code_hash():
+    """Include transitive scientific dependencies; normalize checkout newlines."""
+    paths = [Path(__file__), Path(data.__file__), Path(aqi.__file__), Path(availability.__file__)]
+    return canonical_hash([(config.portable(p), hashlib.sha256(p.read_text(encoding='utf-8').encode()).hexdigest())
+                           for p in paths])
 
 
 def causal_rejection_times(bins):
@@ -65,24 +73,12 @@ def qc_station(entry):
         q1, q3 = np.quantile(values, [.25, .75]) if len(values) else (0, 0)
         with gzip.open(config.PROJECT_ROOT / sensor['file'], 'rt', encoding='utf-8', newline='') as handle:
             for number, raw in enumerate(csv.DictReader(handle), 2):
-                reason, flag, t = None, None, None
-                try:
-                    t = datetime.fromisoformat(raw['valid_from_utc'])
-                    end = datetime.fromisoformat(raw['valid_to_utc'])
-                    if end - t != data.HOUR:
-                        reason = 'not_an_hourly_bin'
-                    elif raw.get('flagged') == '1':
-                        reason = 'provider_flagged'
-                    elif raw.get('coverage_pct') and float(raw['coverage_pct']) < data.MINIMUM_COVERAGE:
-                        reason = 'under_75_percent_coverage'
-                    else:
-                        value = normalize(pollutant, float(raw['value']), raw.get('unit') or '')
-                        reason = ('invalid_value_or_unit' if value is None else 'zero_reading' if value == 0
-                                  else 'stuck_sensor_run' if t not in kept else None)
-                        if reason is None and q3 > q1 and value > q3 + 3 * (q3 - q1):
-                            flag = 'potential_spike_kept'
-                except (KeyError, TypeError, ValueError):
-                    reason = 'unparseable_period_or_value'
+                t, value, reason = data.validate_hourly_row(raw, pollutant)
+                flag = None
+                if reason is None and t not in kept:
+                    reason = 'stuck_sensor_run'
+                if reason is None and q3 > q1 and value > q3 + 3 * (q3 - q1):
+                    flag = 'potential_spike_kept'
                 if reason or flag:
                     ledger.append({'file': sensor['file'], 'csv_row': number, 'pollutant': pollutant,
                                    'valid_from_utc': raw.get('valid_from_utc'), 'reason': reason, 'flag': flag})
@@ -102,6 +98,20 @@ def station_frames(key, entry, dates):
     for day in dates:
         cut = Cutoffs.for_target(day)
         result = data.daily_index(series, cut.target_start, cut.target_end)
+        target_reasons = []
+        if result.get('status') == 'INSUFFICIENT_DATA':
+            pollutants = result.get('pollutants', {})
+            supported = [p for p in data.POLLUTANTS if (pollutants.get(p) or {}).get('concentration') is not None]
+            if len(supported) < 3:
+                target_reasons.append('fewer_than_three_supported_pollutants')
+            if not set(supported) & {'PM2.5', 'PM10'}:
+                target_reasons.append('no_supported_particulate')
+            for p in data.POLLUTANTS:
+                info = pollutants.get(p, {})
+                if info.get('valid_hours', 0) < 16:
+                    target_reasons.append(f'{p}:fewer_than_16_hours')
+                elif p in ('CO', 'O3') and info.get('concentration') is None:
+                    target_reasons.append(f'{p}:no_complete_8h_window')
         # Prefix QC: later identical readings must not revise an earlier feature.
         history = causal.between(cut.measurement - timedelta(hours=32), cut.measurement)
         visible = {}
@@ -121,11 +131,14 @@ def station_frames(key, entry, dates):
                   **data.engine_fields(seen, 'obs24_'), **data._short_window(past, cut),
                   'censored': result.get('status') == 'LOWER_BOUND',
                   'target_valid': result.get('status') in ('VALID', 'LOWER_BOUND'),
-                  'target_rejection_reasons': json.dumps(result.get('coverage') or {}, sort_keys=True),
+                  'target_rejection_reasons': json.dumps(target_reasons),
                   'quality_flags': json.dumps(dict(day_counts[day]), sort_keys=True),
                   'source_first_bin_utc': min((r['time'] for r in source_times), default=None),
                   'source_last_bin_end_utc': max((r['time'] + data.HOUR for r in source_times), default=None),
                   'source_retrieved_at': entry.get('retrieved_at'),
+                  'source_retrieval_time_basis': 'station acquisition start; per-bin original publication time unavailable',
+                  'source_sensor_ids': json.dumps({p: s.get('sensor_id') for p, s in entry.get('sensors', {}).items()}, sort_keys=True),
+                  'source_cache_files': json.dumps({p: s.get('file') for p, s in entry.get('sensors', {}).items()}, sort_keys=True),
                   'latest_measured_bin_end_utc': latest + data.HOUR if latest else None,
                   'measured_publication_time_known': False,
                   'issue_utc': cut.issue, 'measurement_cutoff_utc': cut.measurement}
@@ -154,7 +167,7 @@ def build():
     cache = data.DERIVED / 'station_targets'
     cache.mkdir(parents=True, exist_ok=True)
     frames, audits = [], {}
-    code_hash = hashlib.sha256(Path(__file__).read_bytes() + Path(data.__file__).read_bytes()).hexdigest()
+    code_hash = builder_code_hash()
     destination = destination / code_hash
     destination.mkdir(parents=True, exist_ok=True)
     for key, entry in sorted(snapshot['stations'].items(), key=lambda kv: int(kv[0])):
@@ -208,6 +221,12 @@ def build():
     counts = valid.groupby('station_id').size()
     eligible = counts[counts >= int(protocol['stations']['minimum_valid_target_days'])].index
     reasons = Counter()
+    target_reasons = Counter()
+    flag_counts = Counter()
+    for value in table.target_rejection_reasons:
+        target_reasons.update(json.loads(value))
+    for value in table.quality_flags:
+        flag_counts.update(json.loads(value))
     for audit in audits.values():
         for pollutant in data.POLLUTANTS:
             reasons.update(audit.get(pollutant, {}).get('rejected', {}))
@@ -224,6 +243,8 @@ def build():
               'usable_stations': valid.station_id.nunique(), 'usable_cities': valid.city.nunique(),
               'station_days': len(table), 'valid_targets': len(valid), 'rejected_targets': len(table)-len(valid),
               'target_rejection_status_counts': table.loc[~table.target_valid, 'y_status'].value_counts().to_dict(),
+              'target_rejection_reason_counts': dict(target_reasons),
+              'hourly_flags_kept': {k: v for k, v in flag_counts.items() if k.endswith('_kept')},
               'hourly_exclusion_reason_counts': dict(reasons), 'severe_days': int(valid.censored.sum()),
               'category_counts': valid.y_category.value_counts().sort_index().to_dict(),
               'pollutant_target_coverage': {p: int(valid[f'y_conc_{p}'].notna().sum()) for p in data.POLLUTANTS},

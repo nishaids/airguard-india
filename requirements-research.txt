@@ -1,0 +1,5 @@
+# Additions actually present in the audited research environment.
+# No package was installed or application rebuilt by this continuation.
+-r requirements.txt
+PyYAML==6.0.3
+psutil==7.2.2

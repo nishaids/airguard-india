@@ -1,5 +1,33 @@
 # Human actions and externally gated evidence
 
+## Current research continuation: 12 October 2026 (IST)
+
+The latest user instruction keeps this work on `research/station-calibration`
+and prohibits production deployment of experimental corrections. Earlier release
+authorizations below describe earlier work and do not authorize this research
+release. No production merge, deployment, secret change or paid purchase is part
+of the continuation.
+
+The genuine historical archive state is `PENDING_MANUAL_ADS_CREDENTIAL`.
+Follow [ADS_MANUAL_SETUP.md](docs/research/ADS_MANUAL_SETUP.md): accept the
+CAMS global forecast dataset terms manually and configure the personal token in
+the private user-home `.cdsapirc`. No secret is needed in chat.
+
+The new OpenAQ station-calibration acquisition is separate from the older
+200-request/hour archive walk described below. Its existing two workers remain
+active at 27 requests/minute each and obey provider limit headers. The raw
+research archive stays in files, outside production Supabase storage.
+
+The audited prospective ledger has 12 real forecasts, one target day, zero
+bound stations and zero verifications. Historical issuance Git SHAs are absent.
+Retired sensor selection, pre-response receipt timestamps and global candidate
+crowding are fixed and tested in source; future deployment remains a separate
+approval step. Existing issued forecasts cannot be rewritten or assigned a
+station after their outcomes are known. Calendar time and valid station-bound
+future collection are required for a 30-day track record.
+
+The unchanged historical checklist follows.
+
 Created 2026-10-11. These items do not block safe coding, tests, documentation, prospective collection or the authorized production release. Never paste credentials into chat, commit them, place them in static JSON, or expose them in logs.
 
 | Item | Current state | Required action / evidence | Work that continues |

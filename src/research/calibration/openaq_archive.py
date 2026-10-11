@@ -157,6 +157,7 @@ def rows_of(results, start, end):
 
 
 def fetch_sensor(client, sensor, start, end, checkpoint_dir=None):
+    from src.research.calibration.checkpoint import write_json
     lower = max(start, parse(sensor['first_utc']).replace(minute=0, second=0, microsecond=0))
     upper = min(end, parse(sensor['last_utc']) + timedelta(hours=1))
     collected, log = {}, []
@@ -169,7 +170,7 @@ def fetch_sensor(client, sensor, start, end, checkpoint_dir=None):
         if cache is not None and cache.exists():
             stored = json.loads(cache.read_text(encoding='utf-8'))
             raw = json.dumps(stored['payload'],sort_keys=True,separators=(',', ':')).encode()
-            if hashlib.sha256(raw).hexdigest() != stored['sha256']:
+            if hashlib.sha256(raw).hexdigest() != stored['sha256'] or stored['request']!=params:
                 raise ValueError('OpenAQ window cache checksum mismatch')
             payload = stored['payload']
         else:
@@ -184,8 +185,39 @@ def fetch_sensor(client, sensor, start, end, checkpoint_dir=None):
             collected[row[0]] = row
         log.append({'from': begin.isoformat(), 'to': finish.isoformat(), 'returned': len(results)})
         if len(results) >= PAGE:
-            # A full page means the window was truncated; that must never pass silently.
-            log[-1]['warning'] = 'page_limit_reached'
+            # Existing first-page checkpoints remain valid. Request only missing
+            # pages, with a separate immutable identity for each request.
+            from src.research.calibration.repair_archive import validate_repair_payload
+            page = 2
+            while len(results) >= PAGE:
+                if page > 100:
+                    raise ValueError('OpenAQ pagination exceeded safety bound')
+                extra_params = dict(params, page=page)
+                extra_cache = None
+                if checkpoint_dir is not None:
+                    identity = hashlib.sha256(json.dumps([sensor['sensor_id'], extra_params],sort_keys=True).encode()).hexdigest()
+                    extra_cache = Path(checkpoint_dir)/f'{identity}.json'
+                if extra_cache is not None and extra_cache.exists():
+                    stored = json.loads(extra_cache.read_text(encoding='utf-8'))
+                    raw = json.dumps(stored['payload'],sort_keys=True,separators=(',', ':')).encode()
+                    if hashlib.sha256(raw).hexdigest()!=stored['sha256'] or stored['request']!=extra_params:
+                        raise ValueError('OpenAQ page cache checksum/request mismatch')
+                    extra = stored['payload']
+                else:
+                    extra = client.get(f"/sensors/{int(sensor['sensor_id'])}/hours", extra_params)
+                    validate_repair_payload(extra, sensor, sensor['pollutant'], page)
+                    if extra_cache is not None:
+                        raw = json.dumps(extra,sort_keys=True,separators=(',', ':')).encode()
+                        write_json(extra_cache,{'payload':extra,'sha256':hashlib.sha256(raw).hexdigest(),
+                            'request':extra_params,'retrieved_at':datetime.now(timezone.utc).isoformat()})
+                results = validate_repair_payload(extra, sensor, sensor['pollutant'], page)
+                for row in rows_of(results,begin,finish):
+                    if row[0] in collected and collected[row[0]]!=row:
+                        raise ValueError('OpenAQ pagination conflicts with an earlier bin')
+                    collected[row[0]]=row
+                log[-1].setdefault('additional_pages',[]).append({'page':page,'returned':len(results)})
+                page += 1
+            log[-1]['pagination_complete']=True
     return [collected[key] for key in sorted(collected)], log
 
 
@@ -250,6 +282,19 @@ def run(start, end, limit=None, per_minute=42, shard=None, of=1):
         stations = [s for index, s in enumerate(stations) if index % of == shard]
     manifest = json.loads(target.read_text(encoding='utf-8')) if target.exists() else {
         'source': 'OpenAQ v3 /sensors/{id}/hours', 'stations': {}}
+    expected_window = [start.isoformat(), end.isoformat()]
+    expected_selection = hashlib.sha256(SELECTION.read_bytes()).hexdigest()
+    normalized_selection = SELECTION.read_bytes().replace(b'\r\n',b'\n')
+    equivalent_selection_hashes={expected_selection,hashlib.sha256(normalized_selection).hexdigest(),
+        hashlib.sha256(normalized_selection.replace(b'\n',b'\r\n')).hexdigest()}
+    for previous_path in [MANIFEST, *sorted(MANIFEST.parent.glob('openaq_hours_manifest.shard*.json'))]:
+        if previous_path.exists():
+            from src.research.calibration.checkpoint import read_json
+            previous_manifest = read_json(previous_path)
+            if previous_manifest.get('window') not in (None, expected_window):
+                raise ValueError('Existing OpenAQ manifest has another window; use a versioned cache')
+            if previous_manifest.get('selection_sha256') not in equivalent_selection_hashes | {None}:
+                raise ValueError('Existing OpenAQ manifest has another station selection')
     finished = already_done()
     manifest.update({'window': [start.isoformat(), end.isoformat()],
                      'selection_sha256': hashlib.sha256(SELECTION.read_bytes()).hexdigest(),

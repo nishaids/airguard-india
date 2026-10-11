@@ -61,47 +61,45 @@ def data_version():
 # --------------------------------------------------------------------------- #
 # Measured hourly bins
 # --------------------------------------------------------------------------- #
+def validate_hourly_row(row, pollutant):
+    """One QC decision shared by targets and the row-addressable rejection ledger."""
+    try:
+        begin = datetime.fromisoformat(row['valid_from_utc'])
+        end = datetime.fromisoformat(row['valid_to_utc'])
+    except (KeyError, TypeError, ValueError):
+        return None, None, 'unparseable_period'
+    if begin.tzinfo is None or end.tzinfo is None:
+        return None, None, 'timezone_unknown'
+    if end - begin != HOUR:
+        return begin, None, 'not_an_hourly_bin'
+    if row.get('flagged') == '1':
+        return begin, None, 'provider_flagged'
+    try:
+        coverage = float(row.get('coverage_pct'))
+    except (TypeError, ValueError):
+        return begin, None, 'coverage_unknown'
+    if not np.isfinite(coverage) or coverage < MINIMUM_COVERAGE:
+        return begin, None, 'under_75_percent_coverage'
+    try:
+        raw = float(row['value'])
+    except (KeyError, TypeError, ValueError):
+        return begin, None, 'missing_value'
+    value = normalize(pollutant, raw, row.get('unit') or '')
+    if value is None:
+        return begin, None, 'invalid_value_or_unit'
+    if value == 0:
+        return begin, None, 'zero_reading'
+    return begin, value, None
+
+
 def read_sensor(path, pollutant, apply_stuck=True):
     """Apply the protocol's hourly bin rules. Returns kept bins and why others went."""
     kept, rejected = {}, Counter()
     with gzip.open(config.PROJECT_ROOT / path, 'rt', encoding='utf-8', newline='') as handle:
         for row in csv.DictReader(handle):
-            try:
-                begin = datetime.fromisoformat(row['valid_from_utc'])
-                end = datetime.fromisoformat(row['valid_to_utc'])
-            except (KeyError, ValueError):
-                rejected['unparseable_period'] += 1
-                continue
-            if begin.tzinfo is None or end.tzinfo is None:
-                rejected['timezone_unknown'] += 1
-                continue
-            if end - begin != HOUR:
-                rejected['not_an_hourly_bin'] += 1
-                continue
-            if row.get('flagged') == '1':
-                rejected['provider_flagged'] += 1
-                continue
-            coverage = row.get('coverage_pct')
-            try:
-                coverage = float(coverage)
-            except (TypeError, ValueError):
-                rejected['coverage_unknown'] += 1
-                continue
-            if not np.isfinite(coverage) or coverage < MINIMUM_COVERAGE:
-                rejected['under_75_percent_coverage'] += 1
-                continue
-            try:
-                raw = float(row['value'])
-            except (TypeError, ValueError):
-                rejected['missing_value'] += 1
-                continue
-            value = normalize(pollutant, raw, row.get('unit') or '')
-            if value is None:
-                rejected['invalid_value_or_unit'] += 1
-                continue
-            if value == 0:
-                # Zero mass is an outage reported as a number, not an ambient reading.
-                rejected['zero_reading'] += 1
+            begin, value, reason = validate_hourly_row(row, pollutant)
+            if reason:
+                rejected[reason] += 1
                 continue
             kept[begin] = value
     stuck = stuck_runs(kept) if apply_stuck else []

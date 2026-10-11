@@ -7,6 +7,8 @@ from __future__ import annotations
 import hashlib
 import json
 import subprocess
+import platform
+from importlib.metadata import version
 from datetime import datetime, timezone
 from pathlib import Path
 import numpy as np
@@ -20,8 +22,9 @@ from src import config
 from src.research.calibration import data, splits, metrics
 from src.research.calibration.checkpoint import OUT, canonical_hash, write_json
 from src.research.calibration.measured import STRICT_FEATURES, CONDITIONAL_FEATURES, strict_guard
+from src.research.calibration.availability import guard_snapshot
 from src.research.calibration.protocol import load
-from src.research.calibration.statistics import finite_quantile, paired, holm, warning, select_risk_quantile
+from src.research.calibration.statistics import finite_quantile, paired, holm, warning_with_intervals, select_risk_quantile
 
 PLAN = {'experiment':'NON_CAMS_PRELIMINARY', 'version':'non-cams-plan-v1', 'seed':42,
         'primary_experiment_completed':False, 'final_test':'SEALED; no scoring or selection',
@@ -78,6 +81,17 @@ def score(frame, column):
     return metrics.summary(frame.y_aqi,frame[column],frame.y_category,frame.censored)
 
 
+def audit_features(table):
+    """Repeat the availability audit on values and provenance before fitting."""
+    for raw in table.to_dict('records'):
+        row = {k: (None if pd.isna(v) else v) for k, v in raw.items()}
+        strict_guard(row, STRICT_FEATURES)
+        if pd.notna(raw.get('obs24_aqi')):
+            if row.get('latest_measured_bin_end_utc') is None:
+                raise ValueError('Conditional history requires observed bin-end provenance')
+            guard_snapshot(row)
+
+
 def interval_score(test, lower, upper, nominal):
     exact = ~test.censored.to_numpy()
     y = test.y_aqi.to_numpy()
@@ -92,6 +106,10 @@ def interval_score(test, lower, upper, nominal):
             indices = test.index.get_indexer(group.index)
             keep = indices[~group.censored.to_numpy()]
             result[field][str(name)] = {'n_exact':len(keep),'coverage':float(((lower[keep]<=y[keep]) & (y[keep]<=upper[keep])).mean()) if len(keep)>=30 else None}
+    for name,minimum in (('poor_or_worse',3),('very_poor_or_worse',4)):
+        keep = exact & (test.y_category.to_numpy()>=minimum)
+        result[name]={'n_exact':int(keep.sum()),
+            'coverage':float(((lower[keep]<=y[keep]) & (y[keep]<=upper[keep])).mean()) if keep.sum()>=30 else None}
     return result
 
 
@@ -137,18 +155,18 @@ def uncertainty(train, cal, test, columns):
     if correction is not None:
         correction = max(0,correction)
         intervals['cqr_0.9'] = interval_score(test,np.maximum(0,predictions_test[.05]-correction),predictions_test[.95]+correction,.9)
-    advisory = {'P0':warning(test.y_category,pred)}
+    advisory = {'P0':warning_with_intervals(test,pred)}
     for q,name in ((.5,'P1'),(.75,'P2')):
         correction = finite_quantile(cal.y_aqi.to_numpy()[exact]-predictions_cal[q][exact],q)
         if correction is not None:
-            advisory[name] = warning(test.y_category,np.maximum(0,predictions_test[q]+correction))
+            advisory[name] = warning_with_intervals(test,np.maximum(0,predictions_test[q]+correction))
             advisory[name]['censored_calibration_labels_excluded'] = int((~exact).sum())
     candidates = {q:predictions_cal[q] for q in quantiles if q>=.5}
     for target in (.1,.05):
         chosen = select_risk_quantile(cal.y_category,candidates,target)
         advisory[f'P3_target_{target}'] = {'selected_quantile':chosen,'target':target,
             'status':'NO_CALIBRATION_CANDIDATE' if chosen is None else 'EMPIRICAL_POLICY_NO_DEPENDENCE_GUARANTEE',
-            **(warning(test.y_category,predictions_test[chosen]) if chosen is not None else {})}
+            **(warning_with_intervals(test,predictions_test[chosen]) if chosen is not None else {})}
     return intervals,advisory
 
 
@@ -164,9 +182,10 @@ def run():
     # Physically remove final rows before any fitting, diagnostics or selection.
     table = table[~table.target_date.isin(final['test'])].copy()
     table = table[table.target_valid].copy()
-    for row in table[['target_date','weather_latest_run_bound_utc']].to_dict('records'):
-        strict_guard(row,STRICT_FEATURES)
-    code_hash = canonical_hash([(p.name,hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(Path(__file__).parent.glob('*.py'))])
+    inputs_path = (config.PROJECT_ROOT / quality['table']).parent.parent / 'inputs.json'
+    metadata, _ = data.station_table(json.loads(inputs_path.read_text())['selection'])
+    audit_features(table)
+    code_hash = canonical_hash([(p.name,hashlib.sha256(p.read_text(encoding='utf-8').encode()).hexdigest()) for p in sorted(Path(__file__).parent.glob('*.py'))])
     run_id = canonical_hash([quality['dataset_hash'],plan_hash,code_hash])
     destination = OUT/'preliminary'/run_id
     if (destination/'results.json').exists():
@@ -197,17 +216,18 @@ def run():
             if len(conditional_train[~conditional_train.censored])>=30 and len(common):
                 common['persistence'] = common.obs24_aqi
                 common['ridge_history'] = fit_predict(conditional_train,[common],STRICT_FEATURES+CONDITIONAL_FEATURES)[0]
+                common['ridge_strict_same_training'] = fit_predict(conditional_train,[common],STRICT_FEATURES)[0]
             entry = {'design':design,'fold':fold['name'],'train_range':fold['train_range'] if design=='expanding' else [str(train_dates[0]),str(train_dates[-1])],
                      'calibration_range':fold['calibration_range'],'test_range':fold['test_range'],
                      'stations_training_eligible':train.station_id.nunique(),
                      'strict':{name:score(test,name) for name in ('climatology','ridge_strict','ridge_calendar_spatial')},
-                     'conditional':{name:score(common,name) for name in ('climatology','ridge_strict','persistence','ridge_history')} if 'ridge_history' in common else {}}
+                     'conditional':{name:score(common,name) for name in ('climatology','ridge_strict','ridge_strict_same_training','persistence','ridge_history')} if 'ridge_history' in common else {}}
             fold_results.append(entry)
             if design=='expanding':
                 test['fold'] = fold['name']
-                test['persistence'],test['ridge_history'] = np.nan,np.nan
+                test['persistence'],test['ridge_history'],test['ridge_strict_same_training'] = np.nan,np.nan,np.nan
                 if 'ridge_history' in common:
-                    test.loc[common.index,['persistence','ridge_history']] = common[['persistence','ridge_history']]
+                    test.loc[common.index,['persistence','ridge_history','ridge_strict_same_training']] = common[['persistence','ridge_history','ridge_strict_same_training']]
                 predictions.append(test)
                 if len(cal[~cal.censored])>=30:
                     intervals,advisory = uncertainty(train,cal,test,STRICT_FEATURES)
@@ -218,8 +238,10 @@ def run():
     base_train = table[table.target_date.isin(geometry['train'])]
     base_test = table[table.target_date.isin(geometry['test'])]
     # Group assignments use metadata only; coverage checks use training only.
+    assignments = {}
     for group in ('city','cluster','station_id','region'):
-        assignment = splits.grouped_folds(table[group],k=10) if group!='region' else {g:g for g in table[group].unique()}
+        assignment = splits.grouped_folds(metadata[group],k=10) if group!='region' else {g:g for g in metadata[group].unique()}
+        assignments[group] = {str(k):str(v) for k,v in assignment.items()}
         for heldout in sorted(set(assignment.values())):
             members = [g for g,f in assignment.items() if f==heldout]
             train = base_train[~base_train[group].isin(members)]
@@ -242,22 +264,30 @@ def run():
         common = combined.dropna(subset=['ridge_history','persistence'])
         if len(common):
             comparisons['ridge_history_vs_persistence'] = paired(common,'ridge_history','persistence')
-            comparisons['history_ablation_conditional'] = paired(common,'ridge_history','ridge_strict')
+            comparisons['history_ablation_conditional'] = paired(common,'ridge_history','ridge_strict_same_training')
         holm(comparisons)
         for field in ('season','region','y_category'):
             subgroups[field] = {str(name):{'n':len(group),'metrics':score(group,'ridge_strict') if len(group)>=30 else None} for name,group in combined.groupby(field)}
-        combined[['station_id','city','target_date','y_aqi','y_category','censored','fold','climatology','ridge_strict','ridge_calendar_spatial','persistence','ridge_history']].to_csv(destination/'predictions.csv',index=False)
+        combined[['station_id','city','target_date','y_aqi','y_category','censored','fold','climatology','ridge_strict','ridge_calendar_spatial','ridge_strict_same_training','persistence','ridge_history']].to_csv(destination/'predictions.csv',index=False)
     result = {'generated_at':datetime.now(timezone.utc).isoformat(),'experiment':'NON_CAMS_PRELIMINARY','run_id':run_id,
               'status':'PRELIMINARY_COMPLETE_ON_PARTIAL_DATA' if quality['status']=='PARTIAL_COLLECTION' else 'PRELIMINARY_COMPLETE',
               'dataset_hash':quality['dataset_hash'],'data_version':quality['data_version'],'plan_hash':plan_hash,
               'code_sha256':code_hash,'git_sha':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+              'runtime':{'python':platform.python_version(),'packages':{p:version(p) for p in
+                  ('numpy','pandas','scipy','scikit-learn','pyarrow','matplotlib','lightgbm','xgboost','PyYAML','psutil')}},
+              'implementation_audit_revision':2,
+              'superseded_spatial_and_history_ablation_runs':['29e43a4d61965d039d42587a272512a34610f5b1e0ed09c25e29cf662980649a'],
               'protocol_sha256':protocol['_sha256'],'final_test_range':final['test_range'],'final_test_scored':False,
-              'folds':fold_results,'spatial':spatial,'subgroups':subgroups,'paired_comparisons':comparisons,
+              'folds':fold_results,'spatial':spatial,'spatial_assignments_from_catalogue':assignments,
+              'subgroups':subgroups,'paired_comparisons':comparisons,
               'uncertainty':interval_results,'advisory':advisory_results,
               'primary_baseline_complete':False,'CAMS_ARCHIVE_STATUS':'PENDING_MANUAL_ADS_CREDENTIAL',
               'legacy':'NOT_COMPARABLE: city-level 2015-2020 target and inputs differ; inherited results remain separate',
               'conditional_history_notice':PLAN['publication_caveat'],
+              'history_ablation_training_population':'identical conditional_train rows for both Ridge models',
               'advisory_limits':'Empirical validation only; not a vulnerable-cohort health benefit or exchangeability guarantee',
+              'advisory_cohort_policy_targets':protocol['advisory']['under_warning_targets'],
+              'advisory_cohort_mapping':'P0/P1/P2 shared across exposure strata; P3_target_<rate> maps to the declared cohort rate, without cohort outcome data',
               'primary_experiments_blocked':['Raw CAMS','Direct ML versus raw CAMS','Residual Ridge','Residual LightGBM','Residual XGBoost','CAMS feature ablation','CAMS correction uncertainty/advisory'],
               'artifact':config.portable(destination/'results.json')}
     write_json(destination/'results.json',result)

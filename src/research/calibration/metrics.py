@@ -149,4 +149,8 @@ def summary(observed, forecast, observed_category, censored):
     out['poor_or_worse'] = exceedance(observed_category, forecast, 3)
     out['very_poor_or_worse'] = exceedance(observed_category, forecast, 4)
     out['censored_severe'] = censored_severe(forecast[censored])
+    out['by_observed_category'] = by_category(observed,forecast,observed_category,censored)
+    for label, entry in out['by_observed_category'].items():
+        n = entry['n'] + (entry.get('censored_days') or {}).get('n',0)
+        entry['descriptive_only_below_30'] = n < 30
     return out

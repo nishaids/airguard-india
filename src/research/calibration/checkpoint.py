@@ -1,6 +1,7 @@
 """Audit the inherited caches without API requests or production mutations."""
 from __future__ import annotations
 import gzip
+import copy
 import hashlib
 import json
 import time
@@ -50,6 +51,32 @@ def verify(record):
     return len(content)
 
 
+def apply_repairs(stations, repairs):
+    """Overlay versioned repairs only when their exact inherited base is proven."""
+    stations = copy.deepcopy(stations)
+    originals, applied = [], []
+    for station, sensors in repairs.get('stations', {}).items():
+        if station not in stations:
+            continue
+        for pollutant, entry in sensors.items():
+            if entry.get('status') not in ('repaired', 'no_missing_rows'):
+                continue
+            base = stations[station]['sensors'][pollutant]
+            if entry['base_record_sha256'] != canonical_hash(base):
+                raise ValueError('Repair overlay does not match frozen inherited sensor')
+            if entry['override_sha256'] != canonical_hash({k:v for k,v in entry.items() if k!='override_sha256'}):
+                raise ValueError('Repair overlay metadata checksum mismatch')
+            originals.append(base)
+            if entry['status']=='repaired':
+                replacement=entry['replacement']
+                if replacement['sensor_id']!=base['sensor_id'] or replacement.get('base_sha256')!=base['sha256']:
+                    raise ValueError('Repair overlay changes sensor identity')
+                verify(replacement)
+                stations[station]['sensors'][pollutant]=replacement
+                applied.append({'station_id':station,'pollutant':pollutant,'added_rows':entry['added_rows']})
+    return stations, originals, applied
+
+
 def capture():
     protocol = load()
     selection = read_json(data.MANIFESTS / 'station_selection.json')
@@ -61,20 +88,25 @@ def capture():
             for key, entry in read_json(path).get('stations', {}).items():
                 if entry.get('complete'):
                     stations[key] = entry
+    repairs_path = data.MANIFESTS / 'openaq_repairs.json'
+    repairs = read_json(repairs_path) if repairs_path.exists() else {}
+    stations, repair_originals, repairs_applied = apply_repairs(stations, repairs)
     manifests = {name: read_json(data.MANIFESTS / f'{name}_archive_manifest.json')
                  for name in ('weather', 'firms', 'cams')
                  if (data.MANIFESTS / f'{name}_archive_manifest.json').exists()}
     records = [s for e in stations.values() for s in e.get('sensors', {}).values() if s.get('file')]
     records += [r for m in manifests.values() for r in m.get('files', {}).values()]
-    size = sum(verify(record) for record in records)
-    identity = {'selection_sha256': hashlib.sha256((data.MANIFESTS / 'station_selection.json').read_bytes()).hexdigest(),
+    size = sum(verify(record) for record in records + repair_originals)
+    identity = {'selection_semantic_sha256': canonical_hash(selection),
                 'sensors': sorted((k, p, s['sha256']) for k, e in stations.items()
                                   for p, s in e.get('sensors', {}).items() if s.get('file')),
                 'weather': sorted((k, v['sha256']) for k, v in manifests.get('weather', {}).get('files', {}).items()),
                 'firms': sorted((k, v['sha256']) for k, v in manifests.get('firms', {}).get('files', {}).items())}
     version = canonical_hash(identity)
     snapshot = {'data_version': version, 'protocol_sha256': protocol['_sha256'],
-                'selection': selection, 'stations': stations, 'manifests': manifests, 'identity': identity}
+                'selection': selection, 'stations': stations, 'manifests': manifests, 'identity': identity,
+                'repairs_applied': repairs_applied,
+                'selection_file_sha256':hashlib.sha256((data.MANIFESTS/'station_selection.json').read_bytes()).hexdigest()}
     path = data.DERIVED / version / 'inputs.json'
     if not path.exists():
         write_json(path, snapshot)
@@ -90,6 +122,7 @@ def capture():
               'proxy_cams_files_preserved': len(manifests.get('cams', {}).get('files', {})),
               'proxy_cams_used_for_research': False, 'checksummed_files': len(records),
               'uncompressed_bytes_verified': size, 'checksum_audit': 'PASS',
+              'repairs_applied': repairs_applied,'original_repair_bases_verified':len(repair_originals),
               'snapshot': config.portable(path), 'no_api_requests': True}
     write_json(OUT / 'recovery_checkpoint.json', report)
     return snapshot, report

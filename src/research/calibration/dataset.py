@@ -180,6 +180,11 @@ def fire_features(stations, dates, detections):
 
 
 def build(extra_lag_hours=0, write=True, jobs=-2):
+    # The 2026-10-12 continuation supersedes the earlier proxy experiment.
+    # Preserve its source and caches, but prevent accidental proxy fitting.
+    from src.research.calibration.primary import ArchiveBlocked, CAMS_ARCHIVE_STATUS
+    raise ArchiveBlocked(CAMS_ARCHIVE_STATUS + '; use calibration.measured for the non-CAMS study. '
+                         'Integrate verified operational ADS fields before enabling this legacy builder.')
     protocol = load_protocol()
     selection = json.loads(SELECTION.read_text(encoding='utf-8'))
     hours = data.manifest('openaq_hours_manifest.json')

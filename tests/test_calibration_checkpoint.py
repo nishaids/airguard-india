@@ -14,6 +14,46 @@ from src.research.calibration.statistics import finite_quantile, paired, holm, w
 from src.research.calibration.preliminary import eligible, climatology, freeze_plan
 
 
+@pytest.mark.parametrize('prediction',[[np.nan]*40,[400]*39,[np.inf]*40])
+def test_advisory_rejects_invalid_pairs(prediction):
+    with pytest.raises(ValueError):
+        select_risk_quantile([5]*40,{.5:prediction},.05)
+    with pytest.raises(ValueError):
+        warning([5]*40,prediction)
+
+
+def test_qc_ledger_uses_same_rejection_reason(tmp_path,monkeypatch):
+    from src.research.calibration.measured import qc_station
+    monkeypatch.setattr(data.config,'PROJECT_ROOT',tmp_path)
+    path=sensor_file(tmp_path,[10],coverage=None)
+    _,_,_,audit,ledger,_=qc_station({'sensors':{'PM2.5':{'file':path.name,'rows':1}}})
+    assert audit['PM2.5']['rejected']=={'coverage_unknown':1}
+    assert ledger[0]['reason']=='coverage_unknown'
+
+
+def test_runner_audits_values_and_history_provenance():
+    from src.research.calibration.preliminary import audit_features
+    day=date(2025,6,1)
+    with pytest.raises(LeakageError):
+        audit_features(pd.DataFrame([{'target_date':day,'wx_temp_mean':28.}]))
+    with pytest.raises(LeakageError):
+        audit_features(pd.DataFrame([{'target_date':day,'obs24_aqi':100.,
+            'latest_measured_bin_end_utc':Cutoffs.for_target(day).measurement+timedelta(seconds=1)}]))
+    with pytest.raises(ValueError,match='bin-end'):
+        audit_features(pd.DataFrame([{'target_date':day,'obs24_aqi':100.}]))
+
+
+def test_builder_identity_includes_aqi_and_availability(tmp_path,monkeypatch):
+    from src.research.calibration import measured
+    original=measured.builder_code_hash()
+    path=tmp_path/'aqi.py';path.write_text('scientific dependency change')
+    monkeypatch.setattr(measured.aqi,'__file__',str(path))
+    monkeypatch.setattr(measured.config,'portable',lambda p:str(p))
+    changed=measured.builder_code_hash()
+    path.write_text('different scientific dependency')
+    assert measured.builder_code_hash()!=changed and changed!=original
+
+
 @pytest.mark.parametrize('field,delta',[
     ('latest_measured_bin_end_utc',timedelta(hours=-3)+timedelta(seconds=1)),
     ('latest_neighbour_bin_end_utc',timedelta(hours=-3)+timedelta(seconds=1)),
@@ -187,6 +227,32 @@ def test_window_resume_makes_no_duplicate_requests(tmp_path):
         fetch_sensor(client,sensor,start,start+timedelta(hours=2),checkpoint_dir=tmp_path)
 
 
+def test_full_page_resumes_only_missing_extra_pages(tmp_path):
+    from src.research.calibration.openaq_archive import fetch_sensor
+    start=datetime(2025,5,1,tzinfo=timezone.utc)
+    sensor={'sensor_id':123,'first_utc':start.isoformat(),'last_utc':(start+timedelta(hours=999)).isoformat(),
+            'pollutant':'PM2.5','units':'ug/m3'}
+    hourly=[{'value':i+1,'parameter':{'name':'pm25','units':'ug/m3'},'period':{
+        'datetimeFrom':{'utc':(start+timedelta(hours=i)).isoformat()},
+        'datetimeTo':{'utc':(start+timedelta(hours=i+1)).isoformat()}}} for i in range(1000)]
+    class Client:
+        pages=[]
+        def get(self,path,params):
+            page=params.get('page',1);self.pages.append(page)
+            return {'results':hourly if page==1 else [],'meta':{'page':page,'limit':1000}}
+    client=Client()
+    first=fetch_sensor(client,sensor,start,start+timedelta(hours=1000),checkpoint_dir=tmp_path)
+    assert client.pages==[1,2] and len(first[0])==1000
+    assert first[1][0]['pagination_complete'] is True
+    for path in tmp_path.glob('*.json'):
+        if json.loads(path.read_text())['request'].get('page')==2:
+            path.unlink()
+    assert fetch_sensor(client,sensor,start,start+timedelta(hours=1000),checkpoint_dir=tmp_path)==first
+    assert client.pages==[1,2,2]
+    fetch_sensor(client,sensor,start,start+timedelta(hours=1000),checkpoint_dir=tmp_path)
+    assert client.pages==[1,2,2]
+
+
 def test_deployment_identity_is_explicit(monkeypatch):
     from src.research.storage import issuance_identity
     monkeypatch.delenv('AIRGUARD_GIT_SHA',raising=False)
@@ -196,3 +262,20 @@ def test_deployment_identity_is_explicit(monkeypatch):
     assert issuance_identity()['git_sha']=='a'*40
     monkeypatch.setenv('AIRGUARD_GIT_SHA','untrusted')
     assert issuance_identity()['git_sha'] is None
+
+
+def test_primary_rejects_proxy_and_reanalysis():
+    from src.research.calibration.primary import require_operational_archive, ArchiveBlocked, guard_primary_row
+    with pytest.raises(ArchiveBlocked):
+        require_operational_archive({'source':'CAMS_GLOBAL_VIA_OPEN_METEO_SHORT_LEAD_ARCHIVE','issue_time_valid':True})
+    with pytest.raises(LeakageError):
+        require_operational_archive({'source':'COPERNICUS_ADS_OPERATIONAL_FORECAST',
+            'dataset':'cams-global-atmospheric-composition-forecasts','source_type':'reanalysis','files':{'x':{}},'units_verified':True})
+    cut=Cutoffs.for_target(date(2025,6,1))
+    row={'target_date':cut.target_date,'cams_aqi_frozen':100.,'cams_source':'COPERNICUS_ADS_OPERATIONAL_FORECAST','cams_issue_time_valid':True,
+         'cams_run_initialized_utc':cut.issue-timedelta(hours=14),'cams_available_at_utc':cut.issue-timedelta(hours=6)}
+    guard_primary_row(row,['cams_aqi_frozen'])
+    with pytest.raises(LeakageError):
+        guard_primary_row(row,['cams_matched'])
+    with pytest.raises(LeakageError):
+        guard_primary_row({**row,'cams_available_at_utc':cut.issue+timedelta(seconds=1)},['cams_aqi_frozen'])

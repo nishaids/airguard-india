@@ -62,8 +62,20 @@ def holm(results):
     return results
 
 
+def advisory_pairs(category, forecast):
+    category, forecast = np.asarray(category), np.asarray(forecast,dtype=float)
+    if category.shape != forecast.shape or category.ndim != 1:
+        raise ValueError('Advisory categories and forecasts must be aligned vectors')
+    if not np.isfinite(forecast).all() or not np.isfinite(category).all():
+        raise ValueError('Advisory pairs must be finite')
+    if ((category<0)|(category>5)|(category!=category.astype(int))).any():
+        raise ValueError('Advisory categories must be integers in 0..5')
+    return category,forecast
+
+
 def warning(category, forecast):
-    category, issued = np.asarray(category), bands(forecast)
+    category, forecast = advisory_pairs(category,forecast)
+    issued = bands(forecast)
     high = category >= 3
     return {'n':len(category), 'under_warning':float(np.mean(issued<category)) if len(category) else None,
             'over_warning':float(np.mean(issued>category)) if len(category) else None,
@@ -72,11 +84,33 @@ def warning(category, forecast):
             'mean_warning_distance':float(np.mean(issued-category)) if len(category) else None}
 
 
+def warning_with_intervals(frame, forecast, repetitions=5000):
+    result = warning(frame.y_category, forecast)
+    observed, issued = frame.y_category.to_numpy(), bands(forecast)
+    losses = pd.DataFrame({'date': pd.to_datetime(frame.target_date),
+                           'under_warning': (issued < observed).astype(float),
+                           'over_warning': (issued > observed).astype(float)})
+    days = pd.date_range(losses.date.min(), losses.date.max())
+    summed = losses.groupby('date')[['under_warning', 'over_warning']].sum().reindex(days, fill_value=0)
+    counts = losses.groupby('date').size().reindex(days, fill_value=0).to_numpy()
+    if len(days) >= 7:
+        rng = np.random.default_rng(42)
+        starts = rng.integers(0, len(days)-7+1, size=(repetitions, math.ceil(len(days)/7)))
+        indices = (starts[:, :, None] + np.arange(7)).reshape(repetitions, -1)[:, :len(days)]
+        denominator = counts[indices].sum(axis=1)
+        for field in ('under_warning', 'over_warning'):
+            numerator = summed[field].to_numpy()[indices].sum(axis=1)
+            estimates = numerator[denominator > 0] / denominator[denominator > 0]
+            result[field + '_ci95_date_block'] = np.quantile(estimates, [.025, .975]).tolist()
+    return result
+
+
 def select_risk_quantile(category, predictions, target):
     n = len(category)
     if not n:
         return None
     for quantile, pred in sorted(predictions.items()):
+        category, pred = advisory_pairs(category,pred)
         risk = (int((bands(pred)<np.asarray(category)).sum())+1)/(n+1)
         if risk <= target:
             return quantile

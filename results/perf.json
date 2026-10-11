@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-10-11T14:13:37.968996+00:00",
+  "origin": "https://webapp-phi-taupe.vercel.app",
+  "tool": "autocannon 8.0.0",
+  "connections": 1,
+  "requests": 20,
+  "warm_cache_header": "MISS",
+  "cached": {
+    "p97_5_response_ms": 178,
+    "errors": 0,
+    "non_2xx": 0,
+    "notice": "Total response latency; p97.5 is a conservative upper bound on p95 TTFB."
+  },
+  "uncached_provider_path": "NOT_MEASURED; do not infer a provider-miss latency from warm summaries",
+  "accepted": true
+}

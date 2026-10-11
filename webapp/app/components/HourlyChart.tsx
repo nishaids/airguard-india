@@ -17,8 +17,8 @@ export default function HourlyChart({ hours, field, forecast }: { hours: Hour[];
     <XAxis dataKey="time" tickFormatter={localHour} minTickGap={65} tick={{ fill: "#324b43", fontSize: 11 }} />
     <YAxis tick={{ fill: "#324b43", fontSize: 12 }} width={44} />
     <Tooltip labelFormatter={value => localHour(String(value))} contentStyle={{ color: "#17342b", background: "#fff", borderColor: "#a8bbb2" }} />
-    {lower && <ReferenceArea x1={lower[0]} x2={lower[1]} fill="#dcece0" fillOpacity={.65} label={{ value: "Lower AQI", position: "insideTop", fill: "#17342b", fontSize: 10 }} />}
-    {highest && <ReferenceArea x1={highest[0]} x2={highest[1]} fill="#f2dfce" fillOpacity={.65} label={{ value: "Higher AQI", position: "insideTop", fill: "#603f24", fontSize: 10 }} />}
+    {lower && <ReferenceArea x1={lower[0]} x2={lower[1]} fill="#dcece0" fillOpacity={.65} label={{ value: "Lower relative exposure", position: "insideTop", fill: "#17342b", fontSize: 10 }} />}
+    {highest && <ReferenceArea x1={highest[0]} x2={highest[1]} fill="#f2dfce" fillOpacity={.65} label={{ value: "Higher relative exposure", position: "insideTop", fill: "#603f24", fontSize: 10 }} />}
     {forecast?.peak_hour && <ReferenceLine x={forecast.peak_hour} stroke="#603f24" strokeDasharray="4 4" label={{ value: "AQI peak", position: "insideBottomRight", fill: "#603f24", fontSize: 10 }} />}
     <Line name={field} dataKey="value" type="linear" stroke="#215b49" strokeWidth={2.5} dot={false} isAnimationActive={false} connectNulls={false} />
   </LineChart></ResponsiveContainer></div>;

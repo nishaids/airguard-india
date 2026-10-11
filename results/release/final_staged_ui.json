@@ -1,0 +1,18 @@
+{
+  "url": "https://webapp-3tmsvl9x5-nishanth-s-projects-e335f110.vercel.app",
+  "checks": [
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/forecast",
+      "status": 200
+    },
+    {
+      "path": "/api/health",
+      "status": 200
+    }
+  ],
+  "backend": "unchanged from the 31-check staged and 36-check public acceptance"
+}

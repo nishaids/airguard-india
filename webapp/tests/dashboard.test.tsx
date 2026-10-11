@@ -14,6 +14,14 @@ beforeEach(() => { localStorage.clear(); window.history.replaceState({}, "", "/l
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 
 describe("nationwide dashboard", () => {
+  it("loads the chart only when requested while keeping hourly text available", async () => {
+    render(<NationwideDashboard />);
+    const toggle = await screen.findByRole('button', { name: 'Show hourly chart' });
+    expect(screen.queryByText('Hourly chart')).not.toBeInTheDocument();
+    expect(screen.getByText('Hourly values and categories — chart text alternative')).toBeInTheDocument();
+    fireEvent.click(toggle);
+    expect(screen.getByText('Hourly chart')).toBeInTheDocument();
+  });
   it("shows loading, current and tomorrow with modelled evidence", async () => {
     render(<NationwideDashboard />);
     expect(screen.getByText(/Loading current conditions/)).toBeInTheDocument();

@@ -1,0 +1,633 @@
+{
+ "generated_at": "2026-10-11T15:31:06.705379+00:00",
+ "source": "docs/MASTER_SPEC.md",
+ "tally": {
+  "FIXED": 9,
+  "PARTIAL": 18,
+  "OPEN": 8,
+  "BLOCKED": 17,
+  "REFUTED": 0
+ },
+ "evidence": {
+  "db_generated_at": "2026-10-11T15:09:30.996305+00:00",
+  "counts": {
+   "stations": 135,
+   "air_quality_observations": 1657,
+   "weather_forecasts": 7770,
+   "fire_detections": 2275,
+   "environmental_records": 22590,
+   "provider_snapshots": 199,
+   "feature_snapshots": 20,
+   "forecast_runs": 160,
+   "forecast_verifications": 0,
+   "station_daily_targets": 0,
+   "research_forecast_runs": 12,
+   "research_forecast_verifications": 0,
+   "model_versions": 0,
+   "training_runs": 0
+  },
+  "issue_dispatches": [
+   {
+    "jobname": "airguard-research-issue",
+    "status": "succeeded",
+    "start_time": "2026-10-11 14:30:00.160479+00:00",
+    "end_time": "2026-10-11 14:30:00.200411+00:00"
+   }
+  ],
+  "issue_succeeded": 1,
+  "research_forecast_runs": 12,
+  "research_verifications": 0,
+  "station_daily_targets": 0,
+  "model_versions": 0,
+  "stations": 135,
+  "measured_rows": 267,
+  "measured_stations": 5,
+  "duplicate_record_keys": 0,
+  "rls_everywhere": true,
+  "cached_p975_ms": 192,
+  "uncached_p975_ms": 3377,
+  "lighthouse": {
+   "performance": 0.95,
+   "accessibility": 1
+  },
+  "qa_flagged": null,
+  "readiness_passed": 3,
+  "readiness_total": 17,
+  "screens": 29,
+  "path_leaks": [
+   "results/cleaning_report.json",
+   "results/data_quality_report.json",
+   "results/feature_engineering_report.json",
+   "results/legacy/safe_windows_v1.json",
+   "results/safe_windows.json",
+   "data/raw/PROVENANCE.json"
+  ]
+ },
+ "limitations": {
+  "L01": {
+   "severity": "C",
+   "status": "BLOCKED",
+   "limitation": "**No CPCB CAAQMS station data reaches the live system.** The \"measured\" path depends on OpenAQ, which returned only US-embassy AirNow (PM2.5-only) and AirGradient low-cost sensors in the places tested.",
+   "finding": "Station metadata now exists (135 rows), but the measured path is still OpenAQ only: 267 rows across 5 stations and 0 daily station targets. Licensed CPCB hourly exports remain the blocker.",
+   "evidence": [
+    "results/release/database_audit.json",
+    "src/ingestion/openaq.py",
+    "HUMAN_ACTIONS.md:10"
+   ],
+   "fix": "WP1"
+  },
+  "L02": {
+   "severity": "C",
+   "status": "OPEN",
+   "limitation": "**CPCB/data.gov.in ingestion is failing.**",
+   "finding": "The data.gov.in real-time path is still unavailable. Its exact failure is preserved rather than hidden, and no other provider is relabelled CPCB.",
+   "evidence": [
+    "results/optional_provider_checks.json",
+    "scripts/provision_optional_cloud_sources.py"
+   ],
+   "fix": "WP1"
+  },
+  "L03": {
+   "severity": "H",
+   "status": "PARTIAL",
+   "limitation": "**Stale observations.**",
+   "finding": "Freshness is computed per provider and surfaced as FRESH/STALE/DELAYED with configurable thresholds, so stale readings are labelled instead of silently used. Upstream staleness itself persists.",
+   "evidence": [
+    "src/nationwide/service.py:44"
+   ],
+   "fix": "WP1"
+  },
+  "L04": {
+   "severity": "C",
+   "status": "BLOCKED",
+   "limitation": "**No archived CAMS forecasts**, so no honest backtest of the live forecaster exists.",
+   "finding": "No archived issue-time CAMS forecast exists. ADS credential and terms acceptance are pending and were explicitly skipped; current fields and reanalysis are refused as substitutes.",
+   "evidence": [
+    "results/backtest_main.json",
+    "HUMAN_ACTIONS.md:9"
+   ],
+   "fix": "WP1, Part I"
+  },
+  "L05": {
+   "severity": "H",
+   "status": "BLOCKED",
+   "limitation": "**Research dataset is old and narrow.** Ends 1 Jul 2020; city-level daily averages (not stations); only 12 of 26 cities used.",
+   "finding": "The legacy Kaggle city-day record still ends 2020-07-01 and is confined to clearly labelled legacy routes. Replacing it needs the licensed station archive of L01.",
+   "evidence": [
+    "webapp/public/data/meta.json",
+    "webapp/app/research/legacy/page.js"
+   ],
+   "fix": "WP1, WP5"
+  },
+  "L06": {
+   "severity": "H",
+   "status": "BLOCKED",
+   "limitation": "**Supplied vs recomputed AQI disagree** (MAE 24.8; exact bucket agreement 67.7%), worst on CO/O3-dominated days, because city_day lacks 8-h maxima.",
+   "finding": "The supplied-versus-recomputed AQI disagreement is measured and published rather than smoothed over; only station hourly data removes its cause.",
+   "evidence": [
+    "results/hai_divergence.json",
+    "docs/DATA_SOURCES.md"
+   ],
+   "fix": "WP1 (station hourly data removes this)"
+  },
+  "L07": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**NH3 and Pb never available from CAMS**, so live AQI uses 6 of 8 CPCB pollutants. Disclosed, but can understate AQI where NH3 matters (agricultural belts).",
+   "finding": "NH3 and Pb absence is disclosed in the API payload and the data-source register, and the understatement risk is stated. The pollutants remain unavailable.",
+   "evidence": [
+    "src/nationwide/service.py:222",
+    "docs/DATA_SOURCES.md"
+   ],
+   "fix": "WP1 (station NH3), paper limitation"
+  },
+  "L08": {
+   "severity": "M",
+   "status": "FIXED",
+   "limitation": "**No data QA/QC layer is visible for station data** (flat-lines, spikes, PM2.5 > PM10, unit errors). CPCB real-time data is not quality-checked at source.",
+   "finding": "A QA/QC layer flags without deleting: negative and zero values, flat lines, rolling-MAD spikes with event exemption, PM2.5 above PM10, unit sanity and daily completeness, exported per station.",
+   "evidence": [
+    "src/qa/hourly.py",
+    "results/qa_summary.json",
+    "tests/test_hourly_qa.py"
+   ],
+   "fix": "WP1"
+  },
+  "L09": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**Weather inputs are not archived as issued.** Weather comes from Open-Meteo `gfs_seamless` at request time; no historical issued-weather store for training.",
+   "finding": "Issued weather is stored with its retrieval time and issue-time eligibility is tested, but no historical issued-weather archive exists for training.",
+   "evidence": [
+    "results/issue_time_features.json",
+    "src/research/protocol.py:34"
+   ],
+   "fix": "WP1"
+  },
+  "L10": {
+   "severity": "L",
+   "status": "PARTIAL",
+   "limitation": "**Fire context is shown but unused** (correctly), and no smoke-transport feature exists.",
+   "finding": "Fire detections are stored and displayed as context with no AQI adjustment, which is the honest treatment. Feature group F stays untested until the backtest can run.",
+   "evidence": [
+    "src/nationwide/service.py:215",
+    "results/ablation.json"
+   ],
+   "fix": "WP2 ablation F"
+  },
+  "L11": {
+   "severity": "C",
+   "status": "OPEN",
+   "limitation": "**Live forecast is raw CAMS, uncorrected and unvalidated.**",
+   "finding": "The live product still reports NOT_VALIDATED with a null corrected AQI and null interval. No station correction model exists to change that.",
+   "evidence": [
+    "src/nationwide/service.py:190"
+   ],
+   "fix": "WP2"
+  },
+  "L12": {
+   "severity": "C",
+   "status": "BLOCKED",
+   "limitation": "**Likely CAMS ozone over-prediction drives the headline AQI.** O3 is the dominant pollutant in Avadi (135/141) and in Delhi's tomorrow (239) in October, when PM usually dominates (confirm against CPCB daily bulletins for the same dates in Phase 0). Literature reports CAMS O3 high bias vs OpenAQ stations and ~35% O3 over-estimation by regional models over India (NOx titration).",
+   "finding": "Raw-CAMS ozone bias remains a hypothesis (H2). The bias atlas is a PENDING artefact for want of matched station pairs.",
+   "evidence": [
+    "results/bias_atlas.json",
+    "docs/PROTOCOL.md"
+   ],
+   "fix": "WP2 (per-pollutant correction), Fig. 2"
+  },
+  "L13": {
+   "severity": "H",
+   "status": "BLOCKED",
+   "limitation": "**PM2.5 may be under-predicted.** Single sample: Avadi 24-h CAMS PM2.5 26.9 \u00b5g/m\u00b3 vs nearest measured 36.8 \u00b5g/m\u00b3 (\u224827% low). Anecdotal, but consistent with known under-prediction of operational systems (Delhi AQEWS ~30\u201335% per CEEW, 2025).",
+   "finding": "The PM2.5 under-prediction evidence is still a single anecdotal sample; the same pending atlas would settle it.",
+   "evidence": [
+    "results/bias_atlas.json"
+   ],
+   "fix": "WP2"
+  },
+  "L14": {
+   "severity": "H",
+   "status": "PARTIAL",
+   "limitation": "**0.4\u00b0 (~45 km) grid** cannot resolve neighbourhoods; one cell spans Avadi and central Chennai.",
+   "finding": "The 0.4 degree grid, its interpolation and its inability to describe street-level exposure are disclosed on /methods, and every grid-derived value is badged MODELLED.",
+   "evidence": [
+    "webapp/app/methods/page.js:10",
+    "webapp/app/components/AtlasMap.tsx:3"
+   ],
+   "fix": "WP2 (station-level MOS), WP7 (show grid honestly)"
+  },
+  "L15": {
+   "severity": "H",
+   "status": "BLOCKED",
+   "limitation": "**Upstream model run time not recorded**; \"issued_at\" is retrieval time. Lead time is therefore unknown in the ledger.",
+   "finding": "The provider exposes no model-run initialisation, so retrieval time is kept distinct from issue time instead of being relabelled. Run time arrives with the ADS archive.",
+   "evidence": [
+    "src/nationwide/service.py:225"
+   ],
+   "fix": "WP1 (ADS archive gives run time)"
+  },
+  "L16": {
+   "severity": "C",
+   "status": "PARTIAL",
+   "limitation": "**Legacy CV is not chronological.** CV MAE \u2248 30 vs test MAE \u2248 15; CV macro-F1 0.571 vs test 0.741. The site itself warns folds were city-ordered. `TimeSeriesSplit` on a city-stacked panel splits by city, not time.",
+   "finding": "The city-ordered leakage is audited and whole-date splitting is implemented, but the new protocol has never been evaluated on real pairs.",
+   "evidence": [
+    "src/research/legacy_cv_audit.py:9",
+    "src/research/protocol.py"
+   ],
+   "fix": "WP2 (date-blocked CV)"
+  },
+  "L17": {
+   "severity": "H",
+   "status": "PARTIAL",
+   "limitation": "**ML barely beats linear.** Linear Regression MAE 15.91 vs LightGBM 15.10 (\u22485%). Persistence 18.91. A reviewer will ask why boosting is needed.",
+   "finding": "The legacy linear-versus-boosting comparison is retained and labelled legacy. Restating it against a baseline ladder belongs to the pending backtest.",
+   "evidence": [
+    "results/master_comparison_regression.csv",
+    "results/backtest_main.json"
+   ],
+   "fix": "WP2 (state honestly; use as baseline ladder)"
+  },
+  "L18": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**\"Within 1 band\" \u2248 99% is uninformative** (persistence scores 99.41%).",
+   "finding": "Within-one-category survives only as a legacy diagnostic and is not a headline. POD, FAR and CSI for Poor-and-above await the backtest.",
+   "evidence": [
+    "src/research/evaluation.py:24"
+   ],
+   "fix": "WP2 (replace with POD/FAR/CSI for Poor+)"
+  },
+  "L19": {
+   "severity": "H",
+   "status": "PARTIAL",
+   "limitation": "**Uncalibrated class probabilities.** Replay shows \"model score 99%\". SMOTE distorts probabilities; SMOTE on time-ordered data creates synthetic days that never existed.",
+   "finding": "SMOTE is confined to the legacy classifier; the operational product publishes no calibrated probability and makes no claim to one.",
+   "evidence": [
+    "src/models/train_classification.py:17",
+    "results/uncertainty.json"
+   ],
+   "fix": "WP3"
+  },
+  "L20": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**Deployed model \u2260 reported best model** (LightGBM+SMOTE 0.7145 vs XGBoost+SMOTE 0.7411) because of the Vercel 250 MB function limit. Two apps (Streamlit and Vercel) serve different models.",
+   "finding": "Inference no longer runs inside the size-limited serverless function, but the model registry is empty (0 registered versions), so no release is pinned yet.",
+   "evidence": [
+    "src/research/serving.py:5",
+    "results/release/database_audit.json"
+   ],
+   "fix": "WP6 (move inference to the scheduled job)"
+  },
+  "L21": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**Replay shows \"Regression: unknown\"** \u2014 model provenance missing in UI.",
+   "finding": "The UI reads model provenance from the research payload instead of hard-coding it; it shows an unknown version precisely because the registry is empty.",
+   "evidence": [
+    "webapp/app/components/OperationalResearchPanel.tsx:8"
+   ],
+   "fix": "WP6/WP7"
+  },
+  "L22": {
+   "severity": "H",
+   "status": "BLOCKED",
+   "limitation": "**No severity-stratified skill** (Severe days are censored at \u2265401 and excluded from regression metrics; no POD/CSI for Very Poor+).",
+   "finding": "Severity-stratified skill, including the censored Severe band, needs the pending matched pairs; the censoring rule itself is implemented.",
+   "evidence": [
+    "src/research/evaluation.py",
+    "results/backtest_main.json"
+   ],
+   "fix": "WP2"
+  },
+  "L23": {
+   "severity": "M",
+   "status": "BLOCKED",
+   "limitation": "**No significance testing between models** (no Diebold\u2013Mariano, no bootstrap CIs).",
+   "finding": "Diebold-Mariano and bootstrap intervals have nothing to compare until the backtest produces daily loss differentials.",
+   "evidence": [
+    "results/backtest_main.json"
+   ],
+   "fix": "WP2"
+  },
+  "L24": {
+   "severity": "C",
+   "status": "BLOCKED",
+   "limitation": "**Vulnerability factors are hand-set**, not derived from concentration\u2013response evidence (e.g., children NO2 1.55, asthma SO2 1.75, cardiac PM2.5 1.70, \u03bb = 0.25).",
+   "finding": "Hand-set vulnerability factors are unchanged in HAI v1. HAI v2 cannot adopt published coefficients until a qualified human evidence review approves them.",
+   "evidence": [
+    "src/features/hai.py:31",
+    "results/hai_v2.json",
+    "HUMAN_ACTIONS.md:17"
+   ],
+   "fix": "WP4"
+  },
+  "L25": {
+   "severity": "C",
+   "status": "OPEN",
+   "limitation": "**The headline \"66.9% of city-days differ\" is partly circular**: it follows from the chosen factors and from the aggregation change itself (healthy-adult reference already differs on 25.95% of days with all factors = 1).",
+   "finding": "The circular 66.9 percent headline is no longer promoted anywhere in the product, but the Monte-Carlo sensitivity analysis that should replace it does not exist yet.",
+   "evidence": [
+    "results/hai_sensitivity.json",
+    "results/hai_divergence.json"
+   ],
+   "fix": "WP4 (sensitivity analysis)"
+  },
+  "L26": {
+   "severity": "H",
+   "status": "OPEN",
+   "limitation": "**Prior work overlaps**: a city-specific AQHI for Delhi and Varanasi built from Indian mortality time series (George et al., ERL 2025) and Canada's AQHI (Stieb et al., 2008). Novelty must be re-scoped (cohort + forecast + uncertainty), not \"first health-weighted index\".",
+   "finding": "The literature-review gate is still unpassed, so the novelty claim has not been re-scoped in writing against AQHI prior art.",
+   "evidence": [
+    "results/research/research_readiness.json:4",
+    "paper/main.tex"
+   ],
+   "fix": "Part C, WP4"
+  },
+  "L27": {
+   "severity": "H",
+   "status": "PARTIAL",
+   "limitation": "**No validation against any health outcome** (hospital admissions, mortality) \u2014 the index cannot claim it protects health.",
+   "finding": "The index is labelled an advisory heuristic throughout and no health-outcome validation is claimed. The missing validation is itself disclosed.",
+   "evidence": [
+    "src/features/hai.py",
+    "docs/PROTOCOL.md"
+   ],
+   "fix": "WP4 (state as advisory heuristic; optional outcome check if data access exists)"
+  },
+  "L28": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**Cohort rules are deterministic**; no individual risk, and live guidance uses only general text per cohort.",
+   "finding": "Cohort determinism and the absence of individual risk estimation are disclosed on /methods.",
+   "evidence": [
+    "webapp/app/methods/page.js"
+   ],
+   "fix": "WP7 copy, paper limitation"
+  },
+  "L29": {
+   "severity": "H",
+   "status": "BLOCKED",
+   "limitation": "**Clustering on 12 points.** Silhouette 0.355; indices disagree (DB and elbow vote k=4). The 9-vs-3 split mirrors burden level (north vs rest) although the method claims \"shape not magnitude\".",
+   "finding": "Clustering is unchanged pending coverage-gated station features; the replacement artefact is an honest PENDING stub rather than a rerun on the same twelve points.",
+   "evidence": [
+    "results/clusters_v2.json",
+    "results/evaluation_clustering.json"
+   ],
+   "fix": "WP5"
+  },
+  "L30": {
+   "severity": "H",
+   "status": "OPEN",
+   "limitation": "**Policy levers asserted without source apportionment.** Chennai and Thiruvananthapuram labelled \"vehicular NOx led\" from a +0.128 shape score.",
+   "finding": "The historical atlas still asserts a policy lever per archetype without a cited source-apportionment study for the city in question.",
+   "evidence": [
+    "webapp/app/research/historical-atlas/page.js:56"
+   ],
+   "fix": "WP5"
+  },
+  "L31": {
+   "severity": "H",
+   "status": "BLOCKED",
+   "limitation": "**Diwali and lockdown effects are not meteorologically normalised.** Lockdown (Mar\u2013May) and Diwali (post-monsoon stagnation, stubble fires) both coincide with seasonal weather shifts.",
+   "finding": "Meteorological normalisation of the Diwali and lockdown analyses needs ERA5 retrospective weather, which is not held.",
+   "evidence": [
+    "results/events_deweathered.json"
+   ],
+   "fix": "WP5 (RF deweathering)"
+  },
+  "L32": {
+   "severity": "M",
+   "status": "BLOCKED",
+   "limitation": "**No multiple-testing correction** (12 Mann\u2013Whitney tests per panel).",
+   "finding": "Holm correction lands with the deweathered rerun; the uncorrected legacy tests stay on legacy routes.",
+   "evidence": [
+    "results/events_deweathered.json"
+   ],
+   "fix": "WP5 (Holm)"
+  },
+  "L33": {
+   "severity": "M",
+   "status": "BLOCKED",
+   "limitation": "**Anomalies unexplained**: Amaravati Diwali \u221239%.",
+   "finding": "The Amaravati anomaly is still unexplained; the coverage check belongs to the same rerun.",
+   "evidence": [
+    "results/events_deweathered.json"
+   ],
+   "fix": "WP5 (check coverage)"
+  },
+  "L34": {
+   "severity": "M",
+   "status": "FIXED",
+   "limitation": "**Two inconsistent \"clean window\" methods**: historical uses instantaneous concentrations, 2-h window; live uses rolling CPCB AQI, 3-h window \u2014 the method the historical module explicitly rejected.",
+   "finding": "Live and historical code now share one exposure-window implementation with a common length, and a test asserts both call sites agree.",
+   "evidence": [
+    "src/features/exposure.py:20",
+    "src/features/safe_window.py:194",
+    "tests/test_shared_exposure.py"
+   ],
+   "fix": "WP5, WP7"
+  },
+  "L35": {
+   "severity": "H",
+   "status": "FIXED",
+   "limitation": "**Live \"lower-exposure window\" recommends 04:00\u201307:00 IST** for Avadi, when forecast boundary-layer height is 35\u2013110 m (near the day's minimum; it reaches ~2,000 m by midday). The dip comes largely from rolling-average lag and night-time CAMS O3, not demonstrably cleaner air \u2014 near-surface PM typically peaks under such shallow mixing.",
+   "finding": "The window is restricted to practical hours and carries a boundary-layer-height caveat, so a shallow-mixing night-time dip can no longer be recommended unqualified.",
+   "evidence": [
+    "src/features/exposure.py",
+    "tests/test_shared_exposure.py:19"
+   ],
+   "fix": "WP5, WP7"
+  },
+  "L36": {
+   "severity": "L",
+   "status": "PARTIAL",
+   "limitation": "**Policy simulator reduces pollutants independently** (no chemistry; disclosed).",
+   "finding": "The simulator states in the interface that its reductions are assumptions rather than causal policy effects, and the manuscript makes no simulator claim at all.",
+   "evidence": [
+    "webapp/app/components/CounterfactualScenario.tsx:24",
+    "results/policy_simulation.json"
+   ],
+   "fix": "Paper: exclude or keep as demo only"
+  },
+  "L37": {
+   "severity": "C",
+   "status": "OPEN",
+   "limitation": "**Readiness 3/17 gates.** Pending: literature review, issue-time dataset, baselines, rolling-origin, spatial validation, ablation, uncertainty, extreme events, advisory evaluation, prospective logging, 30-day record, statistics, reproducibility, security.",
+   "finding": "Readiness stands at 3 of 17 gates and the artefact predates the first successful fixed-time issuance, so it under-reports prospective logging.",
+   "evidence": [
+    "results/research/research_readiness.json"
+   ],
+   "fix": "WP2\u2013WP6, Part H"
+  },
+  "L38": {
+   "severity": "C",
+   "status": "FIXED",
+   "limitation": "**Fixed-time scheduled issuance has produced 0 forecasts** although schedules show \"active\"; `prospective_logging_active: false`.",
+   "finding": "Fixed-time issuance works: the 20:00 IST job has 1 succeeded dispatch(es) and the immutable ledger holds 12 research forecast runs. 0 verifications is correct one day into collection and is not backdated.",
+   "evidence": [
+    "src/nationwide/jobs.py:56",
+    "results/release/database_audit.json",
+    "supabase/migrations"
+   ],
+   "fix": "WP6"
+  },
+  "L39": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**On-demand ledger has duplicates** for near-identical coordinates (e.g., Coimbatore 11.0168,76.9558 and 11.0055,76.9661; Kolkata, Hyderabad, Kochi pairs; 23.40,70.40 issued 3\u00d7).",
+   "finding": "Canonical keying plus unique constraints hold the ledger at 0 duplicate record keys. Historic near-identical coordinates are deliberately not merged on rounded-grid identity, because one grid cell can bind different stations.",
+   "evidence": [
+    "src/nationwide/store.py:155",
+    "results/release/database_audit.json"
+   ],
+   "fix": "WP6"
+  },
+  "L40": {
+   "severity": "C",
+   "status": "FIXED",
+   "limitation": "**Very slow first load.** Summary API took 14.5 s (Avadi) and 18.6 s (Delhi); the first request was aborted; `/live` still showed \"Loading\u2026\" after 10 s.",
+   "finding": "Measured response distribution now sits at p97.5 192 ms cached (target 800 ms) and 3377 ms uncached (target 4 s), with queued asynchronous fills instead of a blocking first request.",
+   "evidence": [
+    "results/perf.json",
+    "docs/ASYNC_LIVE_DATA.md"
+   ],
+   "fix": "WP6"
+  },
+  "L41": {
+   "severity": "H",
+   "status": "OPEN",
+   "limitation": "**Local machine path leaked in public JSON**: `D:\\PODS Project\\airguard-india\\data\\raw\\city_hour.csv`.",
+   "finding": "Published exports are clean and guarded in CI, but 6 generated file(s) under results, data, webapp/public still embed a local absolute path (data/raw/PROVENANCE.json are publicly served).",
+   "evidence": [
+    "scripts/check_public_exports.py:10",
+    ".github/workflows/quality.yml"
+   ],
+   "fix": "WP6"
+  },
+  "L42": {
+   "severity": "M",
+   "status": "FIXED",
+   "limitation": "**\"Data and model cards\" tab froze the page in testing** (>30 s unresponsive; reproduce in Phase 0); `/research` showed \"Loading the research evidence\u2026\" for >8 s.",
+   "finding": "Charts load lazily behind skeletons with retry paths, and Lighthouse mobile scores 0.95 for performance on the live route.",
+   "evidence": [
+    "docs/ASYNC_LIVE_DATA.md",
+    "results/lighthouse/live-mobile-final.report.json"
+   ],
+   "fix": "WP7"
+  },
+  "L43": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**Text-encoding bugs**: \"Open the forecast \u00e2\u2020\u2019\", \"\u00c2\u00b7\".",
+   "finding": "Sources are UTF-8 and published artefacts are scanned, but no reproducible mojibake case was ever captured, so this cannot be closed as verified.",
+   "evidence": [
+    "scripts/check_public_exports.py",
+    "webapp/app/layout.js:17"
+   ],
+   "fix": "WP7"
+  },
+  "L44": {
+   "severity": "M",
+   "status": "FIXED",
+   "limitation": "**Licensing for scale**: Open-Meteo's free hosted API is non-commercial with quotas; OpenAQ licences vary by provider.",
+   "finding": "Licence terms are recorded per source and the deployment is treated as non-commercial, so MIT code licensing is no longer implied to cover upstream data.",
+   "evidence": [
+    "docs/LICENSES.md:10",
+    "HUMAN_ACTIONS.md:23"
+   ],
+   "fix": "WP6, Part I"
+  },
+  "L45": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**No visible rate limiting, input validation, monitoring, or uptime alerting.**",
+   "finding": "Row-level security covers every AirGuard table (True), request budgets and input validation are enforced and /status reports ingestion health. Uptime and missed-run alerting is the remaining gap.",
+   "evidence": [
+    "src/nationwide/store.py",
+    "webapp/app/status/page.js",
+    "results/release/database_audit.json"
+   ],
+   "fix": "WP6"
+  },
+  "L46": {
+   "severity": "H",
+   "status": "FIXED",
+   "limitation": "**The \"Atlas\" has no map.** No map container (Leaflet/MapLibre/canvas/iframe) on `/city-atlas` or `/live`; the \"atlas\" is cards, tables and bar charts.",
+   "finding": "The atlas renders a MapLibre GL map with a legend that separates measured stations from modelled grid values.",
+   "evidence": [
+    "webapp/app/components/AtlasMap.tsx:3"
+   ],
+   "fix": "WP7"
+  },
+  "L47": {
+   "severity": "H",
+   "status": "FIXED",
+   "limitation": "**Mobile layout breaks** at 375 px: 6 of 8 nav links and data tables overflow horizontally.",
+   "finding": "Navigation collapses on small screens, wide tables become card lists, and 29 screenshots at 375 px and 1280 px cover every route.",
+   "evidence": [
+    "webapp/app/components/NavBar.js",
+    "docs/screens"
+   ],
+   "fix": "WP7"
+  },
+  "L48": {
+   "severity": "M",
+   "status": "BLOCKED",
+   "limitation": "**English only**; Hindi and Tamil \"await review\".",
+   "finding": "Health guidance is English only. No named native Tamil or Hindi reviewer has approved a version, and unreviewed translation would be worse than none.",
+   "evidence": [
+    "webapp/app/lib/i18n.ts",
+    "HUMAN_ACTIONS.md:18"
+   ],
+   "fix": "WP7"
+  },
+  "L49": {
+   "severity": "M",
+   "status": "PARTIAL",
+   "limitation": "**No alerts or notifications**, no PWA manifest, no OpenGraph tags (links share badly).",
+   "finding": "A PWA manifest, OpenGraph and Twitter card metadata ship. Opt-in alerts are not built because no channel or recipient is authorised.",
+   "evidence": [
+    "webapp/app/manifest.js",
+    "webapp/app/layout.js:17",
+    "HUMAN_ACTIONS.md:21"
+   ],
+   "fix": "WP7"
+  },
+  "L50": {
+   "severity": "M",
+   "status": "BLOCKED",
+   "limitation": "**Uncertainty is invisible to users** (only a daily min\u2013max range labelled \"not a confidence interval\").",
+   "finding": "Users still see a daily min-max range, correctly labelled as not a confidence interval. Real intervals need the pending conformal calibration.",
+   "evidence": [
+    "results/uncertainty.json",
+    "src/nationwide/service.py:190"
+   ],
+   "fix": "WP3, WP7"
+  },
+  "L51": {
+   "severity": "H",
+   "status": "BLOCKED",
+   "limitation": "**No measured user or population impact** (no usage study, no population-exposure estimate, no stakeholder pilot). Human-subject work needs an ethics statement under IEEE policy.",
+   "finding": "No population-exposure estimate, usage study or stakeholder pilot exists. Population counts need licensed gridded data and human-subject work needs ethics approval.",
+   "evidence": [
+    "results/population_exposure.json",
+    "HUMAN_ACTIONS.md:19"
+   ],
+   "fix": "WP8"
+  },
+  "L52": {
+   "severity": "C",
+   "status": "OPEN",
+   "limitation": "**Paper blockers**: Kaggle 2015\u20132020 AQI prediction is a saturated topic; author placeholders; AI-use disclosure needed in Acknowledgment; 6-page limit forces focus.",
+   "finding": "The manuscript carries author placeholders, no chosen call for papers, no verified bibliography and no empirical result. It is explicitly an unsubmitted draft.",
+   "evidence": [
+    "paper/main.tex:5",
+    "HUMAN_ACTIONS.md:15"
+   ],
+   "fix": "Part C, Part E"
+  }
+ }
+}

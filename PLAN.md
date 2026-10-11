@@ -4,7 +4,7 @@ Created 2026-10-11 for the existing repository. The user's latest instruction au
 
 ## Phase 0 prerequisite and scope
 
-`docs/AUDIT_CONFIRMATION.md`, this plan and `HUMAN_ACTIONS.md` are the audit prerequisites. The supplied attachment references a Part B list of L01–L52 but omits that list. The audit records all 52 identifiers, assesses only claims whose IDs are explicitly supplied, and labels the others unassessable. Missing wording is not a reason to stop independent implementation.
+`docs/AUDIT_CONFIRMATION.md`, this plan and `HUMAN_ACTIONS.md` are the audit prerequisites. The Part B limitation table was missing from the original attachment, so the first audit could assess only the identifiers whose meaning appeared inline and had to mark the rest unassessable. The full spec now lives at `docs/MASTER_SPEC.md`, and `python -m scripts.confirm_phase0` reads the Part B wording directly from it: every one of the 52 identifiers now carries a verdict quoted against the claim the spec actually makes, with anchors that fail the run if they do not resolve.
 
 Keep the existing Next.js/Python/Supabase application, source provenance, measured/modelled labels, immutable ledgers, historical models and readiness gates. `/forecast` is the operational forecast; the legacy HAI/replay remains `/historical-replay`. A request in the attachment to leave HAI v1 at `/forecast` predates this implemented route separation and is interpreted as preserving access to the legacy feature, not undoing current-air navigation.
 

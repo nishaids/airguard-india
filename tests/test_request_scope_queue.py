@@ -2,6 +2,8 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
+import uuid
+import pytest
 
 from src.nationwide.store import Store
 from src.nationwide.service import Service
@@ -72,3 +74,24 @@ def test_expired_queue_lease_never_fetches_provider_or_reissues_forecast():
     assert service.run_summary_job(13.12,80.11,'expired')['state']=='EXPIRED_JOB'
     store.issue.assert_not_called();service.providers.air.assert_not_called()
 
+
+def test_real_queue_collapses_duplicates_and_rolls_back_dispatch():
+    from src.ingestion.settings import load_env,secret
+    from src.ingestion.db import connect
+    load_env()
+    if not secret('DATABASE_URL'): pytest.skip('DATABASE_URL is not configured')
+    connection=connect()
+    try:
+        with connection.cursor() as cur:
+            key='summary:test-rollback:'+str(uuid.uuid4())
+            cur.execute('select airguard.enqueue_summary(%s,13.12,80.11)',(key,))
+            assert cur.fetchone()[0]=='QUEUED'
+            cur.execute('select airguard.enqueue_summary(%s,13.12,80.11)',(key,))
+            assert cur.fetchone()[0]=='IN_PROGRESS'
+            cur.execute('select count(*) from airguard.cache_metadata where cache_key=%s',('queue:'+key,))
+            assert cur.fetchone()[0]==1
+            cur.execute("select has_function_privilege('anon','airguard.enqueue_summary(text,double precision,double precision)','execute')")
+            assert cur.fetchone()[0] is False
+            # pg_net sends only after commit. This test never commits a request.
+    finally:
+        connection.rollback();connection.close()

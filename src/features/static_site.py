@@ -15,6 +15,7 @@ module computes what it can and states what it cannot:
 """
 from __future__ import annotations
 
+import math
 from datetime import datetime, timezone
 
 CAMS_RESOLUTION = 0.4
@@ -32,6 +33,14 @@ PENDING = {
 def cams_cell(latitude, longitude, resolution=CAMS_RESOLUTION):
     """Identify the provider grid cell a coordinate falls in, and its centre.
 
+    The grid was measured, not assumed: scanning the provider across a cell
+    boundary showed the value changing at 13.0 and 13.4 degrees north and at
+    79.8, 80.2 and 80.6 degrees east. Cells are therefore centred on multiples
+    of the resolution and a coordinate belongs to its nearest grid point. An
+    earlier version floored instead of rounding, which shifted every cell by
+    half its width and put Avadi and central Chennai in one cell; they are in
+    adjacent cells, split at 80.2 degrees east.
+
     Stations sharing a cell share one modelled input, which is why the id is
     stored: it makes an apparently per-station modelled value traceable to the
     ~45 km cell it actually came from.
@@ -41,16 +50,15 @@ def cams_cell(latitude, longitude, resolution=CAMS_RESOLUTION):
     latitude, longitude = float(latitude), float(longitude)
     if not (-90 <= latitude <= 90) or not (-180 <= longitude <= 360):
         return None
-    wrapped = longitude % 360
-    row = int((latitude + 90) // resolution)
-    column = int(wrapped // resolution)
-    centre_lat = round(-90 + (row + 0.5) * resolution, 4)
-    centre_lon = round((column + 0.5) * resolution, 4)
+    signed = longitude - 360 if longitude > 180 else longitude
+    # floor(x + 0.5) rather than round(): Python rounds exact halves to even.
+    row = int(math.floor(latitude / resolution + 0.5))
+    column = int(math.floor(signed / resolution + 0.5))
     return {
-        'cell_id': f'{resolution:g}deg-{row:03d}-{column:04d}',
+        'cell_id': f'{resolution:g}deg-{row:+04d}-{column:+05d}',
         'row': row, 'column': column, 'resolution_degrees': resolution,
-        'centre_latitude': centre_lat,
-        'centre_longitude': round(centre_lon - 360, 4) if centre_lon > 180 else centre_lon,
+        'centre_latitude': round(row * resolution, 4),
+        'centre_longitude': round(column * resolution, 4),
     }
 
 

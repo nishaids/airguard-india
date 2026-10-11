@@ -1,0 +1,7 @@
+{
+ "protocol_version": "airguard-retrospective-station-calibration-v3",
+ "sha256": "920bc78b722a759a29b580622c0d05bf887260a97e140a7438954c61dc0cbb98",
+ "locked_at": "2026-10-11T18:21:42.091695+00:00",
+ "path": "docs/research/research_protocol.yaml",
+ "statement": "Locked before any model was fitted on the study dataset."
+}

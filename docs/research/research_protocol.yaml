@@ -1,0 +1,283 @@
+# AirGuard India — retrospective station-calibration study protocol
+#
+# Locked before any model was fitted on the study dataset. The lock is the
+# SHA-256 of this file, recorded with a timestamp in
+# results/research/protocol_lock.json by `python -m src.research.calibration.protocol lock`.
+# Changing anything below after the lock requires a new protocol_version; the
+# pipeline refuses to run against a file whose hash differs from the lock.
+
+protocol_version: airguard-retrospective-station-calibration-v3
+title: Station-calibrated day-ahead CPCB-style AQI against raw CAMS, with uncertainty-aware advisories
+status: LOCKED_BEFORE_MODEL_FITTING
+
+relationship_to_earlier_protocols:
+  airguard-dayahead-20ist-v1: >
+    Prospective collection protocol. Unchanged and still issuing immutable
+    forecasts at 20:00 IST. This study reuses its issue time, target rules,
+    fold geometry (90/30/30, step 30, one-day embargo) and candidate advisory
+    quantiles.
+  airguard-national-study-20ist-v2: >
+    Preregistered national study. Unchanged and still pending. It requires
+    genuinely archived issue-time CAMS forecasts, which this study does not
+    have, so this study does not satisfy v2 and does not replace it.
+  why_a_v3: >
+    Modern CPCB-provider history on OpenAQ begins 2025-02-18. A 365-day minimum
+    training window (v2) would leave every rolling test fold in March-June and
+    remove the whole winter, the season in which Poor to Severe air occurs, from
+    evaluation. The v1 fold geometry is therefore used, with v2's longer locked
+    final test.
+
+disclosure_of_prior_exposure:
+  - Persistence and prior-only climatology were scored on five Andhra Pradesh stations on 2026-10-11 (results/baselines_measured.json). No model was involved.
+  - An exploratory city-level backtest on provider past-fields exists (results/live_backtest.json). It is labelled legacy and is not part of this study.
+  - No model had been fitted on this study's station dataset when this file was locked.
+
+research_questions:
+  RQ1: Can a station-calibrated residual-correction model improve day-ahead CPCB-style AQI over raw CAMS and simpler operational baselines?
+  RQ2: How well does the approach generalise across time, stations and cities?
+  RQ3: How does it behave in Poor, Very Poor and Severe conditions?
+  RQ4: Are its prediction intervals empirically calibrated in ordinary and high-pollution regimes?
+  RQ5: Can calibrated uncertainty drive vulnerability-aware advisories that reduce under-warning, and at what over-warning cost?
+  status: hypotheses under test, not findings
+
+forecast:
+  timezone: Asia/Kolkata
+  issue_time_local: "20:00"
+  horizon: the next IST calendar day (target day D, issued on D-1)
+  target_period: "00:00 to 24:00 IST on D, i.e. 18:30 UTC on D-1 to 18:30 UTC on D"
+  issue_time_rationale: >
+    Chosen from provider availability, not convenience. At 20:00 IST (14:30 UTC)
+    the CAMS 00 UTC run and the GFS 06 UTC run have been published and the 12 UTC
+    runs have not, so the same runs are available every day; station hourly bins
+    up to late afternoon exist; and the forecast reaches a resident the evening
+    before the day it describes. The prospective job has issued at this time
+    since 2026-10-11 and the retrospective study uses the same clock so the two
+    records describe one procedure.
+
+target:
+  name: AirGuard CPCB-style AQI (station, daily)
+  not: an official CPCB AQI bulletin value
+  source: measured station hourly concentrations only; CAMS is never a target
+  engine: src/nationwide/aqi.py, methodology airguard-cpcb-2014-v1 (the single AQI implementation used for targets, baselines and the live product)
+  pollutants_used: [PM2.5, PM10, NO2, SO2, CO, O3]
+  pollutants_excluded: >
+    NH3 and Pb, from both target and forecast, because CAMS supplies neither. A
+    gas whose provider unit is ppb is excluded at that station: converting ppb to
+    mass concentration needs temperature and pressure, and this provider's ppb
+    labels for Indian gas sensors are documented as unreliable.
+  hourly_bin_rules:
+    duration: exactly one hour
+    minimum_provider_coverage_percent: 75
+    provider_flagged: rejected
+    value: finite and non-negative
+    unit: convertible to ug/m3 (mg/m3 for CO) without assumptions
+  daily_rules:
+    particulate_and_24h_gases: IST 24-hour mean
+    co_and_o3: maximum complete trailing 8-hour mean ending in the day, with the preceding 7 hours as support
+    minimum_distinct_hours_per_pollutant: 16
+    minimum_pollutants: 3
+    particulate_required: true
+  censoring: >
+    A day whose index falls in the open-ended Severe band is a lower bound
+    (>= 401), not an exact value. Such days are excluded from regression
+    training and from exact error metrics (MAE, RMSE, bias, coefficient of
+    determination) and are retained for category, exceedance and shortfall
+    diagnostics, which are reported prominently.
+
+stations:
+  universe: OpenAQ locations in India whose provider is CPCB, active on or after 2026-09-01, declaring PM2.5, PM10 and O3 in mass units
+  selection_rule: src/research/calibration/catalogue.py (deterministic strata by city size; catalogue metadata only)
+  minimum_valid_target_days: 120
+  urban_cluster: stations within 25 km of one another (single linkage) form one cluster; clusters, not name strings, are the unit of spatial holdout
+
+study_window:
+  first_date: 2025-02-19
+  last_date: 2026-10-07
+  basis: first and last day of modern CPCB-provider data on OpenAQ at retrieval
+
+inputs_and_cutoffs:
+  measurement_cutoff: "issue time minus 3 hours (17:00 IST on D-1); an hourly bin is usable only if it ENDS at or before the cutoff"
+  measurement_cutoff_basis: >
+    The v1 protocol's three-hour observation freshness. OpenAQ exposes no
+    ingestion time, so true latency cannot be reconstructed; three hours assumes
+    a healthy feed. The feed has been observed stalled for days, so a stale-feed
+    sensitivity analysis is part of this protocol and the results describe skill
+    conditional on the feed being healthy.
+  cams:
+    source: CAMS_GLOBAL_VIA_OPEN_METEO_SHORT_LEAD_ARCHIVE
+    issue_time_valid: false
+    statement: >
+      The provider archives CAMS fields for past hours without the run that
+      produced them and serves no earlier run for air quality. Fields for the
+      target day therefore come from runs initialised at or after the issue
+      time. This is a short-lead proxy for the forecast actually available at
+      20:00 IST. Both the raw-CAMS baseline and the correction model use the
+      same fields, so their comparison is like for like, but the absolute error
+      of both is likely optimistic relative to a true day-ahead forecast, and
+      no result of this study may be described as issue-time valid end to end.
+    archive_status: CAMS_ARCHIVE_STATUS=PENDING_MANUAL_CREDENTIAL_OR_TERMS
+  weather:
+    source: Open-Meteo Previous Runs API, gfs_seamless, previous_day2
+    issue_time_valid: true
+    statement: every value was forecast by a run initialised at least 48 hours before its valid hour, hence before the issue time
+    unavailable: boundary_layer_height (not archived at any previous-run lead)
+  fire:
+    source: NASA FIRMS VIIRS NOAA-21 NRT
+    issue_time_valid: true
+    cutoff: detections acquired at or before issue time minus 3 hours
+  temporal_and_spatial: known in advance
+
+feature_groups:
+  A_cams: per-pollutant CPCB-rule daily concentrations and sub-indices for D, matched and six-pollutant CAMS index, dominant pollutant, hourly maxima, diurnal descriptors, the same index for D-1 and the change between them
+  B_measured_history: rolling 24-hour index and pollutant means ending at the measurement cutoff, short-window level and slope, daily index for D-2, D-3 and D-7, seven-day mean and spread, recent measured-minus-CAMS bias
+  C_weather_forecast: daily summaries for D of temperature, humidity, wind speed and direction, precipitation, surface pressure, shortwave radiation and cloud cover
+  D_temporal: day of year (cyclical), month, day of week, weekend flag, season
+  E_spatial: coordinates, elevation, CAMS cell, stations sharing the cell, distance to the nearest other station, neighbouring-station index summaries at the cutoff
+  F_fire: detection counts and radiative power within fixed radii over the preceding 24 and 72 hours, distance to the nearest detection
+  fire_policy: optional; kept in the final model only if it lowers rolling-fold MAE in ablation
+
+cams_baseline:
+  primary: matched  # CAMS converted by the same engine, restricted to the pollutants present in that station-day's measured target
+  secondary: six_pollutant  # all six CAMS species, which is what the live product displays
+  rationale: >
+    The primary comparison must not charge CAMS for a pollutant the station did
+    not measure, nor credit the correction for removing it. The six-pollutant
+    index is reported beside it because that is the number a user sees.
+
+models:
+  B0_climatology: mean of the station's training-window targets in the same calendar month; station mean then global mean as fallback
+  B1_persistence: the rolling 24-hour measured index ending at the measurement cutoff
+  B2_raw_cams: the primary CAMS baseline
+  B3_ridge_residual: ridge regression on standardised features predicting measured minus CAMS
+  B4_lightgbm_residual: gradient boosting predicting measured minus CAMS
+  B5_xgboost_residual: gradient boosting predicting measured minus CAMS
+  direct_variants: the same three learners predicting the measured index directly
+  B6_legacy: the 2015-2020 city-level model is not scored here; it needs city-day inputs the station dataset does not contain, and its earlier city-level result is reported separately as legacy
+  hyperparameters:
+    tuning_data: within each fold's training window only; the last 30 days of that window are the inner validation set
+    ridge_alpha: [0.1, 1.0, 10.0, 100.0]
+    lightgbm: {num_leaves: [15, 31], min_child_samples: [20, 60], learning_rate: 0.05, max_rounds: 600, early_stopping_rounds: 40, subsample: 0.8, colsample_bytree: 0.8}
+    xgboost: {max_depth: [4, 6], min_child_weight: [5, 20], learning_rate: 0.05, max_rounds: 600, early_stopping_rounds: 40, subsample: 0.8, colsample_bytree: 0.8}
+  learner_comparison_features: groups A to E; fire (F) is excluded unless ablation admits it
+  selection_rule: >
+    The model carried forward to uncertainty, advisory and the locked final test
+    is the one with the lowest mean MAE over the rolling test folds, with ties
+    broken towards the simpler learner (ridge before boosting, residual before
+    direct). If no learned model beats raw CAMS on that criterion, that is
+    reported and raw CAMS is carried forward.
+  seed: 42
+
+splits:
+  unit: global target date; every station's row for a date moves together
+  design: expanding window
+  minimum_training_days: 90
+  calibration_days: 30
+  test_days: 30
+  step_days: 30
+  embargo_days: 1
+  final_test_days: 90
+  final_test_rule: >
+    The latest 90 target dates are locked. No model, hyperparameter, feature
+    set, interval method or advisory rule is chosen with them. They are
+    evaluated once, after selection on the rolling folds, and that evaluation
+    writes a lock file binding data hash, protocol hash and code hash.
+  reporting: every fold is reported; means and medians are given beside the per-fold table, never instead of it
+
+evaluation_rows:
+  primary_set: station-days with an exact target, the primary CAMS baseline and the persistence baseline all defined, so every method is scored on identical rows
+  secondary_set: the same without requiring persistence, for methods that do not need it
+  censored_set: station-days whose target is a Severe lower bound, scored only by category, exceedance and shortfall
+
+spatial_validation:
+  temporal_frame: training dates through 2025-10-31, test dates from 2025-11-02 to the day before the locked final test, so the spatial test contains the whole winter
+  leave_clusters_out: grouped 10-fold over urban clusters
+  leave_region_out: each of North, South, East, West, Central, Northeast held out in turn
+  leave_station_out: grouped 10-fold over stations; a held-out station whose cluster keeps other stations in training is "unseen station, seen city"
+  reference: a model trained on all stations over the same training dates, scored on exactly the same test rows
+  inference_regimes:
+    with_local_history: all feature groups, the held-out station's own pre-issue measurements included
+    without_local_station: measured-history features withheld, as at a location with no monitor
+  production_support_policy: derived from these results; station correction is offered only where they support it
+
+metrics:
+  primary: MAE on exact (non-censored) targets
+  secondary: [RMSE, mean bias (forecast minus observed), coefficient of determination, category accuracy, macro-F1 over six categories, within-one-category rate]
+  exceedance: probability of detection, false-alarm ratio and critical success index for Poor-or-worse (> 200) and Very-Poor-or-worse (> 300)
+  severity: n, MAE, RMSE, bias, under- and over-prediction rate by observed category; for censored Severe days the share forecast below 401 and the mean shortfall
+  naming: the coefficient of determination is never called accuracy
+
+subgroups:
+  seasons: {winter: [12, 1, 2], pre_monsoon: [3, 4, 5], monsoon: [6, 7, 8, 9], post_monsoon: [10, 11]}
+  regions: [North, South, East, West, Central, Northeast]
+  city_size: large (five or more eligible stations in the catalogue) versus other
+  minimum_n: 30
+  rule: a subgroup below the minimum is listed with its n and no metric; no conclusion is drawn from it
+
+statistical_comparison:
+  family: [selected model vs raw CAMS, selected model vs persistence, selected model vs climatology, selected model vs ridge residual]
+  loss: absolute error, paired by station and date
+  bootstrap: {type: moving block over dates, block_days: 7, resamples: 5000, interval: 95% percentile}
+  test: Diebold-Mariano on the daily mean loss differential with a Newey-West variance, two-sided
+  multiplicity: Holm across the family
+  practical_significance: reported as absolute and relative MAE change; a difference whose interval includes zero is stated as not established
+
+uncertainty:
+  nominal_coverages: [0.80, 0.90]
+  methods: [split conformal on absolute residuals, conformalised quantile regression on quantile LightGBM, group-conditional (Mondrian) conformal by forecast category]
+  calibration_data: each fold's 30-day calibration window, never its test window
+  evaluation: [marginal coverage, mean and median width, coverage by observed category, coverage on Poor-or-worse, coverage on censored Severe days (upper bound >= 401), coverage by region and by season]
+  tolerance: within 3 percentage points of nominal (hypothesis H3)
+  abstention: never on interval width alone
+  quantile_levels: [0.05, 0.1, 0.5, 0.65, 0.75, 0.85, 0.9, 0.95, 0.975]
+
+ablation:
+  learner: LightGBM residual at a fixed configuration (num_leaves 31, min_child_samples 60), so differences reflect features rather than tuning
+  variants:
+    A0: raw CAMS, no learning
+    A1: CAMS + weather forecast (+ temporal)
+    A2: CAMS + measured history (+ temporal)
+    A3: CAMS + weather forecast + measured history (+ temporal)
+    A4: A3 + spatial
+    A5: A4 + fire
+  reported: [MAE, RMSE, bias, censored-Severe shortfall, share of Severe days forecast below 401, training time, inference time, feature count]
+  fire_admission_rule: fire features enter the final model only if A5 lowers MAE against A4 with a 95% date-block bootstrap interval that excludes zero
+  simpler_wins: if a variant with fewer groups is not worse than a larger one by that same test, the paper says so
+
+advisory:
+  severity_scale: CPCB category index 0-5 of the decision value
+  cohorts: [general_adult, children, older_adults, asthma_copd, heart_conditions, pregnancy, outdoor_workers]
+  cohorts_are: environmental exposure guidance strata, not diagnoses or individual risk predictions
+  under_warning: issued category lower than the category of the observed index
+  over_warning: issued category higher than the category of the observed index
+  serious_under_warning: issued category at least two below the observed category
+  high_pollution_under_warning: observed Poor or worse and issued category lower
+  warning_distance: issued category minus observed category
+  policies:
+    P0: category of the point forecast
+    P1: category of the calibrated median
+    P2: category of the calibrated 0.75 quantile (fixed in advance)
+    P3: smallest candidate quantile whose calibration-window under-warning rate, with finite-sample correction (k + 1) / (n + 1), is at or below the cohort target
+  quantile_calibration: >
+    P1 and P2 use quantiles one-sided conformalised on the fold's calibration
+    window. P3 selects among the raw quantile forecasts on that same window, so
+    its selection is itself the calibration step and no data is used twice for
+    one decision.
+  candidate_quantiles: [0.5, 0.65, 0.75, 0.85, 0.9, 0.95, 0.975]
+  under_warning_targets: {general_adult: 0.10, children: 0.05, older_adults: 0.05, asthma_copd: 0.05, heart_conditions: 0.05, pregnancy: 0.05, outdoor_workers: 0.05}
+  targets_declared: before any test evaluation, carried over from protocols v1 and v2
+  guarantee: none claimed; consecutive days are dependent, so the target is an empirical aim whose attainment is reported with a date-block bootstrap interval
+
+sensitivity_analyses:
+  stale_feed: the selected model re-scored with measured-history features lagged by an extra 24 hours, and with them withheld
+  six_pollutant_baseline: the primary comparison repeated against the six-pollutant CAMS index
+  lead_revision: day-ahead versus short-lead CAMS values for the same valid hour, from this project's own stored retrievals, as the only available evidence on the size of the proxy gap
+
+prohibitions:
+  - no feature may use a measurement whose hourly bin ends after the measurement cutoff
+  - no weather value from a run initialised after the issue time
+  - no fire detection acquired after the fire cutoff
+  - no random split of dates
+  - no tuning, selection or threshold choice on a test window
+  - no relabelling of the CAMS proxy as an issue-time forecast
+  - no causal reading of feature attributions
+  - no clinical claim

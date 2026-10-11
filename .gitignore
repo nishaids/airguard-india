@@ -8,6 +8,9 @@ data/interim/*
 # Bulk hourly archive pulled from OpenAQ: large, regenerable from the recorded
 # run parameters, and not a source of truth for any published number.
 data/archive/*
+# Raw research caches (OpenAQ hours, CAMS and weather archives): large, immutable,
+# checksummed in committed manifests under results/research/data_manifests.
+data/research/*
 !data/interim/.gitkeep
 data/processed/*.csv
 data/processed/*.parquet

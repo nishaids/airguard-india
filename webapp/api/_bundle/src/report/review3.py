@@ -172,7 +172,7 @@ def build(data: Dict[str, Any], deployment_url: str) -> Path:
     builder.table(
         [[str(entry["cluster"]), entry["archetype"],
           f"{entry['mean_level_z']:+.2f}", entry["defining_pollutant"],
-          ", ".join(entry["cities"]), entry["policy_lever"]]
+          ", ".join(entry["cities"]), entry["mix_interpretation"]]
          for entry in clustering.get("archetypes", [])],
         ["Cluster", "Archetype", "Level (z)", "Leading pollutant in the mix",
          "Cities", "Policy lever"],

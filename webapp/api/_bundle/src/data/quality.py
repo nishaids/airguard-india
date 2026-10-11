@@ -667,7 +667,7 @@ def main() -> Dict[str, Any]:
     report: Dict[str, Any] = {
         "generated_by": "src/data/quality.py",
         "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "source_file": str(config.RAW_DIR / config.PRIMARY_FILE),
+        "source_file": config.portable(config.RAW_DIR / config.PRIMARY_FILE),
         "shape": {"rows": int(frame.shape[0]), "columns": int(frame.shape[1])},
         "missingness": missing,
         "duplicates": duplicates,

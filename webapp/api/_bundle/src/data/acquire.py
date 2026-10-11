@@ -394,7 +394,7 @@ def build_provenance(source_dir: Path, access_method: str) -> Dict[str, Any]:
             {
                 "filename": name,
                 "present": True,
-                "hashed_path": str(candidate),
+                "hashed_path": config.portable(candidate),
                 "retained_in_data_raw": mirrored.exists(),
                 "bytes": candidate.stat().st_size,
                 "size_mb": round(candidate.stat().st_size / 1e6, 3),
@@ -446,7 +446,7 @@ def build_provenance(source_dir: Path, access_method: str) -> Dict[str, Any]:
             "kaggle_uploader_display_name": page_meta["creator_name"],
             "kaggle_uploader_url": page_meta["creator_url"],
             "kaggle_date_modified": page_meta["date_modified"],
-            "local_version_directory": str(source_dir),
+            "local_version_directory": config.portable(source_dir),
         },
         "license": {
             "string_as_displayed_on_kaggle": page_meta["license_name"],

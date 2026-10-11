@@ -139,7 +139,11 @@ class ResearchStore:
             on_demand=[dict(r) for r in c.fetchall()]
             c.execute("select jobname,schedule,active from cron.job where jobname like 'airguard-research-%'");schedules=[dict(r) for r in c.fetchall()]
         for window in (7,30,90):summary[f'{window}_day_status']='COLLECTING' if summary['valid_days']<window else 'ENOUGH_DAYS_CHECK_WINDOW_COVERAGE'
-        summary['fixed_issuance_logging_active']=any(x['active'] and x['jobname']=='airguard-research-issue' for x in schedules)
+        # An active schedule is not an issued forecast: that conflation is exactly what
+        # L38 reported. Report the schedule and the immutable ledger as separate facts.
+        summary['fixed_issuance_schedule_active']=any(x['active'] and x['jobname']=='airguard-research-issue' for x in schedules)
+        summary['fixed_issuance_logging_active']=bool(summary['forecasts']) and summary['fixed_issuance_schedule_active']
+        summary['last_issued_at']=max((r['issued_at'] for r in ledger),default=None)
         return {'ok':True,'protocol':PROTOCOL,'readiness':readiness,'prospective':summary,'ledger':ledger,'schedules':schedules,
             'on_demand_forecasts':on_demand,'on_demand_notice':'Immutable nationwide forecasts issued before target; variable issuance times, excluded from fixed 20:00 protocol experiments.',
             'archive_experiment':'PENDING — ADS credential/terms required','correction_status':'NOT_VALIDATED','last_updated':datetime.now(timezone.utc).isoformat()}

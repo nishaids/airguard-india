@@ -828,10 +828,10 @@ def main() -> Dict[str, Any]:
     report: Dict[str, Any] = {
         "generated_by": "src/data/clean.py",
         "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "inputs": {"raw_file": str(config.RAW_DIR / config.PRIMARY_FILE)},
+        "inputs": {"raw_file": config.portable(config.RAW_DIR / config.PRIMARY_FILE)},
         "outputs": {
-            "structural": str(STRUCTURAL_PATH),
-            "clean": str(CLEAN_PATH),
+            "structural": config.portable(STRUCTURAL_PATH),
+            "clean": config.portable(CLEAN_PATH),
         },
         "city_name_normalisation": naming,
         "deduplication": dedupe,

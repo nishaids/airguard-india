@@ -33,8 +33,13 @@ def scheduler_health(store, now=None):
         event=c.fetchone();event=dict(event) if event else None
         c.execute("select provider,operation,status,created_at,record_count,error_class from airguard.provider_events where provider in ('scheduler','research') order by created_at desc limit 12")
         heartbeat=[dict(r) for r in c.fetchall()]
-    return {'ok':True,'generated_at':now.isoformat(),'protocol_version':VERSION,
+    health={'ok':True,'generated_at':now.isoformat(),'protocol_version':VERSION,
             'issuance':classify(now,registered,schedules,issued['latest'],event),
             'forecasts':issued['forecasts'],'last_issue':issued['latest'],'last_issue_attempt':event,
             'schedules':schedules,'heartbeats':heartbeat,
             'notice':'Dispatch, retrieval, fixed-time issuance and measured-outcome verification are different events. No forecast is backdated.'}
+    # A missed cutoff is unrecoverable, so the alert travels with the health payload
+    # and reaches /status even though no outbound channel is authorised to carry it.
+    from src.nationwide.alerts import render
+    health['alert']=render(health)
+    return health

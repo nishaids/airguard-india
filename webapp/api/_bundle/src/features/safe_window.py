@@ -431,7 +431,7 @@ def build_safe_windows() -> Dict[str, Any]:
         "generated_by": "src/features/safe_window.py",
         "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "degraded": False,
-        "source": str(config.RAW_DIR / config.HOURLY_FILE),
+        "source": config.portable(config.RAW_DIR / config.HOURLY_FILE),
         "window_hours": WINDOW_HOURS,
         "exposure_methodology_version": EXPOSURE_VERSION,
         "practical_hours_ist": [6,21],

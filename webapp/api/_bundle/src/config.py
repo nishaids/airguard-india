@@ -61,6 +61,26 @@ FIGURES_DIR: Final[Path] = REPORTS_DIR / "figures"
 NOTEBOOKS_DIR: Final[Path] = PROJECT_ROOT / "notebooks"
 APP_DIR: Final[Path] = PROJECT_ROOT / "app"
 
+def portable(path: Path | str) -> str:
+    """Render a filesystem path for a generated artefact.
+
+    Generated JSON and Markdown are published, reviewed and compared across
+    checkouts, so they must never carry a local absolute path: it leaks the
+    machine layout and the operator's account name, and it does not reproduce
+    anywhere else. Paths inside the repository become repository-relative POSIX
+    strings; anything outside is reduced to its final component behind an
+    explicit marker, because the rest of it is nobody else's business.
+    """
+    candidate = Path(path)
+    try:
+        return candidate.resolve().relative_to(PROJECT_ROOT).as_posix()
+    except ValueError:
+        # Keep the last two components: a bare final name can be a version
+        # number such as "12", which says nothing about what the path held.
+        tail = [part for part in candidate.parts if part not in ("/", "\\")][-2:]
+        return "/".join(["<outside-repository>", *tail])
+
+
 ALL_DIRS: Final[Tuple[Path, ...]] = (
     RAW_DIR,
     INTERIM_DIR,

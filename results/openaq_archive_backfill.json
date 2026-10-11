@@ -1,12 +1,12 @@
 {
  "status": "STOPPED_REQUEST_BUDGET",
- "generated_at": "2026-10-11T16:16:42.423533+00:00",
+ "generated_at": "2026-10-11T16:55:47.113382+00:00",
  "source": "OpenAQ v3 /sensors/{id}/hours",
  "requested_days": 365,
  "windows": 13,
- "stations_considered": 14,
- "stations_with_usable_sensors": 3,
- "requests": 194,
+ "stations_considered": 25,
+ "stations_with_usable_sensors": 1,
+ "requests": 0,
  "stored": 0,
  "retrieved": 0,
  "per_pollutant": {},
@@ -15,12 +15,13 @@
  "errors": {
   "request_budget_exhausted": 1
  },
+ "skipped": {},
  "earliest_valid_at": null,
  "latest_valid_at": null,
  "notice": "Upstream coverage bounds this, not effort. OpenAQ provenance is preserved and is not CPCB.",
  "radius_note": "Only stations already registered from India are queried; no new discovery happens here.",
- "completed_at": "2026-10-11T16:25:33.396686+00:00",
- "seconds": 531.0,
+ "completed_at": "2026-10-11T16:55:49.632490+00:00",
+ "seconds": 2.5,
  "settings": {
   "search_radius_m": 25000
  },

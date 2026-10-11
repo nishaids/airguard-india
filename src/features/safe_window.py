@@ -66,6 +66,7 @@ import pandas as pd
 from src import config
 from src.data.clean import CLEAN_PATH
 from src.features import hai as hai_mod
+from src.features.exposure import choose_window, instantaneous, VERSION as EXPOSURE_VERSION
 
 LOGGER = config.get_logger(__name__)
 
@@ -174,35 +175,32 @@ def add_exposure_index(climatology: pd.DataFrame) -> pd.DataFrame:
     relative within-day exposure indicator on the 0-500 scale, not the official
     AQI, which is undefined at hourly resolution.
     """
-    out = hai_mod.compute_sub_indices(climatology)
-    sub_columns = [f"sub_{p}" for p in EXPOSURE_POLLUTANTS if f"sub_{p}" in out.columns]
-    out["exposure_index"] = out[sub_columns].max(axis=1)
-    out["dominant_pollutant"] = (
-        out[sub_columns].idxmax(axis=1).str.replace("sub_", "", regex=False)
-    )
+    out = climatology.copy()
+    # A city's comparisons use the same pollutant support across seasons.
+    # Missing coverage in another city must not change this city's indicator.
+    groups = out.groupby('City') if 'City' in out else [(None, out)]
+    entries_by_index = {}
+    for _, group in groups:
+        practical = group.loc[group['hour'].between(6, 20)] if 'hour' in group else group
+        common = [p for p in EXPOSURE_POLLUTANTS if p in group and practical[p].notna().all()]
+        for index, row in group.iterrows():
+            entries_by_index[index] = instantaneous({p:float(row[p]) for p in common})
+    entries = [entries_by_index[index] for index in out.index]
+    out['exposure_index']=[entry['value'] if entry['qualifier']=='EXACT' else np.nan for entry in entries]
+    out['dominant_pollutant']=[entry['dominant'] for entry in entries]
     return out
 
 
 def best_window(hourly_values: np.ndarray, length: int = WINDOW_HOURS) -> Dict[str, Any]:
     """Return the contiguous window of ``length`` hours with the lowest mean value.
 
-    The search wraps around midnight, so a window spanning 11 pm to 1 am is
-    considered. Windows containing a missing hour are skipped.
+    Shared practical-hours selector: 06:00–21:00 IST, no midnight wrap.
+    Windows containing missing or censored hours are skipped.
     """
-    n_hours = len(hourly_values)
-    best_start: Optional[int] = None
-    best_mean = float("inf")
-    for start in range(n_hours):
-        indices = [(start + offset) % n_hours for offset in range(length)]
-        values = hourly_values[indices]
-        if np.isnan(values).any():
-            continue
-        mean = float(values.mean())
-        if mean < best_mean:
-            best_start, best_mean = start, mean
-
-    if best_start is None:
+    window=choose_window(hourly_values.tolist(),length=length)
+    if window is None:
         return {"available": False}
+    best_start,best_mean=window['start_hour'],window['mean']
 
     day_mean = float(np.nanmean(hourly_values))
     worst = int(np.nanargmax(hourly_values))
@@ -213,11 +211,11 @@ def best_window(hourly_values: np.ndarray, length: int = WINDOW_HOURS) -> Dict[s
         "label": format_window(int(best_start), length),
         "window_mean": round(best_mean, 2),
         "day_mean": round(day_mean, 2),
-        "reduction_vs_day_mean_pct": round(100.0 * (day_mean - best_mean) / day_mean, 2),
+        "reduction_vs_day_mean_pct": round(100.0 * (day_mean - best_mean) / day_mean, 2) if day_mean else 0,
         "diurnal_swing_pct": round(
             100.0
             * (float(np.nanmax(hourly_values)) - float(np.nanmin(hourly_values)))
-            / day_mean,
+            / (day_mean or 1),
             2,
         ),
         "worst_hour": worst,
@@ -435,14 +433,16 @@ def build_safe_windows() -> Dict[str, Any]:
         "degraded": False,
         "source": str(config.RAW_DIR / config.HOURLY_FILE),
         "window_hours": WINDOW_HOURS,
+        "exposure_methodology_version": EXPOSURE_VERSION,
+        "practical_hours_ist": [6,21],
         "exposure_pollutants": EXPOSURE_POLLUTANTS,
         "method": (
             "Hourly concentrations are averaged by city, season and hour of day, "
             "converted to CPCB sub-indices instantaneously (no rolling window), "
             "and the maximum across pollutants is taken as an exposure index on "
-            "the 0-500 scale. The recommended window is the contiguous two-hour "
-            "block with the lowest mean, searched with wrap-around across "
-            "midnight. The index is a relative within-day exposure indicator, not "
+            "closed index scale, excluding censored Severe hours. The recommended window is the contiguous two-hour "
+            "block with the lowest mean within 06:00–21:00 IST, without "
+            "midnight wrap. The index is a relative within-day exposure indicator, not "
             "the official AQI, which is defined only on 24-hour (and 8-hour) "
             "averages and is therefore undefined at hourly resolution."
         ),

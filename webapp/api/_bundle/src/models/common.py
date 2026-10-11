@@ -27,7 +27,7 @@ from sklearn.metrics import (
     roc_auc_score,
 )
 from sklearn.base import BaseEstimator, ClassifierMixin, clone
-from sklearn.model_selection import TimeSeriesSplit
+from sklearn.model_selection import TimeSeriesSplit, BaseCrossValidator
 from sklearn.preprocessing import LabelEncoder
 
 from src import config
@@ -86,7 +86,7 @@ def load_task_data(task: str) -> Dict[str, Any]:
     # when the selector has dropped a column as redundant for modelling purposes.
     aux = [c for c in AUX_COLUMNS if c in frame.columns and c not in features]
     keep = list(dict.fromkeys(["City", "Date", target] + features + aux))
-    frame = frame[keep].dropna()
+    frame = frame[keep].dropna().sort_values(['Date','City']).reset_index(drop=True)
 
     train = frame.loc[frame["Date"] < boundary]
     test = frame.loc[frame["Date"] >= boundary]
@@ -127,16 +127,31 @@ def load_task_data(task: str) -> Dict[str, Any]:
     }
 
 
-def time_series_cv(n_splits: int = config.N_SPLITS_TS_CV) -> TimeSeriesSplit:
-    """Return the cross-validation splitter used everywhere in this project.
+class DateBlockedCV(BaseCrossValidator):
+    """Whole-day expanding folds with one-date embargo, independent of row order.
 
-    ``TimeSeriesSplit`` produces expanding-window folds in which every validation
-    fold lies strictly after its training fold. A shuffled k-fold would place
-    future observations in the training set and is therefore invalid here; the
-    resulting optimism would be large, because consecutive days are strongly
-    autocorrelated.
+    This fixes temporal splitting only; fold-specific preprocessing/feature
+    selection still needs its own audit before publication.
     """
-    return TimeSeriesSplit(n_splits=n_splits)
+    def __init__(self,dates,n_splits):
+        self.dates=pd.to_datetime(pd.Series(dates)).dt.normalize().to_numpy()
+        if pd.isna(self.dates).any():raise ValueError('Dates must be complete')
+        self.n_splits=n_splits
+
+    def get_n_splits(self,X=None,y=None,groups=None):return self.n_splits
+
+    def split(self,X,y=None,groups=None):
+        if len(X)!=len(self.dates):raise ValueError('CV date metadata must align with rows')
+        dates=np.sort(np.unique(self.dates))
+        for train,validation in TimeSeriesSplit(n_splits=self.n_splits,gap=1).split(dates):
+            a=np.flatnonzero(np.isin(self.dates,dates[train]));b=np.flatnonzero(np.isin(self.dates,dates[validation]))
+            if self.dates[a].max()>=self.dates[b].min():raise ValueError('Date split leakage')
+            yield a,b
+
+
+def time_series_cv(n_splits: int = config.N_SPLITS_TS_CV, *, dates=None):
+    if dates is None:raise ValueError('Explicit forecast-date metadata is required; row order is insufficient')
+    return DateBlockedCV(dates,n_splits)
 
 
 # --------------------------------------------------------------------------- #

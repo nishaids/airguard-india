@@ -1,0 +1,24 @@
+{
+  "generated": [
+    "01_architecture",
+    "02_operational_timeline",
+    "03_coverage_map",
+    "17_drift"
+  ],
+  "pending": [
+    "04_cams_vs_measured",
+    "05_airguard_vs_measured",
+    "06_residual_distribution",
+    "07_baselines",
+    "08_rolling_folds",
+    "09_leave_city_out",
+    "10_category_error",
+    "11_severe",
+    "12_ablation",
+    "13_interval_calibration",
+    "14_width_vs_coverage",
+    "15_advisory_tradeoffs",
+    "16_prospective_track_record"
+  ],
+  "note": "No plots of fabricated predictions; empirical plots await eligible issue-time pairs."
+}

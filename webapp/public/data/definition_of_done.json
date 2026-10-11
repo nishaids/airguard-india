@@ -1,9 +1,9 @@
 {
   "generated_by": "src/report/audit.py",
-  "generated_at_utc": "2026-09-29T02:37:00Z",
+  "generated_at_utc": "2026-09-29T18:48:16Z",
   "n_checks": 13,
-  "n_passed": 12,
-  "all_passed": false,
+  "n_passed": 13,
+  "all_passed": true,
   "checks": [
     {
       "check": "`python run_all.py` reproduces everything from a fresh clone",
@@ -48,7 +48,7 @@
     {
       "check": "All ten novelty features implemented with artefacts behind them",
       "passed": true,
-      "detail": "10 of 10 implemented. Health Advisory Index: 7 cohorts; band differs from the AQI for at least one cohort on 66.92% of city-days | Next-day forecasting: targets AQI_next and AQI_Bucket_next; split at 2019-05-26 | Three ML paradigms: all three evaluation artefacts present | Safe-exposure window: degraded=False; 12 cities covered | Event-aware anomaly handling: lockdown -33.99%; Diwali 72.93% | SHAP explainability: 2500 rows explained globally plus one local decomposition | Counterfactual policy simulator: 7 scenarios re-scored | Accessibility and reach: advisory text in English, \u0ba4\u0bae\u0bbf\u0bb4\u0bcd, \u0939\u093f\u0928\u094d\u0926\u0940; Okabe-Ito colour-blind-safe palette throughout | Responsible-AI artefacts: data card and model card generated from results | Production hygiene: 17 versioned joblib artefacts; cached inference, input validation, graceful fallback and a drift check in app/utils/inference.py"
+      "detail": "10 of 10 implemented. Health Advisory Index: 7 cohorts; band differs from the AQI for at least one cohort on 66.92% of city-days | Next-day forecasting: targets AQI_next and AQI_Bucket_next; split at 2019-05-26 | Three ML paradigms: all three evaluation artefacts present | Safe-exposure window: degraded=False; 12 cities covered | Event-aware anomaly handling: lockdown -33.99%; Diwali 72.93% | SHAP explainability: 2500 rows explained globally plus one local decomposition | Counterfactual policy simulator: 7 scenarios re-scored | Accessibility and reach: advisory text in English, \u0ba4\u0bae\u0bbf\u0bb4\u0bcd, \u0939\u093f\u0928\u094d\u0926\u0940; Okabe-Ito colour-blind-safe palette throughout | Responsible-AI artefacts: data card and model card generated from results | Production hygiene: 18 versioned joblib artefacts; cached inference, input validation, graceful fallback and a drift check in app/utils/inference.py"
     },
     {
       "check": "Data card and model card complete with limitations and disclaimer",
@@ -62,13 +62,13 @@
     },
     {
       "check": "Deployment URL recorded",
-      "passed": false,
-      "detail": "No deployment URL recorded yet. DEPLOY.md documents the steps; run `python -m src.report.readme --url <url>` after deploying and regenerate the reports so the URL propagates."
+      "passed": true,
+      "detail": "Deployment URL recorded: https://webapp-phi-taupe.vercel.app"
     },
     {
       "check": "Phase-wise git history",
       "passed": true,
-      "detail": "15 commits; history tells the phase story rather than landing as a single change."
+      "detail": "22 commits; history tells the phase story rather than landing as a single change."
     }
   ]
 }

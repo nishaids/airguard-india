@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-10-11T13:46:36.640194+00:00",
+  "status": "COLLECTING_NOT_PAPER_READY",
+  "study_protocol": {
+    "protocol_version": "airguard-national-study-20ist-v2",
+    "feature_version": "issue-time-features-v1",
+    "methodology_version": "airguard-cpcb-2014-v1",
+    "timezone": "Asia/Kolkata",
+    "issuance_time": "20:00",
+    "issuance_grace_minutes": 10,
+    "horizon": "next IST calendar day",
+    "feature_cutoff": "20:00 IST, including retrieval/availability timestamps",
+    "rationale": "Four hours before target midnight; permits recent complete station bins and evening forecast inputs. Prefetch at 19:50; freeze cached inputs at 20:00. Availability must be audited empirically, not assumed.",
+    "target": "station-level AirGuard CPCB-style AQI estimate from measured hourly concentrations only",
+    "target_rules": {
+      "minimum_pollutants": 3,
+      "particulate_required": true,
+      "minimum_hours": 16,
+      "daily_non_gas": "IST 24h mean",
+      "gas": "maximum complete trailing 8h window ending in day; prior 7h support",
+      "ozone_high": "1h mathematical bands",
+      "lower_bound": "Severe >=401 is censored; excluded from exact regression and error metrics, retained for category diagnostics"
+    },
+    "eligibility": {
+      "station_binding": "chosen before target, within 25 km, no post-outcome station selection",
+      "minimum_training_days": 365,
+      "minimum_calibration_days": 30,
+      "minimum_test_days": 90,
+      "minimum_stations_for_spatial_validation": 100
+    },
+    "freshness_hours": {
+      "cams": 2,
+      "weather": 3,
+      "observations": 3,
+      "firms": 24
+    },
+    "features": {
+      "A": "CAMS forecast concentrations, daily AQI and hourly descriptors",
+      "B": "issue-time measured lags and rolling summaries",
+      "C": "issue-time weather forecast summaries",
+      "D": "calendar encodings",
+      "E": "station and grid coordinates",
+      "F": "optional fire context; excluded by default pending ablation"
+    },
+    "splits": {
+      "unit": "global target date",
+      "embargo_days": 1,
+      "training_days": 365,
+      "calibration_days": 30,
+      "test_days": 30,
+      "step_days": 30,
+      "final_test": "Latest 90 global target dates locked before model selection; evaluate once, reproducible rerun only at same data/protocol/source hash",
+      "final_test_days": 90
+    },
+    "seed": 42,
+    "interval_coverages": [
+      0.8,
+      0.9
+    ],
+    "advisory": {
+      "version": "experimental-category-warning-v1",
+      "candidate_quantiles": [
+        0.5,
+        0.65,
+        0.75,
+        0.85,
+        0.95
+      ],
+      "underwarning_targets": {
+        "general_adult": 0.1,
+        "children": 0.05,
+        "older_adults": 0.05,
+        "asthma_copd": 0.05,
+        "heart_conditions": 0.05,
+        "pregnancy": 0.05,
+        "outdoor_workers": 0.05
+      },
+      "minimum_calibration_days": 30,
+      "control": "empirical blocked calibration trade-off only; no clinical or distribution-free time-series guarantee"
+    },
+    "deployment": {
+      "default_mode": "CAMS_BASED_NATIONWIDE",
+      "station_correction": "deny by default; approved immutable model and station support evidence required",
+      "wide_intervals": "do not abstain on width alone",
+      "automatic_retraining": false
+    },
+    "status": "PREREGISTERED_PENDING_MATCHED_DATA",
+    "collection_protocol_version": "airguard-dayahead-20ist-v1",
+    "minimum_stations": 100,
+    "archive_requirement": "Genuine archived issue-time forecast initialization and availability; no reanalysis/past-fields substitute",
+    "hypotheses": {
+      "H1": "Station correction lowers held-out MAE vs raw CAMS and persistence; paired date-blocked comparison, Holm correction.",
+      "H2": "Raw CAMS O3/PM2.5 bias varies by region/season; directions are hypotheses, not precomputed findings.",
+      "H3": "80/90% interval coverage within 3 percentage points across seasons/severity; joint pollutant support required for AQI bounds.",
+      "H4": "Empirical under-warning at most 5% vulnerable/10% general; report over-warning, support and uncertainty."
+    },
+    "not_implemented_or_validated": [
+      "EnbPI comparison",
+      "pollutant-level MOS/CQR training",
+      "region/coastal holdouts",
+      "calibrated band probabilities",
+      "HAI v2 evidence coefficients",
+      "deweathered event causal design",
+      "clinical benefit"
+    ]
+  },
+  "source_hash": "a8f4c4dc6b4bdef54a2a5bc8802ae91650cbe1375965623913c5c4c45af8740b",
+  "data_version": "cd98b5e6195594d7c65aa1f2ac2a62dfd7a17c23f591d0a114e0c432d3730aed",
+  "artifacts": {
+    "backtest_main": {
+      "path": "results/backtest_main.json",
+      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+    },
+    "backtest_spatial": {
+      "path": "results/backtest_spatial.json",
+      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+    },
+    "ablation": {
+      "path": "results/ablation.json",
+      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+    },
+    "bias_atlas": {
+      "path": "results/bias_atlas.json",
+      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+    },
+    "uncertainty": {
+      "path": "results/uncertainty.json",
+      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+    },
+    "advisory_tradeoff": {
+      "path": "results/advisory_tradeoff.json",
+      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+    },
+    "hai_v2": {
+      "path": "results/hai_v2.json",
+      "sha256": "eb0e9c07327afcbe75c36cf083e7f0cd968288512bffc07d2f577d4c43ae1aaa"
+    },
+    "hai_sensitivity": {
+      "path": "results/hai_sensitivity.json",
+      "sha256": "68557eb57b1faf399ef6728aaa222fb24750914effd4f7c22ed9828814d684c1"
+    },
+    "clusters_v2": {
+      "path": "results/clusters_v2.json",
+      "sha256": "411e1c532c29af8f3b72c9ef7f077ba823aaf7bbb71478b5e5d4bf2aeeb57719"
+    },
+    "events_deweathered": {
+      "path": "results/events_deweathered.json",
+      "sha256": "df55d98feb0bd21c1621f2bd58d8ab5678aa8ad60cb86db4481715d25c6e7e30"
+    },
+    "population_exposure": {
+      "path": "results/population_exposure.json",
+      "sha256": "12fef4a2bccfcd20455f321226bd6a6e9c453441d088168ad432e2b410c500bf"
+    }
+  },
+  "paper_submittable": false,
+  "all_phases_accepted": false,
+  "pending": "Real matched archive/station data, verified HAI evidence, human review and elapsed prospective outcomes."
+}

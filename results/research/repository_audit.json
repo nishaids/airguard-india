@@ -1,0 +1,1789 @@
+{
+  "branch": "main",
+  "git_sha": "082cb119f9b6496ec4bc945af5da147f94690f16",
+  "dirty": true,
+  "files": [
+    {
+      "path": "src/config.py",
+      "sha256": "128194a76499c6f8df9f77334c882f7bc8554589f5a86ede873f3c05c72eef1f",
+      "lines": 426,
+      "definitions": [
+        "set_global_seed",
+        "ensure_dirs",
+        "get_logger"
+      ]
+    },
+    {
+      "path": "src/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "src/data/acquire.py",
+      "sha256": "6518f409b4abaa90f1dbd6c57bed2f2a4864fd07aa8662d57ea98a7d8d4cde4f",
+      "lines": 705,
+      "definitions": [
+        "sha256_of",
+        "count_rows_and_columns",
+        "fetch_kaggle_page_metadata",
+        "_acquire_path_a",
+        "_acquire_path_b",
+        "acquire_dataset",
+        "mirror_raw_files",
+        "profile_columns",
+        "render_schema_figure",
+        "build_provenance",
+        "render_provenance_markdown",
+        "main",
+        "_search"
+      ]
+    },
+    {
+      "path": "src/data/clean.py",
+      "sha256": "fb21e782b97a19879ddfdcd839683a8d8e4d07e7477c4a7957df59dcf09fe9f0",
+      "lines": 882,
+      "definitions": [
+        "compute_split_boundary",
+        "normalise_city_names",
+        "deduplicate",
+        "restrict_to_retained_cities",
+        "ensure_daily_calendar",
+        "flag_sensor_artefacts",
+        "_event_window_mask",
+        "_isolated_spike_mask",
+        "_impute_global_median",
+        "_impute_per_city_median",
+        "_impute_per_city_interpolate",
+        "_impute_per_city_ffill",
+        "_impute_knn",
+        "fit_imputation_statistics",
+        "compare_imputation_strategies",
+        "_save",
+        "plot_imputation_comparison",
+        "plot_distribution_shift",
+        "validate_clean",
+        "main"
+      ]
+    },
+    {
+      "path": "src/data/quality.py",
+      "sha256": "cd9bb336497f5d03df3bb7cbe98d843b68e5df6c6629eb14d2799ee4da0ffa8c",
+      "lines": 710,
+      "definitions": [
+        "load_raw_city_day",
+        "assess_missingness",
+        "assess_duplicates",
+        "assess_invalid_values",
+        "_check_bucket_consistency",
+        "_check_dates",
+        "assess_city_naming",
+        "assess_units",
+        "assess_outliers",
+        "assess_class_balance",
+        "recommend_city_retention",
+        "_save",
+        "plot_missingness_matrix",
+        "plot_city_availability_heatmap",
+        "plot_null_percentage_bar",
+        "plot_outlier_counts",
+        "main"
+      ]
+    },
+    {
+      "path": "src/data/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "src/deploy/build_static_bundle.py",
+      "sha256": "342bf34f87b622c8ba78a9ac649ec3ebc5090dc93146df1ac209f6cc575ef6dc",
+      "lines": 231,
+      "definitions": [
+        "_copy_results",
+        "_copy_figures",
+        "_copy_master_tables",
+        "_copy_cards",
+        "_copy_provenance",
+        "_build_ranked_risk_table",
+        "_build_seasonal_heatmap",
+        "_build_meta",
+        "main"
+      ]
+    },
+    {
+      "path": "src/deploy/export_boosters.py",
+      "sha256": "f0567645872f3437e44da331495e0c7f5e6cb46d34ceeffd909b4aafb7173c67",
+      "lines": 136,
+      "definitions": [
+        "_dump_booster",
+        "export_regression",
+        "export_classification",
+        "export_feature_order",
+        "verify",
+        "main"
+      ]
+    },
+    {
+      "path": "src/deploy/fit_deployment_classifier.py",
+      "sha256": "fd22bd8dd700a922a5adbc69fa5946a872069124add03d708fd0a88b82fdba96",
+      "lines": 121,
+      "definitions": [
+        "main"
+      ]
+    },
+    {
+      "path": "src/deploy/serverless_inference.py",
+      "sha256": "581a4db2c3d134a93f1cbd88fce797f1faf9eaa82a51c2990f86fbc34cf4bdfa",
+      "lines": 222,
+      "definitions": [
+        "_read_json",
+        "_regression_booster",
+        "_classification_booster",
+        "_classification_classes",
+        "_feature_order",
+        "read_csv_maybe_gzipped",
+        "_install_gzip_csv_readers",
+        "deployed_model_names",
+        "forecast",
+        "load_features",
+        "load_clean"
+      ]
+    },
+    {
+      "path": "src/deploy/tree_predict.py",
+      "sha256": "73f855a0f1ea664166268cd16b181fe420dec955544387ba1a709147a493ac21",
+      "lines": 82,
+      "definitions": [
+        "_eval_tree",
+        "_raw_scores",
+        "_softmax",
+        "_row_to_vector",
+        "predict_regression",
+        "predict_classification"
+      ]
+    },
+    {
+      "path": "src/deploy/vendor_for_vercel.py",
+      "sha256": "3a14c801dd40726f99181495cfaebbbf4deb4a458fba83432f0344a8191393b6",
+      "lines": 97,
+      "parse_error": true
+    },
+    {
+      "path": "src/deploy/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "src/eda/plots.py",
+      "sha256": "006d4c6e117d808395e9212f74c86b879bfd94c1ee3ade1812f62cdc2c750b52",
+      "lines": 1153,
+      "definitions": [
+        "_save",
+        "load_frames",
+        "figure_distributions",
+        "figure_boxplots",
+        "figure_city_ranking",
+        "figure_pollutant_vs_aqi",
+        "figure_correlation_heatmap",
+        "figure_pairplot",
+        "figure_pca",
+        "figure_decomposition",
+        "figure_seasonal_boxplots",
+        "figure_city_month_heatmap",
+        "figure_covid",
+        "figure_festival",
+        "figure_hai_cohort_days",
+        "descriptive_statistics",
+        "build_insights",
+        "main"
+      ]
+    },
+    {
+      "path": "src/eda/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "src/features/build.py",
+      "sha256": "ddb3d4393183a609b40f7d581830fa8d0c382a95551fd6203c2aa63cd126d62c",
+      "lines": 1031,
+      "definitions": [
+        "add_temporal_features",
+        "add_event_flags",
+        "add_lag_features",
+        "add_rolling_features",
+        "add_ratio_features",
+        "integrate_station_metadata",
+        "audit_aqi_recomputation",
+        "add_hai_features",
+        "add_targets",
+        "encode_categoricals",
+        "select_features",
+        "_save",
+        "plot_hai_vs_aqi",
+        "plot_hai_divergence",
+        "plot_feature_selection",
+        "build_feature_matrix",
+        "main"
+      ]
+    },
+    {
+      "path": "src/features/hai.py",
+      "sha256": "9d820e787a5776d9c00b15ab110c0f60b57a44c68d93e94b36d41d97e3c1d489",
+      "lines": 778,
+      "definitions": [
+        "sub_index",
+        "compute_sub_indices",
+        "recompute_aqi",
+        "dominant_pollutant",
+        "band_of",
+        "aqi_to_band",
+        "bucket_from_aqi",
+        "compute_hai",
+        "add_all_cohort_hai",
+        "advisory",
+        "measure_divergence",
+        "_band_rank",
+        "self_test"
+      ]
+    },
+    {
+      "path": "src/features/safe_window.py",
+      "sha256": "42175ff95e7af348e2c6a0043a0f349b97eff9419055a7a23a7d931530753f5e",
+      "lines": 509,
+      "definitions": [
+        "_format_hour",
+        "format_window",
+        "load_hourly_climatology",
+        "add_exposure_index",
+        "best_window",
+        "seasonal_fallback",
+        "plot_hourly_climatology",
+        "build_safe_windows",
+        "lookup_window",
+        "main"
+      ]
+    },
+    {
+      "path": "src/features/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "src/ingestion/base.py",
+      "sha256": "54c01a6488b5a5080337926aa48c5c93915099f27f90dd5d4041b45e51e2ea5c",
+      "lines": 34,
+      "definitions": [
+        "CredentialMissing",
+        "SourceUnavailable",
+        "Batch",
+        "__init__"
+      ]
+    },
+    {
+      "path": "src/ingestion/cpcb.py",
+      "sha256": "626050df0ad10a2a078caaa7a517d90437fea73cae63b2c1a255070b3b8d8e59",
+      "lines": 222,
+      "definitions": [
+        "_first",
+        "_slug",
+        "parse_timestamp",
+        "verify_metadata",
+        "parse_records",
+        "collect"
+      ]
+    },
+    {
+      "path": "src/ingestion/db.py",
+      "sha256": "5339c878f5f12c4dd323ecb3707e377cccf46a17586c63978cb7346c8baf0dcb",
+      "lines": 455,
+      "definitions": [
+        "DatabaseError",
+        "_json",
+        "_text",
+        "MemoryStore",
+        "connect",
+        "migrate",
+        "PostgresStore",
+        "main",
+        "__init__",
+        "__init__",
+        "start_run",
+        "finish_run",
+        "load_stations",
+        "upsert_stations",
+        "_insert",
+        "insert_observations",
+        "insert_forecasts",
+        "insert_fires",
+        "insert_rejections",
+        "close",
+        "__init__",
+        "start_run",
+        "finish_run",
+        "load_stations",
+        "upsert_stations",
+        "_station_pks",
+        "_insert_flags",
+        "insert_observations",
+        "insert_forecasts",
+        "insert_fires",
+        "insert_rejections",
+        "counts",
+        "latest_runs",
+        "query",
+        "close"
+      ]
+    },
+    {
+      "path": "src/ingestion/firms.py",
+      "sha256": "159459f57a19c87f39c0c9b9a2f9cd69c75cd1e452fde647ffe97ec4966495cb",
+      "lines": 133,
+      "definitions": [
+        "parse_acquired",
+        "parse_csv",
+        "collect"
+      ]
+    },
+    {
+      "path": "src/ingestion/http.py",
+      "sha256": "9198de499d100e606058f2c911fc2725cda267a0afa0a66b6e78a94113e473c2",
+      "lines": 161,
+      "definitions": [
+        "HttpError",
+        "Response",
+        "_requests_transport",
+        "safe_host",
+        "HttpClient",
+        "_retry_after",
+        "_short_reason",
+        "header_int",
+        "as_dict",
+        "__init__",
+        "json",
+        "__init__",
+        "get"
+      ]
+    },
+    {
+      "path": "src/ingestion/live.py",
+      "sha256": "f80dde23713eb96f5f00000b0ee8d71895bbd99c1018673d91ccb45d117e71dc",
+      "lines": 120,
+      "definitions": [
+        "_rows",
+        "_public",
+        "snapshot"
+      ]
+    },
+    {
+      "path": "src/ingestion/matching.py",
+      "sha256": "fddc2ffbb989eb6c331171d49f6baef1a6a6d624dac4dad90b78bee1015974e1",
+      "lines": 134,
+      "definitions": [
+        "haversine_m",
+        "_normalise_name",
+        "name_similarity",
+        "link_stations",
+        "resolve_modelling_preference"
+      ]
+    },
+    {
+      "path": "src/ingestion/openaq.py",
+      "sha256": "a46f9d1dd6fe9a68766867750e84d90818a3ad4db6ab0c0f27ad4cdea468a58a",
+      "lines": 267,
+      "definitions": [
+        "parse_utc",
+        "_respect_rate_limit",
+        "_get",
+        "_locality",
+        "station_from_location",
+        "discover_locations",
+        "_recently_active",
+        "observations_from_latest",
+        "collect"
+      ]
+    },
+    {
+      "path": "src/ingestion/run.py",
+      "sha256": "afe428a987445db0fa0e884b9eac430fa7ab70c4c77e95b4b442587c49bcfb73",
+      "lines": 276,
+      "definitions": [
+        "_RedactingFilter",
+        "install_log_redaction",
+        "_validate",
+        "_pick_samples",
+        "run_source",
+        "describe",
+        "print_report",
+        "main",
+        "filter"
+      ]
+    },
+    {
+      "path": "src/ingestion/scheduled.py",
+      "sha256": "ce2aaecb46e92bd70f2209e8c8cc05b055035c420b17101be06cacaa79751fad",
+      "lines": 79,
+      "definitions": [
+        "ingest_cycle",
+        "main",
+        "worker"
+      ]
+    },
+    {
+      "path": "src/ingestion/schemas.py",
+      "sha256": "d9161b185ad043da1ec51cb65922cc9350bb2e17294e61b6121e2892f204311f",
+      "lines": 271,
+      "definitions": [
+        "SourceType",
+        "QualityState",
+        "Severity",
+        "Freshness",
+        "RunStatus",
+        "ValueKind",
+        "utc_now",
+        "ensure_utc",
+        "record_hash",
+        "DataQualityFlag",
+        "_Flaggable",
+        "Station",
+        "AirQualityObservation",
+        "WeatherForecast",
+        "FireDetection",
+        "RejectedRecord",
+        "IngestionRun",
+        "add_flag",
+        "key",
+        "unique_key",
+        "vintage_at",
+        "unique_key",
+        "unique_key",
+        "hash",
+        "to_public_dict"
+      ]
+    },
+    {
+      "path": "src/ingestion/settings.py",
+      "sha256": "497595fc86bb33b21d256c1a310f1cc5fcdd52b4c8a4df41b5d76c56e22601ac",
+      "lines": 170,
+      "definitions": [
+        "load_env",
+        "secret",
+        "secret_status",
+        "redact",
+        "_int_env",
+        "Settings",
+        "get_settings"
+      ]
+    },
+    {
+      "path": "src/ingestion/units.py",
+      "sha256": "8373dbc0f025efb1d2c229bd5df0b770ef86f432a02b4b37f469a7486ca0204e",
+      "lines": 122,
+      "definitions": [
+        "UnsupportedUnit",
+        "canonical_pollutant",
+        "canonical_unit",
+        "target_unit",
+        "normalise"
+      ]
+    },
+    {
+      "path": "src/ingestion/validation.py",
+      "sha256": "d0db53326e4af57d0b0bb43b2c38553990901804eb5a156ced9dbbcdc45ea2d0",
+      "lines": 288,
+      "definitions": [
+        "parse_number",
+        "classify_freshness",
+        "_check_coordinates",
+        "validate_observation",
+        "validate_fire",
+        "validate_weather",
+        "split",
+        "rejection_of"
+      ]
+    },
+    {
+      "path": "src/ingestion/weather.py",
+      "sha256": "fc7d16e8e871695bfa60e25949416f39b1edb76376394c7aebd531a39f4eb0ad",
+      "lines": 191,
+      "definitions": [
+        "model_run_time",
+        "parse_forecast",
+        "collect"
+      ]
+    },
+    {
+      "path": "src/ingestion/__init__.py",
+      "sha256": "85056b24e6d18f252d2c763a3c2c76ea66cf0a9a66c37b49e592c26da333494f",
+      "lines": 1,
+      "definitions": []
+    },
+    {
+      "path": "src/live/backtest.py",
+      "sha256": "87aad3377d4132e50b1e22b0041c0b33a5de44e5d3a9cbbf49933958ad655a2b",
+      "lines": 360,
+      "definitions": [
+        "fetch_measured",
+        "measured_city_days",
+        "fit_factors",
+        "_metrics",
+        "replay",
+        "walk_forward",
+        "measured_inputs",
+        "evaluate",
+        "run",
+        "main"
+      ]
+    },
+    {
+      "path": "src/live/cams.py",
+      "sha256": "719ed0caf53cbe163d355358f2cfa9b646731824ee13f4f09b92487faa500579",
+      "lines": 124,
+      "definitions": [
+        "LiveSourceError",
+        "_http_get_json",
+        "fetch_hourly",
+        "daily_means"
+      ]
+    },
+    {
+      "path": "src/live/features.py",
+      "sha256": "71837c055186e73ccf70d9c03b0c1452d0474a1e513410d406a2ee373c118c70",
+      "lines": 139,
+      "definitions": [
+        "load_reference",
+        "prepare_history",
+        "build_features",
+        "missing_features",
+        "build_reference",
+        "write_reference",
+        "finite"
+      ]
+    },
+    {
+      "path": "src/live/forecast.py",
+      "sha256": "db2719fb8e1738742b879917fb8150fdd2b0c5ceef0f1c9f0c4647baece94da6",
+      "lines": 199,
+      "definitions": [
+        "local_now",
+        "predict_rows",
+        "_city_result",
+        "live_forecast",
+        "main"
+      ]
+    },
+    {
+      "path": "src/live/__init__.py",
+      "sha256": "9b276a7fae601e081a500c21a65a8996369d2ceef502ae9dc4abc7fafe8cce0e",
+      "lines": 11,
+      "definitions": []
+    },
+    {
+      "path": "src/models/common.py",
+      "sha256": "34c692ca6e688cb8ddd4d5b00bdbc5a7908e95b46ca368f3032cee0710fa7bf1",
+      "lines": 454,
+      "definitions": [
+        "load_feature_columns",
+        "load_task_data",
+        "time_series_cv",
+        "regression_metrics",
+        "classification_metrics",
+        "probability_scores",
+        "slice_breakdown",
+        "persistence_baseline",
+        "LabelEncodedClassifier",
+        "__init__",
+        "fit",
+        "predict",
+        "predict_proba"
+      ]
+    },
+    {
+      "path": "src/models/evaluate.py",
+      "sha256": "900e300cdd1380b2fad810c6185a429a44b8d43acce4f72ee36f73e8913fcc66",
+      "lines": 970,
+      "definitions": [
+        "_load",
+        "_save",
+        "regression_table",
+        "classification_table",
+        "clustering_table",
+        "plot_regression_comparison",
+        "plot_classification_comparison",
+        "plot_confusion_matrices",
+        "plot_roc_curves",
+        "plot_residuals",
+        "plot_learning_curves",
+        "plot_per_city_error",
+        "plot_train_test_gap",
+        "error_analysis",
+        "write_final_selection",
+        "main"
+      ]
+    },
+    {
+      "path": "src/models/explain.py",
+      "sha256": "a15f150b263fb380d35a88517a6bcf6b4a7e06eb99e298ed9976e7844c6a9b7d",
+      "lines": 422,
+      "definitions": [
+        "unwrap_tree_model",
+        "_xgboost_native_shap",
+        "global_explanation",
+        "plot_global",
+        "plot_local",
+        "main"
+      ]
+    },
+    {
+      "path": "src/models/train_classification.py",
+      "sha256": "c83bffbcddd399ae9ac50573e10b9b0fcfeb27a2331188e11a1a3e09bdad0255",
+      "lines": 591,
+      "definitions": [
+        "build_models",
+        "evaluate_model",
+        "leakage_demonstration",
+        "main",
+        "_fit_and_score"
+      ]
+    },
+    {
+      "path": "src/models/train_clustering.py",
+      "sha256": "f745fa4f7120601a7386c846118b78227de63369ac7639ab72e38704ffd5b0bf",
+      "lines": 550,
+      "definitions": [
+        "build_city_profiles",
+        "select_k",
+        "label_archetypes",
+        "plot_selection",
+        "plot_profiles",
+        "main",
+        "_scores"
+      ]
+    },
+    {
+      "path": "src/models/train_regression.py",
+      "sha256": "e36a06d3816a3f358c4a49d1c7a4b0adcf0e0b3c607d7570b811d3ff456ce532",
+      "lines": 380,
+      "definitions": [
+        "build_models",
+        "evaluate_model",
+        "residual_analysis",
+        "main"
+      ]
+    },
+    {
+      "path": "src/models/tune.py",
+      "sha256": "8e7d001a4561378f247bcb195794e75e411ca5094f12846417c556fe7160741d",
+      "lines": 502,
+      "definitions": [
+        "regression_search_space",
+        "classification_search_space",
+        "tune_regression",
+        "tune_ridge_exhaustively",
+        "tune_classification",
+        "plot_before_after",
+        "main"
+      ]
+    },
+    {
+      "path": "src/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "src/nationwide/api.py",
+      "sha256": "c2af576e2f450f08efdcffd3e65c1e94a7d17e2d377c72cad7b5a69c2ed3428c",
+      "lines": 114,
+      "definitions": [
+        "dispatch",
+        "make_handler",
+        "Handler",
+        "send_json",
+        "do_GET",
+        "do_POST",
+        "log_message"
+      ]
+    },
+    {
+      "path": "src/nationwide/aqi.py",
+      "sha256": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e",
+      "lines": 142,
+      "definitions": [
+        "valid",
+        "normalize",
+        "subindex",
+        "category",
+        "calculate",
+        "parse_time",
+        "aggregate",
+        "tomorrow_period"
+      ]
+    },
+    {
+      "path": "src/nationwide/contracts.py",
+      "sha256": "671c3b45faa36bd00e1ab252dfb8429fc1058a0c2c1ec5574d07ac326845833a",
+      "lines": 27,
+      "definitions": [
+        "ContractError",
+        "validate_summary"
+      ]
+    },
+    {
+      "path": "src/nationwide/jobs.py",
+      "sha256": "a4345261c9680aff7f0cdb79c20243d3c350d7dd646fab16bb37b90cdfc9deba",
+      "lines": 63,
+      "definitions": [
+        "verify",
+        "refresh",
+        "check",
+        "warm"
+      ]
+    },
+    {
+      "path": "src/nationwide/providers.py",
+      "sha256": "c1755acdfe645cca2242ac073a05971048db6876d33c34183ef3e11784f2300e",
+      "lines": 227,
+      "definitions": [
+        "utcnow",
+        "coordinates",
+        "grid",
+        "distance",
+        "Providers",
+        "__init__",
+        "get_json",
+        "request_budget",
+        "air",
+        "weather",
+        "parse_series",
+        "search",
+        "measured"
+      ]
+    },
+    {
+      "path": "src/nationwide/service.py",
+      "sha256": "15f2b7bb6d8fd3f712aabf75f5780e90fbc214499abafdadbb62319569c94678",
+      "lines": 151,
+      "definitions": [
+        "ttl",
+        "Service",
+        "__init__",
+        "cached",
+        "search",
+        "summary"
+      ]
+    },
+    {
+      "path": "src/nationwide/store.py",
+      "sha256": "40273c861faf9059815d7fa28b67b21c01dd0b5d84fa3f5cb61339f75e4d81b0",
+      "lines": 176,
+      "definitions": [
+        "digest",
+        "BudgetExceeded",
+        "Store",
+        "cursor",
+        "get",
+        "claim",
+        "release",
+        "put",
+        "budget",
+        "event",
+        "location",
+        "records",
+        "weather",
+        "fire_context",
+        "station",
+        "sensor",
+        "issue",
+        "status",
+        "popular",
+        "metrics"
+      ]
+    },
+    {
+      "path": "src/nationwide/__init__.py",
+      "sha256": "f9dc414ee23ed347ab7ea652d816708f19e947471bcd64ee5dc3fdd45f479b6b",
+      "lines": 1,
+      "definitions": []
+    },
+    {
+      "path": "src/report/audit.py",
+      "sha256": "23f55e34c649d1bcd97d74b310184a70c7cb887cdf0bc5a322c80664b3d5327e",
+      "lines": 437,
+      "definitions": [
+        "_json",
+        "check_reproduction_entrypoint",
+        "check_provenance",
+        "check_figures",
+        "check_figures_referenced",
+        "check_reports_generated",
+        "check_no_hardcoded_metrics",
+        "check_three_paradigms",
+        "check_leakage_controls",
+        "check_novelty_features",
+        "check_cards",
+        "check_smoke_tests",
+        "check_deployment_recorded",
+        "check_git_history",
+        "main"
+      ]
+    },
+    {
+      "path": "src/report/blueprint_pdf.py",
+      "sha256": "c6972b3aa072040e66e56d8efc2159e1ce11fa8e23e9a5a537af728778301cdf",
+      "lines": 208,
+      "definitions": [
+        "_resolve_includes",
+        "_classify_tables",
+        "_render_part",
+        "_cover",
+        "build_html",
+        "_print",
+        "render_single",
+        "main",
+        "repl",
+        "repl"
+      ]
+    },
+    {
+      "path": "src/report/build_docx.py",
+      "sha256": "f109c545a761bb4c770ad31828e69e6dfa07b3e0f1eedda793986d1d8c2e4a68",
+      "lines": 664,
+      "definitions": [
+        "load_all",
+        "ReportBuilder",
+        "references_for",
+        "export_pdf",
+        "write_changelog",
+        "main",
+        "_json",
+        "_csv",
+        "__init__",
+        "_configure_styles",
+        "cover",
+        "toc",
+        "heading",
+        "para",
+        "bullets",
+        "numbered",
+        "figure",
+        "table",
+        "dataframe",
+        "_size_table",
+        "references_section",
+        "rubric_coverage",
+        "save"
+      ]
+    },
+    {
+      "path": "src/report/cards.py",
+      "sha256": "c352c2e298e54846b86ab5cf9f428fc1356caa100252501dcd8ed0896009af22",
+      "lines": 572,
+      "definitions": [
+        "_load",
+        "build_data_card",
+        "build_model_card",
+        "main"
+      ]
+    },
+    {
+      "path": "src/report/diagrams.py",
+      "sha256": "d67b11a30f9b33e6c7ba4d7fea699005c4bdde9e69195879e37ee26c74e42207",
+      "lines": 264,
+      "definitions": [
+        "_save",
+        "plot_pipeline",
+        "plot_gantt",
+        "main"
+      ]
+    },
+    {
+      "path": "src/report/explainer_pdf.py",
+      "sha256": "49543a5834ecd7e978736939a0c17587a0562385c6da41c7ab0dedcf20007981",
+      "lines": 563,
+      "definitions": [
+        "_inline",
+        "_table",
+        "markdown_to_html",
+        "_embedded_font_css",
+        "_cover",
+        "_contents",
+        "build_html",
+        "_find_chrome",
+        "_stamp_footers",
+        "_render_chrome_cli",
+        "main",
+        "cells"
+      ]
+    },
+    {
+      "path": "src/report/notebooks.py",
+      "sha256": "a6c3193148ba7025e8ac986020aeb3c13056e39ffceabe00be3cf1a998fab1a1",
+      "lines": 765,
+      "definitions": [
+        "_notebook",
+        "_header",
+        "build_notebook1",
+        "build_notebook2",
+        "build_notebook3",
+        "execute",
+        "main"
+      ]
+    },
+    {
+      "path": "src/report/readme.py",
+      "sha256": "95c685737019cb5b8b1328209556aa7e3673327ad184d322243ecd1025c1409f",
+      "lines": 270,
+      "definitions": [
+        "_load",
+        "deployment_url",
+        "set_deployment_url",
+        "results_block",
+        "_replace_block",
+        "update_readme",
+        "main"
+      ]
+    },
+    {
+      "path": "src/report/review1.py",
+      "sha256": "063e346ffd4928b7ddcab986a72b6b88fcee854225bad28c8e7bd969ea3a4f75",
+      "lines": 902,
+      "definitions": [
+        "build"
+      ]
+    },
+    {
+      "path": "src/report/review2.py",
+      "sha256": "3446ee377e38feb2238f7076f4891a4ea08346a35376b1887f89db213a9dd87b",
+      "lines": 808,
+      "definitions": [
+        "build"
+      ]
+    },
+    {
+      "path": "src/report/review3.py",
+      "sha256": "2797de7d12b629edf6d53c8de89b0a313b95a122b40490ec07aed66b602c2da7",
+      "lines": 872,
+      "definitions": [
+        "build"
+      ]
+    },
+    {
+      "path": "src/report/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "src/research/pilot_trust.py",
+      "sha256": "e13c25769feabd524609651ecd7a5e69b0663b0df805a1eee0f6cf52e6ebd447",
+      "lines": 365,
+      "definitions": [
+        "_band",
+        "_tuned_params",
+        "_fit",
+        "_conformal_quantile",
+        "_coverage_table",
+        "_summary",
+        "classifier_calibration",
+        "regression_experiments",
+        "main"
+      ]
+    },
+    {
+      "path": "src/research/prior_art_tables.py",
+      "sha256": "be8651e9646fb265de6f0554f07e9abc9d37e68348bee07ace6d6f3f01ea129e",
+      "lines": 99,
+      "definitions": [
+        "main"
+      ]
+    },
+    {
+      "path": "src/research/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "src/simulate/policy.py",
+      "sha256": "deaa6c6a6ce49d875527cc1b8a1bb45a73997d98674878d4ecfe5e108e81fa39",
+      "lines": 427,
+      "definitions": [
+        "rescore",
+        "simulate",
+        "plot_simulation",
+        "main"
+      ]
+    },
+    {
+      "path": "src/simulate/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "app/Home.py",
+      "sha256": "595b19afa2931739266c1d7608b95d62d91d99a7a9d76301d3cf8e1f63922cf8",
+      "lines": 199,
+      "definitions": [
+        "sidebar_language",
+        "main"
+      ]
+    },
+    {
+      "path": "app/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "app/pages/1_Forecast.py",
+      "sha256": "5baf4e6b22fac21ed3b414ab3d7ed086e6865294e1338df0494283288a54eccb",
+      "lines": 263,
+      "definitions": [
+        "main"
+      ]
+    },
+    {
+      "path": "app/pages/2_City_Risk_Atlas.py",
+      "sha256": "e16a081ae7f245edccef6260909a2f5bacc77371fdf17e4a52cc90b30f9953cb",
+      "lines": 322,
+      "definitions": [
+        "main"
+      ]
+    },
+    {
+      "path": "app/pages/3_Policy_Simulator.py",
+      "sha256": "99f07b2bc8c0c2b0fec536adc10f50c7febf50accc8d45e684f79025fc93211f",
+      "lines": 240,
+      "definitions": [
+        "baseline_scoring",
+        "run_scenario",
+        "main"
+      ]
+    },
+    {
+      "path": "app/pages/4_Model_Insights.py",
+      "sha256": "e0e6506a242b7026abcac233c130461fa4c556783983e442bd23317cd097b5d6",
+      "lines": 314,
+      "definitions": [
+        "load_table",
+        "show_figure",
+        "main"
+      ]
+    },
+    {
+      "path": "app/utils/i18n.py",
+      "sha256": "754932fe3a011b8a8aa7a58b00e0a70cd6e8df9e27f95acd4eedbfdae2f47423",
+      "lines": 138,
+      "definitions": [
+        "translate",
+        "cohort_label"
+      ]
+    },
+    {
+      "path": "app/utils/inference.py",
+      "sha256": "12eb6f567858cb2a8bb1b5978f1f584372b3da1a5548c9da3a62e68c6be4266b",
+      "lines": 489,
+      "definitions": [
+        "load_results",
+        "load_features",
+        "load_clean",
+        "feature_columns",
+        "load_model",
+        "deployed_model_names",
+        "available_cities",
+        "date_bounds",
+        "ValidationResult",
+        "validate_request",
+        "_row_for",
+        "apply_what_if",
+        "cohort_snapshot",
+        "forecast",
+        "history",
+        "training_reference",
+        "drift_check"
+      ]
+    },
+    {
+      "path": "app/utils/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "scripts/audit_secret_history.py",
+      "sha256": "f4637dd6d7211f9cc9c2a092a5af1c98227744a537e28afdf49e587c9052ef83",
+      "lines": 39,
+      "definitions": []
+    },
+    {
+      "path": "scripts/check_nationwide.py",
+      "sha256": "ad57254f2933aaca915ea0a37bc86933c88d0f188aab40dfce166a8c8ac59995",
+      "lines": 19,
+      "definitions": []
+    },
+    {
+      "path": "scripts/evolve_pages.py",
+      "sha256": "7042f715ae126b1080c690df30eaa588ab5cf3dc31afdb8ef86444e46efb893e",
+      "lines": 41,
+      "definitions": []
+    },
+    {
+      "path": "scripts/generate_nationwide_routes.py",
+      "sha256": "4e386efdc2287decdd5101fa387beb96303efe2dbeba2b51161ce02f5a22bef0",
+      "lines": 28,
+      "definitions": []
+    },
+    {
+      "path": "scripts/provision_live_secrets.py",
+      "sha256": "426e41619434312993bc42710ea86e25660f96da73468590a5056f9d15e9ce15",
+      "lines": 36,
+      "definitions": []
+    },
+    {
+      "path": "scripts/smoke_vercel_preview.py",
+      "sha256": "620bc4c465b2e91bbcd9ccf5063573f183c7653d5740824425cdb0cc4194e4f3",
+      "lines": 91,
+      "definitions": [
+        "page_check",
+        "request"
+      ]
+    },
+    {
+      "path": "scripts/test_optional_sources.py",
+      "sha256": "019a2ae5177f9d980979628e2ad170e5c1604371e1af850f10125bede089251e",
+      "lines": 19,
+      "definitions": []
+    },
+    {
+      "path": "scripts/verify_live_integration.py",
+      "sha256": "191098b309ac2f0754766f8233745d56eb51be5ab7b26a8fc6c4fe5eeab8b598",
+      "lines": 48,
+      "definitions": [
+        "main"
+      ]
+    },
+    {
+      "path": "scripts/verify_nationwide_persistence.py",
+      "sha256": "154c37437b6d7b864b8135d47eb9d96e615dfd51962fcab59e4c8bff4ac6b140",
+      "lines": 45,
+      "definitions": [
+        "counts"
+      ]
+    },
+    {
+      "path": "scripts/write_nationwide_handover.py",
+      "sha256": "3b923aa532d4b57a368c162d41a10e786ce177410096232f95828aa82f028099",
+      "lines": 224,
+      "definitions": [
+        "ist"
+      ]
+    },
+    {
+      "path": "tests/test_ingestion.py",
+      "sha256": "6b1c5a5a035116cc1a4ae1a6f5f5237594af0f961116f12e7f57649ce06044b3",
+      "lines": 777,
+      "definitions": [
+        "ok",
+        "Scripted",
+        "client",
+        "observation",
+        "UnitTests",
+        "TimestampTests",
+        "CpcbTests",
+        "OpenAqTests",
+        "FirmsTests",
+        "WeatherTests",
+        "ValidationTests",
+        "HttpTests",
+        "SecretTests",
+        "MatchingTests",
+        "StoreAndOrchestratorTests",
+        "PostgresIntegrationTests",
+        "__init__",
+        "__call__",
+        "test_identity_through_unit_aliases",
+        "test_carbon_monoxide_micrograms_become_milligrams",
+        "test_ppb_and_ppm_use_molar_mass_and_say_so",
+        "test_refuses_to_guess",
+        "test_pollutant_names",
+        "test_cpcb_local_time_is_converted_to_utc",
+        "test_openaq_utc",
+        "test_firms_time_without_leading_zero",
+        "test_naive_datetime_is_refused",
+        "collect",
+        "test_records_are_labelled_measured_and_kept_raw",
+        "test_value_without_a_unit_is_not_normalised",
+        "test_unusable_records_are_rejected_with_a_reason",
+        "test_a_resource_that_is_not_air_quality_is_refused",
+        "test_pagination_follows_offsets",
+        "test_missing_key_is_reported_by_name_only",
+        "collect",
+        "test_latest_values_are_mapped_through_their_sensors",
+        "test_discovery_paginates",
+        "test_pauses_when_the_rate_limit_window_is_spent",
+        "test_a_rejected_key_fails_the_run",
+        "test_inactive_locations_are_not_polled",
+        "test_a_locality_that_only_names_the_country_gives_way_to_the_target_city",
+        "test_a_station_inside_two_search_circles_belongs_to_the_nearer_city",
+        "test_each_location_is_stamped_when_its_own_response_arrived",
+        "test_values_from_sensors_that_are_not_pollutants_are_counted_in_a_note",
+        "test_detections_are_parsed_and_labelled",
+        "test_detection_without_position_is_rejected",
+        "test_provider_error_text_is_a_failure_and_hides_the_key",
+        "test_only_supported_viirs_feeds_are_requested",
+        "payload",
+        "parse",
+        "test_only_future_hours_are_kept_with_lead_times",
+        "test_a_missing_variable_is_flagged_not_dropped",
+        "test_a_later_model_run_is_a_new_record_never_an_overwrite",
+        "tomorrow",
+        "test_fetching_the_same_model_run_again_adds_nothing_and_keeps_the_first_copy",
+        "test_an_unknown_model_run_falls_back_to_the_retrieval_hour",
+        "test_run_time_comes_from_model_metadata",
+        "test_staleness_thresholds_are_configuration",
+        "test_freshness_is_judged_at_retrieval_not_at_validation",
+        "test_a_reading_timed_after_its_own_retrieval_is_rejected",
+        "test_a_unit_label_that_cannot_be_true_is_not_converted",
+        "test_believable_carbon_monoxide_is_still_converted",
+        "test_stale_reading_is_kept_and_flagged",
+        "test_future_timestamp_is_rejected",
+        "test_missing_station_and_time",
+        "test_implausible_value_is_flagged_not_deleted",
+        "test_coordinate_problems",
+        "test_unsupported_unit_keeps_the_raw_value",
+        "test_duplicates_within_a_batch",
+        "test_retries_a_server_error_with_backoff",
+        "test_honours_retry_after_on_429",
+        "test_gives_up_after_the_bound",
+        "test_client_error_is_not_retried",
+        "test_malformed_json",
+        "test_redaction",
+        "test_unknown_key_shaped_values_are_masked_too",
+        "test_nothing_secret_reaches_logs_or_the_report",
+        "test_placeholder_connection_string_counts_as_unconfigured",
+        "test_env_files_are_ignored_by_git",
+        "test_env_example_holds_names_only",
+        "test_no_configured_secret_is_in_a_tracked_file",
+        "test_frontend_never_references_server_secrets",
+        "stations",
+        "test_same_city_is_not_enough_to_link",
+        "pair",
+        "test_the_official_copy_wins_when_both_can_be_modelled",
+        "test_an_official_copy_that_cannot_be_modelled_does_not_displace_one_that_can",
+        "test_the_stored_official_copy_is_never_changed_after_the_fact",
+        "test_a_rejected_official_reading_counts_for_nothing",
+        "test_inserting_twice_writes_once",
+        "test_end_to_end_into_the_store_is_idempotent",
+        "test_dry_run_writes_nothing",
+        "test_one_failing_source_does_not_stop_the_others",
+        "test_postgres_enforces_idempotency",
+        "page",
+        "Broken",
+        "Fine",
+        "RollbackOnly",
+        "collect",
+        "collect",
+        "__enter__",
+        "__exit__",
+        "__getattr__"
+      ]
+    },
+    {
+      "path": "tests/test_live.py",
+      "sha256": "b185759684397179e1139de89aefdd01dcd36516af03556c6a2b8e5071a4ae6e",
+      "lines": 177,
+      "definitions": [
+        "fake_provider",
+        "run",
+        "ModelledDataTests",
+        "FeatureTests",
+        "ForecastTests",
+        "BacktestTests",
+        "test_hourly_values_arrive_in_airguard_units",
+        "test_a_refusal_from_the_provider_is_an_error_not_an_empty_table",
+        "test_daily_means_count_the_hours_still_to_come",
+        "history",
+        "test_the_correction_scales_only_what_it_was_fitted_for_and_keeps_the_original",
+        "test_the_aqi_never_rests_on_a_filler_value",
+        "test_every_feature_the_model_wants_is_built",
+        "test_every_city_gets_a_labelled_forecast",
+        "test_the_provider_being_down_is_said_plainly_and_nothing_is_invented",
+        "test_an_unknown_city_is_refused",
+        "test_too_little_history_fails_that_city_without_a_number",
+        "test_an_old_correction_is_dropped_and_the_page_is_told",
+        "test_the_likely_range_comes_from_tested_errors_and_prefers_the_citys_own",
+        "test_a_correction_factor_is_the_ratio_of_medians_and_needs_enough_days",
+        "test_monitors_are_averaged_into_one_city_value_and_an_aqi",
+        "down",
+        "short"
+      ]
+    },
+    {
+      "path": "tests/test_live_data.py",
+      "sha256": "13a5219ff363fe90ca1c94493efd92f271980eaa78789e57492d5a3234463f6d",
+      "lines": 125,
+      "definitions": [
+        "test_future_timestamp_cannot_look_fresh",
+        "test_exception_tracebacks_are_redacted",
+        "test_freshness_boundary_expiry",
+        "test_database_conflicts_are_reported_as_duplicates",
+        "test_scheduler_skips_overlapping_cycle",
+        "test_scheduler_continues_after_provider_failure",
+        "test_api_errors_hide_connection_details_and_validate_city",
+        "test_real_supabase_snapshot_and_expiry",
+        "test_real_db_all_record_types_repeat_without_duplicate_flags",
+        "result"
+      ]
+    },
+    {
+      "path": "tests/test_nationwide.py",
+      "sha256": "3a709b9415e27cc978d15eae54ff06f900903605b755a2fd5c176be42a0b79b3",
+      "lines": 260,
+      "definitions": [
+        "test_all_closed_breakpoints",
+        "test_bad_concentration",
+        "test_official_interpolation_and_minimum",
+        "test_units_no_assumed_gas_conversion",
+        "hourly",
+        "test_averaging_minimum_unique_bins_and_gas_windows",
+        "test_ist_tomorrow_boundaries",
+        "FakeStore",
+        "transport",
+        "test_each_provider_retry_consumes_shared_quota",
+        "test_generated_vercel_entrypoints_are_detectable_and_importable",
+        "test_provider_schema_wrong_unit_and_missing_series",
+        "test_provider_http_errors",
+        "test_malformed_json_and_timeout",
+        "test_empty_open_aq_no_manufactured_aqi",
+        "test_cache_expiry_and_stale_label_then_unavailable",
+        "FakeProviders",
+        "test_openaq_weather_outage_preserves_forecast",
+        "parse_day",
+        "test_all_outage_returns_no_fake_values",
+        "test_incomplete_model_cannot_issue_a_forecast_or_claim_fresh_aqi",
+        "test_bad_api_input",
+        "test_refresh_auth_required_and_no_secret_response",
+        "test_search_validation_and_country_filter",
+        "test_real_database_constraints_rollback_only",
+        "__init__",
+        "get",
+        "claim",
+        "release",
+        "put",
+        "budget",
+        "event",
+        "records",
+        "weather",
+        "location",
+        "issue",
+        "metrics",
+        "fire_context",
+        "timeout",
+        "fail",
+        "air",
+        "weather",
+        "measured",
+        "Down",
+        "Incomplete",
+        "RollbackStore",
+        "air",
+        "air",
+        "cursor"
+      ]
+    },
+    {
+      "path": "tests/test_nationwide_verification.py",
+      "sha256": "b01cc1245fe7c84ed006dc1364d4cda53379572b6b6dc814ebe85f746d7edb56",
+      "lines": 48,
+      "definitions": [
+        "Cursor",
+        "test_verification_uses_same_day_station_series_and_signed_error",
+        "test_partial_station_never_produces_verification_metric",
+        "__init__",
+        "execute",
+        "fetchall",
+        "Store",
+        "Provider",
+        "Store",
+        "Provider",
+        "cursor",
+        "measured",
+        "cursor",
+        "measured"
+      ]
+    },
+    {
+      "path": "tests/test_smoke.py",
+      "sha256": "c17d242a9bde3bdadfa36650dd9f0c92e178bc3cb91d83dd0fa06a0fb3681e96",
+      "lines": 301,
+      "definitions": [
+        "test_provenance_exists_and_is_complete",
+        "test_figures_are_present_and_high_resolution",
+        "test_no_leakage_columns_in_feature_lists",
+        "test_split_is_time_ordered",
+        "test_cleaned_data_has_no_residual_nulls_or_negatives",
+        "test_hai_properties_hold",
+        "test_hai_never_less_protective_on_real_data",
+        "test_advisory_text_exists_for_every_combination",
+        "test_forecast_never_raises_across_the_input_grid",
+        "test_forecast_handles_invalid_input_gracefully",
+        "test_what_if_sliders_move_the_forecast_in_the_right_direction",
+        "test_drift_check_returns_a_verdict",
+        "test_policy_simulator_is_monotone",
+        "test_reports_contain_no_placeholder_metrics",
+        "main"
+      ]
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "definitions": []
+    },
+    {
+      "path": "docs/DATA_SOURCES.md",
+      "sha256": "cf4655025b12d042bd1fe706efee4a690af4784dc30ed2ab0b967c44979d1938",
+      "lines": 58
+    },
+    {
+      "path": "docs/airguard2/00_summary.md",
+      "sha256": "17c1ba27dc6cbd95c585148d1b52359d9f8b7721599adec1af9535e82aaf2f22",
+      "lines": 66
+    },
+    {
+      "path": "docs/airguard2/01_evidence.md",
+      "sha256": "b05ce1ecad709aa3a478616d5efb5339da061abf7f149f042e13fbef9d21560f",
+      "lines": 261
+    },
+    {
+      "path": "docs/airguard2/02_research_design.md",
+      "sha256": "6d5e5f4c0fb87cdc756e76be7a968ad1665e287a08107984175c15222f9915c4",
+      "lines": 202
+    },
+    {
+      "path": "docs/airguard2/03_platform.md",
+      "sha256": "2df986881e28562c5ab7ab462f61ec170ba65bb1d0b5eb68fa9b1a83e4ccad53",
+      "lines": 198
+    },
+    {
+      "path": "docs/airguard2/04_product.md",
+      "sha256": "24ca712b38d94de4294bde8a3316d7a3236457c33f30886e0ce8dcc153765212",
+      "lines": 204
+    },
+    {
+      "path": "docs/airguard2/05_program.md",
+      "sha256": "754c19cb4ad735eb50feae32fd4bc78c8e34bd3f09e5eedb4ef03dceec191dc7",
+      "lines": 127
+    },
+    {
+      "path": "docs/airguard2/live_data_implementation.md",
+      "sha256": "42cb10dacfb1aabd840a4044eb58b58cb18aa209b770ee1e11a602b15b78658e",
+      "lines": 241
+    },
+    {
+      "path": "docs/airguard2/live_forecast.md",
+      "sha256": "960b59900bba84fce42ec498b2a117ef9903ed7ad3d509e093f07a8e973190ed",
+      "lines": 93
+    },
+    {
+      "path": "docs/airguard2/live_integration_handover.md",
+      "sha256": "f6fc81176313ef7debcccc7338e7132c68c52d82d3e7a23513712c79adfb9516",
+      "lines": 129
+    },
+    {
+      "path": "docs/airguard2/nationwide_handover.md",
+      "sha256": "34a500ca4259257546e646e9b0f9f62a768cf56fb208e3cb401264d2e9e87844",
+      "lines": 188
+    },
+    {
+      "path": "docs/airguard2/prior_art.json",
+      "sha256": "70f24963b48c540582ad218708ffba6c86bf2fb062e86374a8cdbaa6138f3741",
+      "lines": 343
+    },
+    {
+      "path": "docs/airguard2/_generated/prior_art_tables.md",
+      "sha256": "7ea26852d573ac25431b37e8288c22c73ff3434e997133693a8a4736eb735df1",
+      "lines": 114
+    },
+    {
+      "path": "db/migrations/001_live_ingestion.sql",
+      "sha256": "628f1928681b748ed062ca32a917b7546f9c46cd49844d359fb0d88ba6478c52",
+      "lines": 265
+    },
+    {
+      "path": "db/migrations/20261010121553_nationwide_live_product.sql",
+      "sha256": "300f69d77719041d7fac81feb2367ab0c76f11c616c0e9fd5ff8420e7ba652c4",
+      "lines": 77
+    },
+    {
+      "path": "db/migrations/20261010123357_secured_supabase_cron.sql",
+      "sha256": "d4e6dfb8293af609e45a575ae1d643f1027802d7b8692d30ad52fda82ed47511",
+      "lines": 21
+    },
+    {
+      "path": "db/migrations/20261010123539_cron_extension_schema.sql",
+      "sha256": "992ea25a0f95fc9a0386f6c26541e123cb4db34c2a781ed15f893367acae6849",
+      "lines": 8
+    },
+    {
+      "path": "db/migrations/20261010125521_index_ingestion_foreign_keys.sql",
+      "sha256": "b480c7d8c3338ba9957bef6c68eea4da98393b79213ad411508d03e78abcedea",
+      "lines": 23
+    },
+    {
+      "path": "supabase/migrations/20261010121553_nationwide_live_product.sql",
+      "sha256": "300f69d77719041d7fac81feb2367ab0c76f11c616c0e9fd5ff8420e7ba652c4",
+      "lines": 77
+    },
+    {
+      "path": "supabase/migrations/20261010123357_secured_supabase_cron.sql",
+      "sha256": "d4e6dfb8293af609e45a575ae1d643f1027802d7b8692d30ad52fda82ed47511",
+      "lines": 21
+    },
+    {
+      "path": "supabase/migrations/20261010123539_cron_extension_schema.sql",
+      "sha256": "992ea25a0f95fc9a0386f6c26541e123cb4db34c2a781ed15f893367acae6849",
+      "lines": 8
+    },
+    {
+      "path": "supabase/migrations/20261010125521_index_ingestion_foreign_keys.sql",
+      "sha256": "b480c7d8c3338ba9957bef6c68eea4da98393b79213ad411508d03e78abcedea",
+      "lines": 23
+    },
+    {
+      "path": "webapp/app/layout.js",
+      "sha256": "ba5798d7df2d33e9ed8f34957a2ed8d8483c319adc07919eab4dcd06347e4f7a",
+      "lines": 25
+    },
+    {
+      "path": "webapp/app/page.js",
+      "sha256": "0ad975c17dcdf7654e8e2923746527b6e9eb4bb40c5bc5aa827b436c7529b0a6",
+      "lines": 2
+    },
+    {
+      "path": "webapp/app/city-atlas/page.js",
+      "sha256": "11b86fbf5359bb86f5ce953d1e1848c58dbd8d8166a23b0fcc613ab66c5afbba",
+      "lines": 329
+    },
+    {
+      "path": "webapp/app/components/HourlyChart.tsx",
+      "sha256": "4925033279048e85d3268b3a3c3d699f701e58699523d48c69c7bb1d81d14896",
+      "lines": 25
+    },
+    {
+      "path": "webapp/app/components/LiveDataSection.js",
+      "sha256": "3bceff368554f2bc6f9cf58f816410b9f42f5b3b5e7b0d301999c7f23ed23834",
+      "lines": 86
+    },
+    {
+      "path": "webapp/app/components/NationwideDashboard.tsx",
+      "sha256": "2465269a4e56db8ae8b533d1525eb4ec0f573dec2c94aee5d2d527b19030c537",
+      "lines": 113
+    },
+    {
+      "path": "webapp/app/components/NavBar.js",
+      "sha256": "61a981dc71d39c88b617c818bbfab0e0cf0300ab93a0b3257d6267c11ff80546",
+      "lines": 37
+    },
+    {
+      "path": "webapp/app/components/theme.js",
+      "sha256": "d8bf538ed606bb0874b924d6bd3723fb787fe33b1edd8840254f7f9d5b6575c3",
+      "lines": 48
+    },
+    {
+      "path": "webapp/app/components/ui.js",
+      "sha256": "66b25597152cc3fdee4ce4be88135734b8bd0f82c45760c34d33a653e5d2404e",
+      "lines": 220
+    },
+    {
+      "path": "webapp/app/forecast/page.js",
+      "sha256": "c8dd029b043f44fb9105c1ef2b391a7d3562e0f7fe6d5ecd5448ef125a74cda8",
+      "lines": 345
+    },
+    {
+      "path": "webapp/app/lib/i18n.ts",
+      "sha256": "86302dae01272b7a09a6c4e23979a2f83bdf8198e048ee110dddd80eb3c4249e",
+      "lines": 19
+    },
+    {
+      "path": "webapp/app/lib/live-types.ts",
+      "sha256": "e0c2463c0f96ba2a7e01b4e2530d7f6f8f99b22a362bdb3ce85e25c0d7b30c18",
+      "lines": 7
+    },
+    {
+      "path": "webapp/app/live/page.js",
+      "sha256": "2ee4a24fdd4cd98ef6799a41d7d8408d387eff30590a233e2fcf0fd177690647",
+      "lines": 2
+    },
+    {
+      "path": "webapp/app/methods/page.js",
+      "sha256": "c502349213b2826dce37806f1d00b62ffa69ad2bacb76432e11667a58cceb6d3",
+      "lines": 14
+    },
+    {
+      "path": "webapp/app/model-insights/page.js",
+      "sha256": "ad5fe3189ab4685efdd48065ca2d815450d9f6d328b7dbe41701ea1461ec4e9e",
+      "lines": 342
+    },
+    {
+      "path": "webapp/app/policy-simulator/page.js",
+      "sha256": "056eccfaa64edabac8cfc69fa42932a7cf688076ffbb032bbe4b28fd71618ab7",
+      "lines": 268
+    },
+    {
+      "path": "webapp/app/research/page.js",
+      "sha256": "67ce27aacc7ca18631a6999273ded09be9aa1a248e4c2487cfeef6ab9bc8c4e9",
+      "lines": 205
+    },
+    {
+      "path": "webapp/api/forecast.py",
+      "sha256": "b019c5c3a88a7ab95152e43f96c8563b1679c80142d8df14d6dcf4e6e347e973",
+      "lines": 70,
+      "definitions": [
+        "handle",
+        "handler",
+        "_send_json",
+        "do_OPTIONS",
+        "do_POST"
+      ]
+    },
+    {
+      "path": "webapp/api/health.py",
+      "sha256": "810307fa3361ce68ec3a574eea5264c04be12ef209ef24fa62998501e26a2000",
+      "lines": 18,
+      "definitions": [
+        "handle",
+        "handler"
+      ]
+    },
+    {
+      "path": "webapp/api/live.py",
+      "sha256": "b4bdb0a2f1caeeb5738b2dda2226e63f2eb8c989964f95298a4171be736fe9bf",
+      "lines": 41,
+      "definitions": [
+        "handle",
+        "handler",
+        "do_GET"
+      ]
+    },
+    {
+      "path": "webapp/api/live_forecast.py",
+      "sha256": "88f9138cbcd516a0c04598e8e168a5786a120b15b5b9787017a7f49a426dd66c",
+      "lines": 49,
+      "definitions": [
+        "handle",
+        "handler",
+        "_send_json",
+        "do_GET"
+      ]
+    },
+    {
+      "path": "webapp/api/policy_simulate.py",
+      "sha256": "89ba82319336761078af059a207e44af7bc415aca06857f04599ab2906c7278a",
+      "lines": 94,
+      "definitions": [
+        "_clean_frame",
+        "_baseline",
+        "handle",
+        "handler",
+        "_send_json",
+        "do_OPTIONS",
+        "do_POST"
+      ]
+    },
+    {
+      "path": "webapp/api/air-quality/current.py",
+      "sha256": "a68753cdeb8365675acdc960a9af5b2c9dfaf93acb423a48d78c1c72fe55928b",
+      "lines": 18,
+      "definitions": [
+        "handle",
+        "handler"
+      ]
+    },
+    {
+      "path": "webapp/api/air-quality/forecast.py",
+      "sha256": "20e6c9757c73516111e60e76e031d7733031280d142a2ab79a6b51f3e4348be4",
+      "lines": 18,
+      "definitions": [
+        "handle",
+        "handler"
+      ]
+    },
+    {
+      "path": "webapp/api/air-quality/summary.py",
+      "sha256": "59df6f289965115a9e4c401070edc64dd2b201b167da6c1eb759b8cc2de02476",
+      "lines": 18,
+      "definitions": [
+        "handle",
+        "handler"
+      ]
+    },
+    {
+      "path": "webapp/api/internal/refresh.py",
+      "sha256": "c969614f7f8d5699278e660e558bb95265a87d7288bf38312a065698feb6ba2d",
+      "lines": 18,
+      "definitions": [
+        "handle",
+        "handler"
+      ]
+    },
+    {
+      "path": "webapp/api/locations/search.py",
+      "sha256": "026d504cf576434a88ae27f8e9ea08c5a02fd761082ce35a240dd85572d82d5f",
+      "lines": 18,
+      "definitions": [
+        "handle",
+        "handler"
+      ]
+    },
+    {
+      "path": "webapp/api/providers/status.py",
+      "sha256": "74c3c9c57bc9c2dcab8ff25aa64cce906d286e04323ca5b43244b7df5ff84e32",
+      "lines": 18,
+      "definitions": [
+        "handle",
+        "handler"
+      ]
+    },
+    {
+      "path": "webapp/tests/dashboard.test.tsx",
+      "sha256": "e725bb2f3f984f6472ad80406bb0532f1fbb59ef0b38a06cfaf6a94fe6220485",
+      "lines": 57
+    },
+    {
+      "path": "webapp/tests/setup.ts",
+      "sha256": "9b328c4843431fa76d8de00008fc159e95f99a840211085ff3b8f25e53d14409",
+      "lines": 1
+    },
+    {
+      "path": "webapp/tests/e2e/nationwide.spec.ts",
+      "sha256": "2c4264e51b2c5518c2407d32ffdb594def4c9922db544bc3ce94faca11483029",
+      "lines": 49
+    }
+  ],
+  "baseline": {
+    "python_tests": 258,
+    "component_tests": 6,
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "browser_visual": "NOT_RUN",
+    "playwright_api": "PASS: 11 real local HTTP checks before research changes"
+  },
+  "architecture": {
+    "frontend": "Existing Next.js16, nationwide and separate historical research",
+    "api": "Python Vercel adapters; shared src/nationwide service",
+    "database": "Private airguard schema, SSL Supabase session pooler",
+    "providers": "CAMS/Open-Meteo, OpenAQ, weather; optional CPCB and FIRMS ingestion",
+    "cache": "Shared Postgres leases, budgets, immutable input artifacts",
+    "legacy": "2015-2020 LightGBM, XGBoost SMOTE, KMeans, SHAP preserved",
+    "schedule": "Windows hourly legacy; Supabase hourly cron currently inactive"
+  }
+}

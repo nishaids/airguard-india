@@ -470,7 +470,7 @@ def plot_learning_curves(data: Dict[str, Any]) -> str:
             data["X_train"],
             data["y_train"],
             train_sizes=np.linspace(0.15, 1.0, 8),
-            cv=time_series_cv(),
+            cv=time_series_cv(dates=data["meta_train"]["Date"]),
             scoring="neg_mean_absolute_error",
             n_jobs=1,
             shuffle=False,

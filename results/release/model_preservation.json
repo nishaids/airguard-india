@@ -1,0 +1,25 @@
+{
+  "model_artifacts": {
+    "models/deploy/classification_booster.json": {
+      "unchanged": true,
+      "sha256": "fa5bf34e5c626752fad9a3ccc1a05906596a6335c7cc6b90f4e2fa425bdc6451"
+    },
+    "models/deploy/classification_classes.json": {
+      "unchanged": true,
+      "sha256": "42dda9a8395ced45bcec990d0beaed3165810ed8dc7a912a58bc6e91d034c968"
+    },
+    "models/deploy/feature_order.json": {
+      "unchanged": true,
+      "sha256": "c9f0346cc522019511ff209c51b49e50509b978a2fcb13440a830f4d9eaa8e85"
+    },
+    "models/deploy/live_reference.json": {
+      "unchanged": true,
+      "sha256": "787c0fe9de227edd28676d59f73f015459ac683b621f24ec92eaf1ea81062332"
+    },
+    "models/deploy/regression_booster.json": {
+      "unchanged": true,
+      "sha256": "2a64087a79d6767aea0ba7a01d409a3f1f3be9f1a0705391d3826461eaf4a977"
+    }
+  },
+  "no_training_executed": true
+}

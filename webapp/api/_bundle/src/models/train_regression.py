@@ -172,7 +172,7 @@ def evaluate_model(
 ) -> Dict[str, Any]:
     """Cross-validate on the training period, fit, then score on the test period."""
     estimator = spec["estimator"]
-    splitter = time_series_cv()
+    splitter = time_series_cv(dates=data["meta_train"]["Date"])
 
     started = time.perf_counter()
     cv = cross_validate(

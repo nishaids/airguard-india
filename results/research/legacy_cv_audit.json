@@ -1,0 +1,56 @@
+{
+  "original_folds": [
+    {
+      "fold": 1,
+      "train_last": "2019-05-25",
+      "validation_first": "2015-01-14",
+      "chronological_violation": true
+    },
+    {
+      "fold": 2,
+      "train_last": "2019-05-25",
+      "validation_first": "2015-04-19",
+      "chronological_violation": true
+    },
+    {
+      "fold": 3,
+      "train_last": "2019-05-25",
+      "validation_first": "2015-04-03",
+      "chronological_violation": true
+    },
+    {
+      "fold": 4,
+      "train_last": "2019-05-25",
+      "validation_first": "2016-04-16",
+      "chronological_violation": true
+    }
+  ],
+  "corrected_date_blocks": [
+    {
+      "fold": 1,
+      "train_last": "2015-11-29",
+      "validation_first": "2015-12-01",
+      "chronological_violation": false
+    },
+    {
+      "fold": 2,
+      "train_last": "2016-10-12",
+      "validation_first": "2016-10-14",
+      "chronological_violation": false
+    },
+    {
+      "fold": 3,
+      "train_last": "2017-08-26",
+      "validation_first": "2017-08-28",
+      "chronological_violation": false
+    },
+    {
+      "fold": 4,
+      "train_last": "2018-07-10",
+      "validation_first": "2018-07-12",
+      "chronological_violation": false
+    }
+  ],
+  "conclusion": "Original CV is not chronological; existing scores are invalid as temporal generalisation evidence. Split code fixed for future runs; original fitted artifacts and scores preserved and labelled.",
+  "remaining": "Fold-specific preprocessing, feature selection and target encoding need nested evaluation; no new unbiased legacy score is claimed."
+}

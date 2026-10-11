@@ -1,0 +1,17 @@
+[
+  {
+    "source": "src.ingestion.cpcb",
+    "status": "FAILED",
+    "error_class": "SourceUnavailable",
+    "exact_error": "Official measured source unavailable. cpcb data.gov.in: ConnectionError: HTTPSConnectionPool(host='api.data.gov.in', port=443): Max retries exceeded with url: /resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=<redacted>&format=json&offset=0&limit=10 (Caused by NewConnectionError(\"HTTPSConnection(host='api.data.gov.in', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\"))"
+  },
+  {
+    "source": "src.ingestion.firms",
+    "status": "SUCCESS",
+    "records": 10,
+    "notes": [
+      "VIIRS_NOAA20_NRT: 230 detections in the last 1 day(s) inside 68,6,97.5,37.5",
+      "VIIRS_NOAA21_NRT: 522 detections in the last 1 day(s) inside 68,6,97.5,37.5"
+    ]
+  }
+]

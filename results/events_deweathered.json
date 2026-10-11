@@ -1,0 +1,7 @@
+{
+  "status": "PENDING",
+  "accepted": false,
+  "metrics": null,
+  "study_hash": "cae098c5fc370b27aec783f4f360a42a10b9ab3af7ade41249f02d4d4b3d47d9",
+  "reason": "Retrospective ERA5/event coverage and preregistered analysis required; not forecast input."
+}

@@ -59,11 +59,11 @@ def _requests_transport(url: str, params, headers, timeout: float) -> Response:
 
     try:
         reply = requests.get(url, params=params, headers=headers, timeout=timeout)
-    except requests.exceptions.Timeout:
-        raise TimeoutError("request timed out") from None
+    except requests.exceptions.Timeout as exc:
+        raise TimeoutError(settings_mod.redact(f"{exc.__class__.__name__}: {exc}")) from None
     except requests.exceptions.RequestException as exc:
         # The exception text can embed the full URL, credentials included.
-        raise ConnectionError(f"{exc.__class__.__name__}: could not reach {safe_host(url)}") from None
+        raise ConnectionError(settings_mod.redact(f"{exc.__class__.__name__}: {exc}")) from None
     return Response(reply.status_code, {k.lower(): v for k, v in reply.headers.items()}, reply.text)
 
 
@@ -91,18 +91,21 @@ class HttpClient:
         params: Optional[Mapping[str, Any]] = None,
         headers: Optional[Mapping[str, str]] = None,
         label: str = "request",
+        before_attempt: Optional[Callable[[], None]] = None,
     ) -> Response:
         """GET with bounded exponential back-off. ``label`` is what gets logged."""
         attempts = self.settings.http_max_retries + 1
         last: Optional[HttpError] = None
 
         for attempt in range(1, attempts + 1):
+            if before_attempt:
+                before_attempt()
             wait: Optional[float] = None
             try:
                 self.requests_made += 1
                 response = self.transport(url, params, headers, self.settings.http_timeout_seconds)
-            except TimeoutError:
-                last = HttpError(f"{label}: timed out after {self.settings.http_timeout_seconds}s contacting {safe_host(url)}", kind="timeout")
+            except TimeoutError as exc:
+                last = HttpError(f"{label}: timed out after {self.settings.http_timeout_seconds}s contacting {safe_host(url)}: {exc}", kind="timeout")
             except ConnectionError as exc:
                 last = HttpError(f"{label}: {exc}", kind="connection")
             else:

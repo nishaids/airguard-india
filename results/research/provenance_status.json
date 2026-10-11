@@ -1,0 +1,14 @@
+{
+  "air_quality_observations": {
+    "n": 1538,
+    "with_provenance": 1538
+  },
+  "weather_forecasts": {
+    "n": 4366,
+    "with_provenance": 4366
+  },
+  "fire_detections": {
+    "n": 1518,
+    "with_provenance": 1518
+  }
+}

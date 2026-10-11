@@ -78,6 +78,8 @@ def classify_freshness(observed_at: Optional[datetime], now: datetime, settings:
     if observed_at is None:
         return Freshness.UNAVAILABLE
     age = now - observed_at
+    if age < -timedelta(minutes=settings.future_tolerance_minutes):
+        return Freshness.UNAVAILABLE
     if age <= timedelta(minutes=settings.fresh_minutes):
         return Freshness.FRESH
     if age <= timedelta(minutes=settings.stale_minutes):

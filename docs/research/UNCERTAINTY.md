@@ -1,0 +1,3 @@
+# UNCERTAINTY
+
+Offline CQR fits 80% and 90% residual quantile models on training, calibrates on later dates, then evaluates the untouched final test. Sort crossing raw quantiles; nonnegative widening uses daily maximum calibration errors so station duplicates do not inflate calibration n. Report marginal width/coverage and observed category/city/season coverage, including Severe n. Serial dependence invalidates automatic exchangeability guarantees; coverage is empirical. Severe targets above the last closed breakpoint are censored and cannot receive exact coverage scores. Wide intervals alone never trigger abstention. Split/Mondrian/online conformal comparisons remain pending; they are not claimed implemented or validated.

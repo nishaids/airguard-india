@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-10-11T13:46:34.911829+00:00",
+  "study_protocol": "airguard-national-study-20ist-v2",
+  "study_hash": "cae098c5fc370b27aec783f4f360a42a10b9ab3af7ade41249f02d4d4b3d47d9",
+  "collection_manifest": {
+    "protocol_version": "airguard-dayahead-20ist-v1",
+    "methodology_version": "airguard-cpcb-2014-v1",
+    "pairs": 0,
+    "candidate_pairs": 0,
+    "stations": 0,
+    "cities": 0,
+    "dates": [],
+    "coverage": [
+      {
+        "source_type": "measured",
+        "n": 253,
+        "stations": 5,
+        "first": "2026-10-09 04:30:00+00:00",
+        "last": "2026-10-11 11:30:00+00:00"
+      },
+      {
+        "source_type": "modelled_forecast",
+        "n": 16138,
+        "stations": 0,
+        "first": "2026-10-07 18:30:00+00:00",
+        "last": "2026-10-13 17:30:00+00:00"
+      }
+    ],
+    "provider_snapshots": 97,
+    "feature_snapshots": 0,
+    "missingness": {},
+    "source": "Issue-time immutable snapshots paired with same-station measured hourly targets; exact CAMS and target AQI required for regression",
+    "archive_experiment": "PENDING — ADS credential/terms required",
+    "legacy_experiment": "Separate 2015–2020 reported-AQI baseline; not interchangeable with hourly operational target",
+    "data_version": "f88d2f1053ae0dec8ffb5fb2d406e6495d10a13a9c447701b4079440d27ff689"
+  },
+  "station_registry_by_source": [
+    {
+      "source_id": "OpenAQ",
+      "stations": 135
+    }
+  ],
+  "measured_rows_audited": 253,
+  "stations_with_365_complete_candidate_days": 0,
+  "eligible_paired_rows": 0,
+  "hourly_input_hash": "8a0c68121087ab16e7eb1f81a1e6976501c1f70ce30802790718c28c71ce2646",
+  "data_version": "cd98b5e6195594d7c65aa1f2ac2a62dfd7a17c23f591d0a114e0c432d3730aed",
+  "status": "PENDING_MATCHED_ARCHIVE_AND_STATION_TARGETS",
+  "accepted": false,
+  "notice": "Candidate 16-hour coverage is not a valid gas-window or daily AQI target. Full central target construction and matching genuine issue-time forecast inputs remain required.",
+  "archive_experiment": "PENDING — ADS credential/terms required"
+}

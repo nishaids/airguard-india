@@ -1,0 +1,44 @@
+{
+  "status": "COLLECTING_NOT_RESEARCH_READY",
+  "checks": {
+    "literature_review_complete": false,
+    "research_question_locked": true,
+    "protocol_locked": true,
+    "issue_time_dataset_validated": false,
+    "cpcb_method_verified": true,
+    "baseline_complete": false,
+    "rolling_origin_complete": false,
+    "spatial_validation_complete": false,
+    "ablation_complete": false,
+    "uncertainty_complete": false,
+    "extreme_event_analysis_complete": false,
+    "advisory_evaluation_complete": false,
+    "prospective_logging_active": false,
+    "30_day_track_record_complete": false,
+    "statistical_comparison_complete": false,
+    "reproducibility_passed": false,
+    "security_passed": false
+  },
+  "passed": 3,
+  "total": 17,
+  "evidence": {
+    "experiment_id": "2431a5e1c4c12f92ca704adce021f790cf9b869e3292fecf4ebcb292e7720293",
+    "dataset_version": "997e2f480184d3b9aefd74763ab3eaf8846b1d9a0814405e88a5117de941c2a7",
+    "git_sha": "082cb119f9b6496ec4bc945af5da147f94690f16",
+    "working_tree_hash": "7965ec054dc96a822f9be3944d65ab840091b5c3c83640a053dd831a85d2d70a",
+    "protocol_hash": "6edb0157b36770a98621c626860a3145d8dc2f3471640597dd1b01b7b1f04e41"
+  },
+  "pending_archive": "PENDING \u2014 ADS credential/terms required",
+  "claims_supported": [
+    "Nationwide raw CAMS estimate",
+    "Issue-time guarded research framework",
+    "Immutable on-demand baseline forecast collection"
+  ],
+  "claims_not_supported": [
+    "AirGuard improves CAMS",
+    "Calibrated operational intervals",
+    "Controlled vulnerable-cohort under-warning",
+    "Station correction generalises nationwide"
+  ],
+  "generated_at": "2026-10-10T18:22:07.902811+00:00"
+}

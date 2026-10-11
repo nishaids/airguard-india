@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-10-11T08:03:53.581639+00:00",
+  "python": {
+    "passed": 294,
+    "failed": 0,
+    "duration_seconds": 43.22
+  },
+  "after_encoding_fix": {
+    "research_python_passed": 33,
+    "failed": 0
+  },
+  "component": {
+    "passed": 8,
+    "failed": 0
+  },
+  "local_playwright_http": {
+    "startTime": "2026-10-10T18:17:10.754Z",
+    "duration": 77683.413,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "scoped_lint": "PASS",
+  "strict_typescript": "PASS",
+  "local_production_build": "PASS",
+  "vercel_production_build": "PASS",
+  "preview_ready": true,
+  "preview_deployment_url": "https://webapp-52dm40xql-nishanth-s-projects-e335f110.vercel.app",
+  "latest_preview_http_checks": 8,
+  "prior_same_feature_preview_full_acceptance": {
+    "passed": 39,
+    "deployment_url": "https://webapp-rmzahjod2-nishanth-s-projects-e335f110.vercel.app",
+    "difference_to_latest": "Latest preview fixes research pending-label and legacy-page dash encoding; final preview independently passed 8 research/live checks."
+  },
+  "secret_scan": {
+    "git_objects_checked": 530,
+    "history_secret_hits": 0,
+    "current_worktree_secret_hits": 0,
+    "browser_asset_secret_hits": 0
+  },
+  "git_diff_check": "PASS",
+  "npm_audit_vulnerabilities": 0,
+  "browser_visual_qa": "NOT_EXECUTED",
+  "production_deployed": true,
+  "cloud_research_schedule_active": true,
+  "local_daily_tasks_installed": true,
+  "local_schedule_constraint": "Computer awake and current user logged in; India Standard Time",
+  "new_real_research_models_trained": 0,
+  "eligible_issue_time_pairs": 0,
+  "fixed_time_forecasts": 0,
+  "verified_fixed_time_outcomes": 0,
+  "on_demand_forecasts": 56,
+  "archive_experiment": "PENDING \u2014 ADS credential/terms required",
+  "scientific_status": "COLLECTING_NOT_RESEARCH_READY",
+  "synthetic_tests_notice": "Constructed fixtures verify software only; no synthetic scores were exported as research evidence.",
+  "total_hosted_checks_across_previews": 47,
+  "production_url": "https://webapp-phi-taupe.vercel.app",
+  "production_deployment_id": "dpl_61LbwsPHksTqtR5Xk6A5YL3Y6ad1",
+  "staged_production_checks": 21,
+  "public_production_checks": 27,
+  "production_safety_scheduler_tests_passed": 3,
+  "new_migration_applied": "20261011075204_research_scheduler_timeout.sql",
+  "supabase_scheduler_http_status": 200,
+  "supabase_scheduler_refresh_status": "SUCCESS"
+}

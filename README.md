@@ -1,6 +1,19 @@
 # AirGuard India
 
-**A vulnerability-weighted Health Advisory Index and next-day air quality forecasting system for Indian cities.**
+**Nationwide modelled air-quality forecasts with measured station context and traceable Indian CPCB-style AQI.**
+
+The consumer product uses Next.js and Python APIs, real CAMS concentrations via
+Open-Meteo, OpenAQ hourly station measurements, and the existing Supabase project.
+It does not feed current data through the historical LightGBM/XGBoost models.
+See [nationwide implementation and deployment status](docs/airguard2/nationwide_handover.md)
+and [current source licences/methodology](docs/DATA_SOURCES.md).
+
+Operational routes `/live`, `/forecast`, `/policy-simulator`, `/city-atlas` and `/research` share one selected location and `/api/air-quality/summary` response. Historical replay is `/historical-replay`; historical atlas and policy experiments are under `/research/historical-atlas` and `/research/historical-policy`. Legacy models remain `/model-insights`. See [operational UI acceptance](docs/airguard2/operational_ui_acceptance.md) for the preview and consistency evidence.
+
+The remainder of this README describes the preserved **historical research**
+pipeline, principally 2015–2020. Its historical models, HAI experiments and
+reported research metrics are separate from current AQI and tomorrow's forecast.
+The CC0 badge below applies to the historical dataset, not all live provider data.
 
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/code%20licence-MIT-green.svg)](LICENSE)
@@ -329,3 +342,8 @@ B.Tech. Artificial Intelligence and Data Science · Regulation 2023 · Semester 
   with explainable AI for trees. *Nature Machine Intelligence*, 2(1), 56–67.
 
 Full reference lists appear in each review document.
+# Station-calibrated forecasting research
+
+The existing nationwide application remains a labelled CAMS-based service. New research is governed by a fixed **20:00 IST** issue-time protocol; station correction is disabled until evaluated evidence supports it. Run `python run_research_pipeline.py` to rebuild dataset audits, experiment status, figures, tables and the readiness report. See [research acceptance](docs/research/ACCEPTANCE_REPORT.md), [protocol](docs/research/RESEARCH_PROTOCOL.md), and [limitations](docs/research/LIMITATIONS.md).
+
+The CAMS historical archive experiment is **PENDING — ADS credential/terms required**, skipped at the user's request. Past-days modelled fields and reanalysis are not archived forecasts. An empty eligible dataset produces no forecast-skill numbers. The operational UI consolidation is staged as a preview and has not replaced the production alias.

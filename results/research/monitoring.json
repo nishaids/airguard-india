@@ -1,0 +1,101 @@
+{
+  "status": "COLLECTING",
+  "prospective_verified_pairs": 0,
+  "recent_mae": null,
+  "bias": null,
+  "interval_coverage": null,
+  "input_drift": {
+    "PM2.5": {
+      "reference_missingness": 0.15570078900138837,
+      "current_missingness": 0.0,
+      "n_reference": 24933,
+      "n_current": 176,
+      "psi": 0.41384845828657474,
+      "ks_statistic": 0.15152677357135302,
+      "status": "DESCRIPTIVE",
+      "note": "No causal interpretation; station/season mismatch and serial dependence must be assessed."
+    },
+    "PM10": {
+      "reference_missingness": 0.3772307067149775,
+      "current_missingness": null,
+      "n_reference": 18391,
+      "n_current": 0,
+      "status": "INSUFFICIENT_DATA",
+      "psi": null,
+      "ks_statistic": null
+    },
+    "NO2": {
+      "reference_missingness": 0.12139785310351833,
+      "current_missingness": null,
+      "n_reference": 25946,
+      "n_current": 0,
+      "status": "INSUFFICIENT_DATA",
+      "psi": null,
+      "ks_statistic": null
+    },
+    "SO2": {
+      "reference_missingness": 0.13050692492634858,
+      "current_missingness": null,
+      "n_reference": 25677,
+      "n_current": 0,
+      "status": "INSUFFICIENT_DATA",
+      "psi": null,
+      "ks_statistic": null
+    },
+    "CO": {
+      "reference_missingness": 0.069723341573262,
+      "current_missingness": null,
+      "n_reference": 27472,
+      "n_current": 0,
+      "status": "INSUFFICIENT_DATA",
+      "psi": null,
+      "ks_statistic": null
+    },
+    "O3": {
+      "reference_missingness": 0.1361958619755511,
+      "current_missingness": null,
+      "n_reference": 25509,
+      "n_current": 0,
+      "status": "INSUFFICIENT_DATA",
+      "psi": null,
+      "ks_statistic": null
+    }
+  },
+  "station_coverage": [
+    {
+      "station_pk": 22,
+      "name": "Chennai",
+      "latitude": 13.08784,
+      "longitude": 80.278475
+    },
+    {
+      "station_pk": 77,
+      "name": "Air Check",
+      "latitude": 28.623056,
+      "longitude": 77.234167
+    },
+    {
+      "station_pk": 60,
+      "name": "New Delhi",
+      "latitude": 28.63576,
+      "longitude": 77.22445
+    },
+    {
+      "station_pk": 811,
+      "name": "Mumbai",
+      "latitude": 19.07283,
+      "longitude": 72.88261
+    },
+    {
+      "station_pk": 19,
+      "name": "Koramangala",
+      "latitude": 12.9370223,
+      "longitude": 77.6115928
+    }
+  ],
+  "prediction_drift": "INSUFFICIENT_FIXED_TIME_FORECASTS",
+  "residual_drift": "INSUFFICIENT_VERIFIED_OUTCOMES",
+  "retraining_recommendation": "COLLECT_MEASURED_STATION_PAIRS",
+  "automatic_retraining": false,
+  "comparability_notice": "Historical city daily means vs sparse modern station hourly records; descriptive acquisition audit, not like-for-like change estimation."
+}

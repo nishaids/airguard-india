@@ -1,0 +1,237 @@
+{
+  "label": "LEGACY REPORTED DAILY AQI \u2014 NOT OPERATIONAL HOURLY TARGETS",
+  "rows": 108035,
+  "stations": 110,
+  "cities": 26,
+  "dates": [
+    "2015-01-01",
+    "2020-07-01"
+  ],
+  "reported_AQI_rows": 87025,
+  "pollutant_missingness": {
+    "PM2.5": 0.20016661267181932,
+    "PM10": 0.39529782015087706,
+    "NO2": 0.15316332669968066,
+    "SO2": 0.23329476558522702,
+    "CO": 0.1203128615726385,
+    "O3": 0.23666404405979544
+  },
+  "caveats": [
+    "Daily concentration aggregates lack hourly gas windows and issue-time availability. Cannot rebuild the locked target protocol.",
+    "Existing feature selection/tuning and row-level TimeSeriesSplit require separate date-boundary audit. Lower holdout MAE is not evidence of spatial or modern generalisation.",
+    "Prior recent CAMS past-days backtest is exploratory; not archived forecast skill."
+  ],
+  "existing_metrics": [
+    {
+      "model": "Persistence baseline (tomorrow = today)",
+      "test": {
+        "MAE": 18.9049,
+        "RMSE": 31.5564,
+        "R2": 0.8411,
+        "MAPE_pct": 16.3565,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 10.0,
+        "bias": 0.0871,
+        "n": 4397
+      },
+      "cv": null,
+      "note": "Legacy city-level feature dataset; not current station forecast evidence"
+    },
+    {
+      "model": "Linear Regression",
+      "test": {
+        "MAE": 15.9045,
+        "RMSE": 24.6183,
+        "R2": 0.9033,
+        "MAPE_pct": 15.1222,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 10.0853,
+        "bias": 3.2962,
+        "n": 4397
+      },
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 28.6281,
+        "mae_std": 8.8923,
+        "rmse_mean": 42.1572,
+        "r2_mean": 0.84,
+        "fold_mae": [
+          39.7341,
+          34.8345,
+          18.4599,
+          21.484
+        ],
+        "seconds": 0.41
+      },
+      "note": "Legacy city-level feature dataset; not current station forecast evidence"
+    },
+    {
+      "model": "Ridge Regression",
+      "test": {
+        "MAE": 15.9062,
+        "RMSE": 24.6193,
+        "R2": 0.9033,
+        "MAPE_pct": 15.1249,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 10.1053,
+        "bias": 3.3005,
+        "n": 4397
+      },
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 28.5014,
+        "mae_std": 8.7714,
+        "rmse_mean": 41.8193,
+        "r2_mean": 0.8427,
+        "fold_mae": [
+          39.4801,
+          34.5867,
+          18.4535,
+          21.4851
+        ],
+        "seconds": 0.22
+      },
+      "note": "Legacy city-level feature dataset; not current station forecast evidence"
+    },
+    {
+      "model": "Random Forest",
+      "test": {
+        "MAE": 15.2834,
+        "RMSE": 23.9581,
+        "R2": 0.9084,
+        "MAPE_pct": 14.5995,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 9.6277,
+        "bias": 2.6553,
+        "n": 4397
+      },
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 29.8832,
+        "mae_std": 10.4446,
+        "rmse_mean": 44.1681,
+        "r2_mean": 0.8171,
+        "fold_mae": [
+          44.0419,
+          35.7225,
+          18.9271,
+          20.8412
+        ],
+        "seconds": 134.68
+      },
+      "note": "Legacy city-level feature dataset; not current station forecast evidence"
+    },
+    {
+      "model": "XGBoost",
+      "test": {
+        "MAE": 15.4436,
+        "RMSE": 23.8794,
+        "R2": 0.909,
+        "MAPE_pct": 15.1466,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 9.9054,
+        "bias": 3.309,
+        "n": 4397
+      },
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 31.9789,
+        "mae_std": 11.999,
+        "rmse_mean": 47.9522,
+        "r2_mean": 0.7778,
+        "fold_mae": [
+          48.7446,
+          37.9004,
+          19.5401,
+          21.7305
+        ],
+        "seconds": 54.64
+      },
+      "note": "Legacy city-level feature dataset; not current station forecast evidence"
+    },
+    {
+      "model": "LightGBM",
+      "test": {
+        "MAE": 15.1028,
+        "RMSE": 23.4986,
+        "R2": 0.9119,
+        "MAPE_pct": 14.5791,
+        "MAPE_n_used": 4397,
+        "median_absolute_error": 9.7133,
+        "bias": 2.7921,
+        "n": 4397
+      },
+      "cv": {
+        "splitter": "TimeSeriesSplit(n_splits=4)",
+        "mae_mean": 29.9257,
+        "mae_std": 9.9545,
+        "rmse_mean": 44.1841,
+        "r2_mean": 0.8194,
+        "fold_mae": [
+          43.2038,
+          35.8173,
+          19.4443,
+          21.2372
+        ],
+        "seconds": 21.17
+      },
+      "note": "Legacy city-level feature dataset; not current station forecast evidence"
+    }
+  ],
+  "cv_audit": {
+    "original_folds": [
+      {
+        "fold": 1,
+        "train_last": "2019-05-25",
+        "validation_first": "2015-01-14",
+        "chronological_violation": true
+      },
+      {
+        "fold": 2,
+        "train_last": "2019-05-25",
+        "validation_first": "2015-04-19",
+        "chronological_violation": true
+      },
+      {
+        "fold": 3,
+        "train_last": "2019-05-25",
+        "validation_first": "2015-04-03",
+        "chronological_violation": true
+      },
+      {
+        "fold": 4,
+        "train_last": "2019-05-25",
+        "validation_first": "2016-04-16",
+        "chronological_violation": true
+      }
+    ],
+    "corrected_date_blocks": [
+      {
+        "fold": 1,
+        "train_last": "2015-11-29",
+        "validation_first": "2015-12-01",
+        "chronological_violation": false
+      },
+      {
+        "fold": 2,
+        "train_last": "2016-10-12",
+        "validation_first": "2016-10-14",
+        "chronological_violation": false
+      },
+      {
+        "fold": 3,
+        "train_last": "2017-08-26",
+        "validation_first": "2017-08-28",
+        "chronological_violation": false
+      },
+      {
+        "fold": 4,
+        "train_last": "2018-07-10",
+        "validation_first": "2018-07-12",
+        "chronological_violation": false
+      }
+    ],
+    "conclusion": "Original CV is not chronological; existing scores are invalid as temporal generalisation evidence. Split code fixed for future runs; original fitted artifacts and scores preserved and labelled.",
+    "remaining": "Fold-specific preprocessing, feature selection and target encoding need nested evaluation; no new unbiased legacy score is claimed."
+  }
+}

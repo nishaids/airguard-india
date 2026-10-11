@@ -275,7 +275,7 @@ def evaluate_model(name: str, spec: Dict[str, Any], data: Dict[str, Any]) -> Dic
             estimator,
             data["X_train"],
             data["y_train"],
-            cv=time_series_cv(),
+            cv=time_series_cv(dates=data["meta_train"]["Date"]),
             scoring="f1_macro",
             n_jobs=1,
         )

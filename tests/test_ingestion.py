@@ -740,7 +740,21 @@ class StoreAndOrchestratorTests(unittest.TestCase):
 class PostgresIntegrationTests(unittest.TestCase):
     def test_postgres_enforces_idempotency(self):
         db.migrate()
-        store = db.PostgresStore()
+        connection = db.connect()
+
+        class RollbackOnly:
+            # Store methods use connection contexts; suppress their commits so
+            # synthetic records and their ingestion run never leave this test.
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return False
+
+            def __getattr__(self, name):
+                return getattr(connection, name)
+
+        store = db.PostgresStore(RollbackOnly())
         marker = f"test-station-{int(utc_now().timestamp())}"
         try:
             the_run = IngestionRun("OpenAQ", utc_now())
@@ -755,9 +769,7 @@ class PostgresIntegrationTests(unittest.TestCase):
             self.assertEqual(rows[0][:4], ("OpenAQ", "measured", "µg/m³", "ug/m3"))
             self.assertEqual(rows[0][4].astimezone(timezone.utc), reading.observed_at)
         finally:
-            with store.connection, store.connection.cursor() as cursor:
-                cursor.execute("delete from airguard.air_quality_observations where source_station_id=%s", (marker,))
-                cursor.execute("delete from airguard.stations where source_station_id=%s", (marker,))
+            connection.rollback()
             store.close()
 
 

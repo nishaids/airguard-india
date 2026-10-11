@@ -1,0 +1,3 @@
+# ADVISORY POLICY
+
+Version experimental-category-warning-v1. Under-warning means issued AQI category below observed category; over-warning means above; distance is absolute category difference. Seven exposure cohorts use predeclared experimental targets 5% or 10%, not clinical risk thresholds. Train quantiles 0.50/0.65/0.75/0.85/0.95 on training. Select only on calibration using date-max under-warning and a Bonferroni binomial upper-bound screen; minimize over-warning among qualifying candidates. Report no selected policy if insufficient. Dates are dependent, so this screen is not a proven time-series guarantee. The final test stays untouched until selection. Production retains deterministic CPCB/WHO-style guidance; experimental policies are not enabled.

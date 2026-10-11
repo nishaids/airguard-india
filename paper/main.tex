@@ -1,0 +1,63 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\title{AirGuard India: A Provenance-Aware Prospective Air-Quality Forecasting System}
+\author{\IEEEauthorblockN{Nishanth R, NAME, NAME}
+\IEEEauthorblockA{Affiliations and author consent pending human confirmation}}
+\begin{document}
+\maketitle
+\begin{abstract}
+This is an unsubmitted research draft describing a working live data system and
+a prospective evaluation protocol. The system separates observed station data,
+modelled concentrations, weather context and satellite fire detections. It
+retains issue-time provenance and excludes retrospective substitutions from
+forecast validation. Historical archive access and sufficient matched station
+outcomes are pending; consequently this draft makes no claim of improved
+forecast accuracy, calibrated uncertainty or clinical benefit.
+\end{abstract}
+\begin{IEEEkeywords}air quality, provenance, prospective forecasting, India\end{IEEEkeywords}
+\section{Problem and Scope}
+A historical replay cannot establish today's conditions. A retrieved model
+forecast is also distinct from a measured station observation. AirGuard's
+operational interface keeps source identity, freshness and aggregation method
+visible. This draft describes implementation and preregistration, not completed
+national validation.
+\section{Data and Provenance}
+OpenAQ measurements preserve upstream station identity and licence metadata.
+Open-Meteo supplies CAMS global pollutant concentrations and weather forecasts.
+NASA FIRMS supplies fire context only. CPCB ingestion is unavailable on the
+current network. Archived issue-time CAMS inputs are pending ADS access; current
+forecast fields or reanalysis must not replace that archive.
+\section{Method and Issue-Time Controls}
+A central CPCB-style calculation uses adequately covered pollutant windows and
+reports open-ended severe bands as lower bounds. Hourly relative exposure
+windows use instantaneous concentration-derived indicators within practical
+hours; they are not official hourly AQI or a safety threshold. The fixed-time
+prospective protocol freezes inputs available by 20:00 IST for the next IST
+calendar day, binds a station before the outcome and rejects backdating.
+\section{Preregistered Evaluation}
+The expanded study requires at least 100 eligible stations, 365 training days,
+30 calibration days, rolling temporal folds with an embargo and a locked latest
+90-day final test. Spatial, region and coastal holdouts, pollutant correction,
+uncertainty calibration and advisory trade-offs require actual matched records.
+Persistence, climatology and raw CAMS remain baselines. Candidate improvements
+must be assessed against these baselines using date-blocked comparisons.
+\section{Available Evidence and Limitations}
+\input{tables/evidence.tex}
+\begin{figure}[t]
+\centering\includegraphics[width=\columnwidth]{figures/evidence_coverage.pdf}
+\caption{Available records in the audit snapshot. Record counts do not establish
+predictive skill.}\end{figure}
+No empirical national accuracy, interval coverage, health benefit, population
+impact or deweathered causal estimate is currently supported. The operational
+forecast remains a clearly labelled CAMS-based estimate. Source resolution,
+missing station coverage, correlated samples and availability timestamps limit
+interpretation. Prospective evidence must accumulate before deployment of an
+India-specific correction.
+\section{Conclusion and Submission Gate}
+The live system and evidence ledger are implemented. Submission requires real
+matched evaluation evidence, verified references, author consent, an applicable
+conference call and a checked six-page PDF. This source is intentionally not
+presented as a finished six-page paper. The final bibliography is reserved for
+human editing under the supplied request.
+\end{document}

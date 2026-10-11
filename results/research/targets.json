@@ -1,0 +1,82 @@
+[
+  {
+    "station_pk": 19,
+    "day": "2026-10-09",
+    "status": "INSUFFICIENT_DATA",
+    "eligible_regression": false,
+    "coverage": {
+      "PM2.5": 13,
+      "PM10": 0,
+      "NO2": 0,
+      "SO2": 0,
+      "CO": 0,
+      "O3": 0,
+      "NH3": 0,
+      "Pb": 0
+    }
+  },
+  {
+    "station_pk": 22,
+    "day": "2026-10-09",
+    "status": "INSUFFICIENT_DATA",
+    "eligible_regression": false,
+    "coverage": {
+      "PM2.5": 14,
+      "PM10": 0,
+      "NO2": 0,
+      "SO2": 0,
+      "CO": 0,
+      "O3": 0,
+      "NH3": 0,
+      "Pb": 0
+    }
+  },
+  {
+    "station_pk": 60,
+    "day": "2026-10-09",
+    "status": "INSUFFICIENT_DATA",
+    "eligible_regression": false,
+    "coverage": {
+      "PM2.5": 12,
+      "PM10": 0,
+      "NO2": 0,
+      "SO2": 0,
+      "CO": 0,
+      "O3": 0,
+      "NH3": 0,
+      "Pb": 0
+    }
+  },
+  {
+    "station_pk": 77,
+    "day": "2026-10-09",
+    "status": "INSUFFICIENT_DATA",
+    "eligible_regression": false,
+    "coverage": {
+      "PM2.5": 13,
+      "PM10": 0,
+      "NO2": 0,
+      "SO2": 0,
+      "CO": 0,
+      "O3": 0,
+      "NH3": 0,
+      "Pb": 0
+    }
+  },
+  {
+    "station_pk": 811,
+    "day": "2026-10-09",
+    "status": "INSUFFICIENT_DATA",
+    "eligible_regression": false,
+    "coverage": {
+      "PM2.5": 11,
+      "PM10": 0,
+      "NO2": 0,
+      "SO2": 0,
+      "CO": 0,
+      "O3": 0,
+      "NH3": 0,
+      "Pb": 0
+    }
+  }
+]

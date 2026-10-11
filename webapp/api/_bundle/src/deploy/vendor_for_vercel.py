@@ -64,6 +64,9 @@ def _ignore(_dir: str, names: list[str]) -> set[str]:
 
 
 def main() -> None:
+    expected = (config.PROJECT_ROOT / 'webapp' / 'api' / '_bundle').resolve()
+    if VENDOR.resolve() != expected or not expected.is_relative_to(config.PROJECT_ROOT.resolve()):
+        raise ValueError('Refusing to replace a bundle outside the expected workspace path')
     if VENDOR.exists():
         shutil.rmtree(VENDOR)
     VENDOR.mkdir(parents=True)

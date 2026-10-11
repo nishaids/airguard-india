@@ -324,5 +324,11 @@
       "O3": 0.4029
     }
   },
-  "factors_fitted_until": "2026-10-07"
+  "factors_fitted_until": "2026-10-07",
+  "experiment_type": "LEGACY_EXPLORATORY_PAST_FIELDS_NOT_ISSUED_FORECAST_SKILL",
+  "protocol_limitations": [
+    "CAMS past-fields are not archived issue-time forecasts",
+    "Historical observation release times were not captured",
+    "Daily gas averages differ from the fixed station-hourly target protocol"
+  ]
 }

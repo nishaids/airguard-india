@@ -1,11 +1,6 @@
-"""GET /api/live_forecast -- tomorrow's AQI for the twelve cities, from current conditions.
+"""Retired consumer route. The historical model is research-only.
 
-Optional query: ``?city=Delhi``.
-
-The inputs are fetched at request time from the CAMS atmospheric model via
-Open-Meteo, so this function holds no credential and needs no database. The
-response is cached at the edge for half an hour: the underlying model updates
-far less often than that, and the provider's free tier is shared.
+Use /api/air-quality/summary with arbitrary coordinates for live estimates.
 """
 
 from __future__ import annotations
@@ -26,16 +21,13 @@ _ROOT = _HERE.parents[1] if (_HERE.parents[1] / "src" / "config.py").exists() el
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-from src.live.forecast import live_forecast  # noqa: E402
 
 CACHE_OK = "public, s-maxage=1800, stale-while-revalidate=3600"
 
 
 def handle(payload: dict) -> tuple[int, dict]:
     """Request handling, independent of the transport (shared with dev_api_server.py)."""
-    city = (payload.get("city") or "").strip()
-    result = live_forecast([city] if city else None)
-    return (200 if result.get("ok") else 503), result
+    return 410, {"ok": False, "error": "LEGACY_LIVE_FORECAST_RETIRED", "message": "Use /api/air-quality/summary?lat=...&lon=... for nationwide CAMS forecasts. Historical model replay remains under /forecast.", "replacement": "/api/air-quality/summary"}
 
 
 class handler(BaseHTTPRequestHandler):
@@ -43,7 +35,6 @@ class handler(BaseHTTPRequestHandler):
         body = json.dumps(payload).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
-        self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Cache-Control", CACHE_OK if status == 200 else "no-store")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()

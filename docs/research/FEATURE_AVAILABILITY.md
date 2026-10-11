@@ -1,0 +1,3 @@
+# FEATURE AVAILABILITY
+
+A CAMS: future valid times permitted only from forecasts retrieved before cutoff. B observations: hourly bin end and first retrieval <= cutoff; no target-day observations. Lags 1/3/6/12/24/48h and 24h mean/median/std/delta/slope count distinct hours. C weather: archived or prospectively captured forecast, never observed tomorrow weather. D calendar is known in advance. E coordinates and model grid are contextual. F fire detections require acquisition and retrieval <= cutoff and are excluded until ablation. Predictor imputation fits on training only; targets are never imputed. Missing boundary-layer data stays missing. Precise festival, elevation and upwind features are not implemented without defensible sources.

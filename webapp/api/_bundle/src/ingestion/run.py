@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
+import traceback
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from src import config
@@ -43,6 +44,9 @@ class _RedactingFilter(logging.Filter):
     def filter(self, record: logging.LogRecord) -> bool:
         record.msg = settings_mod.redact(record.getMessage())
         record.args = ()
+        if record.exc_info:
+            record.exc_text = settings_mod.redact(''.join(traceback.format_exception(*record.exc_info)))
+            record.exc_info = None
         return True
 
 
@@ -140,6 +144,7 @@ def run_source(
             else:
                 run.written = store.insert_forecasts(keep, run)
             store.insert_rejections(rejections, run)
+            run.duplicates += run.accepted - run.written
 
         run.status = RunStatus.PARTIAL if batch.partial else RunStatus.SUCCESS
 
@@ -154,12 +159,16 @@ def run_source(
         run.error = settings_mod.redact(f"{exc.__class__.__name__}: {exc}")
         LOGGER.exception("%s: unexpected failure", name)
 
+    if run.error:
+        run.error = settings_mod.redact(run.error)
     run.finished_at = utc_now()
     if store is not None and not dry_run:
         try:
             store.finish_run(run)
         except Exception as exc:  # noqa: BLE001
             LOGGER.warning("could not record the run: %s", settings_mod.redact(exc))
+            run.status = RunStatus.FAILED
+            run.error = settings_mod.redact(f"Could not persist ingestion result: {exc}")
     return run, samples
 
 

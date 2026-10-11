@@ -1,4 +1,11 @@
-"""How good is the live forecast? Test it against measurements, then fit the correction.
+"""LEGACY EXPLORATORY PAST-FIELDS EXPERIMENT, not operational issued-forecast skill.
+
+This module does not preserve archived issue-time CAMS/weather runs or prove
+historical observation availability. Its daily gas aggregation also differs
+from the locked station/hourly research protocol. Do not use its metrics as
+evidence that a live AirGuard correction improves an issued raw CAMS forecast.
+
+Historical comparison: test past modelled fields against measurements.
 
     python -m src.live.backtest --fetch     # download measured daily values from OpenAQ (several minutes)
     python -m src.live.backtest             # evaluate from the cached file and write the reference

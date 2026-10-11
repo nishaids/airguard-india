@@ -1,0 +1,3 @@
+# DATA DICTIONARY
+
+provider_snapshots preserve actual provider payload, retrieval and availability; feature_snapshots preserve cutoff, target and A–F groups; station_daily_targets preserve one station's measured-hour evidence, coverage and quality; dataset_versions and experiment_registry preserve hashes, protocol, seed, Git SHA plus dirty-tree hash and dependency versions. research_forecast_runs preserve raw CAMS, nullable correction, nullable intervals, station binding and immutable actual issuance. Verification is a separate immutable join. Legacy forecast_runs preserve variable-time on-demand CAMS snapshots and are excluded from fixed-time experiments.

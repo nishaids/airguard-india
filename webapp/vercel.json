@@ -1,15 +1,8 @@
 {
+  "rewrites": [{"source":"/api/research/status","destination":"/api/providers/status?view=research"},{"source":"/api/status/scheduler","destination":"/api/providers/status?view=scheduler"},{"source":"/api/air-quality/tomorrow","destination":"/api/air-quality/summary?view=tomorrow"},{"source":"/api/air-quality/context","destination":"/api/air-quality/summary?view=context"},{"source":"/api/air-quality/scenario","destination":"/api/policy_simulate?view=operational"}],
   "functions": {
-    "api/forecast.py": {
-      "maxDuration": 60,
-      "includeFiles": "api/_bundle/**"
-    },
-    "api/live_forecast.py": {
-      "maxDuration": 60,
-      "includeFiles": "api/_bundle/**"
-    },
-    "api/policy_simulate.py": {
-      "maxDuration": 60,
+    "api/**/*.py": {
+      "maxDuration": 300,
       "includeFiles": "api/_bundle/**"
     }
   }

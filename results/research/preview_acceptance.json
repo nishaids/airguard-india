@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-10-10T18:35:48.888337+00:00",
+  "deployment_url": "https://webapp-52dm40xql-nishanth-s-projects-e335f110.vercel.app",
+  "passed": 8,
+  "checks": [
+    {
+      "path": "/api/research/status",
+      "status": 200,
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/research/status?unexpected=1",
+      "status": 400,
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/providers/status?view=refresh",
+      "status": 400,
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/providers/status?view=research",
+      "status": 200,
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/research/track-record",
+      "status": 200,
+      "kind": "SSR HTML"
+    },
+    {
+      "path": "/research/legacy",
+      "status": 200,
+      "kind": "SSR HTML"
+    },
+    {
+      "path": "/live",
+      "status": 200,
+      "kind": "SSR HTML"
+    },
+    {
+      "path": "/api/air-quality/summary?lat=13.0827&lon=80.2707&name=Chennai",
+      "status": 200,
+      "kind": "HTTP JSON"
+    }
+  ],
+  "prospective": {
+    "forecasts": 0,
+    "started_at": null,
+    "outcomes": 0,
+    "valid_days": 0,
+    "7_day_status": "COLLECTING",
+    "30_day_status": "COLLECTING",
+    "90_day_status": "COLLECTING",
+    "fixed_issuance_logging_active": false
+  },
+  "archive_experiment": "PENDING \u2014 ADS credential/terms required",
+  "visual_browser_qa": "NOT_EXECUTED",
+  "production_changed": false
+}

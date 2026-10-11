@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-10-11T08:05:19.647716+00:00",
+  "database_url_available": true,
+  "database": "CONNECTED",
+  "counts": {
+    "air_quality_observations": 1594,
+    "weather_forecasts": 5680,
+    "fire_detections": 1523,
+    "environmental_records": 13300,
+    "provider_snapshots": 57,
+    "feature_snapshots": 0,
+    "station_daily_targets": 0,
+    "forecast_runs": 56,
+    "research_forecast_runs": 0,
+    "research_forecast_verifications": 0,
+    "model_versions": 0,
+    "training_runs": 0
+  },
+  "coverage": [
+    {
+      "source_type": "measured",
+      "n": 239,
+      "stations": 5,
+      "first": "2026-10-09 04:30:00+00:00",
+      "last": "2026-10-11 05:30:00+00:00"
+    },
+    {
+      "source_type": "modelled_forecast",
+      "n": 13061,
+      "stations": 0,
+      "first": "2026-10-07 18:30:00+00:00",
+      "last": "2026-10-13 17:30:00+00:00"
+    }
+  ],
+  "prospective": {
+    "forecasts": 0,
+    "started_at": null,
+    "outcomes": 0,
+    "valid_days": 0,
+    "7_day_status": "COLLECTING",
+    "30_day_status": "COLLECTING",
+    "90_day_status": "COLLECTING",
+    "fixed_issuance_logging_active": true
+  },
+  "schedules": [
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "schedule": "17 * * * *",
+      "active": true
+    },
+    {
+      "jobname": "airguard-research-issue",
+      "schedule": "30 14 * * *",
+      "active": true
+    },
+    {
+      "jobname": "airguard-research-prefetch",
+      "schedule": "20 14 * * *",
+      "active": true
+    },
+    {
+      "jobname": "airguard-research-verify",
+      "schedule": "30 1 * * *",
+      "active": true
+    }
+  ],
+  "on_demand_count": 56,
+  "missing_environmental_provenance": 0,
+  "forecasts_issued_after_target_start": 0
+}

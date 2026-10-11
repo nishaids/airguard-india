@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Cite this software separately from any future research paper. Verified author information for additional contributors is pending."
+title: "AirGuard India"
+type: software
+version: "2.0.0-research-collecting"
+license: MIT
+authors:
+  - family-names: Rajendran
+    given-names: Nishanth
+abstract: "A provenance-preserving current-air-quality and raw CAMS next-day forecast application with an experimental station-validation framework. Nationwide correction skill and calibrated advisories remain unvalidated."

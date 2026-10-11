@@ -1,0 +1,58 @@
+{
+  "created_at": "2026-10-11T08:55:40.402174+00:00",
+  "baseline": {
+    "python_tests": 294,
+    "frontend_tests": 8,
+    "production_build": "PASS"
+  },
+  "preserved_artifact_sha256": {
+    "models\\deploy\\classification_booster.json": "fa5bf34e5c626752fad9a3ccc1a05906596a6335c7cc6b90f4e2fa425bdc6451",
+    "models\\deploy\\classification_classes.json": "42dda9a8395ced45bcec990d0beaed3165810ed8dc7a912a58bc6e91d034c968",
+    "models\\deploy\\feature_order.json": "c9f0346cc522019511ff209c51b49e50509b978a2fcb13440a830f4d9eaa8e85",
+    "models\\deploy\\live_reference.json": "787c0fe9de227edd28676d59f73f015459ac683b621f24ec92eaf1ea81062332",
+    "models\\deploy\\regression_booster.json": "2a64087a79d6767aea0ba7a01d409a3f1f3be9f1a0705391d3826461eaf4a977",
+    "webapp\\public\\data\\cleaning_report.json": "205bf61a62c2b3fdb6913d555aaf1a16c8cc67bf2fe56b7d51c3e91840a4791c",
+    "webapp\\public\\data\\data_card.md": "3589115ddd728e01b8677b6260f4c85efcc2213dfeab8254e03251058a8f23cb",
+    "webapp\\public\\data\\definition_of_done.json": "16709b651ea3b4a3cb3f4befccad30ea1ca7b7fda0645cdb4512efb46f8594be",
+    "webapp\\public\\data\\deployment_classifier.json": "07f5b78dbf1762f4d9872325732599dabee1c12e235c945e05e3ae4e2ba5328d",
+    "webapp\\public\\data\\eda_insights.json": "e301b9b26153256dfd92e830619a654ef390cee195828dd37f3d9403cd47357e",
+    "webapp\\public\\data\\eda_statistics.json": "2cda7832348a557c13199e9e98b758ee126f1f016cc0f0c62e4bfa0a00cc1232",
+    "webapp\\public\\data\\error_analysis.json": "5c2e3a3fa7883cb46f3fe63446dc616526fd94f45ea5d066f54e57db59d10c23",
+    "webapp\\public\\data\\evaluation_classification.json": "1e1e9a0d8bfb9c3bbe003bddfc85710fdddd88ee55c9030c971e5f3a4fc5fa0f",
+    "webapp\\public\\data\\evaluation_clustering.json": "090431b0412e903d4dd723c8295c572f137438e635087c0c50cf8def01ae512a",
+    "webapp\\public\\data\\evaluation_regression.json": "d11f9f4631a16c8bdb3f60be91d3f0012593aee48d8f81e3d1d98a7fba2a815b",
+    "webapp\\public\\data\\explainability.json": "30ebe121ad3885b0ef3e9ac656e21b8806c7031d2e066527aadd0a73a51cc448",
+    "webapp\\public\\data\\feature_engineering_report.json": "766a51053301713f8a9a615396675f643fbfdae8ea65619483e0e9fdf6071759",
+    "webapp\\public\\data\\hai_divergence.json": "91a99a33f26381398f0123fe68232fca43a28ec4d70b6e044ae6a03c88c2b053",
+    "webapp\\public\\data\\master_comparison_classification.json": "7a2f5159cf87a286ff5752b5f6bde0376d69c64e0c96771608d46813ad596fea",
+    "webapp\\public\\data\\master_comparison_clustering.json": "c330f63ffce669904d2e3b627bcbc42f6fdcbbf9fe38ccca403b21304e58dabb",
+    "webapp\\public\\data\\master_comparison_regression.json": "e99b3621280b3a452f878f67629f03aa32036114f9fae45d9c162dc47e8bee5e",
+    "webapp\\public\\data\\meta.json": "ddbe0bee5fab665e3dd787ae3eb62feaa43337a96120b97eb54a448a2e39e4f1",
+    "webapp\\public\\data\\model_card.md": "7b6c730d1faae0c122b4a6e8cc052d2d742e1b25ddcd43ee4adb148f397bdc9f",
+    "webapp\\public\\data\\policy_simulation.json": "26c54aa89890ee632b23aa1f5a5f21f3ad667fbec7a25b9a7d923cbca51b60ed",
+    "webapp\\public\\data\\PROVENANCE.json": "de308d74053e06f290668a4a7992d208faccdf3480585e55772fbb08b87cdd57",
+    "webapp\\public\\data\\ranked_risk_table.json": "559a503bfd7d3c84408f1cc07b66362d8a158b7985531218dfac59264db19bf7",
+    "webapp\\public\\data\\research_readiness.json": "8a99691f6ce3653e51793909fb5bb604dcf02fa13c5609348e3c83867e887a2c",
+    "webapp\\public\\data\\safe_windows.json": "d46ef04b28f73b89e20af11edd304bae0e6454c4fc1f8f92ba3212de0d598ac2",
+    "webapp\\public\\data\\seasonal_heatmap.json": "9e331a38ece50d97289d821b216b303bcafd8b9f7a48111684a9500d0618ed7d",
+    "webapp\\public\\data\\tuning_report.json": "695e1bd252ad9ffe0a6ddcae8181c47e18c092e51203aa5767b4d56b2cbedb0e"
+  },
+  "routes_before": {
+    "/forecast": "historical 2015\u20132020 replay",
+    "/policy-simulator": "historical full-record policy",
+    "/city-atlas": "live dashboard + historical analysis",
+    "/research": "prospective ledger"
+  },
+  "routes_after": {
+    "/live": "shared operational summary",
+    "/forecast": "shared live Forecast & Advisory",
+    "/policy-simulator": "immutable tomorrow forecast counterfactual",
+    "/city-atlas": "shared selected location + optional comparisons",
+    "/research": "selected-location operational research + prospective ledger",
+    "/historical-replay": "preserved historical replay",
+    "/research/historical-policy": "preserved historical policy",
+    "/research/historical-atlas": "preserved historical atlas",
+    "/model-insights": "retained labelled legacy models"
+  },
+  "notes": "Model and static data hashes recorded before deployment; neither was changed by this UI consolidation."
+}

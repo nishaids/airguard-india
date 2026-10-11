@@ -1,0 +1,25 @@
+{
+  "counts": {
+    "environmental_records": 8791,
+    "forecast_runs": 13,
+    "forecast_verifications": 0,
+    "air_quality_observations": 1527,
+    "weather_forecasts": 2710,
+    "fire_detections": 1518,
+    "stations": 134,
+    "sensors": 5,
+    "locations": 12
+  },
+  "environmental_record_sources": {
+    "modelled_forecast": 8640,
+    "measured": 151
+  },
+  "cron": {
+    "jobname": "airguard-nationwide-refresh",
+    "schedule": "17 * * * *",
+    "active": false
+  },
+  "missing_provenance": 0,
+  "late_forecasts": 0,
+  "checked_at": "2026-10-10T13:38:11.623070+00:00"
+}

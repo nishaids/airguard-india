@@ -1,0 +1,8 @@
+{
+  "status": "PARTIAL",
+  "generated": [
+    "paper/figures/evidence_coverage.pdf"
+  ],
+  "input": "results/data_coverage.json",
+  "empirical_skill_figures": "PENDING; no invented prediction plots"
+}

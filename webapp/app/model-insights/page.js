@@ -65,7 +65,7 @@ export default function ModelInsightsPage() {
   if (!data) return <Loading />;
 
   return (
-    <div>
+    <div><p className="research-notice" role="note">HISTORICAL REPLAY — NOT CURRENT AIR QUALITY. Legacy model / research record: 2015–2020, original training cities. SHAP shows model attribution, not causality.</p><p>Production uses live CAMS concentrations and a separate CPCB-style engine. The live forecast track record appears on <a href="/live">Live air quality</a> once adequate measured pairs exist.</p>
       <span className="eyebrow">Evidence behind every number</span>
       <h1>Model Insights</h1>
 
@@ -219,7 +219,7 @@ function TuningTab({ data }) {
             ]}
           />
           <p className="caption">
-            These are errors on one held-out year. Four-fold expanding-window cross-validation gives a larger MAE,
+            These are errors on the historical holdout. Original city-ordered CV was not chronological; its MAE is not valid temporal-generalisation evidence,
             29.9 &plusmn; 10.0. The test year is cleaner than the training years and includes the lockdown, so the
             single-year figure flatters the model.
           </p>

@@ -27,6 +27,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
+.venv-live/
 venv/
 env/
 .ipynb_checkpoints/
@@ -38,6 +39,10 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+webapp/test-results/
+webapp/playwright-report/
+*.tsbuildinfo
+results/ingestion.log.*
 
 # Webfont cache for the explainer PDF; refetched on demand.
 reports/.fontcache/

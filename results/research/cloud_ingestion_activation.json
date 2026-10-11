@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-10-11T08:03:52.960672+00:00",
+  "production_url": "https://webapp-phi-taupe.vercel.app",
+  "schedules": [
+    {
+      "jobid": 1,
+      "jobname": "airguard-nationwide-refresh",
+      "schedule": "17 * * * *",
+      "active": true
+    },
+    {
+      "jobid": 2,
+      "jobname": "airguard-research-issue",
+      "schedule": "30 14 * * *",
+      "active": true
+    },
+    {
+      "jobid": 3,
+      "jobname": "airguard-research-prefetch",
+      "schedule": "20 14 * * *",
+      "active": true
+    },
+    {
+      "jobid": 4,
+      "jobname": "airguard-research-verify",
+      "schedule": "30 1 * * *",
+      "active": true
+    }
+  ],
+  "dispatch": {
+    "request_id": 1,
+    "http_status": 200,
+    "timed_out": false,
+    "refresh_status": "SUCCESS",
+    "response": {
+      "ok": true,
+      "status": "SUCCESS",
+      "locations": [
+        {
+          "location_key": "23.4000,70.4000",
+          "ok": true,
+          "forecast_run_id": 144,
+          "providers": {
+            "measured": {
+              "status": "SUCCESS",
+              "cache": "HIT",
+              "fetched_at": "2026-10-11T07:56:43.368431+00:00"
+            },
+            "weather": {
+              "status": "SUCCESS",
+              "cache": "HIT",
+              "fetched_at": "2026-10-11T07:56:54.090767+00:00"
+            },
+            "air": {
+              "status": "SUCCESS",
+              "cache": "HIT",
+              "fetched_at": "2026-10-11T07:56:55.498332+00:00"
+            }
+          }
+        },
+        {
+          "location_key": "9.9312,76.2673",
+          "ok": true,
+          "forecast_run_id": 156,
+          "providers": {
+            "measured": {
+              "status": "SUCCESS",
+              "cache": "HIT",
+              "fetched_at": "2026-10-11T08:00:00.739061+00:00"
+            },
+            "air": {
+              "status": "SUCCESS",
+              "cache": "HIT",
+              "fetched_at": "2026-10-11T08:00:13.013820+00:00"
+            },
+            "weather": {
+              "status": "SUCCESS",
+              "cache": "HIT",
+              "fetched_at": "2026-10-11T08:00:11.089833+00:00"
+            }
+          }
+        }
+      ],
+      "verification": [],
+      "research_issuance": [],
+      "research_verification": [],
+      "finished_at": "2026-10-11T08:03:47.110880+00:00"
+    }
+  },
+  "schedule_run_history": [],
+  "verification_notice": "The exact Vault-authenticated enqueue function was invoked from Supabase; future calendar triggers are not backdated or counted as completed runs.",
+  "fixed_issuance_window_ist": "20:00\u201320:10",
+  "prefetch_ist": "19:50",
+  "verification_ist": "07:00",
+  "hourly_refresh_ist": "Every hour at minute 47"
+}

@@ -1,0 +1,21 @@
+{
+  "protocol_version": "airguard-dayahead-20ist-v1",
+  "feature_version": "issue-time-features-v1",
+  "methodology_version": "airguard-cpcb-2014-v1",
+  "timezone": "Asia/Kolkata",
+  "issuance_time": "20:00",
+  "issuance_grace_minutes": 10,
+  "horizon": "next IST calendar day",
+  "feature_cutoff": "20:00 IST, including retrieval/availability timestamps",
+  "rationale": "Four hours before target midnight; permits recent complete station bins and evening forecast inputs. Prefetch at 19:50; freeze cached inputs at 20:00. Availability must be audited empirically, not assumed.",
+  "target": "station-level AirGuard CPCB-style AQI estimate from measured hourly concentrations only",
+  "target_rules": {"minimum_pollutants": 3, "particulate_required": true, "minimum_hours": 16, "daily_non_gas": "IST 24h mean", "gas": "maximum complete trailing 8h window ending in day; prior 7h support", "ozone_high": "1h mathematical bands", "lower_bound": "Severe >=401 is censored; excluded from exact regression and error metrics, retained for category diagnostics"},
+  "eligibility": {"station_binding": "chosen before target, within 25 km, no post-outcome station selection", "minimum_training_days": 90, "minimum_calibration_days": 30, "minimum_test_days": 30, "minimum_stations_for_spatial_validation": 3},
+  "freshness_hours": {"cams": 2, "weather": 3, "observations": 3, "firms": 24},
+  "features": {"A": "CAMS forecast concentrations, daily AQI and hourly descriptors", "B": "issue-time measured lags and rolling summaries", "C": "issue-time weather forecast summaries", "D": "calendar encodings", "E": "station and grid coordinates", "F": "optional fire context; excluded by default pending ablation"},
+  "splits": {"unit": "global target date", "embargo_days": 1, "training_days": 90, "calibration_days": 30, "test_days": 30, "step_days": 30, "final_test": "latest 30 days locked; configuration selected on earlier rolling folds only"},
+  "seed": 42,
+  "interval_coverages": [0.8, 0.9],
+  "advisory": {"version": "experimental-category-warning-v1", "candidate_quantiles": [0.5, 0.65, 0.75, 0.85, 0.95], "underwarning_targets": {"general_adult": 0.1, "children": 0.05, "older_adults": 0.05, "asthma_copd": 0.05, "heart_conditions": 0.05, "pregnancy": 0.05, "outdoor_workers": 0.1}, "minimum_calibration_days": 30, "control": "empirical blocked calibration trade-off only; no clinical or distribution-free time-series guarantee"},
+  "deployment": {"default_mode": "CAMS_BASED_NATIONWIDE", "station_correction": "deny by default; approved immutable model and station support evidence required", "wide_intervals": "do not abstain on width alone", "automatic_retraining": false}
+}

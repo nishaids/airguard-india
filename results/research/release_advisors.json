@@ -1,0 +1,27 @@
+[
+  {
+    "type": "security",
+    "findings": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "count": 31
+      },
+      {
+        "name": "extension_in_public",
+        "level": "WARN",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "type": "performance",
+    "findings": [
+      {
+        "name": "unused_index",
+        "level": "INFO",
+        "count": 26
+      }
+    ]
+  }
+]

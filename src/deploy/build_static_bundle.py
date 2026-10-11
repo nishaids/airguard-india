@@ -218,6 +218,8 @@ def main() -> None:
     _build_ranked_risk_table()
     _build_seasonal_heatmap()
     _build_meta()
+    from src.deploy.public_exports import sanitize_directory
+    sanitize_directory(DATA_OUT)
 
     print(f"results copied: {len(results)}")
     print(f"figures copied: {len(figures)}")

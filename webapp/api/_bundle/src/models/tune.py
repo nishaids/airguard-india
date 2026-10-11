@@ -146,7 +146,7 @@ def tune_regression(data: Dict[str, Any], untuned: Dict[str, float]) -> Dict[str
         param_distributions=regression_search_space(),
         n_iter=N_ITER,
         scoring="neg_mean_absolute_error",
-        cv=time_series_cv(),
+        cv=time_series_cv(dates=data["meta_train"]["Date"]),
         random_state=config.RANDOM_SEED,
         n_jobs=SEARCH_N_JOBS,
         pre_dispatch="2*n_jobs",
@@ -211,7 +211,7 @@ def tune_ridge_exhaustively(data: Dict[str, Any]) -> Dict[str, Any]:
         pipeline,
         param_grid={"model__alpha": alphas},
         scoring="neg_mean_absolute_error",
-        cv=time_series_cv(),
+        cv=time_series_cv(dates=data["meta_train"]["Date"]),
         n_jobs=SEARCH_N_JOBS,
     )
     started = time.perf_counter()
@@ -263,7 +263,7 @@ def tune_classification(data: Dict[str, Any], untuned: Dict[str, Any]) -> Dict[s
         param_distributions=classification_search_space(),
         n_iter=N_ITER,
         scoring="f1_macro",
-        cv=time_series_cv(),
+        cv=time_series_cv(dates=data["meta_train"]["Date"]),
         random_state=config.RANDOM_SEED,
         n_jobs=SEARCH_N_JOBS,
         pre_dispatch="2*n_jobs",

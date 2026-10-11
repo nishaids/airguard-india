@@ -1,0 +1,16 @@
+{
+  "operational_files_checked": [
+    "forecast/page.js",
+    "policy-simulator/page.js",
+    "city-atlas/page.js",
+    "research/page.js",
+    "components/NationwideDashboard.tsx",
+    "components/OperationalProvider.tsx",
+    "components/CounterfactualScenario.tsx",
+    "components/OperationalAtlas.tsx",
+    "components/OperationalResearchPanel.tsx"
+  ],
+  "historical_dependencies_in_operational_pages": 0,
+  "historical_date_picker_preserved": true,
+  "frontend_scenario_breakpoint_engine_added": false
+}

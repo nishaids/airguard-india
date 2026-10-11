@@ -1,0 +1,3 @@
+# RESEARCH PROTOCOL
+
+Protocol `airguard-dayahead-20ist-v1` is versioned in `src/research/protocol.json`. Issuance: 20:00 IST, next midnight-to-midnight IST day. Prefetch at 19:50, freeze inputs available by 20:00, issue within 10 minutes or skip. The actual issue timestamp is retained. Retrieval/availability, model reference time, measured hour end and target availability are checked separately. No after-cutoff input is a predictor. Upstream CAMS initialization is unknown for this live API; actual first retrieval is the availability anchor. Rationale: Four hours before target midnight; permits recent complete station bins and evening forecast inputs. Prefetch at 19:50; freeze cached inputs at 20:00. Availability must be audited empirically, not assumed.

@@ -1,0 +1,38 @@
+{
+  "verified_at": "2026-10-11T09:15:01.843477+00:00",
+  "deployment": {
+    "id": "dpl_2xFfBhodrWtpe6epZsXLn5XRLc7Z",
+    "url": "https://webapp-l9hixysol-nishanth-s-projects-e335f110.vercel.app",
+    "readyState": "READY",
+    "environment": "preview",
+    "protection": "Vercel Authentication"
+  },
+  "production_alias": "https://webapp-phi-taupe.vercel.app",
+  "production_deployment_verified_unchanged": "dpl_61LbwsPHksTqtR5Xk6A5YL3Y6ad1",
+  "commit": "082cb119f9b6496ec4bc945af5da147f94690f16",
+  "working_tree": "Existing uncommitted AirGuard work preserved; this preview contains the UI consolidation changes.",
+  "tests": {
+    "baseline_python": 294,
+    "baseline_frontend": 8,
+    "baseline_build": "PASS",
+    "final_python": 311,
+    "final_frontend": 19,
+    "real_http_playwright": 14,
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "production_build": "PASS",
+    "preview_cloud_build": "PASS",
+    "deployed_http_acceptance": 29
+  },
+  "production_changed": false,
+  "database": {
+    "generated_at": "2026-10-11T09:16:46.215171+00:00",
+    "DATABASE_URL_available": true,
+    "database": "CONNECTED",
+    "operational_forecast_runs": 73,
+    "forecast_natural_duplicates": 0,
+    "environmental_records": 14432,
+    "missing_provenance": 0,
+    "schema_migration_required_for_ui": false
+  }
+}

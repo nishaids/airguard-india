@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-10-11T15:09:29.299781+00:00",
+  "extension": {
+    "extname": "pg_net",
+    "extrelocatable": false,
+    "nspname": "public"
+  },
+  "permissions": {
+    "anon_queue_execute": false,
+    "authenticated_queue_execute": false
+  },
+  "jobs": [
+    {
+      "provider": "summary_queue",
+      "status": "FAILED",
+      "n": 7
+    },
+    {
+      "provider": "summary_queue",
+      "status": "COMPLETE",
+      "n": 56
+    }
+  ],
+  "prospective_ledger": {
+    "n": 12,
+    "first_issue": "2026-10-11 14:30:04.408153+00:00",
+    "last_issue": "2026-10-11 14:32:03.021671+00:00"
+  },
+  "advisor_notes": {
+    "rls_enabled_no_policy": "Intentional default-deny private server tables. No public data policy is added.",
+    "extension_in_public": "pg_net is not relocatable on this project; asynchronous functions use the net schema. Scheduler dispatch functions remain private.",
+    "unused_indexes": "Retained pending representative workload; no destructive index removal."
+  }
+}

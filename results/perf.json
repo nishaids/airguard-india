@@ -1,16 +1,31 @@
 {
-  "generated_at": "2026-10-11T14:13:37.968996+00:00",
+  "generated_at": "2026-10-11T15:08:44.980Z",
   "origin": "https://webapp-phi-taupe.vercel.app",
   "tool": "autocannon 8.0.0",
   "connections": 1,
-  "requests": 20,
-  "warm_cache_header": "MISS",
   "cached": {
-    "p97_5_response_ms": 178,
+    "requests": 20,
+    "p97_5_response_ms": 192,
     "errors": 0,
-    "non_2xx": 0,
-    "notice": "Total response latency; p97.5 is a conservative upper bound on p95 TTFB."
+    "non_2xx": 0
   },
-  "uncached_provider_path": "NOT_MEASURED; do not infer a provider-miss latency from warm summaries",
+  "uncached_summary": {
+    "requests": 20,
+    "p97_5_response_ms": 3377,
+    "all_queued_without_values": true,
+    "errors": 0,
+    "non_2xx": 0
+  },
+  "genuine_provider_misses": {
+    "n": 3,
+    "first_response_ttfb_ms": [
+      3263,
+      3043,
+      3003
+    ],
+    "background_completed": 3
+  },
+  "notice": "Total response p97.5 conservatively bounds sample p95 TTFB. Summary misses use already cached provider grids; the separate three-grid probe verifies genuine provider misses. These bounded samples are not a concurrency/load guarantee.",
+  "cached_accepted": true,
   "accepted": true
 }

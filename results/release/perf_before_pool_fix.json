@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-10-11T14:58:24.619Z",
+  "origin": "https://webapp-phi-taupe.vercel.app",
+  "tool": "autocannon 8.0.0",
+  "connections": 1,
+  "cached": {
+    "requests": 20,
+    "p97_5_response_ms": 364,
+    "errors": 0,
+    "non_2xx": 0
+  },
+  "uncached_summary": {
+    "requests": 20,
+    "p97_5_response_ms": 3174,
+    "all_queued_without_values": false,
+    "errors": 0,
+    "non_2xx": 1
+  },
+  "genuine_provider_misses": {
+    "n": 3,
+    "first_response_ttfb_ms": [
+      3263,
+      3043,
+      3003
+    ],
+    "background_completed": 3
+  },
+  "notice": "Total response p97.5 conservatively bounds sample p95 TTFB. Summary misses use already cached provider grids; the separate three-grid probe verifies genuine provider misses. These bounded samples are not a concurrency/load guarantee.",
+  "cached_accepted": false,
+  "accepted": false
+}

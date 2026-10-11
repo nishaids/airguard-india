@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T13:46:36.640194+00:00",
+  "generated_at": "2026-10-11T14:50:45.176864+00:00",
   "status": "COLLECTING_NOT_PAPER_READY",
   "study_protocol": {
     "protocol_version": "airguard-national-study-20ist-v2",
@@ -104,32 +104,32 @@
       "clinical benefit"
     ]
   },
-  "source_hash": "a8f4c4dc6b4bdef54a2a5bc8802ae91650cbe1375965623913c5c4c45af8740b",
-  "data_version": "cd98b5e6195594d7c65aa1f2ac2a62dfd7a17c23f591d0a114e0c432d3730aed",
+  "source_hash": "812b444d5d59f4a2fa5afe4e0fb8eb5c11b54c309dddea890d012750a2d7a8cb",
+  "data_version": "ca9ddd716dc2c7822c7a515eec1ee1f24dea141af3334d3d74dae1d4ab63e1d4",
   "artifacts": {
     "backtest_main": {
       "path": "results/backtest_main.json",
-      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+      "sha256": "f56f0b32af0d3830d44d9bc9562143c863b5ff076c94e9c47727427364b181ee"
     },
     "backtest_spatial": {
       "path": "results/backtest_spatial.json",
-      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+      "sha256": "f56f0b32af0d3830d44d9bc9562143c863b5ff076c94e9c47727427364b181ee"
     },
     "ablation": {
       "path": "results/ablation.json",
-      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+      "sha256": "f56f0b32af0d3830d44d9bc9562143c863b5ff076c94e9c47727427364b181ee"
     },
     "bias_atlas": {
       "path": "results/bias_atlas.json",
-      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+      "sha256": "f56f0b32af0d3830d44d9bc9562143c863b5ff076c94e9c47727427364b181ee"
     },
     "uncertainty": {
       "path": "results/uncertainty.json",
-      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+      "sha256": "f56f0b32af0d3830d44d9bc9562143c863b5ff076c94e9c47727427364b181ee"
     },
     "advisory_tradeoff": {
       "path": "results/advisory_tradeoff.json",
-      "sha256": "98496a6e0579b6f424aa432e05a7d6dc38ab6c9ed0bb818abf8752d8afe780ee"
+      "sha256": "f56f0b32af0d3830d44d9bc9562143c863b5ff076c94e9c47727427364b181ee"
     },
     "hai_v2": {
       "path": "results/hai_v2.json",

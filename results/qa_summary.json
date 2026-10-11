@@ -1,14 +1,14 @@
 {
   "qa_version": "station-hourly-qa-v1",
-  "rows_audited": 253,
+  "rows_audited": 267,
   "rows_deleted": 0,
   "flags_by_code": {
-    "INCOMPLETE_DAY": 99,
-    "MAD_SPIKE": 4
+    "INCOMPLETE_DAY": 72,
+    "MAD_SPIKE": 8
   },
   "flags_by_station": {
     "19": {
-      "INCOMPLETE_DAY": 26
+      "INCOMPLETE_DAY": 13
     },
     "22": {
       "INCOMPLETE_DAY": 14,
@@ -21,8 +21,8 @@
       "INCOMPLETE_DAY": 13
     },
     "811": {
-      "INCOMPLETE_DAY": 25,
-      "MAD_SPIKE": 2
+      "INCOMPLETE_DAY": 11,
+      "MAD_SPIKE": 6
     }
   },
   "flagged_rows": [
@@ -131,111 +131,7 @@
       ]
     },
     {
-      "input_index": 37,
-      "record_key": "34d9679eb19bf12c4e948abb4348151b487be8155d4186b22488a732bb786e1e",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 38,
-      "record_key": "8f51383917f1ad1ac30fdff75ea3f59ebb2ab65dc4c4afb7a1cbda6f7cca2187",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 39,
-      "record_key": "4c1a17d37c3bedf8a331f026dcf2c907580e1815f097084229f82f51f3f830ff",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 40,
-      "record_key": "060029593e726e81f22d2561a54d8c8557846e7a3788cb445059746535f70956",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 41,
-      "record_key": "2ee211b2d31c9e72dafe4711a1cc601d1bd55aaca1842cb2e70677ef9118ab9f",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 42,
-      "record_key": "84b5828382cc868167b4cb343095bf328f7e6b4e9db4fb92e05a6b842949b65f",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 43,
-      "record_key": "b82fafc9905691da2d0a71a5b19b83691330fb4c9c3b53e3d2c000b904cf553d",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 44,
-      "record_key": "70dda95e28f2e5510e0e2cb1f85a2c523264100b298de0905fab6e2df0d9bece",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 45,
-      "record_key": "e06bae05daa5a85a1103e08e259a118847bc47ccd081ec10e6d03dde6a7e518e",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 46,
-      "record_key": "093ec2957e9ab7f0d1f819b3fbede6d687ae497949e3fb05e9b934068800f59f",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 47,
-      "record_key": "b3db02ffb253a2409707d38a91e3b3c9793272291ba972dd45621ec6f85817c5",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 48,
-      "record_key": "59c409b1069240dbffe217786a6003a88e1b44070810879dbfb032404fef86b7",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 49,
-      "record_key": "3ee65710934fcc8bc4b5a90fcf879cc2604a3a7464d3aaa4ea04d819e4d3f283",
-      "station_pk": 19,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 50,
+      "input_index": 56,
       "record_key": "67f93154bbd45ad0262ed82aef4d927c1cd2491cfc0a56300ac73d0f9f57d648",
       "station_pk": 22,
       "flags": [
@@ -243,7 +139,7 @@
       ]
     },
     {
-      "input_index": 51,
+      "input_index": 57,
       "record_key": "b533c1dacd30c65491e93b1033cd09e4995b376e377e0861d9b5008d4505f2c6",
       "station_pk": 22,
       "flags": [
@@ -251,7 +147,7 @@
       ]
     },
     {
-      "input_index": 52,
+      "input_index": 58,
       "record_key": "0fcb7b1ccc403c4b1c1a363f2e6c1984c108c6bcd39bd0070bc91780a412d514",
       "station_pk": 22,
       "flags": [
@@ -259,7 +155,7 @@
       ]
     },
     {
-      "input_index": 53,
+      "input_index": 59,
       "record_key": "b9a793332fd35f781dd8ef7d3f1d400cb18678c8a7d143208e5ada0790007c28",
       "station_pk": 22,
       "flags": [
@@ -267,7 +163,7 @@
       ]
     },
     {
-      "input_index": 54,
+      "input_index": 60,
       "record_key": "2b57acb7dd24ce62ff45fa2aa6d8e4ea7f95f3cea64d349d6846c2af43c56d0d",
       "station_pk": 22,
       "flags": [
@@ -275,7 +171,7 @@
       ]
     },
     {
-      "input_index": 55,
+      "input_index": 61,
       "record_key": "fc111ef15b0dbf9aa9bf7ba26ea099ba2c3accca518c505e0f0928746dec5cf3",
       "station_pk": 22,
       "flags": [
@@ -283,7 +179,7 @@
       ]
     },
     {
-      "input_index": 56,
+      "input_index": 62,
       "record_key": "c626bc2e58bbf7b33e7184e77a5bca4405dba5efa612a7ba30dce53df4870e24",
       "station_pk": 22,
       "flags": [
@@ -291,7 +187,7 @@
       ]
     },
     {
-      "input_index": 57,
+      "input_index": 63,
       "record_key": "dffbdff8ddbb3d53e36e70e9abfbbf17f237159610330b8dc79f6901158cd304",
       "station_pk": 22,
       "flags": [
@@ -299,7 +195,7 @@
       ]
     },
     {
-      "input_index": 58,
+      "input_index": 64,
       "record_key": "5d624fbf2f17e175bfea31d8299a5a65681f8cea24aca760c5f4310c9db9e3a5",
       "station_pk": 22,
       "flags": [
@@ -307,7 +203,7 @@
       ]
     },
     {
-      "input_index": 59,
+      "input_index": 65,
       "record_key": "7ce7fad4fc1077f58495bb36931d6e29db7beffec9ccdd077cd498c23c6b61ab",
       "station_pk": 22,
       "flags": [
@@ -315,7 +211,7 @@
       ]
     },
     {
-      "input_index": 60,
+      "input_index": 66,
       "record_key": "9711f8759e29bd7344c3f60db790afec062632c9f74c51f62bc36e6abb9a5b11",
       "station_pk": 22,
       "flags": [
@@ -323,7 +219,7 @@
       ]
     },
     {
-      "input_index": 61,
+      "input_index": 67,
       "record_key": "df75f6c40d315023a0c59b1d699930e14e4a2a5d1089530f8433f5e33578fdb4",
       "station_pk": 22,
       "flags": [
@@ -331,7 +227,7 @@
       ]
     },
     {
-      "input_index": 62,
+      "input_index": 68,
       "record_key": "a61d77890d16c08bf1cf0af57acaf2bad4b279332dfa4eabe30162b78b6d9615",
       "station_pk": 22,
       "flags": [
@@ -339,7 +235,7 @@
       ]
     },
     {
-      "input_index": 63,
+      "input_index": 69,
       "record_key": "efe7c3277f214e0fcdbe81ae250468a5763c907e7bf373362ffd15d2b43b87f8",
       "station_pk": 22,
       "flags": [
@@ -347,7 +243,7 @@
       ]
     },
     {
-      "input_index": 69,
+      "input_index": 75,
       "record_key": "b4548a26566b99a74fcaf8eeb9d95887edf7de32afd862da8929a080f80591f5",
       "station_pk": 22,
       "flags": [
@@ -355,7 +251,7 @@
       ]
     },
     {
-      "input_index": 70,
+      "input_index": 76,
       "record_key": "f942a655e48d13bc68a2811c4d4f69deca4e304fb7731ff061520a8a560e4fca",
       "station_pk": 22,
       "flags": [
@@ -363,7 +259,7 @@
       ]
     },
     {
-      "input_index": 106,
+      "input_index": 113,
       "record_key": "a22fd60ac5e4ef8ccd0b52d4ec2e52fce1d9e2aaa55c9ee10716fb9740940a13",
       "station_pk": 60,
       "flags": [
@@ -371,7 +267,7 @@
       ]
     },
     {
-      "input_index": 107,
+      "input_index": 114,
       "record_key": "302754809fcb5482aee9091034bb7ce72469bda405be103779a4698c6a04069c",
       "station_pk": 60,
       "flags": [
@@ -379,7 +275,7 @@
       ]
     },
     {
-      "input_index": 108,
+      "input_index": 115,
       "record_key": "b1f0ded7f6ac423d79fcd5dfdf6b0bf4372d182a108bc2de4945b7f547b77a6c",
       "station_pk": 60,
       "flags": [
@@ -387,7 +283,7 @@
       ]
     },
     {
-      "input_index": 109,
+      "input_index": 116,
       "record_key": "8d719a3a546a0e940e2b68a980d4db391b9adfbee7ed78b347a5127ee1eb6c13",
       "station_pk": 60,
       "flags": [
@@ -395,7 +291,7 @@
       ]
     },
     {
-      "input_index": 110,
+      "input_index": 117,
       "record_key": "966292a62becac0d3a479a53b5558e6153388c69174258e89fe96eed8ae5080b",
       "station_pk": 60,
       "flags": [
@@ -403,7 +299,7 @@
       ]
     },
     {
-      "input_index": 111,
+      "input_index": 118,
       "record_key": "f3e280c584d2dbe38057c9e676c95b4a7efb0a2f766fec8fed9453c127913e05",
       "station_pk": 60,
       "flags": [
@@ -411,7 +307,7 @@
       ]
     },
     {
-      "input_index": 112,
+      "input_index": 119,
       "record_key": "d8a3c6213801883d8f2d2ac9ddd92c50a121f8cb38c67f2a10170f6a5204dca0",
       "station_pk": 60,
       "flags": [
@@ -419,7 +315,7 @@
       ]
     },
     {
-      "input_index": 113,
+      "input_index": 120,
       "record_key": "eb76ac1b8208979d6f0c802a77888a80d07e8af51858cfde0aeddf98de72c545",
       "station_pk": 60,
       "flags": [
@@ -427,7 +323,7 @@
       ]
     },
     {
-      "input_index": 114,
+      "input_index": 121,
       "record_key": "2ff91513631dbb367fd2f39ce814de16f2be59a28556e0eb03ee5f935426492a",
       "station_pk": 60,
       "flags": [
@@ -435,7 +331,7 @@
       ]
     },
     {
-      "input_index": 115,
+      "input_index": 122,
       "record_key": "8fe2e69b93eaac19b1beced6b8d99fefb5ab25d4bb4dfe1675b2dfe1f278a874",
       "station_pk": 60,
       "flags": [
@@ -443,7 +339,7 @@
       ]
     },
     {
-      "input_index": 116,
+      "input_index": 123,
       "record_key": "a9fc7876122dc6ee1551eb511e026e66b7ca982048aa75d8b63c7638d3bd5127",
       "station_pk": 60,
       "flags": [
@@ -451,7 +347,7 @@
       ]
     },
     {
-      "input_index": 117,
+      "input_index": 124,
       "record_key": "d3db2d426c9169511164742f5da01536d54606eaad5b79b476b900df3a49eb12",
       "station_pk": 60,
       "flags": [
@@ -459,7 +355,7 @@
       ]
     },
     {
-      "input_index": 141,
+      "input_index": 148,
       "record_key": "7cd726c4e8504573182fbae8a7ad28951ab0bdf3e7b0850126eb4746f7d428fb",
       "station_pk": 60,
       "flags": [
@@ -467,7 +363,7 @@
       ]
     },
     {
-      "input_index": 142,
+      "input_index": 149,
       "record_key": "91f45c3ad8a4d65a6644d85ffdc72090f210108990bf02861b32598e87b1d679",
       "station_pk": 60,
       "flags": [
@@ -475,7 +371,7 @@
       ]
     },
     {
-      "input_index": 143,
+      "input_index": 150,
       "record_key": "8985569a539e706eea9be2ae293ea299e3aeec3d208e123f2c3dd61ed49d98ec",
       "station_pk": 60,
       "flags": [
@@ -483,7 +379,7 @@
       ]
     },
     {
-      "input_index": 144,
+      "input_index": 151,
       "record_key": "c251a097a892cb9d9fc47e1f72a25ffb59131a0cb56ed51ab4376d1ec7d3563e",
       "station_pk": 60,
       "flags": [
@@ -491,7 +387,7 @@
       ]
     },
     {
-      "input_index": 145,
+      "input_index": 152,
       "record_key": "1297327a04d54b88f64c4e5c53756578eee65f6007977c879ef18f792fbb7a52",
       "station_pk": 60,
       "flags": [
@@ -499,7 +395,7 @@
       ]
     },
     {
-      "input_index": 146,
+      "input_index": 153,
       "record_key": "dc72e27c2b3575fc030cae1f435c87cb403f437c4455eeb74bd26d4807588a68",
       "station_pk": 60,
       "flags": [
@@ -507,7 +403,7 @@
       ]
     },
     {
-      "input_index": 147,
+      "input_index": 154,
       "record_key": "6bed0d3a15e2d6527f6e37923618c452dcc7b6f9e7f17bc9fcaa46ef569394f6",
       "station_pk": 60,
       "flags": [
@@ -515,7 +411,7 @@
       ]
     },
     {
-      "input_index": 148,
+      "input_index": 155,
       "record_key": "2d0d1bf13ac1c4752895cc209172143f97b0314126613968bd4329f23660d7d3",
       "station_pk": 60,
       "flags": [
@@ -523,7 +419,7 @@
       ]
     },
     {
-      "input_index": 149,
+      "input_index": 156,
       "record_key": "6186520d4892b14ee4e30df721993fbbbe369d09ab65f04db40ff74dfc467686",
       "station_pk": 60,
       "flags": [
@@ -531,7 +427,7 @@
       ]
     },
     {
-      "input_index": 150,
+      "input_index": 157,
       "record_key": "e4507366ab86b69bb7c4ff1a0225b5de0fe4c21bd1e1b371615dabeaf4120cd2",
       "station_pk": 77,
       "flags": [
@@ -539,7 +435,7 @@
       ]
     },
     {
-      "input_index": 151,
+      "input_index": 158,
       "record_key": "9077562cdd3e314f590ef192ad02c1766ab73ecd3b03e38d372414cd8d048867",
       "station_pk": 77,
       "flags": [
@@ -547,7 +443,7 @@
       ]
     },
     {
-      "input_index": 152,
+      "input_index": 159,
       "record_key": "632a1e52f13984a144a7b68e465f0e3e23c70b63b3571942cce4c200d252ec31",
       "station_pk": 77,
       "flags": [
@@ -555,7 +451,7 @@
       ]
     },
     {
-      "input_index": 153,
+      "input_index": 160,
       "record_key": "a3c168a808f89e22efc2f2720b807365609936be1e28a16383155e7b26e020fd",
       "station_pk": 77,
       "flags": [
@@ -563,7 +459,7 @@
       ]
     },
     {
-      "input_index": 154,
+      "input_index": 161,
       "record_key": "896604acc4ed3d534d64ba3aef652f6b5b6cbb593bcf7bc3cb2f4c2b516d2bc7",
       "station_pk": 77,
       "flags": [
@@ -571,7 +467,7 @@
       ]
     },
     {
-      "input_index": 155,
+      "input_index": 162,
       "record_key": "55c493e23ab6d4581feb29ff2234913510226a12122c3d987a23f32c321d5d49",
       "station_pk": 77,
       "flags": [
@@ -579,7 +475,7 @@
       ]
     },
     {
-      "input_index": 156,
+      "input_index": 163,
       "record_key": "4df14fe1ad0de7e881eb5fa695a2aa4312634616f9bfa281692110ac924483c1",
       "station_pk": 77,
       "flags": [
@@ -587,7 +483,7 @@
       ]
     },
     {
-      "input_index": 157,
+      "input_index": 164,
       "record_key": "64fb539ff0b909c604d3500759885cf1b34a7d12dad8825feeec8e51d3fae42d",
       "station_pk": 77,
       "flags": [
@@ -595,7 +491,7 @@
       ]
     },
     {
-      "input_index": 158,
+      "input_index": 165,
       "record_key": "6b804b317d443734d19bf5e09852349e0dbcda7b22808c697b9b92f590140334",
       "station_pk": 77,
       "flags": [
@@ -603,7 +499,7 @@
       ]
     },
     {
-      "input_index": 159,
+      "input_index": 166,
       "record_key": "16311e449cf336c3661ea1f806d5b32511093a8f793ed599325c7620ae000a19",
       "station_pk": 77,
       "flags": [
@@ -611,7 +507,7 @@
       ]
     },
     {
-      "input_index": 160,
+      "input_index": 167,
       "record_key": "fb42a45a203ac12980e28fa0b8b6eafd34e220e59e5366d63e02e7b538093cfd",
       "station_pk": 77,
       "flags": [
@@ -619,7 +515,7 @@
       ]
     },
     {
-      "input_index": 161,
+      "input_index": 168,
       "record_key": "29e97d235964b5fe4a8260b1bd992a6a23619395e2682e6158ca7d3292cd1b1d",
       "station_pk": 77,
       "flags": [
@@ -627,7 +523,7 @@
       ]
     },
     {
-      "input_index": 162,
+      "input_index": 169,
       "record_key": "6401530f701bd3face45ba75233ee8624ae40a79589b54ccda1a29a426ab7d90",
       "station_pk": 77,
       "flags": [
@@ -635,7 +531,7 @@
       ]
     },
     {
-      "input_index": 204,
+      "input_index": 213,
       "record_key": "c8813dd1a68377a5c88cf89d283fdf9dfe788cf395ce16de6499da7866d9b9cd",
       "station_pk": 811,
       "flags": [
@@ -643,7 +539,7 @@
       ]
     },
     {
-      "input_index": 205,
+      "input_index": 214,
       "record_key": "8561886feabac24766d39ae1eab5387afd4cc353ebc1a3cac20559da9bce6e27",
       "station_pk": 811,
       "flags": [
@@ -651,7 +547,7 @@
       ]
     },
     {
-      "input_index": 206,
+      "input_index": 215,
       "record_key": "62ac309fffbae4945c23b8914f021058534778be6aaaa5d4827d9257a3964a7b",
       "station_pk": 811,
       "flags": [
@@ -659,7 +555,7 @@
       ]
     },
     {
-      "input_index": 207,
+      "input_index": 216,
       "record_key": "0ca5774b86071425e67f38902a0189f9a2b82fd021234c11749e59fde6ee9c7a",
       "station_pk": 811,
       "flags": [
@@ -667,7 +563,7 @@
       ]
     },
     {
-      "input_index": 208,
+      "input_index": 217,
       "record_key": "3aa2fa29653470d02079b70a54fbd62459fd90dfaddbcebbfbb5fd94e4853428",
       "station_pk": 811,
       "flags": [
@@ -675,7 +571,7 @@
       ]
     },
     {
-      "input_index": 209,
+      "input_index": 218,
       "record_key": "43eba5beb25d02b628b85fdfe44b7f6e187d98ddb6f9f9436c0b4e5a81ee3f6d",
       "station_pk": 811,
       "flags": [
@@ -683,7 +579,7 @@
       ]
     },
     {
-      "input_index": 210,
+      "input_index": 219,
       "record_key": "b79788a9653d54e8dd5b59beb4c908a13f6779d8856ef1d2029c7ab6245c7d13",
       "station_pk": 811,
       "flags": [
@@ -691,7 +587,7 @@
       ]
     },
     {
-      "input_index": 211,
+      "input_index": 220,
       "record_key": "1f92659a526cf0585accc13f78fc52cd1f636a76ca00c898b79dc131102752ea",
       "station_pk": 811,
       "flags": [
@@ -699,7 +595,7 @@
       ]
     },
     {
-      "input_index": 212,
+      "input_index": 221,
       "record_key": "c756182e8aee943aadbf2cb5f236e6e959f95d5c7ca52062222ef0382f9f32c3",
       "station_pk": 811,
       "flags": [
@@ -707,7 +603,7 @@
       ]
     },
     {
-      "input_index": 213,
+      "input_index": 222,
       "record_key": "fcc382d24cbffcb03b495c1ff825d7061d570cc91943b69a17a7fd29fa7d442f",
       "station_pk": 811,
       "flags": [
@@ -715,7 +611,7 @@
       ]
     },
     {
-      "input_index": 214,
+      "input_index": 223,
       "record_key": "6ce2688a0ed5744fcec2cd67ae09cc485feb44dc774634d3b6a47d95fa0e66d8",
       "station_pk": 811,
       "flags": [
@@ -723,7 +619,7 @@
       ]
     },
     {
-      "input_index": 230,
+      "input_index": 239,
       "record_key": "dc6e2034fd91e60f60f4ed78745d916fe06b06ee3cd795d98e6ac71c61aed860",
       "station_pk": 811,
       "flags": [
@@ -731,7 +627,7 @@
       ]
     },
     {
-      "input_index": 231,
+      "input_index": 240,
       "record_key": "f62d63e1a2f165181ca7456ff6eda05c7d57a86540aef7254c89ee5f1cca9bf7",
       "station_pk": 811,
       "flags": [
@@ -739,115 +635,35 @@
       ]
     },
     {
-      "input_index": 239,
-      "record_key": "33ea07aec8f47d0e8b272b98f849015b212cca19f99a73313170c51cde122714",
+      "input_index": 263,
+      "record_key": "7a2bf3e4bd0b9fa3522de4dd13188ea82b37c1046951199d9378501297d88ea6",
       "station_pk": 811,
       "flags": [
-        "INCOMPLETE_DAY"
+        "MAD_SPIKE"
       ]
     },
     {
-      "input_index": 240,
-      "record_key": "851b68f45576297bdd3f5265fbd6bc97245dbd5504f5819a0ac691163c6f0720",
+      "input_index": 264,
+      "record_key": "786be2527b4dc9fe9e20675dd309824cba5e7a89a638cb75f7918f3a2e45cda3",
       "station_pk": 811,
       "flags": [
-        "INCOMPLETE_DAY"
+        "MAD_SPIKE"
       ]
     },
     {
-      "input_index": 241,
-      "record_key": "d1a9b70cde60c574107391a07bbe1df23ce038f551ffa7cc42a78cef70490bcc",
+      "input_index": 265,
+      "record_key": "c388c01d1b4a1e5cfd12352899426c4a20eecf40c9b41c5d3b87e98122fc7ce1",
       "station_pk": 811,
       "flags": [
-        "INCOMPLETE_DAY"
+        "MAD_SPIKE"
       ]
     },
     {
-      "input_index": 242,
-      "record_key": "13e738c0d433e2d9600692a0aba43eabd7c66dcfa38dab8b72b40eabdef310a5",
+      "input_index": 266,
+      "record_key": "fad1f8baf3e70935e0b96d45c98338621ef8c186891d7a78034629289d471d92",
       "station_pk": 811,
       "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 243,
-      "record_key": "3628a4df37b4a639e90ebcfc1dd794a08b118431f763e581b69231776111faee",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 244,
-      "record_key": "1e688babc4dcafff29cfdce0c73749c8ba0db7f9c17c96e063fa9a1de069d20b",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 245,
-      "record_key": "dc6e0907120d690715e1287cf3f1e716984f5eb57b881121aca8ad5495772c94",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 246,
-      "record_key": "cdab06e88f9cb170813e60ffa2147c32afa04b79698a9ebd77d2c1f79fe50d86",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 247,
-      "record_key": "d18461ae4c5863bc2c11333fc7548879274fc3d95a666d55907a83ab2d548dd2",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 248,
-      "record_key": "fa294a462f90f3710bb2402fe46a5edf3919353d575606649f8dad0c24d1f282",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 249,
-      "record_key": "8091831671063e54affdb72108acf234cccb975ddaa55ce93947fcf8c2fc3985",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 250,
-      "record_key": "1390e246e0aa9cd07484aa55f177cb7ded807ac8f3ca74333f1dacc3201d11f6",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 251,
-      "record_key": "f704c31dd1e8e51c20eca611a45589b8c462ff821d9f5574bdccd6d19ed40360",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
-      ]
-    },
-    {
-      "input_index": 252,
-      "record_key": "c3e466cf9c152a4d62a75ea0d7a823baa4b08f2c78c6154f870866a44ef78092",
-      "station_pk": 811,
-      "flags": [
-        "INCOMPLETE_DAY"
+        "MAD_SPIKE"
       ]
     }
   ],
@@ -872,9 +688,9 @@
       "station_pk": 19,
       "pollutant": "PM2.5",
       "date": "2026-10-11",
-      "unique_hours": 13,
+      "unique_hours": 19,
       "minimum_hours": 16,
-      "complete": false
+      "complete": true
     },
     {
       "station_pk": 22,
@@ -896,7 +712,7 @@
       "station_pk": 22,
       "pollutant": "PM2.5",
       "date": "2026-10-11",
-      "unique_hours": 18,
+      "unique_hours": 19,
       "minimum_hours": 16,
       "complete": true
     },
@@ -944,7 +760,7 @@
       "station_pk": 77,
       "pollutant": "PM2.5",
       "date": "2026-10-11",
-      "unique_hours": 17,
+      "unique_hours": 19,
       "minimum_hours": 16,
       "complete": true
     },
@@ -968,13 +784,13 @@
       "station_pk": 811,
       "pollutant": "PM2.5",
       "date": "2026-10-11",
-      "unique_hours": 14,
+      "unique_hours": 19,
       "minimum_hours": 16,
-      "complete": false
+      "complete": true
     }
   ],
   "interpretation": "Flags require review. No silent deletion or automatic event exemption; source rows remain immutable.",
-  "generated_at": "2026-10-11T13:46:32.740081+00:00",
-  "input_hash": "8a0c68121087ab16e7eb1f81a1e6976501c1f70ce30802790718c28c71ce2646",
+  "generated_at": "2026-10-11T14:50:41.436164+00:00",
+  "input_hash": "391a59fe0bddc04342c9817e0a4bc8f2589128c3a744467b25552cda7b9313a9",
   "source": "Supabase measured environmental records; not a CPCB census"
 }

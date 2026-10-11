@@ -1,0 +1,2139 @@
+Control of Urban Pollution Series:
+CUPS/ 82 /2014-15
+NATIONAL AIR QUALITY INDEX
+Pl\nto
+AQI: 95; Satisfactory
+Responsible Pollutant: P M
+"tilks
+CLEAN
+Wg/
+CENTRAL POLLUTION CONTROL BOARD
+Ministry of Environment, Forests & Climate Change
+Website: www.cpcb.nic.in
+
+7rfvr	 AT.A.14.
+Wzr Frfaa
+SHASHI SHEKHAR, IAS
+Special Secretary
+MEZIF
+	  ITTUT -11A41
+Chairman
+CENTRAL POLLUTION CONTROL BOARD    
+i s 1c'Ic1I 4 to41 	
+-14	 - 110003
+GOVERNMENT OF INDIA
+MINISTRY OF ENVIRONMENT, FOREST &
+CLIMATE CHANGE
+NEW DELHI-110003
+Foreword
+Air pollution levels in most of the urban areas have been a matter of serious concern. It is
+the right of the people to know the quality of air they breathe. However, the data generated through
+National Ambient Air Monitoring Network are reported in the form that may not be easily
+understood by a common person, and therefore, present system of air quality information does not
+facilitate people's participation in air quality improvement efforts.
+In view of this, CPCB took initiative for developing a national Air Quality Index (AQI) for
+Indian cities. AQI is a tool to disseminate information on air quality in qualitative terms (e.g. good,
+satisfactory, poor) as well as its associated likely health impacts. An Expert Group comprising
+medical professionals, air quality experts, academia, NGOs, and SPCBs developed National AQI.
+Necessary technical information was provided by IIT Kanpur. The draft AQI was launched in October
+2014 for seeking public comments. It was also circulated to States Governments, Pollution Control
+Boards, concerned Central Government Ministries and premier research institutes for inputs.
+Comments received were examined by the Expert Group and a National AQI scheme was finalized,
+which is presented in this report. There are six AQI categories, namely Good, Satisfactory,
+Moderately polluted, Poor, Very Poor, and Severe. The AQI considers eight pollutants for which
+short-term (up to 24-hourly averaging period) standards are prescribed, however, AQI can be
+calculated if monitoring data are available for minimum three pollutants of which one should
+necessarily be PM 2.5 or PM 10 . Based on the measured ambient concentrations, corresponding
+standards and likely health impact, a sub-index is calculated for each of these pollutants. The worst
+sub-index reflects overall AQI.
+I gratefully acknowledge the contributions made by the members of the Expert Group and
+Professors Mukesh Sharma and Arnab Bhattacharya of IIT Kanpur in finalizing the AQI scheme and
+preparation of this report. The efforts made by my colleagues Dr. Prashant Gargava, Additional
+Director, who conceptualized and coordinated the project and Ms. Garima Sharma, Environmental
+Engineer, CPCB are appreciated. Efforts put in by Shri A. Sudhakar, Additional Director; Shri Aditya
+Sharma, Environmental Engineer; and Ms. Kavitha B., Environmental engineer for operating web
+dissemination AQI system is also acknowledged.
+It is hoped that the AQI will provide more meaningful air quality information to the people,
+ensure everyone's participation to strengthen efforts being made for improving air quality in urban
+areas.
+(Shashi Shekhar)	3/i7/r
+Chairman
+ttft*IT 9.1-49'', 4-.4-.41. 'TIT -311T1FR	 tral 374* TIT, 1-4 ml I - 1 1 0 0 32
+'PARIVESH BHAWAN'. C.B.D.-CUM-OFFICE COMPLEX, EAST ARJUN NAGAR, DELHI-110 032
+PHONE : 22307233, TEL. FAX : 22304948, E-mail : ccb.cpcb@nicin, shashi.shekhar@nic.in
+
+1 
+ 
+Chapter 1 
+Introduction 
+1.1 Origin and Concepts of Air Quality Index 
+In addition to land and water, air is the prime res ource for sustenance of life. With the technological 
+advancements, a vast amount of data on ambient air quality is generated and used to establish the 
+quality of air in different areas. The large mon itoring data result in encyclopaedic volumes of 
+information that neither gives a clear picture to a decision maker nor to a common man who simply 
+wants to know how good or bad the air is? One wa y to describe air qual ity is to report the 
+concentrations of all pollutants with acceptable levels  (standards). As the number of sampling stations 
+and pollution parameters (and their sampling frequenc ies) increase, such descriptions of air quality 
+tend to become confusing even for the scientific and technical community. 
+As for the general public, they usually will not be satis fied with raw data, time series plots, statistical 
+analyses, and other complex findings pertaining to air quality. The re sult is that people tend to lose 
+interest and can neither appreciate the state of air quality nor the pollution mitigation efforts by 
+regulatory agencies. Since awareness of daily levels  of urban air pollution is  important to those who 
+suffer from illnesses caused by exposure to air pol lution, the issue of air quality communication 
+should be addressed in an effective manner. Furt her, the success of a nation to improve air quality 
+depends on the support of its  citizens who are well- informed about local an d national air pollution 
+problems and about the progress of mitigation efforts.  
+To address the above concerns, th e concept of an Air Quality Inde x (AQI) has been developed and 
+used effectively in many developed countries for over last three d ecades (USEPA 1976, 2014; 
+Ontario, 2013; Shenfeld, 1970). An AQI is defined as  an overall scheme that transforms weighted 
+values of individual air pollution related parameters (SO
+2, CO, visibility, etc.) into a single number or 
+set of numbers. There have not been significant efforts to develop and use AQI in India, primarily due 
+to the fact that a modest air quality monitori ng programme was started only in 1984 and public 
+awareness about air pollution was almost non-existe nt. The challenge of communicating with the 
+people in a comprehensible manner has two dimens ions: (i) translate the complex scientific and 
+medical information into simple and precise knowle dge and (ii) communicate w ith the citizens in the 
+2 
+ 
+historical, current and futuristic sense. Addressing these challenges and thus developing an efficient 
+and comprehensible AQI scale is required for citizen s and policy makers to make decisions to prevent 
+and minimize air pollution exposure and ailments induced from the exposure. 
+1.2 Applications of Air Quality Index 
+Ott (1978) has listed the following six objectives that are served by an AQI: 
+1. Resource Allocation:  To assist administrators in alloca ting funds and determining priorities. 
+Enable evaluation of trade-offs involved in alternative air polluti on control strategies. 
+2. Ranking of Locations:  To assist in comparing air quality c onditions at different  locations/cities. 
+Thus, pointing out areas and frequencies of potential hazards. 
+3. Enforcement of Standards:  To determine extent to which the legislative standards and existing 
+criteria are being adhered. Also helps in identifying faulty sta ndards and inadequa te monitoring 
+programs. 
+4. Trend Analysis:  To determine change in air quality (degradation or improvement) which have 
+occurred over a specified period. This enables forecasting of air quality (i.e., tracking the behaviour of 
+pollutants in air) and plan pollution control measures. 
+5. Public Information:  To inform the public about environmen tal conditions (state of environment). 
+It’s useful for people who suffer from illness aggr avated or caused by air pollution. Thus it enables 
+them to modify their daily activities at times when they are informed of high pollution levels. 
+6. Scientific Research:  As a means for reducing a large set of  data to a comprehendible form that 
+gives better insight to the researcher while co nducting a study of some environmental phenomena. 
+This enables more objective determination of the c ontribution of individual po llutants and sources to 
+overall air quality. Such tools become more useful when used in conjunction with other sources such 
+as local emission surveys. 
+Briefly, an AQI is useful for: (i) general public to know air quality in a simplified way, (ii) a politician 
+to invoke quick actions, (iii) a deci sion maker to know the trend of ev ents and to chalk out corrective 
+3 
+ 
+pollution control strategies, (iv) a government offici al to study the impact of regulatory actions, and 
+(v) a scientist who engages in scientific research using air quality data. 
+1.3 Project Conceptualization 
+In the past, AQI has been based on maximum sub-index approach using five parameters i.e. suspended 
+particulate matter (SPM), SO2, CO, PM10, and NO2 (Sharma 2001). However, the calculated AQI was 
+always dominated by sub-index of SPM due to lack of  data availability for other pollutants. Recently, 
+Indian Institute of Tropical Meteorology (IITM), Pune has evolved an AQI, which provides sub-index 
+for PM 10, PM 2.5, O 3, NO 2, and CO (Beig et al, 2010), and has applied to continuous air quality 
+monitoring network. The IITM-AQI desc ribes air quality in terms of very unhealt hy, very poor, poor 
+(unhealthy for sensitive groups), moderate and good. 
+The revised CPCB air quality stan dards necessitate that the concep t of AQI in India is examined 
+afresh.  The revised National Ambient Air Qu ality Standards (CPCB 2009) are notified for 12 
+parameters – PM 10, PM 2.5, NO 2, SO 2, CO, O 3, NH 3, Pb, Ni, As, Benzo(a) pyrene, and Benzene. 
+Although AQI is usually based on criteria pollutants (i.e. PM 10, PM2.5, SO2, NO2, CO and O 3), a new 
+approach to AQI which considers as many pollutants fr om the list of notified pollutants as possible is 
+desirable. However, the selection of paramete rs primarily depends on AQI objective(s), data 
+availability, averaging period, monitoring fr equency, and measurement methods. While PM 10, PM2.5, 
+NO2, SO2, NH3, and Pb have 24-hourly as well annual average standards, Ni, As, benzo(a)pyrene, and 
+benzene have only annual standards and CO and O 3 have short-term sta ndards (01 and 08 hourly 
+average). PM10, PM2.5, SO2, NO2, CO, and O 3are measured on a continuous basis at many air quality 
+stations (including NH 3 at some stations), Pb, Ni, As, Benzo(a)pyrene,andNH 3, if monitored, use 
+manual systems. To get an updated AQI at short time intervals, ideally eight parameters (PM10, PM2.5, 
+NO2, SO2, CO, O3, NH3, and Pb) for which, short-term standard s are prescribed should, be measured 
+on a continuous basis.  
+It is seen that multiple agen cies propose AQI schemes which may provide varying air quality 
+assessments, e.g. air quality may be termed as ‘good’ by one scheme and ‘poor’ by the other; this may 
+be very confusing to general public . There is a need to devise a uniform and efficient AQI scheme 
+which provides information about every pollutant and generates an overall index and be unique for the 
+entire country.  
+4 
+ 
+In view of the above background, Central Polluti on Control Board (CPCB) and the Ministry of 
+Environment and Forests (MoEF) have initiated this project on National Air Quality Index to 
+strengthen air quality information dissemination system for larger public awareness and their 
+participation on air quality management. An e xpert committee was constituted with members 
+drawn from academia, medical fraternity, research institutes, MoEF, advocacy groups, SPCBs and 
+CPCB. The committee was mandated to deliberate , discuss and devise consensus on the AQI 
+system that is appropriate for Indian conditi ons. The technical study was assigned to IIT Kanpur 
+on grant-in-aid basis.
+   
+1.4 Project Objectives  
+The project aims to achieve the following: 
+(i) Inform public regarding overall status of air quality through a summation parameter that is easy to 
+understand; 
+(ii) Inform citizens about associated health impacts of air pollution exposure; and 
+(iii) Rank cities/towns for prioritizing actions based on measure of AQI. 
+The overall objective of the project can be stated as under: 
+“To adopt/develop an Air Quality Index (AQI) based on national air quality standards, health impacts 
+and monitoring programme which represent perceiv able air quality for general public in easy to 
+understand terms and assist in data interpretation and decision making processes related to pollution 
+mitigation measures.” 
+1.5 Scope of Work 
+The scope of the work is summarized below: 
+(i) Review of available AQIs including international practices; 
+(ii) Suggest health impact threshold limits for eight parameters for which short-term air quality 
+standards are prescribed; 
+5 
+ 
+(iii) Develop a uniform AQI considering objectives, health impacts, air quality standards, existing 
+and future monitoring scenario including parameters, method and frequency of measurements, 
+and other relevant aspects; 
+(iv) Suggest qualitative description of air quality and associated likely health impacts for different 
+AQI values; 
+(v) Evaluate  AQI with data from a few major cities and towns; 
+(vi) Develop web-based system for dissemination of AQI to public using current and historical air 
+quality database; and 
+(vii) Finalize AQI and dissemination system in consultation with leading air quality experts, 
+medical professionals working in the field of air pollution health impacts, State Pollution 
+Control Boards and other stakeholders 
+For this project, CPCB constituted an expert committee comprising members from renowned 
+academicians, medical fraternity, research inst itutes, MoEF, advocacy groups, SPCBs and CPCB. 
+The committee deliberated, disc ussed and devised consensus on the AQI system. The committee 
+oversaw the progress of the projec t on a continual basis and had four meetings  in the last three 
+months and has documented this report. The AQI  developed in this study is based on human 
+exposure and health effects and may not be strictly applicable to ecologically sensitive areas. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6 
+ 
+Chapter 2 
+Air Quality Index: A Review 
+2.1 Definition of Air Quality Index 
+An air quality index is defined as an overall scheme  that transforms the weighed values of individual 
+air pollution related parameters (for example, polluta nt concentrations) into a single number or set of 
+numbers (Ott, 1978). The result is a set of rules (i.e. set of equations) that tr anslate parameter values 
+into a more simple form by means of numerical manipulation (Figure 2.1). 
+ 
+Figure 2.1 Formation of an Aggregated AQI 
+If actual concentrations are reported in µg/m 3 or ppm (parts per million) along with standards, then it 
+cannot be considered as an index. At  the very last step, an index in  any system is to group specific 
+concentration ranges into air quality descriptor categories. 
+
+7 
+ 
+2.2 Structure of an Index 
+Primarily two steps are involved in formulating an AQI: (i) formation of sub-indices (for each 
+pollutant) and (ii) aggregation of sub-indices to get an overall AQI.  
+Formation of sub-indices (I1, I2,...., In) for n pollutant variables (X1, X2...., Xn) is carried out using sub-
+index functions that are based on air quality standards and health effects. Mathematically; 
+[1]  Ii=f(Xi),  i=1, 2,...,n 
+Each sub-index represents a relationship between po llutant concentrations and health effects. The 
+functional relationship between sub-index value (I i) and pollutant concentrations (X i) is explained 
+later in the text. 
+Aggregation of sub-indices, I i is carried out with some mathematical function (described below) to 
+obtain the overall index (I), referred to as AQI. 
+[2]  I=F(I1,I2,....,In) 
+The aggregation function usually is a summation or multiplication operation or simply a maximum 
+operator. 
+2.2.1 Sub-indices (Step 1) 
+Sub-index function represents the relati onship between pollutant concentration X i and corresponding 
+sub-index Ii. It is an attempt to reflect environmental c onsequences as the concentration of specific 
+pollutant changes. It may take a variety of forms such as linear,  non-linear and se gmented linear. 
+Typically, the I-X relationship is represented as follows: 
+[3]  I = αX + β 
+Where, α =slope of the line, β = intercept at X=0.  
+The general equation for the sub-index (Ii) for a given pollutant concentration (Cp); as based on ‘linear 
+segmented principle’ is calculated as: 
+[4]  Ii=[{(IHI - ILO)/(BHI -BLO)} * (Cp-BLO)]+  ILO 
+8 
+ 
+where, 
+BHI= Breakpoint concentration greater or equal to given concentration. 
+BLO= Breakpoint concentration smaller or equal to given concentration. 
+IHI =AQI value corresponding to BHI 
+ILO = AQI value corresponding to BLO 
+Cp = Pollutant concentration   
+ 
+For example, we take PM
+10with concentration of 85µg/m 3, B HI, BLO, IHI, ILO values from Greater 
+Vancouver AQI (Table 2.4) and using equation [4] 
+Sub Index (Ip) = {(100 – 50)/(100 – 50)}* (85- 50) + 50 
+                        = 85 
+Similarly, Sub Index can be calculated for other pollutants as well. 
+2.2.2 Aggregation of Sub-indices (Step 2) 
+Once the sub-indices are formed, they are combined  or aggregated in a si mple additive form or 
+weighted additive form: 
+Weighted Additive Form 
+[5]   I = Aggregated Index = ∑w
+iIi   (For i= 1, …..,n) 
+where, 
+∑wi = 1 
+Ii= sub-index for pollutant i 
+n = number of pollutant variables 
+w
+i= weightage of the pollutant 
+ 
+Root-Sum-Power Form (non-linear aggregation form) 
+[6] I = Aggregated Index = [∑Ii
+p](1/p) 
+where, p is the positive real number >1. 
+9 
+ 
+Root-Mean-Square Form 
+[7]  I = Aggregated Index = {1/k (I1
+2 + I2
+2 + …… + I k
+2}0.5 
+ 
+Min or Max Operator (Ott 1978) 
+[8]  I = Min or Max(I1, I2, I3, ..., In) 
+ 
+2.3 Indices in the Literature 
+2.3.1 Green Index (GI) 
+One of the earliest air pollution in dices to appear in literature was proposed by Green (1966). It 
+included just two-pollutant variables - SO2 and COH (Coefficient of Haze). The equations to calculate 
+the sub-indices were: 
+ISO2 = 84 *X0.431 
+ICOH = 26.6 *X0.576 
+Where,  
+ISO2 = Sulphur dioxide sub-index 
+ICOH= Coefficient of Haze Sub-index 
+X = Observed pollutant concentration 
+The Green Index is computed as the arithmetic mean of the two sub-indices: 
+GI = 0.5 * (ISO2 + ICOH) 
+The above equations are obtained from the break point concentration shown in Table 2.1 
+Table 2.1 Break Point Concentration of Green Index 
+Index SO2(ppm) COH Descriptors Remarks 
+0-25 0.06 0.9 Desired Clean, safe Air 
+25-50 0.3 3.0 Alert Potentially Hazardous 
+50-100 1.5 10.0 Extreme Curtail Air pollution sources 
+ 
+10 
+ 
+As the index did not include any other pollutants besides SO2 and COH, it had limited application. It is 
+also subjected to eclipsing and ambiguity phenomena (arithmetic mean weighted as linear sum). This 
+index was intended more as a system for triggering control actions during air pollution episodes than a 
+means for reporting air quality data to the public. 
+2.3.2 Fenstock Air Quality Index (AQI) 
+Fenstock (1969) proposed an index to assess the re lative severity of air po llution and applied it to 
+assess AQI of 29 US cities. This was the first index to estimate air pollutant concentrations from the 
+data on source emissions and meteorological conditions in each city: 
+AQI = Wi Ii 
+where,Wi =weightages for CO, TSP and SO2 
+Ii= estimated sub-indices for CO, TSP and SO2 
+This index is applicable to square urban area with wind always parallel to one side for uniform 
+meteorological conditions under neutra l stability with continuous sour ce distributed uniformly. This 
+AQI is not used for daily air quality reports but for estimating overall air pollution potential for a 
+metropolitan area. 
+2.3.3 Ontario Air Pollution Index  
+Shenfeld (1970) developed Ontario Air Pollution Inde x (API) in Canada. This index was intended to 
+provide the public with daily inform ation about air quality levels and to trigger control actions during 
+air pollution episodes. It includes two pollutants variables: 
+API = 0.2 (30.5 COH + 126 SO2) 1.35 
+Both COH and SO2 (in ppm) are 24 hour running averages; Descriptor scale is given in Table 2.2 
+ 
+Table 2.2 Descriptor categories for Ontario API 
+Index Description 
+0-31 Acceptable 
+32-49 Advisory 
+50-74 First Alert 
+75-99 Second Alert 
+100 Episode Threshold Level 
+11 
+ 
+2.3.4 Oak Ridge Air Quality Index (ORAQI) 
+Oak Ridge National Laborat ory published the ORAQI in 1971. It  was based on the 24-hour average 
+concentrations of the following five pollutants: 
+1. SO2 
+2. NO2 
+3. PM 
+4. CO 
+5. Photochemical Oxidants 
+The sub-index is calculated as the ratio of the observed pollutant concentration to its respective 
+standard. As reported by Babcock and Nagda ( 1972), the ORAQI aggregation function was a non-
+linear function: 
+ORAQI = {5.7 ∑ Ii}1.37 
+where,Ii= (X/Xs)i 
+X= Observed pollutant concentration 
+Xs= Pollutant Standard 
+I = Pollutant 
+The standards for the pollutants used in developing ORAQI are given in Table2.3 
+Table 2.3 Break Point Concentrations of ORAQI 
+Pollutant Standard Value 
+(24-hr Average) 
+Photochemical Oxidants 0.03 ppm 
+Sulphur Oxides 0.10 ppm 
+Nitrogen dioxide 0.20 ppm 
+Carbon monoxide 7.0 ppm 
+Particulate Matter 150 µg/m 3 
+ 
+The constants (e.g. 5.7 and 1.37 in equation) are so selected that the ORAQI = 10 when all 
+concentrations are at their natu rally occurring or backgrounds levels and ORAQI = 100 when all 
+concentrations are at their standards. 
+12 
+ 
+Although well-defined descriptors are given, its developers imply no correlation with health effects. It 
+is subjected to eclipsing and ambiguity. It is also  difficult to explain to public and involves complex 
+calculations.  
+2.3.5 Greater Vancouver Air Quality Index (GVAQI) 
+The GVAQI is based on Canadian Federal Governme nt air quality objectives  that are designed to 
+protect public health and environment. The index includes the following pollutants: 
+1. SO2 
+2. NO2 
+3. O3 
+4. TSP 
+5. COH 
+6. PM10 
+GVAQI values are divided into ranges. The federa l Desirable, Acceptable and Tolerable air quality 
+objectives levels are assigned GVA QI values of 25, 50 and 100 respec tively. Intermediate values can 
+be obtained by extrapolation. Each range is associated with descri ptor categories. The break point 
+concentrations used to find GVAQI are shown in Table 2.4 below. 
+Table 2.4: Break point concentrations for GVAQI 
+Index 
+SO2 CO NO 2 O 3 TSP COH PM 10 
+Descriptors 24-hr 
+(ppm) 
+8-hr 
+(ppm) 
+1-hr 
+(ppm) 
+1-hr 
+(ppm) 
+24-hr 
+(µg/m3) 
+1-hr 
+(units) 
+24-hr 
+(µg/m3) 
+25 0.06 5 0.105* 0.051 60 1.7 25* Good 
+50 0.11 13 0.21 0.082 120 4 50 Fair 
+100 0.31 18 0.53 0.153 400 6 100 Poor 
+Notes: 
+1) GVAQI breakpoints are base d on federal Government air qualit y objectives with the exceptions 
+of COH that is based on criteria developed by Province of Ontario. 
+2) * indicates extrapolation from other break point concentrations of the series. 
+The overall GVAQI value is determined by calcula ting a sub-index for each pollutant measurement 
+and averaging time. Each sub-index is calculated by straight-line ex trapolation of the break point 
+concentrations corresponding to GVAQI values of  25, 50 and 100 respectively, which are shown in 
+Table 2.4. The maximum sub-index is reported as  the GVAQI, based on the assumption that the 
+combined effect of a number of air pollutants is re lated to the highest concentrations relative to air 
+13 
+ 
+quality objectives. The particular pollutant res ponsible for the maximum Sub-Index is called the 
+“Index pollutant”. It is reporte d with the GVAQI when the index value is greater than 25. Each 
+GVAQI range is associated with descriptor cat egories, general health  effects and cautionary 
+statements. 
+2.3.6 Most Undesirable Respirable Contaminants Index (MURC) 
+MURC was published in 1968 (taken from Ott, 1978). This was routinely used in the city of Detroit to 
+report air quality data to the public and was broa dcast between 8:30 A.M. and 9.00 A.M. each day on 
+local radio stations. MURC is based on just one pollutant variable, coefficient of Haze (COH) 
+MURC = 70X0.7    where, X= COH units 
+This equation is obtained such that COH values  ranging from 0.3 – 2.15 give MURC values ranging 
+from 30 – 120 approximately. Five different descriptors are reported for varying ranges of the MURC 
+index shown in the Table 2.5. 
+Table 2.5 Break Point Concentrations of MURC Index 
+Index COH (units) Descriptors 
+0-30 0.3 Extremely Light contamination 
+31-60 0.92 Light Contamination 
+61-90 1.53 Medium contamination 
+91-120 2.15 Heavy Contamination 
+121 >2.15 Extremely Heavy contaminants 
+ 
+The function was so chosen to reflect a good averag e approximation of the ac tual weight of SPM in 
+the atmosphere as measured by high volume samp ler. However, for MURC values higher than 120, 
+the correlation with SPM concentration does not hold. 
+2.4 Current Status of AQI Application in India 
+There have not been significant efforts to develop and use AQI in India, primarily due to the fact 
+that the National Air Quality Monitoring Progr amme has started only in 1984. Although NEERI, 
+Nagpur started monitoring programme in 10 citie s in 1978 and Bombay Municipal Corporation 
+even before 1978, attempts were not made to use AQI for data interpretation and public 
+14 
+ 
+broadcasting. Agharkar (1982) re viewed available AQIs and compar ed Air Quality status of the 
+city of Bombay with its suburbs. The AQI pro posed by Swami and Tyagi (1999) is similar to 
+ORAQI. Their index does not suggest any correlati on with health effects, although it is free from 
+eclipsing. In view of the revise d air quality standards and mon itoring of many more air quality 
+parameters, the AQI proposed by Swami and Tyagi (1999) cannot be used. Gurjar et al. (2008) 
+have proposed a multi-pollutant index (MPI)conside ring the combined level of the three criteria 
+pollutants (i.e.,TSP, SO 2, and NO 2). Currently, eight parameters are considered for AQI 
+calculations and TSP is not in cluded, therefore, the proposed MPI is of limited application . A 
+recent study to define AQI in India has been taken up by Beig et al  (2010a and 2010b) which 
+includes air quality forecasting and is named as SAFAR (System of Air Quality-Weather 
+Forecasting and Research). This study considered correlation analysis of long term air quality data 
+of different pollutants and health data for two ci ties, Chennai and Delhi. The shortcoming of this 
+study was that it accounted health data of only tw o cities whereas for an ideal AQI, representative 
+of the country, one needs to account for health data of as many cities and towns as possible. 
+ 
+2.5 Eclipsing and Ambiguity 
+Two important characteristics, eclipsing and am biguity are common to many indices and are 
+significant to interpret any index in the right perspective. This could be best illustrated by a simple 
+aggregation of two indices as in situation presented below: 
+Example: Let I= I 1 + I 2 and if I 1> 100,I 2> 100 indicate that the concen tration of each pollutant is 
+greater than the ‘standard’. Question arises whether ‘I’ combined in this manner reflect properly the 
+meaning implied in each index? It is  possible to have combinations of I 1 and I2such that I = 100, yet 
+I1<100 and I 2<100. Figure 2.2 shows each pollutant being within the prescribed standards but for    
+e.g. if I 1 = 70, I 2 = 70; I =140. This gives an impression th at combined Index, I > 100, i.e. pollution 
+standards are violated, when they are actually not. Such a situation shown in Figure 2.2 is called as 
+‘ambiguous region’. In this region, Index I exagge rates pollution status i. e. Over-estimation of 
+pollution level. In case of more th an 2 sub-indices I will be greater  than 100, if each sub-index is 
+slightly more than 100/n without violating standards. 
+Now, let I = 0.5(I1 + I2). Effect of this on I=100, is to move the line parallel to itself without changing 
+its slope as shown in Figure 2.2. If I 2 = 60 and I 1 = 120; I = 90. Hence, though the standards are 
+15 
+ 
+violated for I2 the combined index underest imates the pollution. This is known as “Eclipsing” (Figure 
+2.3). These two characteristics of index (Ambiguity and Eclipsing) are serious problems of additive 
+and multiplicative indices. There is a significant difference between air quality perceived by index and 
+actual air quality. Theref ore, new indices which have been proposed are not of additive or 
+multiplicative type; but based on Maximum operator approach as it removes Ambiguity and 
+Eclipsing. 
+ 
+ Figure 2.2 Ambiguity Char acteristic of Indices 
+ 
+  
+ 
+Figure 2.3 Eclipsing Characteristic of Indices 
+ 
+For the AQI, a maximum operator system is selected: 
+AQI = Max(I
+1, I2, I3, ..., In) 
+There are two reasons for adopting a maximum operator function: 
+I=I1+I2 
+Eclipsing Region 1 
+Eclipsing Region 2 
+Eclipsing (pollution is underestimated by AQI) 
+I =0.5I1+0.5I2
+Ambiguous Region 
+(pollution is 
+overestimated by 
+AQI) 
+16 
+ 
+• Free from eclipsing and ambiguity (Ott 1978) 
+• Health effects of combination of pollutants (synergistic effects) are not known and thus a health-based 
+index cannot be combined or weighted  
+Maximum operator approach has been adopt ed by Sharma et al. (2001, 2002 and 2003) for 
+development of an AQI scale for IIT-Kanpur and for entire India respectively.  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+17 
+ 
+ Chapter 3 
+Development, Implementation and Dissemination of AQI 
+3.1 Indian Air Quality Index (IND-AQI) 
+Air quality standards are the basic foundation that provides a legal framework for air pollution control.  
+An air quality standard is a desc ription of a level of air quality that is adopted by a regulatory 
+authority as enforceable. The basis of development of  standards is to provide a rational for protecting 
+public health from adverse effects of air pollutants, to eliminate or reduce exposure to hazardous air 
+pollutants, and to guide nationa l/local authorities for pollution control decisions. With these  
+objectives, CPCB notified ( http://www.cpcb.nic.in) a new set of Indian National Air Quality 
+Standards (INAQS) for 12 parameters [carbon  monoxide (CO) nitrogen dioxide (NO 2), sulphur 
+dioxide (SO 2), particulate matter (PM) of less than 2.5 microns size (PM 2.5), PM of less than 10 
+microns size (PM 10), Ozone (O 3), Lead (Pb), Ammonia (NH 3), Benzo(a)Pyrene (BaP), Benzene 
+(C6H6), Arsenic (As), and Nickel (Ni)] . The first eight parameters (Table 3.1) have short-term (1/8/24 
+hrs) and annual standards (except for CO and O3) and rest four parameters have only annual standards.  
+Table 3.1: Indian National Air Quality Standards (units: μg/m3 unless mentioned otherwise) 
+Pollutant SO 2 NO 2 PM2.5 PM 10 O3 CO (mg/m 3) Pb NH 3 
+Averaging time (hr) 24 24  24 24 1 8 1 8 24  24 
+Standard 80 80 60 100 180 100 4 2 1 400 
+      BaP, C6H6, As, and Ni have annual standards 
+As stated in Chapter 1, an AQI scheme transforms weighted valu es of individual  air pollutant 
+concentrations into a single number or set of numbers. It  is important that an AQI system should 
+initially build on the sacrosanct AQS and then emba rk on pollutant dose-res ponse relationships to 
+describe air quality in simple terms which clearly relate to health impacts. While complexity in 
+building the AQI is inevitable, simplicity in AQI description is essentia l for general public to 
+understand the air pollution, possibly take actions to pr otect themselves and for policy makers to take 
+quick and broad decisions to improve air quality.     
+ 
+18 
+ 
+The objective of an AQI is to quickly disseminate air quality information (alm ost in real-time) that 
+entails the system to account for pollutants which have short-term impacts. It is equally important that 
+most of these pollutants are measured cont inuously through an online monitoring network. 
+Consequently, in the AQI system, the following pollutants are considered CO, NO2, SO2, PM2.5, PM10, 
+O3, NH3 and Pb. It is recognized that ai r concentrations of Pb are no t known in real-time and cannot 
+contribute to real-time AQI  but its consideration in  AQI calculation of past  days will help in 
+scrutinizing the status of this important toxic.  
+It is described in Chapter 2 that the aggregatio n function, F of combining sub-indices of individual 
+pollutants is delicate as most i ndices suffer from ambiguity and ec lipsing. For the AQI, a maximum 
+operator system has been adopted which is free from ambiguity and eclipsing, as shown below: 
+   AQI=Max(I1,I2,...,In) 
+Figure 3.1 shows the operational sche me of AQI system based of maximum operator function (i.e. 
+maximum sub-index being the overall index). To pres ent status of the air quality and its effects on 
+human health, the following description categories have been adopted for IND-AQI (Table 3.2):  
+Table 3.2: IND-AQI Category and Range 
+AQI Category AQI Range
+Good 0 – 50 
+Satisfactory 51 – 100 
+Moderate 101 – 200 
+Poor 201 – 300 
+Very Poor 301 – 400 
+Severe 401 - 500 
+ 
+These categories/AQI ranges should map to key refere nces (breakpoints) of concentration of each 
+pollutants through a segmented linear or a nonlinear function. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3.2 Air 
+The air 
+pollutant
+very diff
+complete
+ (i) Onlin
+continuou
+are opera
+CO, O3, 
+Thus suc
+be gene r
+Quality M
+quality mo n
+t parameters
+ferent. The A
+eness in term
+ne Monitor i
+us hourly, m
+ated (e.g. Fig
+etc. are mo n
+ch networks 
+rated in real 
+Monitoring
+nitoring net w
+, frequency 
+AQI system 
+ms of parame
+ing Network
+monthly or a
+gure 3.2: on
+nitored cont
+are most sui
+time. For A
+Figure 3.
+g and AQI
+work in In d
+of measurem
+for these n e
+eters.   
+k: These ar e
+annually ave
+nline stations
+tinuously. D
+itable for com
+AQI to be m
+19 
+ 
+ 
+ 
+ 
+ 
+1 Overall 
+A
+I Consider
+dia can be c
+ment and m o
+etworks coul
+e automated 
+eraged data. 
+s in Delhi), w
+Data from th e
+mputation o
+more useful 
+AQI System
+rations 
+classified a s
+onitoring me
+ld be at var i
+air quality 
+In India, ~ 
+where param
+ese stations 
+f AQI sub-in
+and effecti v
+s (i) online 
+ethodologies
+iance, especi
+monitoring 
+40 automat
+meters like P
+are availabl
+ndices, as in
+ve, there is a
+and (ii) m a
+s for two ne t
+ially for re p
+stations wh
+tic monitorin
+PM10, PM2.5,
+le almost in
+nformation o
+a n e ed  to  se
+anual. The 
+tworks are 
+porting and 
+hich record 
+ng stations 
+NO2, SO2, 
+ real-time. 
+n AQI can 
+et up more 
+20 
+ 
+online monitoring stations for continuous and easy avai lability of air quality data for computation of 
+AQI for more Indian cities. 
+ 
+ 
+ 
+Figure 3.2 Online monitoring station (ITO, New Delhi) (www.cpcb.nic.in) 
+ 
+(ii) Manual Monitoring Network: The manual stations involve mostly intermittent air quality data 
+collection, thus such stations are not suitable for AQI calculation particularly for its quick 
+dissemination. In India, air quality is being mon itored manually at 573 locations under National Air 
+Monitoring Programme (NAMP). In most of these manually operated stations , only three criteria 
+pollutants viz. PM10, sulphur dioxide (SO2) and nitrogen dioxide (NO2) are measured, at some stations 
+PM2.5 and Pb are also measured. The monitoring fre quency is twice a week. Such manual networks 
+are not suitable for computing AQI, as availability of monitored data could have a lag of 1-3 days and 
+sometimes not available at all. However, some e fforts are required to use the information in some 
+productive manner. Historical AQIs on weekly basis can be calculated and used for data interpretation 
+and ranking of cities or towns for further prioritization of actions on air pollution control. 
+ 
+ 
+Real time data obtained from online 
+monitoring station suitable for AQI 
+21 
+ 
+3.3 Computation and Basis of Sub-index Breakpoints  
+Segmented linear functions are used for re lating actual air pollu tion concentration (X i) (of each 
+pollutant) to a normalized number  referred to as sub-index (I i). While AQI system is not complex in 
+understanding, to arrive at breakpoints which w ill relate to AQI description is of paramount 
+significance. Consequences of inappropriate adopti on of breakpoints could be  far reaching; it may 
+lead to incorrect information to general public ( on health effects) and decisions taken for pollution 
+control may be incorrect.  
+The basis for linear functions (for this study) to relate air quality  levels to AQI requires careful 
+consideration. Services of practic ing doctors and expert s in this field (see Appendix I) have proved 
+very useful. In this study , in addition to dose response relationship, the br eakpoints adopted by other 
+countries/agencies (USEPA 2014; UK 2013; Malays ia 2013; GVAQI 2013; On tario 2013) have been 
+examined for using these in IND-AQI. 
+It is important that an AQI system should build on AQS and pollutant dose-response relationships to 
+describe air quality in simple terms which clearly rela tes to health impacts. The first step for arriving 
+at breakpoints for each pollutant is  to consider attainment of INAQ S (Table 3.1). The index category 
+is classified as ‘good’ for concentration range up to half of INAQS (for example, for SO 2 AQI=0-50 
+for concentration range of 0-40 μg/m3) and as ‘satisfactory’ up to attainment of INAQS (i.e. SO2 range 
+41-80μg/m3 linearly maps to AQI=51-100). To arrive at  breakpoints for other categories (for each 
+pollutant), we require a thorough re search/review of dose response re lationships, which is described 
+here.  
+3.3.1 Carbon Mono-oxide (CO) 
+Carbon monoxide (CO) is an importa nt criteria pollutant which is ub iquitous in urban environment. 
+CO production mostly occurs from sources having incomplete combustion. Due to its toxicity and 
+appreciable mass in atmosphere, it should be considered as an important pollutant in AQI scheme. 
+CO rapidly diffuses across alveolar, capillary a nd placental membranes. Approximately 80-90% of 
+absorbed CO binds with Hb to from Carboxyhaemogl obin (COHb), which is a specific biomarker of 
+exposure in blood. The affinity of Hb for CO is 200-250 times than that of oxygen. In patients with 
+hemolyticanemia, the CO production rate was 2–8 times higher and blood COHb concentration was 
+22 
+ 
+2–3 times higher than in normal person (WHO 2000). The initial symptoms of CO poisoning may 
+include headache, dizziness, drowsiness, and na usea. These initial symptoms may advance to 
+vomiting, loss of consciousness, and collapse if prolonged or high exposures are encountered and may 
+lead to Coma or death if high exposures conti nue. A US study estimated that 6 per cent of the 
+congestive heart failures and hospita lizations in the cities were re lated to an increase in CO 
+concentration in ambient atmosphere (WHO 2000). Reduction in the ability of blood to transport 
+oxygen leads to tissue hypoxia. The body compensates for this stress by increasing cardiac output and 
+the blood flow to specific areas, such as the h eart and brain. As the level of COHb in the blood 
+increases, the person suffers from effects which beco me progressively more serious. CO has both 1 hr 
+and 8 hr standard. Figure 3.3 shows CO level and percent of COHb in blood. The symptoms 
+associated with various percent blood saturation levels of COHb are shown in Figure 3.4 
+After giving due consideration to INAQS for CO, two categories - Good (sub-index: 0-50 at half level 
+of standard) and Satisfactory (51-100 at air quality standard) for atta inment of INAQS are considered. 
+For concentration of 10 mg/m 3, percentage COHb level could be about 2%.  This may be just a 
+beginning to slightly eff ect the people having lung or  heart diseases, therefore, this AQI category can 
+be taken as moderate. The next stage of categories has been  taken as per the USEPA criteria. The 
+details of breakpoints and that of USEPA, China and EU are given in Table 3.3.     
+ 
+23 
+ 
+ 
+Figure 3.3 CO Concentration and COHb level in Blood (Coburn et al., 1965)  
+ 
+ 
+ 
+Figure 3.4: Symptoms Based on COHb Level in blood (CPCB 2000) 
+0
+10
+20
+30
+40
+50
+60
+70
+80
+% of COHb in blood
+No 
+Symptoms
+Mild Headache
+Nausea and 
+serious 
+headache
+Symptoms
+ intensify. 
+Potential for 
+long term 
+effects 
+Unconsciousness
+Symptoms 
+Leading to 
+Death
+24 
+ 
+Table 3.3 Breakpoints for CO (mg/m3) 
+India (8-hr) US (8-hr)(a)* China(b) (24-hr) EU(c) (8-hr) 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category 
+Break point 
+concentration 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category
+Break point 
+concentration 
+Good 1 Good 5 Excellent 2 Very low 5 
+Satisfactory 2 Moderate 11 Good 4 Low 7.5 
+Moderate 10 
+Unhealthy  
+for sensitive 
+groups 
+14 Lightly 
+Polluted 14 Medium 10 
+Poor 17 Unhealthy 18 Moderately 
+Polluted 24 High 20 
+Very Poor 34 Very 
+Unhealthy 35 Heavily 
+Polluted 36 Very 
+high 20+ 
+Severe 34+ Hazardous 35+ Severely 
+Polluted 36+     
+(a)USEPA(2013)(b)Gao (2013) (c) CAQI (2012)*converted from ppm to mg/m3 and rounded off 
+ 
+3.3.2 Nitrogen Dioxide (NO2) 
+The major source of NO 2 is combustion processes. An appreciable quantity of NO 2 is present in rural 
+and urban environments. Further, NO 2 is showing alarmingly high incr easing trend in Indian cities 
+due to increase in number of ve hicles. On inhalation, 70–90% of NO 2 can be absorbed in the 
+respiratory tract of humans, and ph ysical exercise increases the total percentage absorbed (Miller et 
+al., 1982). NO 2 exposure can cause decrement in lung func tion (i.e. increased airway resistance), 
+increased airway responsiveness to broncho-constr ictions in healthy subjects at concentration 
+exceeding 1 ppm (WHO 2000). Below 1 ppm level, there are evidences of change in lung volume, 
+flow volume, characteristics of l ung or airway resistance in healt hy persons. It has been established 
+that continuous exposure w ith as little as 0.1 ppm NO
+2 over a period of one to three years, increases 
+incidence of bronchitis, emphysema and have a dverse effect on lung performance (WHO 2000). 
+Exposure to excessive NO2, affects the defence mechanism leavi ng the host susceptible to respiratory 
+illness. 
+Chronic exposure of NO 2 may lead to chronic lung disease a nd variety of structural/morphological 
+changes in lung epithelium conducting airways and ai r -gas exchange region. Exposure to high levels 
+25 
+ 
+(>1.0 ppm) of NO 2 causes Eustachian of bronchiolar an d alveolar epithelium, inflammation of 
+epithelium and definite emphysema (WHO 2000). 
+Normal healthy people exposed at re st or with light exercise for less  than 2 hours to concentrations of 
+more than 4700μg/m3 (2.5ppm) experience pronounced decremen ts in pulmonary function; generally, 
+such people are not aff ected at less than 1880 μg/m3 (1ppm). One study showed that the lung function 
+of people with chronic obstructive pulmonary disease is slightly a ffected by a 3.75-hour exposure to 
+560μg/m3 (0.3ppm). A wide range of fi ndings in asthmatics has been reported; one study observed no 
+effects from a 75-minute exposure to 7520 μg/m3 (4ppm), whereas others showed decreases in FEV1 
+(forced expiration volume in one second) after 10 minutes of exercise during exposure to 560 μg/m3 
+(0.3ppm). The lowest concentration causing effect s on pulmonary function was reported from two 
+laboratories that exposed mild asthmatics for 30–110 minutes to 560 μg/m3 (0.3ppm) during 
+intermittent exercise (WHO 2000). 
+WHO (2003) has reported some but not all st udies show increased responsiveness to 
+bronchoconstrictors at nitrogen dioxide levels as low as 376–560 μg/m3 (0.2–0.3 ppm); in other 
+studies, higher levels had no such effect. Studies of asthmatics exposed to 380–560 μg/m3 indicate a 
+change of about 5% in pulmonary function a nd an increase in airway responsiveness to 
+bronchoconstrictors. Asthmatics are more susceptible to the acute effects of nitrogen dioxide as they 
+have higher baseline airway responsiveness. 
+For acute exposures, only very  high concentrations (1990 μg/m3; > 1000 ppb) affect healthy people. 
+Asthmatics and patients with chronic obstructive pulm onary disease are clearly more susceptible to 
+acute changes in lung function, airway responsiven ess and respiratory symptoms. Given the small 
+changes in lung function (< 5% drop in FEV1 between air and nitrogen dioxide exposure) and 
+changes in airway responsivene ss reported in se veral studies, 375–565 μg/m3 (0.20 to 0.30 ppm) is a 
+clear lowest-observed-effect leve l. A 50% margin of safety is proposed because of the reported 
+statistically significant increase in response to a br onchoconstrictor (increased airway responsiveness) 
+with exposure to 190 μg/m3 and a meta-analysis suggesting cha nges in airway responsiveness below 
+365 μg/m3 (WHO 2000)  
+After giving due consideration to INAQS for NO 2, two categories good (S ub-Index: 0-50) and 
+satisfactory (51-100), the breakpoint concentration are fixed as 40μg/m3 and 80μg/m3. Various studies 
+26 
+ 
+reported that the small change in lung function (<  5% drop in FEV1 between air and nitrogen dioxide 
+exposure) and changes in airw ay responsiveness gives 375–565 μg/m3 (0.20 to 0.30 ppm), as the 
+lowest-observed-effect level. Therefore, breakpoints of 280 μg/m3 for poor, 400 μg/m3for very poor 
+and 400+ μg/m3 for severe category are adopted. For mode rately-polluted categor y an intermediate 
+value of 180 μg/m3 (between 80 and 280 μg/m3) has been adopted. It may be noted that minor 
+tweaking has been done with breakpoints so that th ese also corroborate with international breakpoints 
+adopted by other countries. The details of brea k points for IND-AQI and breakpoints of USEPA, 
+China and EU for NO2are given in Table 3.4.    
+Table 3.4 Breakpoints for NO2 (µg/m3) 
+INDIA (24-hr) US (1-hr)(a)* China(b) (24-hr) EU(c) (8-hr) 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category 
+Break point 
+concentration 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category
+Break point 
+concentration 
+Good 40 Good 100 Excellent 40 Very low 50 
+Satisfactory 80 Moderate 190 Good 80 Low 100 
+Moderate 180 
+Unhealthy  
+for sensitive 
+groups 
+680 Lightly 
+Polluted 180 Medium 200 
+Poor 280 Unhealthy 1220 Moderately 
+Polluted 280 High 400 
+Very Poor 400 Very 
+Unhealthy 2350 Heavily 
+Polluted 565 Very high 400+ 
+Severe 400+ Hazardous 2350+ Severely 
+Polluted 565+      
+(a)USEPA (2013) (b)Gao (2013) (c) CAQI (2012)*converted from ppb to µg/m3 and rounded off 
+ 
+3.3.3 Particulate Matter (PM):PM10 and PM2.5 
+PM levels in Indian citi es are about 4-5 times higher than in the US cities (WRI, 1996). These high 
+PM levels may have severe impact on public he alth. The sixteen-year long survey by Dockery et al. 
+(1994) has revealed that there is a strong correlation between ambient PM concentrations and increase 
+in mortality and hospitalizations due to respiratory dis eases. Several epidemio logical studies (Pope, 
+1989; Schwartz, 1996) have linked PM 10(aerodynamic diameter ≤ 10 µm) and PM 2.5(aerodynamic 
+diameter ≤2.5µm) with significant health problems,  including: premature mortality, chronic 
+respiratory disease, emergency visits and hospital admissions, aggravated asthma, acute respiratory 
+27 
+ 
+symptoms, and decrease in lung function. PM 2.5 is of specific concern because it contains a high 
+proportion of various toxic metals and acids, and aerodynamically it can penetrate deeper into the 
+respiratory tract.  
+A HEI study, (Wichmannet al., 2000) reported that  the concentration of  both ultrafine (PM <0.1) and 
+fine particles (PM 0.1-2.5) was associated with increased da ily mortality. Lippmann et al. (2000) 
+reported that four of five size fractions (PM 40 PM10-40 PM10 PM2.5-10 PM2.5) were associated with 
+increased in morbidity and mortality. The larges t particle size fraction (10 µm – 40 µm) was not 
+associated with increased morbidity and mortality. However, Castillejos et al. (2000) in Mexico City 
+and Ostro et al. (2000) in western United States have found h ealth effects being associated with the 
+coarse fraction as well but studies (Schwartz et al., 1996) conducted in other parts of the United States 
+and in Canada have reported that effects of fine particles are predominant.  
+Major concerns for human health from exposure to PM 10 include effects on breathing, respiratory 
+symptoms, decrease in pulmonary function and dama ge to lung tissue, cancer, and premature death. 
+An association between elevated PM 10 levels and hospital admissions  for pneumonia, bronchitis, and 
+asthma was observed by Pope (1989). Long-term particulate exposure was associated with an increase 
+in risk of respiratory illness in children (Dockery et al., 1989). Statistically significant relationships 
+were observed between TSP levels and forced vital capacity (FVC) and FEV 1 (Chestnut et al., 1991). 
+Ostro (1993) has reported a series of studies that observed associa tions between da ily changes in 
+particulate pollution and daily mortality.  Prospective cohort studies by Pope et al. (1995) observed 30 
+to 50% increase in lung can cer rates associated with  exposure to respiratory particles. Associations 
+between mortality risk and air pollution were stronge st for respiratory particles and sulfates (Pope et 
+al., 1995). PEFR (peak expiratory flowrate) and respir atory symptoms were str ongly associated with 
+PM10 levels and marginally with ozone levels (Romieu et al. , 1996). Increase in PM concentration 
+correlated with increase in mortality a nd morbidity rates. An increase of 10µg/m 3of PM 10 levels 
+resulted in a 3-6 % increase in visits for asth ma people and a 1-3 % incr ease in visits for upper 
+respiratory diseases not with asthma to hospitals . The findings are consistent with the result of 
+previous studies of particulate pol lution in other urban areas and pr ovide evidence that the coarse 
+fraction of PM 10 may affect the health of working people (Gordian et al., 1996). A study in six US 
+cities has shown that there is an associ ation between fine pa rticulate matter (PM 2.5) primarily from 
+combustion sources and daily mortality (Schwartz et al. , 1996). Combustion part icles in the fine 
+28 
+ 
+fraction from mobile and coal combustion sources, bot h not fine crustal particle s, are associated with 
+increase in mortality (Laden et al., 2000). 
+Sharma et al. (2004) through a study in Kanpur reported that mean PEF (L/min) values of a cohort (of 
+over 100 subjects) decrease w ith the increase in PM 10 and/or PM2.5.  The findings of the study can be 
+summarized as under: 
+(i) The correlation (negative) between mean ΔPEF (i.e. deviation in PEF) of a day (no. of days of 
+sampling = 39) and four indicators of PM levels (PM 10, PM2.5, PM10 (one-day lag) and PM 2.5 
+(one-day lag)) was found to be statistically signifi cant (p < 0.05). It showed that as the 
+pollution level increases the lung function in terms of PEFR reduces/deteriorates. The negative 
+correlation with PM10 (one day lag) and PM 2.5 (one-day lag) also suggested that PM pollution 
+may have sustained effect on PEFR value due to pollution level of previous day. 
+(ii) PM10 and PM 2.5 correlate with ΔPEF, PM10 and their concentration levels are better indicator 
+to reflect changes in PEFR values. This sugge sts that the deposition of larger particles (PM 10) 
+takes place in upper part of re spiratory system that activates  mucus secretion resulting is 
+constriction of airways and thus lowering PEFR value. The fine particles impact the 
+pulmonary region (lower respiratory system), which are known to cause long-term chronic 
+effects.  
+(iii) FEV1, PEFR and FVC are the key lung function parame ters that reflect health impact of air 
+pollution (Bates, 2002). The deviations found in FEV 1 and FVC are: (a) FEV 1 -0.30 L (at 
+Vikas Nagar (VN): PM 10: 300μg/m3), -0.31 (at Juhi Colony (JC): PM 10: 300 μg/m3) and -0.18 
+L (IIT Kanpur (IITK): PM10: 185 μg/m3IITK) and (b) FVC -0.42 L (VN), -0.40 (JC) and -0.27 
+L (IITK). 
+It is evident from the above discussion that both PM10 and PM2.5 have specific health impacts and both 
+of these pollutants should be considered for AQI. 
+PM10 
+WHO (2005) suggests that th ere is no threshold for particulate concentration below which there is no 
+harmful effect. At the same time, high PM 10 background concentration in India cannot be disregarded 
+which is reflected in relative ly high level of INAQS for PM 10; Sharma (2009) has estimated 
+background concentration of PM10 as 35 µg/m3. For PM10, in view of no specific studies in India, it is 
+29 
+ 
+proposed that the breakpoints proposed by USEP A may be adopted after accounting for INAQS 
+(Table 3.5).  
+Table 3.5 Breakpoints for PM10 (μg/m3) 
+INDIA (24-hr) US (24-hr)(a) China(b) (24-hr) EU(c) (8-hr) 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category 
+Break point 
+concentration 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category
+Break point 
+concentration 
+Good 50 Good 55 Excellent 50 Very low 15 
+Satisfactory 100 Moderate 155 Good 150 Low 30 
+Moderate 250 
+Unhealthy  
+for sensitive 
+groups 
+255 Lightly 
+Polluted 250 Medium 50 
+Poor 350 Unhealthy 355 Moderately 
+Polluted 350 High 100 
+Very Poor 430 Very 
+Unhealthy 425 Heavily 
+Polluted 420 Very 
+high 100+ 
+Severe 430+ Hazardous 425+ Severely 
+Polluted 420+      
+(a)USEPA (2013) (b)Gao (2013) (c) CAQI (2012) 
+ 
+PM2.5 
+Sharma (2009) has estimated background concentration of PM 2.5 as 17-28 µg/m 3. The background 
+concentration in Europe and the US is very low (< 5 µg/m3). Therefore, for lower concentration range, 
+it is not reasonable to follow the breakpoints as pr oposed by US or EU.  With due regard to INAQS 
+(which accounts for background pollution), the firs t two categories, Good and Satisfactory, the 
+breakpoints are kept as 30 and 60 µg/m 3. As per HEI Global Burden of  disease report (2013), till 
+90µg/m3 the relative risk of Ischemic Heart Disease in crease and then more or less it plateaus off, 
+therefore the next break point for category moderate is kept as 90μg/m3.  
+For PM 2.5, in view of no specific studies in India, it  is proposed that the breakpoints proposed by 
+USEPA may be adopted. Beyond firs t three categories, the brea kpoints proposed by USEPA and 
+China are adopted (Table3.6). 
+30 
+ 
+Table 3.6 Breakpoints for PM 2.5 (μg/m3) 
+INDIA (24-hr) US (24-hr)(a) China(b) (24-hr) EU(c) (8-hr) 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category
+Break point 
+concentration  
+AQI 
+Category
+Break point 
+concentration 
+AQI 
+Category
+Break point 
+concentration 
+Good 30 Good 12 Excellent 35 Very low 10 
+Satisfactory 60 Moderate 35 Good 75 Low 20 
+Moderate 90 Unhealthy 
+for 
+sensitive  
+groups 
+55 Lightly 
+Polluted 
+115 Medium 30 
+Poor 120 Unhealthy 150 Moderately 
+Polluted 
+150 High 60 
+Very Poor 250 Very 
+Unhealthy
+250 Heavily 
+Polluted 
+250 Very high 60+ 
+Severe 250+ Hazardous 250+ Severely 
+Polluted 
+250+   
+(a)USEPA (2013) (b)Gao (2013) (c) CAQI (2012) 
+ 
+3.3.4 Ozone 
+Ozone, a secondary pollutant formed in the atmosphere , has serious health impa cts. Ozone is a strong 
+oxidant, and it can react with a wide range of cellular components and biological materials. Ozone can 
+aggravate bronchitis, heart disease, emphysema, as thma and reduce lung capacity. Irritation can occur 
+in respiratory system, causing coughing, and uncomfo rtable sensation in ch est (WHO, 2000). It can 
+reduce lung function and can make breathing di fficult. Ozone makes people more sensitive to 
+allergens, which are the most common triggers for as thma attacks, thus it can aggravate asthma, when 
+ambient ozone levels are high. Also, asthmatics ar e more severely affected by the reduced lung 
+function and irritation in the resp iratory system. Ozone can inflame and damage lung cells. Within 
+few days of ozone exposure the damaged cells ar e replaced and the old cells shed (WHO 2000). 
+Ozone may aggravate chronic lung diseases su ch as emphysema and bronchitis and reduce the 
+immune system's ability to fight off bacterial inf ections in the respiratory system. For 1–3 hours of 
+ozone exposure in healthy subjects during moderate-to-heavy exercise (ventilation > 45 litres/minute), 
+changes in pulmonary function have been reported  for the following tests (lowest-observed-effect 
+31 
+ 
+levels under conditions of strenuous exercise) (McDonnell et al., 1983 and Gong et al., 1986): 
+• Forced expiratory volume in 1 second (FEV1) (240 μg/m3)  
+• Airway resistance (360 μg/m3)  
+• Forced vital capacity (FVC) (240 μg/m3)  
+• Increased respiratory frequency (400 μg/m3). 
+ 
+For 4–8 hours of ozone exposure in healthy adults doing moderate exercise, the following changes in 
+pulmonary function tests have been reported (Horstman et al., 1990) with given concentrations.  
+• FEV1,160 μg/m3 
+• Airway resistance, 160 μg/m3 
+• FVC, 200 μg/m3 
+• Increased airway responsiveness, 160 μg/m3. 
+Table 3.7 summarizes health impacts at different levels of ozone exposure. 
+ 
+Table 3.7: Health Outcomes Associated with Controlled Ozone Exposures [WHO 2000] 
+Health outcome Ozone concentration (μg/m3) at which the 
+health effect(s) is/are expected 
+Increase in inflammatory changes 
+(neutrophil influx) (healthy young adults at 
+>40 litres/minute breathing rate at outdoors)
+ 
+Averaging time 1 
+hour 
+Averaging time 8 
+hours 
+2-fold 400 180 
+4-fold 600 250 
+8-fold 800 320 
+ 
+After giving due consideration to INAQS for ozone, for two categories - Good (sub-index 0-50) and 
+Satisfactory (51-100), th e breakpoint concentrati ons are fixed as 50 μg/m3and 100 μg/m3. It can be 
+seen that 180, 250 and 320 μg/m3 (8-hour concentration) cause impor tant health endpoints leading to 
+2, 4 and 8 fold inflammatory changes in population (T able 3.7). With these endpoints, the breakpoints 
+are: moderate at 200 μg/m3 poor at 250 μg/m3and 1-hr concentration break points for very poor is 
+taken as 750 and for seve re it is taken as 750+ μg/m3 (this concentration will nearly match to 350 
+32 
+ 
+μg/m3of 8-hr average concentration). Table 3.8 pres ents, AQI breakpoints for various categories for 
+ozone along with breakpoints of other countries.  
+Table 3.8 Breakpoints for Ozone (μg/m3) 
+INDIA (8-hr) US (8-hr)(a) China(b) (8-hr) EU(c) (8-hr) 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category 
+Break point 
+concentration 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category 
+Break point 
+concentration 
+Good 50 Good 120 Excellent 100 Very low 60 
+Satisfactory 100 Moderate 150 Good 160 Low 120 
+Moderate 168 
+Unhealthy  
+for sensitive 
+groups 
+190 Lightly 
+Polluted 215 Medium 180 
+Poor 208 Unhealthy 230 Moderately 
+Polluted 265 High 240 
+Very Poor 748** Very 
+unhealthy 750 Heavily 
+Polluted 800 Very 
+high 240+ 
+Severe 748+** Hazardous 750+** Severely 
+Polluted -      
+(a) USEPA (2013) (b)Gao (2013) (c) CAQI (2012)*converted from ppm to µg/m3 and rounded off**1-hr monitoring values 
+ 
+3.3.5  Sulphur Dioxide (SO2)  
+SO2 is soluble in aqueous media and affects mucous membranes of  the nose and upper respiratory 
+tract. Reduction in mean lung function values among groups of healthy individual have been observed 
+for 10-minute exposures at 4000 ppb (11 440 μg/m3) (Linn et al. 1984) and at 5000 ppb (14 300 
+μg/m3) (Lawther et al., 1975). No significant change s in group mean lung function value have been 
+seen below 1000 ppb (2860 μg/m3) even during exercise. 
+Asthmatic people appear to respond in a simila r way to normal subjects, with development of 
+bronchoconstriction, but at lower concentrations. Several studies (Linn et al., 1984) have shown fairly 
+large changes in mean values of l ung function indices with 600 ppb (1716 μg/m3) and heavy exercise. 
+Linn et al. (1984) examined the dose–response relati onship of change in mean  FEV1 with increasing 
+concentrations of SO 2 with exercise in patients with moderate  or severe asthma. Overall, the mean 
+response at 400 ppb (1144 μg/m3) has been definite though sma ll, at around 300-ml fall in mean 
+values and at 200 ppb (572 μg/m3) changes were negligible. Hence, from the information published 
+33 
+ 
+hitherto, it can be concluded that  the minimum concentration evok ing changes in lung function in 
+exercising asthmatics is of the order of 400 ppb (1144 μg/m3).  
+The first step is the attainment of I NAQS (Table 3.1). The index category for SO 2 is classified as 
+‘good’ for concentration range 0-40 μg/m3 (half of INAQS for SO 2) for AQI range 0-50 and as 
+‘satisfactory’ from 41-80 μg/m3 for AQI range 51-100. For the third sub-index range 101–200, 
+violations of USEPA standards are examined. The INAQS for SO 2 (80μg/m3) is more stringent than 
+the USEPA standard (377μg/m3, USEPA 2014). In other words, the bui lt-in safety factor is higher for 
+the Indian standard. The USEPA standard (a nd discussions above) s uggests that for SO 2 levels up to 
+365μg/m3, the air quality is acceptable from a public  health point of view. Thus, for SO 2 levels 
+between 81 and 365μg/m3, the corresponding sub-index value has been taken to vary linearly between 
+101 and 200, and the AQI category for SO 2 is classified as ‘moderate’. In absence of any other 
+pollutant health criteria in India the rest of th e categorization of AQI is based on the USEPA federal 
+episode criteria and significant harm level (U SEPA 1998) and studies of Lawther et al., 1975 ) and 
+Linn et al. (1983 and 1984). Table 3.9 shows SO2 breakpoints. 
+Table 3.9 Breakpoints for SO2 (μg/m3) 
+INDIA (24-hr) US (1-hr)(a) China(b) (24-hr) EU(c) (8-hr) 
+AQI  
+Category 
+Break point 
+concentration  
+AQI 
+Category 
+Break point 
+concentration 
+AQI 
+Category 
+Break point 
+concentration  
+AQI 
+Category 
+Break point 
+concentration 
+Good 40 Good 95 Excellent 50 Very low 50 
+Satisfactory 80 Moderate 200 Good 150 Low 100 
+Moderate 380 
+Unhealthy  
+for sensitive 
+groups 
+485 Lightly 
+Polluted 475 Medium 350 
+Poor 800 Unhealthy 795 Moderately 
+Polluted 800 High 500 
+Very Poor 1600 Very 
+Unhealthy 1580 Heavily 
+Polluted 1600 Very 
+high 500+ 
+Severe 1600+ Hazardous    1580+ Severely 
+Polluted 2620      
+(a) USEPA (2013) (b)Gao (2013) (c) CAQI (2012)*converted from ppb to µg/m3 and rounded off 
+ 
+ 
+34 
+ 
+3.3.6 Pb and NH3 
+It is to be noted that most of the countries have taken only six pollutants (described above) for 
+formulation of AQI. An attempt has been made to propose breakpoints for NH 3 and Pb as these two 
+pollutants also have short-term  standards of 24-hr. While NH 3 can be measured on continuous basis 
+and can be included in the list of real time parame ters for AQI, such measurements are not possible 
+for Pb. However, Pb levels can be utilized in calcula tion of AQI of past days to assess impact of lead 
+pollution.  
+Inhalation of high levels of NH 3 causes irritation to the nose, thro at and respiratory tract. Increased 
+inhalation may result in cough and an  increased respiratory rate as well as resp iratory distress. An 
+association has been reported between exposure to ammonia and cough, phlegm, wheezing, and 
+asthma at high con centration. A study ( http://www.hpa.org.uk/webc/hpawebfile/hpaweb_c/1194947398510) has 
+reported that for NH 3 l e v e l s  a t  1 8  m g / m3, reduction in FEV1 and FV C% were significant in 
+symptomatic than asymptomatic individuals. For a factor of safety as 10, concentration of 1800 µg/m3 
+should be considered to be seve re in ambient air. The other breakpoints for ammonia have been 
+evolved on a linear scale from the level of 1800 µg/m3 to the standard concentration of 400 µg/m3. 
+Pb is a toxic metal and its exposure through all routes  results in increased bl ood lead level. At lower 
+concentrations, the blood lead level is proportiona l to air concentration (a fter accounting for all 
+resulting exposure routes). For example, 1 μg/m3 of annual lead level will result in 5µg/dL (on an 
+average) of blood lead level (WHO 2000). The eff ect of blood level above 10µg/dL is seen in 
+hematological changes in sensitive population, therefore, at moderate pollution level the break point is 
+at 2µg/m3. At 20µg/dL blood lead level the effects beco me more prominent and this corresponds to 
+break point of 4 µg/m3but to account for factor of safety, next break point is kept at 3.0 µg/m3 (and not 
+at 4 µg/m3) and if the lead concentration in air is more than 3.5 µg/m3the AQI category will be severe.  
+In view of the above discussions, Ta ble 3.10 presents the breakpoints for NH 3 and Pb; due 
+consideration has been given to INAQS in deciding breakpoints for categories, Good and Satisfactory.   
+ 
+ 
+ 
+35 
+ 
+Table 3.10 AQI Breakpoints for NH3 and Pb (24-hr) 
+(Pb from gasoline phased out in 2000)  
+AQI  
+Category 
+NH3 
+µg/m3
+ 
+Pb 
+µg/m3
+ 
+Good (0-50) 200 0.5 
+Satisfactory (51-100) 400 1.0 
+Moderate(101-200) 800 2.0 
+Poor (201-300) 1200 3.0 
+Very poor (301-400) 1800 3.5 
+Severe (401-500) 1800+ 3.5+ 
+ 
+Sections 3.3.1 to 3.3.6 have presented basis of AQI breakpoints for eight pollutant parameters 
+considered for AQI and these are summarized below in Table 3.11 with colour scheme to represent 
+the AQI bands. Table 3.12 shows health statements  for every AQI category for people to understand 
+health effects and protect themselves from these effects.  
+Table 3.11 Breakpoints for AQI Scale 0-500 (units: µg/m3 unless mentioned otherwise) 
+AQI Category 
+(Range) 
+PM10 
+24-hr 
+PM2.5 
+24-hr 
+NO2 
+24-hr 
+O3 
+8-hr 
+CO 
+8-hr 
+(mg/m3)
+SO2 
+24-hr 
+NH3 
+24-hr 
+Pb 
+24-hr 
+Good (0-50) 0-50 0-30 0-40 0-50 0-1.0 0-40 0-200 0-0.5 
+Satisfactory 
+(51-100) 
+51-100 31-60 41-80 51-100 1.1-2.0 41-80 201-400 0.6 –1.0
+Moderate 
+(101-200) 
+101-250 61-90 81-180 101-168 2.1- 10 81-380 401-800 1.1-2.0 
+Poor 
+(201-300) 
+251-350 91-120 181-280 169-208 10.1-17 381-800 801-1200 2.1-3.0 
+Very poor 
+(301-400) 
+351-430 121-250 281-400 209-748* 17.1-34 801-1600 1201-1800 3.1-3.5 
+  Severe 
+(401-500) 
+430 + 250+ 400+ 748+* 34+ 1600+ 1800+ 3.5+ 
+ *One hourly monitoring (for mathematical calculation only) 
+CPCB may consider reviewing the AQI breakpoint s every three years after accounting the new 
+research findings on air pollution exposure and health effects. 
+36 
+ 
+ Table 3.12 Health Statements for AQI Categories  
+ 
+3.4 Broad Guidelines for Actions during Very Poor and Severe Categories of 
+AQI  
+ 
+Regulating Agencies 
+The regulating agencies should establish source-r eceptor relationships in terms of impact of 
+emissions on air quality. In case AQI category is se vere or very poor, necessary steps need to be 
+taken by further regulating the emissions whic h are causing maximum impact to ambient air 
+quality. Specific actions, for example, may include: (i) strict vigilance and no-tolerance to visible 
+polluting vehicles, industries, open burning, constructi on activities, etc.; (ii) regulating traffic; and 
+(iii) identifying sources contributing significantly to rising air quality levels and actions for 
+reducing emissions from such sources.  
+Public 
+People should maintain vehicles properly (e.g. ge t PUC checks, replace car  air filter, maintain 
+right tires pressure), follow lane discipline and speed limits, avoid prolong idling and turn off 
+AQI Associated Health Impacts 
+Good 
+(0–50) Minimal Impact 
+Satisfactory 
+(51–100) May cause minor breathing discomfort to sensitive people 
+Moderate 
+(101–200) 
+May cause breathing discomfort to the people with lung disease such as asthma and  
+discomfort to people with heart disease, children and older adults 
+Poor 
+(201–300) 
+May cause breathing discomfort to people on prolonged exposure and discomfort  to people 
+with heart disease with short exposure 
+Very Poor 
+(301–400) 
+May cause respiratory illness to the people on prolonged exposure. Effect may be more 
+pronounced in people with lung and heart diseases 
+Severe 
+(401-500) 
+May cause respiratory effects even on healthy people and serious health impacts on people 
+with lung/heart diseases. The health impacts may be experienced even during light physical 
+activity 
+37 
+ 
+engines at red traffic signals. In addition, during seve re or very poor AQI categories, people 
+should minimize travel; avoid usin g private vehicles and instead use public transport, bikes or 
+walk, and carpool; use smaller vehicles (e.g. avoid SUVs). The uses of diesel generators should be 
+minimized. People, especially t hose suffering from heart diseas es and asthma, may consider 
+avoiding undue exposures. 
+3.5 Interpretation of Air quality using IND-AQI: an example 
+An exampele of AQI calculation and description for Delhi (online air quality monitoring network) and 
+Kanpur (manual network) is presented here for two seasons, monsoon and winter. The sub-index (I p) 
+for a given pollutant concentration (Cp), as based on ‘linear segmented principle’ is calculated as: 
+Ip= [{(IHI - ILO)/ (BHI -BLO)} * (Cp-BLO)] +ILO 
+BHI= Breakpoint concentration greater or equal to given concentration 
+BLO= Breakpoint concentration smaller or equal to given concentration 
+IHI = AQI value corresponding to BHI 
+ILO = AQI value corresponding to BLO; subtract one from ILO, if ILO is greater than 50 
+Finally;  
+AQI = Max (Ip) (where; p= 1,2,...,n; denotes n pollutants) 
+AQI of Delhi (online stations) 
+AQI has been calculated for July (clean period) and November (highly polluted period) for monitoring 
+stations Anand Vihar, RKPuram, Punjabi Bagh, and Mandir Marg.  
+(Source of data: http://www.dpcc.delhigovt.nic.in/Air40.html) 
+ 
+Legend for AQI 
+AQI 
+Description  
+Good  
+(0-50) 
+Satisfactory 
+(51-100) 
+Moderate  
+(101-200) 
+Poor 
+(201-300) 
+Very poor 
+(301-400) 
+Severe 
+(> 401) 
+ 
+ 
+ 
+38 
+ 
+July AQI 
+Anand Vihar: 
+Day Sub-index AQI 
+CO 
+(min) 
+CO 
+(max) 
+O3 
+(min) 
+O3 
+(max)
+NO2 NH 3 SO 2 PM 2.5 PM 10 
+26-Jul-13 57 72 12 36 101 16 48 80 112 112 
+27-Jul-13 48 115 15 42 84 13 29 83 124 124 
+28-Jul-13 56 115 17 37 97 15 33 188 205 205 
+29-Jul-13 62 105 14 38 82 15 28 91 162 162 
+30-Jul-13 54 105 10 29 80 13 26 98 167 167 
+Responsible Parameter PM10 
+The AQI for CO and O 3 has been calculated for running 8-hr av erages. This will give 23 AQI values, 
+here maximum and minimum AQI of CO and O 3 are presented. It can be seen that for most pollutants 
+air quality is good/satisfactory. It is PM10 which is in moderate category. 
+RK Puram 
+Day Sub-index AQI 
+CO 
+(min) 
+CO 
+(max) 
+O3 
+(min) 
+O3 
+(max)
+NO2 NH3 SO2 PM2.5 PM10 
+15-Jul-13 38 50 8 20 57 7 17 93 75 93 
+16-Jul-13 42 74 6 18 66 8 20 105 78 105 
+17-Jul-13 38 61 11 20 61 8 19 117 87 117 
+18-Jul-13 35 85 10 19 69 8 17 156 104 156 
+19-Jul-13 41 84 9 17 59 9 18 98 75 98 
+Responsible Parameter PM2.5 
+Panjabi Bagh 
+Day Sub-index AQI 
+CO 
+(min) 
+CO 
+(max) 
+O3 
+(min) 
+O3 
+(max)
+NO2 NH3 SO2 PM2.5 PM10 
+30-Jul-13 66 83 36 57 61 13 16 72 101 101 
+31-Jul-13 48 77 36 49 53 13 14 696 56 696 
+1-Aug-13 41 77 30 62 84 13 17 97 128 128 
+2-Aug-13 41 76 30 41 72 14 19 76 126 126 
+3-Aug-13 27 56 27 49 74 14 20 71 115 115 
+Responsible Parameter PM10 
+MandirMarg 
+Day Sub-index AQI 
+CO 
+(min) 
+CO 
+(max) 
+O3 
+(min) 
+O3 
+(max)
+NO2 NH3 SO2 PM2.5 PM10 
+28-Jul-13 22 106 16 18 47 9 14 221 126 221 
+29-Jul-13 30 79 10 18 37 9 14 90 77 90 
+30-Jul-13 30 96 12 18 51 9 17 130 105 130 
+31-Jul-13 33 76 12 18 49 9 12 70 62 76 
+1-Aug-13 26 67 8 13 46 10 16 102 92 102 
+Responsible Parameter PM2.5 
+39 
+ 
+November AQI 
+The AQI for CO and O 3 has been calculated for running 8-hr averages. This will give 23 AQI values; 
+here maximum and min AQI of CO and O 3 are presented. It can be seen that for most pollutants air 
+quality is good/satisfactory. It is PM10 and PM2.5 which suggest AQI to be in severe category.  
+Anand Vihar 
+Day Sub-index AQI 
+CO 
+(min) 
+CO 
+(max) 
+O3 
+(min) 
+O3 
+(max)
+NO2 NH3 SO2 PM2.5 PM10 
+10-Nov-13 88 113 13 32 69 5 23 438 992 992 
+11-Nov-13 92 121 13 41 67 4 17 444 1158 1158 
+12-Nov-13 92 151 14 60 62 4 23 578 1559 1559 
+13-Nov-13 97 160 18 50 55 3 20 540 1442 1442 
+14-Nov-13 101 143 12 47 45 2 30 530 1765 1765 
+Responsible Parameter PM10 
+RK Puram 
+Day Sub-index AQI 
+CO 
+(min) 
+CO 
+(max) 
+O3 (min) O3 
+(max)
+NO2 NH3 SO2 PM2.5 PM10 
+10-Nov-13 47 80 0 55 100 6 20 377 300 377 
+11-Nov-13 52 85 0 69 129 6 22 314 310 314 
+12-Nov-13 51 107 1 92 111 9 25 388 462 462 
+13-Nov-13 47 110 9 103 111 7 25 388 424 424 
+14-Nov-13 52 114 9 98 110 9 66 370 443 443 
+Responsible Parameter PM10 
+Panjabi Bagh 
+Day Sub-index AQI 
+CO 
+(min) 
+CO 
+(max) 
+O3 
+(min) 
+O3 
+(max)
+NO2 NH3 SO2 PM2.5 PM10 
+10-Nov-13 41 96 13 64 67 12 12 371 294 371 
+11-Nov-13 52 105 22 68 76 9 15 320 272 320 
+12-Nov-13 44 114 15 76 93 11 12 384 390 390 
+13-Nov-13 43 114 9 79 91 13 15 407 406 407 
+14-Nov-13 37 110 11 68 90 10 13 335 306 335 
+Responsible Parameter PM2.5 
+MandirMarg 
+Day Sub-index AQI 
+CO (min) CO (max) O3 (min) O3 (max) NO2 NH3 SO2 PM2.5 PM10 
+10-Nov-13 83 112 5 136 95 14 20 397 307 397 
+11-Nov-13 88 114 6 128 109 13 23 352 269 352 
+12-Nov-13 97 122 7 167 140 13 20 389 361 389 
+13-Nov-13 101 131 8 171 139 13 28 438 340 438 
+14-Nov-13 98 122 7 148 124 11 22 326 294 326 
+Responsible Parameter PM2.5 
+40 
+ 
+From the above interpretaion of air Quality inde x for Delhi responsible pa rameter for pollution is 
+PM10 and PM 2.5. In Monsoon the responsible parameter for pollution in Anand Vihar and Panjabi 
+Baag is PM 10 with moderate pollution, R K Puram and Mandir Marg with PM 2.5 responsible 
+parameter is satisfactory or moderate polluted. In winters Anand Vihar and R K Puram has very 
+severe PM10 index, whereas Panjabi Baag and Mandir Marg hasvery severe PM2.5 index. 
+AQI of Kanpur (manual stations) 
+It has been observed from AQI results of Delhi that responsible pollutant is PM10/PM2.5. Since manual 
+stations measure PM 10, it is suggested that for manual station AQI for past days can be calculated as 
+long as PM10 or PM2.5 is measured. It is proposed that for ma nual station, AQI is reported for at least 
+three parameters and one of them should be PM10 or PM2.5 possibly on a week basis.  
+ 
+July AQI 
+  
+RamaDevi 
+Day 
+Sub-index 
+AQI NO2 SO 2 PM 10 
+10-Jul-13 35 3 75 75 
+11-Jul-13 10 3 58 58 
+19-Jul-13 7 4 60 60 
+20-Jul-13 7 3 194 194 
+22-Jul-13 18 4 163 163 
+Responsible Parameter PM10 
+ 
+DadaNagar 
+Day 
+Sub-index 
+AQI NO2 SO2 PM10
+12-Jul-13 18 3 87 87 
+13-Jul-13 17 7 98 98 
+15-Jul-13 23 5 79 79 
+16-Jul-13 37 3 105 105 
+24-Jul-13 15 4 80 80 
+Responsible Parameter PM10 
+ 
+ 
+ 
+41 
+ 
+IIT Kanpur 
+Day 
+Sub-index 
+AQI NO2 SO2 PM10
+8-Jul-13 8 3 60 60 
+9-Jul-13 14 3 42 42 
+17-Jul-13 14 3 45 45 
+18-Jul-13 11 6 72 72 
+26-Jul-13 6 3 82 82 
+Responsible Parameter PM10 
+November AQI 
+RamaDevi 
+ 
+Day 
+Sub-index 
+AQI NO2 SO2 PM10
+3-Nov-13 53 3 607 607 
+4-Nov-13 64 3 411 411 
+5-Nov-13 45 3 339 339 
+13-Nov-13 84 3 487 487 
+14-Nov-13 96 3 417 417 
+Responsible Parameter PM10 
+DadaNagar 
+Day 
+Sub-index 
+AQI NO2 SO2 PM10
+16-Nov-13 72 3 412 412 
+18-Nov-13 79 8 439 439 
+19-Nov-13 94 5 446 446 
+27-Nov-13 66 3 296 296 
+28-Nov-13 67 3 530 530 
+Responsible Parameter PM10 
+IIT Kanpur 
+Day 
+Sub-index 
+AQI 
+NO2 SO2 PM10 
+11-Nov-13 6 3 296 296 
+12-Nov-13 17 3 184 184 
+20-Nov-13 21 3 226 226 
+21-Nov-13 30 3 245 245 
+29-Nov-13 17 3 216 216 
+Responsible Parameter PM10 
+42 
+ 
+From the above interpretaion of AQI for Kanpur ,the responsible parameter for pollution is PM 10. In 
+monsoon, Rama Devi and Dada Nagar are moderate while IIT Kanpur has satisfactory PM10 index. In 
+winters, Rama Devi has very severe PM 10 index, Dada Nagar has very poor and severe PM 10 index 
+and IIT Kanpur is poor and moderate. 
+3.6 Web-based AQI Dissemination 
+The AQI system should have web-based AQI di ssemination which should be designed for online 
+calculation and display of nation-wide AQI. The website should render a quick, simple and an elegant 
+looking response to an AQI query. The other featur es of the website should include reporting of 
+pollutant responsible for index, pollutants exceeding the standards and health effects. 
+The AQI query is answered by navigating on map and clicking on the air quality station which 
+renders AQI at that station with  sub-indices (Figure 3.5). In addi tion, website ca n also render 
+menu-based AQI by searching through states and cities (Figure 3.6) from dropdown menu. 
+ 
+ 
+
+43 
+ 
+ 
+Figure 3.5 Web-based AQI Query: Reporting and Display 
+As a second part of the functionality, the website can also render menu-based AQI query by searching 
+through states and cities (Figure 3.6) 
+ 
+ 
+
+44 
+ 
+ 
+Figure 3.6 Menu-based AQI Query and display  
+It is expected and desired that informed citiz ens demand for better air quality. Under such a 
+situation, city administration (municipal and local  authority) should be asked to prepare a time-
+bound air pollution control plan and enforce it. 
+3.7 AQI Calculation Using Spreadsheet XL 
+AQI for a particular day and at a desired locatio n can be calculated using the MS Excel (Figure 
+3.7), wherein a user friendly evaluation of AQI ha s been developed. The user needs to input at 
+least three values of pollutant concen tration (including at least one of PM 10 or PM2.5) in the blue 
+cells and the sub-indices are ca lculated thus displaying the final AQI along with the colour 
+signifying the AQI category. The health impacts corresponding to the AQI category are detailed in 
+the legend at the bottom of the sheet. This XL program can be obtained from CPCB. 
+Overall AQI is calculated only if data are available for minimum three pollutants out of which one 
+should necessarily be either PM2.5  or PM10. Else, data are consider ed insufficient for calculating 
+AQI. Similarly, a minimum of 16 hours’ data is considered necessary for calculating subindex. 
+
+ 
+3.8 AQI
+The follo
+(i) Coll e
+specified
+(ii) AQI
+(iii) Ran
+(iv) De
+monitor
+(v) For r
+I-Based R
+owing is an o
+ect air qual i
+d in INAQS
+I-based Rank
+nking should
+termine th e
+ring is being 
+ranking purp
+Figure
+Ranking of
+outline of the
+ity data for 
+.  
+king should b
+d be done eve
+e area and 
+carried out i
+pose, both on
+e 3.7 Spread
+f Cities 
+e procedures
+all eight o r
+be carried ou
+ery six mont
+correspondi
+in the city. 
+nline monito
+45 
+dsheet for A
+s that can be
+r minimum t
+ut for cities w
+th on July 1s
+ing populat i
+oring and ma
+AQI calculat
+ used for ran
+three pollut a
+with populat
+st and Januar
+ion of the 
+anual monito
+tion 
+nking the cit
+ants for av e
+tion 1 millio
+ry 1st. 
+domain (2 k
+oring sites sh
+ties: 
+eraging tim e
+on or larger. 
+km x 2km) 
+hould be acc
+ 
+e period as 
+ 
+in which 
+counted. 
+
+46 
+ 
+(vi)  AQ data from minimum of three stations should be available in the city. 
+(vii) Calculate the sub-index value for each pollutant and instead of reporting the AQI value at a 
+given time-period in terms of the highest (as done in basic AQI co mputation), average the AQI’s of 
+all available pollutants (minimum of three) for a particular site ( ∑AQIi/n)m where i equals number of 
+pollutants (i.e. n should be minimum 3) and m is the number of sites (should be minimum 3) in the 
+city. 
+(viii) Now, the average AQI’s of each site in the city are weighe d with their designated population 
+(of the grid 2km x 2km surrounding the site, p m is fractional population of th e grid of the site) to get 
+Ranked AQI. 
+AQIR=  [p1*(∑AQIi/n)1+ p2*(∑AQIi/n)2+……+ pm*( ∑AQIi/n)m]/m 
+The expert committee was of the view that populat ion data may not be easily available and to 
+maintain simplicity in calculation, the AQIR can be calculated as: 
+AQIR=  [(∑AQIi/n)1+ (∑AQIi/n)2+……+( ∑AQIi/n)m]/m 
+(ix) Recall that AQI is negativ e number (higher AQI higher pollu tion. Generate an AQ (or called 
+Healthy) score for each city by the formulation: 
+AQ (or called Healthy) Score= 500- AQIR (if < 0 then Score = 0) 
+(x) This score also varies between 0-500. IF Score is 0 it is the worst air qualit y and if score is 500 it 
+is the best air quality. So, the city with Maximum ‘AQ (Healthy) Score’ will be ranked highest (Rank 
+1) and so on. 
+The AQI-based ranking can be presentation in an elegant manner as shown below in figures. 
+ 
+ 
+It is prop
+air qualit
+3.9 Con
+The rev i
+examined
+sub-indic
+NO2, SO
+dissemin
+cannot c
+scrutiniz
+i
+The inde
+A scient i
+various p
+category 
+ 
+Su
+posed that to 
+ty monitorin
+nclusions a
+ised air qu a
+d afresh. A n
+ces of vario u
+O2, CO, O3, N
+nation of A Q
+ontribute to
+ing the statu
+x has six cat
+Good  
+(0-50) 
+ific basis in 
+parameters h
+(Table 3.11
+ub-index 
+maintain un
+g stations an
+and Proto
+ality standa r
+n AQI syste m
+us pollutants
+NH3, and Pb
+QI. It is rec o
+ AQI. Ho w
+us of this imp
+tegories and 
+Satisfactor
+(51-100) 
+terms of a t
+have been de
+).  
+niformity in t
+nd measuring
+cols 
+rds (CPCB, 
+m based on
+s as overall 
+) having sho
+ognized that 
+wever, its co n
+portant toxic
+the colour s
+ry Moderat
+200
+ttainment of
+erived and u
+47 
+ 
+ 
+the ranking p
+g all eight pa
+2009) nec e
+ maximum 
+AQI) is ad o
+ort-term stan
+air concent
+nsideration 
+c. 
+schemes show
+te(101-
+0) (20
+f air quality 
+used in arrivi
+AQI-based S
+procedure, c
+arameters ar
+essitate that 
+operator fu n
+opted. Ideall
+ndards shoul
+trations of P
+in AQI cal c
+wn below. 
+Poor 
+01-300) 
+V
+(
+standards a
+ing at breakp
+Score, Rank
+cities having
+re considered
+the conce p
+nction (selec
+ly, eight par
+ld be conside
+Pb are not k n
+culation of p
+Very poor 
+(301-400) 
+and dose-res p
+point concen
+king and Tren
+ minimum o
+d for ranking
+pt of AQI i
+cting the m a
+ameters (PM
+ered for near
+nown in re a
+past days w
+Severe 
+(> 401) 
+ponse relati o
+ntrations for
+nd 
+of five 
+g. 
+n India is 
+aximum of 
+M10, PM2.5, 
+r real-time 
+al-time and 
+will help in 
+onships of 
+r each AQI 
+
+48 
+ 
+It is proposed that for continuous air quality stations, AQI is reporte d in near real-time for as many 
+parameters as possible. For manual stations, the da ily AQI is reported with a lag of one week to 
+ensure manual data are scrutinized and available for AQI.  
+ 
+A web-based AQI dissemination system is devel oped for quick, simple and an elegant looking 
+response to an AQI query. The other features of the website include reporting of pollutants 
+responsible for index, pollutants exceeding the standards and health effects 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+49 
+ 
+REFERENCES 
+Agency for Toxic Substances and Disease Regist ry (ATSDR)(2007) Toxicological profile for Lead. 
+Atlanta, GA: U.S. Department of Health and Human Services, Public Health Service. 
+ATS (1991). “Lung Function Testing: Selection of Reference Values and Interpretative 
+Strategies”, Am Rev Respir Dis, 144, 1202-1219. 
+Bates, D.V. (1999).“Introduction” in Air pollution and Health (Eds S.T. Holgate, J.M. Samet, H.S. 
+Koren, R.L. Maynard). Academic Press, New York. 
+Beig G., Ghude S. D., Deshpande A., (2010a) Scie ntific Evaluation of Air Quality Standards and 
+Defining Air Quality Index for India; Indian Institute of Tropical Meteorology-Pune; ISSN 0252-
+1075. 
+Beig G. et al., (2010b) Scientific Evolution of Air Quality Standards and Defining Air Quality 
+Index for India 2010, Special Scientific Report SAFAR-2010-B, Ministry of Earth Sciences (Govt. 
+of India).   
+Biswas, D.K., Pandey, G.K., (2002) “Strategy and Policy adopted in  Air Quality Management in 
+India” in Better Air Quality in Asian and Pacific Rim Cities, Hong Kong. 
+CAQI (2012),Common Information to European Air, Citeair II,EUROPEAN UNION European Regional 
+Development Fund Regional Initiative Project ( http://www.airqualitynow.eu/download/CITEAIR-
+Comparing_Urban_Air_Quality_across_Borders.pdf) 
+Castillejos, M., Borja-Aburto, V.H., Dockery, D.W., Gold, D.R., Loomis, D. (2000). “Airborne 
+Coarse Particles and Mortality”, Inhalation Toxicol, 12 (Suppl 1), 67-72. 
+Chestnut, L.G., Schwartz, J., Savitz, D.A., Bu rchfiel, C.M. (1991). “Pulmonary Function and 
+Ambient Particulate Matter: Epidemiological Evidence from NHANES I”, Arch. Environ. Health., 
+46, 135-144. 
+CNCIReport(2006) - Assessment of Air Pollution Related Respiratory Pr oblems in Children of 
+Delhi of Chittaranjan National Cancer Institute (CNCI), Kolkata, submitted to Central Pollution 
+Control Board Delhi. 
+50 
+ 
+Coburn et al., (1965) Consideratio ns of the physiological variab les that determine the blood 
+carboxyhemoglobin concentration in man. Journal of Clinical Investigation, Vol. 44, 1899–1910. 
+CPCB, (2000) Air quality status  and trend in India.Parivesh Newsletter, Vol. 4(3). Central 
+Pollution Control Board, New Delhi, India. 
+CPCB. (1996) Environmental protection in NCT of Delhi: pollution sources, environmental status, 
+laws and administrative mechanism. 
+Dockery, D.W. (1989).“Effects of Inhalable Part icles on Respiratory Health of Children”, Am. 
+Rev. Respir. Dis., 139, 587-594. 
+Dockery, D.W., Pope, C.A. III, Xu, X., Spengler, J.D., Ware, J.H., Fay, M.E., Ferris, B.G., 
+Speizer, F.E. (1994). “An Association between Air Pollution and Mortality in Six U.S. Cities”, N. 
+Engl. J. Med., 329, 1753-1759. 
+Final report submitted to Japan External Trad e Organization, New Delhi by Central Pollution 
+Control board, New Delhi. 
+Gao,Fanyu. (2013) Evaluation of the Chinese New Air Quality Index (GB3095-2012) Based on 
+Comparison with the US AQI System and the WHO AQGs 
+(https://www.theseus.fi/bitstream/handle/10024/65044/Gao_Fanyu.pdf?sequence=1) 
+Gong et al., (1986) Impaired exerci se performance and pulmonary function in elite cyclists during 
+low-level ozone exposure in  a hot environment. American Revi ew of Respiratory Disease, Vol. 
+134, 726–733. 
+Gordian, M.E., Özkaynak, H., Xue, J., Morris, S. S., Spengler, J.D. ( 1996). “Particulate Air 
+Pollution and Respiratory Disease in Anchorage, Alaska”, Environ. Health.Perspect.,  104, 290-
+297. 
+Green, M. (1966) An air pollution index based on sulphur dioxide a nd smoke shade. J. Air Pollut. 
+Control Assoc.11 (12): 703–706. 
+Gurjar, B., Butler, T., Lawrence, M., and Lelieveld, J.(2008) Evaluationof emissions and air 
+quality in megacities, Atmospheric Environment, Volume 42, Pages1593-1606. 
+ 
+51 
+ 
+GVAQI (2013). Greater Va ncouver Regional District air qualit y and source control department, 
+Burnaby, B.C., Canada. 
+HEI Perspectives (2002). “Understanding the Health  Effects of Components  of the Particulate 
+Matter Mix: Progress and Next Steps”, Health Effects Institute, Boston MA. 
+Horstman et al., (1990) Ozone concentration an d pulmonary response relationships for 6.6-hour 
+exposures with five hours of moderate exercise  to 0.08, 0.10, and 0.12 ppm. American Review of 
+Respiratory Disease, Vol. 142, 1158–1163. 
+Laden, F., Neas, L.M., Dockery, D.W., Schwartz, J. (2000). “Association of Fine Particulate 
+Matter from Different Sources with Daily Mortality in Six U.S. Cities”, Environ. Health Perspect, 
+108, 941-947. 
+Lawtheret al., (1975). Pulmonary function and sulfur dioxide, some preliminary 
+findings.Environmental Research, Vol. 10: 355–367. 
+Linn et al., (1983) Respiratory e ffects of sulfur dioxide in heav ily exercising asthmatics. A dose–
+response study. American Review of Respiratory Disease, Vol. 127.278–283. 
+Linn et al., (1984) Comparative effects of sulfur dioxide exposure at 5 0C in exercising asthmatics. 
+American Review of Respiratory Disease, Vol. 129.234–239. 
+Lippmann, M., Ito, K., Nádas, A., Burnett, R.T.  (2000). “Association of  Particulate Matter 
+Components with Daily Mortalit y and Morbidity in Urban Popul ations”. Research Report 95. 
+Health Effects Institute, Cambridge MA. 
+Malaysia. (2013) A guide to air pollutant index in  Malaysia. Department of Environment, Kuala 
+Lumpur, Malaysia. 
+Maloo, S. (2003)“Assessment and Characterizati on of Ambient Air Particulates in Kanpur”, 
+M.Tech.Thesis, Enviro nmental Engineering and Management Program Indian Institute of 
+Technology, Kanpur, India. 
+52 
+ 
+McDonnell et al., (1983) Pulmonary effects of  ozone exposure during ex ercise: dose-response 
+characteristics. Journal of Applied Physiol ogy: Respiratory and E nvironmental Exercise 
+Physiology, Vol. 54, 1345–1352. 
+Miller et al., (1982) Pulmonary dosimetry of nitrogen dioxide in animals and man.In., Schneider, 
+T. & Grant, L., ed. Air pollution by nitrogen oxides.Proceedings of the US–Dutch  International 
+Symposium, Maastricht, Netherlands. Amsterda m, Elsevier, 377–386 (Studi es in Environmental 
+Science, No. 21). 
+NIH (1997). “Guidelines for the Diagnos is and Management of Asthma”, National Institutes of 
+Health, No.97-4051. 
+Ontario. (2013) A reviewofthe Ontario air quality index and air quality h ealth index system.ISBN 
+978-1-4606-0936-1.Air Resource Branc h, Ontario Ministry of the Environment, Toronto, Ont., 
+Canada. 
+Ostro, B.D. (1993). “The Association of Air Po llution and Mortality: Examining The Case for 
+Inference”, Arch. Environ. Health, 48, 336-342. 
+Ott, W.R. (1978) Environmental indices theory and pr actice.AnnArborScience Publishers Inc., 
+Ann Arbor, Mich. 48106. 
+Pope, C.A. III (1989). “Respiratory Disease Asso ciated with Community Air Pollution and A 
+Steel Mill - Utah Valley”, Am. J. Public Health, 79, 623-628. 
+Pope, C.A. III (1991). “Respiratory Hospital Admissions Associated with PM 10 Pollution in Utah, 
+Salt Lake, and Cache Valleys”, Arch. Environ. Health, 46, 90-97. 
+Pope, C.A. III, Dockery, D.W. (1992) . “Acute Health Effects of PM 10 on Symptomatic and 
+Asymptomatic Children”, 145, 1123-1128. 
+Pope, C.A. III, Dockery, D.W. (1999). “Epidemi ology of Particle Effe cts, Air Pollution and 
+Health”, Academic Press, 673-705. 
+Pope, C.A. III, Hill, R.W., Villegas, G.M. (199 9). “Particulate Air Pollu tion and Daily Mortality 
+on Utah’s Wasatch Front”, Environ. Health Perspect., 107, 567-573. 
+53 
+ 
+Romieu, I., Meneses, F., Ruiz, S., Sienra, J.J., Huerta, J., White, M.C., Etzel, R.A. (1996). “Effects 
+of Air Pollution on the Respiratory Health of Asthmatic Children Living in Mexico City”, Am. J. 
+Respir. Crit. Care Med., 154, 300-307. 
+Schwartz, J. (1996). “Air Pollution and Hosp ital Admissions for Respiratory Disease”.  
+Epidemiology, 7, 20-28. 
+Sharma M. (2009) Review of National Air Quality Criteria/Standards. Report submitted to Central 
+Pollution Control Board, New Delhi 
+Sharma M., Kiran YNVM and Shandilya K. (2003) .Investigation into formation of Atmospheric 
+sulphate under High PM10concentration. Atmospheric Environment 37 (2003) 2005-2017. 
+Sharma M., Narendra Kumar V, Katiyar S.K., Sh arma R,Shukla B.P. and Sengupta B. (2004) 
+Cohort-Based Acute Health Effect Study of PM10 and PM2.5 Pollution in the City of Kanpur, India, 
+Archives of Environmental Health: An International Journal Vol. 59, No. 7; 348:358 
+Sharma, M., Aggrawal, S, Bose P. (2002). Mete orology-based Forecasting of Air Quality Index 
+using Neural Network. Proceedings of Inte rnational Conference IC ONIP’02-SEAL’02-FSKD’02 
+on Neural Network, Singapore, November, 2002. 
+Sharma, M., Maheshwari, M., and Pandey, R. (2001) Development of air quality index for data 
+interpretation and public information. IIT-Kanpur,  Report submitted to Central Pollution Control 
+Board Delhi. 
+Sharma, M.,Maheshwari, M., Sengupta, B., Shukla B.P. (2003). Design of a website for 
+dissemination of air quality index in IndiaE nvironmentalModelling& Software 18 (2003) 405–
+411. 
+Shenfeld, L. (1970) Note on Ontario’s air pollution index and alert system. J. Air Pollut. Control 
+Assoc.20 (9): 622. 
+StatSoft, Inc. (1999). STATISTI CA for Windows [Computer prog ram manual]. StatSoft, Inc., 
+2300 East 14th Street, Tusla, OK 74104. 
+54 
+ 
+Swami P.K. and Tyagi A. (1999). Formation of an air pollution index. Journalof Air and Waste 
+Management Association 49: 88-91. 
+ 
+UK Air Quality Index ( 2013) Revised; Committee on the Me dical Effects of Air Pollutants 
+(COMEAP), Department of Environment, Food & Rural Affairs, UK 
+U.S. Environmental Protection Agency (2013) T echnical Assistance Do cumentfor the Reporting 
+of Daily Air Quality –EPA-454/B-13-001, December 2013 
+USEPA (2014) Air Quality Index: A Guide to Air Quality and Your Health. February 2014, EPA-
+456/F-14-002 
+USEPA(1976) Federal register, Vol. 41 No 174- Tuesday September7, 1976. 
+Vedal, S., Schenker, M.B., Munoz, A., Samet, J. M., Batterman, S., Speizer, F.E.(1987). “Daily 
+Air Pollution Effects on Children’s Respirator y Symptoms and Peak  Expiratory Flow” , Am. J. 
+Public Health, 77, 694-698. 
+WHO (2000) Air quality guidelines for Europe . Copenhagen, World Health Organization 
+Regional Office for Europe, 2000 (WHO Regional Publications, European Series, No. 91). 
+WHO (2005) Air Quality GuidelinesGlobalUpdate.Particulate matter, ozone, nitrogen dioxide and 
+sulfur dioxide. Europe, 2005.ISBN 92 890 2192 6. 
+Wichmann, H.E., Spix, C., Tuch, T., Wölke, G., Pe ters, A., Heinrich, J., Kreyling, W.G., Heyder, 
+J. (2000), “Daily Mortality and Ultrafine Particles in Erfurt, Germany. Part1: Role of Number and 
+Mass”. Research Report 96. Health Effects Institute, Cambridge MA. 
+WRI (1996). “World Resources 1996-97 - A Gu ide to Global Environment The Urban 
+Environment”, World Resources Institute, Washington, DC. 
+Xiping, X.U., Dockery, D.W., Wa ng, L. (1991). “Effects of Air Pollution on Adult Pulmonary 
+Function”, Arch. Environ. Health, 46, 198-206.  
+ 
+55 
+ 
+ 
+ 
+ 
+Appendix-I 

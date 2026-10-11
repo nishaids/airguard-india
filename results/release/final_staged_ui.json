@@ -1,18 +1,32 @@
 {
-  "url": "https://webapp-3tmsvl9x5-nishanth-s-projects-e335f110.vercel.app",
+  "generated_at": "2026-10-11T15:06:25.585150+00:00",
+  "url": "https://webapp-nyxlah5fo-nishanth-s-projects-e335f110.vercel.app",
+  "passed": 5,
   "checks": [
     {
       "path": "/live",
-      "status": 200
-    },
-    {
-      "path": "/forecast",
+      "method": "GET",
       "status": 200
     },
     {
       "path": "/api/health",
+      "method": "GET",
       "status": 200
+    },
+    {
+      "path": "/api/air-quality/summary?lat=NaN&lon=80",
+      "method": "GET",
+      "status": 400
+    },
+    {
+      "path": "/api/internal/refresh",
+      "method": "GET",
+      "status": 405
+    },
+    {
+      "path": "/api/internal/refresh",
+      "method": "POST",
+      "status": 401
     }
-  ],
-  "backend": "unchanged from the 31-check staged and 36-check public acceptance"
+  ]
 }

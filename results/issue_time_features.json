@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T13:46:35.832596+00:00",
+  "generated_at": "2026-10-11T14:50:44.424962+00:00",
   "status": "PENDING_MATCHED_ISSUE_TIME_PAIRS",
   "collection_protocol": "airguard-dayahead-20ist-v1",
   "analysis_protocol": "airguard-national-study-20ist-v2",
@@ -17,25 +17,25 @@
     "coverage": [
       {
         "source_type": "measured",
-        "n": 253,
+        "n": 267,
         "stations": 5,
         "first": "2026-10-09 04:30:00+00:00",
-        "last": "2026-10-11 11:30:00+00:00"
+        "last": "2026-10-11 12:30:00+00:00"
       },
       {
         "source_type": "modelled_forecast",
-        "n": 16138,
+        "n": 20163,
         "stations": 0,
         "first": "2026-10-07 18:30:00+00:00",
         "last": "2026-10-13 17:30:00+00:00"
       }
     ],
-    "provider_snapshots": 97,
-    "feature_snapshots": 0,
+    "provider_snapshots": 185,
+    "feature_snapshots": 20,
     "missingness": {},
     "source": "Issue-time immutable snapshots paired with same-station measured hourly targets; exact CAMS and target AQI required for regression",
     "archive_experiment": "PENDING — ADS credential/terms required",
     "legacy_experiment": "Separate 2015–2020 reported-AQI baseline; not interchangeable with hourly operational target",
-    "data_version": "f88d2f1053ae0dec8ffb5fb2d406e6495d10a13a9c447701b4079440d27ff689"
+    "data_version": "67ff1ba1428493ecec8af27a756651169e2ac9fde743119128013e74ec1966ca"
   }
 }

@@ -26,6 +26,7 @@ uses no named prepared statements or session-level locks, and sets timeouts
 inside each transaction. Migrations retain their configured session connection.
 The switch follows observed Supavisor session-client limit errors during
 overlapping background jobs; no account upgrade or credential rotation is needed.
+This follows [Supabase's serverless connection guidance](https://supabase.com/docs/guides/database/connecting-to-postgres).
 
 The hourly/fixed-time research schedules still use their existing empty
 authenticated job body. Public `view` selectors cannot invoke private jobs.
@@ -37,3 +38,6 @@ Supabase advisors report the intentional absence of public RLS policies and
 unused indexes on new research tables. `pg_net` is non-relocatable in this
 project; its extension metadata remains in `public`, with networking functions
 in `net`. No destructive extension move or index removal was performed.
+Advisor references: [default-deny RLS](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy),
+[extension schema warning](https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public),
+[unused indexes](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index).

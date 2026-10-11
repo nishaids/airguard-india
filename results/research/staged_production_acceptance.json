@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-11T13:53:05.140117+00:00",
-  "url": "https://webapp-4ybym2zmh-nishanth-s-projects-e335f110.vercel.app",
+  "generated_at": "2026-10-11T14:03:34.895087+00:00",
+  "url": "https://webapp-52f6to2ty-nishanth-s-projects-e335f110.vercel.app",
   "environment": "STAGED_PRODUCTION",
   "checks": [
     {
@@ -209,9 +209,16 @@
       "method": "POST",
       "authorized": false,
       "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/internal/refresh",
+      "status": 200,
+      "method": "POST",
+      "authorized": true,
+      "kind": "HTTP JSON"
     }
   ],
-  "passed": 30,
+  "passed": 31,
   "evidence": {
     "research": {
       "forecasts": 0,
@@ -225,7 +232,7 @@
     },
     "scheduler": {
       "ok": true,
-      "generated_at": "2026-10-11T13:51:07.260386+00:00",
+      "generated_at": "2026-10-11T14:01:09.433071+00:00",
       "protocol_version": "airguard-dayahead-20ist-v1",
       "issuance": {
         "state": "AWAITING_FIRST_CUTOFF",
@@ -514,7 +521,7 @@
         "measured_or_modelled": "MODELLED",
         "source": "Open-Meteo / CAMS global",
         "timestamp": "2026-10-11T12:30:00+00:00",
-        "fetched_at": "2026-10-11T13:00:46.877692+00:00",
+        "fetched_at": "2026-10-11T14:01:36.904214+00:00",
         "freshness": "FRESH",
         "station": null,
         "fallback_reason": "Modelled air-quality estimate \u2014 no sufficiently recent nearby station with adequate hourly pollutant data.",
@@ -679,7 +686,7 @@
         "source_type": "modelled_forecast",
         "provider": "open_meteo",
         "model": "cams_global",
-        "issued_at": "2026-10-11T13:00:46.877692+00:00",
+        "issued_at": "2026-10-11T14:01:36.904214+00:00",
         "freshness": "FRESH",
         "peak_aqi": 141,
         "peak_hour": "2026-10-12T10:30:00+00:00",
@@ -740,13 +747,13 @@
           "lon": 80.0,
           "native_resolution_degrees": 0.4
         },
-        "raw_forecast_reference": "5b48cc80b85a2419c280279675c9a5300f1c4cd260551f88200c36780ba4e59d",
+        "raw_forecast_reference": "05871fa18a52de509cea42add89bd46ae7294ea70d94d467555a8b2acee80179",
         "range": {
           "min": 64,
           "max": 141,
           "meaning": "Expected AQI variation through the day; not a confidence interval"
         },
-        "forecast_run_id": 348
+        "forecast_run_id": 365
       },
       "provenance": {
         "methodology_version": "airguard-cpcb-2014-v1",
@@ -762,6 +769,103 @@
           "NASA FIRMS for satellite fire context"
         ]
       }
+    },
+    "refresh": {
+      "ok": true,
+      "status": "SUCCESS",
+      "locations": [
+        {
+          "location_key": "13.1147,80.1098",
+          "ok": true,
+          "forecast_run_id": 364,
+          "providers": {
+            "air": {
+              "cache": "MISS",
+              "status": "SUCCESS",
+              "fetched_at": "2026-10-11T14:01:36.904214+00:00"
+            },
+            "weather": {
+              "cache": "HIT",
+              "status": "SUCCESS",
+              "fetched_at": "2026-10-11T14:00:52.449739+00:00"
+            },
+            "measured": {
+              "cache": "HIT",
+              "status": "SUCCESS",
+              "fetched_at": "2026-10-11T13:34:58.097369+00:00"
+            }
+          }
+        },
+        {
+          "location_key": "23.4000,70.4000",
+          "ok": true,
+          "forecast_run_id": 349,
+          "providers": {
+            "air": {
+              "cache": "HIT",
+              "status": "SUCCESS",
+              "fetched_at": "2026-10-11T13:52:19.133652+00:00"
+            },
+            "weather": {
+              "cache": "HIT",
+              "status": "SUCCESS",
+              "fetched_at": "2026-10-11T13:52:18.486053+00:00"
+            },
+            "measured": {
+              "cache": "HIT",
+              "status": "SUCCESS",
+              "fetched_at": "2026-10-11T13:52:07.718344+00:00"
+            }
+          }
+        }
+      ],
+      "verification": [],
+      "optional_ingestion": [
+        {
+          "fetched_at": "2026-10-11T14:03:24.326512+00:00",
+          "run": {
+            "source": "CPCB/data.gov.in",
+            "started_at": "2026-10-11T14:03:19.266458+00:00",
+            "dry_run": false,
+            "finished_at": "2026-10-11T14:03:21.899949+00:00",
+            "status": "FAILED",
+            "retrieved": 0,
+            "accepted": 0,
+            "flagged": 0,
+            "rejected": 0,
+            "duplicates": 0,
+            "written": 0,
+            "error": "Official measured source unavailable. cpcb data.gov.in: ConnectionError: HTTPSConnectionPool(host='api.data.gov.in', port=443): Max retries exceeded with url: /resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=<redacted>&format=json&offset=0&limit=1000 (Caused by NewConnectionError(\"HTTPSConnection(host='api.data.gov.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "notes": [],
+            "run_id": 131
+          }
+        },
+        {
+          "fetched_at": "2026-10-11T14:03:23.808695+00:00",
+          "run": {
+            "source": "NASA FIRMS",
+            "started_at": "2026-10-11T14:03:19.106200+00:00",
+            "dry_run": false,
+            "finished_at": "2026-10-11T14:03:21.381046+00:00",
+            "status": "SUCCESS",
+            "retrieved": 752,
+            "accepted": 752,
+            "flagged": 0,
+            "rejected": 0,
+            "duplicates": 752,
+            "written": 0,
+            "error": null,
+            "notes": [
+              "VIIRS_NOAA20_NRT: 230 detections in the last 1 day(s) inside 68,6,97.5,37.5",
+              "VIIRS_NOAA21_NRT: 522 detections in the last 1 day(s) inside 68,6,97.5,37.5"
+            ],
+            "run_id": 130
+          }
+        }
+      ],
+      "research_issuance": [],
+      "research_verification": [],
+      "finished_at": "2026-10-11T14:03:32.067259+00:00"
     }
   },
   "browser_visual_qa": "NOT_EXECUTED"

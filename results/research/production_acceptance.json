@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T08:00:48.654034+00:00",
+  "generated_at": "2026-10-11T14:25:07.296477+00:00",
   "url": "https://webapp-phi-taupe.vercel.app",
   "environment": "PUBLIC_PRODUCTION",
   "checks": [
@@ -46,6 +46,34 @@
       "kind": "SSR HTML"
     },
     {
+      "path": "/forecast",
+      "status": 200,
+      "method": "GET",
+      "authorized": false,
+      "kind": "SSR HTML"
+    },
+    {
+      "path": "/city-atlas",
+      "status": 200,
+      "method": "GET",
+      "authorized": false,
+      "kind": "SSR HTML"
+    },
+    {
+      "path": "/policy-simulator",
+      "status": 200,
+      "method": "GET",
+      "authorized": false,
+      "kind": "SSR HTML"
+    },
+    {
+      "path": "/status",
+      "status": 200,
+      "method": "GET",
+      "authorized": false,
+      "kind": "SSR HTML"
+    },
+    {
       "path": "/api/health",
       "status": 200,
       "method": "GET",
@@ -61,6 +89,27 @@
     },
     {
       "path": "/api/providers/status",
+      "status": 200,
+      "method": "GET",
+      "authorized": false,
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/status/scheduler",
+      "status": 200,
+      "method": "GET",
+      "authorized": false,
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/air-quality/tomorrow?lat=13.1147&lon=80.10981&name=Avadi",
+      "status": 200,
+      "method": "GET",
+      "authorized": false,
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/air-quality/context?lat=13.1147&lon=80.10981&name=Avadi",
       "status": 200,
       "method": "GET",
       "authorized": false,
@@ -179,21 +228,32 @@
       "kind": "HTTP JSON"
     },
     {
+      "path": "/api/air-quality/scenario",
+      "status": 200,
+      "method": "POST",
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/air-quality/scenario",
+      "status": 200,
+      "method": "POST",
+      "kind": "HTTP JSON"
+    },
+    {
+      "path": "/api/air-quality/scenario",
+      "status": 400,
+      "method": "POST",
+      "kind": "HTTP JSON"
+    },
+    {
       "path": "/api/internal/refresh",
       "status": 401,
       "method": "POST",
       "authorized": false,
       "kind": "HTTP JSON"
-    },
-    {
-      "path": "/api/internal/refresh",
-      "status": 200,
-      "method": "POST",
-      "authorized": true,
-      "kind": "HTTP JSON"
     }
   ],
-  "passed": 27,
+  "passed": 36,
   "evidence": {
     "research": {
       "forecasts": 0,
@@ -203,192 +263,456 @@
       "7_day_status": "COLLECTING",
       "30_day_status": "COLLECTING",
       "90_day_status": "COLLECTING",
-      "fixed_issuance_logging_active": false
+      "fixed_issuance_logging_active": true
+    },
+    "scheduler": {
+      "ok": true,
+      "generated_at": "2026-10-11T14:24:25.359057+00:00",
+      "protocol_version": "airguard-dayahead-20ist-v1",
+      "issuance": {
+        "state": "AWAITING_FIRST_CUTOFF",
+        "expected_cutoff": "2026-10-10T14:30:00+00:00",
+        "next_cutoff": "2026-10-11T14:30:00+00:00",
+        "alert_required": false,
+        "outbound_alerts": "NOT_CONFIGURED \u2014 requires opted-in channel/recipient; no messages sent"
+      },
+      "forecasts": 0,
+      "last_issue": null,
+      "last_issue_attempt": null,
+      "schedules": [
+        {
+          "jobname": "airguard-nationwide-refresh",
+          "schedule": "17 * * * *",
+          "active": true
+        },
+        {
+          "jobname": "airguard-research-issue",
+          "schedule": "30 14 * * *",
+          "active": true
+        },
+        {
+          "jobname": "airguard-research-prefetch",
+          "schedule": "20 14 * * *",
+          "active": true
+        },
+        {
+          "jobname": "airguard-research-verify",
+          "schedule": "30 1 * * *",
+          "active": true
+        }
+      ],
+      "heartbeats": [
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 14:23:51.061220+00:00",
+          "record_count": 12,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 14:17:33.524067+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 14:03:29.392931+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 13:17:36.363409+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 12:17:48.848206+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 11:17:47.037051+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 10:17:49.552740+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 09:17:23.489502+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 08:17:23.843303+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 08:03:44.594035+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 08:00:44.122459+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-11 07:57:37.831956+00:00",
+          "record_count": 2,
+          "error_class": null
+        }
+      ],
+      "notice": "Dispatch, retrieval, fixed-time issuance and measured-outcome verification are different events. No forecast is backdated."
     },
     "avadi": {
       "current": {
-        "aqi": 88,
-        "category": {
-          "label": "Satisfactory",
-          "upper": 100,
-          "colour": "#8db600",
-          "index": 1
-        },
-        "dominant_pollutant": "O3",
-        "status": "VALID",
-        "qualifier": "EXACT",
-        "sub_indices": {
-          "PM2.5": {
-            "value": 48,
-            "qualifier": "EXACT"
-          },
-          "PM10": {
-            "value": 40,
-            "qualifier": "EXACT"
-          },
-          "NO2": {
-            "value": 16,
-            "qualifier": "EXACT"
-          },
-          "SO2": {
-            "value": 17,
-            "qualifier": "EXACT"
-          },
-          "CO": {
-            "value": 10,
-            "qualifier": "EXACT"
-          },
-          "O3": {
-            "value": 88,
-            "qualifier": "EXACT"
-          }
-        },
-        "methodology_version": "airguard-cpcb-2014-v1",
-        "pollutants": {
-          "PM2.5": {
-            "concentration": 28.55,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 48,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "PM10": {
-            "concentration": 39.9208,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 40,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "NO2": {
-            "concentration": 12.9375,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 16,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "SO2": {
-            "concentration": 13.4625,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 17,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "CO": {
-            "concentration": 0.1943,
-            "unit": "mg/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "8h trailing mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 10,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "O3": {
-            "concentration": 87.625,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "8h trailing mean",
-            "ozone_one_hour_max": 138.0,
-            "sub_index": {
-              "value": 88,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "NH3": {
-            "concentration": null,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 0,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": null,
-            "trend": "NOT_ESTIMATED",
-            "quality": "INSUFFICIENT_DATA"
-          },
-          "Pb": {
-            "concentration": null,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 0,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": null,
-            "trend": "NOT_ESTIMATED",
-            "quality": "INSUFFICIENT_DATA"
-          }
-        },
-        "coverage": {
-          "PM2.5": 24,
-          "PM10": 24,
-          "NO2": 24,
-          "SO2": 24,
-          "CO": 24,
-          "O3": 24,
-          "NH3": 0,
-          "Pb": 0
-        },
-        "window_start": "2026-10-10T07:30:00+00:00",
-        "window_end": "2026-10-11T07:30:00+00:00",
-        "source_type": "modelled_forecast",
-        "measured_or_modelled": "MODELLED",
-        "source": "Open-Meteo / CAMS global",
-        "timestamp": "2026-10-11T06:30:00+00:00",
-        "fetched_at": "2026-10-11T07:56:42.075674+00:00",
-        "freshness": "FRESH",
-        "station": null,
-        "fallback_reason": "Modelled air-quality estimate \u2014 no sufficiently recent nearby station with adequate hourly pollutant data.",
-        "model": "cams_global",
+        "aqi": 130,
         "grid": {
           "lat": 13.200005,
           "lon": 80.0,
           "native_resolution_degrees": 0.4
-        }
-      },
-      "tomorrow": {
-        "aqi": 137,
+        },
+        "model": "cams_global",
+        "source": "Open-Meteo / CAMS global",
+        "status": "VALID",
+        "station": null,
         "category": {
+          "index": 2,
           "label": "Moderate",
           "upper": 200,
-          "colour": "#e8b500",
-          "index": 2
+          "colour": "#e8b500"
         },
-        "dominant_pollutant": "O3",
-        "status": "VALID",
+        "coverage": {
+          "CO": 24,
+          "O3": 24,
+          "Pb": 0,
+          "NH3": 0,
+          "NO2": 24,
+          "SO2": 24,
+          "PM10": 24,
+          "PM2.5": 24
+        },
+        "freshness": "FRESH",
         "qualifier": "EXACT",
-        "sub_indices": {
+        "timestamp": "2026-10-11T12:30:00+00:00",
+        "fetched_at": "2026-10-11T14:22:38.511564+00:00",
+        "pollutants": {
+          "CO": {
+            "unit": "mg/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 9,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 0.1811,
+            "averaging_window": "8h trailing mean",
+            "ozone_one_hour_max": null
+          },
+          "O3": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 130,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 120.125,
+            "averaging_window": "8h trailing mean",
+            "ozone_one_hour_max": 136.0
+          },
+          "Pb": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "INSUFFICIENT_DATA",
+            "sub_index": null,
+            "valid_hours": 0,
+            "concentration": null,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "NH3": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "INSUFFICIENT_DATA",
+            "sub_index": null,
+            "valid_hours": 0,
+            "concentration": null,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "NO2": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 15,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 12.0375,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "SO2": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 16,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 12.8125,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "PM10": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 39,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 38.9,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
           "PM2.5": {
-            "value": 56,
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 46,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 27.8333,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          }
+        },
+        "window_end": "2026-10-11T13:30:00+00:00",
+        "source_type": "modelled_forecast",
+        "sub_indices": {
+          "CO": {
+            "value": 9,
+            "qualifier": "EXACT"
+          },
+          "O3": {
+            "value": 130,
+            "qualifier": "EXACT"
+          },
+          "NO2": {
+            "value": 15,
+            "qualifier": "EXACT"
+          },
+          "SO2": {
+            "value": 16,
             "qualifier": "EXACT"
           },
           "PM10": {
-            "value": 43,
+            "value": 39,
+            "qualifier": "EXACT"
+          },
+          "PM2.5": {
+            "value": 46,
+            "qualifier": "EXACT"
+          }
+        },
+        "window_start": "2026-10-10T13:30:00+00:00",
+        "fallback_reason": "Modelled air-quality estimate \u2014 no sufficiently recent nearby station with adequate hourly pollutant data.",
+        "dominant_pollutant": "O3",
+        "methodology_version": "airguard-cpcb-2014-v1",
+        "measured_or_modelled": "MODELLED"
+      },
+      "tomorrow": {
+        "aqi": 141,
+        "date": "2026-10-12",
+        "grid": {
+          "lat": 13.200005,
+          "lon": 80.0,
+          "native_resolution_degrees": 0.4
+        },
+        "model": "cams_global",
+        "range": {
+          "max": 141,
+          "min": 64,
+          "meaning": "Expected AQI variation through the day; not a confidence interval"
+        },
+        "status": "VALID",
+        "category": {
+          "index": 2,
+          "label": "Moderate",
+          "upper": 200,
+          "colour": "#e8b500"
+        },
+        "coverage": {
+          "CO": 24,
+          "O3": 24,
+          "Pb": 0,
+          "NH3": 0,
+          "NO2": 24,
+          "SO2": 24,
+          "PM10": 24,
+          "PM2.5": 24
+        },
+        "peak_aqi": 141,
+        "provider": "open_meteo",
+        "freshness": "FRESH",
+        "issued_at": "2026-10-11T14:22:38.511564+00:00",
+        "peak_hour": "2026-10-12T10:30:00+00:00",
+        "qualifier": "EXACT",
+        "pollutants": {
+          "CO": {
+            "unit": "mg/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 17,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 0.33,
+            "averaging_window": "maximum trailing 8h mean",
+            "ozone_one_hour_max": null
+          },
+          "O3": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 141,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 128.125,
+            "averaging_window": "maximum trailing 8h mean",
+            "ozone_one_hour_max": 140.0
+          },
+          "Pb": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "INSUFFICIENT_DATA",
+            "sub_index": null,
+            "valid_hours": 0,
+            "concentration": null,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "NH3": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "INSUFFICIENT_DATA",
+            "sub_index": null,
+            "valid_hours": 0,
+            "concentration": null,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "NO2": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 12,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 9.5,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "SO2": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 16,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 12.4083,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "PM10": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 47,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 47.1125,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          },
+          "PM2.5": {
+            "unit": "\u00b5g/m\u00b3",
+            "trend": "NOT_ESTIMATED",
+            "quality": "VALID",
+            "sub_index": {
+              "value": 60,
+              "qualifier": "EXACT"
+            },
+            "valid_hours": 24,
+            "concentration": 36.1667,
+            "averaging_window": "24h mean",
+            "ozone_one_hour_max": null
+          }
+        },
+        "window_end": "2026-10-12T18:30:00+00:00",
+        "source_type": "modelled_forecast",
+        "sub_indices": {
+          "CO": {
+            "value": 17,
+            "qualifier": "EXACT"
+          },
+          "O3": {
+            "value": 141,
             "qualifier": "EXACT"
           },
           "NO2": {
@@ -396,242 +720,90 @@
             "qualifier": "EXACT"
           },
           "SO2": {
-            "value": 15,
+            "value": 16,
             "qualifier": "EXACT"
-          },
-          "CO": {
-            "value": 17,
-            "qualifier": "EXACT"
-          },
-          "O3": {
-            "value": 137,
-            "qualifier": "EXACT"
-          }
-        },
-        "methodology_version": "airguard-cpcb-2014-v1",
-        "pollutants": {
-          "PM2.5": {
-            "concentration": 33.325,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 56,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
           },
           "PM10": {
-            "concentration": 43.1625,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 43,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
+            "value": 47,
+            "qualifier": "EXACT"
           },
-          "NO2": {
-            "concentration": 9.2708,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 12,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "SO2": {
-            "concentration": 11.775,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 15,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "CO": {
-            "concentration": 0.33,
-            "unit": "mg/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "maximum trailing 8h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": {
-              "value": 17,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "O3": {
-            "concentration": 124.875,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 24,
-            "averaging_window": "maximum trailing 8h mean",
-            "ozone_one_hour_max": 136.0,
-            "sub_index": {
-              "value": 137,
-              "qualifier": "EXACT"
-            },
-            "trend": "NOT_ESTIMATED",
-            "quality": "VALID"
-          },
-          "NH3": {
-            "concentration": null,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 0,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": null,
-            "trend": "NOT_ESTIMATED",
-            "quality": "INSUFFICIENT_DATA"
-          },
-          "Pb": {
-            "concentration": null,
-            "unit": "\u00b5g/m\u00b3",
-            "valid_hours": 0,
-            "averaging_window": "24h mean",
-            "ozone_one_hour_max": null,
-            "sub_index": null,
-            "trend": "NOT_ESTIMATED",
-            "quality": "INSUFFICIENT_DATA"
+          "PM2.5": {
+            "value": 60,
+            "qualifier": "EXACT"
           }
         },
-        "coverage": {
-          "PM2.5": 24,
-          "PM10": 24,
-          "NO2": 24,
-          "SO2": 24,
-          "CO": 24,
-          "O3": 24,
-          "NH3": 0,
-          "Pb": 0
-        },
         "window_start": "2026-10-11T18:30:00+00:00",
-        "window_end": "2026-10-12T18:30:00+00:00",
-        "date": "2026-10-12",
-        "source_type": "modelled_forecast",
-        "provider": "open_meteo",
-        "model": "cams_global",
-        "issued_at": "2026-10-11T07:56:42.075674+00:00",
-        "freshness": "FRESH",
-        "peak_aqi": 137,
-        "peak_hour": "2026-10-12T10:30:00+00:00",
-        "lower_exposure_window": {
-          "start": "2026-10-11T22:30:00+00:00",
-          "end": "2026-10-12T01:30:00+00:00",
-          "min_aqi": 68,
-          "max_aqi": 70,
-          "meaning": "Relative comparison of rolling CPCB-style forecast indices; not zero health risk."
-        },
-        "highest_exposure_window": {
-          "start": "2026-10-12T09:30:00+00:00",
-          "end": "2026-10-12T12:30:00+00:00",
-          "min_aqi": 133,
-          "max_aqi": 137,
-          "meaning": "Relative comparison of rolling CPCB-style forecast indices; not zero health risk."
-        },
-        "forecast_mode": "CAMS_BASED_NATIONWIDE",
-        "correction_status": "NOT_VALIDATED",
-        "correction_notice": "AirGuard station correction is not validated for this location.",
-        "cams_baseline_aqi": 137,
         "corrected_aqi": null,
-        "prediction_interval": null,
+        "forecast_mode": "CAMS_BASED_NATIONWIDE",
         "model_version": null,
+        "forecast_run_id": 418,
+        "cams_baseline_aqi": 141,
+        "correction_notice": "AirGuard station correction is not validated for this location.",
+        "correction_status": "NOT_VALIDATED",
+        "dominant_pollutant": "O3",
         "provider_issued_at": null,
-        "grid": {
-          "lat": 13.200005,
-          "lon": 80.0,
-          "native_resolution_degrees": 0.4
+        "methodology_version": "airguard-cpcb-2014-v1",
+        "prediction_interval": null,
+        "lower_exposure_window": {
+          "end": "2026-10-12T02:30:00+00:00",
+          "start": "2026-10-12T00:30:00+00:00",
+          "meaning": "Instantaneous relative hourly exposure, not official AQI or zero health risk.",
+          "window_hours": 2,
+          "practical_hours": [
+            6,
+            21
+          ],
+          "common_pollutants": [
+            "CO",
+            "NO2",
+            "O3",
+            "PM10",
+            "PM2.5",
+            "SO2"
+          ],
+          "max_exposure_index": 85,
+          "min_exposure_index": 69,
+          "methodology_version": "hourly-relative-practical-window-v2",
+          "boundary_layer_caveat": "Boundary-layer mixing and street-level emissions can change local exposure; modelled windows are approximate."
         },
-        "raw_forecast_reference": "f0106b9fca6a2978849e9cc0b2a9eba934497f3532e05447423723d027c98b32",
-        "range": {
-          "min": 68,
-          "max": 137,
-          "meaning": "Expected AQI variation through the day; not a confidence interval"
-        },
-        "forecast_run_id": 143
+        "raw_forecast_reference": "50232f04d33c1f51711bdfb805c3a1be5d78dc2e259b5c27f8b2e988769cbcda",
+        "highest_exposure_window": {
+          "end": "2026-10-12T07:30:00+00:00",
+          "start": "2026-10-12T05:30:00+00:00",
+          "meaning": "Instantaneous relative hourly exposure, not official AQI or zero health risk.",
+          "window_hours": 2,
+          "practical_hours": [
+            6,
+            21
+          ],
+          "common_pollutants": [
+            "CO",
+            "NO2",
+            "O3",
+            "PM10",
+            "PM2.5",
+            "SO2"
+          ],
+          "max_exposure_index": 159,
+          "min_exposure_index": 156,
+          "methodology_version": "hourly-relative-practical-window-v2",
+          "boundary_layer_caveat": "Boundary-layer mixing and street-level emissions can change local exposure; modelled windows are approximate."
+        }
       },
       "provenance": {
-        "methodology_version": "airguard-cpcb-2014-v1",
-        "methodology_source": "https://airquality.cpcb.gov.in/ccr_docs/FINAL-REPORT_AQI_.pdf",
-        "current_averaging": "trailing 24h / trailing 8h; minimum 16 valid hourly bins per pollutant",
-        "tomorrow_averaging": "IST daily means for 24h pollutants; maximum full trailing 8h CO/O3 mean ending in the day; high O3 uses 1h mathematical bands",
         "forecast": "AirGuard CPCB-style modelled forecast, not an official CPCB forecast",
-        "issue_time_basis": "AirGuard retrieval; upstream model run initialization is not exposed by this API",
         "attribution": [
           "Open-Meteo.com",
           "Copernicus Atmosphere Monitoring Service (CAMS)",
           "OpenAQ and station-specific upstream providers",
           "NASA FIRMS for satellite fire context"
-        ]
+        ],
+        "issue_time_basis": "AirGuard retrieval; upstream model run initialization is not exposed by this API",
+        "current_averaging": "trailing 24h / trailing 8h; minimum 16 valid hourly bins per pollutant",
+        "methodology_source": "https://airquality.cpcb.gov.in/ccr_docs/FINAL-REPORT_AQI_.pdf",
+        "tomorrow_averaging": "IST daily means for 24h pollutants; maximum full trailing 8h CO/O3 mean ending in the day; high O3 uses 1h mathematical bands",
+        "methodology_version": "airguard-cpcb-2014-v1"
       }
-    },
-    "refresh": {
-      "ok": true,
-      "status": "SUCCESS",
-      "locations": [
-        {
-          "location_key": "23.4000,70.4000",
-          "ok": true,
-          "forecast_run_id": 144,
-          "providers": {
-            "measured": {
-              "status": "SUCCESS",
-              "cache": "HIT",
-              "fetched_at": "2026-10-11T07:56:43.368431+00:00"
-            },
-            "weather": {
-              "status": "SUCCESS",
-              "cache": "HIT",
-              "fetched_at": "2026-10-11T07:56:54.090767+00:00"
-            },
-            "air": {
-              "status": "SUCCESS",
-              "cache": "HIT",
-              "fetched_at": "2026-10-11T07:56:55.498332+00:00"
-            }
-          }
-        },
-        {
-          "location_key": "9.9312,76.2673",
-          "ok": true,
-          "forecast_run_id": 156,
-          "providers": {
-            "measured": {
-              "status": "SUCCESS",
-              "cache": "HIT",
-              "fetched_at": "2026-10-11T08:00:00.739061+00:00"
-            },
-            "air": {
-              "status": "SUCCESS",
-              "cache": "HIT",
-              "fetched_at": "2026-10-11T08:00:13.013820+00:00"
-            },
-            "weather": {
-              "status": "SUCCESS",
-              "cache": "HIT",
-              "fetched_at": "2026-10-11T08:00:11.089833+00:00"
-            }
-          }
-        }
-      ],
-      "verification": [],
-      "research_issuance": [],
-      "research_verification": [],
-      "finished_at": "2026-10-11T08:00:46.800008+00:00"
     }
   },
   "browser_visual_qa": "NOT_EXECUTED"

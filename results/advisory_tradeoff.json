@@ -4,6 +4,6 @@
   "metrics": null,
   "n": 0,
   "study_hash": "cae098c5fc370b27aec783f4f360a42a10b9ab3af7ade41249f02d4d4b3d47d9",
-  "data_version": "f88d2f1053ae0dec8ffb5fb2d406e6495d10a13a9c447701b4079440d27ff689",
+  "data_version": "67ff1ba1428493ecec8af27a756651169e2ac9fde743119128013e74ec1966ca",
   "reason": "Insufficient genuine issue-time station pairs for preregistered 365/30/30 and locked 90-day temporal/spatial evaluation."
 }

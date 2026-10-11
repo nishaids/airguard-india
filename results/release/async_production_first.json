@@ -1,0 +1,163 @@
+{
+  "generated_at": "2026-10-11T14:47:58.057878+00:00",
+  "origin": "https://webapp-phi-taupe.vercel.app",
+  "passed": 3,
+  "note": "Three genuine provider-grid cache misses. This is a functional latency sample, not a statistically validated p95 claim.",
+  "checks": [
+    {
+      "location": "Jaisalmer",
+      "coordinates": [
+        26.9,
+        70.9
+      ],
+      "elapsed_seconds": 32.17,
+      "requests": [
+        {
+          "status": 202,
+          "ttfb_ms": 4511,
+          "state": "QUEUED"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 4388,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 4420,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 200,
+          "ttfb_ms": 3805,
+          "state": null
+        }
+      ],
+      "provider_status": {
+        "air": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:46:29.266687+00:00"
+        },
+        "weather": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:46:28.240203+00:00"
+        },
+        "measured": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:46:22.921028+00:00"
+        }
+      },
+      "current_aqi": 250,
+      "tomorrow_aqi": 150,
+      "tomorrow_date": "2026-10-12"
+    },
+    {
+      "location": "Chitradurga",
+      "coordinates": [
+        14.22,
+        76.4
+      ],
+      "elapsed_seconds": 32.03,
+      "requests": [
+        {
+          "status": 202,
+          "ttfb_ms": 4467,
+          "state": "QUEUED"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 4358,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 4394,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 200,
+          "ttfb_ms": 3790,
+          "state": null
+        }
+      ],
+      "provider_status": {
+        "air": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:47:06.719265+00:00"
+        },
+        "weather": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:47:05.636084+00:00"
+        },
+        "measured": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:47:00.357080+00:00"
+        }
+      },
+      "current_aqi": 150,
+      "tomorrow_aqi": 167,
+      "tomorrow_date": "2026-10-12"
+    },
+    {
+      "location": "Latur",
+      "coordinates": [
+        18.4,
+        76.56
+      ],
+      "elapsed_seconds": 42.09,
+      "requests": [
+        {
+          "status": 202,
+          "ttfb_ms": 4809,
+          "state": "QUEUED"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 4345,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 4465,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 4332,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 200,
+          "ttfb_ms": 4095,
+          "state": null
+        }
+      ],
+      "provider_status": {
+        "air": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:47:42.434332+00:00"
+        },
+        "weather": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:47:41.372846+00:00"
+        },
+        "measured": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:47:36.079858+00:00"
+        }
+      },
+      "current_aqi": 166,
+      "tomorrow_aqi": 184,
+      "tomorrow_date": "2026-10-12"
+    }
+  ]
+}

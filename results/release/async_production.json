@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-10-11T14:56:12.345013+00:00",
+  "origin": "https://webapp-phi-taupe.vercel.app",
+  "passed": 3,
+  "note": "Three genuine provider-grid cache misses. This is a functional latency sample, not a statistically validated p95 claim.",
+  "checks": [
+    {
+      "location": "Pilani",
+      "coordinates": [
+        28.36,
+        75.6
+      ],
+      "before": {
+        "summary_cached": false,
+        "provider_cached": false
+      },
+      "elapsed_seconds": 27.55,
+      "requests": [
+        {
+          "status": 202,
+          "ttfb_ms": 3263,
+          "state": "QUEUED"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 3139,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 2971,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 200,
+          "ttfb_ms": 3118,
+          "state": null
+        }
+      ],
+      "provider_status": {
+        "air": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:54:56.587463+00:00"
+        },
+        "weather": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:54:55.909361+00:00"
+        },
+        "measured": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:54:50.512135+00:00"
+        }
+      },
+      "current_aqi": 136,
+      "tomorrow_aqi": 172,
+      "tomorrow_date": "2026-10-12"
+    },
+    {
+      "location": "Madikeri",
+      "coordinates": [
+        12.42,
+        75.73
+      ],
+      "before": {
+        "summary_cached": false,
+        "provider_cached": false
+      },
+      "elapsed_seconds": 27.47,
+      "requests": [
+        {
+          "status": 202,
+          "ttfb_ms": 3043,
+          "state": "QUEUED"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 3140,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 3183,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 200,
+          "ttfb_ms": 3076,
+          "state": null
+        }
+      ],
+      "provider_status": {
+        "air": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:55:24.428828+00:00"
+        },
+        "weather": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:55:23.702075+00:00"
+        },
+        "measured": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:55:18.111340+00:00"
+        }
+      },
+      "current_aqi": 113,
+      "tomorrow_aqi": 138,
+      "tomorrow_date": "2026-10-12"
+    },
+    {
+      "location": "Nanded",
+      "coordinates": [
+        19.16,
+        77.31
+      ],
+      "before": {
+        "summary_cached": false,
+        "provider_cached": false
+      },
+      "elapsed_seconds": 34.86,
+      "requests": [
+        {
+          "status": 202,
+          "ttfb_ms": 3003,
+          "state": "QUEUED"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 2979,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 2913,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 202,
+          "ttfb_ms": 2868,
+          "state": "IN_PROGRESS"
+        },
+        {
+          "status": 200,
+          "ttfb_ms": 3063,
+          "state": null
+        }
+      ],
+      "provider_status": {
+        "air": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:56:00.513196+00:00"
+        },
+        "weather": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:55:59.237746+00:00"
+        },
+        "measured": {
+          "cache": "MISS",
+          "status": "SUCCESS",
+          "fetched_at": "2026-10-11T14:55:53.635267+00:00"
+        }
+      },
+      "current_aqi": 153,
+      "tomorrow_aqi": 181,
+      "tomorrow_date": "2026-10-12"
+    }
+  ]
+}

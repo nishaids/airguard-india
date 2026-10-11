@@ -51,6 +51,17 @@ class Store:
             cur.execute('select airguard.enqueue_summary(%s,%s,%s) state', (key,lat,lon))
             return cur.fetchone()['state']
 
+    def lookup_or_enqueue_summary(self,key,lat,lon,target_date):
+        with self.cursor() as cur:
+            cur.execute("""with cached as (
+                select payload,fetched_at,expires_at from airguard.cache_metadata
+                where cache_key=%s and payload is not null and expires_at>now()
+                and payload->'tomorrow'->>'date'=%s)
+                select payload,fetched_at,expires_at,null::text state from cached
+                union all select null,null,null,airguard.enqueue_summary(%s,%s,%s)
+                where not exists(select 1 from cached)""", (key,target_date,key,lat,lon))
+            return dict(cur.fetchone())
+
     def summary_job_owned(self, key, token):
         with self.cursor() as cur:
             cur.execute("select 1 from airguard.cache_metadata where cache_key=%s and lease_token=%s and lease_until>now()", ('queue:'+key,token))
@@ -114,6 +125,23 @@ class Store:
                 (bucket, start, limit))
             if not cur.fetchone():
                 raise BudgetExceeded(bucket)
+
+    def budget_requests(self,bucket):
+        now=datetime.now(timezone.utc)
+        start=datetime.fromtimestamp(int(now.timestamp()//60)*60,timezone.utc)
+        with self.cursor() as cur:
+            cur.execute("""with client as (
+                insert into airguard.request_budgets(bucket,window_start,used) values(%s,%s,1)
+                on conflict(bucket) do update set window_start=excluded.window_start,
+                used=case when airguard.request_budgets.window_start=excluded.window_start then airguard.request_budgets.used+1 else 1 end
+                where airguard.request_budgets.window_start<>excluded.window_start or airguard.request_budgets.used<60 returning used
+              ), shared as (
+                insert into airguard.request_budgets(bucket,window_start,used) values('requests-all',%s,1)
+                on conflict(bucket) do update set window_start=excluded.window_start,
+                used=case when airguard.request_budgets.window_start=excluded.window_start then airguard.request_budgets.used+1 else 1 end
+                where airguard.request_budgets.window_start<>excluded.window_start or airguard.request_budgets.used<120 returning used)
+              select exists(select 1 from client) and exists(select 1 from shared) accepted""", (bucket,start,start))
+            if not cur.fetchone()['accepted']: raise BudgetExceeded(bucket)
 
     def event(self, provider, operation, status, latency, count=0, http_status=None, error_class=None, detail=None):
         from src.ingestion.settings import redact

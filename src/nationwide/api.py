@@ -73,8 +73,11 @@ def _dispatch(operation, payload, authorization="", client="anonymous", service=
             return 200, refresh(service)
         # Shared across invocations. Salted hashes only, not browser health cohorts.
         token = hashlib.sha256(((secret("CRON_SECRET") or "airguard") + client).encode()).hexdigest()
-        service.store.budget("request:"+token,60,60)
-        service.store.budget("requests-all",120,60)
+        if hasattr(service.store,'budget_requests'):
+            service.store.budget_requests('request:'+token)
+        else:
+            service.store.budget("request:"+token,60,60)
+            service.store.budget("requests-all",120,60)
         if operation=='research':
             from src.research.storage import ResearchStore
             return 200,ResearchStore(service.store).public()

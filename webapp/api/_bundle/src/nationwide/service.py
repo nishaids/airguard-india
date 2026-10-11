@@ -86,7 +86,12 @@ class Service:
         now = utcnow()
         key = self.summary_key(lat,lon,now)
         if not force:
-            hit = self.store.get(key)
+            if defer and hasattr(self.store,'lookup_or_enqueue_summary'):
+                hit=self.store.lookup_or_enqueue_summary(key,lat,lon,tomorrow_period(now)[0].astimezone(IST).date().isoformat())
+                if hit.get('state'):
+                    return self.pending(hit['state'],lat,lon,name,region)
+            else:
+                hit = self.store.get(key)
             if hit and hit['expires_at'] > now:
                 result = copy.deepcopy(hit['payload'])
                 if result.get('tomorrow',{}).get('date') == tomorrow_period(now)[0].astimezone(IST).date().isoformat():
@@ -96,8 +101,7 @@ class Service:
                     return result
         if defer and not force and hasattr(self.store,'enqueue_summary'):
             state = self.store.enqueue_summary(key,lat,lon)
-            return {'ok':False,'state':state,'retry_after':5,'location':{'key':f'{lat:.4f},{lon:.4f}','lat':lat,'lon':lon,'name':name or 'Selected coordinates','region':region,'timezone':'Asia/Kolkata'},
-                    'message':'Live providers are being retrieved. No estimated values are shown yet.' if state!='FAILED' else 'Provider retrieval failed. Please retry shortly.'}
+            return self.pending(state,lat,lon,name,region)
         result = self._build_summary(lat,lon,name,region,force)
         # Cache successful values only; failures must be retried and never
         # remain labelled fresh after the next IST hour or calendar day.
@@ -110,6 +114,11 @@ class Service:
                 finally: self.store.release(key,token)
             result['response_cache'] = {'status':'MISS','computed_at':result['refreshed_at'],'expires_at':(now+timedelta(seconds=seconds)).isoformat()}
         return result
+
+    @staticmethod
+    def pending(state,lat,lon,name,region):
+        return {'ok':False,'state':state,'retry_after':5,'location':{'key':f'{lat:.4f},{lon:.4f}','lat':lat,'lon':lon,'name':name or 'Selected coordinates','region':region,'timezone':'Asia/Kolkata'},
+                'message':'Live providers are being retrieved. No estimated values are shown yet.' if state!='FAILED' else 'Provider retrieval failed. Please retry shortly.'}
 
     @staticmethod
     def summary_key(lat,lon,now=None):

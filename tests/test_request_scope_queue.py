@@ -1,5 +1,6 @@
 """Connection lifecycle and asynchronous public/private trust boundary."""
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 import uuid
@@ -42,7 +43,7 @@ def test_worker_threads_get_separate_connections_and_no_global_pool():
 
 
 def test_uncached_public_request_queues_without_calling_providers():
-    store=MagicMock();store.get.return_value=None;store.enqueue_summary.return_value='QUEUED'
+    store=MagicMock();store.lookup_or_enqueue_summary.return_value={'state':'QUEUED'}
     service=Service(store=store,providers=MagicMock())
     status,data=dispatch('summary',{'lat':'13.12','lon':'80.11'},service=service)
     assert status==202 and data['state']=='QUEUED' and 'current' not in data
@@ -51,7 +52,7 @@ def test_uncached_public_request_queues_without_calling_providers():
 
 
 def test_failed_background_fetch_is_not_presented_as_live_data():
-    store=MagicMock();store.get.return_value=None;store.enqueue_summary.return_value='FAILED'
+    store=MagicMock();store.lookup_or_enqueue_summary.return_value={'state':'FAILED'}
     status,data=dispatch('current',{'lat':'13.12','lon':'80.11'},service=Service(store=store))
     assert status==503 and data['ok'] is False and 'current' not in data
 
@@ -82,6 +83,16 @@ def test_real_queue_collapses_duplicates_and_rolls_back_dispatch():
     if not secret('DATABASE_URL'): pytest.skip('DATABASE_URL is not configured')
     connection=connect()
     try:
+        from psycopg2.extras import RealDictCursor
+        class RollbackStore(Store):
+            @contextmanager
+            def cursor(self):
+                with connection.cursor(cursor_factory=RealDictCursor) as cur:
+                    cur.execute('savepoint operation')
+                    try: yield cur
+                    except Exception:
+                        cur.execute('rollback to savepoint operation');raise
+        store=RollbackStore()
         with connection.cursor() as cur:
             key='summary:test-rollback:'+str(uuid.uuid4())
             cur.execute('select airguard.enqueue_summary(%s,13.12,80.11)',(key,))
@@ -92,6 +103,23 @@ def test_real_queue_collapses_duplicates_and_rolls_back_dispatch():
             assert cur.fetchone()[0]==1
             cur.execute("select has_function_privilege('anon','airguard.enqueue_summary(text,double precision,double precision)','execute')")
             assert cur.fetchone()[0] is False
+            assert store.lookup_or_enqueue_summary(key,13.12,80.11,'2099-01-01')['state']=='IN_PROGRESS'
+            # A valid cached value wins and does not dispatch another job.
+            from psycopg2.extras import Json
+            cur.execute("insert into airguard.cache_metadata(cache_key,provider,payload,fetched_at,expires_at) values(%s,'summary',%s,now(),now()+interval '60 seconds')",(key,Json({'tomorrow':{'date':'2099-01-01'}})))
+            hit=store.lookup_or_enqueue_summary(key,13.12,80.11,'2099-01-01')
+            assert hit['state'] is None and hit['payload']['tomorrow']['date']=='2099-01-01'
+            # Both request quotas are enforced in one transaction/round trip.
+            fixed=datetime(2098,1,1,12,tzinfo=timezone.utc)
+            bucket='request:test-rollback:'+str(uuid.uuid4())
+            with patch('src.nationwide.store.datetime') as clock:
+                clock.now.return_value=fixed;clock.fromtimestamp.return_value=fixed
+                store.budget_requests(bucket);store.budget_requests(bucket)
+                cur.execute('update airguard.request_budgets set used=60 where bucket=%s',(bucket,))
+                from src.nationwide.store import BudgetExceeded
+                with pytest.raises(BudgetExceeded):store.budget_requests(bucket)
+                cur.execute("select used from airguard.request_budgets where bucket='requests-all'")
+                assert cur.fetchone()[0]==2
             # pg_net sends only after commit. This test never commits a request.
     finally:
         connection.rollback();connection.close()

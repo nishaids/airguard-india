@@ -210,7 +210,7 @@ export default function ForecastPage() {
           <div className="grid grid-4">
             <Metric hero label="Predicted AQI" value={result.predicted_aqi.toFixed(0)} delta={`observed today ${result.observed_aqi_today?.toFixed(0) ?? "—"}`} />
             <Metric hero label="Predicted band" value={result.predicted_bucket} delta={result.confidence !== null ? `model score ${Math.round(result.confidence * 100)}%` : undefined} help="The classifier's top-class score. It is not a calibrated probability: on test data, forecasts shown at 95% or more were right about 89% of the time." />
-            <Metric hero label={`HAI · ${meta.cohort_labels[cohort]}`} value={result.cohort.hai.toFixed(0)} delta={band} help={result.cohort.rationale} />
+            <Metric hero label={`HAI v1 · ${meta.cohort_labels[cohort]}`} value={result.cohort.hai.toFixed(0)} delta={band} help={`HAI v1 (heuristic, superseded): its cohort factors were set by hand rather than derived from concentration-response evidence, so a difference from the CPCB AQI follows partly from that choice. The evidence-grounded v2 framework is in config/hai_factors.yaml and adopts no coefficient until a qualified reviewer approves one. ${result.cohort.rationale}`} />
             <Metric hero label="Dominant pollutant" value={result.cohort.dominant_pollutant || "n/a"} delta={result.safe_window ? `cleanest ${result.safe_window}` : undefined} />
           </div>
 
@@ -291,7 +291,7 @@ export default function ForecastPage() {
               <h3>Every cohort, same day</h3>
               <div className="table-wrap">
                 <table>
-                  <thead><tr><th>Cohort</th><th>HAI</th><th>Band</th></tr></thead>
+                  <thead><tr><th>Cohort</th><th>HAI v1 (heuristic, superseded)</th><th>Band</th></tr></thead>
                   <tbody>
                     {[...result.all_cohorts].sort((a, b) => b.hai - a.hai).map((c) => (
                       <tr key={c.cohort}>

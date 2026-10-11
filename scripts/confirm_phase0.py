@@ -178,13 +178,18 @@ def verdicts(e):
         23: ('BLOCKED', 'Diebold-Mariano and bootstrap intervals have nothing to compare until the backtest produces '
              'daily loss differentials.',
              ['results/backtest_main.json']),
-        24: ('BLOCKED', 'Hand-set vulnerability factors are unchanged in HAI v1. HAI v2 cannot adopt published '
-             'coefficients until a qualified human evidence review approves them.',
-             ['src/features/hai.py::LAMBDA_COEXPOSURE', 'results/hai_v2.json',
-              'HUMAN_ACTIONS.md::Health factors']),
-        25: ('OPEN', 'The circular 66.9 percent headline is no longer promoted anywhere in the product, but the '
-             'Monte-Carlo sensitivity analysis that should replace it does not exist yet.',
-             ['results/hai_sensitivity.json', 'results/hai_divergence.json']),
+        24: ('PARTIAL', 'The v2 framework replaces hand-set factors with AQHI-style excess risk over published '
+             'coefficients, and the register ships with every coefficient unadopted and every cohort factor at '
+             'exactly 1.0, each stating why. v1 remains, labelled heuristic and superseded. Adoption itself waits '
+             'on a qualified evidence review, so no v2 value is produced.',
+             ['src/features/hai_v2.py::def excess_risk', 'config/hai_factors.yaml::AWAITING_EVIDENCE_REVIEW',
+              'webapp/app/historical-replay/page.js::HAI v1', 'HUMAN_ACTIONS.md::Health factors']),
+        25: ('PARTIAL', 'The circular headline is no longer promoted, and the replacement harness exists: it '
+             'samples coefficient draws, reports a median and 95% interval instead of one number, and reports the '
+             'aggregation effect separately from the vulnerability effect so the two cannot be conflated. It needs '
+             'published confidence intervals to sample from before it can produce a result.',
+             ['src/features/hai_v2.py::def monte_carlo', 'tests/test_hai_v2.py::vulnerability',
+              'results/hai_sensitivity.json']),
         26: ('OPEN', 'The literature-review gate is still unpassed, so the novelty claim has not been re-scoped in '
              'writing against AQHI prior art.',
              ['results/research/research_readiness.json::literature_review_complete', 'paper/main.tex']),
@@ -196,9 +201,12 @@ def verdicts(e):
         29: ('BLOCKED', 'Clustering is unchanged pending coverage-gated station features; the replacement artefact is '
              'an honest PENDING stub rather than a rerun on the same twelve points.',
              ['results/clusters_v2.json', 'results/evaluation_clustering.json']),
-        30: ('OPEN', 'The historical atlas still asserts a policy lever per archetype without a cited source-'
-             'apportionment study for the city in question.',
-             ['webapp/app/research/historical-atlas/page.js::policy lever']),
+        30: ('FIXED', 'The archetype descriptions say what a pollutant mix is consistent with and stop there. '
+             'Every archetype carries an explicit NOT_ESTABLISHED attribution, the generator no longer emits '
+             '"effective levers" wording, and the artefacts were migrated from the same rules rather than retyped.',
+             ['src/models/train_clustering.py::cannot attribute a',
+              'scripts/migrate_cluster_mix_claims.py',
+              'webapp/app/research/historical-atlas/page.js::not a source apportionment']),
         31: ('BLOCKED', 'Meteorological normalisation of the Diwali and lockdown analyses needs ERA5 retrospective '
              'weather, which is not held.',
              ['results/events_deweathered.json']),

@@ -1,0 +1,201 @@
+# Health Advisory Index v2 — coefficient and effect-modification register
+#
+# HAI v1 set its vulnerability factors by hand (limitation L24). v2 is AQHI-style:
+#   excess risk  ER = sum_p ( exp(beta_p * C_p) - 1 )
+# where beta_p is a published short-term concentration-response coefficient.
+#
+# Nothing in this file computes until a qualified human marks it verified. Each
+# entry therefore carries:
+#   value          the adopted coefficient. null means nothing is adopted.
+#   published_form the effect exactly as the source states it, in the source's
+#                  own units, so the conversion to beta is auditable rather than
+#                  assumed.
+#   verified       false until a human has checked the source, its exposure
+#                  window, its population and its units against this use.
+#   citation       the reference key in paper/refs.bib.
+#   evidence_note  what the number means and where it does not apply.
+#
+# A cohort modifier with no effect-modification evidence is exactly 1.0 and says
+# so. A neutral factor is a statement that the evidence is absent, not a claim
+# that the cohort is at average risk.
+#
+# Reviewer: unassigned. See HUMAN_ACTIONS.md, "Health factors" and
+# "Bibliography approval". AI must not adopt a coefficient here.
+
+schema_version: 2
+status: AWAITING_EVIDENCE_REVIEW
+reviewer: null
+reviewed_at: null
+index_form: "ER = sum_p (exp(beta_p * C_p) - 1), scaled to 0-100 and banded against the CPCB AQI for a healthy adult"
+scale:
+  # The healthy-adult reading is pinned to the CPCB band boundaries so a cohort
+  # reading can be compared with the official index on the same day without the
+  # aggregation change alone producing a difference (limitation L25).
+  anchor: CPCB_AQI_BAND_BOUNDARIES
+  boundaries: [50, 100, 200, 300, 400]
+  range: [0, 500]
+  scale_note: >
+    Readings are on the official CPCB AQI scale so a cohort value and the
+    official value are directly comparable. Above the 400 anchor the reading is
+    a lower bound, mirroring the open-ended Severe band.
+  calibrated: false
+
+# ---------------------------------------------------------------------------
+# Concentration-response coefficients, population-average (reference cohort).
+# Units: beta per 1 ug/m3, except CO per 1 mg/m3.
+# ---------------------------------------------------------------------------
+coefficients:
+  PM2.5:
+    value: null
+    unit: per_ug_m3
+    exposure_window: 24h_mean
+    published_form: "+1.4% all-cause daily mortality per 10 ug/m3 (3.6% in the causal instrumental-variable analysis)"
+    source_priority: Indian_multi_city
+    citation: debont2024india
+    verified: false
+    evidence_note: >
+      Ten Indian cities, daily all-cause mortality. Recorded from this project's
+      own seed list and not yet checked against the article: the volume, pages,
+      DOI, lag structure and which of the two reported effects applies to a
+      next-day advisory all need a human decision before adoption.
+  PM10:
+    value: null
+    unit: per_ug_m3
+    exposure_window: 24h_mean
+    published_form: null
+    source_priority: Indian_or_WHO_review
+    citation: null
+    verified: false
+    evidence_note: >
+      No Indian short-term PM10 coefficient has been selected. A PM2.5
+      coefficient must not be reused for PM10: the exposure, deposition and
+      source mix differ.
+  NO2:
+    value: null
+    unit: per_ug_m3
+    exposure_window: 24h_mean
+    published_form: null
+    source_priority: Indian_city_AQHI
+    citation: george2025aqhi
+    verified: false
+    evidence_note: >
+      Delhi and Varanasi city-specific AQHI is the nearest Indian precedent and
+      also the closest prior art to this contribution, so its coefficients and
+      its scope both need review before reuse.
+  SO2:
+    value: null
+    unit: per_ug_m3
+    exposure_window: 24h_mean
+    published_form: null
+    source_priority: WHO_2021_review
+    citation: null
+    verified: false
+    evidence_note: No candidate selected.
+  CO:
+    value: null
+    unit: per_mg_m3
+    exposure_window: max_8h_running_mean
+    published_form: null
+    source_priority: WHO_2021_review
+    citation: null
+    verified: false
+    evidence_note: >
+      CO is reported in mg/m3 by the CPCB method, so a coefficient quoted per
+      ug/m3 or per ppm must be converted explicitly, not scaled by eye.
+  O3:
+    value: null
+    unit: per_ug_m3
+    exposure_window: max_8h_running_mean
+    published_form: null
+    source_priority: Indian_city_AQHI_or_WHO_review
+    citation: orellano2020shortterm
+    verified: false
+    evidence_note: >
+      Marked [VERIFY] in the project's seed list. The 8-hour maximum window must
+      match the window the source used, or the coefficient does not transfer.
+  NH3:
+    value: 1.0
+    unit: neutral
+    exposure_window: 24h_mean
+    published_form: null
+    citation: null
+    verified: true
+    neutral: true
+    evidence_note: >
+      No short-term mortality or morbidity coefficient is adopted for NH3, and
+      CAMS does not supply it in any case. Neutral by declaration.
+  Pb:
+    value: 1.0
+    unit: neutral
+    exposure_window: 24h_mean
+    published_form: null
+    citation: null
+    verified: true
+    neutral: true
+    evidence_note: >
+      Lead is a chronic-exposure pollutant; a short-term daily advisory
+      coefficient would misrepresent its mechanism. Neutral by declaration.
+
+# ---------------------------------------------------------------------------
+# Cohort effect modification. A factor multiplies the cohort's excess risk.
+# 1.0 means no effect-modification evidence has been adopted for that pair.
+# ---------------------------------------------------------------------------
+cohorts:
+  healthy_adult:
+    reference: true
+    note: Reference cohort. Every factor is exactly 1.0 by definition, not by evidence.
+    factors: {PM2.5: 1.0, PM10: 1.0, NO2: 1.0, SO2: 1.0, CO: 1.0, O3: 1.0}
+  children:
+    reference: false
+    note: >
+      Higher ventilation rate per unit body mass and more outdoor time are well
+      described mechanisms, but a quantified short-term effect-modification
+      factor for Indian children has not been adopted here.
+    factors: {PM2.5: 1.0, PM10: 1.0, NO2: 1.0, SO2: 1.0, CO: 1.0, O3: 1.0}
+    candidate_evidence: [debont2024india, orellano2020shortterm]
+    verified: false
+  elderly_60plus:
+    reference: false
+    note: >
+      Age stratification is reported in several Indian and review analyses; the
+      specific ratio to the population average still needs a human reading.
+    factors: {PM2.5: 1.0, PM10: 1.0, NO2: 1.0, SO2: 1.0, CO: 1.0, O3: 1.0}
+    candidate_evidence: [debont2024india]
+    verified: false
+  asthma_copd:
+    reference: false
+    note: Respiratory morbidity modification is plausible and unquantified here.
+    factors: {PM2.5: 1.0, PM10: 1.0, NO2: 1.0, SO2: 1.0, CO: 1.0, O3: 1.0}
+    candidate_evidence: []
+    verified: false
+  cardiac:
+    reference: false
+    note: Cardiovascular modification is plausible and unquantified here.
+    factors: {PM2.5: 1.0, PM10: 1.0, NO2: 1.0, SO2: 1.0, CO: 1.0, O3: 1.0}
+    candidate_evidence: []
+    verified: false
+  pregnant:
+    reference: false
+    note: >
+      Pregnancy outcomes in the literature are predominantly chronic-exposure
+      endpoints, which do not transfer to a next-day advisory.
+    factors: {PM2.5: 1.0, PM10: 1.0, NO2: 1.0, SO2: 1.0, CO: 1.0, O3: 1.0}
+    candidate_evidence: []
+    verified: false
+  outdoor_worker:
+    reference: false
+    note: >
+      Exposure differs through dose and exertion rather than through
+      susceptibility, so this belongs in the exposure term rather than as a
+      risk modifier. Left neutral until that is modelled explicitly.
+    factors: {PM2.5: 1.0, PM10: 1.0, NO2: 1.0, SO2: 1.0, CO: 1.0, O3: 1.0}
+    candidate_evidence: []
+    verified: false
+
+limits:
+  - HAI v2 is an advisory heuristic. It is not validated against any health
+    outcome and makes no clinical claim (limitation L27).
+  - Attribution is not causation. A coefficient estimated on population daily
+    mortality does not describe an individual's risk.
+  - A cohort reading differing from the CPCB AQI is a property of the index, not
+    evidence that it protects anyone.

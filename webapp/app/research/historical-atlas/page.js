@@ -53,7 +53,7 @@ export default function CityAtlasPage() {
 function ArchetypesTab({ clustering }) {
   return (
     <div>
-      <SectionTitle caption="Cities are clustered on the shape of their pollutant mix rather than its magnitude, so the partition separates kinds of problem from degrees of severity. Each archetype maps to a different policy lever.">
+      <SectionTitle caption="Cities are clustered on the shape of their pollutant mix rather than its magnitude, so the partition separates kinds of problem from degrees of severity. These are exploratory archetypes on 12 city-level points, not a source apportionment: a pollutant mix cannot identify what emits it, so no intervention is implied for any city here.">
         Pollution archetypes discovered without supervision
       </SectionTitle>
 
@@ -75,7 +75,12 @@ function ArchetypesTab({ clustering }) {
                 <strong>{entry.n_cities} cities.</strong> {entry.cities.join(", ")}
               </p>
               <p style={{ margin: 0, fontSize: "0.9rem" }}>
-                <strong>Policy lever.</strong> {entry.policy_lever}
+                <strong>Mix description.</strong> {entry.mix_interpretation}{" "}
+                <em>
+                  Association only. Attributing this mix to a source, or recommending an
+                  intervention from it, needs a receptor-model or emission-inventory study cited
+                  for that city; none is cited here.
+                </em>
               </p>
             </div>
             <ResponsiveContainer width="100%" height={230}>

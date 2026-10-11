@@ -1,0 +1,43 @@
+{
+ "status": "COMPLETE",
+ "generated_at": "2026-10-11T15:59:15.154078+00:00",
+ "source": "OpenAQ v3 /sensors/{id}/hours",
+ "requested_days": 2,
+ "windows": 1,
+ "stations_considered": 1,
+ "stations_with_usable_sensors": 1,
+ "requests": 1,
+ "stored": 47,
+ "retrieved": 48,
+ "per_pollutant": {
+  "PM2.5": 47
+ },
+ "per_station": [
+  {
+   "station_pk": 22,
+   "name": "Chennai",
+   "source_station_id": "8558",
+   "rows": 47,
+   "pollutants": [
+    "PM2.5"
+   ],
+   "first": "2026-10-09T15:30:00+00:00",
+   "last": "2026-10-11T13:30:00+00:00"
+  }
+ ],
+ "rejected": {
+  "outside_requested_window": 1
+ },
+ "errors": {},
+ "earliest_valid_at": "2026-10-09T15:30:00+00:00",
+ "latest_valid_at": "2026-10-11T13:30:00+00:00",
+ "notice": "Upstream coverage bounds this, not effort. OpenAQ provenance is preserved and is not CPCB.",
+ "radius_note": "Only stations already registered from India are queried; no new discovery happens here.",
+ "completed_at": "2026-10-11T15:59:18.629033+00:00",
+ "seconds": 3.5,
+ "settings": {
+  "search_radius_m": 25000
+ },
+ "sink": "files",
+ "sink_directory": "data/archive"
+}

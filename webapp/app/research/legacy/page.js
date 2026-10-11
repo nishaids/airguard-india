@@ -138,7 +138,7 @@ export default function Home() {
               <p className="caption" style={{ marginBottom: 8 }}>
                 {entry.n_cities} cities — {entry.cities.join(", ")}
               </p>
-              <p style={{ margin: 0, fontSize: "0.9rem" }}>{entry.policy_lever}</p>
+              <p style={{ margin: 0, fontSize: "0.9rem" }}>{entry.mix_interpretation} <em>Association only; no source apportionment is cited, so no intervention is implied.</em></p>
             </div>
           ))}
         </div>

@@ -628,7 +628,7 @@ def build_notebook3() -> Path:
         ),
         new_code_cell(
             'display(pd.DataFrame(clustering["archetypes"])[[\n'
-            '    "cluster", "archetype", "defining_pollutant", "n_cities", "cities", "policy_lever",\n'
+            '    "cluster", "archetype", "defining_pollutant", "n_cities", "cities", "mix_interpretation",\n'
             ']])\n'
             'show("24_clustering_selection.png", "Figure 7. Selection of the number of archetypes.")\n'
             'show("25_cluster_profiles.png", "Figure 8. Archetype signatures and the cities in archetype space.")'

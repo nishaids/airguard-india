@@ -9,7 +9,7 @@ whose load is dominated by fine combustion particles needs vehicle-fleet and
 fuel-quality measures; a city whose signature is sulfur dioxide needs industrial
 and power-sector abatement. Clustering on the *composition* of the pollutant mix,
 rather than on its magnitude, surfaces these archetypes directly and maps each to
-a distinct policy lever.
+a distinct pollutant-mix shape, which is not the same as a distinct cause.
 
 Method
 ------
@@ -187,7 +187,13 @@ def select_k(matrix: np.ndarray) -> Dict[str, Any]:
 def label_archetypes(
     profiles: pd.DataFrame, labels: np.ndarray
 ) -> List[Dict[str, Any]]:
-    """Assign an interpretive archetype name and a policy lever to each cluster.
+    """Assign an archetype name and a mix description to each cluster.
+
+    The description says what the pollutant shape is consistent with and stops
+    there. An unsupervised partition of six pollutant shares cannot attribute a
+    mix to a source, so it cannot support a policy recommendation either: that
+    needs a receptor model or an emission inventory for the specific city
+    (limitation L30).
 
     The name is derived from the pollutant that most distinguishes the cluster
     from the overall mean, measured in standardised units, so the labelling is
@@ -207,44 +213,37 @@ def label_archetypes(
     composition_rules = {
         "PM10": (
             "coarse-particulate led",
-            "Coarse particulate leads the mix. The effective levers are mechanised "
-            "road sweeping and water suppression, paving of unpaved shoulders, "
-            "enforcement of construction-site dust covers, and control of open "
-            "material transport.",
+            "Coarse particulate leads the mix. Mechanical sources such as road and "
+            "construction dust are consistent with that shape, but a pollutant mix "
+            "cannot identify what emitted it.",
         ),
         "PM2.5": (
             "fine-particulate led",
-            "Fine particulate leads the mix, which points to combustion rather than "
-            "mechanical sources. The effective levers are fuel-quality and "
-            "vehicle-fleet standards, control of biomass and solid-fuel burning, and "
-            "seasonal crop-residue management.",
+            "Fine particulate leads the mix, which is more consistent with combustion "
+            "than with mechanical sources. Which combustion sources, and in what "
+            "proportion, is not determined here.",
         ),
         "NO2": (
-            "vehicular NOx led",
-            "Oxidised nitrogen leads the mix, which is the signature of live traffic "
-            "exhaust. The effective levers are traffic demand management, "
-            "public-transport capacity, congestion control at corridors, and "
-            "tightened in-use vehicle emission testing.",
+            "oxidised-nitrogen led",
+            "Oxidised nitrogen leads the mix. Live combustion, including traffic "
+            "exhaust, is consistent with that shape; this clustering cannot separate "
+            "traffic from other NOx sources.",
         ),
         "SO2": (
-            "industrial sulfur led",
-            "Sulfur dioxide leads the mix, which points to coal combustion and "
-            "industrial process emissions. The effective levers are flue-gas "
-            "desulfurisation at point sources, fuel sulfur limits, and siting "
-            "controls around industrial clusters.",
+            "sulfur-dioxide led",
+            "Sulfur dioxide leads the mix, which is consistent with coal combustion "
+            "and industrial process emissions somewhere upwind of the monitors.",
         ),
         "O3": (
-            "photochemical ozone led",
-            "Ozone leads the mix. Ozone is secondary, formed from nitrogen oxides "
-            "and volatile organic compounds under sunlight, so the effective levers "
-            "act on the precursors: VOC control at fuel stations and solvent users, "
-            "alongside NOx reduction.",
+            "photochemical-ozone led",
+            "Ozone leads the mix. Ozone is secondary, formed from nitrogen oxides and "
+            "volatile organic compounds under sunlight, so its precursors are not "
+            "observable in this mix at all.",
         ),
         "CO": (
-            "incomplete-combustion led",
-            "Carbon monoxide leads the mix, indicating incomplete combustion from "
-            "older vehicles and solid-fuel use. The effective levers are fleet "
-            "renewal and clean cooking-fuel access.",
+            "carbon-monoxide led",
+            "Carbon monoxide leads the mix, which is consistent with incomplete "
+            "combustion. The responsible activity is not identified here.",
         ),
     }
 
@@ -276,7 +275,8 @@ def label_archetypes(
                 "composition": composition,
                 "defining_pollutant": leading,
                 "defining_pollutant_shape_score": round(float(shape.max()), 3),
-                "policy_lever": lever,
+                "mix_interpretation": lever,
+                "attribution": "NOT_ESTABLISHED — association only; no source apportionment is cited",
                 "cities": members.index.tolist(),
                 "n_cities": int(len(members)),
                 "mean_aqi": round(float(members["mean_aqi"].mean()), 2),
@@ -396,7 +396,7 @@ def plot_profiles(
 
     fig.suptitle(
         "Figure 25. City pollution archetypes discovered without supervision, and "
-        "the policy lever each implies",
+        "the pollutant mix each describes",
         fontsize=12, x=0.02, ha="left",
     )
     fig.tight_layout(rect=(0, 0, 1, 0.93))

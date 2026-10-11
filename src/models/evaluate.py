@@ -880,7 +880,7 @@ def write_final_selection(
     for entry in clustering["archetypes"]:
         lines.append(
             f"| {entry['cluster']} | {entry['archetype']} | {entry['defining_pollutant']} "
-            f"| {', '.join(entry['cities'])} | {entry['policy_lever']} |"
+            f"| {', '.join(entry['cities'])} | {entry['mix_interpretation']} |"
         )
 
     lines += [

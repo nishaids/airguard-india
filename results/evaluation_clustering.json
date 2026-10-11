@@ -159,13 +159,12 @@
   "archetypes": [
     {
       "cluster": 0,
-      "archetype": "Lower-burden, vehicular NOx led",
+      "archetype": "Lower-burden, oxidised-nitrogen led",
       "burden_level": "Lower-burden",
       "mean_level_z": -0.351,
-      "composition": "vehicular NOx led",
+      "composition": "oxidised-nitrogen led",
       "defining_pollutant": "NO2",
       "defining_pollutant_shape_score": 0.128,
-      "policy_lever": "Oxidised nitrogen leads the mix, which is the signature of live traffic exhaust. The effective levers are traffic demand management, public-transport capacity, congestion control at corridors, and tightened in-use vehicle emission testing.",
       "cities": [
         "Amaravati",
         "Amritsar",
@@ -203,7 +202,9 @@
         "CO": -0.09,
         "O3": 0.12
       },
-      "mean_pm_ratio": 0.483
+      "mean_pm_ratio": 0.483,
+      "mix_interpretation": "Oxidised nitrogen leads the mix. Live combustion, including traffic exhaust, is consistent with that shape; this clustering cannot separate traffic from other NOx sources.",
+      "attribution": "NOT_ESTABLISHED — association only; no source apportionment is cited"
     },
     {
       "cluster": 1,
@@ -213,7 +214,6 @@
       "composition": "fine-particulate led",
       "defining_pollutant": "PM2.5",
       "defining_pollutant_shape_score": 0.6,
-      "policy_lever": "Fine particulate leads the mix, which points to combustion rather than mechanical sources. The effective levers are fuel-quality and vehicle-fleet standards, control of biomass and solid-fuel burning, and seasonal crop-residue management.",
       "cities": [
         "Delhi",
         "Gurugram",
@@ -245,7 +245,9 @@
         "CO": 0.269,
         "O3": -0.36
       },
-      "mean_pm_ratio": 0.696
+      "mean_pm_ratio": 0.696,
+      "mix_interpretation": "Fine particulate leads the mix, which is more consistent with combustion than with mechanical sources. Which combustion sources, and in what proportion, is not determined here.",
+      "attribution": "NOT_ESTABLISHED — association only; no source apportionment is cited"
     }
   ],
   "alternative_partitions": [
@@ -704,5 +706,6 @@
   "figures": [
     "24_clustering_selection.png",
     "25_cluster_profiles.png"
-  ]
+  ],
+  "attribution_notice": "Archetypes are exploratory and describe pollutant-mix shape only. No source apportionment is cited, so no city-specific intervention is implied."
 }

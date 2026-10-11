@@ -5,6 +5,9 @@ data/raw/*.csv
 data/raw/*.zip
 !data/raw/PROVENANCE.json
 data/interim/*
+# Bulk hourly archive pulled from OpenAQ: large, regenerable from the recorded
+# run parameters, and not a source of truth for any published number.
+data/archive/*
 !data/interim/.gitkeep
 data/processed/*.csv
 data/processed/*.parquet

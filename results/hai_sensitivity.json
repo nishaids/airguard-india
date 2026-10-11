@@ -1,7 +1,85 @@
 {
-  "status": "PENDING",
-  "accepted": false,
-  "metrics": null,
-  "study_hash": "cae098c5fc370b27aec783f4f360a42a10b9ab3af7ade41249f02d4d4b3d47d9",
-  "reason": "Evidence-grounded coefficients and matched pollutant exposure data required."
+ "status": "PENDING",
+ "accepted": false,
+ "metrics": null,
+ "register_status": "AWAITING_EVIDENCE_REVIEW",
+ "awaiting_review": [
+  "CO",
+  "NO2",
+  "O3",
+  "PM10",
+  "PM2.5",
+  "SO2"
+ ],
+ "neutral_by_declaration": [
+  "NH3",
+  "Pb"
+ ],
+ "reviewer": null,
+ "framework": "src/features/hai_v2.py",
+ "register": "config/hai_factors.yaml",
+ "generated_table": "paper/tables/hai_factors.tex",
+ "reason": "Monte Carlo over coefficient confidence intervals requires published intervals to sample from. The harness exists and separates the aggregation effect from the vulnerability effect.",
+ "summary": {
+  "generated_at": "2026-10-11T16:03:39.430030+00:00",
+  "schema_version": 2,
+  "status": "AWAITING_EVIDENCE_REVIEW",
+  "reviewer": null,
+  "adopted_coefficients": [],
+  "neutral_by_declaration": [
+   "NH3",
+   "Pb"
+  ],
+  "awaiting_review": [
+   "CO",
+   "NO2",
+   "O3",
+   "PM10",
+   "PM2.5",
+   "SO2"
+  ],
+  "cohorts": {
+   "healthy_adult": {
+    "reference": true,
+    "verified": false,
+    "all_factors_neutral": true
+   },
+   "children": {
+    "reference": false,
+    "verified": false,
+    "all_factors_neutral": true
+   },
+   "elderly_60plus": {
+    "reference": false,
+    "verified": false,
+    "all_factors_neutral": true
+   },
+   "asthma_copd": {
+    "reference": false,
+    "verified": false,
+    "all_factors_neutral": true
+   },
+   "cardiac": {
+    "reference": false,
+    "verified": false,
+    "all_factors_neutral": true
+   },
+   "pregnant": {
+    "reference": false,
+    "verified": false,
+    "all_factors_neutral": true
+   },
+   "outdoor_worker": {
+    "reference": false,
+    "verified": false,
+    "all_factors_neutral": true
+   }
+  },
+  "usable": false,
+  "limits": [
+   "HAI v2 is an advisory heuristic. It is not validated against any health outcome and makes no clinical claim (limitation L27).",
+   "Attribution is not causation. A coefficient estimated on population daily mortality does not describe an individual's risk.",
+   "A cohort reading differing from the CPCB AQI is a property of the index, not evidence that it protects anyone."
+  ]
+ }
 }

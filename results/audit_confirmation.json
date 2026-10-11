@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-11T15:45:42.411893+00:00",
+ "generated_at": "2026-10-11T16:09:24.140733+00:00",
  "source": "docs/MASTER_SPEC.md",
  "tally": {
-  "FIXED": 10,
-  "PARTIAL": 18,
-  "OPEN": 7,
-  "BLOCKED": 17,
+  "FIXED": 11,
+  "PARTIAL": 20,
+  "OPEN": 5,
+  "BLOCKED": 16,
   "REFUTED": 0
  },
  "evidence": {
@@ -308,24 +308,26 @@
   },
   "L24": {
    "severity": "C",
-   "status": "BLOCKED",
+   "status": "PARTIAL",
    "limitation": "**Vulnerability factors are hand-set**, not derived from concentration\u2013response evidence (e.g., children NO2 1.55, asthma SO2 1.75, cardiac PM2.5 1.70, \u03bb = 0.25).",
-   "finding": "Hand-set vulnerability factors are unchanged in HAI v1. HAI v2 cannot adopt published coefficients until a qualified human evidence review approves them.",
+   "finding": "The v2 framework replaces hand-set factors with AQHI-style excess risk over published coefficients, and the register ships with every coefficient unadopted and every cohort factor at exactly 1.0, each stating why. v1 remains, labelled heuristic and superseded. Adoption itself waits on a qualified evidence review, so no v2 value is produced.",
    "evidence": [
-    "src/features/hai.py:31",
-    "results/hai_v2.json",
+    "src/features/hai_v2.py:59",
+    "config/hai_factors.yaml:26",
+    "webapp/app/historical-replay/page.js:213",
     "HUMAN_ACTIONS.md:16"
    ],
    "fix": "WP4"
   },
   "L25": {
    "severity": "C",
-   "status": "OPEN",
+   "status": "PARTIAL",
    "limitation": "**The headline \"66.9% of city-days differ\" is partly circular**: it follows from the chosen factors and from the aggregation change itself (healthy-adult reference already differs on 25.95% of days with all factors = 1).",
-   "finding": "The circular 66.9 percent headline is no longer promoted anywhere in the product, but the Monte-Carlo sensitivity analysis that should replace it does not exist yet.",
+   "finding": "The circular headline is no longer promoted, and the replacement harness exists: it samples coefficient draws, reports a median and 95% interval instead of one number, and reports the aggregation effect separately from the vulnerability effect so the two cannot be conflated. It needs published confidence intervals to sample from before it can produce a result.",
    "evidence": [
-    "results/hai_sensitivity.json",
-    "results/hai_divergence.json"
+    "src/features/hai_v2.py:168",
+    "tests/test_hai_v2.py:97",
+    "results/hai_sensitivity.json"
    ],
    "fix": "WP4 (sensitivity analysis)"
   },
@@ -374,10 +376,12 @@
   },
   "L30": {
    "severity": "H",
-   "status": "OPEN",
+   "status": "FIXED",
    "limitation": "**Policy levers asserted without source apportionment.** Chennai and Thiruvananthapuram labelled \"vehicular NOx led\" from a +0.128 shape score.",
-   "finding": "The historical atlas still asserts a policy lever per archetype without a cited source-apportionment study for the city in question.",
+   "finding": "The archetype descriptions say what a pollutant mix is consistent with and stop there. Every archetype carries an explicit NOT_ESTABLISHED attribution, the generator no longer emits \"effective levers\" wording, and the artefacts were migrated from the same rules rather than retyped.",
    "evidence": [
+    "src/models/train_clustering.py:193",
+    "scripts/migrate_cluster_mix_claims.py",
     "webapp/app/research/historical-atlas/page.js:56"
    ],
    "fix": "WP5"

@@ -20,6 +20,13 @@ scope. Every SQL operation remains a separate transaction; errors roll back.
 The connection closes at scope exit, including exceptional exits. Connections
 are never shared across threads and no application connection pool persists.
 
+The live runtime selects transaction mode (port 6543) on the already configured
+Supabase shared pooler endpoint. It keeps the existing host and credentials,
+uses no named prepared statements or session-level locks, and sets timeouts
+inside each transaction. Migrations retain their configured session connection.
+The switch follows observed Supavisor session-client limit errors during
+overlapping background jobs; no account upgrade or credential rotation is needed.
+
 The hourly/fixed-time research schedules still use their existing empty
 authenticated job body. Public `view` selectors cannot invoke private jobs.
 The additive migration is mirrored under `db/migrations` and

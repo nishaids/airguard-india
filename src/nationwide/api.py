@@ -5,6 +5,7 @@ from contextlib import nullcontext
 import hashlib
 import hmac
 import json
+import logging
 import uuid
 from http.server import BaseHTTPRequestHandler
 from datetime import timedelta
@@ -109,7 +110,8 @@ def _dispatch(operation, payload, authorization="", client="anonymous", service=
         return 400,{"ok":False,"error":"INVALID_INPUT","message":str(exc)}
     except BudgetExceeded:
         return 429,{"ok":False,"error":"RATE_LIMITED","message":"Request budget reached. Please retry later."}
-    except Exception:
+    except Exception as exc:
+        logging.getLogger(__name__).warning('operation=%s failure_class=%s',operation,type(exc).__name__)
         # DSNs/provider errors can appear in exception chains; never serialize them.
         return 503,{"ok":False,"error":"SERVICE_UNAVAILABLE","message":"Live data is temporarily unavailable. Please retry shortly."}
 

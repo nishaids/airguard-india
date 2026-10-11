@@ -128,7 +128,7 @@ class MemoryStore:
 # --------------------------------------------------------------------------- #
 # PostgreSQL
 # --------------------------------------------------------------------------- #
-def connect():
+def connect(*, transaction_pool=False):
     """Open a connection from ``DATABASE_URL``. Never logs the string."""
     status = settings_mod.secret_status().get("DATABASE_URL")
     dsn = settings_mod.secret("DATABASE_URL")
@@ -140,6 +140,13 @@ def connect():
         import psycopg2
 
         kwargs: Dict[str, Any] = {"connect_timeout": 20}
+        if transaction_pool:
+            from psycopg2.extensions import parse_dsn
+            endpoint=parse_dsn(dsn)
+            # Reuse the configured shared pooler host/account. Do not compose a
+            # host, rewrite credentials, or change direct/session migration IO.
+            if endpoint.get('host','').endswith('.pooler.supabase.com') and endpoint.get('port','5432')=='5432':
+                kwargs['port']=6543
         if "sslmode=" not in dsn:
             kwargs["sslmode"] = "require"
         return psycopg2.connect(dsn, **kwargs)

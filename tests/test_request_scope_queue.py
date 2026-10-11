@@ -29,7 +29,7 @@ def test_connection_reused_nested_scopes_and_closed_after_exception():
 
 def test_worker_threads_get_separate_connections_and_no_global_pool():
     connections=[]
-    def connect():
+    def connect(**kwargs):
         c=MagicMock(closed=False);connections.append(c);return c
     store=Store()
     def work(_):
@@ -123,3 +123,18 @@ def test_real_queue_collapses_duplicates_and_rolls_back_dispatch():
             # pg_net sends only after commit. This test never commits a request.
     finally:
         connection.rollback();connection.close()
+
+
+@pytest.mark.parametrize('dsn,transaction_pool,port',[
+    ('postgresql://test:test@example.pooler.supabase.com:5432/postgres',True,6543),
+    ('postgresql://test:test@example.pooler.supabase.com:5432/postgres',False,None),
+    ('postgresql://test:test@db.example.supabase.co:5432/postgres',True,None),
+    ('postgresql://test:test@example.pooler.supabase.com:6543/postgres',True,None),
+])
+def test_pool_mode_changes_only_runtime_port_on_existing_shared_endpoint(dsn,transaction_pool,port):
+    from src.ingestion.db import connect
+    with patch('src.ingestion.db.settings_mod.secret',return_value=dsn),patch('psycopg2.connect') as driver:
+        connect(transaction_pool=transaction_pool)
+        assert driver.call_args.args==(dsn,)
+        assert driver.call_args.kwargs.get('port')==port
+        assert driver.call_args.kwargs['sslmode']=='require'

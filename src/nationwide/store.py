@@ -80,7 +80,7 @@ class Store:
         scoped = getattr(self._scope, 'depth', 0) > 0
         connection = getattr(self._scope, 'connection', None) if scoped else None
         if connection is None or connection.closed:
-            connection = connect()
+            connection = connect(transaction_pool=True)
             if scoped: self._scope.connection = connection
         try:
             with connection, connection.cursor(cursor_factory=RealDictCursor) as cursor:

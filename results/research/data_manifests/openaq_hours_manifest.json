@@ -736,6 +736,3856 @@
    ],
    "retrieved_at": "2026-10-11T18:13:05.229001+00:00",
    "complete": true
+  },
+  "235": {
+   "name": "Anand Vihar, New Delhi - DPCC",
+   "city": "New Delhi",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12235608,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T22:30:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41889,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/235/o3_12235608.csv.gz",
+     "rows": 12501,
+     "sha256": "438c8f1445eefd7ff4de1008e4418bdfdfd7220d7f11559410983a15922e1ed3",
+     "content_sha256": "dd63b29a7768f0aa0d20f8904299aca847719c3f1301d8f20c8e70dce6bd96fd",
+     "requests": [
+      {
+       "from": "2025-02-18T22:00:00+00:00",
+       "to": "2025-04-01T14:00:00+00:00",
+       "returned": 906
+      },
+      {
+       "from": "2025-04-01T14:00:00+00:00",
+       "to": "2025-05-13T06:00:00+00:00",
+       "returned": 897
+      },
+      {
+       "from": "2025-05-13T06:00:00+00:00",
+       "to": "2025-06-23T22:00:00+00:00",
+       "returned": 894
+      },
+      {
+       "from": "2025-06-23T22:00:00+00:00",
+       "to": "2025-08-04T14:00:00+00:00",
+       "returned": 809
+      },
+      {
+       "from": "2025-08-04T14:00:00+00:00",
+       "to": "2025-09-15T06:00:00+00:00",
+       "returned": 953
+      },
+      {
+       "from": "2025-09-15T06:00:00+00:00",
+       "to": "2025-10-26T22:00:00+00:00",
+       "returned": 947
+      },
+      {
+       "from": "2025-10-26T22:00:00+00:00",
+       "to": "2025-12-07T14:00:00+00:00",
+       "returned": 890
+      },
+      {
+       "from": "2025-12-07T14:00:00+00:00",
+       "to": "2026-01-18T06:00:00+00:00",
+       "returned": 790
+      },
+      {
+       "from": "2026-01-18T06:00:00+00:00",
+       "to": "2026-02-28T22:00:00+00:00",
+       "returned": 811
+      },
+      {
+       "from": "2026-02-28T22:00:00+00:00",
+       "to": "2026-04-11T14:00:00+00:00",
+       "returned": 894
+      },
+      {
+       "from": "2026-04-11T14:00:00+00:00",
+       "to": "2026-05-23T06:00:00+00:00",
+       "returned": 814
+      },
+      {
+       "from": "2026-05-23T06:00:00+00:00",
+       "to": "2026-07-03T22:00:00+00:00",
+       "returned": 835
+      },
+      {
+       "from": "2026-07-03T22:00:00+00:00",
+       "to": "2026-08-14T14:00:00+00:00",
+       "returned": 953
+      },
+      {
+       "from": "2026-08-14T14:00:00+00:00",
+       "to": "2026-09-25T06:00:00+00:00",
+       "returned": 844
+      },
+      {
+       "from": "2026-09-25T06:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 276
+      }
+     ],
+     "first_row": "2025-02-18T22:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12235609,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T22:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 43828,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/235/pm10_12235609.csv.gz",
+     "rows": 12525,
+     "sha256": "1aa58af8aef26316a3d190b75881c4b3874151166b767d678ac3aa97369bcaf4",
+     "content_sha256": "317ff85e532241a9af91ce06654582adca7bfebcf2c04bbefd5c96d01c8e6da0",
+     "requests": [
+      {
+       "from": "2025-02-18T22:00:00+00:00",
+       "to": "2025-04-01T14:00:00+00:00",
+       "returned": 911
+      },
+      {
+       "from": "2025-04-01T14:00:00+00:00",
+       "to": "2025-05-13T06:00:00+00:00",
+       "returned": 906
+      },
+      {
+       "from": "2025-05-13T06:00:00+00:00",
+       "to": "2025-06-23T22:00:00+00:00",
+       "returned": 928
+      },
+      {
+       "from": "2025-06-23T22:00:00+00:00",
+       "to": "2025-08-04T14:00:00+00:00",
+       "returned": 910
+      },
+      {
+       "from": "2025-08-04T14:00:00+00:00",
+       "to": "2025-09-15T06:00:00+00:00",
+       "returned": 951
+      },
+      {
+       "from": "2025-09-15T06:00:00+00:00",
+       "to": "2025-10-26T22:00:00+00:00",
+       "returned": 964
+      },
+      {
+       "from": "2025-10-26T22:00:00+00:00",
+       "to": "2025-12-07T14:00:00+00:00",
+       "returned": 931
+      },
+      {
+       "from": "2025-12-07T14:00:00+00:00",
+       "to": "2026-01-18T06:00:00+00:00",
+       "returned": 802
+      },
+      {
+       "from": "2026-01-18T06:00:00+00:00",
+       "to": "2026-02-28T22:00:00+00:00",
+       "returned": 814
+      },
+      {
+       "from": "2026-02-28T22:00:00+00:00",
+       "to": "2026-04-11T14:00:00+00:00",
+       "returned": 859
+      },
+      {
+       "from": "2026-04-11T14:00:00+00:00",
+       "to": "2026-05-23T06:00:00+00:00",
+       "returned": 872
+      },
+      {
+       "from": "2026-05-23T06:00:00+00:00",
+       "to": "2026-07-03T22:00:00+00:00",
+       "returned": 823
+      },
+      {
+       "from": "2026-07-03T22:00:00+00:00",
+       "to": "2026-08-14T14:00:00+00:00",
+       "returned": 933
+      },
+      {
+       "from": "2026-08-14T14:00:00+00:00",
+       "to": "2026-09-25T06:00:00+00:00",
+       "returned": 696
+      },
+      {
+       "from": "2026-09-25T06:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 237
+      }
+     ],
+     "first_row": "2025-02-18T22:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12235610,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T22:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44176,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/235/pm25_12235610.csv.gz",
+     "rows": 12698,
+     "sha256": "b37c547d4c1590dcd71cff807e84186dffae6b268446ca17464beb92a88478c6",
+     "content_sha256": "c448cd965be3aa10ac76666a67020c6fcc6d528efabe637b1779544a0812f4b5",
+     "requests": [
+      {
+       "from": "2025-02-18T22:00:00+00:00",
+       "to": "2025-04-01T14:00:00+00:00",
+       "returned": 903
+      },
+      {
+       "from": "2025-04-01T14:00:00+00:00",
+       "to": "2025-05-13T06:00:00+00:00",
+       "returned": 901
+      },
+      {
+       "from": "2025-05-13T06:00:00+00:00",
+       "to": "2025-06-23T22:00:00+00:00",
+       "returned": 914
+      },
+      {
+       "from": "2025-06-23T22:00:00+00:00",
+       "to": "2025-08-04T14:00:00+00:00",
+       "returned": 939
+      },
+      {
+       "from": "2025-08-04T14:00:00+00:00",
+       "to": "2025-09-15T06:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-09-15T06:00:00+00:00",
+       "to": "2025-10-26T22:00:00+00:00",
+       "returned": 939
+      },
+      {
+       "from": "2025-10-26T22:00:00+00:00",
+       "to": "2025-12-07T14:00:00+00:00",
+       "returned": 931
+      },
+      {
+       "from": "2025-12-07T14:00:00+00:00",
+       "to": "2026-01-18T06:00:00+00:00",
+       "returned": 803
+      },
+      {
+       "from": "2026-01-18T06:00:00+00:00",
+       "to": "2026-02-28T22:00:00+00:00",
+       "returned": 821
+      },
+      {
+       "from": "2026-02-28T22:00:00+00:00",
+       "to": "2026-04-11T14:00:00+00:00",
+       "returned": 869
+      },
+      {
+       "from": "2026-04-11T14:00:00+00:00",
+       "to": "2026-05-23T06:00:00+00:00",
+       "returned": 880
+      },
+      {
+       "from": "2026-05-23T06:00:00+00:00",
+       "to": "2026-07-03T22:00:00+00:00",
+       "returned": 827
+      },
+      {
+       "from": "2026-07-03T22:00:00+00:00",
+       "to": "2026-08-14T14:00:00+00:00",
+       "returned": 933
+      },
+      {
+       "from": "2026-08-14T14:00:00+00:00",
+       "to": "2026-09-25T06:00:00+00:00",
+       "returned": 830
+      },
+      {
+       "from": "2026-09-25T06:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 266
+      }
+     ],
+     "first_row": "2025-02-18T22:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 380,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-02-05T14:15:00Z",
+     "last_utc": "2018-01-23T04:30:00Z",
+     "observed_count": 19772,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 383,
+     "parameter": "so2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-02-05T14:15:00Z",
+     "last_utc": "2018-02-21T21:15:00Z",
+     "observed_count": 7203,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 382,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-02-05T14:15:00Z",
+     "last_utc": "2018-02-21T21:15:00Z",
+     "observed_count": 19986,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 381,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-02-05T14:15:00Z",
+     "last_utc": "2018-02-21T21:15:00Z",
+     "observed_count": 19460,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 385,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-02-05T14:15:00Z",
+     "last_utc": "2016-03-21T14:45:00Z",
+     "observed_count": 126,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 384,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-02-05T14:15:00Z",
+     "last_utc": "2018-02-21T21:15:00Z",
+     "observed_count": 20911,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 12235605,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T22:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 43672,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235612,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T22:30:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42933,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235607,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T22:30:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44688,
+     "decision": "rejected_unit_not_mass_concentration"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:16:14.228555+00:00",
+   "complete": true
+  },
+  "301": {
+   "name": "Vikas Sadan, Gurugram - HSPCB",
+   "city": "Gurugram",
+   "sensors": {
+    "O3": {
+     "sensor_id": 14258986,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-10-01T06:45:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 25581,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/301/o3_14258986.csv.gz",
+     "rows": 7475,
+     "sha256": "e7daa89866e5011bd97fd65e5f6c08c2535b768dd031f92b0608d7a9cacc0d08",
+     "content_sha256": "a9113759675e57d5b4ab51c8ae654788405951df089d9f4e6c5482213422d28f",
+     "requests": [
+      {
+       "from": "2025-10-01T06:00:00+00:00",
+       "to": "2025-11-11T22:00:00+00:00",
+       "returned": 940
+      },
+      {
+       "from": "2025-11-11T22:00:00+00:00",
+       "to": "2025-12-23T14:00:00+00:00",
+       "returned": 856
+      },
+      {
+       "from": "2025-12-23T14:00:00+00:00",
+       "to": "2026-02-03T06:00:00+00:00",
+       "returned": 688
+      },
+      {
+       "from": "2026-02-03T06:00:00+00:00",
+       "to": "2026-03-16T22:00:00+00:00",
+       "returned": 797
+      },
+      {
+       "from": "2026-03-16T22:00:00+00:00",
+       "to": "2026-04-27T14:00:00+00:00",
+       "returned": 847
+      },
+      {
+       "from": "2026-04-27T14:00:00+00:00",
+       "to": "2026-06-08T06:00:00+00:00",
+       "returned": 827
+      },
+      {
+       "from": "2026-06-08T06:00:00+00:00",
+       "to": "2026-07-19T22:00:00+00:00",
+       "returned": 837
+      },
+      {
+       "from": "2026-07-19T22:00:00+00:00",
+       "to": "2026-08-30T14:00:00+00:00",
+       "returned": 874
+      },
+      {
+       "from": "2026-08-30T14:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 816
+      }
+     ],
+     "first_row": "2025-10-01T06:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 14258987,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-10-01T06:45:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 24797,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/301/pm10_14258987.csv.gz",
+     "rows": 7248,
+     "sha256": "7f194432e03b7c5ad3a6e927014edbc7d697849ccb7bd07ce530eb702a825d2f",
+     "content_sha256": "ee4057398491b03c6e61cbd2b47f58dcc998d4badc861d8af6cbd4f117dd2705",
+     "requests": [
+      {
+       "from": "2025-10-01T06:00:00+00:00",
+       "to": "2025-11-11T22:00:00+00:00",
+       "returned": 939
+      },
+      {
+       "from": "2025-11-11T22:00:00+00:00",
+       "to": "2025-12-23T14:00:00+00:00",
+       "returned": 856
+      },
+      {
+       "from": "2025-12-23T14:00:00+00:00",
+       "to": "2026-02-03T06:00:00+00:00",
+       "returned": 688
+      },
+      {
+       "from": "2026-02-03T06:00:00+00:00",
+       "to": "2026-03-16T22:00:00+00:00",
+       "returned": 797
+      },
+      {
+       "from": "2026-03-16T22:00:00+00:00",
+       "to": "2026-04-27T14:00:00+00:00",
+       "returned": 847
+      },
+      {
+       "from": "2026-04-27T14:00:00+00:00",
+       "to": "2026-06-08T06:00:00+00:00",
+       "returned": 827
+      },
+      {
+       "from": "2026-06-08T06:00:00+00:00",
+       "to": "2026-07-19T22:00:00+00:00",
+       "returned": 750
+      },
+      {
+       "from": "2026-07-19T22:00:00+00:00",
+       "to": "2026-08-30T14:00:00+00:00",
+       "returned": 794
+      },
+      {
+       "from": "2026-08-30T14:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 757
+      }
+     ],
+     "first_row": "2025-10-01T06:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 14258988,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-10-01T06:45:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 24770,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/301/pm25_14258988.csv.gz",
+     "rows": 7235,
+     "sha256": "6bc3a3696d95003578a09a69b6fad1c4c542823077add17e9e3b2a1da4083a90",
+     "content_sha256": "a5ed04c0622dc8c8f3fae52e905e7a8983f66785e1b5ff7212f8aacf22700af8",
+     "requests": [
+      {
+       "from": "2025-10-01T06:00:00+00:00",
+       "to": "2025-11-11T22:00:00+00:00",
+       "returned": 940
+      },
+      {
+       "from": "2025-11-11T22:00:00+00:00",
+       "to": "2025-12-23T14:00:00+00:00",
+       "returned": 856
+      },
+      {
+       "from": "2025-12-23T14:00:00+00:00",
+       "to": "2026-02-03T06:00:00+00:00",
+       "returned": 688
+      },
+      {
+       "from": "2026-02-03T06:00:00+00:00",
+       "to": "2026-03-16T22:00:00+00:00",
+       "returned": 797
+      },
+      {
+       "from": "2026-03-16T22:00:00+00:00",
+       "to": "2026-04-27T14:00:00+00:00",
+       "returned": 847
+      },
+      {
+       "from": "2026-04-27T14:00:00+00:00",
+       "to": "2026-06-08T06:00:00+00:00",
+       "returned": 827
+      },
+      {
+       "from": "2026-06-08T06:00:00+00:00",
+       "to": "2026-07-19T22:00:00+00:00",
+       "returned": 750
+      },
+      {
+       "from": "2026-07-19T22:00:00+00:00",
+       "to": "2026-08-30T14:00:00+00:00",
+       "returned": 794
+      },
+      {
+       "from": "2026-08-30T14:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 743
+      }
+     ],
+     "first_row": "2025-10-01T06:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 14258983,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-10-01T06:45:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 25398,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 14258990,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-10-01T06:45:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 24586,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 14258985,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-10-01T06:45:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 24894,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 5405,
+     "parameter": "so2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-25T19:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 72136,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 5409,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-25T08:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 70687,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 1166,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-25T08:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 71215,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 5396,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-25T08:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 70917,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 506,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-04-10T18:30:00Z",
+     "last_utc": "2016-04-12T09:30:00Z",
+     "observed_count": 36,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 5407,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-25T08:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 71652,
+     "decision": "rejected_no_data_in_window"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:16:14.203023+00:00",
+   "complete": true
+  },
+  "407": {
+   "name": "Zoo Park, Hyderabad - TSPCB",
+   "city": "Hyderabad",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12235581,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 43388,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/407/o3_12235581.csv.gz",
+     "rows": 12139,
+     "sha256": "52217edf09ff0cf8034474747860d3a97bb554bfa34de57d964b8a59d335322e",
+     "content_sha256": "0434724bc7b6a4eebad5692b63755bfe40a949a5081b5d0cdca9bd9a4527e5c6",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 958
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 736
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 905
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 780
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 929
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 967
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 924
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 805
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 826
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 895
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 896
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 695
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 761
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 900
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 174
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12235582,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41833,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/407/pm10_12235582.csv.gz",
+     "rows": 11930,
+     "sha256": "2af8d2bd405d62136e80e61907a4b65065a60d9ba586c6b9cb33f45f59cb02eb",
+     "content_sha256": "a46a6362a9db9b239ebb786712b899a39c25d806e190bc7d5b611a30c59ed0e9",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 958
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 810
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 853
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 738
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 920
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 916
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 890
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 802
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 820
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 874
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 856
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 678
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 793
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 859
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 174
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12235583,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42072,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/407/pm25_12235583.csv.gz",
+     "rows": 11939,
+     "sha256": "49b606e8aa3efa59cd051f3cf52c59eada5bd7224b3ed5f96d1bfbcc3e3f0a31",
+     "content_sha256": "92ee207c93ab80ffe3498dd99160b54fa09076d759be7b89bdbf29f2570abf00",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 789
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 861
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 738
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 920
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 917
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 923
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 802
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 820
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 874
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 856
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 675
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 789
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 858
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 174
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 712,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T19:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 58624,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 711,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T19:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 54143,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 710,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T19:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 58985,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 715,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T19:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 53654,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 714,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T19:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 57115,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 713,
+     "parameter": "so2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T19:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 58994,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 12235585,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 43716,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235578,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 43793,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235580,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 43536,
+     "decision": "rejected_unit_not_mass_concentration"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:18:01.737796+00:00",
+   "complete": true
+  },
+  "860": {
+   "name": "Sanjay Palace, Agra - UPPCB",
+   "city": "Agra",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12235660,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44639,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/860/o3_12235660.csv.gz",
+     "rows": 12818,
+     "sha256": "46d2edcc3a8f0eb35ac5b75e3fe7612ed450e91444f366032568f5433185c703",
+     "content_sha256": "8d9bc9efaea33081f92d2c68aed945fbc0121d7e0fe1d7adffb2fe6ae88f07e4",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 993
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 726
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 911
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 911
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 940
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 928
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 788
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 815
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 923
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 921
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 893
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 958
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 891
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 278
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12235661,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44023,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/860/pm10_12235661.csv.gz",
+     "rows": 12651,
+     "sha256": "496779277a598450df40e10e33d6b8400722f8df36c25c70caece8cc6303d713",
+     "content_sha256": "ca183464096e0cd584430721b0dec39c73a828d13c74db9e3f9a8ade7331447b",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 910
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 704
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 915
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 937
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 943
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 937
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 943
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 788
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 806
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 924
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 921
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 884
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 919
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 860
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 272
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12235662,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42903,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/860/pm25_12235662.csv.gz",
+     "rows": 12544,
+     "sha256": "025a80b2ebee285ef8887dafc3856e21e34e2de354debc62243055e526cc37ec",
+     "content_sha256": "22608d193a090eda4b4f27de068ddb156ead1ee4a3f16932608f78cc8751378a",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 990
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 725
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 887
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 936
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 952
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 939
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 923
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 784
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 811
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 916
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 909
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 881
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 810
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 825
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 267
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 12235659,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44920,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235657,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44965,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235664,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44958,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 1546,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-22T01:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 61310,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 15024,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T06:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 39799,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14322,
+     "parameter": "so2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-06-19T20:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 48203,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 1544,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-22T01:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 65110,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 1342956,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2021-08-25T17:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 6598,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 1545,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-22T01:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 64910,
+     "decision": "rejected_no_data_in_window"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:17:21.955176+00:00",
+   "complete": true
+  },
+  "2456": {
+   "name": "Talkatora District Industries Center, Lucknow - CPCB",
+   "city": "Lucknow",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12235572,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 45389,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/2456/o3_12235572.csv.gz",
+     "rows": 12982,
+     "sha256": "d2cf5f5b516f7af1099d190440f1c9574195141ae54d7a7f448cc67f25424fcf",
+     "content_sha256": "2b036ee90008a04fc82c3a07b728ac061c547094f73b3fdcdc0aeaca01a8ade4",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 925
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 890
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 857
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 951
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 940
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 932
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 795
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 831
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 962
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 880
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 899
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 979
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 924
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 275
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12235573,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 45153,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/2456/pm10_12235573.csv.gz",
+     "rows": 12947,
+     "sha256": "99d0026cf1f4d83ae61049186766bcb5574637b3d831caf2cfab2fde1a8ba845",
+     "content_sha256": "3883f54190d2c1aca962d460af75edc4f28ce61dcb971c6e8d565d287fdeffa2",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 925
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 890
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 857
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 951
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 940
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 932
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 795
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 831
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 962
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 880
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 899
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 968
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 917
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 258
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12235574,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 45226,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/2456/pm25_12235574.csv.gz",
+     "rows": 12962,
+     "sha256": "18167a7788a502efe700a9aa95129fc3c8c21b0872de7319201b614aea7553b8",
+     "content_sha256": "7854a6b1ec98dfd8da2383882bc10fec011535c02ecba7289789fc523e596862",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 925
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 890
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 857
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 951
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 941
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 932
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 795
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 831
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 962
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 880
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 899
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 966
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 918
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 273
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 12235576,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:15:00Z",
+     "observed_count": 44028,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235571,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 45407,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235569,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:15:00Z",
+     "observed_count": 44582,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 4712,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-30T10:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 62613,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 36695,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2020-07-23T09:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 9700,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14237,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-02-18T22:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 55234,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 5231,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T10:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 65176,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14238,
+     "parameter": "so2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-06-19T20:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 50904,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 36696,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2020-07-23T09:00:00Z",
+     "last_utc": "2022-10-31T02:00:00Z",
+     "observed_count": 9701,
+     "decision": "rejected_no_data_in_window"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:19:49.903916+00:00",
+   "complete": true
+  },
+  "2586": {
+   "name": "Manali, Chennai - CPCB",
+   "city": "Chennai",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12235651,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42682,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/2586/o3_12235651.csv.gz",
+     "rows": 12166,
+     "sha256": "248f6e95837d9395b6e9abaf9fe2aa069ae3844fc6a52b0159173c1c9d4c362e",
+     "content_sha256": "c5b3561f918ed97178854bd38dd89e3229fc05536bba2ac00031aeec321101f0",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 746
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 764
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 761
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 922
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 979
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 787
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 927
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 737
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 796
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 961
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 885
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 896
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 812
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 926
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 278
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12235652,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T13:45:00Z",
+     "observed_count": 41021,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/2586/pm10_12235652.csv.gz",
+     "rows": 11863,
+     "sha256": "556e675e17880abfa7e274f19ddb299cba8d2a925db9676cf9048bd0e9f267e9",
+     "content_sha256": "cf683b53befda667a73a92f7a92bd466ef775f8c6533a422c5aa28d269b8f507",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 746
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 764
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 761
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 922
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 979
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 787
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 927
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 737
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 796
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 961
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 885
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 842
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 761
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 735
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T14:45:00+00:00",
+       "returned": 270
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12235653,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T13:45:00Z",
+     "observed_count": 41650,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/2586/pm25_12235653.csv.gz",
+     "rows": 11830,
+     "sha256": "59597570df1d26e00954a657f30be8084e674fd107bc2c45d7cd6ef5a644e4d9",
+     "content_sha256": "911031e2235ec82d9cdee239cdf79a43583b74e20469ae8652ce9f012f3b42b6",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 746
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 764
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 761
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 922
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 979
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 787
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 927
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 737
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 796
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 961
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 885
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 863
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 720
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 751
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T14:45:00+00:00",
+       "returned": 242
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 12235655,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41297,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235648,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42713,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235650,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41748,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 14311,
+     "parameter": "so2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-06-19T20:00:00Z",
+     "last_utc": "2022-10-16T15:00:00Z",
+     "observed_count": 50168,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 5340,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T10:00:00Z",
+     "last_utc": "2022-10-16T15:00:00Z",
+     "observed_count": 70494,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 1305375,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2021-05-05T03:00:00Z",
+     "last_utc": "2022-10-16T15:00:00Z",
+     "observed_count": 6753,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 5339,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2016-03-21T10:00:00Z",
+     "last_utc": "2022-10-16T15:00:00Z",
+     "observed_count": 69931,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14319,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-02-18T22:00:00Z",
+     "last_utc": "2022-10-16T15:00:00Z",
+     "observed_count": 58456,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 1305374,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2021-05-05T03:00:00Z",
+     "last_utc": "2022-10-16T15:00:00Z",
+     "observed_count": 6715,
+     "decision": "rejected_no_data_in_window"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:19:31.936276+00:00",
+   "complete": true
+  },
+  "5404": {
+   "name": "Pusa, Delhi - IMD",
+   "city": "Delhi",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12234700,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:16:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 39861,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/5404/o3_12234700.csv.gz",
+     "rows": 11647,
+     "sha256": "9bacb282a1257ecd5b9fe365ecf7e97f759e4adb82694fcfb4334fa98103d482",
+     "content_sha256": "3361ee88bea653bd0bf83222b20bffb3f7886bd234c11a462c9eecede7c42a6a",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 767
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 541
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 783
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 883
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 868
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 850
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 915
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 533
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 837
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 910
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 863
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 876
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 929
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 840
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 264
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12234701,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:16:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 40221,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/5404/pm10_12234701.csv.gz",
+     "rows": 11789,
+     "sha256": "53aed5bb8735d6be4247b5c23fc76c617f2acc44799b6d0f954d78feb9d6e6a5",
+     "content_sha256": "3441cf1272cf3a19878dc1e2697549d728196edc0316c574b8886af5f69dcc88",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 767
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 541
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 783
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 883
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 869
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 850
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 934
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 533
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 837
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 938
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 904
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 876
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 968
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 848
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 271
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12234702,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:16:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 40123,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/5404/pm25_12234702.csv.gz",
+     "rows": 11769,
+     "sha256": "bb9f53311630479a4b36a3a06dc263f02389d542a027de1c46467d866bf37378",
+     "content_sha256": "484a8dfd4d9afd37f5f1e583c5b55011ab36e34cdefe27f4799f066b5055b274",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 767
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 541
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 783
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 883
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 869
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 849
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 934
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 533
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 837
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 938
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 904
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 876
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 946
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 848
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 274
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 12234697,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:16:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 40398,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12234699,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:16:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 40347,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 14086,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-09-15T06:00:00Z",
+     "last_utc": "2018-02-21T07:00:00Z",
+     "observed_count": 3071,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14087,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-09-15T06:00:00Z",
+     "last_utc": "2018-02-21T07:00:00Z",
+     "observed_count": 3057,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14084,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-09-15T06:00:00Z",
+     "last_utc": "2018-02-21T07:00:00Z",
+     "observed_count": 3057,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14085,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2017-09-15T06:00:00Z",
+     "last_utc": "2018-02-21T07:00:00Z",
+     "observed_count": 3064,
+     "decision": "rejected_no_data_in_window"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:21:58.267245+00:00",
+   "complete": true
+  },
+  "5408": {
+   "name": "Secretariat, Amaravati - APPCB",
+   "city": "Amaravati",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12234946,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41629,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/5408/o3_12234946.csv.gz",
+     "rows": 12441,
+     "sha256": "2dbe2c011daf165221d4d686aa648ea30179738879863ee718d5c14ba0a2d97d",
+     "content_sha256": "9647052d4822f52bdafc135c252c69be3820d4ef5a9a767da12f7d05e5adfbcb",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 999
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 838
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 937
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 853
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 910
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 853
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 956
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 805
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 832
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 846
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 910
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 755
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 973
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 713
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 274
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12234947,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41524,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/5408/pm10_12234947.csv.gz",
+     "rows": 12403,
+     "sha256": "e1f4f225f2d965e1061dd023b5d2949ba4631a2ccebee851278396173a472f8b",
+     "content_sha256": "06c83544843c1ad7a9f2b9c77c0b2b8ed3ddda210b6a76f761399383fcda563f",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 1000,
+       "warning": "page_limit_reached"
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 834
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 917
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 851
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 910
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 846
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 956
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 805
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 825
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 843
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 910
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 751
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 976
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 714
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 278
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12234948,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41224,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/5408/pm25_12234948.csv.gz",
+     "rows": 12356,
+     "sha256": "a7389cfadae75a87e1546c1403d20839a6d7e156b8e12e0ea9450559d09271c7",
+     "content_sha256": "d4dae9e9038b89c3384fb0528bf167d92f8b121be168438d63c3dea66b6371ae",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 1000,
+       "warning": "page_limit_reached"
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 834
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 938
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 850
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 911
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 820
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 956
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 784
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 819
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 837
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 901
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 752
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 972
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 717
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 278
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 12234950,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41461,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12234945,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41698,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12234943,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41692,
+     "decision": "rejected_unit_not_mass_concentration"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:21:22.847580+00:00",
+   "complete": true
+  },
+  "5541": {
+   "name": "Burari Crossing, New Delhi - IMD",
+   "city": "New Delhi",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12234682,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:17:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42638,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/5541/o3_12234682.csv.gz",
+     "rows": 12226,
+     "sha256": "17e5c88c39a7f3b20258d0bec07cae4ee1ef0a75b89636e9205071f34de51a3f",
+     "content_sha256": "475c50963601450814ade7c62223031620b5efd7ad892b6abd612917a977ffa5",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 824
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 761
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 738
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 858
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 909
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 712
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 946
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 798
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 828
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 944
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 905
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 880
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 967
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 893
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 273
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12234683,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:17:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42395,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/5541/pm10_12234683.csv.gz",
+     "rows": 12175,
+     "sha256": "4739f0f4b212ea5f5815a6c2bda598f8513671939f045ccae36f4a1613079270",
+     "content_sha256": "8403f834a57a442189e0ff300b7bb14b2900bcca74b7f6ee67936ea217343c65",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 824
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 761
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 738
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 858
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 909
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 712
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 946
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 798
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 828
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 944
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 905
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 881
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 913
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 900
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 269
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12234684,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:17:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42389,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/5541/pm25_12234684.csv.gz",
+     "rows": 12195,
+     "sha256": "80b10f2386919d6fe177a00a53d23bdf3e43d899d3c936d2f4c82f7981b94ad0",
+     "content_sha256": "dcb02af614e924180122f7962d2672584660c627ee707fa09f3a6322f0aa7949",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 824
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 761
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 738
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 858
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 909
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 712
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 946
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 798
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 828
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 944
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 905
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 882
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 928
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 903
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 270
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 14936,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T06:00:00Z",
+     "last_utc": "2022-08-03T11:00:00Z",
+     "observed_count": 16085,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14931,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T06:00:00Z",
+     "last_utc": "2022-08-03T11:00:00Z",
+     "observed_count": 16053,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14912,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T06:00:00Z",
+     "last_utc": "2022-08-03T11:00:00Z",
+     "observed_count": 13566,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14620,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T06:00:00Z",
+     "last_utc": "2022-08-03T11:00:00Z",
+     "observed_count": 15912,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14958,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T06:00:00Z",
+     "last_utc": "2022-08-03T11:00:00Z",
+     "observed_count": 16097,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 12234681,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:17:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42735,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12234679,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:17:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42692,
+     "decision": "rejected_unit_not_mass_concentration"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:23:45.895532+00:00",
+   "complete": true
+  },
+  "5544": {
+   "name": "Model Town, Patiala - PPCB",
+   "city": "Patiala",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12235140,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42697,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/5544/o3_12235140.csv.gz",
+     "rows": 12878,
+     "sha256": "da5f5fca65ad62c8a22b176c88805e381fb9593118a7e2d2bb799feb2275d485",
+     "content_sha256": "eb42a2fa5c8892f07214ce1ce77e4dc0187ad3293d20703e6bdde02d66c81491",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 983
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 879
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 930
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 925
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 928
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 938
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 781
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 822
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 929
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 880
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 852
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 931
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 903
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 254
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12235141,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42935,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/5544/pm10_12235141.csv.gz",
+     "rows": 12866,
+     "sha256": "28053b6d21b2d6dfb7cf87c08e32270f17216e766af60cbd3a8f8bc0fe434b83",
+     "content_sha256": "ac6bdf3d3ccac491fb1fc0a22b53c3c7ba69262eefe4e4d8146401a4301207e1",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 983
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 879
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 930
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 924
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 927
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 938
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 782
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 823
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 927
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 890
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 851
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 934
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 884
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 251
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12235142,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:15:00Z",
+     "observed_count": 42292,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/5544/pm25_12235142.csv.gz",
+     "rows": 12857,
+     "sha256": "4a2f12c1c39ebdee99e1ad5e2c230f68603e0c2084b729a4ba124aa5b074019d",
+     "content_sha256": "d3e2be1d1ea681378ee51d643f3d26b9c487d4e110004eeca8a0ca06a7993021",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 983
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 878
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 930
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 925
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 927
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 938
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 954
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 781
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 820
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 925
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 879
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 845
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 937
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 895
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:15:00+00:00",
+       "returned": 251
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 12235144,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:15:00Z",
+     "observed_count": 42276,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235139,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42797,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235137,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:15:00Z",
+     "observed_count": 42473,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 14874,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-31T01:45:00Z",
+     "observed_count": 39379,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 15243,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-31T01:45:00Z",
+     "observed_count": 39307,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14852,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-31T01:45:00Z",
+     "observed_count": 36313,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14629,
+     "parameter": "so2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-31T01:45:00Z",
+     "observed_count": 37975,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 15260,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-31T01:45:00Z",
+     "observed_count": 39392,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14848,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-31T01:45:00Z",
+     "observed_count": 39327,
+     "decision": "rejected_no_data_in_window"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:23:10.865460+00:00",
+   "complete": true
+  },
+  "5565": {
+   "name": "MIDC Khutala, Chandrapur - MPCB",
+   "city": "Chandrapur",
+   "sensors": {
+    "O3": {
+     "sensor_id": 12235554,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44087,
+     "pollutant": "O3",
+     "file": "data/research/openaq_hours/5565/o3_12235554.csv.gz",
+     "rows": 12644,
+     "sha256": "62abde65a05da04da896e24696633bc539108b9541c8cb7250ed64b20498ea75",
+     "content_sha256": "9b1f5bd977fe5a63da688fa1b3545277653f7e0335f47f04b71a2f05f501f359",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 950
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 881
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 902
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 875
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 964
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 897
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 713
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 768
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 829
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 948
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 926
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 875
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 952
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 907
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 268
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM10": {
+     "sensor_id": 12235555,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42749,
+     "pollutant": "PM10",
+     "file": "data/research/openaq_hours/5565/pm10_12235555.csv.gz",
+     "rows": 12289,
+     "sha256": "e5e6b79d7059e82797b34182707306b3d5c316754d839aa01667ed3141ef12b7",
+     "content_sha256": "18b73f6904c9dbf4eb63a19c1453374affea3f0e3da635ecf496682cd691d7b8",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 951
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 881
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 902
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 875
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 964
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 897
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 713
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 768
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 829
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 948
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 926
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 854
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 875
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 679
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 238
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    },
+    "PM2.5": {
+     "sensor_id": 12235556,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 42505,
+     "pollutant": "PM2.5",
+     "file": "data/research/openaq_hours/5565/pm25_12235556.csv.gz",
+     "rows": 12208,
+     "sha256": "37193a46c4ede643e25b032d4083f1ab4e4babd9afaac7ddf039f102433a9f67",
+     "content_sha256": "1ece0b2d204bf45d0d352f690fe89ed7e57ce06551abb824b22ef2a72c0da3e3",
+     "requests": [
+      {
+       "from": "2025-02-18T20:00:00+00:00",
+       "to": "2025-04-01T12:00:00+00:00",
+       "returned": 951
+      },
+      {
+       "from": "2025-04-01T12:00:00+00:00",
+       "to": "2025-05-13T04:00:00+00:00",
+       "returned": 881
+      },
+      {
+       "from": "2025-05-13T04:00:00+00:00",
+       "to": "2025-06-23T20:00:00+00:00",
+       "returned": 902
+      },
+      {
+       "from": "2025-06-23T20:00:00+00:00",
+       "to": "2025-08-04T12:00:00+00:00",
+       "returned": 875
+      },
+      {
+       "from": "2025-08-04T12:00:00+00:00",
+       "to": "2025-09-15T04:00:00+00:00",
+       "returned": 964
+      },
+      {
+       "from": "2025-09-15T04:00:00+00:00",
+       "to": "2025-10-26T20:00:00+00:00",
+       "returned": 897
+      },
+      {
+       "from": "2025-10-26T20:00:00+00:00",
+       "to": "2025-12-07T12:00:00+00:00",
+       "returned": 713
+      },
+      {
+       "from": "2025-12-07T12:00:00+00:00",
+       "to": "2026-01-18T04:00:00+00:00",
+       "returned": 768
+      },
+      {
+       "from": "2026-01-18T04:00:00+00:00",
+       "to": "2026-02-28T20:00:00+00:00",
+       "returned": 829
+      },
+      {
+       "from": "2026-02-28T20:00:00+00:00",
+       "to": "2026-04-11T12:00:00+00:00",
+       "returned": 948
+      },
+      {
+       "from": "2026-04-11T12:00:00+00:00",
+       "to": "2026-05-23T04:00:00+00:00",
+       "returned": 926
+      },
+      {
+       "from": "2026-05-23T04:00:00+00:00",
+       "to": "2026-07-03T20:00:00+00:00",
+       "returned": 858
+      },
+      {
+       "from": "2026-07-03T20:00:00+00:00",
+       "to": "2026-08-14T12:00:00+00:00",
+       "returned": 822
+      },
+      {
+       "from": "2026-08-14T12:00:00+00:00",
+       "to": "2026-09-25T04:00:00+00:00",
+       "returned": 670
+      },
+      {
+       "from": "2026-09-25T04:00:00+00:00",
+       "to": "2026-10-07T15:30:00+00:00",
+       "returned": 215
+      }
+     ],
+     "first_row": "2025-02-18T20:30:00+00:00",
+     "last_row": "2026-10-07T13:30:00+00:00"
+    }
+   },
+   "not_used": [
+    {
+     "sensor_id": 12235558,
+     "parameter": "so2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 43634,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235553,
+     "parameter": "no2",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 41015,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 12235551,
+     "parameter": "co",
+     "units": "ppb",
+     "first_utc": "2025-02-18T20:15:00Z",
+     "last_utc": "2026-10-07T14:30:00Z",
+     "observed_count": 44164,
+     "decision": "rejected_unit_not_mass_concentration"
+    },
+    {
+     "sensor_id": 14702,
+     "parameter": "pm25",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-11T12:45:00Z",
+     "observed_count": 33163,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14704,
+     "parameter": "no2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-11T12:45:00Z",
+     "observed_count": 32091,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14766,
+     "parameter": "co",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-11T12:45:00Z",
+     "observed_count": 35279,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14764,
+     "parameter": "o3",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-11T12:45:00Z",
+     "observed_count": 33752,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14701,
+     "parameter": "so2",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-11T12:45:00Z",
+     "observed_count": 35301,
+     "decision": "rejected_no_data_in_window"
+    },
+    {
+     "sensor_id": 14703,
+     "parameter": "pm10",
+     "units": "\u00b5g/m\u00b3",
+     "first_utc": "2018-03-09T05:30:00Z",
+     "last_utc": "2022-10-11T12:45:00Z",
+     "observed_count": 34375,
+     "decision": "rejected_no_data_in_window"
+    }
+   ],
+   "retrieved_at": "2026-10-11T18:24:58.793115+00:00",
+   "complete": true
   }
  },
  "window": [
@@ -744,6 +4594,8 @@
  ],
  "selection_sha256": "b699500ecc411a1f449c7b94cc13aa107a8e918cd5678fd18cf34af6a18bb04b",
  "note": "Raw hourly bins, unfiltered. OpenAQ provider is CPCB for every station; values are not an official CPCB export.",
- "updated_at": "2026-10-11T18:14:39.509354+00:00",
- "requests_this_run": 46
+ "updated_at": "2026-10-11T18:27:30.947991+00:00",
+ "requests_this_run": 46,
+ "stations_complete": 13,
+ "rows": 468921
 }

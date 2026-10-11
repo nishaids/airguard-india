@@ -1733,7 +1733,1363 @@
     "timezone": "UTC"
    },
    "retrieved_at": "2026-10-11T18:21:56.077534+00:00"
+  },
+  "0.4deg-+063-+0190": {
+   "file": "data/research/cams/0.4deg-+063-+0190.json.gz",
+   "sha256": "78ff525775d0899593d4093fee0eca2399e6e2ab5730d0b456fea176eaa35ac9",
+   "content_sha256": "0b4f9379ea13f279bfa55e0076faa53d3c6a74dafac4390496868df40f4c501f",
+   "bytes": 724255,
+   "cell": {
+    "cell_id": "0.4deg-+063-+0190",
+    "row": 63,
+    "column": 190,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.2,
+    "centre_longitude": 76.0,
+    "stations": [
+     5636,
+     3409406
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.2,
+    "longitude": 76.0,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:03.025672+00:00"
+  },
+  "0.4deg-+063-+0207": {
+   "file": "data/research/cams/0.4deg-+063-+0207.json.gz",
+   "sha256": "2e0f9e49f11a2ebe3da4a472d36cb61314f69913bc3adb77a71c7694b1363e6e",
+   "content_sha256": "4ad31cdc2318b17dbab543746c074761a72d161ece4ccae004cbb6419832a603",
+   "bytes": 742266,
+   "cell": {
+    "cell_id": "0.4deg-+063-+0207",
+    "row": 63,
+    "column": 207,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.2,
+    "centre_longitude": 82.8,
+    "stations": [
+     5590,
+     228397
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.2,
+    "longitude": 82.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:09.992839+00:00"
+  },
+  "0.4deg-+063-+0216": {
+   "file": "data/research/cams/0.4deg-+063-+0216.json.gz",
+   "sha256": "add879d8d3ddb70ae558f614ecd563d6f0f518a8b896e5a59de563480dc85271",
+   "content_sha256": "34f30e6f1a9ce32267c1c0b3fdb6049b2199fddf7e9f84aebb5f2dcf0199bba3",
+   "bytes": 737787,
+   "cell": {
+    "cell_id": "0.4deg-+063-+0216",
+    "row": 63,
+    "column": 216,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.2,
+    "centre_longitude": 86.4,
+    "stations": [
+     270704
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.2,
+    "longitude": 86.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:16.931718+00:00"
+  },
+  "0.4deg-+063-+0217": {
+   "file": "data/research/cams/0.4deg-+063-+0217.json.gz",
+   "sha256": "edc8706ebc2bb996eb0a5ca12b50417bd37db569a10e8e9c0a7b9bad97fa11ab",
+   "content_sha256": "6763a5b8584cf6d3418095635b48179fdff1e56d71620777dc950d48f7482004",
+   "bytes": 737664,
+   "cell": {
+    "cell_id": "0.4deg-+063-+0217",
+    "row": 63,
+    "column": 217,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.2,
+    "centre_longitude": 86.8,
+    "stations": [
+     270723
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.2,
+    "longitude": 86.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:23.832100+00:00"
+  },
+  "0.4deg-+063-+0218": {
+   "file": "data/research/cams/0.4deg-+063-+0218.json.gz",
+   "sha256": "8b52ec552a7eae05cfb197ba45bc7888b470ebaf34825a0ea07d8214367d4aa6",
+   "content_sha256": "6b8b04185bb780c30e9710d3a562f29c289fc9b5e933ae66c22bd73e47e14009",
+   "bytes": 736294,
+   "cell": {
+    "cell_id": "0.4deg-+063-+0218",
+    "row": 63,
+    "column": 218,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.2,
+    "centre_longitude": 87.2,
+    "stations": [
+     270721
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.2,
+    "longitude": 87.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:30.673991+00:00"
+  },
+  "0.4deg-+064-+0183": {
+   "file": "data/research/cams/0.4deg-+064-+0183.json.gz",
+   "sha256": "a7de592f60510bb6ea07ed720c91215563693d2e88b19dc41423952abb7a2cf6",
+   "content_sha256": "ecaf14371427433bcd268cbb3bad3422e98800c0c13d20e6e1ad8fcb8e60f586",
+   "bytes": 715604,
+   "cell": {
+    "cell_id": "0.4deg-+064-+0183",
+    "row": 64,
+    "column": 183,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.6,
+    "centre_longitude": 73.2,
+    "stations": [
+     5638
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 73.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:37.598570+00:00"
+  },
+  "0.4deg-+064-+0189": {
+   "file": "data/research/cams/0.4deg-+064-+0189.json.gz",
+   "sha256": "993a566dee379090d135442f062663d0ed6ca63b57e8c82cb03533f161f4c365",
+   "content_sha256": "681f1c5ea521b30621b94f1e7b76d54a678d496b688051249d642647b733d061",
+   "bytes": 720984,
+   "cell": {
+    "cell_id": "0.4deg-+064-+0189",
+    "row": 64,
+    "column": 189,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.6,
+    "centre_longitude": 75.6,
+    "stations": [
+     3409443
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 75.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:44.480437+00:00"
+  },
+  "0.4deg-+064-+0205": {
+   "file": "data/research/cams/0.4deg-+064-+0205.json.gz",
+   "sha256": "bc0d678a19bf9e7a02b74de3ddd61c5a1de195f5ca2359cd8a221d495756fad3",
+   "content_sha256": "4ddecaed81ef248d7598328641460099c0952a9300b20aee786a6fc34df172b1",
+   "bytes": 739384,
+   "cell": {
+    "cell_id": "0.4deg-+064-+0205",
+    "row": 64,
+    "column": 205,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.6,
+    "centre_longitude": 82.0,
+    "stations": [
+     227384,
+     227387
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 82.0,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:51.508335+00:00"
+  },
+  "0.4deg-+064-+0213": {
+   "file": "data/research/cams/0.4deg-+064-+0213.json.gz",
+   "sha256": "4a60f3a70d382a79b046ab4fc1a9886a07415289684e7930b5c19c0fb8d2b3dd",
+   "content_sha256": "c013f22196581b9c61332a16d3ef151428262b83c63be72184b42659faa02e3d",
+   "bytes": 741888,
+   "cell": {
+    "cell_id": "0.4deg-+064-+0213",
+    "row": 64,
+    "column": 213,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.6,
+    "centre_longitude": 85.2,
+    "stations": [
+     7495,
+     10599,
+     10630
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 85.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:22:59.745025+00:00"
+  },
+  "0.4deg-+064-+0230": {
+   "file": "data/research/cams/0.4deg-+064-+0230.json.gz",
+   "sha256": "7032f8873b60d9153d5a4c2199bad262d87f62e138dbf2458f55ee4401d9f3c1",
+   "content_sha256": "bef58806e3a0fe693582f9d0221f282253651ac580fcb81a867e413aca189ed7",
+   "bytes": 707046,
+   "cell": {
+    "cell_id": "0.4deg-+064-+0230",
+    "row": 64,
+    "column": 230,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.6,
+    "centre_longitude": 92.0,
+    "stations": [
+     10895,
+     313411
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 92.0,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:23:06.757432+00:00"
+  },
+  "0.4deg-+064-+0235": {
+   "file": "data/research/cams/0.4deg-+064-+0235.json.gz",
+   "sha256": "9787073837a1bb3185e808443e2ab055954557b4e4d7aa52a40477f947722535",
+   "content_sha256": "2d8cafbdd9130d18f32128f3bacf11d0855829db8eb2c909f1b88dfc676e9def",
+   "bytes": 708162,
+   "cell": {
+    "cell_id": "0.4deg-+064-+0235",
+    "row": 64,
+    "column": 235,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 25.6,
+    "centre_longitude": 94.0,
+    "stations": [
+     10901
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 94.0,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:23:13.591918+00:00"
+  },
+  "0.4deg-+065-+0213": {
+   "file": "data/research/cams/0.4deg-+065-+0213.json.gz",
+   "sha256": "8c0ca1eb273c8e3f614ef53e6bb5000347443ce5176273a6898115d3e9917401",
+   "content_sha256": "58894aac23f7a8d962f91efb58eba9966f855f8661fd87476bc180e09cc6faec",
+   "bytes": 741721,
+   "cell": {
+    "cell_id": "0.4deg-+065-+0213",
+    "row": 65,
+    "column": 213,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.0,
+    "centre_longitude": 85.2,
+    "stations": [
+     10823,
+     229987
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.0,
+    "longitude": 85.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:23:20.582550+00:00"
+  },
+  "0.4deg-+065-+0229": {
+   "file": "data/research/cams/0.4deg-+065-+0229.json.gz",
+   "sha256": "cc7423b9a379549e28ecc559d2f2b8d22954f97a7b2b3e969aa30a4a71c34909",
+   "content_sha256": "f39efa6e18d300f54f7e851f4aea0b6153e24e77401291894ebbd2d3d755d18e",
+   "bytes": 715217,
+   "cell": {
+    "cell_id": "0.4deg-+065-+0229",
+    "row": 65,
+    "column": 229,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.0,
+    "centre_longitude": 91.6,
+    "stations": [
+     10903,
+     42240
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.0,
+    "longitude": 91.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:23:27.376674+00:00"
+  },
+  "0.4deg-+066-+0182": {
+   "file": "data/research/cams/0.4deg-+066-+0182.json.gz",
+   "sha256": "01737325f1a7367e04cb383e30bd921bb512ee2d7b7a18498fdfe507474b4608",
+   "content_sha256": "15deb7ee2dc460ff7569ef82872a69f0f410f8651d0e74dca1003a0648b2a709",
+   "bytes": 721196,
+   "cell": {
+    "cell_id": "0.4deg-+066-+0182",
+    "row": 66,
+    "column": 182,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.4,
+    "centre_longitude": 72.8,
+    "stations": [
+     3409401
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.4,
+    "longitude": 72.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:23:34.183245+00:00"
+  },
+  "0.4deg-+066-+0183": {
+   "file": "data/research/cams/0.4deg-+066-+0183.json.gz",
+   "sha256": "b6331a751e9ce715cd0f64562747fdbd967a89468a0cf0be749ff5a2de53d1a4",
+   "content_sha256": "9ff324986a972ccb14f91bcaed2026e89f70b951b357517d84f11e298852a2e2",
+   "bytes": 722111,
+   "cell": {
+    "cell_id": "0.4deg-+066-+0183",
+    "row": 66,
+    "column": 183,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.4,
+    "centre_longitude": 73.2,
+    "stations": [
+     5587,
+     3409425
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.4,
+    "longitude": 73.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:23:41.071074+00:00"
+  },
+  "0.4deg-+066-+0193": {
+   "file": "data/research/cams/0.4deg-+066-+0193.json.gz",
+   "sha256": "eeb6f64decb091a41c697d1f5be943ead504f6433ac7e81218462d00d55820f7",
+   "content_sha256": "44b8f90ec11f1e8c580839c6453766aec18a12e33255593d9e9cb0b7c9e494ce",
+   "bytes": 723643,
+   "cell": {
+    "cell_id": "0.4deg-+066-+0193",
+    "row": 66,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.4,
+    "centre_longitude": 77.2,
+    "stations": [
+     3409428
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.4,
+    "longitude": 77.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:23:48.037606+00:00"
+  },
+  "0.4deg-+066-+0195": {
+   "file": "data/research/cams/0.4deg-+066-+0195.json.gz",
+   "sha256": "1dde5ca97942454628f80beb2a6a11502f8e90b6dc42f1e765e232bfdac79a32",
+   "content_sha256": "255fd26175296c2f30742f31a9a6b6b5217bd36a3ca8934b064a0b3a9943757e",
+   "bytes": 727498,
+   "cell": {
+    "cell_id": "0.4deg-+066-+0195",
+    "row": 66,
+    "column": 195,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.4,
+    "centre_longitude": 78.0,
+    "stations": [
+     10907,
+     3409369
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.4,
+    "longitude": 78.0,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:23:54.957293+00:00"
+  },
+  "0.4deg-+066-+0201": {
+   "file": "data/research/cams/0.4deg-+066-+0201.json.gz",
+   "sha256": "daeb4aa34de93e90ed1413f69aa97e39c0b784ef2f128502a0935c62630de8c1",
+   "content_sha256": "7cb74d108d22accb9d76e4c4e227cb9e54601689786f42a9a76aa26f69771648",
+   "bytes": 739597,
+   "cell": {
+    "cell_id": "0.4deg-+066-+0201",
+    "row": 66,
+    "column": 201,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.4,
+    "centre_longitude": 80.4,
+    "stations": [
+     5662,
+     229252
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.4,
+    "longitude": 80.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:01.985808+00:00"
+  },
+  "0.4deg-+066-+0211": {
+   "file": "data/research/cams/0.4deg-+066-+0211.json.gz",
+   "sha256": "2052d405b7c69ef3f192e171668b6fcadbf795a4e8785ee47ae3256a8936c42b",
+   "content_sha256": "20892081057fe5a93f389cd6beec20f3688b0ac875989d6ad7739743dad72e5a",
+   "bytes": 741107,
+   "cell": {
+    "cell_id": "0.4deg-+066-+0211",
+    "row": 66,
+    "column": 211,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.4,
+    "centre_longitude": 84.4,
+    "stations": [
+     270726
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.4,
+    "longitude": 84.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:08.841507+00:00"
+  },
+  "0.4deg-+067-+0177": {
+   "file": "data/research/cams/0.4deg-+067-+0177.json.gz",
+   "sha256": "09d66f2f8456326013286a267f11ab7baf45be49a2c35d9e4f03511cbadd253e",
+   "content_sha256": "85942d2a6d7972b2b5434e85487d3a23e865581a87b453ea11f84b36a14383a7",
+   "bytes": 733624,
+   "cell": {
+    "cell_id": "0.4deg-+067-+0177",
+    "row": 67,
+    "column": 177,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.8,
+    "centre_longitude": 70.8,
+    "stations": [
+     3409444
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 70.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:15.867499+00:00"
+  },
+  "0.4deg-+067-+0189": {
+   "file": "data/research/cams/0.4deg-+067-+0189.json.gz",
+   "sha256": "3fe1752d87ce989bb01f94ce95781ed88f6c5cebed5aadf38eddf5467e2a40ef",
+   "content_sha256": "c732c45ab303bbd85e5d25ae4461b22dda0b5dbfa19cc2c5324eb8934e87eb0d",
+   "bytes": 730564,
+   "cell": {
+    "cell_id": "0.4deg-+067-+0189",
+    "row": 67,
+    "column": 189,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.8,
+    "centre_longitude": 75.6,
+    "stations": [
+     5612,
+     5633
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 75.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:22.653999+00:00"
+  },
+  "0.4deg-+067-+0190": {
+   "file": "data/research/cams/0.4deg-+067-+0190.json.gz",
+   "sha256": "bee90165cc91818edad6e34501e01edb00fde177a8edb164a4aa134d2c955a14",
+   "content_sha256": "717759ea47e47ca48695d3f07801da46c34e6f09775bba4b7d9b0efb9392ca7c",
+   "bytes": 729600,
+   "cell": {
+    "cell_id": "0.4deg-+067-+0190",
+    "row": 67,
+    "column": 190,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.8,
+    "centre_longitude": 76.0,
+    "stations": [
+     5635
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 76.0,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:29.509631+00:00"
+  },
+  "0.4deg-+067-+0191": {
+   "file": "data/research/cams/0.4deg-+067-+0191.json.gz",
+   "sha256": "ad3c92ae90306a6fa8ac56c9abc9040e15a11d18b8537138d2c64e7e7e1192ec",
+   "content_sha256": "bc5dd143df71af404b92ae456159f0170bd001f5fae5ef1b7d989908625aa575",
+   "bytes": 726517,
+   "cell": {
+    "cell_id": "0.4deg-+067-+0191",
+    "row": 67,
+    "column": 191,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.8,
+    "centre_longitude": 76.4,
+    "stations": [
+     3409418
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 76.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:36.428347+00:00"
+  },
+  "0.4deg-+067-+0202": {
+   "file": "data/research/cams/0.4deg-+067-+0202.json.gz",
+   "sha256": "5b6d65bb53f61955dae9d55d359cdb5fe54bef391229405d713d954806dcfed3",
+   "content_sha256": "faa9ae9ca7b23451a7870f2903da3e4797f15be33527b410795301950b6a9b5d",
+   "bytes": 739861,
+   "cell": {
+    "cell_id": "0.4deg-+067-+0202",
+    "row": 67,
+    "column": 202,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.8,
+    "centre_longitude": 80.8,
+    "stations": [
+     2456,
+     5659
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 80.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:43.750726+00:00"
+  },
+  "0.4deg-+067-+0203": {
+   "file": "data/research/cams/0.4deg-+067-+0203.json.gz",
+   "sha256": "2a3f202dc3e6e151b51656b028bddd3a0d5b05716f410c5ac6571438b7ae9f3a",
+   "content_sha256": "b37612aa341e6ebdff099b51759b0686562fe62677a3833a6ccf1dd9ad38ed6b",
+   "bytes": 739240,
+   "cell": {
+    "cell_id": "0.4deg-+067-+0203",
+    "row": 67,
+    "column": 203,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.8,
+    "centre_longitude": 81.2,
+    "stations": [
+     7140
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 81.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:50.647899+00:00"
+  },
+  "0.4deg-+067-+0209": {
+   "file": "data/research/cams/0.4deg-+067-+0209.json.gz",
+   "sha256": "d190dd6e994c0af50fe39ce7141a8c5cbc801c8f94e5a0c7a16e02b0edf4731f",
+   "content_sha256": "d70dd12939c78f3f7b8f9200d9b4df0176fefd19489d383f129eada61af98438",
+   "bytes": 735599,
+   "cell": {
+    "cell_id": "0.4deg-+067-+0209",
+    "row": 67,
+    "column": 209,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.8,
+    "centre_longitude": 83.6,
+    "stations": [
+     228840
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 83.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:24:57.511421+00:00"
+  },
+  "0.4deg-+067-+0221": {
+   "file": "data/research/cams/0.4deg-+067-+0221.json.gz",
+   "sha256": "cad2c0024fadbd54f2071c4bcf41e95048004427c70d2035ac2dcfef0b9e461f",
+   "content_sha256": "98d3727ec2de1e1d259e4b439f8f8286347446d2947dff96e029f5c4b881f599",
+   "bytes": 725686,
+   "cell": {
+    "cell_id": "0.4deg-+067-+0221",
+    "row": 67,
+    "column": 221,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 26.8,
+    "centre_longitude": 88.4,
+    "stations": [
+     5648
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 88.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:04.465073+00:00"
+  },
+  "0.4deg-+068-+0194": {
+   "file": "data/research/cams/0.4deg-+068-+0194.json.gz",
+   "sha256": "8401a3da151cbab906883cb78c2f5b0f84f24f34c98e11530fd90369e7c65817",
+   "content_sha256": "b2b31a3eca3742a78c85f8b22208658ed6748008281d2a0048a3b112ff493b45",
+   "bytes": 740496,
+   "cell": {
+    "cell_id": "0.4deg-+068-+0194",
+    "row": 68,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.2,
+    "centre_longitude": 77.6,
+    "stations": [
+     3409402
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.2,
+    "longitude": 77.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:11.425111+00:00"
+  },
+  "0.4deg-+068-+0195": {
+   "file": "data/research/cams/0.4deg-+068-+0195.json.gz",
+   "sha256": "6124168ac83c2ff6641cad2a4d74c0dc46af3a84dcf54d00b0e75243a8b051b8",
+   "content_sha256": "ca73a2317011de4cdbf76f83aa33762cee060954a51591ae0b97b6e71faed57e",
+   "bytes": 748520,
+   "cell": {
+    "cell_id": "0.4deg-+068-+0195",
+    "row": 68,
+    "column": 195,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.2,
+    "centre_longitude": 78.0,
+    "stations": [
+     860,
+     227535,
+     227931
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.2,
+    "longitude": 78.0,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:18.395305+00:00"
+  },
+  "0.4deg-+068-+0196": {
+   "file": "data/research/cams/0.4deg-+068-+0196.json.gz",
+   "sha256": "6c60137398eb7c7446077b625a1d6c4852d82e67016b0bc0713b2ee73e72527a",
+   "content_sha256": "4413b4a3bb674b788f1defa7d4caa5d18b8c6a331eea2ef17fb0f03a7933ceaa",
+   "bytes": 745660,
+   "cell": {
+    "cell_id": "0.4deg-+068-+0196",
+    "row": 68,
+    "column": 196,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.2,
+    "centre_longitude": 78.4,
+    "stations": [
+     229729,
+     330021
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.2,
+    "longitude": 78.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:25.222561+00:00"
+  },
+  "0.4deg-+068-+0234": {
+   "file": "data/research/cams/0.4deg-+068-+0234.json.gz",
+   "sha256": "0936db5a1f81107d0badb2b5970fffe26aaa37f35fdd9f14f3e1b008385d4042",
+   "content_sha256": "ffd73b38a21c57506a4e466075a7de5b00d1f601d1b58db82c8cbe4e339001d3",
+   "bytes": 708495,
+   "cell": {
+    "cell_id": "0.4deg-+068-+0234",
+    "row": 68,
+    "column": 234,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.2,
+    "centre_longitude": 93.6,
+    "stations": [
+     223146
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.2,
+    "longitude": 93.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:32.029780+00:00"
+  },
+  "0.4deg-+069-+0192": {
+   "file": "data/research/cams/0.4deg-+069-+0192.json.gz",
+   "sha256": "5d3b2803679ca494b36169c69e89492850cca67a78bcb3ad9fe376807c997663",
+   "content_sha256": "feba05635cdb6c20d9557816f183173e41646933d8eb6b165fa04673fcb0e1ea",
+   "bytes": 733150,
+   "cell": {
+    "cell_id": "0.4deg-+069-+0192",
+    "row": 69,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.6,
+    "centre_longitude": 76.8,
+    "stations": [
+     5576
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.6,
+    "longitude": 76.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:38.973208+00:00"
+  },
+  "0.4deg-+069-+0194": {
+   "file": "data/research/cams/0.4deg-+069-+0194.json.gz",
+   "sha256": "39a8b4dd85549683117d58a18f6d918b79c7fffe89f8381a36bac4c6020a367c",
+   "content_sha256": "4737f9cf3c304c43d9b39d81bdc333748f67ea6fc654b1eb3ee6053d5116853b",
+   "bytes": 745282,
+   "cell": {
+    "cell_id": "0.4deg-+069-+0194",
+    "row": 69,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 27.6,
+    "centre_longitude": 77.6,
+    "stations": [
+     233414,
+     6530249
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.6,
+    "longitude": 77.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:45.860931+00:00"
+  },
+  "0.4deg-+070-+0183": {
+   "file": "data/research/cams/0.4deg-+070-+0183.json.gz",
+   "sha256": "0985877589e90abdc45754c9ed074ef1ad6c83cc0b893f35225a1c7a10a76f63",
+   "content_sha256": "9f0f725488e999a2ea8f2fecb2382b0a22ac1a19b04c85048009b0181c964a59",
+   "bytes": 719287,
+   "cell": {
+    "cell_id": "0.4deg-+070-+0183",
+    "row": 70,
+    "column": 183,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.0,
+    "centre_longitude": 73.2,
+    "stations": [
+     3409403
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.0,
+    "longitude": 73.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:52.869434+00:00"
+  },
+  "0.4deg-+070-+0192": {
+   "file": "data/research/cams/0.4deg-+070-+0192.json.gz",
+   "sha256": "82b3857ee2f2e3d1f2edb2f25800eafc408ad54bd8805a3a39cfaf1a3567edbe",
+   "content_sha256": "4750ee5e1a8b52e0e3ffcdc7ea016a91f4cc12430b34e7609b3ab1e6c0aff3bf",
+   "bytes": 738891,
+   "cell": {
+    "cell_id": "0.4deg-+070-+0192",
+    "row": 70,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.0,
+    "centre_longitude": 76.8,
+    "stations": [
+     5588
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.0,
+    "longitude": 76.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:25:59.840597+00:00"
+  },
+  "0.4deg-+071-+0191": {
+   "file": "data/research/cams/0.4deg-+071-+0191.json.gz",
+   "sha256": "ab6d023b2d410d0c2b6a86f0e86ccdf6751f3888ae042f3585745650c54267a8",
+   "content_sha256": "0361afe253f0e1627d408ed0879364d2a932c73fbf5c95b6a05cb3b412436efe",
+   "bytes": 742040,
+   "cell": {
+    "cell_id": "0.4deg-+071-+0191",
+    "row": 71,
+    "column": 191,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.4,
+    "centre_longitude": 76.4,
+    "stations": [
+     10725
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.4,
+    "longitude": 76.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:26:06.716479+00:00"
+  },
+  "0.4deg-+071-+0192": {
+   "file": "data/research/cams/0.4deg-+071-+0192.json.gz",
+   "sha256": "ab8cdf03b386b1e67ee6ba8e161bd2a337427572d1fe88062bcbe7d79370eb02",
+   "content_sha256": "a7ea1887dc9da2c29a9f24a303e3b1f6a670323ca579e8208679489dcda1ccff",
+   "bytes": 752594,
+   "cell": {
+    "cell_id": "0.4deg-+071-+0192",
+    "row": 71,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.4,
+    "centre_longitude": 76.8,
+    "stations": [
+     6949,
+     3409519
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.4,
+    "longitude": 76.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:26:13.774291+00:00"
+  },
+  "0.4deg-+071-+0193": {
+   "file": "data/research/cams/0.4deg-+071-+0193.json.gz",
+   "sha256": "f21414190b2d7b24444a23c5c4862aa46f4aa6d2b8f43507ffcff8ddc24c442c",
+   "content_sha256": "a9a09c5e22bfb358ecbc6bcb62b4e40d002b7c2460fad4ed8a70ab21e530fcfc",
+   "bytes": 762112,
+   "cell": {
+    "cell_id": "0.4deg-+071-+0193",
+    "row": 71,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.4,
+    "centre_longitude": 77.2,
+    "stations": [
+     17,
+     301,
+     5570,
+     5598,
+     6980,
+     6988,
+     10820,
+     10825,
+     10908
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.4,
+    "longitude": 77.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:26:20.922905+00:00"
+  },
+  "0.4deg-+071-+0194": {
+   "file": "data/research/cams/0.4deg-+071-+0194.json.gz",
+   "sha256": "b93560a424933349c8b444e486d446bdc9d22cf35b7b5702192ee7ac6b8b388a",
+   "content_sha256": "79853a2071ca0cef5af32bece6820b7d48d5dad9dd63cc33267e1f27ad40399d",
+   "bytes": 757143,
+   "cell": {
+    "cell_id": "0.4deg-+071-+0194",
+    "row": 71,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.4,
+    "centre_longitude": 77.6,
+    "stations": [
+     6978,
+     6986
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.4,
+    "longitude": 77.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:26:27.842744+00:00"
+  },
+  "0.4deg-+071-+0199": {
+   "file": "data/research/cams/0.4deg-+071-+0199.json.gz",
+   "sha256": "d14d27d4b21c142523b0f3b787ad95e5c93ed910805c9b021ad27cd6772dc29d",
+   "content_sha256": "85d323bc46341ba20c7fd81cc34d29dbe388fcaa53ab1c11c807c34e7e984453",
+   "bytes": 738402,
+   "cell": {
+    "cell_id": "0.4deg-+071-+0199",
+    "row": 71,
+    "column": 199,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.4,
+    "centre_longitude": 79.6,
+    "stations": [
+     346438,
+     358467
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.4,
+    "longitude": 79.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:26:34.767285+00:00"
+  },
+  "0.4deg-+072-+0193": {
+   "file": "data/research/cams/0.4deg-+072-+0193.json.gz",
+   "sha256": "25370c155167a9449ab5dc27fa4d62f520ee415aec0dff2fc5afcdd5d1ff295d",
+   "content_sha256": "b65a5cfb16ae2ebb842bb6837c9246c53fc42b26a8280e34d45261c3baa19223",
+   "bytes": 757963,
+   "cell": {
+    "cell_id": "0.4deg-+072-+0193",
+    "row": 72,
+    "column": 193,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.8,
+    "centre_longitude": 77.2,
+    "stations": [
+     50,
+     235,
+     5404,
+     5541,
+     5616,
+     5665,
+     6924
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.8,
+    "longitude": 77.2,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:26:41.941948+00:00"
+  },
+  "0.4deg-+072-+0194": {
+   "file": "data/research/cams/0.4deg-+072-+0194.json.gz",
+   "sha256": "680cd175c4f4812f940351099f831e96120df9629966912b4be0ebe7e51c214c",
+   "content_sha256": "6308a590bbd0c29d32f4ea2ada9c837b8559a5d53984d024806844d3ca45e2e2",
+   "bytes": 751092,
+   "cell": {
+    "cell_id": "0.4deg-+072-+0194",
+    "row": 72,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.8,
+    "centre_longitude": 77.6,
+    "stations": [
+     6976,
+     8319
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.8,
+    "longitude": 77.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:26:48.861322+00:00"
+  },
+  "0.4deg-+072-+0197": {
+   "file": "data/research/cams/0.4deg-+072-+0197.json.gz",
+   "sha256": "a1e6d3f48e41e7f1d6de7acce90961fc6094d34e4d5cd69f26a79f05df42a24c",
+   "content_sha256": "b869ee2631df28bf2231c1e56b7334df2abcb44f85abcb429f143d56bac9e934",
+   "bytes": 743227,
+   "cell": {
+    "cell_id": "0.4deg-+072-+0197",
+    "row": 72,
+    "column": 197,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 28.8,
+    "centre_longitude": 78.8,
+    "stations": [
+     270697,
+     270771,
+     270777
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.8,
+    "longitude": 78.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:26:55.790093+00:00"
+  },
+  "0.4deg-+073-+0194": {
+   "file": "data/research/cams/0.4deg-+073-+0194.json.gz",
+   "sha256": "abc879d1d1a034b075eadd8de854c341a909039c3161bac00fed78eec5d311fa",
+   "content_sha256": "ce22adba865e217944868860b073ec0d3306e1cdd874d6d163e15c3c36522b12",
+   "bytes": 745465,
+   "cell": {
+    "cell_id": "0.4deg-+073-+0194",
+    "row": 73,
+    "column": 194,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 29.2,
+    "centre_longitude": 77.6,
+    "stations": [
+     7720
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 29.2,
+    "longitude": 77.6,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:27:02.894083+00:00"
+  },
+  "0.4deg-+075-+0191": {
+   "file": "data/research/cams/0.4deg-+075-+0191.json.gz",
+   "sha256": "d8b9dfa47990b8ab937703688fc556dbdfa7e6223d9f0836c10e49e9d99c52e6",
+   "content_sha256": "bef0c30ff57f93256f7bab125099ae3d83a1ebf7cb4fa10750b48e05bd63ac8d",
+   "bytes": 749530,
+   "cell": {
+    "cell_id": "0.4deg-+075-+0191",
+    "row": 75,
+    "column": 191,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 30.0,
+    "centre_longitude": 76.4,
+    "stations": [
+     6971
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 30.0,
+    "longitude": 76.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:27:09.963479+00:00"
+  },
+  "0.4deg-+076-+0191": {
+   "file": "data/research/cams/0.4deg-+076-+0191.json.gz",
+   "sha256": "7f23f8463eee75c6b6d2eff25182b252efd923226a9fa4602243df4ea2f42fe0",
+   "content_sha256": "d2be98f07faf1236934c38e803700a6d170acfdbb9c219c84380ee0afd7661c3",
+   "bytes": 746044,
+   "cell": {
+    "cell_id": "0.4deg-+076-+0191",
+    "row": 76,
+    "column": 191,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 30.4,
+    "centre_longitude": 76.4,
+    "stations": [
+     5544
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 30.4,
+    "longitude": 76.4,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:27:16.891432+00:00"
+  },
+  "0.4deg-+077-+0192": {
+   "file": "data/research/cams/0.4deg-+077-+0192.json.gz",
+   "sha256": "55b372ac5115e10c0bf9201d9b8f80169cb68ffebe984927182894e2ee90b92c",
+   "content_sha256": "31750ec075557335c3e5ddca65546dc5d5a570d12e2708f63e7ce7deed3e357a",
+   "bytes": 737868,
+   "cell": {
+    "cell_id": "0.4deg-+077-+0192",
+    "row": 77,
+    "column": 192,
+    "resolution_degrees": 0.4,
+    "centre_latitude": 30.8,
+    "centre_longitude": 76.8,
+    "stations": [
+     10914,
+     233415
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 30.8,
+    "longitude": 76.8,
+    "hourly": "pm2_5,pm10,nitrogen_dioxide,sulphur_dioxide,carbon_monoxide,ozone",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "domains": "cams_global",
+    "timezone": "UTC"
+   },
+   "retrieved_at": "2026-10-11T18:27:23.933936+00:00"
   }
  },
- "updated_at": "2026-10-11T18:21:56.077534+00:00"
+ "updated_at": "2026-10-11T18:27:23.936949+00:00",
+ "cells": 107,
+ "stations_sharing_a_cell": 123
 }

@@ -1,0 +1,626 @@
+{
+ "source": "VIIRS_NOAA21_NRT",
+ "endpoint": "https://firms.modaps.eosdis.nasa.gov/api/area/csv",
+ "area": "67,5,99,38",
+ "window": [
+  "2025-02-01",
+  "2026-10-08"
+ ],
+ "issue_time_valid": true,
+ "why": "Near-real-time detections carry acquisition date and time. The issue-time cutoff, with a three-hour processing allowance, is applied to each detection when features are built.",
+ "files": {
+  "2025-02-01": {
+   "file": "data/research/firms/2025-02-01.csv.gz",
+   "sha256": "2daf83637e04e40d25d3ff7cfd264c0a213ffe5bb94a94065ad387556170f9d9",
+   "content_sha256": "8fe20f0b9923fea0034182e7749b2b39d74fb05a14ca6a1765019d10bc91c8d1",
+   "bytes": 1212369,
+   "days": 5,
+   "detections": 14688,
+   "retrieved_at": "2026-10-11T18:27:29.512843+00:00"
+  },
+  "2025-02-06": {
+   "file": "data/research/firms/2025-02-06.csv.gz",
+   "sha256": "6bb523d740693653dc888e7511d096a3dcd5370e9cfaf9bee6d3f2401f1e8d92",
+   "content_sha256": "851838785f23b449ae820d1742248ecbde23684aa99d5b113690046b35f5e5c8",
+   "bytes": 1542471,
+   "days": 5,
+   "detections": 18691,
+   "retrieved_at": "2026-10-11T18:27:34.843130+00:00"
+  },
+  "2025-02-11": {
+   "file": "data/research/firms/2025-02-11.csv.gz",
+   "sha256": "6de0a051fef01dfcad48e0732e8951bc57ebcc3f76c855c5a97269ab4e8ce82b",
+   "content_sha256": "f74ddfb32fad21bee7fb9b8096ca19f2b1d15f7243cfaa4e3e56744b30147dca",
+   "bytes": 1920316,
+   "days": 5,
+   "detections": 23263,
+   "retrieved_at": "2026-10-11T18:27:40.496111+00:00"
+  },
+  "2025-02-16": {
+   "file": "data/research/firms/2025-02-16.csv.gz",
+   "sha256": "57732640bd52713406f4aa67a133c00270da090d4f66f3fd893c5dddcf051089",
+   "content_sha256": "4312461ba3a58f41a7b04be597e538e4ae3c01048c1d86f4d8638ca516b16cd7",
+   "bytes": 1825245,
+   "days": 5,
+   "detections": 22108,
+   "retrieved_at": "2026-10-11T18:27:46.560496+00:00"
+  },
+  "2025-02-21": {
+   "file": "data/research/firms/2025-02-21.csv.gz",
+   "sha256": "65781107b914f33005f0210d037e6ee77d4c4ba437326a81ada3c9db69c292a2",
+   "content_sha256": "ba4228a733cb31c97080c853391b109bf28dbe12148cc97298e57313889167dd",
+   "bytes": 1633243,
+   "days": 5,
+   "detections": 19793,
+   "retrieved_at": "2026-10-11T18:27:51.977799+00:00"
+  },
+  "2025-02-26": {
+   "file": "data/research/firms/2025-02-26.csv.gz",
+   "sha256": "bbe84f54797c1a0f24b71382ee8e7eec7cf4f4554583db1f7efc29acc0e19dce",
+   "content_sha256": "35006840db59157cd8deeca55f0e59c9486453bd3662fd24f2fa07230c5c161d",
+   "bytes": 2356532,
+   "days": 5,
+   "detections": 28542,
+   "retrieved_at": "2026-10-11T18:27:57.647200+00:00"
+  },
+  "2025-03-03": {
+   "file": "data/research/firms/2025-03-03.csv.gz",
+   "sha256": "9e8d5aa85472ba0abad4d1f937b6fdf80fc63902939b98bf9335a9c6cfe70f77",
+   "content_sha256": "a55c63d24135035e0f3b3bba25f459bf2a9706e0f4954da2c19c923e3e1f28f5",
+   "bytes": 4572355,
+   "days": 5,
+   "detections": 55359,
+   "retrieved_at": "2026-10-11T18:28:03.650835+00:00"
+  },
+  "2025-03-08": {
+   "file": "data/research/firms/2025-03-08.csv.gz",
+   "sha256": "9d4adb84cfd5718bbae98c05e07d0d7065ebcb9a3cbfc21e637db23cb72a7350",
+   "content_sha256": "00b171015b67fdd51b1d0128deddbdece786651feb7a790ee7e08378f1849c09",
+   "bytes": 4844307,
+   "days": 5,
+   "detections": 58670,
+   "retrieved_at": "2026-10-11T18:28:10.163306+00:00"
+  },
+  "2025-03-13": {
+   "file": "data/research/firms/2025-03-13.csv.gz",
+   "sha256": "c674f2729e03444ca6170d59b14f1ac3fe54d4792469be8e2a7bfc704471d365",
+   "content_sha256": "a2ce670c4293ef792b1207ce12ec4725380ea0e64ef86da40262ada436605287",
+   "bytes": 5945214,
+   "days": 5,
+   "detections": 71965,
+   "retrieved_at": "2026-10-11T18:28:16.600132+00:00"
+  },
+  "2025-03-18": {
+   "file": "data/research/firms/2025-03-18.csv.gz",
+   "sha256": "3e5a6e8d82b4945d46439b0db37dd715afcd5dd4cce32444b13ca95840d8bcfa",
+   "content_sha256": "0b4f440284a414c24ae6461f43df1c0f69354abf884dc15f0f8002828c875d45",
+   "bytes": 3759010,
+   "days": 5,
+   "detections": 45492,
+   "retrieved_at": "2026-10-11T18:28:30.403568+00:00"
+  },
+  "2025-03-23": {
+   "file": "data/research/firms/2025-03-23.csv.gz",
+   "sha256": "74e30a27a0daa963e581fbaa5d1da6390d69012138e15ed593af62f75ebab078",
+   "content_sha256": "a5ff66ed7e2384554f14838520264b83d844e1998a48b12a5e12572a0d65e84f",
+   "bytes": 5353800,
+   "days": 5,
+   "detections": 64752,
+   "retrieved_at": "2026-10-11T18:28:36.609112+00:00"
+  },
+  "2025-03-28": {
+   "file": "data/research/firms/2025-03-28.csv.gz",
+   "sha256": "275c5231ecfddc8074a609b68f26941ccb4e03d174ab00b04bfa3516514f03d8",
+   "content_sha256": "3f6b2da28e51f263e211700f29b488b8298367f0bd4162e64b585e934d12c7aa",
+   "bytes": 7479741,
+   "days": 5,
+   "detections": 90524,
+   "retrieved_at": "2026-10-11T18:28:43.135142+00:00"
+  },
+  "2025-04-02": {
+   "file": "data/research/firms/2025-04-02.csv.gz",
+   "sha256": "80e447ba7655502c57455cb6cd0a6fcc4641cc0d9a2110268a70391426553a73",
+   "content_sha256": "0963fbd204aef0376d18b901993720a48b998296fd5c1925dd72bc5b34547d7c",
+   "bytes": 4849086,
+   "days": 5,
+   "detections": 58658,
+   "retrieved_at": "2026-10-11T18:28:49.269964+00:00"
+  },
+  "2025-04-07": {
+   "file": "data/research/firms/2025-04-07.csv.gz",
+   "sha256": "d61764bc5f7652943decdd67bfaebdbf4cc62c72e4ade0670b5cfde4a9f43edb",
+   "content_sha256": "fefaad267507bb130aec106bcb64286503b69897ce3ee09b84d5d9f53e17a6a6",
+   "bytes": 2441600,
+   "days": 5,
+   "detections": 29553,
+   "retrieved_at": "2026-10-11T18:28:54.803198+00:00"
+  },
+  "2025-04-12": {
+   "file": "data/research/firms/2025-04-12.csv.gz",
+   "sha256": "9b295fc5b776b2380c3bcce8f4bbe6daf7fad4ef7114da07caa63fb888947587",
+   "content_sha256": "2633f1d7b3a8d0971905cb9eb4dd55864be3280ae561cf72ae8b792393a1c6e6",
+   "bytes": 1330015,
+   "days": 5,
+   "detections": 16092,
+   "retrieved_at": "2026-10-11T18:28:59.891312+00:00"
+  },
+  "2025-04-17": {
+   "file": "data/research/firms/2025-04-17.csv.gz",
+   "sha256": "9da4282c61759dbb2fb2cb4d1911e0b9c5c68c4c25a2a581a6e2488f9a2e32d3",
+   "content_sha256": "8e6e9eef9d1fea75b74cf1da3fc95b38e26fcb1696d88cd20e69dd9767323054",
+   "bytes": 1821753,
+   "days": 5,
+   "detections": 22052,
+   "retrieved_at": "2026-10-11T18:29:05.442458+00:00"
+  },
+  "2025-04-22": {
+   "file": "data/research/firms/2025-04-22.csv.gz",
+   "sha256": "2440edb6a37710ebc68f2f8d697fcbf04615f1d3249a400990f95425f4e5810f",
+   "content_sha256": "51cab6312210a58ce001c6512bc36f9d997fb831ea68b82f803e979cd4ee717c",
+   "bytes": 3935461,
+   "days": 5,
+   "detections": 47680,
+   "retrieved_at": "2026-10-11T18:29:11.915552+00:00"
+  },
+  "2025-04-27": {
+   "file": "data/research/firms/2025-04-27.csv.gz",
+   "sha256": "dcbb9d3936524d1194c9816def3b976fd09864dc9a51bfb305a201b132f28739",
+   "content_sha256": "003508a0780b8bcf658717b952a473ffcf11d02de92999364165b39a0eefb782",
+   "bytes": 1643691,
+   "days": 5,
+   "detections": 19898,
+   "retrieved_at": "2026-10-11T18:29:19.107277+00:00"
+  },
+  "2025-05-02": {
+   "file": "data/research/firms/2025-05-02.csv.gz",
+   "sha256": "2a31dad0f5ec1998bd3cb7b9d3aa48077bb8efcdd29c98413702bf22f0e0b345",
+   "content_sha256": "705b916ee9bb5fbeb8574177bd4fda72ef30d1f4a5160246caf0cfd7c817df57",
+   "bytes": 1166590,
+   "days": 5,
+   "detections": 14144,
+   "retrieved_at": "2026-10-11T18:29:24.324972+00:00"
+  },
+  "2025-05-07": {
+   "file": "data/research/firms/2025-05-07.csv.gz",
+   "sha256": "98839a115694e1d71d79ca049633b50d5a8ed5a09ab8206badc58d1dcd0b5c79",
+   "content_sha256": "2891c49341a09c7206de09d04f5175649684732d87224ede37f7c159923383ff",
+   "bytes": 1540282,
+   "days": 5,
+   "detections": 18677,
+   "retrieved_at": "2026-10-11T18:29:30.100540+00:00"
+  },
+  "2025-05-12": {
+   "file": "data/research/firms/2025-05-12.csv.gz",
+   "sha256": "39716ccba51ddf40332c5447555b40e5cc1792c43f15f2b56c5654cb95f7795a",
+   "content_sha256": "62eff5c982de28f95b8da3544c7de9c0e820a0c42a8d91f57fde6e98797b88ba",
+   "bytes": 1854838,
+   "days": 5,
+   "detections": 22508,
+   "retrieved_at": "2026-10-11T18:29:39.428363+00:00"
+  },
+  "2025-05-17": {
+   "file": "data/research/firms/2025-05-17.csv.gz",
+   "sha256": "e60c40801b641fdc22cefdef09fb446b33c3eb3a7d68e84a5f5aa3e2bd54009a",
+   "content_sha256": "9cc04b9649f94c4d3b23aa66fed4044f2fefa4ff18bdb6f7f9536f973f701a8a",
+   "bytes": 784935,
+   "days": 5,
+   "detections": 9512,
+   "retrieved_at": "2026-10-11T18:29:44.318471+00:00"
+  },
+  "2025-05-22": {
+   "file": "data/research/firms/2025-05-22.csv.gz",
+   "sha256": "2d3603de20daf2817dba1e44773d015c7c3d0f3e53fe496855b1e6b3edd1fece",
+   "content_sha256": "c725f905c4a948dc3fb7b1a5fc0503838b8c6b6d4cc4cba88202ff7c07c9dad3",
+   "bytes": 286126,
+   "days": 5,
+   "detections": 3466,
+   "retrieved_at": "2026-10-11T18:29:48.810931+00:00"
+  },
+  "2025-05-27": {
+   "file": "data/research/firms/2025-05-27.csv.gz",
+   "sha256": "346ff536aff7b371429e7e483da7b38c43caf8790b9734fcad40801af2f62f5a",
+   "content_sha256": "dd5c53184f5a419d7ba01d8dc499dae5dee67705aa5149cf92f751dbac069a2c",
+   "bytes": 220904,
+   "days": 5,
+   "detections": 2674,
+   "retrieved_at": "2026-10-11T18:29:53.246906+00:00"
+  },
+  "2025-06-01": {
+   "file": "data/research/firms/2025-06-01.csv.gz",
+   "sha256": "5dbd9a0710e5e1e34c572747bcbe2d1c9ba249975cc164b489dfefda5ea8c204",
+   "content_sha256": "ab111b162681b82440d6ebfafd2303cc02e7a94dc852216cee9339396818cd47",
+   "bytes": 320001,
+   "days": 5,
+   "detections": 3874,
+   "retrieved_at": "2026-10-11T18:29:57.691055+00:00"
+  },
+  "2025-06-06": {
+   "file": "data/research/firms/2025-06-06.csv.gz",
+   "sha256": "3293f291dbded485eefc1c30c4936c957136f37fe9e9abb789690673fbcf9c3b",
+   "content_sha256": "249f0c70c6f14147b3c2bd60e7e76504e350a5962d7ad99ddca4b461d0646ff4",
+   "bytes": 422911,
+   "days": 5,
+   "detections": 5115,
+   "retrieved_at": "2026-10-11T18:30:02.844776+00:00"
+  },
+  "2025-06-11": {
+   "file": "data/research/firms/2025-06-11.csv.gz",
+   "sha256": "8e88eb395885dc5ee18718294f75da9d6dcb9bb8763af3d8ac386248fbcee660",
+   "content_sha256": "f2e901ba8b01f557f2a66ee76d5d10d865f33f18b655b65b9a18cfac9ecc3a55",
+   "bytes": 376269,
+   "days": 5,
+   "detections": 4550,
+   "retrieved_at": "2026-10-11T18:30:07.316829+00:00"
+  },
+  "2025-06-16": {
+   "file": "data/research/firms/2025-06-16.csv.gz",
+   "sha256": "54347e20d690b463d459cd055f6454b0be8d47373a450e92dc402edf760e346b",
+   "content_sha256": "2f2889623d4b52b5c1389ebeb3ef9f77a13a555fd6b1d4c77b3e598eb40561cb",
+   "bytes": 121241,
+   "days": 5,
+   "detections": 1469,
+   "retrieved_at": "2026-10-11T18:30:11.570187+00:00"
+  },
+  "2025-06-21": {
+   "file": "data/research/firms/2025-06-21.csv.gz",
+   "sha256": "020fd88b265f5619ebeaed25106f1ea95622f3ae6212a94cac0b13ed64a3b639",
+   "content_sha256": "3c48d3dad542833866518295da067accbc7b98fb6acaf1154a7170064fc0f4ca",
+   "bytes": 73931,
+   "days": 5,
+   "detections": 896,
+   "retrieved_at": "2026-10-11T18:30:15.448252+00:00"
+  },
+  "2025-06-26": {
+   "file": "data/research/firms/2025-06-26.csv.gz",
+   "sha256": "58677d991d3e46950bbf0a6f08bf7cb221a7d817110a633ce33805159c22b8f2",
+   "content_sha256": "fe92e9dbd60850bdeee01920e64eb9e86c311e1c0690745c207782224f2082ad",
+   "bytes": 69785,
+   "days": 5,
+   "detections": 846,
+   "retrieved_at": "2026-10-11T18:30:19.360920+00:00"
+  },
+  "2025-07-01": {
+   "file": "data/research/firms/2025-07-01.csv.gz",
+   "sha256": "9283a16d7bbe726437e79e1a106c1e6c139cea55ce978b3d03e8eeb452ef0a6c",
+   "content_sha256": "7632925dea887d25b4ab1958ca0e89bb6c589df3788dcd4d9e3c0ac4613a056b",
+   "bytes": 94361,
+   "days": 5,
+   "detections": 1144,
+   "retrieved_at": "2026-10-11T18:30:23.260292+00:00"
+  },
+  "2025-07-06": {
+   "file": "data/research/firms/2025-07-06.csv.gz",
+   "sha256": "f8a5db13a1d9bd7ecda35dad1c6b84b948551e07b2a80dea92dd48569e56b5e9",
+   "content_sha256": "694f24fb19b76a1af59a4ffb58b3e41b3b14b4de406592e27013bc2a316d839f",
+   "bytes": 72093,
+   "days": 5,
+   "detections": 874,
+   "retrieved_at": "2026-10-11T18:30:27.141686+00:00"
+  },
+  "2025-07-11": {
+   "file": "data/research/firms/2025-07-11.csv.gz",
+   "sha256": "d945edb0d74a9c440646a296fe522f3ea42b288e8f3921aae2d798a8c4f61c48",
+   "content_sha256": "3b429cd0e38709fa3ba13799c98ba97e8e8fe15aede500d999914e573dc81abc",
+   "bytes": 51351,
+   "days": 5,
+   "detections": 620,
+   "retrieved_at": "2026-10-11T18:30:31.054648+00:00"
+  },
+  "2025-07-16": {
+   "file": "data/research/firms/2025-07-16.csv.gz",
+   "sha256": "9664d5ba910fdf9495aebede5c5098229ace4095be7cada7885ead38dd00291e",
+   "content_sha256": "56b9f0281440e1ae1101f39d392d00a49eacfdbdadd2d168b83a6508996828d6",
+   "bytes": 36404,
+   "days": 5,
+   "detections": 438,
+   "retrieved_at": "2026-10-11T18:30:34.643766+00:00"
+  },
+  "2025-07-21": {
+   "file": "data/research/firms/2025-07-21.csv.gz",
+   "sha256": "c47cca394208c2622080086c2672685340833fb4c48a1bf4020d5bdd002df82c",
+   "content_sha256": "81c70014f212d0276d5ab351c15e42a563f02a43d2802234c66aef10adc809e0",
+   "bytes": 48653,
+   "days": 5,
+   "detections": 586,
+   "retrieved_at": "2026-10-11T18:30:38.560547+00:00"
+  },
+  "2025-07-26": {
+   "file": "data/research/firms/2025-07-26.csv.gz",
+   "sha256": "90b812ca1a8179db3e136f677f9adba898cbefe391182cd381bc92ba71045729",
+   "content_sha256": "0a45debc4b3f0dca56bf7ef7ece818a7b22aa72dfdb8d0608267c153f1368be1",
+   "bytes": 70071,
+   "days": 5,
+   "detections": 853,
+   "retrieved_at": "2026-10-11T18:30:42.602724+00:00"
+  },
+  "2025-07-31": {
+   "file": "data/research/firms/2025-07-31.csv.gz",
+   "sha256": "151716be7f034420e067103da23215b0fd82b107eb24a92ac80e5710d5133d10",
+   "content_sha256": "782fefb85ffa5e1a2033d0313b356365d3dec9878f6d2a5cf00712c658e3e44f",
+   "bytes": 37879,
+   "days": 5,
+   "detections": 456,
+   "retrieved_at": "2026-10-11T18:30:46.340347+00:00"
+  },
+  "2025-08-05": {
+   "file": "data/research/firms/2025-08-05.csv.gz",
+   "sha256": "458c81d23230aa36b174b9c56024cfd41a73941475020d196f860811e6b120c0",
+   "content_sha256": "c6fb7138036fbf6417aba3da188516d9c913212afa1b38f5668da08fce21da82",
+   "bytes": 46091,
+   "days": 5,
+   "detections": 556,
+   "retrieved_at": "2026-10-11T18:30:50.178365+00:00"
+  },
+  "2025-08-10": {
+   "file": "data/research/firms/2025-08-10.csv.gz",
+   "sha256": "ffc600b81aa04f9f24c142eea8256b7892ddcb9d0507a7ae7c9fef78aa3d529e",
+   "content_sha256": "9c1f409a3772f8104e1747ca853baad9bc34e06fc8f166cc44dc3657748cde13",
+   "bytes": 56066,
+   "days": 5,
+   "detections": 676,
+   "retrieved_at": "2026-10-11T18:30:54.040489+00:00"
+  },
+  "2025-08-15": {
+   "file": "data/research/firms/2025-08-15.csv.gz",
+   "sha256": "273fbd8db7318f3319d281030449477e63ce62f0622d703bdc28458941104063",
+   "content_sha256": "ccee7e43d3888a99e166a2ff270c830947043cedc85ca2d74fe02e099ba60a8d",
+   "bytes": 73139,
+   "days": 5,
+   "detections": 885,
+   "retrieved_at": "2026-10-11T18:30:57.972462+00:00"
+  },
+  "2025-08-20": {
+   "file": "data/research/firms/2025-08-20.csv.gz",
+   "sha256": "0d890fd3e507161dcb8b8646f3dbe6e2a45da23b471a359e7a0f938647c4a0e3",
+   "content_sha256": "8217a23561cbcc67e2d8fe21e4892654977eee4510cb46d4af066071f75d9737",
+   "bytes": 104558,
+   "days": 5,
+   "detections": 1279,
+   "retrieved_at": "2026-10-11T18:31:02.215302+00:00"
+  },
+  "2025-08-25": {
+   "file": "data/research/firms/2025-08-25.csv.gz",
+   "sha256": "bc0dbdb12b057b750a4fca8fdf67388cf9e33dee5a8c488db9ea8b2ed5e5944b",
+   "content_sha256": "988aacfe31b155bb04b3dc2e9d13235ffc6f5905bbc1cf9076f654b985d06bb1",
+   "bytes": 88771,
+   "days": 5,
+   "detections": 1077,
+   "retrieved_at": "2026-10-11T18:31:06.064473+00:00"
+  },
+  "2025-08-30": {
+   "file": "data/research/firms/2025-08-30.csv.gz",
+   "sha256": "f869026a3c9a11991e463ad21dd7a8683d747ca74e8edacbbd3f5477b4d9005e",
+   "content_sha256": "8f07c0c12be23d6105043029327d1048140fd7b54d56ae3c10ec11b500b25d13",
+   "bytes": 68457,
+   "days": 5,
+   "detections": 831,
+   "retrieved_at": "2026-10-11T18:31:10.026590+00:00"
+  },
+  "2025-09-04": {
+   "file": "data/research/firms/2025-09-04.csv.gz",
+   "sha256": "f8e5c6a30ebfca3ba8ea6a35a9959954f5c76f461d88e0a38a849a6aab143e5d",
+   "content_sha256": "bac2f3029cf6a5b461ab982218bae29499aa48834c10c8149b7e2a8f0e49e29a",
+   "bytes": 135478,
+   "days": 5,
+   "detections": 1638,
+   "retrieved_at": "2026-10-11T18:31:14.293167+00:00"
+  },
+  "2025-09-09": {
+   "file": "data/research/firms/2025-09-09.csv.gz",
+   "sha256": "8f0b63959f64786f898e41b081acca31f3ffe23d5914f0f278ceecffcdb50e6f",
+   "content_sha256": "4322995e6dc5dc3b521c9f99cc0c9d70c9b491b1538ab5e0cb88beb891144568",
+   "bytes": 93765,
+   "days": 5,
+   "detections": 1133,
+   "retrieved_at": "2026-10-11T18:31:18.105863+00:00"
+  },
+  "2025-09-14": {
+   "file": "data/research/firms/2025-09-14.csv.gz",
+   "sha256": "bd7fb5441cd097049247e70e7f09bca24579cb84fddbd655e39171001f948dd5",
+   "content_sha256": "9a1dfb4ab542dd18104b387253e079c7a68b6ba4caf7093e4fa6f4dccec3369a",
+   "bytes": 56704,
+   "days": 5,
+   "detections": 683,
+   "retrieved_at": "2026-10-11T18:31:21.962915+00:00"
+  },
+  "2025-09-19": {
+   "file": "data/research/firms/2025-09-19.csv.gz",
+   "sha256": "2bc42b60005d3a8dbbf29a534fa667d360973427faa4add4176e1de8f3ea2aaf",
+   "content_sha256": "d849f1805d836467ffdfe718df0c1fd154731eb2bb5d37428749fb89da8a1e1b",
+   "bytes": 81834,
+   "days": 5,
+   "detections": 990,
+   "retrieved_at": "2026-10-11T18:31:25.803160+00:00"
+  },
+  "2025-09-24": {
+   "file": "data/research/firms/2025-09-24.csv.gz",
+   "sha256": "dd4fc66ab344c8855e11ed855fbc6837ecf4a0ca03b289a2ffb2a6c1e3e4e496",
+   "content_sha256": "e8c2b982b3bab0cf981822d7acaf93f465be6cce589d549fd7e3a38429326a3d",
+   "bytes": 138082,
+   "days": 5,
+   "detections": 1669,
+   "retrieved_at": "2026-10-11T18:31:29.928317+00:00"
+  },
+  "2025-09-29": {
+   "file": "data/research/firms/2025-09-29.csv.gz",
+   "sha256": "26629cf97492fb1e80c83c07156b77776dba03fbce13b66448cb89394c5b21b5",
+   "content_sha256": "ff4d7724066aa065edea6f868beca472aab145ba2ceca909c4865c75eff9a88b",
+   "bytes": 149605,
+   "days": 5,
+   "detections": 1812,
+   "retrieved_at": "2026-10-11T18:31:34.934806+00:00"
+  },
+  "2025-10-04": {
+   "file": "data/research/firms/2025-10-04.csv.gz",
+   "sha256": "af1a1a9a541b8c50140e4b5786f86b4db1034a9f75f8b9c5bcc94f7a101f45c5",
+   "content_sha256": "f9dc8b059f7d338c37931d57b6de29b67fe0c0808cf332ee1306f50998c64f88",
+   "bytes": 115917,
+   "days": 5,
+   "detections": 1397,
+   "retrieved_at": "2026-10-11T18:31:39.188297+00:00"
+  },
+  "2025-10-09": {
+   "file": "data/research/firms/2025-10-09.csv.gz",
+   "sha256": "5629e29cb9c4480cf556d8f43bc20b24f366aa55a5d412590b2cbe23e1bf562c",
+   "content_sha256": "7b6cbd426c44ee1240bfd734ff6b923bd3ff599643eeeb3bbd7dd2a27d7273b0",
+   "bytes": 309152,
+   "days": 5,
+   "detections": 3733,
+   "retrieved_at": "2026-10-11T18:31:43.709042+00:00"
+  },
+  "2025-10-14": {
+   "file": "data/research/firms/2025-10-14.csv.gz",
+   "sha256": "2ced119c787e9434f93ea1ed32d84fbb1dad0b10dbe6f86c21afaad387071c7f",
+   "content_sha256": "54337072d02afc579e7a97552addc3ec5747eee6c6b1bcaa257e5297b16f9bf9",
+   "bytes": 386396,
+   "days": 5,
+   "detections": 4670,
+   "retrieved_at": "2026-10-11T18:31:48.237999+00:00"
+  },
+  "2025-10-19": {
+   "file": "data/research/firms/2025-10-19.csv.gz",
+   "sha256": "cd0e26026c8ae015556f22995759b57b9d87c18ab19291ba0625d203c2bc7b05",
+   "content_sha256": "cee2db4d31e6464d030b747cf33099072e0d85b4d0fffcf29185ecc6fb07afa1",
+   "bytes": 467709,
+   "days": 5,
+   "detections": 5663,
+   "retrieved_at": "2026-10-11T18:31:52.892342+00:00"
+  },
+  "2025-10-24": {
+   "file": "data/research/firms/2025-10-24.csv.gz",
+   "sha256": "3b584918cc022d83164eb92eb612b2201f36badbf4d43ae507c35168e97d4d40",
+   "content_sha256": "ff53bb73ff065cd491d6481bfb9b1299ea46313bbbb84450216f0f330aa762df",
+   "bytes": 414032,
+   "days": 5,
+   "detections": 5021,
+   "retrieved_at": "2026-10-11T18:31:57.452768+00:00"
+  },
+  "2025-10-29": {
+   "file": "data/research/firms/2025-10-29.csv.gz",
+   "sha256": "ee6517909575390ff56651e5c6db68a5a25ce30d94367059993d0eed9da896e2",
+   "content_sha256": "5336651952023e686038be18d316146b768a172e1363e2eb13a85cefc3f8df8b",
+   "bytes": 409557,
+   "days": 5,
+   "detections": 4968,
+   "retrieved_at": "2026-10-11T18:32:01.941462+00:00"
+  },
+  "2025-11-03": {
+   "file": "data/research/firms/2025-11-03.csv.gz",
+   "sha256": "8af7ba9a8a5a3dcb6fac2d19cd452bfe3da3ed80370fbf39e71e4d4a380aec76",
+   "content_sha256": "2f19bceabcbc636b8e93fb559432ec5fdd1e505a7f1e9c1459103a96a8ff8af9",
+   "bytes": 665079,
+   "days": 5,
+   "detections": 8061,
+   "retrieved_at": "2026-10-11T18:32:06.716199+00:00"
+  },
+  "2025-11-08": {
+   "file": "data/research/firms/2025-11-08.csv.gz",
+   "sha256": "cc74961480ae61e0e06fb7c7c4f6b7ad4289b0103c795e2a535605d6520bae0b",
+   "content_sha256": "607f19389f8b4b3fd14e2569ada28a0c412500f2b23c973cfa91700901363c1f",
+   "bytes": 1074058,
+   "days": 5,
+   "detections": 13021,
+   "retrieved_at": "2026-10-11T18:32:11.832260+00:00"
+  },
+  "2025-11-13": {
+   "file": "data/research/firms/2025-11-13.csv.gz",
+   "sha256": "fb8483dfca8b828fd611d03465d5c2119e9b6836bf05e6387e145be3d291728e",
+   "content_sha256": "6521a01cbb64d8fc7a504737129785dad0731d92d5fd31157a1cdb099aeab07f",
+   "bytes": 1184358,
+   "days": 5,
+   "detections": 14358,
+   "retrieved_at": "2026-10-11T18:32:17.122619+00:00"
+  },
+  "2025-11-18": {
+   "file": "data/research/firms/2025-11-18.csv.gz",
+   "sha256": "b362d2308361f40b1efaed8878a1f38c209fe1acf12344785144005c397ca86c",
+   "content_sha256": "a0f619ec2a9006dec6aea9a00f763f46f901483788d72438d4e27601abcd09af",
+   "bytes": 967684,
+   "days": 5,
+   "detections": 11726,
+   "retrieved_at": "2026-10-11T18:32:22.369775+00:00"
+  },
+  "2025-11-23": {
+   "file": "data/research/firms/2025-11-23.csv.gz",
+   "sha256": "6f31f23330434c60c9bb083ca553cddf382a12e03d7ae7f5ea7f19e65f858121",
+   "content_sha256": "c15f2639f0d3d4432085076201f16959f285c00a944f743a3a9a6d3c63a4736e",
+   "bytes": 934840,
+   "days": 5,
+   "detections": 11331,
+   "retrieved_at": "2026-10-11T18:32:27.558541+00:00"
+  },
+  "2025-11-28": {
+   "file": "data/research/firms/2025-11-28.csv.gz",
+   "sha256": "0cad6f1dcf16abf81a15abca779552a04637c437b9ba0d2029c4632cac247af5",
+   "content_sha256": "d02ab9b62087ae7e2767a724c815b6444dd845c9120cd2a9034f29e06ec9a20d",
+   "bytes": 826049,
+   "days": 5,
+   "detections": 10010,
+   "retrieved_at": "2026-10-11T18:32:32.502937+00:00"
+  },
+  "2025-12-03": {
+   "file": "data/research/firms/2025-12-03.csv.gz",
+   "sha256": "b81522cc3cfb0e4b8204becfbc72e384a8421300feb8a7389fc6ceefd5ed94eb",
+   "content_sha256": "2d91da52408987d5c0080f9116ca9abd9d0af2cf23717ade7cb4feeef6f4f8e6",
+   "bytes": 890037,
+   "days": 5,
+   "detections": 10788,
+   "retrieved_at": "2026-10-11T18:32:37.636643+00:00"
+  },
+  "2025-12-08": {
+   "file": "data/research/firms/2025-12-08.csv.gz",
+   "sha256": "1048758005c6b45efb1899388553706440b85c5505ec6e2033a13897e7ce2844",
+   "content_sha256": "e244a46d7f03deb5e082f6b7b4f5a128507f2e09670bcf4daeaf898e9115af40",
+   "bytes": 1154448,
+   "days": 5,
+   "detections": 13994,
+   "retrieved_at": "2026-10-11T18:32:42.903586+00:00"
+  },
+  "2025-12-13": {
+   "file": "data/research/firms/2025-12-13.csv.gz",
+   "sha256": "8d2f4ca564b830e3d640275bcc13c28981360595e40f0c0f321c7ad6b0950a35",
+   "content_sha256": "586fc4cd1dad3235a17bdf135abed1aab946b33d848f75746fb6b5c5ffa4c05a",
+   "bytes": 1015842,
+   "days": 5,
+   "detections": 12309,
+   "retrieved_at": "2026-10-11T18:32:48.175958+00:00"
+  },
+  "2025-12-18": {
+   "file": "data/research/firms/2025-12-18.csv.gz",
+   "sha256": "6bcf84e62c17121c14eb2380353c71b473f1068033aab7b6ce91fd6fb755b410",
+   "content_sha256": "f0927f9b072b0815331f0bedf594d34ea3eb5251dd53f7f98c9ce0c0b486c27d",
+   "bytes": 809746,
+   "days": 5,
+   "detections": 9810,
+   "retrieved_at": "2026-10-11T18:32:52.948777+00:00"
+  },
+  "2025-12-23": {
+   "file": "data/research/firms/2025-12-23.csv.gz",
+   "sha256": "ff76221ffb28828b9f27d21cbd304f86482d0a4d9057c4bb208fa21d679598c0",
+   "content_sha256": "25e74b616bdfc7b5d419648080833968d94262aa4e5dda699727381a603e5885",
+   "bytes": 848436,
+   "days": 5,
+   "detections": 10270,
+   "retrieved_at": "2026-10-11T18:32:57.704607+00:00"
+  },
+  "2025-12-28": {
+   "file": "data/research/firms/2025-12-28.csv.gz",
+   "sha256": "cb9342a3418b0f3ae29c02a8255c149c8dcc384e5c3d486af1cb309bedebd88b",
+   "content_sha256": "6154be850ea03b09549d85c2e82c79f3ca0053037741bd46dc660e7117c5b7ec",
+   "bytes": 727273,
+   "days": 5,
+   "detections": 8802,
+   "retrieved_at": "2026-10-11T18:33:02.514889+00:00"
+  },
+  "2026-01-02": {
+   "file": "data/research/firms/2026-01-02.csv.gz",
+   "sha256": "aeb13bf4f3e3582ab817fe05eca0da9e1c27c11d5a925ef4fbfc46c67c5759ab",
+   "content_sha256": "2caa3474c99d2fbdcfa22da6a0f534e2a5c4e0d579d67287ca44846420a76442",
+   "bytes": 646293,
+   "days": 5,
+   "detections": 7821,
+   "retrieved_at": "2026-10-11T18:33:07.407054+00:00"
+  }
+ },
+ "updated_at": "2026-10-11T18:33:07.407054+00:00"
+}

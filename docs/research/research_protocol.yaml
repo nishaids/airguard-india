@@ -6,7 +6,7 @@
 # Changing anything below after the lock requires a new protocol_version; the
 # pipeline refuses to run against a file whose hash differs from the lock.
 
-protocol_version: airguard-retrospective-station-calibration-v3
+protocol_version: airguard-retrospective-station-calibration-v3.1
 title: Station-calibrated day-ahead CPCB-style AQI against raw CAMS, with uncertainty-aware advisories
 status: LOCKED_BEFORE_MODEL_FITTING
 
@@ -26,6 +26,22 @@ relationship_to_earlier_protocols:
     remove the whole winter, the season in which Poor to Severe air occurs, from
     evaluation. The v1 fold geometry is therefore used, with v2's longer locked
     final test.
+
+amendments:
+  - version: v3.1
+    made: after v3 was locked and before any model was fitted
+    change: two hourly quality rules were added (exact-zero readings and stuck-sensor runs are rejected)
+    trigger: >
+      Validating the first thirteen stations' targets showed a station reporting
+      exactly 0.0 for PM2.5, PM10 and O3 on seven consecutive days (Vikas Sadan,
+      Gurugram, 2025-10-07 to 2025-10-13), which the v3 rule "finite and
+      non-negative" admitted as a daily index of 0. An index of 0 in Gurugram in
+      October is an outage, not air quality.
+    seen_at_the_time: >
+      Target, raw-CAMS and persistence summary statistics for those thirteen
+      stations, and the counts of zero and repeated readings. No learned model,
+      no error metric and no comparison between methods.
+    effect_on_v3: v3 produced no result; nothing computed under it is reported
 
 disclosure_of_prior_exposure:
   - Persistence and prior-only climatology were scored on five Andhra Pradesh stations on 2026-10-11 (results/baselines_measured.json). No model was involved.
@@ -69,8 +85,17 @@ target:
     duration: exactly one hour
     minimum_provider_coverage_percent: 75
     provider_flagged: rejected
-    value: finite and non-negative
+    value: finite and strictly positive
+    zero_readings: >
+      rejected. About 0.5% of bins are exactly zero. Zero particulate mass is not
+      an ambient reading, and although night-time ozone can genuinely approach
+      zero, an exact zero cannot be told apart from an outage reported as zero.
+    stuck_sensor: a run of six or more consecutive hourly bins with an identical value is rejected in full
     unit: convertible to ug/m3 (mg/m3 for CO) without assumptions
+    flagged_not_rejected: >
+      PM2.5 above PM10 (about 2% of bins) and statistical spikes are counted and
+      reported but kept. Which of two instruments is wrong cannot be decided from
+      the pair, and genuine pollution episodes are spikes.
   daily_rules:
     particulate_and_24h_gases: IST 24-hour mean
     co_and_o3: maximum complete trailing 8-hour mean ending in the day, with the preceding 7 hours as support

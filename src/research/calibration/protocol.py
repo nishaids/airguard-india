@@ -40,6 +40,7 @@ def lock(path=None, lock_path=None, now=None):
     path, lock_path = Path(path or PATH), Path(lock_path or LOCK)
     protocol = yaml.safe_load(path.read_text(encoding='utf-8'))
     current = digest(path)
+    history = []
     if lock_path.exists():
         existing = json.loads(lock_path.read_text(encoding='utf-8'))
         if existing['protocol_version'] == protocol['protocol_version']:
@@ -48,11 +49,15 @@ def lock(path=None, lock_path=None, now=None):
                     f"{protocol['protocol_version']} is already locked with a different hash. "
                     'A changed protocol needs a new protocol_version.')
             return existing
+        # A new version supersedes the old lock but never erases it.
+        history = existing.get('history', []) + [
+            {k: existing[k] for k in ('protocol_version', 'sha256', 'locked_at')}]
     record = {
         'protocol_version': protocol['protocol_version'], 'sha256': current,
         'locked_at': (now or datetime.now(timezone.utc)).isoformat(),
         'path': config.portable(path),
         'statement': 'Locked before any model was fitted on the study dataset.',
+        'history': history,
     }
     lock_path.parent.mkdir(parents=True, exist_ok=True)
     lock_path.write_text(json.dumps(record, indent=1), encoding='utf-8')

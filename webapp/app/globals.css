@@ -135,7 +135,7 @@ body::after {
 .planning-row>div { flex: 1; }
 .live-chart { width: 100%; min-width: 0; }
 .nationwide summary { cursor: pointer; min-height: 44px; font-weight: 600; padding: 8px 0; }
-.live-table-scroll { overflow-x: auto; max-width: 100%; }
+.live-table-scroll,.live-table-wrap { overflow-x: auto; max-width: 100%; min-width: 0; }
 .nationwide table { width: 100%; border-collapse: collapse; color: #17342b; }
 .nationwide th,.nationwide td { border-bottom: 1px solid #bfcec3; text-align: left; padding: 12px 10px; font-size: 13px; background: transparent; }
 .nationwide th { color: #17342b; }

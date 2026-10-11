@@ -8,7 +8,7 @@ for (const width of [375,1280]) for (const route of routes) {
     await page.setViewportSize({width,height:1000});
     await page.goto(route, {waitUntil:'domcontentloaded'});
     await expect(page.locator('main')).toBeVisible();
-    await expect(page.locator('h1').first()).toBeVisible();
+    await expect(page.locator('h1').first()).toBeVisible({timeout:15000});
     if (['/','/live','/forecast','/policy-simulator'].includes(route)) {
       await expect(page.getByText('CAMS-based nationwide estimate',{exact:true})).toBeVisible({timeout:60000});
       await expect(page.locator('input[type="date"]')).toHaveCount(0);

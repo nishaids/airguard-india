@@ -76,6 +76,11 @@ def derive_day(reference_date, surface, level, pv, stations):
             if p not in concentrations: continue
             record['cams_conc_'+p]=details['concentration']
             record['cams_sub_'+p]=details['sub_index']['value'] if details['sub_index'] else None
+            daily = concentrations[p][7:, column]
+            record['cams_hourly_max_'+p] = float(daily.max())
+            record['cams_hourly_range_'+p] = float(np.ptp(daily))
+            record['cams_hourly_std_'+p] = float(daily.std())
+            record['cams_hourly_day_minus_night_'+p] = float(daily[6:18].mean()-np.r_[daily[:6],daily[18:]].mean())
         results.append(record)
     return results
 

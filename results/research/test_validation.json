@@ -1,11 +1,11 @@
 {
   "counts": {
-    "tests": 616,
+    "tests": 627,
     "failures": 0,
     "errors": 0,
     "skipped": 5,
-    "collected": 616,
-    "passed": 611,
+    "collected": 627,
+    "passed": 622,
     "deselected": 4
   },
   "counts_consistent": true,
@@ -58,10 +58,10 @@
   "cpcb_missing_or_unsuccessful_groups": [],
   "unsuccessful_tests": [],
   "validation_version": "research-offline-test-validation-v1",
-  "run_id": "20261012T091705Z-8b5141c0d7fa",
-  "started_at": "2026-10-12T09:17:05.294033+00:00",
-  "completed_at": "2026-10-12T09:18:38.690430+00:00",
-  "generated_at": "2026-10-12T09:18:38.690430+00:00",
+  "run_id": "20261012T145619Z-64704b1d1e60",
+  "started_at": "2026-10-12T14:56:19.010712+00:00",
+  "completed_at": "2026-10-12T14:58:15.168815+00:00",
+  "generated_at": "2026-10-12T14:58:15.168815+00:00",
   "command": [
     "python",
     "-m",
@@ -72,7 +72,7 @@
     "not real_database",
     "-p",
     "src.research.calibration.validation",
-    "--junitxml=logs/research_validation_20261012T091705Z-8b5141c0d7fa.junit.xml.log"
+    "--junitxml=logs/research_validation_20261012T145619Z-64704b1d1e60.junit.xml.log"
   ],
   "interpreter_version": "3.10.6",
   "working_directory": ".",
@@ -84,31 +84,36 @@
       "src/nationwide/aqi.py": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e",
       "src/nationwide/providers.py": "5318f27f95bf96eeb4e2a546e3360e2d94351a77ab34a47011d0e1b1e2e196ef",
       "src/nationwide/store.py": "c7c53f3a83745f031ee1383d9a396648d4cc752bf0eb5441b3fa2502c0449fbf",
-      "src/research/storage.py": "670ddc63b49d8462010c12eeecaf40ac7c459efb52630c98ee3389e9dad613f7",
+      "src/research/storage.py": "e3583d5c7e9431735f96b2f299d7d0237ac4c3fa11572b59e63dbeb3926951d2",
       "src/research/calibration/availability.py": "d8e6f28bbffdfe2d8ce8f3384a23618f094c66eb9bd3aaf6c0acd537c5045045",
       "src/research/calibration/data.py": "6121d3fc64963fdd553fdb4c13023a6458a4ec13434eb4de180feee0cddee9f9",
       "src/research/calibration/measured.py": "52100ca359d096cc97dbc8b42e7f6cf482a651966f78dda4de057b90534e69bc",
       "src/research/calibration/preliminary.py": "669053e247d4dd0faecbdf313b169a7015bc31153852337e8fd9dfc144eb5396",
       "src/research/calibration/statistics.py": "94e670c02c58f006c21a74609ffd103f410d79cdecd16c3d3e4bb2ab4174dc4e",
       "src/research/calibration/splits.py": "75444dfa8a9c9af94875063cd0bd07fd8771f9105bf2dab16091c1b907b0b4b9",
-      "src/research/calibration/primary.py": "cab26b55202a9e762d5a43ad0a48a1de6810affc133734ddc4f93c2ae21feed4",
+      "src/research/calibration/primary.py": "08f3dc46a135a939d960f57c05991c0fef3e708c6c17298c5189a2d7684698a4",
       "src/research/calibration/checkpoint.py": "25845c48938a1e3f43172314dc0f7daf30e803debbcdd73918aaf31e6be35269",
       "src/research/calibration/repair_archive.py": "2bd4c7311aa71315919292a8e4b54419e0b8a9519b75db436e0032dc271374c6",
       "src/research/calibration/openaq_archive.py": "f5f1e2cdc9618d391972e1721c4380f7dff40c9a1536510111d03f42287c784c",
       "src/research/calibration/model_archives.py": "0c5e73f1f15b32f52f2d29f2d7cc8433ce2f002b920093ffbb8af15366effa01",
       "src/research/calibration/protocol.py": "b4b73c68f8b835bb44c2d61ffb4d8ef345a66b3865c0bf75ae240522401d7e5b",
       "src/research/calibration/dataset.py": "aacce5e38b06ad10aac59a18301f5319db85553c91dcf3f3da2c0a97fe4dc077",
-      "src/research/calibration/validation.py": "545b248dc12e69fcb5e1d434f608980e6fc8d59b59938862100d8a451eea1e10"
+      "src/research/calibration/validation.py": "16b39eb7d4cae4f3032f1c1424b05a48be9085c01ed3574f3709fe032e669936",
+      "src/research/calibration/cams_acquisition.py": "a91035763748b6969671ee325ed715fbcc5d18f284f821f7c666f78fa4242ed3",
+      "src/research/calibration/cams_baseline.py": "2aaa21923d2c46413c3bcf1194134a2bc27bbab2e69df8f31dfb1451b362c163",
+      "src/research/calibration/cams_physics.py": "98a73049d91fba9bc755c26ba673ea3e5599aa133282cc14cc8a053a070b225b",
+      "src/research/calibration/primary_dataset.py": "53c62ed69488709d9c69ab5a2ae92697d2a5c516e21fded9abd06db799d115df",
+      "src/research/calibration/operational_features.py": "a15f5dfaad446a308e8d11f971af44033aa75b245c975aed3af042613b88eda6"
     },
     "missing_tested_modules": [],
     "source_tree_scope": "src/**/*.py",
-    "source_tree_sha256": "6e77cef0ff6711014970715f276cd1045a78f9ebb7573e946e4a8cf744bee7ef",
-    "source_file_count": 130,
+    "source_tree_sha256": "82b52671a4bee2d71835a7a6b4d66cfd862da062ae633aa779a2380a8dad0396",
+    "source_file_count": 132,
     "test_file_sha256": {
       "tests/test_archive_backfill.py": "d099eba154dfd0761ace7fae811e29ee03e15a493cfc6ddee2efc3885676e321",
       "tests/test_archive_targets.py": "83b551d6561d8907bdd89c144d1245a0cb328157a84970f622247985ff6d61e5",
       "tests/test_calibration_ads_probe.py": "18d32683ecef191b60fb4d37580c31b2d3ebc7a973445491e0b29f6cdb714f1a",
-      "tests/test_calibration_cams_acquisition.py": "e04fbd20efdf5588d3b63d38c336fcfc15d8f5c5328bcd6805714fb6df1e6317",
+      "tests/test_calibration_cams_acquisition.py": "921f00ef89983ec397580af9d7ca597a7382c8de7aa791d73b347ec168a76dfc",
       "tests/test_calibration_cams_baseline.py": "cb544ba04dc4024c5b0fc86954824b55fca222d3868ff4dffcb9c5bc7650053f",
       "tests/test_calibration_cams_physics.py": "2deacf0caafd6c86ca6b7fe84100d9dc65ded354fe6bf663e497e73b4c04dcbc",
       "tests/test_calibration_cams_readiness.py": "7b951a3f61fe9ffb531d7c38c260e2a174fbbb2460462f1ed39ab949f081f868",
@@ -131,10 +136,12 @@
       "tests/test_live_data.py": "13a5219ff363fe90ca1c94493efd92f271980eaa78789e57492d5a3234463f6d",
       "tests/test_nationwide.py": "576efbf81f31ab7fb6ec548211aa46591a9b6c45b647924cf479e1e55aeed2a5",
       "tests/test_nationwide_verification.py": "b01cc1245fe7c84ed006dc1364d4cda53379572b6b6dc814ebe85f746d7edb56",
+      "tests/test_operational_features.py": "cca68071e7b511a98991654795cbcbdabb42cd28c1082c2458aaa45bfc13cd0a",
       "tests/test_operational_scenarios.py": "d0eaa147260e51556d377691c6e89fa7c58de779d104eec8a394599e1dd00866",
       "tests/test_operational_sensor_selection.py": "39b50d3663fbc3a8a4bfec3ed211c1b15c4c1b9ff6f8039a130c0f20f03d9b5c",
       "tests/test_optional_cloud_ingestion.py": "7ddf6cbdbd5631d53e2c2c420b3ae53abed8e3ae7946e10937f36430bc53ddb8",
       "tests/test_phase0_audit.py": "77c3f90f7cbfe03f14117011d41b99c83799eaa0ec0905f14c72c3b793d266bb",
+      "tests/test_primary_development_alignment.py": "d058c6246d17f24502e605c2570c4729248767899a79c084a358a918d972ba06",
       "tests/test_public_exports.py": "4a6b842f5966e2b5b14f261048a44beec998dd0846088f0c6b9024fc5ba52424",
       "tests/test_release_monitoring.py": "c1546a785bee431072892842ab58efe831688623818340b2d69b428fbed36646",
       "tests/test_request_scope_queue.py": "685256e37d9423a88f6fa5a06f37925420e0a13c26c0647d747504f5e1309349",
@@ -145,7 +152,7 @@
       "tests/test_smoke.py": "c17d242a9bde3bdadfa36650dd9f0c92e178bc3cb91d83dd0fa06a0fb3681e96",
       "tests/test_static_site.py": "d09e3b8bf8131aa6d56b97a692591729f259a31529b1d3ad646bc5f04dbdc0f1"
     },
-    "test_tree_sha256": "15a13aa2400cf1e2c69279fabb6aba8ef8dd2599771118ad6b821fe132eefe1d"
+    "test_tree_sha256": "bfb40db85b3b7cf2d2305abe47f96dda1d432bebff316ae1ec45c4d5d64a8185"
   },
   "source_changed_during_run": false,
   "offline_policy": {
@@ -165,10 +172,10 @@
     "excluded_name_expression": "real_database"
   },
   "logs": {
-    "console": "logs/research_validation_20261012T091705Z-8b5141c0d7fa.pytest.log",
-    "console_sha256": "c8957eabb72951ad9291bbb43af6ea8e13bd55c57bb426faf4fff4527d686924",
-    "junit": "logs/research_validation_20261012T091705Z-8b5141c0d7fa.junit.xml.log",
-    "junit_sha256": "94aad984a751b2e6f07dc355cf1ac0c09bcd73e88ceb1fac615ec4b42b9acda7"
+    "console": "logs/research_validation_20261012T145619Z-64704b1d1e60.pytest.log",
+    "console_sha256": "fb92b1b928014e5aaf5920be0b22236d098346f578065e5318605e52473c9660",
+    "junit": "logs/research_validation_20261012T145619Z-64704b1d1e60.junit.xml.log",
+    "junit_sha256": "afe333197bcdb3f328def72fa54e55c6c6f3c197d8ed6a1adac81f6e5fb2e334"
   },
   "status": "PASS"
 }

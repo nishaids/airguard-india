@@ -1,0 +1,153 @@
+{
+  "status": "BLOCKED",
+  "generated_at_utc": "2026-10-12T14:58:09.581240+00:00",
+  "git_sha": "4ba5d4111cf98ffaa1f603d6f0561f69a06bfd60",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "protocol_version": "airguard-retrospective-station-calibration-v3.1",
+  "measured_semantic_sha256": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "measured_file_sha256": "6ae0ae2bae6b2e9b9412e8a6d1015f029a86399ed25bfc13b86b264d89f62492",
+  "cams_plan_sha256": "952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a",
+  "verified_chunks": 6,
+  "required_chunks": 36,
+  "verified_files": [
+    {
+      "job_sha256": "3fbb78f22c76f4dbf0b95fdf186e829cc629dd305bdff5567bd087dfad2b3797",
+      "file": "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/3fbb78f22c76f4dbf0b95fdf186e829cc629dd305bdff5567bd087dfad2b3797.grib",
+      "sha256": "353a103e97ec85e416b0c4747ac7876b6b8eebe8bc80fd7ba10ead4feba2b8d0",
+      "bytes": 10454784,
+      "messages": 1152,
+      "grid_degrees": 0.4
+    },
+    {
+      "job_sha256": "7a909395e4a9c443804354310abc3161a499f324e9a0ac7c331455ca6f77d6b1",
+      "file": "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/7a909395e4a9c443804354310abc3161a499f324e9a0ac7c331455ca6f77d6b1.grib",
+      "sha256": "c8fbc18b64b409b8468e5c5d9d4aacc2bd4a0c944f68e593fdaf886b7e240853",
+      "bytes": 7805791,
+      "messages": 864,
+      "grid_degrees": 0.4
+    },
+    {
+      "job_sha256": "1cb61a281356896cf76773579ee45edf6a294e7348f562d4116f38a0f4ff2ce5",
+      "file": "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/1cb61a281356896cf76773579ee45edf6a294e7348f562d4116f38a0f4ff2ce5.grib",
+      "sha256": "cddfa21527dd43ab74a33fef9e22f4efbd7b65de58d27028dbdc38723e76acce",
+      "bytes": 27008192,
+      "messages": 2976,
+      "grid_degrees": 0.4
+    },
+    {
+      "job_sha256": "540de0dcf1e07b8d5fae1d85411dc4db4e2bdd5571b4a69e5f1477b086735be6",
+      "file": "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/540de0dcf1e07b8d5fae1d85411dc4db4e2bdd5571b4a69e5f1477b086735be6.grib",
+      "sha256": "b1d310ab7a3c1313ea08121f05491216362f52f864c44436cde0a87e5e155c03",
+      "bytes": 20194737,
+      "messages": 2232,
+      "grid_degrees": 0.4
+    },
+    {
+      "job_sha256": "d320816e3e38488d61d4f94fd8ffcebc992563ff896e0cb69ae133e499117551",
+      "file": "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/d320816e3e38488d61d4f94fd8ffcebc992563ff896e0cb69ae133e499117551.grib",
+      "sha256": "5b19907596dd758bcc3a4c49ef7203d2659b5c640a36ffb1f6b7ae45a81a723c",
+      "bytes": 26136960,
+      "messages": 2880,
+      "grid_degrees": 0.4
+    },
+    {
+      "job_sha256": "5184ce28fd0fd74549ccfb0e99aa6b1ca98486cc9c411409bf3aa93730c8a3bb",
+      "file": "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/5184ce28fd0fd74549ccfb0e99aa6b1ca98486cc9c411409bf3aa93730c8a3bb.grib",
+      "sha256": "025949192a64741b999a30cafd41a26d9d30ac562a33cd788ec62a2f9e796ad6",
+      "bytes": 27008192,
+      "messages": 2976,
+      "grid_degrees": 0.4
+    }
+  ],
+  "alignment_sha256": "524591d9c3efc13c72d44b642a33c381fe2f3b2ca6b7399209c818813962d2be",
+  "alignment_rows": 7560,
+  "development_dates": 42,
+  "fold_coverage": [
+    {
+      "name": "fold_01",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_02",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_03",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_04",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_05",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_06",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_07",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_08",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_09",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_10",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_11",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    },
+    {
+      "name": "fold_12",
+      "eligible_training_stations": 0,
+      "archive_dates_in_test_window": 0
+    }
+  ],
+  "blockers": [
+    "Operational archive incomplete: 6/36 verified chunks",
+    "Primary feature integration remains incomplete",
+    "No protocol-eligible rolling fold with acquired validation dates",
+    "Primary experiment pending: baselines",
+    "Primary experiment pending: rolling_origin",
+    "Primary experiment pending: spatial_validation",
+    "Primary experiment pending: severity",
+    "Primary experiment pending: ablation",
+    "Primary experiment pending: uncertainty",
+    "Primary experiment pending: advisory",
+    "Primary experiment pending: statistical_comparison",
+    "Primary experiment pending: reproducibility",
+    "MODEL_SELECTION_LOCK is absent or uncommitted",
+    "Final executor and complete experiment-to-lock hash binding audit not yet implemented"
+  ],
+  "final_test_interval": [
+    "2026-07-10",
+    "2026-10-07"
+  ],
+  "final_test_accessed_by_this_audit": false,
+  "target_files_materialised_by_this_audit": false,
+  "historical_access_claim": "Current reader and test evidence; not a forensic proof of every prior process",
+  "approval_required": "Fresh explicit user authorization only after committed selection lock and READY report",
+  "locked_protocol_changed": false,
+  "model_selection_complete": false
+}

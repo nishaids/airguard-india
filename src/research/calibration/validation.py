@@ -35,6 +35,9 @@ TESTED_MODULES = (
     'src/research/calibration/openaq_archive.py', 'src/research/calibration/model_archives.py',
     'src/research/calibration/protocol.py', 'src/research/calibration/dataset.py',
     'src/research/calibration/validation.py',
+    'src/research/calibration/cams_acquisition.py', 'src/research/calibration/cams_baseline.py',
+    'src/research/calibration/cams_physics.py', 'src/research/calibration/primary_dataset.py',
+    'src/research/calibration/operational_features.py',
 )
 CPCB_REQUIRED_TESTS = {
     'closed_breakpoints': ('tests.test_nationwide', 'test_all_closed_breakpoints'),

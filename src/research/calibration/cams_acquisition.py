@@ -2,7 +2,7 @@
 
 No target labels, model fitting, final-test access or production writes here.
 The minimum supported rectangular ADS subset covers the frozen station sample.
-Two jobs at most are submitted concurrently. A missing/ambiguous job ID never
+New jobs are submitted sequentially, after all existing jobs finish. A missing/ambiguous job ID never
 causes an automatic replacement request.
 """
 import argparse
@@ -183,7 +183,7 @@ def lease(folder):
             else: fcntl.flock(f, fcntl.LOCK_UN)
 
 
-def step():
+def step(*, poll_only=False):
     plan = freeze()
     folder = ROOT/'data/research/cams_operational'/plan['sha256']
     with lease(folder):
@@ -209,8 +209,13 @@ def step():
                 if entry and entry['status'] not in ('SUBMITTED','accepted','running','successful'):
                     continue  # failures and ambiguous submits require review, never replacement
                 if not entry:
+                    if poll_only:
+                        continue
                     active = sum(j['status'] in ('SUBMITTING','SUBMITTED','accepted','running','successful') for j in record['jobs'].values())
-                    if active >= 2: continue
+                    # Also block on unresolved failures: review/recover the existing
+                    # ID instead of adding load or silently leaving a data gap.
+                    unresolved = any(j['status'] != 'VERIFIED_GRIB' for j in record['jobs'].values())
+                    if active or unresolved: continue
                     # Verify the first surface+model-level chunks before further jobs.
                     if job not in plan['jobs'][:2] and not all(record['jobs'].get(j['id'],{}).get('status')=='VERIFIED_GRIB' for j in plan['jobs'][:2]): continue
                     entry = record['jobs'][job['id']] = {'status':'SUBMITTING','request':job['request'],
@@ -245,12 +250,13 @@ def step():
 
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('--step',action='store_true')
+    parser.add_argument('--poll-only',action='store_true',help='Recheck/download existing IDs; never submit a request')
     parser.add_argument('--worker-hours',type=float,default=0); args=parser.parse_args()
-    if not args.step and not args.worker_hours:
+    if not args.step and not args.worker_hours and not args.poll_only:
         p=freeze(); print(json.dumps({k:p[k] for k in ('sha256','run_range','run_count','area','station_count')})); return
     deadline=time.monotonic()+min(24,max(0,args.worker_hours))*3600
     while True:
-        result=step(); print(json.dumps(result),flush=True)
+        result=step(poll_only=args.poll_only); print(json.dumps(result),flush=True)
         if result['complete'] or time.monotonic()>=deadline or any('FAILED' in s or s in ('failed','rejected') for s in result['counts']): break
         time.sleep(60)
 

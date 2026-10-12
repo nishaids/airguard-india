@@ -55,11 +55,15 @@ def test_pending_and_failed_jobs_never_resubmitted(tmp_path,monkeypatch):
     old=logging.root.manager.disable
     try:
         first=archive.step(); archive.step()
-        assert calls.count('submit')==2
-        assert first['counts']=={'accepted':2}
+        assert calls.count('submit')==1
+        assert first['counts']=={'accepted':1}
         state=json.loads(archive.STATE.read_text())
         for entry in state['jobs'].values(): entry['status']='SUBMISSION_FAILED'
         archive.STATE.write_text(json.dumps(state))
         archive.step()
-        assert calls.count('submit')==2
+        assert calls.count('submit')==1
+        archive.STATE.unlink()
+        empty=archive.step(poll_only=True)
+        assert empty['counts']=={}
+        assert calls.count('submit')==1
     finally: logging.disable(old)

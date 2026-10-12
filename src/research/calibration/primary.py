@@ -195,11 +195,17 @@ def guard_primary_row(row, features):
         value = row.get(name)
         if value is None or (isinstance(value, Real) and math.isnan(value)):
             continue  # missing predictors contribute no observed future input
-        if name.startswith(('obs', 'history_', 'measured_', 'bias_')):
+        daily_history = name.startswith(('history_lag', 'history_roll7')) or name in ('bias_lag2', 'bias_roll7')
+        if daily_history:
+            if row.get('latest_daily_lag_date') is None:
+                raise LeakageError('Daily history requires date provenance')
+        if not daily_history and name.startswith(('obs', 'measured_', 'history_', 'bias_')):
             end = _timestamp(row.get('latest_measured_bin_end_utc'), 'latest_measured_bin_end_utc')
             if end > cut.measurement:
                 raise LeakageError('Measured history ends after its declared cutoff')
         if name.startswith(('nbr', 'region_obs')):
+            if name in ('nbr50_count', 'nbr150_count') and value == 0:
+                continue  # no measured value was consumed for an empty donor set
             end = _timestamp(row.get('latest_neighbour_bin_end_utc'), 'latest_neighbour_bin_end_utc')
             if end > cut.measurement:
                 raise LeakageError('Neighbour history ends after its declared cutoff')

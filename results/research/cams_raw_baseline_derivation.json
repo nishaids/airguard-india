@@ -1,27 +1,29 @@
 {
   "status": "PARTIAL_FORECAST_DERIVATION",
-  "dataset_identity": "0b23240e345f92229530002a64a520f3baa0e182351b94357ccc4709dafe3247",
+  "dataset_identity": "5cd93e80ee6fcd51c46478cdd925bb8d6c12e5297712e6c4a1eca0063beff36e",
   "plan_sha256": "952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a",
   "raw_file_sha256": {
     "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/3fbb78f22c76f4dbf0b95fdf186e829cc629dd305bdff5567bd087dfad2b3797.grib": "353a103e97ec85e416b0c4747ac7876b6b8eebe8bc80fd7ba10ead4feba2b8d0",
-    "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/7a909395e4a9c443804354310abc3161a499f324e9a0ac7c331455ca6f77d6b1.grib": "c8fbc18b64b409b8468e5c5d9d4aacc2bd4a0c944f68e593fdaf886b7e240853"
+    "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/7a909395e4a9c443804354310abc3161a499f324e9a0ac7c331455ca6f77d6b1.grib": "c8fbc18b64b409b8468e5c5d9d4aacc2bd4a0c944f68e593fdaf886b7e240853",
+    "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/1cb61a281356896cf76773579ee45edf6a294e7348f562d4116f38a0f4ff2ce5.grib": "cddfa21527dd43ab74a33fef9e22f4efbd7b65de58d27028dbdc38723e76acce",
+    "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/540de0dcf1e07b8d5fae1d85411dc4db4e2bdd5571b4a69e5f1477b086735be6.grib": "b1d310ab7a3c1313ea08121f05491216362f52f864c44436cde0a87e5e155c03"
   },
   "code_sha256": {
-    "baseline": "40dada4d0097d44be51c13be66bbf12bddfe56380d4f3b572a7115dacfd737aa",
+    "baseline": "2aaa21923d2c46413c3bcf1194134a2bc27bbab2e69df8f31dfb1451b362c163",
     "physics": "98a73049d91fba9bc755c26ba673ea3e5599aa133282cc14cc8a053a070b225b",
     "aqi": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e"
   },
-  "table": "data/research/cams_operational/derived/0b23240e345f92229530002a64a520f3baa0e182351b94357ccc4709dafe3247/raw_cams_indices.parquet",
-  "sha256": "08f2d50ea7a6e3df772ccadb16422c5df00e2218a9445f31d7780ec9aad69602",
-  "rows": 1991,
+  "table": "data/research/cams_operational/derived/5cd93e80ee6fcd51c46478cdd925bb8d6c12e5297712e6c4a1eca0063beff36e/raw_cams_indices.parquet",
+  "sha256": "0f5e11734c7b4216ba62f05a1cd754c85f74e18b68031d9f94958d3dbd9581b7",
+  "rows": 7602,
   "stations": 181,
-  "dates": 11,
+  "dates": 42,
   "date_range": [
     "2025-02-19",
-    "2025-03-01"
+    "2025-04-01"
   ],
-  "valid_three_species_indices": 1991,
-  "valid_six_species_indices": 1991,
+  "valid_three_species_indices": 7602,
+  "valid_six_species_indices": 7602,
   "measured_targets_read": false,
   "final_test_accessed": false,
   "primary_model_dataset_complete": false,

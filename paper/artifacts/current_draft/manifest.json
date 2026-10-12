@@ -1,0 +1,22 @@
+{
+  "final_test_accessed": false,
+  "primary_results_pending": true,
+  "files": {
+    "claim_to_evidence.json": "ac1024a89810045a63c82d43dad9162ff7e475ec68bd55a44a7e4b3883e99d8d",
+    "inherited_refs.bib": "9d6b8ee23b3b9459e716f7781bb25aefe9b3345e4689e3ceb5497d38839126e5",
+    "README.md": "6ad2297119a8a00b59a228b5a758c3d955ca171bede86f1f717eddce7c020638",
+    "station_calibration_skeleton.tex": "ae6f3d270781663003f79815acf0be2c9b6ba4527e1d1c3a9e6983de3fa3dede",
+    "figures/architecture.png": "eb7f96da98e1df3f5f397af1e0505ce3d0b89538c0007469a38f23fcf105b1ac",
+    "figures/architecture.svg": "8cbc593b3d3f11bb69090229ffd1cb4dcb52f403cee4d5a23f6f74d97f21ff71",
+    "figures/non_cams_interval_coverage.pdf": "80391bb166e0fd8622d525ddd5bbb80d4ac16d3962d31f2b91f38a4547ebd4d6",
+    "figures/non_cams_interval_coverage.png": "6204144b44fa31f505c087049ba089346c1668b8191d61104de8cbea389e3be5",
+    "figures/non_cams_interval_coverage.svg": "1a82fdcfb073fb18fb15b5705b096b41f692b6f58edecefcd16e4dfebb1e5326",
+    "figures/non_cams_paired_mae.pdf": "6f99b8383cd3bb5e942549bd9bce5e2d263230a4081fc1575b4bdfa2fd3c6e96",
+    "figures/non_cams_paired_mae.png": "03bd55f86e936b8550ad70568416b29baefda748644583a7a1bd08158ee94269",
+    "figures/non_cams_paired_mae.svg": "9e86616eb6797463a04a0270f3653776452f78dedc7ee526afbb9eda1b8ce956",
+    "tables/measured_dataset_summary.csv": "a31d7a3630f664f054f982fd31862db86f2370be8533f173d5b48afe663b40a3",
+    "tables/non_cams_paired_comparisons.csv": "5f44a2098ee8e95c41730f27fb095d13841ad5f4eceddc58addee07b29923731",
+    "tables/non_cams_uncertainty_by_fold.csv": "266784e36fdb338471c212e7197f243868b205ff59e1895c9aae116d753f80c2",
+    "tables/primary_results_pending.csv": "437d5ad16dfa99a7c5c13a60335cde4b2f0d7752cf89dc57b8c10fa8cb5275a3"
+  }
+}

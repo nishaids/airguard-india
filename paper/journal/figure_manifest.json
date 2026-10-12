@@ -1,0 +1,11 @@
+{
+  "preliminary_artifact": "results/research/preliminary/287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f/results.json",
+  "preliminary_sha256": "c19049cbe45ad05a1fec704081bb69c3d6cbff3d2a7bcc14ed7d3bf465841a50",
+  "scope": "NON_CAMS_PRELIMINARY metrics; protocol diagrams; no primary/final results",
+  "files": {
+    "paper\\figures\\coverage_vs_severity.pdf": "408127681fabad68bfb75ab54f830a898af475474e2405cdc89986a9e5be01c4",
+    "paper\\figures\\interval_widths.pdf": "a83cf26ed5d682cbcba1669827395969fa5a72cc3a12d8506f8c67b46b7e2d7e",
+    "paper\\figures\\data_pipeline.pdf": "1b586f4ef71f793f41e0470123d7bf593ca5e19b15fa02658db26fbcc4f4408f",
+    "paper\\figures\\model_workflow.pdf": "9ea9c42bf4aecde03eecc1245781cdfb866b9c8c020a90daae1a7a5febcdb0eb"
+  }
+}

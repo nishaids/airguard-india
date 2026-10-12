@@ -1,0 +1,9 @@
+\begin{table}[t]\centering\caption{Preregistered search space, not selected hyperparameters. All model selection remains pending.}
+\begin{tabular}{lp{.57\columnwidth}}\toprule Candidate & Training-only choices\\\midrule
+Ridge & $\alpha\in\{0.1,1,10,100\}$\\
+LightGBM & Leaves 15/31; minimum child samples 20/60\\
+XGBoost & Depth 4/6; minimum child weight 5/20\\
+Both boosters & Learning rate 0.05; maximum 600 rounds; early stopping 40 rounds; subsample and column fraction 0.8\\
+All learners & Seed 42; direct and residual formulations\\
+Selection & Mean rolling-fold MAE; simpler learner and residual formulation break ties\\
+\bottomrule\end{tabular}\end{table}

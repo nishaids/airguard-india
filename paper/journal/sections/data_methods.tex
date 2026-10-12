@@ -1,0 +1,284 @@
+\section{Data and Methods}
+\subsection{Data, Targets and Quality}
+OpenAQ preserves upstream CPCB-provider station identity; its measurements are
+not an official CPCB bulletin or licensed CCR export \cite{openaq2026}.
+The inherited catalogue contains 481 eligible stations across 255 parsed cities;
+the metadata-only stratified sample selects 181 stations in 100 cities. Current
+catalogue selection can introduce survivorship bias and is disclosed.
+The locked v3.1 window is 2025-02-19 through 2026-10-07. The protocol was
+locked at 2026-10-11T18:32:05.939254+00:00; its prior version and hash remain in the lock history.
+Its immutable hash is recorded in the result artifact. This acquisition checkpoint has
+179 usable stations, 100 cities, 64799 valid targets and 42481
+retained rejected station-days. These are partial-collection counts, not
+national study acceptance.
+
+The measured semantic dataset and preliminary input share SHA-256 prefix \texttt{4761a5da60dde059}; the immutable preliminary run has prefix \texttt{287c87db04a6b294}. Full hashes, denominators and artifact locations are recorded in the claim-evidence manifest.
+
+The single CPCB-style engine applies pollutant breakpoints, at least sixteen
+distinct hours per pollutant, at least three supported pollutants and a required
+particulate species \cite{cpcb2014aqi}. Particulates and the designated gases use
+24-hour means; CO and ozone use the maximum complete trailing eight-hour mean.
+Targets are labelled AirGuard CPCB-style AQI. Exact zeros, provider flags, poor
+coverage and six-hour identical runs are rejected. PM2.5 above PM10 and potential
+spikes are flagged and retained. Raw caches and row-addressable rejection ledgers
+preserve exclusions. Unsupported ppb conversion is refused.
+
+Severe AQI is an open lower bound of at least 401. The checkpoint contains
+383 censored Severe days. They cannot supply exact residual labels or
+identified MAE, RMSE, bias or coefficient-of-determination values. Category,
+exceedance, forecasts below 401 and lower-bound shortfall remain estimable.
+% BEGIN TARGET_METHOD
+\subsubsection{Concentration-to-index transformation}
+Within a bounded CPCB interval $[C_L,C_H]$ with index endpoints $[I_L,I_H]$,
+the pollutant sub-index is
+\begin{equation}
+I_p(C)=I_L+\frac{I_H-I_L}{C_H-C_L}(C-C_L),\quad I=\max_{p\in S}I_p.
+\end{equation}
+The daily support $S$ requires at least three sufficiently covered species,
+including particulate matter. It is recorded as an outcome annotation, never
+used to select predictors retrospectively. In the current valid development
+join, $S$ equals the prerequest frozen PM2.5/PM10/O3 support. Rejected rows
+retain reasons and provenance rather than disappearing from denominator
+counts. An open concentration interval does not justify linear extrapolation
+to a fictitious exact Severe target.
+\subsubsection{Quality-control interpretation}
+The six-hour stuck-run rule rejects the complete identical sequence, not only
+its final bin. Exact-zero rejection cannot distinguish a genuinely tiny
+ozone concentration from a telemetry zero and is therefore a disclosed
+preregistered trade-off. Conversely, automatic spike deletion could erase
+real pollution episodes. PM2.5/PM10 inconsistencies and potential spikes
+remain flagged observations. Sensor rejection, unavailable target and
+model error are distinct outcomes; their counts are reported separately.
+% END TARGET_METHOD
+
+\subsection{Issue-Time Availability}
+Issue time is 20:00 IST on the preceding day. Observation bins must end by
+17:00 IST; daily history is D-2 or earlier. Historical OpenAQ publication time
+is unknown, so measured-history analyses explicitly assume a healthy feed.
+Archived weather uses the documented 48-hour Previous Runs offset
+at \url{https://open-meteo.com/en/docs/previous-runs-api}. The Air Quality API documentation is a separate
+source \cite{openmeteo2026}. FIRMS acquisition time alone does not establish release
+time. CAMS past fields without their producing run are excluded from the primary
+experiment. Every admitted snapshot passes its guard.
+
+
+\subsection{Primary Forecast and Correction}
+The genuine CAMS global forecast archive \cite{cams2024forecasts} must retain
+initialisation, lead, valid time, units and evidence of pre-issue availability.
+Reanalysis is prohibited as a replacement. The locked v3.1 protocol specifies
+target-support-matched CAMS scoring and a six-pollutant secondary comparator.
+Later target support is an evaluation annotation and cannot become a predictor.
+The partial join contains 7,560 station-days, 5,506 valid targets and 2,054 retained rejected targets across 42 dates. All 7,560 rows pass the primary availability guard. Every valid target in this subset uses the frozen PM2.5/PM10/O3 support; outcome support remains an evaluation annotation and is excluded from predictors. Full feature integration and the primary runner remain incomplete. The locked comparison is preserved. No primary model has been fitted and no final-test outcomes have been accessed.
+All methods share observations and evaluation windows. With frozen CAMS index
+$b_{s,d}$ and exact measured index $y_{s,d}$, residual learning uses
+\begin{equation}r_{s,d}=y_{s,d}-b_{s,d},\qquad
+\widehat y_{s,d}=b_{s,d}+\widehat r_{s,d}.\end{equation}
+The ladder comprises raw CAMS, direct ML, residual Ridge, residual LightGBM and
+residual XGBoost, with persistence and prior-only climatology as operational
+floors. There is no assumption that correction wins. The legacy city model has
+a different period, target and input representation, and is reported separately.
+
+\begin{table}[h]\centering\caption{Primary comparison contract}
+\begin{tabular}{ll}\toprule Method & Result \\\midrule
+Raw operational CAMS & Pending archive \\
+Direct ML & Pending archive \\
+Residual Ridge & Pending archive \\
+Residual LightGBM & Pending archive \\
+Residual XGBoost & Pending archive \\\bottomrule\end{tabular}\end{table}
+
+
+
+
+
+
+% BEGIN CURRENT CAMS EVIDENCE
+\subsubsection{Verified operational archive checkpoint}
+The single accepted probe is a genuine forecast (GRIB type fc), initialized
+2025-02-18 00:00 UTC with a 24-hour lead and valid at 2025-02-19 00:00 UTC.
+Its 134-byte PM2.5 field contains nine finite values on a 0.4-degree grid.
+The development manifest currently verifies 6 of 36 chunks.
+Requests cover only the frozen station bounding box and development dates.
+Initialization plus lead reconstructs valid time in every admitted field.
+Surface PM mass concentrations use $10^9$ to convert kg m$^{-3}$ to
+$\mu$g m$^{-3}$. Gas mixing ratios use the same-run lowest-level
+temperature $T$, specific humidity $q$ and hybrid pressure $p$:
+\begin{equation}
+\rho=\frac{p}{287.05T(1+0.6078q)},\quad C_{\mu g/m^3}=10^9\rho x.
+\end{equation}
+CO instead uses $10^6$ for mg m$^{-3}$. Model-level fields are linearly
+interpolated within the same producing run before density conversion;
+no extrapolation, reanalysis or post-issue run is admitted. Seven preceding
+hourly bins support trailing eight-hour CO/O3 windows.
+Historical per-run delivery logs are unavailable: pre-issue availability
+uses the documented nominal dissemination bound, explicitly an assumption.
+The later ADS retrieval timestamp is provenance, not historical publication.
+% END CURRENT CAMS EVIDENCE
+
+
+\subsection{Selection and Ablation}
+Model settings use training-only inner validation. The locked protocol fixes
+90 training days initially, 30 calibration days, 30 test days, a 30-day step and
+one-day embargo gaps, with expanding training windows. Each fold is reported.
+The latest 90 dates, 2026-07-10 through 2026-10-07, are sealed.
+The referenced artifact declares no final-test scoring. The primary selection rule is lowest mean rolling-fold MAE, breaking ties toward Ridge and residual formulations; raw CAMS is retained if no learned method beats it. A committed selection lock, complete isolation audit and fresh user approval are required before final evaluation. Feature ablation separates CAMS, measured history,
+forecast weather, calendar, spatial context and optional fires. Fire admission
+requires a date-block interval supporting its benefit. An additional sliding
+90-day non-CAMS sensitivity is labelled separately.
+[RESULT PENDING CAMS ARCHIVE EXPERIMENT]
+
+
+\subsection{Temporal and Spatial Verification}
+Primary evaluation will report exact-target MAE, RMSE, signed forecast bias,
+coefficient of determination, six-category diagnostics, threshold detection,
+false alarms and censored-Severe shortfall. Poor, Very Poor and Severe events
+receive explicit diagnostics. Seasonal and regional groups below thirty pairs
+are listed with counts and withheld metrics.
+Spatial tests isolate cities, 25-km connected urban clusters, stations and
+regions. Local-history and monitor-free inference are distinct conditions.
+Held-out station targets cannot determine training eligibility. The all-station
+reference is scored on the identical held-out test rows.
+
+Paired comparison uses seven-day moving date blocks with 5,000 resamples and
+a two-sided Diebold--Mariano daily loss comparison with Newey--West variance
+and Holm multiplicity adjustment \cite{diebold1995comparing}. A confidence
+interval containing zero does not establish improvement.
+
+\subsection{Uncertainty Calibration}
+Split conformal intervals at 80\% and 90\%, quantile calibration and
+forecast-category Mondrian calibration use only the preceding calibration
+window. Coverage and widths are reported by category, season and region.
+For a censored Severe outcome, an upper bound reaching 401 is merely compatible
+with the known lower bound; it does not identify true-value coverage.
+Calibration under temporal and spatial shift is evaluated empirically;
+exchangeability guarantees are not asserted for dependent station-days
+\cite{gibbs2021aci,xu2021enbpi}. Proper uncertainty scoring requires identified
+outcomes \cite{gneiting2007scoring}.
+
+
+
+
+
+% BEGIN PRELIMINARY COVERAGE
+\begin{table}[h]\centering\caption{NON-CAMS preliminary first-fold calibration failures}
+\begin{tabular}{lrr}\toprule Method & Exact coverage & Mean width\\\midrule
+80\% split & 0.855 & 95.5\\
+90\% split & 0.944 & 120.6\\
+\bottomrule\end{tabular}
+\end{table}
+Marginal coverage conceals important failures: neither interval covered any
+of the 35 exact Very Poor outcomes in this first fold. Poor-or-worse coverage
+was also zero on 48 exact pairs. These are preliminary validation failures,
+not primary CAMS or final-test findings; they preclude claiming reliable
+high-pollution uncertainty from average coverage alone.
+% END PRELIMINARY COVERAGE
+
+
+\subsection{Vulnerability-Aware Advisory Evaluation}
+Declared exposure strata include general adults, children, older adults,
+asthma/COPD, heart conditions, pregnancy and outdoor workers. They are not
+personal medical-risk predictions. P0 uses the point forecast; P1 the calibrated
+median; P2 the calibrated 0.75 quantile; P3 the smallest calibration-window
+candidate achieving the corrected empirical under-warning aim $(k+1)/(n+1)$.
+The aims are 10\% for general adults and 5\% for the other declared strata.
+If no candidate qualifies, the policy reports that fact.
+Under-warning, over-warning, serious under-warning and high-pollution misses
+are reported alongside date-block confidence intervals. A lower warning rate
+does not demonstrate a health benefit. Unsupported cohort coefficients remain
+unadopted. [RESULT PENDING CAMS ARCHIVE EXPERIMENT]
+% BEGIN ADVISORY_METHOD
+\subsubsection{Policy losses and calibration boundary}
+For ordered observed category $c$ and warning category $w$, the basic losses
+are $L_-=\mathbf{1}\{w<c\}$ and $L_+=\mathbf{1}\{w>c\}$.
+Serious under-warning, missed Poor-or-worse and missed Very-Poor-or-worse
+events remain separate diagnostics. Lower under-warning can require more
+false alarms; neither objective is optimized on a test window.
+The candidate quantiles are fixed before evaluation. P3 chooses on the
+calibration window only and then reports its frozen test-window behavior,
+including failure to find any feasible candidate. Its corrected empirical
+rate $(k+1)/(n+1)$ is a policy selection statistic, not an individual disease
+probability or a proven dependent-data risk bound.
+\subsubsection{Finite-sample intervals and failure reporting}
+For exact calibration residuals $e_i=|y_i-\widehat y_i|$, split conformal
+uses the order statistic with rank $\lceil(n+1)(1-\alpha)\rceil$.
+The interval is $[\max(0,\widehat y-q),\widehat y+q]$; missing or inadequate
+calibration support is reported rather than assigned a radius of zero.
+Mondrian groups use the forecast category, so observed test categories cannot
+choose an interval. Quantile crossing is repaired using predictions only.
+Calibration labels exclude censored Severe values from exact residuals;
+Severe category/threshold behavior is still reported. Under temporal/spatial
+dependence, coverage is an empirical finding, not automatically a theorem.
+\subsubsection{Exposure guidance and clinical scope}
+Declared vulnerability strata set environmental-warning tolerances. Shared
+forecast outcomes do not constitute separate clinical cohort studies. The
+system does not predict diagnoses, prescribe medication, estimate personal
+health probabilities or demonstrate avoided illness. Its interface labels
+measurement versus modelling, observation age, unsupported intervals and
+raw-model uncertainty. Clinical coefficients remain unvalidated.
+% END ADVISORY_METHOD
+
+\begin{table}[t]\centering\caption{Dataset audit. Full measured counts are inherited descriptive metadata; only development rows enter alignment.}
+\begin{tabular}{lr}\toprule Item & Count\\\midrule
+Measured stations & 180\\
+Usable stations & 179\\
+Usable cities & 100\\
+Retained station-days & 107,280\\
+Valid targets & 64,799\\
+Rejected targets & 42,481\\
+Censored Severe targets & 383\\
+\midrule
+Aligned development rows & 7,560\\
+Aligned dates & 42\\
+Aligned valid targets & 5,506\\
+Aligned rejected targets & 2,054\\
+Aligned Severe targets & 2\\
+\bottomrule\end{tabular}\end{table}
+\begin{table}[t]\centering\caption{Preregistered search space, not selected hyperparameters. All model selection remains pending.}
+\begin{tabular}{lp{.57\columnwidth}}\toprule Candidate & Training-only choices\\\midrule
+Ridge & $\alpha\in\{0.1,1,10,100\}$\\
+LightGBM & Leaves 15/31; minimum child samples 20/60\\
+XGBoost & Depth 4/6; minimum child weight 5/20\\
+Both boosters & Learning rate 0.05; maximum 600 rounds; early stopping 40 rounds; subsample and column fraction 0.8\\
+All learners & Seed 42; direct and residual formulations\\
+Selection & Mean rolling-fold MAE; simpler learner and residual formulation break ties\\
+\bottomrule\end{tabular}\end{table}
+
+\subsubsection{Baseline estimation and operational missingness}
+Climatology is estimated from exact training targets in a station's calendar
+month, with station and global means as explicit fallbacks. These statistics
+are re-estimated inside each training fold. Persistence uses the measured
+rolling 24-hour index ending at the cutoff, rather than the not-yet-complete
+day immediately before the target. Consequently a persistence forecast can
+be missing even when the eventual target is valid. The primary comparison
+requires exact targets, the CAMS baseline and persistence jointly; the
+secondary set relaxes only the persistence requirement. Reporting these
+denominators prevents a method gaining an advantage by being evaluated on
+easier, more complete days.
+
+The implementation joins on station identifier and calendar date and rejects
+duplicate keys or mismatched station coordinates. Calendar lags are looked up
+by date, rather than shifted across whichever observations happen to be
+present. An absent day is therefore missing, not replaced by an older reading
+with the wrong lead. Censored historical values retain a lower-bound indicator;
+they do not supply fabricated exact residual-bias labels. Numerical missingness
+is handled by training-only imputation with indicators. This choice describes
+the current implementation and remains subject to the development audit;
+no imputer is fitted to a validation or final window.
+
+Nearby-station summaries use only donor rolling measurements whose bins
+ended by the cutoff. Self-donations are excluded. Spatial inference without
+a local monitor must mask unavailable donor stations as well as the held-out
+station's own history. A held-out target is never a contemporaneous neighbour
+feature. Elevation is static cached terrain metadata, not an outcome-derived
+station-selection criterion. The acquired surface cube also provides maxima,
+ranges, standard deviations and daytime-minus-nighttime concentrations; all
+come from the same producing run as the daily CAMS baseline.
+
+\subsubsection{Scope of the operational reconstruction}
+The locked YAML preserves the earlier proxy-source disclosure and its hash;
+it has not been silently rewritten to claim historical operational access.
+The separately frozen acquisition manifest identifies the genuine ADS
+forecast stream now being integrated. That provenance improvement does not
+relax the original QC, date splits, censoring or selection criteria. It also
+does not prove each forecast's historical delivery time. Nominal publication
+and healthy-feed assumptions remain explicit limitations of retrospective
+reconstruction, to be checked prospectively.

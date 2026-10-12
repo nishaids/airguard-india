@@ -1,0 +1,17 @@
+{
+  "status": "DEVELOPMENT_DRAFT_PRIMARY_RESULTS_PENDING",
+  "final_test_accessed": false,
+  "model_selected": false,
+  "files": {
+    "paper/station_calibration_skeleton.tex": "ae6f3d270781663003f79815acf0be2c9b6ba4527e1d1c3a9e6983de3fa3dede",
+    "paper/references.bib": "6ac0c24c92f0ca0e01140a5d682dac1da21e14140ab12929064afba16c3ed84a",
+    "paper/journal/main.tex": "80e5161b86a99be8aa6e9abf8e723b84e9578b48cfe802496d3df7dc26c61e90",
+    "paper/journal/sections/abstract.tex": "134aad24a4838bf037df2172119a157a23f4790f0029b2f0102be861909e3541",
+    "paper/journal/sections/conclusion.tex": "513ed24efebfaabb6c81323e3b872f00be2190dae933851419bfc765bbab7ffb",
+    "paper/journal/sections/data_methods.tex": "02e00aa0b1813365c8e055274800879557c1b179f5e55f9886aa0673b0a119d2",
+    "paper/journal/sections/discussion.tex": "87ef34438a55864711021e45451118d381fa301531d0ec6bfa4e9788884d1634",
+    "paper/journal/sections/introduction.tex": "c5873149aea44cb8cc7b163258ddb423ddfedd46fea9fc68687f009fd2067a4d",
+    "paper/journal/sections/related_work.tex": "4544db85434c6891455ee99bb7eac89d13efad5c0b7226414dbe04a959a14c1f",
+    "paper/journal/sections/results.tex": "e3a1e7a568fa004e0172cb545896d4d37ac711b187951e3704c1afb61ecac564"
+  }
+}

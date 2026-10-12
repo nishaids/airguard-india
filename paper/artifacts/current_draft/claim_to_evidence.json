@@ -1,0 +1,20 @@
+{
+  "draft_status": "PRIMARY_RESULTS_PENDING_FINAL_TEST_SEALED",
+  "title": "AirGuard India: Station-Calibrated Day-Ahead Air Quality Forecasting with Uncertainty-Aware Vulnerability Advisories",
+  "generated_at_utc": "2026-10-12T15:05:11.755030+00:00",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "measured_semantic_sha256": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "preliminary_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
+  "probe_sha256": "d65309028388aaa0dcfd80de3d209ff87d0c06ba0a3bc82e497ed6fec8d4b28b",
+  "claims": {
+    "measured_counts": "results/research/measured_dataset.json",
+    "operational_GRIB": "results/research/cams_ads_probe.json",
+    "CAMS_partial_alignment": "results/research/cams_development_alignment.json",
+    "prospective_ledger": "results/research/prospective_audit.json",
+    "preliminary_comparisons_and_coverage": "results/research/preliminary/287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f/results.json",
+    "primary_CAMS_improvement": "PENDING; no claim",
+    "final_results": "SEALED; no claim",
+    "clinical_or_causal_health_benefit": "UNSUPPORTED; no claim"
+  },
+  "source_sha256": "ae6f3d270781663003f79815acf0be2c9b6ba4527e1d1c3a9e6983de3fa3dede"
+}

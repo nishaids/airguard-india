@@ -1,0 +1,13 @@
+{
+  "id": "dpl_5xaNNx1bo2tggkptgDfpbZoHj5Uw",
+  "url": "webapp-hzjunhbdi-nishanth-s-projects-e335f110.vercel.app",
+  "target": "production",
+  "readyState": "BLOCKED",
+  "aliasAssigned": false,
+  "errorCode": null,
+  "errorMessage": null,
+  "git_sha": null,
+  "readyStateReason": "The deployment was blocked because the commit author does not have permission to create deployments for this project.",
+  "blockCode": "TEAM_ACCESS_REQUIRED",
+  "production_domain_changed": false
+}

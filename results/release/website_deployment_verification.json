@@ -1,0 +1,63 @@
+{
+  "generated_at_utc": "2026-10-12T13:43:17.062957+00:00",
+  "status": "PRODUCTION_DEPLOYED_AND_VERIFIED",
+  "scope": "Website deployment only; paper work stopped by owner",
+  "public_url": "https://webapp-phi-taupe.vercel.app",
+  "deployment_id": "dpl_3KhJvps1QR4QyRCPHkwqCMrH77dc",
+  "deployment_url": "https://webapp-4kwhperqo-nishanth-s-projects-e335f110.vercel.app",
+  "deployed_git_sha": "35c2ca08b86a53dcc27da11f79edb311d0e77ffe",
+  "project_id": "prj_CRhIlQYLGST3dBwUfTiFgJXa25qe",
+  "branch": "research/station-calibration",
+  "preflight_commands": {
+    "lint": {
+      "command": "npm run lint",
+      "exit_code": 0,
+      "log_sha256": "ccc2b94368e376747e58a3104acfea4df1c281eab6357c2d188019d53e90f054"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exit_code": 0,
+      "log_sha256": "287d65165d6435818e4bb72866eb9d65715ddc0b888831ba315f24a53c60467e"
+    },
+    "test": {
+      "command": "npm run test -- --reporter=json --outputFile=test-results/live-release-unit.json",
+      "exit_code": 0,
+      "log_sha256": "4527b9093909378719bb7f4fbd1945568b73c377bfe5f0dbbdef3c1a1e851da0"
+    },
+    "build": {
+      "command": "npm run build",
+      "exit_code": 0,
+      "log_sha256": "cb392cc3f03a62b789aa20b6e3e500583c3d740ed2f08fc8a56a3f3bd1a3287c"
+    }
+  },
+  "frontend_unit_tests": {
+    "success": true,
+    "numTotalTests": 43,
+    "numPassedTests": 43,
+    "numFailedTests": 0
+  },
+  "public_api_checks_passed": 37,
+  "browser_checks_passed": 16,
+  "browser_failures": 0,
+  "secret_hits": 0,
+  "experimental_correction_deployed": false,
+  "final_test_scored": false,
+  "new_paper_changes_committed_or_pushed": false,
+  "initial_blocker_resolved": "Owner supplied the linked GitHub email; a new commit preserved prior history and passed Vercel attribution checks.",
+  "mobile_issue_resolved": "Menu button remains disabled until hydration; SSR/client test and all 16 production browser checks pass.",
+  "verification_correction": {
+    "command": "node node_modules/eslint/bin/eslint.js app/components/NavBar.js --parser @typescript-eslint/parser --parser-options {\"ecmaFeatures\": {\"jsx\": true}}",
+    "actual_exit_code": 0,
+    "initial_default_parser_exit_code": 1,
+    "initial_failure": "Default extra JS lint invocation lacked JSX parsing; npm lint only covers TSX and app/lib. Corrected by explicitly selecting the installed JSX-capable parser.",
+    "correction_note": "Supersedes the mistaken extra-check exit recorded in commit 35c2ca0; original four preflight check exits were genuinely zero."
+  },
+  "next_human_action": null,
+  "artifact_sha256": {
+    "results\\release\\website_preflight.json": "5bd906a0bf4fcc40429356446a0d71d901e3bd34f2ef5ee8f2f5db595ddeaa50",
+    "results\\release\\website_live_deployment.json": "1272451cfdb677bdb1f672b5332d28d5a4d64fe257612d1c9649ce47fde76358",
+    "results\\release\\website_browser_smoke.json": "b98a9457e4274b022959dd1d37d111c865565c766cd382b2272add9ecdd0079b",
+    "results\\research\\production_acceptance.json": "5ecacd760c3fbcac5c755d76c93e715738d4f8f10ecb998556d3cd23684b0930",
+    "results\\release\\secret_audit.json": "363ea9c21fcfa156bf40de2a1a9c1e4a02adf16ba12b5e20e74cf5f6cd63cf9a"
+  }
+}

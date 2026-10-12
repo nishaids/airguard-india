@@ -32,7 +32,10 @@
   "passed": true,
   "frontend_source_sha256_after_completed_checks": "6fc16f03586f0f258bed255e9b32f8e7a4f26cad3709249c987f639268467b01",
   "extra_check": {
-    "command": "npm exec eslint app/components/NavBar.js",
-    "observed_exit_code": 0
+    "command": "node node_modules/eslint/bin/eslint.js app/components/NavBar.js --parser @typescript-eslint/parser --parser-options {\"ecmaFeatures\": {\"jsx\": true}}",
+    "actual_exit_code": 0,
+    "initial_default_parser_exit_code": 1,
+    "initial_failure": "Default extra JS lint invocation lacked JSX parsing; npm lint only covers TSX and app/lib. Corrected by explicitly selecting the installed JSX-capable parser.",
+    "correction_note": "Supersedes the mistaken extra-check exit recorded in commit 35c2ca0; original four preflight check exits were genuinely zero."
   }
 }

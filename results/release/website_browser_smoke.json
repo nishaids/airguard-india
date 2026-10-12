@@ -1,0 +1,16 @@
+{
+  "public_url": "https://webapp-phi-taupe.vercel.app",
+  "deployed_git_sha": "35c2ca08b86a53dcc27da11f79edb311d0e77ffe",
+  "tool_observed_exit_code": 0,
+  "stats": {
+    "startTime": "2026-10-12T13:39:09.514Z",
+    "duration": 27494.359999999997,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "report_sha256": "616bfbca408b7b9cce794fedb3bbfe4b52e18398ade62edd2841cb1a23211b26",
+  "checks": "Eight core routes at mobile 375px and desktop 1280px; page errors, same-origin HTTP failures, mobile menu and horizontal overflow",
+  "research_paper_included": false
+}

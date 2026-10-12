@@ -1,0 +1,9 @@
+{
+  "deployment_id": "dpl_3KhJvps1QR4QyRCPHkwqCMrH77dc",
+  "url": "https://webapp-4kwhperqo-nishanth-s-projects-e335f110.vercel.app",
+  "path": "/city-atlas",
+  "transport_exit_code": 0,
+  "http_status": "200",
+  "server_menu_disabled": true,
+  "body_sha256": "547c6d56bcc6c1e232821e230d59fde08c4fee392dc0a3d8c8360a0a86577592"
+}

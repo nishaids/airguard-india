@@ -131,7 +131,7 @@ def scientific_fingerprint():
     files = {path.relative_to(config.PROJECT_ROOT).as_posix():
              hashlib.sha256(path.read_bytes().replace(b'\r\n', b'\n')).hexdigest() for path in sorted(paths)}
     selection = config.PROJECT_ROOT/'results/research/data_manifests/station_selection.json'
-    correction = config.PROJECT_ROOT/'results/research/data_manifests/station_metadata_corrections.v1.json'
+    correction = config.PROJECT_ROOT/'results/research/data_manifests/station_metadata_corrections.v2.json'
     branch=subprocess.check_output(['git','branch','--show-current'],text=True).strip()
     if branch!='research/station-calibration':
         raise ContinuationError('RESEARCH_BRANCH_REQUIRED')

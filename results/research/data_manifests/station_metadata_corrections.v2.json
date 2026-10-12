@@ -1,0 +1,119 @@
+{
+  "version": "station-metadata-v2",
+  "created_at": "2026-10-12T02:27:00.459599+00:00",
+  "previous_metadata_sha256": "c818998b1c4f4162072260431f6109ca12939f826d2617069d36243beee7e812",
+  "state_disambiguation_source": "https://gmc.assam.gov.in/",
+  "base_selection_sha256": "73357fe1ab5fd4f2efe3a4197e09b9429474ca7738f63d45721442684dd322ac",
+  "catalogue_sha256": "55acf54d08f120d38f9acc7f3ff094431861b3198bcd49324859fe55925c5536",
+  "basis": "Provider-name parsing only; no outcomes or model results determine a correction",
+  "membership_changed": false,
+  "strata_changed": false,
+  "qc_or_protocol_changed": false,
+  "corrected_universe": {
+    "eligible_stations": 481,
+    "eligible_cities": 255,
+    "stations_per_city": {
+      "1": 194,
+      "2": 18,
+      "3": 14,
+      "4": 11,
+      "5": 5,
+      "6": 5,
+      "7": 1,
+      "8": 1,
+      "9": 2,
+      "11": 1,
+      "13": 1,
+      "24": 1,
+      "29": 1
+    }
+  },
+  "corrections": [
+    {
+      "location_id": 5598,
+      "source_name": "Sector - 125, Noida, UP - UPPCB",
+      "latitude": 28.5447608,
+      "longitude": 77.3231257,
+      "before": {
+        "site": "Sector - 125, Noida",
+        "city": "UP",
+        "agency": "UPPCB",
+        "state": "Uttar Pradesh",
+        "region": "North"
+      },
+      "after": {
+        "site": "Sector - 125",
+        "city": "Noida",
+        "agency": "UPPCB",
+        "state": "Uttar Pradesh",
+        "region": "North"
+      }
+    },
+    {
+      "location_id": 5616,
+      "source_name": "Sector - 62, Noida, UP - IMD",
+      "latitude": 28.6245479,
+      "longitude": 77.3577104,
+      "before": {
+        "site": "Sector - 62, Noida",
+        "city": "UP",
+        "agency": "IMD",
+        "state": null,
+        "region": "North"
+      },
+      "after": {
+        "site": "Sector - 62",
+        "city": "Noida",
+        "agency": "IMD",
+        "state": "Uttar Pradesh",
+        "region": "North"
+      }
+    },
+    {
+      "location_id": 10903,
+      "source_name": "Railway Colony, Guwahati - APCB",
+      "latitude": 26.181742,
+      "longitude": 91.78063,
+      "before": {
+        "site": "Railway Colony",
+        "city": "Guwahati",
+        "agency": "APCB",
+        "state": "Arunachal Pradesh",
+        "region": "Northeast"
+      },
+      "after": {
+        "site": "Railway Colony",
+        "city": "Guwahati",
+        "agency": "APCB",
+        "state": "Assam",
+        "region": "Northeast"
+      }
+    },
+    {
+      "location_id": 42240,
+      "source_name": "Pan Bazaar, Guwahati - APCB",
+      "latitude": 26.1875,
+      "longitude": 91.744194,
+      "before": {
+        "site": "Pan Bazaar",
+        "city": "Guwahati",
+        "agency": "APCB",
+        "state": "Arunachal Pradesh",
+        "region": "Northeast"
+      },
+      "after": {
+        "site": "Pan Bazaar",
+        "city": "Guwahati",
+        "agency": "APCB",
+        "state": "Assam",
+        "region": "Northeast"
+      }
+    }
+  ],
+  "sha256": "d43acdc5476d61e41186fb2a2c99dd62e9478b1c07a369cf80147b0e7144da04",
+  "evidence_link_amendment": {
+    "old_url": "https://www.pcbassam.org/SOURCE_STUDIES/guwahati.pdf",
+    "http_status": 404,
+    "made_before_any_v2_dataset_fit": true
+  }
+}

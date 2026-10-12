@@ -12,7 +12,7 @@ from src import config
 from src.research.calibration import catalogue
 
 FIELDS = ('site','city','agency','state','region')
-PATH = config.PROJECT_ROOT/'results/research/data_manifests/station_metadata_corrections.v1.json'
+PATH = config.PROJECT_ROOT/'results/research/data_manifests/station_metadata_corrections.v2.json'
 
 
 def apply(selection, correction):
@@ -69,7 +69,10 @@ def create():
             corrections.append({'location_id':station['location_id'],'source_name':station['name'],
                 'latitude':station['latitude'],'longitude':station['longitude'],'before':before,'after':after})
     cities=Counter(s['city'] for s in descriptions.values())
-    value={'version':'station-metadata-v1','created_at':datetime.now(timezone.utc).isoformat(),
+    previous=PATH.with_name('station_metadata_corrections.v1.json')
+    value={'version':'station-metadata-v2','created_at':datetime.now(timezone.utc).isoformat(),
+        'previous_metadata_sha256':json.loads(previous.read_text(encoding='utf-8'))['sha256'] if previous.exists() else None,
+        'state_disambiguation_source':'https://gmc.assam.gov.in/',
         'base_selection_sha256':canonical_hash(selection),'catalogue_sha256':selection['catalogue']['sha256'],
         'basis':'Provider-name parsing only; no outcomes or model results determine a correction',
         'membership_changed':False,'strata_changed':False,'qc_or_protocol_changed':False,

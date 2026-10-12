@@ -159,9 +159,9 @@ def strict_guard(row, feature_names):
             raise LeakageError('Weather values require an archived-run bound')
 
 
-def build():
+def build(snapshot_path=None):
     protocol = load()
-    snapshot, recovery = capture()
+    snapshot, recovery = capture(snapshot_path) if snapshot_path is not None else capture()
     dates = data.study_dates(protocol)
     destination = data.DERIVED / snapshot['data_version']
     cache = data.DERIVED / 'station_targets'
@@ -240,6 +240,8 @@ def build():
               'protocol_sha256': protocol['_sha256'], 'table': config.portable(path),
               'catalogue_universe': snapshot['selection'].get('universe'), 'selected_stations': len(stations),
               'metadata_revision': snapshot['selection'].get('metadata_revision'),
+              'cohort_basis': snapshot.get('cohort_basis','All completed stations in this acquisition snapshot'),
+              'inherited_snapshot_data_version': snapshot.get('inherited_snapshot_data_version'),
               'raw_stations': len(snapshot['stations']), 'eligible_stations_full_window_descriptive_only': len(eligible),
               'usable_stations': valid.station_id.nunique(), 'usable_cities': valid.city.nunique(),
               'station_days': len(table), 'valid_targets': len(valid), 'rejected_targets': len(table)-len(valid),
@@ -264,5 +266,8 @@ def build():
 
 
 if __name__ == '__main__':
-    _, report = build()
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--snapshot',type=Path,help='Earlier immutable inputs.json; unresolved pagination is refused')
+    _, report = build(parser.parse_args().snapshot)
     print(json.dumps({k: report[k] for k in ('status', 'usable_stations', 'usable_cities', 'station_days', 'valid_targets', 'rejected_targets', 'severe_days', 'dataset_hash')}, indent=2))

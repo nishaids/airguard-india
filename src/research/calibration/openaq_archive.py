@@ -307,15 +307,27 @@ def run(start, end, limit=None, per_minute=42, shard=None, of=1):
         if manifest['stations'].get(key, {}).get('complete') or key in finished:
             continue
         try:
-            payload = client.get(f"/locations/{station['location_id']}/sensors")
+            try:
+                payload = client.get(f"/locations/{station['location_id']}/sensors",attempts=1)
+            except urllib.error.HTTPError as error:
+                if error.code not in (500,502,503,504):
+                    raise
+                from src.research.calibration.sensor_recovery import fetch
+                payload = fetch(client,station,selection=selection)
         except Exception as error:  # noqa: BLE001 - recorded, the walk continues
             manifest['stations'][key] = {'complete': False, 'error': type(error).__name__}
+            if isinstance(error,urllib.error.HTTPError):
+                manifest['stations'][key]['http_status']=error.code
+            from src.research.calibration.checkpoint import write_json
+            write_json(target,manifest)
             continue
         SENSORS.mkdir(parents=True, exist_ok=True)
         (SENSORS / f'{key}.json').write_text(json.dumps(payload), encoding='utf-8')
         chosen, considered = choose_sensors(payload.get('results') or [], start, end)
         entry = {'name': station['name'], 'city': station['city'], 'sensors': {}, 'not_used': considered,
                  'retrieved_at': datetime.now(timezone.utc).isoformat(), 'complete': False}
+        if payload.get('_provenance'):
+            entry['metadata_recovery']=payload['_provenance']
         previous = manifest['stations'].get(key, {})
         failed = False
         for pollutant, sensor in sorted(chosen.items()):

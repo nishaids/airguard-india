@@ -38,7 +38,7 @@ HOUR = timedelta(hours=1)
 def manifest(name):
     path = MANIFESTS / name
     value = json.loads(path.read_text(encoding='utf-8')) if path.exists() else None
-    correction = MANIFESTS / 'station_metadata_corrections.v1.json'
+    correction = MANIFESTS / 'station_metadata_corrections.v2.json'
     if value is not None and name == 'station_selection.json' and correction.exists():
         from src.research.calibration.metadata import apply
         value = apply(value, json.loads(correction.read_text(encoding='utf-8')))

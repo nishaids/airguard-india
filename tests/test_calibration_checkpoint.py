@@ -207,6 +207,24 @@ def test_protocol_hash_unchanged_and_identity_order_independent():
     assert canonical_hash({'a':1,'b':2})==canonical_hash({'b':2,'a':1})
 
 
+def test_frozen_snapshot_refuses_path_escape(tmp_path):
+    from src.research.calibration.checkpoint import capture
+    with pytest.raises(ValueError,match='versioned research snapshot'):
+        capture(tmp_path/'inputs.json')
+
+
+def test_frozen_snapshot_refuses_identity_tampering(tmp_path,monkeypatch):
+    from src.research.calibration import checkpoint
+    monkeypatch.setattr(data,'DERIVED',tmp_path)
+    identity={'selection_semantic_sha256':'wrong','sensors':[]}
+    value={'data_version':canonical_hash(identity),'identity':identity,
+        'protocol_sha256':load()['_sha256'],'selection':{},'stations':{}}
+    directory=tmp_path/value['data_version']; directory.mkdir()
+    path=directory/'inputs.json'; path.write_text(json.dumps(value))
+    with pytest.raises(ValueError,match='Frozen selection identity'):
+        checkpoint.capture(path)
+
+
 def test_window_resume_makes_no_duplicate_requests(tmp_path):
     from src.research.calibration.openaq_archive import fetch_sensor
     start=datetime(2025,5,1,tzinfo=timezone.utc)

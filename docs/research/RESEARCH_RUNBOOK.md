@@ -24,11 +24,13 @@ before fitting. Generated readiness/report JSON changes do not change this
 source fingerprint. A genuine pre-fitting defect needs a documented versioned
 amendment, preserving previous hashes and results.
 
-The metadata-only overlay `station_metadata_corrections.v1.json` is also frozen.
+The current metadata-only overlay `station_metadata_corrections.v2.json` is also frozen.
 It corrects two Noida city labels while retaining the original 181 selected IDs
 and acquisition manifests. Never rebuild selection to enforce city caps after
 this correction. Earlier city-holdout results are explicitly superseded; see
 `IMPLEMENTATION_AUDIT.md`. New inputs retain the exact correction identity.
+Version 1 and its hash remain preserved; version 2 additionally resolves the
+ambiguous APCB operator for two explicitly named Guwahati stations to Assam.
 
 ## One finite acquisition continuation
 
@@ -61,6 +63,11 @@ data, evaluates the non-CAMS preliminary study, reconstructs sampled stations
 from raw caches, audits prospective logging, and generates readiness, paper,
 figures and the final checkpoint. Unresolved pagination defects prevent a new
 fit. Other incomplete acquisition can yield an explicitly partial study.
+For a location-sensor server error, the downloader can recover official metadata
+from the individual-sensor endpoint, using IDs in the locked catalogue.
+Checksummed responses retain actual sensor first/last dates, units and
+provenance. The date-based selection rule remains unchanged; mismatched
+responses/catalogues are refused and no location dates are substituted.
 Failures are retained; `collection_finished`, `measured_completed` and
 `experiment_completed` are separate fields in the atomic
 `results/research/continuation_status.json`. The primary CAMS completion flag
@@ -84,6 +91,15 @@ Use them only after relevant acquisition/repair stages are safe to inspect.
 | `src.research.calibration.paper` | Exact-result paper skeleton; `paper/station_calibration_skeleton.tex` and `results/research/paper_skeleton.json` |
 | `src.research.calibration.figures` | Diagnostics and file hashes under the immutable experiment directory |
 | `src.research.calibration.report` | `results/research/continuation_checkpoint.json` and `docs/research/CONTINUATION_CHECKPOINT.md` |
+
+When later raw acquisition has unresolved pagination, an earlier verified
+cohort can be regenerated with `measured --snapshot data/research/derived/<version>/inputs.json`.
+This verifies the original snapshot identity, protocol and files, refuses any
+unresolved page-cap concern in that cohort, applies the versioned metadata
+correction, and writes new inputs/results. It never overwrites the old dataset,
+resamples stations by outcome or substitutes the growing acquisition count for
+the tested cohort. This is a preliminary partial-data study, not completion of
+the full issue-time dataset gate.
 
 Raw/partial caches live under `data/research/`; source manifests are under
 `results/research/data_manifests/`. Derived versioned tables, inputs and quality

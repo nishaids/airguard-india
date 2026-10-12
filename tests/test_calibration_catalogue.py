@@ -18,6 +18,14 @@ def test_provider_city_boundaries(name,expected):
     assert parse_name(name)==expected
 
 
+def test_ambiguous_operator_is_resolved_by_explicit_city():
+    from src.research.calibration.catalogue import describe
+    location={'id':42240,'name':'Pan Bazaar, Guwahati - APCB',
+        'coordinates':{'latitude':26.18,'longitude':91.74}}
+    result=describe(location)
+    assert result['city']=='Guwahati' and result['state']=='Assam' and result['region']=='Northeast'
+
+
 def fixtures():
     station={'location_id':5616,'name':'Sector - 62, Noida, UP - IMD','site':'Sector - 62, Noida',
         'city':'UP','agency':'IMD','state':None,'region':'North','latitude':28.6,'longitude':77.3,'stratum':'mid_city'}

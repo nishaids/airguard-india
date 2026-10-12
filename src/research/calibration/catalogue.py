@@ -108,6 +108,8 @@ def describe(location):
     site, city, agency = parse_name(location.get('name'))
     coordinates = location['coordinates']
     state = AGENCY_STATE.get(agency) or CITY_STATE.get(city)
+    if city=='Guwahati' and agency=='APCB':
+        state='Assam'  # This operator abbreviation is ambiguous across states.
     region = STATE_REGION.get(state) or region_from_coordinates(coordinates['latitude'], coordinates['longitude'])
     return {
         'location_id': location['id'], 'name': location.get('name'), 'site': site,

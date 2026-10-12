@@ -63,3 +63,32 @@ insufficient. New corrected snapshots and experiments receive new identities.
 The checkpoint reporter also needed a YAML date-type repair (the protocol loader
 returns date objects), and a plot title was shortened to avoid clipping.
 These reporting changes do not alter fitted predictions.
+
+Metadata v2 preserves the v1 hash and also resolves `APCB` for the explicitly
+named Guwahati stations 10903 and 42240 to Assam. The inherited agency map
+assigned them to Arunachal Pradesh, although both states share the same
+coarse Northeast region. City assignments, coordinates, station membership,
+strata and pollutant QC are unchanged by this second correction. The state
+evidence is the Government of Assam's
+[Guwahati Municipal Corporation](https://gmc.assam.gov.in/).
+An indexed Assam board study URL returned 404 during verification; that access
+failure is preserved in the metadata evidence-link amendment.
+
+The inherited acquisition finished with 178/181 stations recoverable from its
+checksummed manifests. Bounded attempts to acquire the remaining three did not
+add data. Nine subsequently discovered page-cap concerns require provider
+validation before the expanded collection can be fitted. An explicit earlier
+97-station snapshot, whose five page-cap checks already terminated with empty
+extra pages, is rebuilt with corrected metadata for an audited partial study.
+This cohort is determined by an existing acquisition checkpoint, not forecast
+performance or final-test target coverage. All later caches remain preserved.
+
+All 14 inherited page-cap concerns subsequently passed extra-page checks;
+all extra pages were empty and no raw sensor file was replaced. Missing
+location-sensor metadata returned an observed HTTP 500. The official
+`/sensors/{sensor_id}` endpoint is an independent recovery path: IDs are bound
+to the exact frozen catalogue, responses supply real sensor dates and units,
+and checksummed response caches prevent repeated calls. The existing
+most-recent-in-window sensor rule is retained, including retired-sensor
+rejection; location dates are never invented as sensor dates. Full validation
+and fitting use a new source/data identity after recovery.

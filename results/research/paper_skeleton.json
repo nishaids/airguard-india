@@ -1,0 +1,43 @@
+{
+  "source": "paper/station_calibration_skeleton.tex",
+  "acquisition_dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "acquisition_data_version": "a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502",
+  "experiment_dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "experiment_data_version": "a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502",
+  "datasets_identical": true,
+  "acquisition_minus_experiment_counts": {
+    "usable_stations": 0,
+    "usable_cities": 0,
+    "valid_targets": 0,
+    "rejected_targets": 0,
+    "severe_days": 0
+  },
+  "experiment_input_counts": {
+    "usable_stations": 179,
+    "usable_cities": 100,
+    "valid_targets": 64799,
+    "rejected_targets": 42481,
+    "severe_days": 383
+  },
+  "acquisition_counts": {
+    "usable_stations": 179,
+    "usable_cities": 100,
+    "valid_targets": 64799,
+    "rejected_targets": 42481,
+    "severe_days": 383
+  },
+  "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "preliminary_result_artifact": "results/research/preliminary/287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f/results.json",
+  "preliminary_result_sha256": "c19049cbe45ad05a1fec704081bb69c3d6cbff3d2a7bcc14ed7d3bf465841a50",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "protocol_locked_at": "2026-10-11T18:32:05.939254+00:00",
+  "previous_runs_source": "https://open-meteo.com/en/docs/previous-runs-api",
+  "primary_support_policy": "PENDING_OPERATIONAL_SUPPORT_VERIFICATION",
+  "preliminary_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
+  "author_details": "PENDING",
+  "primary_results": "PENDING_CAMS_ARCHIVE",
+  "intended_pages": 6,
+  "page_count_verified": false,
+  "submission_ready": false,
+  "bibliography_source": "inherited generated paper/refs.bib; no new manually authored entries"
+}

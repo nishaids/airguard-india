@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "sampled_station_rebuilds": [
+    {
+      "station_id": 17,
+      "rows": 596,
+      "passed": true
+    },
+    {
+      "station_id": 5642,
+      "rows": 596,
+      "passed": true
+    },
+    {
+      "station_id": 10630,
+      "rows": 596,
+      "passed": true
+    },
+    {
+      "station_id": 233414,
+      "rows": 596,
+      "passed": true
+    },
+    {
+      "station_id": 3409416,
+      "rows": 596,
+      "passed": true
+    }
+  ],
+  "rebuild_bypassed_derived_cache": true,
+  "clean_clone_reproduction_complete": false,
+  "limitation": "Raw-cache reconstruction verified locally; clean-clone acquisition and complete primary results remain pending"
+}

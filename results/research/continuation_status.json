@@ -1,0 +1,182 @@
+{
+  "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
+  "collection": {
+    "checksum_audit": "PASS",
+    "checksummed_files": 691,
+    "expected_openaq_stations": 181,
+    "expected_weather_points": 151,
+    "missing_openaq": [
+      "6530249"
+    ],
+    "missing_weather": [],
+    "pagination_pending": []
+  },
+  "collection_finished": false,
+  "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "experiment_completed": true,
+  "failures": [
+    {
+      "at": "2026-10-12T02:37:17.103972+00:00",
+      "code": "COLLECTION_INCOMPLETE_AFTER_BOUNDED_RESUME",
+      "stage": "collection"
+    }
+  ],
+  "fingerprint": {
+    "branch": "research/station-calibration",
+    "files": {
+      "requirements-research.txt": "cd6728d76f75c3e3bb21f5fa3a6bf82523a02d341c191eeb9afa45631c8e63ce",
+      "requirements.txt": "3cc9e75b4c87cf831011feb9d7ceaaf89a8d47185a4ff603434f3ce29a50ed35",
+      "src/nationwide/aqi.py": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e",
+      "src/research/calibration/__init__.py": "24e278308c46270bf4ae1e4dfb8a0d9907518fd8a9dcfe9842ce3b74a5f59d57",
+      "src/research/calibration/availability.py": "d8e6f28bbffdfe2d8ce8f3384a23618f094c66eb9bd3aaf6c0acd537c5045045",
+      "src/research/calibration/catalogue.py": "a1325d6dca7a10f81b31a13f069ed434a2736c615dc75725d92f8fa1ef9c0d21",
+      "src/research/calibration/checkpoint.py": "25845c48938a1e3f43172314dc0f7daf30e803debbcdd73918aaf31e6be35269",
+      "src/research/calibration/continuation.py": "54415bb6ef0a6be1889c832ffe7168593304ee3eb889692a69d51dea2ee31d56",
+      "src/research/calibration/data.py": "6121d3fc64963fdd553fdb4c13023a6458a4ec13434eb4de180feee0cddee9f9",
+      "src/research/calibration/dataset.py": "aacce5e38b06ad10aac59a18301f5319db85553c91dcf3f3da2c0a97fe4dc077",
+      "src/research/calibration/figures.py": "5eab6974e94cc7a78bb51acfa4521eea350ea047a5846b936c607603d1701679",
+      "src/research/calibration/measured.py": "52100ca359d096cc97dbc8b42e7f6cf482a651966f78dda4de057b90534e69bc",
+      "src/research/calibration/metadata.py": "432a46f41e685e5d9f7f378e1e52bf631557e3af6983c743ef39669531b2c23d",
+      "src/research/calibration/metrics.py": "0acf5341f2766f392b40f3b8824a67b6c626ce4a9b445a8f2df0a7d11e4eeb12",
+      "src/research/calibration/model_archives.py": "0c5e73f1f15b32f52f2d29f2d7cc8433ce2f002b920093ffbb8af15366effa01",
+      "src/research/calibration/openaq_archive.py": "f5f1e2cdc9618d391972e1721c4380f7dff40c9a1536510111d03f42287c784c",
+      "src/research/calibration/paper.py": "115f788c415828f42e76fcbd7521d182e2977173bdbf3416d7f71c70b17f76fb",
+      "src/research/calibration/preliminary.py": "669053e247d4dd0faecbdf313b169a7015bc31153852337e8fd9dfc144eb5396",
+      "src/research/calibration/primary.py": "cab26b55202a9e762d5a43ad0a48a1de6810affc133734ddc4f93c2ae21feed4",
+      "src/research/calibration/prospective_audit.py": "35ca2ba85ef2a65db698bfedda97958e96554eb297e6fa6d9094c5384b23f390",
+      "src/research/calibration/protocol.py": "b4b73c68f8b835bb44c2d61ffb4d8ef345a66b3865c0bf75ae240522401d7e5b",
+      "src/research/calibration/readiness.py": "f2ac319cb5bb1805f422045766a0ed196b561a13b4cb95a69793df085d434365",
+      "src/research/calibration/repair_archive.py": "2bd4c7311aa71315919292a8e4b54419e0b8a9519b75db436e0032dc271374c6",
+      "src/research/calibration/report.py": "765655071ad7de88b4502d18b02defa792d22d929c762accfaecffaacf07c252",
+      "src/research/calibration/reproducibility.py": "ebc68df4f6ecf1f00556548d5ec48331eca2fceb1e1181399c49b240a785ceff",
+      "src/research/calibration/sensor_recovery.py": "5227e8b6d541dad3c621b681a34cc725e3df7ef07176eb7137f08cfb09d1e4d7",
+      "src/research/calibration/splits.py": "75444dfa8a9c9af94875063cd0bd07fd8771f9105bf2dab16091c1b907b0b4b9",
+      "src/research/calibration/statistics.py": "94e670c02c58f006c21a74609ffd103f410d79cdecd16c3d3e4bb2ab4174dc4e",
+      "src/research/calibration/validation.py": "545b248dc12e69fcb5e1d434f608980e6fc8d59b59938862100d8a451eea1e10"
+    },
+    "metadata_correction_sha256": "7f776cbc3cea5bd9b21dac568acd6547f5f826dd7ccf8f8ccb82f1d8cc19c8ed",
+    "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+    "runtime": {
+      "packages": {
+        "PyYAML": "6.0.3",
+        "lightgbm": "4.7.0",
+        "matplotlib": "3.10.8",
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "psutil": "7.2.2",
+        "pyarrow": "23.0.0",
+        "scikit-learn": "1.7.2",
+        "scipy": "1.15.3",
+        "xgboost": "3.2.0"
+      },
+      "python": "3.10.6"
+    },
+    "selection_sha256": "73357fe1ab5fd4f2efe3a4197e09b9429474ca7738f63d45721442684dd322ac",
+    "source_sha256": "8df66602271acec7726b098703c89b3d0a3ad7820901b6d89a2e620efd009300"
+  },
+  "finished_at": "2026-10-12T02:45:06.650444+00:00",
+  "inherited_worker_pids_still_alive": [],
+  "measured_completed": true,
+  "preliminary_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
+  "primary_experiment_completed": false,
+  "stages": {
+    "audit_before_pagination_repair": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:37:17.100442+00:00",
+      "started_at": "2026-10-12T02:37:13.958871+00:00",
+      "state": "COMPLETE"
+    },
+    "checkpoint": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:37:21.709113+00:00",
+      "started_at": "2026-10-12T02:37:17.109969+00:00",
+      "state": "COMPLETE"
+    },
+    "checkpoint_report": {
+      "finished_at": "2026-10-12T02:45:06.930435+00:00",
+      "state": "COMPLETE"
+    },
+    "collection_audit_1": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:36:59.330214+00:00",
+      "started_at": "2026-10-12T02:36:56.348904+00:00",
+      "state": "COMPLETE"
+    },
+    "initial_checksum_audit": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:36:52.562125+00:00",
+      "started_at": "2026-10-12T02:36:49.226378+00:00",
+      "state": "COMPLETE"
+    },
+    "local_reproduction": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:44:56.492527+00:00",
+      "started_at": "2026-10-12T02:44:46.363587+00:00",
+      "state": "COMPLETE"
+    },
+    "measured_dataset": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:38:03.593725+00:00",
+      "started_at": "2026-10-12T02:37:21.714113+00:00",
+      "state": "COMPLETE"
+    },
+    "merge_before_resume_1": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:36:56.341855+00:00",
+      "started_at": "2026-10-12T02:36:55.851151+00:00",
+      "state": "COMPLETE"
+    },
+    "merge_completed_manifests": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:37:13.952861+00:00",
+      "started_at": "2026-10-12T02:37:13.524781+00:00",
+      "state": "COMPLETE"
+    },
+    "openaq_resume_1": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:37:13.518771+00:00",
+      "started_at": "2026-10-12T02:36:59.340241+00:00",
+      "state": "COMPLETE"
+    },
+    "paper_skeleton": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:45:04.960471+00:00",
+      "started_at": "2026-10-12T02:45:04.730737+00:00",
+      "state": "COMPLETE"
+    },
+    "preliminary_experiment": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:44:46.361586+00:00",
+      "started_at": "2026-10-12T02:38:03.614546+00:00",
+      "state": "COMPLETE"
+    },
+    "preliminary_figures": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:45:06.648448+00:00",
+      "started_at": "2026-10-12T02:45:04.962468+00:00",
+      "state": "COMPLETE"
+    },
+    "readonly_prospective_audit": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:44:58.298165+00:00",
+      "started_at": "2026-10-12T02:44:56.494521+00:00",
+      "state": "COMPLETE"
+    },
+    "research_readiness": {
+      "attempts": 1,
+      "finished_at": "2026-10-12T02:45:04.728133+00:00",
+      "started_at": "2026-10-12T02:44:58.303684+00:00",
+      "state": "COMPLETE"
+    }
+  },
+  "started_at": "2026-10-12T02:36:49.048176+00:00",
+  "state": "FINISHED_WITH_FAILURES",
+  "updated_at": "2026-10-12T02:45:06.930435+00:00",
+  "version": "airguard-finite-continuation-v1",
+  "worker_manifest_sha256": "1f8e820e381acb56c2e6e4495d02f46cc3e61b9dbc7bee60e717971351debc77",
+  "worker_pids": [
+    33748,
+    12384,
+    36128
+  ]
+}

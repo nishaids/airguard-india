@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-10-12T02:37:26.637818+00:00",
+  "data_version": "a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502",
+  "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
+  "protocol_version": "airguard-retrospective-station-calibration-v3.1",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "openaq_complete": 180,
+  "openaq_selected": 181,
+  "openaq_rows": 6331429,
+  "weather_points_complete": 151,
+  "weather_points_expected": 151,
+  "firms_windows_complete": 123,
+  "firms_windows_expected": 123,
+  "proxy_cams_files_preserved": 107,
+  "proxy_cams_used_for_research": false,
+  "checksummed_files": 921,
+  "recovered_sensor_metadata_files_verified": 12,
+  "uncompressed_bytes_verified": 828543876,
+  "checksum_audit": "PASS",
+  "repairs_applied": [],
+  "original_repair_bases_verified": 14,
+  "metadata_revision": {
+    "version": "station-metadata-v2",
+    "sha256": "d43acdc5476d61e41186fb2a2c99dd62e9478b1c07a369cf80147b0e7144da04",
+    "membership_and_strata": "frozen original sample; never resampled after correction"
+  },
+  "snapshot": "data/research/derived/a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502/inputs.json",
+  "no_api_requests": true
+}

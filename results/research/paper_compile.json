@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-10-12T02:49:25.549769+00:00",
+  "status": "SUCCESS",
+  "compiler": "Codex desktop built-in LaTeX compiler",
+  "source": "paper/station_calibration_skeleton.tex",
+  "source_sha256": "574630250c9ffce81ddb983f18e9293928900102dbffaf478f4cdd8e3d32f7b8",
+  "page_count_verified": false,
+  "diagnostic": "Current source compiled successfully; compiler tool returns no PDF page count"
+}

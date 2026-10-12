@@ -1,0 +1,5314 @@
+{
+  "generated_at": "2026-10-12T02:38:03.377912+00:00",
+  "status": "PARTIAL_COLLECTION",
+  "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "data_version": "a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502",
+  "code_sha256": "f6e083144f43d9e43be789e81242bed44d847e79c4305898c866ed5433fa17b1",
+  "feature_version": "non-cams-preliminary-v1",
+  "protocol_version": "airguard-retrospective-station-calibration-v3.1",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "table": "data/research/derived/a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502/f6e083144f43d9e43be789e81242bed44d847e79c4305898c866ed5433fa17b1/non_cams_table.parquet",
+  "catalogue_universe": {
+    "eligible_stations": 481,
+    "eligible_cities": 255,
+    "stations_per_city": {
+      "1": 194,
+      "2": 18,
+      "3": 14,
+      "4": 11,
+      "5": 5,
+      "6": 5,
+      "7": 1,
+      "8": 1,
+      "9": 2,
+      "11": 1,
+      "13": 1,
+      "24": 1,
+      "29": 1
+    }
+  },
+  "selected_stations": 181,
+  "metadata_revision": {
+    "version": "station-metadata-v2",
+    "sha256": "d43acdc5476d61e41186fb2a2c99dd62e9478b1c07a369cf80147b0e7144da04",
+    "membership_and_strata": "frozen original sample; never resampled after correction"
+  },
+  "cohort_basis": "All completed stations in this acquisition snapshot",
+  "inherited_snapshot_data_version": null,
+  "raw_stations": 180,
+  "eligible_stations_full_window_descriptive_only": 166,
+  "usable_stations": 179,
+  "usable_cities": 100,
+  "station_days": 107280,
+  "valid_targets": 64799,
+  "rejected_targets": 42481,
+  "target_rejection_status_counts": {
+    "INSUFFICIENT_DATA": 42481
+  },
+  "target_rejection_reason_counts": {
+    "fewer_than_three_supported_pollutants": 42481,
+    "no_supported_particulate": 29474,
+    "PM2.5:fewer_than_16_hours": 32111,
+    "PM10:fewer_than_16_hours": 31475,
+    "NO2:fewer_than_16_hours": 42481,
+    "SO2:fewer_than_16_hours": 42481,
+    "CO:fewer_than_16_hours": 42481,
+    "O3:fewer_than_16_hours": 32943,
+    "O3:no_complete_8h_window": 3901
+  },
+  "hourly_flags_kept": {
+    "potential_spike_kept": 70083,
+    "pm25_above_pm10_kept": 28114
+  },
+  "hourly_exclusion_reason_counts": {
+    "under_75_percent_coverage": 851125,
+    "provider_flagged": 15177,
+    "zero_reading": 90090,
+    "stuck_sensor_run": 36746,
+    "invalid_value_or_unit": 78
+  },
+  "severe_days": 383,
+  "category_counts": {
+    "0.0": 13400,
+    "1.0": 25748,
+    "2.0": 19757,
+    "3.0": 2981,
+    "4.0": 2530,
+    "5.0": 383
+  },
+  "pollutant_target_coverage": {
+    "PM2.5": 64799,
+    "PM10": 64799,
+    "NO2": 0,
+    "SO2": 0,
+    "CO": 0,
+    "O3": 64799
+  },
+  "date_count": 552,
+  "date_coverage": [
+    "2025-02-19",
+    "2026-10-07"
+  ],
+  "strict_snapshot_rows_passed": 107280,
+  "strict_features": [
+    "wx_temp_mean",
+    "wx_temp_range",
+    "wx_rh_mean",
+    "wx_wind_mean",
+    "wx_wind_min",
+    "wx_u_mean",
+    "wx_v_mean",
+    "wx_precip_sum",
+    "wx_pressure_mean",
+    "wx_shortwave_mean",
+    "wx_cloud_mean",
+    "doy_sin",
+    "doy_cos",
+    "month",
+    "dow",
+    "weekend",
+    "season_index",
+    "latitude",
+    "longitude"
+  ],
+  "conditional_features": [
+    "obs24_aqi",
+    "obs_pm25_last6_mean",
+    "obs_pm25_last6_slope"
+  ],
+  "conditional_assumption": "OpenAQ healthy-feed latency <= 3 hours; historical publication time is NOT observed",
+  "fire_features": "WITHHELD: acquisition time alone does not prove publication time",
+  "station_eligibility": "Full-window counts are descriptive; experiments choose stations from training dates only",
+  "spike_diagnostic": "Flag above station/pollutant Q3 + 3 IQR; retained, never an exclusion",
+  "raw_rejections_retained": true,
+  "station_audits": {
+    "17": {
+      "cache": "data/research/derived/station_targets/c9acafa4778916b4d9f6bd96c81ea4eee7ae091a7e6368e9203ebbbef32482b5",
+      "O3": {
+        "raw": 12609,
+        "kept": 10794,
+        "rejected": {
+          "under_75_percent_coverage": 1786,
+          "zero_reading": 27,
+          "provider_flagged": 2
+        }
+      },
+      "PM10": {
+        "raw": 12674,
+        "kept": 11280,
+        "rejected": {
+          "under_75_percent_coverage": 1367,
+          "provider_flagged": 27
+        }
+      },
+      "PM2.5": {
+        "raw": 12731,
+        "kept": 11481,
+        "rejected": {
+          "under_75_percent_coverage": 1238,
+          "provider_flagged": 12
+        }
+      }
+    },
+    "50": {
+      "cache": "data/research/derived/station_targets/04c0ef9234b3df96d31b926afaf57fb000cdedeed9a1598d9e53462e718dd25f",
+      "O3": {
+        "raw": 12499,
+        "kept": 10923,
+        "rejected": {
+          "under_75_percent_coverage": 1573,
+          "provider_flagged": 3
+        }
+      },
+      "PM10": {
+        "raw": 12601,
+        "kept": 11343,
+        "rejected": {
+          "under_75_percent_coverage": 1178,
+          "provider_flagged": 13,
+          "stuck_sensor_run": 67
+        }
+      },
+      "PM2.5": {
+        "raw": 12611,
+        "kept": 11323,
+        "rejected": {
+          "under_75_percent_coverage": 1283,
+          "provider_flagged": 5
+        }
+      }
+    },
+    "235": {
+      "cache": "data/research/derived/station_targets/91134b276370aa0ea3f1317bd15fa85389ba956efc89e85c93eaf103cd10d185",
+      "O3": {
+        "raw": 12501,
+        "kept": 10344,
+        "rejected": {
+          "under_75_percent_coverage": 2135,
+          "zero_reading": 22
+        }
+      },
+      "PM10": {
+        "raw": 12525,
+        "kept": 10937,
+        "rejected": {
+          "under_75_percent_coverage": 1557,
+          "provider_flagged": 25,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM2.5": {
+        "raw": 12698,
+        "kept": 11033,
+        "rejected": {
+          "under_75_percent_coverage": 1616,
+          "provider_flagged": 5,
+          "stuck_sensor_run": 44
+        }
+      }
+    },
+    "301": {
+      "cache": "data/research/derived/station_targets/51c90e030310eba33751352a1a13f6c05337ce0b9894e69cfda70eab150f19e3",
+      "O3": {
+        "raw": 7475,
+        "kept": 6120,
+        "rejected": {
+          "zero_reading": 371,
+          "under_75_percent_coverage": 965,
+          "stuck_sensor_run": 19
+        }
+      },
+      "PM10": {
+        "raw": 7248,
+        "kept": 5687,
+        "rejected": {
+          "zero_reading": 502,
+          "under_75_percent_coverage": 970,
+          "provider_flagged": 22,
+          "stuck_sensor_run": 67
+        }
+      },
+      "PM2.5": {
+        "raw": 7235,
+        "kept": 5973,
+        "rejected": {
+          "provider_flagged": 30,
+          "under_75_percent_coverage": 963,
+          "zero_reading": 177,
+          "stuck_sensor_run": 92
+        }
+      }
+    },
+    "407": {
+      "cache": "data/research/derived/station_targets/ba16655f397cdd981e6681732a01a67c7891dbb1db265fa6fda26636cd9a2ee1",
+      "O3": {
+        "raw": 12139,
+        "kept": 11058,
+        "rejected": {
+          "under_75_percent_coverage": 1075,
+          "zero_reading": 6
+        }
+      },
+      "PM10": {
+        "raw": 11930,
+        "kept": 10669,
+        "rejected": {
+          "under_75_percent_coverage": 1248,
+          "zero_reading": 13
+        }
+      },
+      "PM2.5": {
+        "raw": 11939,
+        "kept": 10745,
+        "rejected": {
+          "under_75_percent_coverage": 1162,
+          "zero_reading": 24,
+          "stuck_sensor_run": 8
+        }
+      }
+    },
+    "860": {
+      "cache": "data/research/derived/station_targets/47d6b69e5800caf09595c7afd35fa840ca078fa280bca24b6204f38fa2b07eb3",
+      "O3": {
+        "raw": 12818,
+        "kept": 11341,
+        "rejected": {
+          "under_75_percent_coverage": 1477
+        }
+      },
+      "PM10": {
+        "raw": 12651,
+        "kept": 11203,
+        "rejected": {
+          "under_75_percent_coverage": 1448
+        }
+      },
+      "PM2.5": {
+        "raw": 12544,
+        "kept": 10730,
+        "rejected": {
+          "under_75_percent_coverage": 1785,
+          "stuck_sensor_run": 29
+        }
+      }
+    },
+    "2456": {
+      "cache": "data/research/derived/station_targets/c6c66794bb473b5f7e72a9a404ea779c0a41c294f2c61a5c9523d7364b5e6a70",
+      "O3": {
+        "raw": 12982,
+        "kept": 11374,
+        "rejected": {
+          "under_75_percent_coverage": 1575,
+          "provider_flagged": 5,
+          "zero_reading": 28
+        }
+      },
+      "PM10": {
+        "raw": 12947,
+        "kept": 11243,
+        "rejected": {
+          "under_75_percent_coverage": 1622,
+          "zero_reading": 63,
+          "provider_flagged": 19
+        }
+      },
+      "PM2.5": {
+        "raw": 12962,
+        "kept": 11297,
+        "rejected": {
+          "under_75_percent_coverage": 1612,
+          "zero_reading": 37,
+          "provider_flagged": 10,
+          "stuck_sensor_run": 6
+        }
+      }
+    },
+    "2586": {
+      "cache": "data/research/derived/station_targets/b161c1a7c49667dafb39365c94ffe7236f49889f9e5197fdd2e74424fb46866c",
+      "O3": {
+        "raw": 12166,
+        "kept": 10643,
+        "rejected": {
+          "under_75_percent_coverage": 1216,
+          "provider_flagged": 17,
+          "zero_reading": 22,
+          "stuck_sensor_run": 268
+        }
+      },
+      "PM10": {
+        "raw": 11863,
+        "kept": 10210,
+        "rejected": {
+          "under_75_percent_coverage": 1493,
+          "provider_flagged": 123,
+          "zero_reading": 8,
+          "stuck_sensor_run": 29
+        }
+      },
+      "PM2.5": {
+        "raw": 11830,
+        "kept": 10305,
+        "rejected": {
+          "under_75_percent_coverage": 1214,
+          "provider_flagged": 60,
+          "zero_reading": 197,
+          "stuck_sensor_run": 54
+        }
+      }
+    },
+    "5404": {
+      "cache": "data/research/derived/station_targets/847a6af80ee1007c12ca8a73e0e95e93c17a429e753d1cd7accd5957645cd950",
+      "O3": {
+        "raw": 11647,
+        "kept": 9687,
+        "rejected": {
+          "under_75_percent_coverage": 1667,
+          "provider_flagged": 216,
+          "zero_reading": 69,
+          "invalid_value_or_unit": 8
+        }
+      },
+      "PM10": {
+        "raw": 11789,
+        "kept": 9777,
+        "rejected": {
+          "under_75_percent_coverage": 1754,
+          "provider_flagged": 247,
+          "zero_reading": 8,
+          "invalid_value_or_unit": 3
+        }
+      },
+      "PM2.5": {
+        "raw": 11769,
+        "kept": 9493,
+        "rejected": {
+          "under_75_percent_coverage": 1730,
+          "provider_flagged": 500,
+          "zero_reading": 42,
+          "invalid_value_or_unit": 4
+        }
+      }
+    },
+    "5408": {
+      "cache": "data/research/derived/station_targets/606b0b33713bdde39a20805da5c0cf03b69157c71dcb6a5a37ced710a25dd9ec",
+      "O3": {
+        "raw": 12441,
+        "kept": 10537,
+        "rejected": {
+          "provider_flagged": 315,
+          "under_75_percent_coverage": 1578,
+          "zero_reading": 9,
+          "invalid_value_or_unit": 2
+        }
+      },
+      "PM10": {
+        "raw": 12403,
+        "kept": 10819,
+        "rejected": {
+          "under_75_percent_coverage": 1579,
+          "zero_reading": 5
+        }
+      },
+      "PM2.5": {
+        "raw": 12356,
+        "kept": 10675,
+        "rejected": {
+          "under_75_percent_coverage": 1603,
+          "zero_reading": 45,
+          "stuck_sensor_run": 33
+        }
+      }
+    },
+    "5541": {
+      "cache": "data/research/derived/station_targets/4e22617a6069333436341f99e357ed3f54d5c41f861ee4aeb8e5580385f045a9",
+      "O3": {
+        "raw": 12226,
+        "kept": 10793,
+        "rejected": {
+          "under_75_percent_coverage": 1352,
+          "zero_reading": 16,
+          "provider_flagged": 50,
+          "stuck_sensor_run": 15
+        }
+      },
+      "PM10": {
+        "raw": 12175,
+        "kept": 10717,
+        "rejected": {
+          "under_75_percent_coverage": 1370,
+          "zero_reading": 59,
+          "provider_flagged": 29
+        }
+      },
+      "PM2.5": {
+        "raw": 12195,
+        "kept": 10622,
+        "rejected": {
+          "under_75_percent_coverage": 1393,
+          "provider_flagged": 85,
+          "zero_reading": 95
+        }
+      }
+    },
+    "5544": {
+      "cache": "data/research/derived/station_targets/fa52e27469d7592243f5e3732634813446b5d4e240c16baefd2e5966f943ea98",
+      "O3": {
+        "raw": 12878,
+        "kept": 10186,
+        "rejected": {
+          "under_75_percent_coverage": 2381,
+          "provider_flagged": 14,
+          "zero_reading": 21,
+          "stuck_sensor_run": 276
+        }
+      },
+      "PM10": {
+        "raw": 12866,
+        "kept": 10530,
+        "rejected": {
+          "under_75_percent_coverage": 2327,
+          "zero_reading": 9
+        }
+      },
+      "PM2.5": {
+        "raw": 12857,
+        "kept": 10301,
+        "rejected": {
+          "under_75_percent_coverage": 2535,
+          "zero_reading": 13,
+          "provider_flagged": 1,
+          "stuck_sensor_run": 7
+        }
+      }
+    },
+    "5548": {
+      "cache": "data/research/derived/station_targets/3807da8075d381e77d775f991feb8d853359a2c619273c24980b655791747e41",
+      "O3": {
+        "raw": 9485,
+        "kept": 8362,
+        "rejected": {
+          "under_75_percent_coverage": 1110,
+          "provider_flagged": 13
+        }
+      },
+      "PM10": {
+        "raw": 9465,
+        "kept": 7942,
+        "rejected": {
+          "under_75_percent_coverage": 1075,
+          "provider_flagged": 67,
+          "stuck_sensor_run": 381
+        }
+      },
+      "PM2.5": {
+        "raw": 9463,
+        "kept": 8377,
+        "rejected": {
+          "under_75_percent_coverage": 1083,
+          "provider_flagged": 3
+        }
+      }
+    },
+    "5565": {
+      "cache": "data/research/derived/station_targets/0b061979b67ac04f1df0384e5987d75493eb809679743070857341d4178ddb80",
+      "O3": {
+        "raw": 12644,
+        "kept": 11158,
+        "rejected": {
+          "zero_reading": 78,
+          "under_75_percent_coverage": 1408
+        }
+      },
+      "PM10": {
+        "raw": 12289,
+        "kept": 10761,
+        "rejected": {
+          "under_75_percent_coverage": 1474,
+          "provider_flagged": 3,
+          "zero_reading": 35,
+          "stuck_sensor_run": 16
+        }
+      },
+      "PM2.5": {
+        "raw": 12208,
+        "kept": 10576,
+        "rejected": {
+          "under_75_percent_coverage": 1457,
+          "provider_flagged": 9,
+          "zero_reading": 20,
+          "stuck_sensor_run": 146
+        }
+      }
+    },
+    "5566": {
+      "cache": "data/research/derived/station_targets/c83e42de38e4d5d995e74248e5bfc0b2bed65b64da309ed4c9d34e500b553641",
+      "O3": {
+        "raw": 11853,
+        "kept": 9348,
+        "rejected": {
+          "under_75_percent_coverage": 1457,
+          "zero_reading": 1044,
+          "provider_flagged": 4
+        }
+      },
+      "PM10": {
+        "raw": 11583,
+        "kept": 9820,
+        "rejected": {
+          "under_75_percent_coverage": 1579,
+          "zero_reading": 184
+        }
+      },
+      "PM2.5": {
+        "raw": 11502,
+        "kept": 9055,
+        "rejected": {
+          "under_75_percent_coverage": 1623,
+          "zero_reading": 824
+        }
+      }
+    },
+    "5570": {
+      "cache": "data/research/derived/station_targets/f09757348fa447111c40201dab5b29502135561516f917e89ee0a1ff57b6d97d",
+      "O3": {
+        "raw": 11939,
+        "kept": 10518,
+        "rejected": {
+          "provider_flagged": 152,
+          "under_75_percent_coverage": 1243,
+          "zero_reading": 24,
+          "invalid_value_or_unit": 2
+        }
+      },
+      "PM10": {
+        "raw": 11900,
+        "kept": 10458,
+        "rejected": {
+          "under_75_percent_coverage": 1307,
+          "zero_reading": 90,
+          "provider_flagged": 45
+        }
+      },
+      "PM2.5": {
+        "raw": 11920,
+        "kept": 10229,
+        "rejected": {
+          "provider_flagged": 251,
+          "under_75_percent_coverage": 1301,
+          "zero_reading": 139
+        }
+      }
+    },
+    "5576": {
+      "cache": "data/research/derived/station_targets/34d276c082f3673569013e804852bbc1f7e6aa1b1e01030fc6d019fdf75e3dc4",
+      "O3": {
+        "raw": 12754,
+        "kept": 11016,
+        "rejected": {
+          "under_75_percent_coverage": 1679,
+          "zero_reading": 59
+        }
+      },
+      "PM10": {
+        "raw": 12727,
+        "kept": 10881,
+        "rejected": {
+          "under_75_percent_coverage": 1687,
+          "zero_reading": 156,
+          "provider_flagged": 3
+        }
+      },
+      "PM2.5": {
+        "raw": 12714,
+        "kept": 10858,
+        "rejected": {
+          "under_75_percent_coverage": 1688,
+          "zero_reading": 153,
+          "stuck_sensor_run": 15
+        }
+      }
+    },
+    "5587": {
+      "cache": "data/research/derived/station_targets/f9d5868d666ba24c85828d8dd890c4f7b3cd7f854bf9295c0063514da28c8305",
+      "O3": {
+        "raw": 13060,
+        "kept": 11312,
+        "rejected": {
+          "under_75_percent_coverage": 1726,
+          "zero_reading": 6,
+          "provider_flagged": 16
+        }
+      },
+      "PM10": {
+        "raw": 13054,
+        "kept": 11255,
+        "rejected": {
+          "under_75_percent_coverage": 1727,
+          "zero_reading": 51,
+          "stuck_sensor_run": 21
+        }
+      },
+      "PM2.5": {
+        "raw": 13054,
+        "kept": 11261,
+        "rejected": {
+          "under_75_percent_coverage": 1722,
+          "zero_reading": 69,
+          "provider_flagged": 2
+        }
+      }
+    },
+    "5588": {
+      "cache": "data/research/derived/station_targets/8e4cd90a13f7db48bf42f3721ce6c7c40b4f18538df3b033e5da46348daa9515",
+      "O3": {
+        "raw": 13054,
+        "kept": 11436,
+        "rejected": {
+          "zero_reading": 7,
+          "under_75_percent_coverage": 1610,
+          "provider_flagged": 1
+        }
+      },
+      "PM10": {
+        "raw": 13014,
+        "kept": 11254,
+        "rejected": {
+          "zero_reading": 31,
+          "under_75_percent_coverage": 1625,
+          "stuck_sensor_run": 104
+        }
+      },
+      "PM2.5": {
+        "raw": 13022,
+        "kept": 11366,
+        "rejected": {
+          "zero_reading": 29,
+          "under_75_percent_coverage": 1627
+        }
+      }
+    },
+    "5590": {
+      "cache": "data/research/derived/station_targets/36c14590d6646d6766218c68e0f339cadae24a7ebf787a56c7db3f8f9452b1b9",
+      "O3": {
+        "raw": 10353,
+        "kept": 8809,
+        "rejected": {
+          "under_75_percent_coverage": 1544
+        }
+      },
+      "PM10": {
+        "raw": 12604,
+        "kept": 10812,
+        "rejected": {
+          "under_75_percent_coverage": 1769,
+          "stuck_sensor_run": 23
+        }
+      },
+      "PM2.5": {
+        "raw": 12605,
+        "kept": 10822,
+        "rejected": {
+          "under_75_percent_coverage": 1760,
+          "stuck_sensor_run": 23
+        }
+      }
+    },
+    "5592": {
+      "cache": "data/research/derived/station_targets/40802f5c69f1abaf644399c1551dfd921c3e5d93e9a1e31f2b0cae270ec2570d",
+      "O3": {
+        "raw": 12630,
+        "kept": 11320,
+        "rejected": {
+          "under_75_percent_coverage": 1266,
+          "provider_flagged": 26,
+          "stuck_sensor_run": 18
+        }
+      },
+      "PM10": {
+        "raw": 12577,
+        "kept": 11227,
+        "rejected": {
+          "under_75_percent_coverage": 1278,
+          "zero_reading": 45,
+          "provider_flagged": 21,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM2.5": {
+        "raw": 12564,
+        "kept": 11260,
+        "rejected": {
+          "under_75_percent_coverage": 1288,
+          "zero_reading": 14,
+          "provider_flagged": 2
+        }
+      }
+    },
+    "5598": {
+      "cache": "data/research/derived/station_targets/99df4d215724ea7a479b40c7ef52ff048e8b58e2e7f7551260df15ed18e4de27",
+      "O3": {
+        "raw": 12480,
+        "kept": 11108,
+        "rejected": {
+          "under_75_percent_coverage": 1281,
+          "provider_flagged": 4,
+          "stuck_sensor_run": 87
+        }
+      },
+      "PM10": {
+        "raw": 12411,
+        "kept": 11027,
+        "rejected": {
+          "provider_flagged": 246,
+          "under_75_percent_coverage": 1138
+        }
+      },
+      "PM2.5": {
+        "raw": 12484,
+        "kept": 11265,
+        "rejected": {
+          "under_75_percent_coverage": 1142,
+          "provider_flagged": 77
+        }
+      }
+    },
+    "5599": {
+      "cache": "data/research/derived/station_targets/4ae63907882acf26d816b318dcd7360fa1b578953f32bae3e59a67cc6fc15659",
+      "O3": {
+        "raw": 8543,
+        "kept": 7612,
+        "rejected": {
+          "under_75_percent_coverage": 914,
+          "stuck_sensor_run": 17
+        }
+      },
+      "PM10": {
+        "raw": 7926,
+        "kept": 6451,
+        "rejected": {
+          "under_75_percent_coverage": 1442,
+          "zero_reading": 1,
+          "stuck_sensor_run": 32
+        }
+      },
+      "PM2.5": {
+        "raw": 7664,
+        "kept": 6370,
+        "rejected": {
+          "under_75_percent_coverage": 1289,
+          "zero_reading": 5
+        }
+      }
+    },
+    "5602": {
+      "cache": "data/research/derived/station_targets/908f07d63eedc46c391458cc49c669047b2bd43cbe05c44aea27308d0a339550",
+      "O3": {
+        "raw": 13086,
+        "kept": 11117,
+        "rejected": {
+          "under_75_percent_coverage": 1936,
+          "zero_reading": 12,
+          "provider_flagged": 21
+        }
+      },
+      "PM10": {
+        "raw": 13080,
+        "kept": 11126,
+        "rejected": {
+          "under_75_percent_coverage": 1949,
+          "zero_reading": 1,
+          "provider_flagged": 4
+        }
+      },
+      "PM2.5": {
+        "raw": 13076,
+        "kept": 11095,
+        "rejected": {
+          "under_75_percent_coverage": 1943,
+          "provider_flagged": 14,
+          "zero_reading": 1,
+          "stuck_sensor_run": 23
+        }
+      }
+    },
+    "5607": {
+      "cache": "data/research/derived/station_targets/be215a744f2b5f97d4576b7af50e4be0a6bd721df3585317f6607dfdf8bedab5",
+      "O3": {
+        "raw": 9666,
+        "kept": 8785,
+        "rejected": {
+          "under_75_percent_coverage": 807,
+          "provider_flagged": 19,
+          "zero_reading": 24,
+          "stuck_sensor_run": 31
+        }
+      },
+      "PM10": {
+        "raw": 9063,
+        "kept": 7890,
+        "rejected": {
+          "under_75_percent_coverage": 820,
+          "stuck_sensor_run": 353
+        }
+      },
+      "PM2.5": {
+        "raw": 9766,
+        "kept": 8043,
+        "rejected": {
+          "under_75_percent_coverage": 886,
+          "zero_reading": 470,
+          "provider_flagged": 22,
+          "stuck_sensor_run": 345
+        }
+      }
+    },
+    "5612": {
+      "cache": "data/research/derived/station_targets/8ee36572ace52536558bfa9414fac3bc12038046c509ebf9179bf7dc520bfe20",
+      "O3": {
+        "raw": 12704,
+        "kept": 11093,
+        "rejected": {
+          "under_75_percent_coverage": 1596,
+          "provider_flagged": 15
+        }
+      },
+      "PM10": {
+        "raw": 12686,
+        "kept": 11043,
+        "rejected": {
+          "under_75_percent_coverage": 1617,
+          "provider_flagged": 17,
+          "zero_reading": 9
+        }
+      },
+      "PM2.5": {
+        "raw": 12697,
+        "kept": 11069,
+        "rejected": {
+          "under_75_percent_coverage": 1616,
+          "provider_flagged": 5,
+          "zero_reading": 7
+        }
+      }
+    },
+    "5614": {
+      "cache": "data/research/derived/station_targets/6b59fac97978342e534d1015d6df3331307ebf0d4b0f87f97e57192ef4cc04c5",
+      "O3": {
+        "raw": 13036,
+        "kept": 11434,
+        "rejected": {
+          "under_75_percent_coverage": 1526,
+          "provider_flagged": 64,
+          "stuck_sensor_run": 12
+        }
+      },
+      "PM10": {
+        "raw": 13010,
+        "kept": 11438,
+        "rejected": {
+          "under_75_percent_coverage": 1554,
+          "zero_reading": 3,
+          "stuck_sensor_run": 15
+        }
+      },
+      "PM2.5": {
+        "raw": 12897,
+        "kept": 11326,
+        "rejected": {
+          "under_75_percent_coverage": 1548,
+          "provider_flagged": 1,
+          "zero_reading": 3,
+          "stuck_sensor_run": 19
+        }
+      }
+    },
+    "5615": {
+      "cache": "data/research/derived/station_targets/49f4aa7c5962909a720e69277a97985bd336807c0b0e46a1a632bac28db0e5ec",
+      "O3": {
+        "raw": 11070,
+        "kept": 9854,
+        "rejected": {
+          "under_75_percent_coverage": 1206,
+          "provider_flagged": 4,
+          "zero_reading": 6
+        }
+      },
+      "PM10": {
+        "raw": 11259,
+        "kept": 9965,
+        "rejected": {
+          "zero_reading": 46,
+          "under_75_percent_coverage": 1248
+        }
+      },
+      "PM2.5": {
+        "raw": 11259,
+        "kept": 9971,
+        "rejected": {
+          "zero_reading": 21,
+          "under_75_percent_coverage": 1250,
+          "stuck_sensor_run": 17
+        }
+      }
+    },
+    "5616": {
+      "cache": "data/research/derived/station_targets/9f339c6f3845128884bfbc6aae8dfb7e8f66fedf0d087da1f530354807922dda",
+      "O3": {
+        "raw": 12521,
+        "kept": 11062,
+        "rejected": {
+          "provider_flagged": 320,
+          "under_75_percent_coverage": 1135,
+          "invalid_value_or_unit": 4
+        }
+      },
+      "PM10": {
+        "raw": 12541,
+        "kept": 11313,
+        "rejected": {
+          "under_75_percent_coverage": 1184,
+          "provider_flagged": 33,
+          "zero_reading": 10,
+          "invalid_value_or_unit": 1
+        }
+      },
+      "PM2.5": {
+        "raw": 12531,
+        "kept": 11233,
+        "rejected": {
+          "under_75_percent_coverage": 1192,
+          "zero_reading": 53,
+          "provider_flagged": 53
+        }
+      }
+    },
+    "5621": {
+      "cache": "data/research/derived/station_targets/70540768af0495d26559c8a54eb70f332b333bbc99cd67dcf74367c919f1427d",
+      "O3": {
+        "raw": 13032,
+        "kept": 10905,
+        "rejected": {
+          "under_75_percent_coverage": 2052,
+          "zero_reading": 75
+        }
+      },
+      "PM10": {
+        "raw": 12880,
+        "kept": 10569,
+        "rejected": {
+          "under_75_percent_coverage": 2199,
+          "zero_reading": 112
+        }
+      },
+      "PM2.5": {
+        "raw": 12880,
+        "kept": 10553,
+        "rejected": {
+          "under_75_percent_coverage": 2201,
+          "zero_reading": 126
+        }
+      }
+    },
+    "5623": {
+      "cache": "data/research/derived/station_targets/d968301904e929b7c818ded6688176d9c567672633d8b8dcf3e85e179c847e20",
+      "O3": {
+        "raw": 11810,
+        "kept": 10392,
+        "rejected": {
+          "under_75_percent_coverage": 1379,
+          "provider_flagged": 17,
+          "zero_reading": 22
+        }
+      },
+      "PM10": {
+        "raw": 10476,
+        "kept": 8877,
+        "rejected": {
+          "under_75_percent_coverage": 1571,
+          "zero_reading": 28
+        }
+      },
+      "PM2.5": {
+        "raw": 11358,
+        "kept": 9442,
+        "rejected": {
+          "under_75_percent_coverage": 1827,
+          "zero_reading": 89
+        }
+      }
+    },
+    "5631": {
+      "cache": "data/research/derived/station_targets/09531bdafb5cfcf4399777214e29a18bb17010623c58bdb46ee802837578f46a",
+      "O3": {
+        "raw": 12596,
+        "kept": 11250,
+        "rejected": {
+          "under_75_percent_coverage": 1302,
+          "zero_reading": 34,
+          "provider_flagged": 10
+        }
+      },
+      "PM10": {
+        "raw": 12559,
+        "kept": 11088,
+        "rejected": {
+          "under_75_percent_coverage": 1416,
+          "zero_reading": 48,
+          "stuck_sensor_run": 7
+        }
+      },
+      "PM2.5": {
+        "raw": 12557,
+        "kept": 11083,
+        "rejected": {
+          "under_75_percent_coverage": 1417,
+          "zero_reading": 57
+        }
+      }
+    },
+    "5633": {
+      "cache": "data/research/derived/station_targets/e3439dece5f3bf185fa2743e986d4fda7637d9eccd2ecd98789fe8758ab9e07c",
+      "O3": {
+        "raw": 12727,
+        "kept": 11110,
+        "rejected": {
+          "under_75_percent_coverage": 1596,
+          "zero_reading": 19,
+          "provider_flagged": 2
+        }
+      },
+      "PM10": {
+        "raw": 12699,
+        "kept": 11052,
+        "rejected": {
+          "under_75_percent_coverage": 1613,
+          "zero_reading": 17,
+          "stuck_sensor_run": 17
+        }
+      },
+      "PM2.5": {
+        "raw": 12689,
+        "kept": 10973,
+        "rejected": {
+          "under_75_percent_coverage": 1626,
+          "zero_reading": 65,
+          "stuck_sensor_run": 25
+        }
+      }
+    },
+    "5635": {
+      "cache": "data/research/derived/station_targets/0577d79524df866296686338579310d52b14c0f2cf4c5ad4d2a6e31bcdc64114",
+      "O3": {
+        "raw": 12773,
+        "kept": 11024,
+        "rejected": {
+          "under_75_percent_coverage": 1745,
+          "zero_reading": 2,
+          "provider_flagged": 2
+        }
+      },
+      "PM10": {
+        "raw": 12745,
+        "kept": 10972,
+        "rejected": {
+          "under_75_percent_coverage": 1745,
+          "zero_reading": 15,
+          "provider_flagged": 13
+        }
+      },
+      "PM2.5": {
+        "raw": 12740,
+        "kept": 10974,
+        "rejected": {
+          "under_75_percent_coverage": 1745,
+          "zero_reading": 17,
+          "provider_flagged": 4
+        }
+      }
+    },
+    "5636": {
+      "cache": "data/research/derived/station_targets/ea3dcf5f5a8e54fb10fce689a7ced7d1024501634c7d44239783e398505b8e43",
+      "O3": {
+        "raw": 12990,
+        "kept": 10795,
+        "rejected": {
+          "under_75_percent_coverage": 1923,
+          "zero_reading": 272
+        }
+      },
+      "PM10": {
+        "raw": 13006,
+        "kept": 10733,
+        "rejected": {
+          "under_75_percent_coverage": 1926,
+          "zero_reading": 311,
+          "provider_flagged": 36
+        }
+      },
+      "PM2.5": {
+        "raw": 13006,
+        "kept": 10754,
+        "rejected": {
+          "under_75_percent_coverage": 1925,
+          "zero_reading": 319,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 6
+        }
+      }
+    },
+    "5638": {
+      "cache": "data/research/derived/station_targets/3a1e88480e650050d616f56d3523008b9f817a676dd8720a57106bf1a52a8ddc",
+      "O3": {
+        "raw": 12894,
+        "kept": 11304,
+        "rejected": {
+          "under_75_percent_coverage": 1581,
+          "provider_flagged": 8,
+          "zero_reading": 1
+        }
+      },
+      "PM10": {
+        "raw": 12660,
+        "kept": 10993,
+        "rejected": {
+          "under_75_percent_coverage": 1616,
+          "zero_reading": 35,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 14
+        }
+      },
+      "PM2.5": {
+        "raw": 12809,
+        "kept": 11164,
+        "rejected": {
+          "under_75_percent_coverage": 1604,
+          "zero_reading": 30,
+          "provider_flagged": 3,
+          "stuck_sensor_run": 8
+        }
+      }
+    },
+    "5642": {
+      "cache": "data/research/derived/station_targets/45e85bbbf8cd43e72503d17d9b0e74968bd7854f53256206d3317e104eecac1a",
+      "O3": {
+        "raw": 11318,
+        "kept": 9727,
+        "rejected": {
+          "under_75_percent_coverage": 1411,
+          "zero_reading": 165,
+          "provider_flagged": 15
+        }
+      },
+      "PM10": {
+        "raw": 11135,
+        "kept": 9471,
+        "rejected": {
+          "under_75_percent_coverage": 1383,
+          "zero_reading": 214,
+          "provider_flagged": 5,
+          "stuck_sensor_run": 62
+        }
+      },
+      "PM2.5": {
+        "raw": 11135,
+        "kept": 9414,
+        "rejected": {
+          "under_75_percent_coverage": 1387,
+          "zero_reading": 216,
+          "provider_flagged": 5,
+          "stuck_sensor_run": 113
+        }
+      }
+    },
+    "5646": {
+      "cache": "data/research/derived/station_targets/e6741706625da50d7f7c85f1ee787ae2b7a6508634293437161ef88c6ea3de24",
+      "O3": {
+        "raw": 12767,
+        "kept": 11189,
+        "rejected": {
+          "under_75_percent_coverage": 1511,
+          "zero_reading": 60,
+          "provider_flagged": 7
+        }
+      },
+      "PM10": {
+        "raw": 12593,
+        "kept": 10731,
+        "rejected": {
+          "under_75_percent_coverage": 1819,
+          "zero_reading": 21,
+          "stuck_sensor_run": 22
+        }
+      },
+      "PM2.5": {
+        "raw": 12773,
+        "kept": 10467,
+        "rejected": {
+          "under_75_percent_coverage": 1792,
+          "zero_reading": 392,
+          "stuck_sensor_run": 122
+        }
+      }
+    },
+    "5648": {
+      "cache": "data/research/derived/station_targets/fc958d79728ece4d40e420632b8312ea805e9b0608bde65aa4e7cc213351711f",
+      "O3": {
+        "raw": 12668,
+        "kept": 11039,
+        "rejected": {
+          "under_75_percent_coverage": 1567,
+          "zero_reading": 24,
+          "provider_flagged": 31,
+          "invalid_value_or_unit": 1,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM10": {
+        "raw": 12642,
+        "kept": 11025,
+        "rejected": {
+          "under_75_percent_coverage": 1581,
+          "zero_reading": 25,
+          "stuck_sensor_run": 11
+        }
+      },
+      "PM2.5": {
+        "raw": 12639,
+        "kept": 10972,
+        "rejected": {
+          "under_75_percent_coverage": 1595,
+          "zero_reading": 24,
+          "provider_flagged": 1,
+          "stuck_sensor_run": 47
+        }
+      }
+    },
+    "5649": {
+      "cache": "data/research/derived/station_targets/4516758ddc0f2a8385b37078175e3ba78513025182a0595475d0f685b114018b",
+      "O3": {
+        "raw": 12995,
+        "kept": 11311,
+        "rejected": {
+          "under_75_percent_coverage": 1289,
+          "zero_reading": 212,
+          "provider_flagged": 166,
+          "stuck_sensor_run": 17
+        }
+      },
+      "PM10": {
+        "raw": 12990,
+        "kept": 11593,
+        "rejected": {
+          "under_75_percent_coverage": 1393,
+          "zero_reading": 4
+        }
+      },
+      "PM2.5": {
+        "raw": 12953,
+        "kept": 11575,
+        "rejected": {
+          "under_75_percent_coverage": 1376,
+          "zero_reading": 2
+        }
+      }
+    },
+    "5655": {
+      "cache": "data/research/derived/station_targets/aac1282d3ee92d960297db4cdb27197f66dd904bfe8bdd7049bbe2c0d3fd751d",
+      "O3": {
+        "raw": 12156,
+        "kept": 11128,
+        "rejected": {
+          "under_75_percent_coverage": 1028
+        }
+      },
+      "PM10": {
+        "raw": 12140,
+        "kept": 10793,
+        "rejected": {
+          "under_75_percent_coverage": 1016,
+          "provider_flagged": 2,
+          "zero_reading": 19,
+          "stuck_sensor_run": 310
+        }
+      },
+      "PM2.5": {
+        "raw": 12146,
+        "kept": 7050,
+        "rejected": {
+          "under_75_percent_coverage": 1016,
+          "provider_flagged": 3,
+          "stuck_sensor_run": 4077
+        }
+      }
+    },
+    "5659": {
+      "cache": "data/research/derived/station_targets/315c4322d37ce95aa0410bf07550e67665f83a19114ab5ec6dea8d90f48fbbaa",
+      "O3": {
+        "raw": 12938,
+        "kept": 11292,
+        "rejected": {
+          "under_75_percent_coverage": 1596,
+          "provider_flagged": 33,
+          "zero_reading": 17
+        }
+      },
+      "PM10": {
+        "raw": 12784,
+        "kept": 10921,
+        "rejected": {
+          "under_75_percent_coverage": 1692,
+          "provider_flagged": 124,
+          "zero_reading": 40,
+          "stuck_sensor_run": 7
+        }
+      },
+      "PM2.5": {
+        "raw": 12772,
+        "kept": 10756,
+        "rejected": {
+          "under_75_percent_coverage": 1707,
+          "zero_reading": 250,
+          "provider_flagged": 50,
+          "stuck_sensor_run": 9
+        }
+      }
+    },
+    "5662": {
+      "cache": "data/research/derived/station_targets/57f22e81d0848b54864d0bd795ecc2a56bbb8dff2e7d94c7dbc328de461e45d1",
+      "O3": {
+        "raw": 12792,
+        "kept": 11227,
+        "rejected": {
+          "under_75_percent_coverage": 1303,
+          "stuck_sensor_run": 262
+        }
+      },
+      "PM10": {
+        "raw": 12597,
+        "kept": 10967,
+        "rejected": {
+          "under_75_percent_coverage": 1594,
+          "stuck_sensor_run": 36
+        }
+      },
+      "PM2.5": {
+        "raw": 12605,
+        "kept": 10994,
+        "rejected": {
+          "under_75_percent_coverage": 1575,
+          "stuck_sensor_run": 36
+        }
+      }
+    },
+    "5665": {
+      "cache": "data/research/derived/station_targets/89c1d1fa71c855be1a9e5833419efeacb77cfccf3802ad30039ca997fd509a0c",
+      "O3": {
+        "raw": 12430,
+        "kept": 10846,
+        "rejected": {
+          "under_75_percent_coverage": 1511,
+          "provider_flagged": 7,
+          "zero_reading": 66
+        }
+      },
+      "PM10": {
+        "raw": 12396,
+        "kept": 10718,
+        "rejected": {
+          "under_75_percent_coverage": 1635,
+          "provider_flagged": 43
+        }
+      },
+      "PM2.5": {
+        "raw": 12338,
+        "kept": 10593,
+        "rejected": {
+          "under_75_percent_coverage": 1700,
+          "provider_flagged": 45
+        }
+      }
+    },
+    "6443": {
+      "cache": "data/research/derived/station_targets/6b9b7e4c3e7331e37d71cbddc9595f3d16a0b05744cdd99509ea1449001f2ff6",
+      "O3": {
+        "raw": 5957,
+        "kept": 5447,
+        "rejected": {
+          "under_75_percent_coverage": 503,
+          "provider_flagged": 3,
+          "zero_reading": 4
+        }
+      },
+      "PM10": {
+        "raw": 11133,
+        "kept": 10236,
+        "rejected": {
+          "under_75_percent_coverage": 855,
+          "stuck_sensor_run": 42
+        }
+      },
+      "PM2.5": {
+        "raw": 11153,
+        "kept": 10256,
+        "rejected": {
+          "under_75_percent_coverage": 855,
+          "stuck_sensor_run": 42
+        }
+      }
+    },
+    "6924": {
+      "cache": "data/research/derived/station_targets/12ea0701789e1705362803352abcf5726ae3ddec3a84133293ae68fc62b4f99d",
+      "O3": {
+        "raw": 12501,
+        "kept": 10922,
+        "rejected": {
+          "under_75_percent_coverage": 1565,
+          "stuck_sensor_run": 14
+        }
+      },
+      "PM10": {
+        "raw": 12665,
+        "kept": 11252,
+        "rejected": {
+          "under_75_percent_coverage": 1322,
+          "provider_flagged": 91
+        }
+      },
+      "PM2.5": {
+        "raw": 12725,
+        "kept": 11272,
+        "rejected": {
+          "under_75_percent_coverage": 1420,
+          "provider_flagged": 33
+        }
+      }
+    },
+    "6927": {
+      "cache": "data/research/derived/station_targets/b2402b6db8bd7a4b1d3dfb7e8641c57c430a38ffbaf5a863acdae5ce57f70e6b",
+      "O3": {
+        "raw": 5412,
+        "kept": 278,
+        "rejected": {
+          "under_75_percent_coverage": 5134
+        }
+      },
+      "PM10": {
+        "raw": 9789,
+        "kept": 5536,
+        "rejected": {
+          "under_75_percent_coverage": 3219,
+          "provider_flagged": 648,
+          "zero_reading": 27,
+          "stuck_sensor_run": 359
+        }
+      },
+      "PM2.5": {
+        "raw": 9828,
+        "kept": 7141,
+        "rejected": {
+          "under_75_percent_coverage": 926,
+          "zero_reading": 26,
+          "provider_flagged": 3,
+          "stuck_sensor_run": 1732
+        }
+      }
+    },
+    "6937": {
+      "cache": "data/research/derived/station_targets/516ff6253e7356f5ca4a218c74afa469abee2378e63f100a743ce34424df7e59",
+      "O3": {
+        "raw": 12393,
+        "kept": 9954,
+        "rejected": {
+          "under_75_percent_coverage": 2333,
+          "provider_flagged": 60,
+          "zero_reading": 6,
+          "stuck_sensor_run": 40
+        }
+      },
+      "PM10": {
+        "raw": 12609,
+        "kept": 10007,
+        "rejected": {
+          "under_75_percent_coverage": 2478,
+          "zero_reading": 40,
+          "stuck_sensor_run": 84
+        }
+      },
+      "PM2.5": {
+        "raw": 12670,
+        "kept": 10125,
+        "rejected": {
+          "under_75_percent_coverage": 2476,
+          "zero_reading": 69
+        }
+      }
+    },
+    "6943": {
+      "cache": "data/research/derived/station_targets/faa9c6d1208d3c9430b8dce995e6020fc35a19024d3c9123673012f2a37ad897",
+      "O3": {
+        "raw": 9524,
+        "kept": 8125,
+        "rejected": {
+          "under_75_percent_coverage": 1223,
+          "stuck_sensor_run": 176
+        }
+      },
+      "PM10": {
+        "raw": 11698,
+        "kept": 10299,
+        "rejected": {
+          "under_75_percent_coverage": 1313,
+          "provider_flagged": 7,
+          "stuck_sensor_run": 79
+        }
+      },
+      "PM2.5": {
+        "raw": 11561,
+        "kept": 9901,
+        "rejected": {
+          "under_75_percent_coverage": 1623,
+          "zero_reading": 3,
+          "stuck_sensor_run": 34
+        }
+      }
+    },
+    "6945": {
+      "cache": "data/research/derived/station_targets/d3f31ed14dcac02940a0ba3fba97e15d6d18fa5430a5ea9e199becc0360be3b4",
+      "O3": {
+        "raw": 11409,
+        "kept": 9510,
+        "rejected": {
+          "under_75_percent_coverage": 1893,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM10": {
+        "raw": 10974,
+        "kept": 9206,
+        "rejected": {
+          "under_75_percent_coverage": 1475,
+          "stuck_sensor_run": 293
+        }
+      },
+      "PM2.5": {
+        "raw": 11007,
+        "kept": 9465,
+        "rejected": {
+          "under_75_percent_coverage": 1093,
+          "stuck_sensor_run": 449
+        }
+      }
+    },
+    "6946": {
+      "cache": "data/research/derived/station_targets/d8bedb406674661e8d16c779fc82829e8576ca27cecf87bc4816865fa2337ccc",
+      "O3": {
+        "raw": 13137,
+        "kept": 11457,
+        "rejected": {
+          "under_75_percent_coverage": 1659,
+          "provider_flagged": 21
+        }
+      },
+      "PM10": {
+        "raw": 13133,
+        "kept": 11416,
+        "rejected": {
+          "under_75_percent_coverage": 1668,
+          "provider_flagged": 15,
+          "zero_reading": 17,
+          "stuck_sensor_run": 17
+        }
+      },
+      "PM2.5": {
+        "raw": 13131,
+        "kept": 11428,
+        "rejected": {
+          "under_75_percent_coverage": 1667,
+          "zero_reading": 16,
+          "stuck_sensor_run": 20
+        }
+      }
+    },
+    "6948": {
+      "cache": "data/research/derived/station_targets/9076b9277495984ddce60863093c481f36d88897d593876fc29eef46fe105c44",
+      "O3": {
+        "raw": 7019,
+        "kept": 6231,
+        "rejected": {
+          "under_75_percent_coverage": 771,
+          "provider_flagged": 17
+        }
+      },
+      "PM10": {
+        "raw": 10660,
+        "kept": 9328,
+        "rejected": {
+          "under_75_percent_coverage": 933,
+          "stuck_sensor_run": 399
+        }
+      },
+      "PM2.5": {
+        "raw": 10658,
+        "kept": 9204,
+        "rejected": {
+          "under_75_percent_coverage": 994,
+          "stuck_sensor_run": 460
+        }
+      }
+    },
+    "6949": {
+      "cache": "data/research/derived/station_targets/88f16c2d9a629cb70267edd1b9cc421b5eeb83ede91a97676cd0aef7be417aa3",
+      "O3": {
+        "raw": 7420,
+        "kept": 6577,
+        "rejected": {
+          "under_75_percent_coverage": 784,
+          "zero_reading": 32,
+          "provider_flagged": 27
+        }
+      },
+      "PM10": {
+        "raw": 7426,
+        "kept": 6472,
+        "rejected": {
+          "under_75_percent_coverage": 764,
+          "zero_reading": 7,
+          "provider_flagged": 4,
+          "stuck_sensor_run": 179
+        }
+      },
+      "PM2.5": {
+        "raw": 7426,
+        "kept": 6641,
+        "rejected": {
+          "under_75_percent_coverage": 768,
+          "zero_reading": 7,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 8
+        }
+      }
+    },
+    "6950": {
+      "cache": "data/research/derived/station_targets/6f511a9aadc2fbe7bf45e8241e223d2f5effa11bf83b2b93f84071021e905b00",
+      "O3": {
+        "raw": 13273,
+        "kept": 11447,
+        "rejected": {
+          "under_75_percent_coverage": 1813,
+          "provider_flagged": 13
+        }
+      },
+      "PM10": {
+        "raw": 13275,
+        "kept": 11457,
+        "rejected": {
+          "under_75_percent_coverage": 1817,
+          "zero_reading": 1
+        }
+      },
+      "PM2.5": {
+        "raw": 13274,
+        "kept": 11452,
+        "rejected": {
+          "under_75_percent_coverage": 1820,
+          "zero_reading": 2
+        }
+      }
+    },
+    "6966": {
+      "cache": "data/research/derived/station_targets/210c2aaeefde8e807bbb9bf739eac807f39d57c07cbdfb0a808b9317eff410af",
+      "O3": {
+        "raw": 9190,
+        "kept": 6866,
+        "rejected": {
+          "under_75_percent_coverage": 1562,
+          "zero_reading": 762
+        }
+      },
+      "PM10": {
+        "raw": 9172,
+        "kept": 6770,
+        "rejected": {
+          "under_75_percent_coverage": 1572,
+          "provider_flagged": 19,
+          "zero_reading": 762,
+          "stuck_sensor_run": 49
+        }
+      },
+      "PM2.5": {
+        "raw": 9176,
+        "kept": 6774,
+        "rejected": {
+          "under_75_percent_coverage": 1564,
+          "provider_flagged": 21,
+          "zero_reading": 764,
+          "stuck_sensor_run": 53
+        }
+      }
+    },
+    "6971": {
+      "cache": "data/research/derived/station_targets/0c02cd30981fce0b09d835f2608da53cf8fb0c3c529169d47312f21644aa9066",
+      "O3": {
+        "raw": 7430,
+        "kept": 6346,
+        "rejected": {
+          "zero_reading": 98,
+          "under_75_percent_coverage": 930,
+          "provider_flagged": 55,
+          "invalid_value_or_unit": 1
+        }
+      },
+      "PM10": {
+        "raw": 7388,
+        "kept": 5966,
+        "rejected": {
+          "zero_reading": 121,
+          "under_75_percent_coverage": 950,
+          "provider_flagged": 32,
+          "invalid_value_or_unit": 7,
+          "stuck_sensor_run": 312
+        }
+      },
+      "PM2.5": {
+        "raw": 7386,
+        "kept": 5973,
+        "rejected": {
+          "zero_reading": 121,
+          "under_75_percent_coverage": 947,
+          "provider_flagged": 32,
+          "invalid_value_or_unit": 7,
+          "stuck_sensor_run": 306
+        }
+      }
+    },
+    "6973": {
+      "cache": "data/research/derived/station_targets/90eaa842400a5960e6d3b69d787756e9bf4a5d714709c534afd26585e18724ae",
+      "O3": {
+        "raw": 12133,
+        "kept": 10296,
+        "rejected": {
+          "under_75_percent_coverage": 1837
+        }
+      },
+      "PM10": {
+        "raw": 12193,
+        "kept": 10521,
+        "rejected": {
+          "under_75_percent_coverage": 1672
+        }
+      },
+      "PM2.5": {
+        "raw": 12257,
+        "kept": 10610,
+        "rejected": {
+          "under_75_percent_coverage": 1647
+        }
+      }
+    },
+    "6976": {
+      "cache": "data/research/derived/station_targets/043cc98d1aea5f78053065290f23cc4c80e75809f6fa0bab92a93eddd744fbdb",
+      "O3": {
+        "raw": 12578,
+        "kept": 11153,
+        "rejected": {
+          "under_75_percent_coverage": 1425
+        }
+      },
+      "PM10": {
+        "raw": 12581,
+        "kept": 11265,
+        "rejected": {
+          "under_75_percent_coverage": 1308,
+          "provider_flagged": 8
+        }
+      },
+      "PM2.5": {
+        "raw": 12358,
+        "kept": 10910,
+        "rejected": {
+          "under_75_percent_coverage": 1448
+        }
+      }
+    },
+    "6978": {
+      "cache": "data/research/derived/station_targets/dae892f524f9597a13f28ddd89aabf9f7882fb341e8eb76dc8a6114a90752d99",
+      "O3": {
+        "raw": 12594,
+        "kept": 10940,
+        "rejected": {
+          "under_75_percent_coverage": 1653,
+          "provider_flagged": 1
+        }
+      },
+      "PM10": {
+        "raw": 12608,
+        "kept": 11204,
+        "rejected": {
+          "under_75_percent_coverage": 1404
+        }
+      },
+      "PM2.5": {
+        "raw": 12456,
+        "kept": 10974,
+        "rejected": {
+          "under_75_percent_coverage": 1474,
+          "stuck_sensor_run": 8
+        }
+      }
+    },
+    "6980": {
+      "cache": "data/research/derived/station_targets/e287ee3256b2100873facde7611fb34aad23443c6b419a147570ba7f573322f2",
+      "O3": {
+        "raw": 12245,
+        "kept": 10814,
+        "rejected": {
+          "under_75_percent_coverage": 1431
+        }
+      },
+      "PM10": {
+        "raw": 12470,
+        "kept": 11257,
+        "rejected": {
+          "under_75_percent_coverage": 1199,
+          "provider_flagged": 14
+        }
+      },
+      "PM2.5": {
+        "raw": 12422,
+        "kept": 11091,
+        "rejected": {
+          "under_75_percent_coverage": 1315,
+          "provider_flagged": 16
+        }
+      }
+    },
+    "6981": {
+      "cache": "data/research/derived/station_targets/b54c9da775323033e8dfdcc0611bf428984a54e859d42e1a5683a370f22b6503",
+      "O3": {
+        "raw": 11871,
+        "kept": 9904,
+        "rejected": {
+          "under_75_percent_coverage": 1513,
+          "zero_reading": 451,
+          "provider_flagged": 3
+        }
+      },
+      "PM10": {
+        "raw": 11829,
+        "kept": 9245,
+        "rejected": {
+          "under_75_percent_coverage": 1535,
+          "zero_reading": 588,
+          "stuck_sensor_run": 461
+        }
+      },
+      "PM2.5": {
+        "raw": 11833,
+        "kept": 9297,
+        "rejected": {
+          "under_75_percent_coverage": 1541,
+          "zero_reading": 403,
+          "stuck_sensor_run": 592
+        }
+      }
+    },
+    "6986": {
+      "cache": "data/research/derived/station_targets/ddd11ba0f178ac35c8de158b0329735e69e249a9faa1124e72d1238956313ecc",
+      "O3": {
+        "raw": 12907,
+        "kept": 11427,
+        "rejected": {
+          "under_75_percent_coverage": 1480
+        }
+      },
+      "PM10": {
+        "raw": 13127,
+        "kept": 11896,
+        "rejected": {
+          "under_75_percent_coverage": 1165,
+          "provider_flagged": 66
+        }
+      },
+      "PM2.5": {
+        "raw": 13064,
+        "kept": 11767,
+        "rejected": {
+          "under_75_percent_coverage": 1231,
+          "provider_flagged": 66
+        }
+      }
+    },
+    "6988": {
+      "cache": "data/research/derived/station_targets/f1b3cb45ee35c863545f653ce25504dfbc490e11bf361415710c661a594f4ba7",
+      "O3": {
+        "raw": 12026,
+        "kept": 10735,
+        "rejected": {
+          "under_75_percent_coverage": 1291
+        }
+      },
+      "PM10": {
+        "raw": 12281,
+        "kept": 10904,
+        "rejected": {
+          "under_75_percent_coverage": 1362,
+          "provider_flagged": 15
+        }
+      },
+      "PM2.5": {
+        "raw": 12365,
+        "kept": 10996,
+        "rejected": {
+          "under_75_percent_coverage": 1230,
+          "provider_flagged": 139
+        }
+      }
+    },
+    "7140": {
+      "cache": "data/research/derived/station_targets/b63e836f1343ebc3a05d247bcfd2734734cd20e2989bf9a88af0ff7d2228c2dd",
+      "O3": {
+        "raw": 13192,
+        "kept": 12128,
+        "rejected": {
+          "under_75_percent_coverage": 1064
+        }
+      },
+      "PM10": {
+        "raw": 13071,
+        "kept": 11975,
+        "rejected": {
+          "under_75_percent_coverage": 1096
+        }
+      },
+      "PM2.5": {
+        "raw": 12939,
+        "kept": 11838,
+        "rejected": {
+          "under_75_percent_coverage": 1101
+        }
+      }
+    },
+    "7292": {
+      "cache": "data/research/derived/station_targets/7efcb277eb53e80b64b31e1783e2458773eaf23fe291f92db4a635e90b9f6008",
+      "O3": {
+        "raw": 12883,
+        "kept": 11198,
+        "rejected": {
+          "under_75_percent_coverage": 1685
+        }
+      },
+      "PM10": {
+        "raw": 12813,
+        "kept": 11661,
+        "rejected": {
+          "under_75_percent_coverage": 1121,
+          "stuck_sensor_run": 31
+        }
+      },
+      "PM2.5": {
+        "raw": 12870,
+        "kept": 11748,
+        "rejected": {
+          "under_75_percent_coverage": 1122
+        }
+      }
+    },
+    "7494": {
+      "cache": "data/research/derived/station_targets/2f4dc971da8d7bcc406d02620069aea128ddcd2f9651dc1cc956772e2a003563",
+      "O3": {
+        "raw": 12710,
+        "kept": 10898,
+        "rejected": {
+          "provider_flagged": 204,
+          "under_75_percent_coverage": 1491,
+          "zero_reading": 94,
+          "stuck_sensor_run": 23
+        }
+      },
+      "PM10": {
+        "raw": 12704,
+        "kept": 11103,
+        "rejected": {
+          "under_75_percent_coverage": 1511,
+          "zero_reading": 90
+        }
+      },
+      "PM2.5": {
+        "raw": 12714,
+        "kept": 11082,
+        "rejected": {
+          "under_75_percent_coverage": 1524,
+          "zero_reading": 93,
+          "provider_flagged": 15
+        }
+      }
+    },
+    "7495": {
+      "cache": "data/research/derived/station_targets/71887da4ac81930e859419dc27648381ee667671089654bb46c8d1647847283d",
+      "O3": {
+        "raw": 12658,
+        "kept": 10662,
+        "rejected": {
+          "under_75_percent_coverage": 1608,
+          "provider_flagged": 182,
+          "zero_reading": 52,
+          "stuck_sensor_run": 154
+        }
+      },
+      "PM10": {
+        "raw": 12571,
+        "kept": 10811,
+        "rejected": {
+          "under_75_percent_coverage": 1701,
+          "zero_reading": 31,
+          "provider_flagged": 1,
+          "stuck_sensor_run": 27
+        }
+      },
+      "PM2.5": {
+        "raw": 12531,
+        "kept": 10648,
+        "rejected": {
+          "under_75_percent_coverage": 1694,
+          "zero_reading": 57,
+          "provider_flagged": 108,
+          "stuck_sensor_run": 24
+        }
+      }
+    },
+    "7720": {
+      "cache": "data/research/derived/station_targets/a01173ab0b30b0a7238a88d597780e4916c7c4c8c815ac087f06058eeccc86da",
+      "O3": {
+        "raw": 12743,
+        "kept": 11088,
+        "rejected": {
+          "under_75_percent_coverage": 1655
+        }
+      },
+      "PM10": {
+        "raw": 12499,
+        "kept": 10862,
+        "rejected": {
+          "under_75_percent_coverage": 1637
+        }
+      },
+      "PM2.5": {
+        "raw": 12513,
+        "kept": 10836,
+        "rejected": {
+          "under_75_percent_coverage": 1677
+        }
+      }
+    },
+    "8190": {
+      "cache": "data/research/derived/station_targets/b595be892e2c91fa7fb4d3552c3a0b219c7230bd00c8a506749e70088e43fabc",
+      "O3": {
+        "raw": 11635,
+        "kept": 8968,
+        "rejected": {
+          "under_75_percent_coverage": 1586,
+          "zero_reading": 37,
+          "stuck_sensor_run": 1044
+        }
+      },
+      "PM10": {
+        "raw": 11553,
+        "kept": 9836,
+        "rejected": {
+          "under_75_percent_coverage": 1610,
+          "zero_reading": 37,
+          "provider_flagged": 15,
+          "stuck_sensor_run": 55
+        }
+      },
+      "PM2.5": {
+        "raw": 11606,
+        "kept": 9930,
+        "rejected": {
+          "under_75_percent_coverage": 1623,
+          "zero_reading": 37,
+          "provider_flagged": 1,
+          "stuck_sensor_run": 15
+        }
+      }
+    },
+    "8245": {
+      "cache": "data/research/derived/station_targets/f033134a26ffa5828897f30707d07ec5d366734231d012054b22dd1bc57c5b6b",
+      "O3": {
+        "raw": 12940,
+        "kept": 11192,
+        "rejected": {
+          "under_75_percent_coverage": 1748
+        }
+      },
+      "PM10": {
+        "raw": 12925,
+        "kept": 11695,
+        "rejected": {
+          "under_75_percent_coverage": 1230
+        }
+      },
+      "PM2.5": {
+        "raw": 12816,
+        "kept": 11603,
+        "rejected": {
+          "under_75_percent_coverage": 1213
+        }
+      }
+    },
+    "8319": {
+      "cache": "data/research/derived/station_targets/58823f2c8773dac01deedd0f1ba74b17c15baa2edd2cd38925c9855ceade4d90",
+      "O3": {
+        "raw": 11576,
+        "kept": 10065,
+        "rejected": {
+          "under_75_percent_coverage": 1503,
+          "provider_flagged": 4,
+          "zero_reading": 4
+        }
+      },
+      "PM10": {
+        "raw": 12093,
+        "kept": 10760,
+        "rejected": {
+          "under_75_percent_coverage": 1326,
+          "provider_flagged": 7
+        }
+      },
+      "PM2.5": {
+        "raw": 12193,
+        "kept": 10692,
+        "rejected": {
+          "under_75_percent_coverage": 1342,
+          "provider_flagged": 129,
+          "stuck_sensor_run": 30
+        }
+      }
+    },
+    "10599": {
+      "cache": "data/research/derived/station_targets/de21e7937924522f55a68b2236e90fdf0e89abec7544a837e551e3598cda9316",
+      "O3": {
+        "raw": 12779,
+        "kept": 10004,
+        "rejected": {
+          "provider_flagged": 922,
+          "under_75_percent_coverage": 1734,
+          "zero_reading": 55,
+          "stuck_sensor_run": 64
+        }
+      },
+      "PM10": {
+        "raw": 12765,
+        "kept": 10919,
+        "rejected": {
+          "under_75_percent_coverage": 1788,
+          "zero_reading": 58
+        }
+      },
+      "PM2.5": {
+        "raw": 12761,
+        "kept": 10874,
+        "rejected": {
+          "under_75_percent_coverage": 1790,
+          "zero_reading": 57,
+          "provider_flagged": 32,
+          "stuck_sensor_run": 8
+        }
+      }
+    },
+    "10630": {
+      "cache": "data/research/derived/station_targets/41c90e04f4546a59770b4d4055d566c48cb20397c72254a0af84c863bee5e640",
+      "O3": {
+        "raw": 12445,
+        "kept": 10674,
+        "rejected": {
+          "under_75_percent_coverage": 1645,
+          "provider_flagged": 125,
+          "zero_reading": 1
+        }
+      },
+      "PM10": {
+        "raw": 12325,
+        "kept": 10427,
+        "rejected": {
+          "under_75_percent_coverage": 1677,
+          "provider_flagged": 89,
+          "zero_reading": 62,
+          "stuck_sensor_run": 70
+        }
+      },
+      "PM2.5": {
+        "raw": 12338,
+        "kept": 10509,
+        "rejected": {
+          "under_75_percent_coverage": 1707,
+          "zero_reading": 90,
+          "provider_flagged": 19,
+          "stuck_sensor_run": 13
+        }
+      }
+    },
+    "10633": {
+      "cache": "data/research/derived/station_targets/5d830f3739d6c84d66fb879878d2a13a281d1dd247ea90ee13af13a4e9a485c9",
+      "O3": {
+        "raw": 12705,
+        "kept": 11076,
+        "rejected": {
+          "under_75_percent_coverage": 1452,
+          "provider_flagged": 83,
+          "zero_reading": 93,
+          "invalid_value_or_unit": 1
+        }
+      },
+      "PM10": {
+        "raw": 12654,
+        "kept": 11135,
+        "rejected": {
+          "under_75_percent_coverage": 1486,
+          "provider_flagged": 27,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM2.5": {
+        "raw": 12698,
+        "kept": 11098,
+        "rejected": {
+          "under_75_percent_coverage": 1492,
+          "provider_flagged": 11,
+          "stuck_sensor_run": 97
+        }
+      }
+    },
+    "10725": {
+      "cache": "data/research/derived/station_targets/7beed9d5aa4900678f16dcd69eda86a7f06f5877987e1063a38282831eae6e6f",
+      "O3": {
+        "raw": 8895,
+        "kept": 7772,
+        "rejected": {
+          "under_75_percent_coverage": 985,
+          "zero_reading": 4,
+          "provider_flagged": 7,
+          "stuck_sensor_run": 127
+        }
+      },
+      "PM10": {
+        "raw": 8885,
+        "kept": 7869,
+        "rejected": {
+          "under_75_percent_coverage": 1003,
+          "zero_reading": 10,
+          "provider_flagged": 3
+        }
+      },
+      "PM2.5": {
+        "raw": 8831,
+        "kept": 7499,
+        "rejected": {
+          "under_75_percent_coverage": 991,
+          "zero_reading": 338,
+          "provider_flagged": 3
+        }
+      }
+    },
+    "10780": {
+      "cache": "data/research/derived/station_targets/c001b547f5a360034d20c8b683ae241c5b9caa17ca1bf4a52edc0f350cc0bd03",
+      "O3": {
+        "raw": 12096,
+        "kept": 10910,
+        "rejected": {
+          "under_75_percent_coverage": 1143,
+          "zero_reading": 15,
+          "stuck_sensor_run": 28
+        }
+      },
+      "PM10": {
+        "raw": 12648,
+        "kept": 11351,
+        "rejected": {
+          "under_75_percent_coverage": 1166,
+          "zero_reading": 109,
+          "stuck_sensor_run": 22
+        }
+      },
+      "PM2.5": {
+        "raw": 12720,
+        "kept": 11264,
+        "rejected": {
+          "under_75_percent_coverage": 1175,
+          "zero_reading": 266,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 13
+        }
+      }
+    },
+    "10820": {
+      "cache": "data/research/derived/station_targets/e9471bf7a2ff05cf88441dd38345d61216e708c20a95eec91470b13933b17d35",
+      "O3": {
+        "raw": 4131,
+        "kept": 2585,
+        "rejected": {
+          "under_75_percent_coverage": 1529,
+          "zero_reading": 2,
+          "provider_flagged": 8,
+          "stuck_sensor_run": 7
+        }
+      },
+      "PM10": {
+        "raw": 4220,
+        "kept": 2669,
+        "rejected": {
+          "under_75_percent_coverage": 1537,
+          "zero_reading": 1,
+          "stuck_sensor_run": 13
+        }
+      },
+      "PM2.5": {
+        "raw": 4654,
+        "kept": 2691,
+        "rejected": {
+          "under_75_percent_coverage": 1929,
+          "zero_reading": 2,
+          "stuck_sensor_run": 32
+        }
+      }
+    },
+    "10823": {
+      "cache": "data/research/derived/station_targets/bab974a69d535397d50b3af9c122147bedf31e3747abbe9847b21b4efc279765",
+      "O3": {
+        "raw": 12923,
+        "kept": 11011,
+        "rejected": {
+          "under_75_percent_coverage": 1809,
+          "zero_reading": 94,
+          "provider_flagged": 9
+        }
+      },
+      "PM10": {
+        "raw": 12937,
+        "kept": 11038,
+        "rejected": {
+          "under_75_percent_coverage": 1814,
+          "zero_reading": 78,
+          "stuck_sensor_run": 7
+        }
+      },
+      "PM2.5": {
+        "raw": 12938,
+        "kept": 11065,
+        "rejected": {
+          "under_75_percent_coverage": 1818,
+          "zero_reading": 55
+        }
+      }
+    },
+    "10825": {
+      "cache": "data/research/derived/station_targets/47de5d3882bc5a80f1e6dea44d6b7da9c4e57aa64e72803df8830b38b6d0a9bf",
+      "O3": {
+        "raw": 8762,
+        "kept": 7654,
+        "rejected": {
+          "under_75_percent_coverage": 997,
+          "zero_reading": 89,
+          "provider_flagged": 22
+        }
+      },
+      "PM10": {
+        "raw": 8718,
+        "kept": 7578,
+        "rejected": {
+          "under_75_percent_coverage": 1043,
+          "provider_flagged": 73,
+          "zero_reading": 24
+        }
+      },
+      "PM2.5": {
+        "raw": 8732,
+        "kept": 7314,
+        "rejected": {
+          "under_75_percent_coverage": 1035,
+          "zero_reading": 296,
+          "provider_flagged": 66,
+          "stuck_sensor_run": 21
+        }
+      }
+    },
+    "10844": {
+      "cache": "data/research/derived/station_targets/b27a15e6bb303ae559fe371491d49be6f4e308fab922344de51a13f061637a31",
+      "O3": {
+        "raw": 13002,
+        "kept": 11317,
+        "rejected": {
+          "under_75_percent_coverage": 1626,
+          "provider_flagged": 35,
+          "zero_reading": 24
+        }
+      },
+      "PM10": {
+        "raw": 12979,
+        "kept": 11273,
+        "rejected": {
+          "under_75_percent_coverage": 1638,
+          "zero_reading": 34,
+          "stuck_sensor_run": 34
+        }
+      },
+      "PM2.5": {
+        "raw": 12995,
+        "kept": 11227,
+        "rejected": {
+          "under_75_percent_coverage": 1645,
+          "zero_reading": 42,
+          "stuck_sensor_run": 81
+        }
+      }
+    },
+    "10895": {
+      "cache": "data/research/derived/station_targets/cfb66deb17ea8b1f28bb82053959b84049dc10cd760f810c8bf58a2e5b3ba35c",
+      "O3": {
+        "raw": 11983,
+        "kept": 9514,
+        "rejected": {
+          "zero_reading": 1447,
+          "under_75_percent_coverage": 1019,
+          "provider_flagged": 3
+        }
+      },
+      "PM10": {
+        "raw": 10380,
+        "kept": 5147,
+        "rejected": {
+          "under_75_percent_coverage": 884,
+          "zero_reading": 4349
+        }
+      },
+      "PM2.5": {
+        "raw": 10251,
+        "kept": 6187,
+        "rejected": {
+          "under_75_percent_coverage": 881,
+          "zero_reading": 3169,
+          "stuck_sensor_run": 14
+        }
+      }
+    },
+    "10901": {
+      "cache": "data/research/derived/station_targets/49f478aa4eebf4ac2f1d8ead395ca3c1aa4d8934ba66f8ff02ed1c648fe22219",
+      "O3": {
+        "raw": 10598,
+        "kept": 7784,
+        "rejected": {
+          "under_75_percent_coverage": 1467,
+          "zero_reading": 1346,
+          "provider_flagged": 1
+        }
+      },
+      "PM10": {
+        "raw": 12577,
+        "kept": 10303,
+        "rejected": {
+          "zero_reading": 593,
+          "under_75_percent_coverage": 1681
+        }
+      },
+      "PM2.5": {
+        "raw": 12694,
+        "kept": 10779,
+        "rejected": {
+          "zero_reading": 269,
+          "under_75_percent_coverage": 1616,
+          "stuck_sensor_run": 30
+        }
+      }
+    },
+    "10903": {
+      "cache": "data/research/derived/station_targets/4ef0c399e31d2c9788a7b375c8f3334a3d4a99cd279048aa7274fbf39775ebf1",
+      "O3": {
+        "raw": 11733,
+        "kept": 4759,
+        "rejected": {
+          "zero_reading": 5711,
+          "under_75_percent_coverage": 1068,
+          "provider_flagged": 195
+        }
+      },
+      "PM10": {
+        "raw": 11788,
+        "kept": 9708,
+        "rejected": {
+          "under_75_percent_coverage": 1173,
+          "zero_reading": 850,
+          "stuck_sensor_run": 57
+        }
+      },
+      "PM2.5": {
+        "raw": 11810,
+        "kept": 10367,
+        "rejected": {
+          "under_75_percent_coverage": 1179,
+          "zero_reading": 251,
+          "stuck_sensor_run": 13
+        }
+      }
+    },
+    "10907": {
+      "cache": "data/research/derived/station_targets/334a9f16c33401a1196e4283fde6e53d0867a9869b15c10863c832a9fc47c29b",
+      "O3": {
+        "raw": 12459,
+        "kept": 10653,
+        "rejected": {
+          "under_75_percent_coverage": 1767,
+          "provider_flagged": 4,
+          "stuck_sensor_run": 35
+        }
+      },
+      "PM10": {
+        "raw": 12578,
+        "kept": 11036,
+        "rejected": {
+          "under_75_percent_coverage": 1542
+        }
+      },
+      "PM2.5": {
+        "raw": 12580,
+        "kept": 11372,
+        "rejected": {
+          "under_75_percent_coverage": 1208
+        }
+      }
+    },
+    "10908": {
+      "cache": "data/research/derived/station_targets/46763ed0b50d8085265f5c7445a98892116bd5b6ffd76e0008fc12bbc223835a",
+      "O3": {
+        "raw": 8310,
+        "kept": 7136,
+        "rejected": {
+          "under_75_percent_coverage": 1007,
+          "zero_reading": 161,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM10": {
+        "raw": 8225,
+        "kept": 7019,
+        "rejected": {
+          "under_75_percent_coverage": 1119,
+          "zero_reading": 40,
+          "provider_flagged": 39,
+          "stuck_sensor_run": 8
+        }
+      },
+      "PM2.5": {
+        "raw": 8294,
+        "kept": 7148,
+        "rejected": {
+          "under_75_percent_coverage": 1050,
+          "zero_reading": 25,
+          "provider_flagged": 35,
+          "stuck_sensor_run": 36
+        }
+      }
+    },
+    "10911": {
+      "cache": "data/research/derived/station_targets/911923503aa91ebc8264bdc60b3fbea0833dc91cd823c5ca9a17e10eee53ea8e",
+      "O3": {
+        "raw": 12491,
+        "kept": 10880,
+        "rejected": {
+          "under_75_percent_coverage": 1570,
+          "stuck_sensor_run": 41
+        }
+      },
+      "PM10": {
+        "raw": 12391,
+        "kept": 11157,
+        "rejected": {
+          "under_75_percent_coverage": 1226,
+          "stuck_sensor_run": 8
+        }
+      },
+      "PM2.5": {
+        "raw": 12470,
+        "kept": 11212,
+        "rejected": {
+          "under_75_percent_coverage": 1215,
+          "stuck_sensor_run": 43
+        }
+      }
+    },
+    "10913": {
+      "cache": "data/research/derived/station_targets/c32ddf5508c70c65d107862efa943f3c4fe007fce3c499d30e21f4a37199fd15",
+      "O3": {
+        "raw": 12892,
+        "kept": 11232,
+        "rejected": {
+          "under_75_percent_coverage": 1660
+        }
+      },
+      "PM10": {
+        "raw": 12764,
+        "kept": 11531,
+        "rejected": {
+          "under_75_percent_coverage": 1233
+        }
+      },
+      "PM2.5": {
+        "raw": 12773,
+        "kept": 11540,
+        "rejected": {
+          "under_75_percent_coverage": 1233
+        }
+      }
+    },
+    "10914": {
+      "cache": "data/research/derived/station_targets/b430e7d342b0ca27ba12dd4f07a22073fb85bd286b02d779bee2c96fcfb01936",
+      "O3": {
+        "raw": 12265,
+        "kept": 10613,
+        "rejected": {
+          "under_75_percent_coverage": 1156,
+          "provider_flagged": 478,
+          "invalid_value_or_unit": 1,
+          "zero_reading": 17
+        }
+      },
+      "PM10": {
+        "raw": 11973,
+        "kept": 10796,
+        "rejected": {
+          "under_75_percent_coverage": 1163,
+          "zero_reading": 14
+        }
+      },
+      "PM2.5": {
+        "raw": 11982,
+        "kept": 10754,
+        "rejected": {
+          "under_75_percent_coverage": 1170,
+          "zero_reading": 57,
+          "provider_flagged": 1
+        }
+      }
+    },
+    "11609": {
+      "cache": "data/research/derived/station_targets/0205959328d7b6a266bdab90459baf542cfab74ce6e7b5d7e64a3aef6bed22b6",
+      "O3": {
+        "raw": 12515,
+        "kept": 10750,
+        "rejected": {
+          "under_75_percent_coverage": 1562,
+          "zero_reading": 195,
+          "provider_flagged": 8
+        }
+      },
+      "PM10": {
+        "raw": 12511,
+        "kept": 10759,
+        "rejected": {
+          "under_75_percent_coverage": 1565,
+          "zero_reading": 128,
+          "stuck_sensor_run": 59
+        }
+      },
+      "PM2.5": {
+        "raw": 12509,
+        "kept": 10783,
+        "rejected": {
+          "under_75_percent_coverage": 1571,
+          "zero_reading": 155
+        }
+      }
+    },
+    "11610": {
+      "cache": "data/research/derived/station_targets/cc4dcbdac01419ab307b3e0bdecda90bd6fd63bc68103463e00c351d4a1f30c2",
+      "O3": {
+        "raw": 11783,
+        "kept": 9603,
+        "rejected": {
+          "zero_reading": 553,
+          "under_75_percent_coverage": 1623,
+          "provider_flagged": 4
+        }
+      },
+      "PM10": {
+        "raw": 11637,
+        "kept": 9555,
+        "rejected": {
+          "under_75_percent_coverage": 1630,
+          "zero_reading": 393,
+          "stuck_sensor_run": 59
+        }
+      },
+      "PM2.5": {
+        "raw": 11789,
+        "kept": 9735,
+        "rejected": {
+          "under_75_percent_coverage": 1632,
+          "zero_reading": 422
+        }
+      }
+    },
+    "11613": {
+      "cache": "data/research/derived/station_targets/5a127b994e32a619915ab06d049ae1f941b559e993fda111f9bcd314692f60a1",
+      "O3": {
+        "raw": 11920,
+        "kept": 9672,
+        "rejected": {
+          "under_75_percent_coverage": 1910,
+          "zero_reading": 230,
+          "provider_flagged": 25,
+          "stuck_sensor_run": 83
+        }
+      },
+      "PM10": {
+        "raw": 11857,
+        "kept": 9077,
+        "rejected": {
+          "under_75_percent_coverage": 1948,
+          "zero_reading": 581,
+          "stuck_sensor_run": 251
+        }
+      },
+      "PM2.5": {
+        "raw": 11857,
+        "kept": 9695,
+        "rejected": {
+          "under_75_percent_coverage": 1957,
+          "zero_reading": 187,
+          "stuck_sensor_run": 18
+        }
+      }
+    },
+    "42240": {
+      "cache": "data/research/derived/station_targets/519e5a54fee8acbadf1760b63f9856674ab92fe12c76e779209350d5b46dc047",
+      "O3": {
+        "raw": 11733,
+        "kept": 8083,
+        "rejected": {
+          "under_75_percent_coverage": 3555,
+          "zero_reading": 1,
+          "stuck_sensor_run": 94
+        }
+      },
+      "PM10": {
+        "raw": 11042,
+        "kept": 6927,
+        "rejected": {
+          "under_75_percent_coverage": 3201,
+          "zero_reading": 907,
+          "stuck_sensor_run": 7
+        }
+      },
+      "PM2.5": {
+        "raw": 11056,
+        "kept": 7713,
+        "rejected": {
+          "under_75_percent_coverage": 3218,
+          "zero_reading": 119,
+          "stuck_sensor_run": 6
+        }
+      }
+    },
+    "44513": {
+      "cache": "data/research/derived/station_targets/88ab10f881c685ddb53aa641e442c42f85d1541f934cee100a588047a28add98",
+      "O3": {
+        "raw": 8882,
+        "kept": 7295,
+        "rejected": {
+          "under_75_percent_coverage": 1205,
+          "provider_flagged": 35,
+          "stuck_sensor_run": 347
+        }
+      },
+      "PM10": {
+        "raw": 8812,
+        "kept": 7679,
+        "rejected": {
+          "under_75_percent_coverage": 1020,
+          "provider_flagged": 13,
+          "stuck_sensor_run": 100
+        }
+      },
+      "PM2.5": {
+        "raw": 8700,
+        "kept": 7477,
+        "rejected": {
+          "under_75_percent_coverage": 1027,
+          "provider_flagged": 113,
+          "stuck_sensor_run": 83
+        }
+      }
+    },
+    "60659": {
+      "cache": "data/research/derived/station_targets/3e63bb3e2bddd58ad1dc56974c6b0753295693689e521814f2b34f59f14e4646",
+      "O3": {
+        "raw": 11864,
+        "kept": 10006,
+        "rejected": {
+          "under_75_percent_coverage": 1855,
+          "zero_reading": 3
+        }
+      },
+      "PM10": {
+        "raw": 11850,
+        "kept": 10335,
+        "rejected": {
+          "under_75_percent_coverage": 1515
+        }
+      },
+      "PM2.5": {
+        "raw": 11603,
+        "kept": 10052,
+        "rejected": {
+          "under_75_percent_coverage": 1551
+        }
+      }
+    },
+    "220353": {
+      "cache": "data/research/derived/station_targets/5b9835bfbaa0f7ae1d4a8a911405797f2fdf049fcb87ca8c3085ecfd6510eab0",
+      "O3": {
+        "raw": 415,
+        "kept": 241,
+        "rejected": {
+          "under_75_percent_coverage": 119,
+          "provider_flagged": 4,
+          "stuck_sensor_run": 51
+        }
+      },
+      "PM10": {
+        "raw": 1658,
+        "kept": 1321,
+        "rejected": {
+          "under_75_percent_coverage": 240,
+          "stuck_sensor_run": 97
+        }
+      },
+      "PM2.5": {
+        "raw": 569,
+        "kept": 269,
+        "rejected": {
+          "under_75_percent_coverage": 267,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 31
+        }
+      }
+    },
+    "223146": {
+      "cache": "data/research/derived/station_targets/6ca3cdf53198a04306f23467e9426d833f8653ae7b3f7c31a1a97de3800aa4f1",
+      "O3": {
+        "raw": 10147,
+        "kept": 8606,
+        "rejected": {
+          "under_75_percent_coverage": 1370,
+          "zero_reading": 77,
+          "stuck_sensor_run": 94
+        }
+      },
+      "PM10": {
+        "raw": 10063,
+        "kept": 8220,
+        "rejected": {
+          "under_75_percent_coverage": 1406,
+          "zero_reading": 437
+        }
+      },
+      "PM2.5": {
+        "raw": 10110,
+        "kept": 8583,
+        "rejected": {
+          "under_75_percent_coverage": 1433,
+          "zero_reading": 94
+        }
+      }
+    },
+    "227384": {
+      "cache": "data/research/derived/station_targets/b1bbd08a903d5b45becf633c4f85f94e01deec25616925fad89382bc52891266",
+      "O3": {
+        "raw": 13105,
+        "kept": 11877,
+        "rejected": {
+          "under_75_percent_coverage": 1167,
+          "zero_reading": 60,
+          "provider_flagged": 1
+        }
+      },
+      "PM10": {
+        "raw": 12810,
+        "kept": 11189,
+        "rejected": {
+          "under_75_percent_coverage": 1289,
+          "zero_reading": 317,
+          "provider_flagged": 15
+        }
+      },
+      "PM2.5": {
+        "raw": 12740,
+        "kept": 11091,
+        "rejected": {
+          "under_75_percent_coverage": 1335,
+          "zero_reading": 314
+        }
+      }
+    },
+    "227387": {
+      "cache": "data/research/derived/station_targets/52bd15647676a7ab591eb5863fdbf5c432a0186938e789d3147779f3bafb9ba7",
+      "O3": {
+        "raw": 12994,
+        "kept": 11561,
+        "rejected": {
+          "zero_reading": 385,
+          "under_75_percent_coverage": 1048
+        }
+      },
+      "PM10": {
+        "raw": 12885,
+        "kept": 11615,
+        "rejected": {
+          "under_75_percent_coverage": 1160,
+          "zero_reading": 109,
+          "provider_flagged": 1
+        }
+      },
+      "PM2.5": {
+        "raw": 12868,
+        "kept": 11459,
+        "rejected": {
+          "under_75_percent_coverage": 1141,
+          "zero_reading": 268
+        }
+      }
+    },
+    "227533": {
+      "cache": "data/research/derived/station_targets/af17d904395256daa3f41a398f97932766040b60d77ea834e725d20c84a5f7f6",
+      "O3": {
+        "raw": 12871,
+        "kept": 10649,
+        "rejected": {
+          "under_75_percent_coverage": 1940,
+          "zero_reading": 67,
+          "provider_flagged": 215
+        }
+      },
+      "PM10": {
+        "raw": 12795,
+        "kept": 10742,
+        "rejected": {
+          "under_75_percent_coverage": 1965,
+          "provider_flagged": 20,
+          "zero_reading": 68
+        }
+      },
+      "PM2.5": {
+        "raw": 12812,
+        "kept": 10633,
+        "rejected": {
+          "under_75_percent_coverage": 1999,
+          "provider_flagged": 4,
+          "zero_reading": 100,
+          "stuck_sensor_run": 76
+        }
+      }
+    },
+    "227534": {
+      "cache": "data/research/derived/station_targets/fe3c66b25477c0173e5459b08b6f8083c9d62275f783192cd59e340dd213511e",
+      "O3": {
+        "raw": 12723,
+        "kept": 10819,
+        "rejected": {
+          "provider_flagged": 171,
+          "under_75_percent_coverage": 1626,
+          "zero_reading": 44,
+          "stuck_sensor_run": 63
+        }
+      },
+      "PM10": {
+        "raw": 12960,
+        "kept": 11173,
+        "rejected": {
+          "under_75_percent_coverage": 1680,
+          "zero_reading": 33,
+          "stuck_sensor_run": 74
+        }
+      },
+      "PM2.5": {
+        "raw": 12823,
+        "kept": 11027,
+        "rejected": {
+          "under_75_percent_coverage": 1630,
+          "zero_reading": 42,
+          "stuck_sensor_run": 124
+        }
+      }
+    },
+    "227535": {
+      "cache": "data/research/derived/station_targets/0d2ed5daf0841d845057161d7dfb8dbbe2b256cf9eabb5f903430d5320feeff1",
+      "O3": {
+        "raw": 13005,
+        "kept": 10560,
+        "rejected": {
+          "zero_reading": 1188,
+          "under_75_percent_coverage": 1253,
+          "provider_flagged": 4
+        }
+      },
+      "PM10": {
+        "raw": 12843,
+        "kept": 11133,
+        "rejected": {
+          "under_75_percent_coverage": 1285,
+          "zero_reading": 414,
+          "provider_flagged": 11
+        }
+      },
+      "PM2.5": {
+        "raw": 12845,
+        "kept": 11175,
+        "rejected": {
+          "under_75_percent_coverage": 1284,
+          "zero_reading": 375,
+          "provider_flagged": 11
+        }
+      }
+    },
+    "227931": {
+      "cache": "data/research/derived/station_targets/4c41537fb8d1a692f3cc7d92d341834c02d98c28eb06304dabf82d69f89d7ac3",
+      "O3": {
+        "raw": 13141,
+        "kept": 11187,
+        "rejected": {
+          "under_75_percent_coverage": 1168,
+          "zero_reading": 785,
+          "provider_flagged": 1
+        }
+      },
+      "PM10": {
+        "raw": 12995,
+        "kept": 10992,
+        "rejected": {
+          "under_75_percent_coverage": 1156,
+          "zero_reading": 626,
+          "provider_flagged": 221
+        }
+      },
+      "PM2.5": {
+        "raw": 12995,
+        "kept": 10981,
+        "rejected": {
+          "under_75_percent_coverage": 1175,
+          "zero_reading": 818,
+          "provider_flagged": 21
+        }
+      }
+    },
+    "228301": {
+      "cache": "data/research/derived/station_targets/4fa3af27e0b8d6456dc19816ad904912ca00d4a33cca44be2a1492bd4bcc378d",
+      "O3": {
+        "raw": 12432,
+        "kept": 11299,
+        "rejected": {
+          "under_75_percent_coverage": 1121,
+          "provider_flagged": 4,
+          "zero_reading": 8
+        }
+      },
+      "PM10": {
+        "raw": 12346,
+        "kept": 11135,
+        "rejected": {
+          "under_75_percent_coverage": 1147,
+          "provider_flagged": 13,
+          "zero_reading": 13,
+          "stuck_sensor_run": 38
+        }
+      },
+      "PM2.5": {
+        "raw": 12383,
+        "kept": 11005,
+        "rejected": {
+          "under_75_percent_coverage": 1194,
+          "provider_flagged": 12,
+          "zero_reading": 153,
+          "stuck_sensor_run": 19
+        }
+      }
+    },
+    "228397": {
+      "cache": "data/research/derived/station_targets/5b15e08d70c136d65f512005911ee672913b4a6c01f39a1ba4ca1b6df35f316c",
+      "O3": {
+        "raw": 12918,
+        "kept": 10753,
+        "rejected": {
+          "zero_reading": 1020,
+          "under_75_percent_coverage": 1145
+        }
+      },
+      "PM10": {
+        "raw": 12851,
+        "kept": 10954,
+        "rejected": {
+          "zero_reading": 715,
+          "under_75_percent_coverage": 1173,
+          "provider_flagged": 9
+        }
+      },
+      "PM2.5": {
+        "raw": 12656,
+        "kept": 10338,
+        "rejected": {
+          "zero_reading": 1159,
+          "under_75_percent_coverage": 1131,
+          "provider_flagged": 28
+        }
+      }
+    },
+    "228840": {
+      "cache": "data/research/derived/station_targets/7718e7aac5233887cb3d7607b5554b94ff4f75dd47190dbd3c02a687fab7978e",
+      "O3": {
+        "raw": 12005,
+        "kept": 9917,
+        "rejected": {
+          "under_75_percent_coverage": 1197,
+          "provider_flagged": 18,
+          "zero_reading": 873
+        }
+      },
+      "PM10": {
+        "raw": 12299,
+        "kept": 10444,
+        "rejected": {
+          "under_75_percent_coverage": 1238,
+          "zero_reading": 576,
+          "provider_flagged": 41
+        }
+      },
+      "PM2.5": {
+        "raw": 11587,
+        "kept": 9642,
+        "rejected": {
+          "under_75_percent_coverage": 1107,
+          "provider_flagged": 614,
+          "zero_reading": 224
+        }
+      }
+    },
+    "229252": {
+      "cache": "data/research/derived/station_targets/9e79fe2ca1841c9eac88e8226b4e9f83ba808c012e34c9306ff4c0b5ec618f46",
+      "O3": {
+        "raw": 13057,
+        "kept": 11949,
+        "rejected": {
+          "under_75_percent_coverage": 1107,
+          "zero_reading": 1
+        }
+      },
+      "PM10": {
+        "raw": 13018,
+        "kept": 11794,
+        "rejected": {
+          "under_75_percent_coverage": 1125,
+          "zero_reading": 96,
+          "provider_flagged": 3
+        }
+      },
+      "PM2.5": {
+        "raw": 12899,
+        "kept": 11529,
+        "rejected": {
+          "under_75_percent_coverage": 1124,
+          "zero_reading": 237,
+          "provider_flagged": 9
+        }
+      }
+    },
+    "229729": {
+      "cache": "data/research/derived/station_targets/e96573463d3963f9fb2ee4e44d94870e948e5f44b85448e48033e78c720f7ff0",
+      "O3": {
+        "raw": 12706,
+        "kept": 11341,
+        "rejected": {
+          "under_75_percent_coverage": 1203,
+          "zero_reading": 149,
+          "provider_flagged": 6,
+          "stuck_sensor_run": 7
+        }
+      },
+      "PM10": {
+        "raw": 12418,
+        "kept": 10808,
+        "rejected": {
+          "zero_reading": 341,
+          "under_75_percent_coverage": 1242,
+          "provider_flagged": 27
+        }
+      },
+      "PM2.5": {
+        "raw": 12418,
+        "kept": 10068,
+        "rejected": {
+          "zero_reading": 1044,
+          "under_75_percent_coverage": 1230,
+          "provider_flagged": 76
+        }
+      }
+    },
+    "229987": {
+      "cache": "data/research/derived/station_targets/46ad9cf6ce8aff5abc73bae9954e81483303bd484758dd6a2d807d4b86aff911",
+      "O3": {
+        "raw": 12145,
+        "kept": 9543,
+        "rejected": {
+          "under_75_percent_coverage": 2602
+        }
+      },
+      "PM10": {
+        "raw": 10869,
+        "kept": 6362,
+        "rejected": {
+          "under_75_percent_coverage": 2404,
+          "stuck_sensor_run": 2103
+        }
+      },
+      "PM2.5": {
+        "raw": 11101,
+        "kept": 6571,
+        "rejected": {
+          "under_75_percent_coverage": 2484,
+          "zero_reading": 1,
+          "stuck_sensor_run": 2045
+        }
+      }
+    },
+    "233414": {
+      "cache": "data/research/derived/station_targets/39cd411dfd91925542bfe53b26a5ee11d68d301f15fd0aaefb56e661dbfde4fa",
+      "O3": {
+        "raw": 12909,
+        "kept": 11628,
+        "rejected": {
+          "under_75_percent_coverage": 1182,
+          "provider_flagged": 1,
+          "zero_reading": 1,
+          "stuck_sensor_run": 97
+        }
+      },
+      "PM10": {
+        "raw": 12854,
+        "kept": 11292,
+        "rejected": {
+          "under_75_percent_coverage": 1289,
+          "zero_reading": 269,
+          "provider_flagged": 4
+        }
+      },
+      "PM2.5": {
+        "raw": 12738,
+        "kept": 11177,
+        "rejected": {
+          "under_75_percent_coverage": 1289,
+          "zero_reading": 266,
+          "provider_flagged": 6
+        }
+      }
+    },
+    "233415": {
+      "cache": "data/research/derived/station_targets/8b4ca80c22edf15b172bd2d230667fceab2a752bb98d1febb100e41ba407044f",
+      "O3": {
+        "raw": 12306,
+        "kept": 11185,
+        "rejected": {
+          "under_75_percent_coverage": 1121
+        }
+      },
+      "PM10": {
+        "raw": 12664,
+        "kept": 11131,
+        "rejected": {
+          "under_75_percent_coverage": 1533
+        }
+      },
+      "PM2.5": {
+        "raw": 12666,
+        "kept": 11152,
+        "rejected": {
+          "under_75_percent_coverage": 1514
+        }
+      }
+    },
+    "270697": {
+      "cache": "data/research/derived/station_targets/6bc797b8f22084250cbc77be7af0676f426dafd38237c481b27b448afda34963",
+      "O3": {
+        "raw": 13010,
+        "kept": 11637,
+        "rejected": {
+          "under_75_percent_coverage": 1290,
+          "zero_reading": 29,
+          "provider_flagged": 27,
+          "stuck_sensor_run": 27
+        }
+      },
+      "PM10": {
+        "raw": 13029,
+        "kept": 11488,
+        "rejected": {
+          "under_75_percent_coverage": 1167,
+          "zero_reading": 374
+        }
+      },
+      "PM2.5": {
+        "raw": 12992,
+        "kept": 11442,
+        "rejected": {
+          "under_75_percent_coverage": 1164,
+          "zero_reading": 386
+        }
+      }
+    },
+    "270704": {
+      "cache": "data/research/derived/station_targets/8aa7de6ffb276fffd6967e1a806b0aa44f2b694dfc8dcdb446c7af160dbea017",
+      "O3": {
+        "raw": 12486,
+        "kept": 10188,
+        "rejected": {
+          "under_75_percent_coverage": 2298
+        }
+      },
+      "PM10": {
+        "raw": 11375,
+        "kept": 9615,
+        "rejected": {
+          "under_75_percent_coverage": 1760
+        }
+      },
+      "PM2.5": {
+        "raw": 11348,
+        "kept": 9583,
+        "rejected": {
+          "under_75_percent_coverage": 1765
+        }
+      }
+    },
+    "270708": {
+      "cache": "data/research/derived/station_targets/08e9e47e3cb9f19346f9ced8c75edbebf4d3caaa67169966b4e70e77da6ea5d0",
+      "O3": {
+        "raw": 12050,
+        "kept": 10271,
+        "rejected": {
+          "under_75_percent_coverage": 1695,
+          "zero_reading": 84
+        }
+      },
+      "PM10": {
+        "raw": 12036,
+        "kept": 9891,
+        "rejected": {
+          "under_75_percent_coverage": 1701,
+          "zero_reading": 444
+        }
+      },
+      "PM2.5": {
+        "raw": 12033,
+        "kept": 10178,
+        "rejected": {
+          "under_75_percent_coverage": 1707,
+          "zero_reading": 148
+        }
+      }
+    },
+    "270721": {
+      "cache": "data/research/derived/station_targets/94b5e93bb2719931d78aa81ad5d1d69b95944d52e45e0d0960b4eb094cee7279",
+      "O3": {
+        "raw": 12455,
+        "kept": 9507,
+        "rejected": {
+          "under_75_percent_coverage": 2946,
+          "zero_reading": 2
+        }
+      },
+      "PM10": {
+        "raw": 11674,
+        "kept": 9609,
+        "rejected": {
+          "under_75_percent_coverage": 1981,
+          "zero_reading": 1,
+          "stuck_sensor_run": 83
+        }
+      },
+      "PM2.5": {
+        "raw": 11611,
+        "kept": 9420,
+        "rejected": {
+          "under_75_percent_coverage": 2051,
+          "zero_reading": 17,
+          "stuck_sensor_run": 123
+        }
+      }
+    },
+    "270723": {
+      "cache": "data/research/derived/station_targets/ded0a26f18b01143fd2440fc94f54cd50f2348f65ab4d8e3818e741cc912f4e2",
+      "O3": {
+        "raw": 12325,
+        "kept": 10240,
+        "rejected": {
+          "under_75_percent_coverage": 2085
+        }
+      },
+      "PM10": {
+        "raw": 11742,
+        "kept": 9764,
+        "rejected": {
+          "under_75_percent_coverage": 1967,
+          "stuck_sensor_run": 11
+        }
+      },
+      "PM2.5": {
+        "raw": 11649,
+        "kept": 9592,
+        "rejected": {
+          "under_75_percent_coverage": 2023,
+          "zero_reading": 1,
+          "stuck_sensor_run": 33
+        }
+      }
+    },
+    "270724": {
+      "cache": "data/research/derived/station_targets/d711c03b3574430ef603211db56747058ee674852427a613e373893067f57905",
+      "O3": {
+        "raw": 12482,
+        "kept": 9091,
+        "rejected": {
+          "under_75_percent_coverage": 3390,
+          "zero_reading": 1
+        }
+      },
+      "PM10": {
+        "raw": 12103,
+        "kept": 9777,
+        "rejected": {
+          "under_75_percent_coverage": 2326
+        }
+      },
+      "PM2.5": {
+        "raw": 11707,
+        "kept": 9669,
+        "rejected": {
+          "under_75_percent_coverage": 2026,
+          "zero_reading": 6,
+          "stuck_sensor_run": 6
+        }
+      }
+    },
+    "270726": {
+      "cache": "data/research/derived/station_targets/f168345727cbce491cd30ccdb61f6a0121338a39c6e73c01abad6f6636cf689f",
+      "O3": {
+        "raw": 10051,
+        "kept": 7288,
+        "rejected": {
+          "under_75_percent_coverage": 2683,
+          "zero_reading": 71,
+          "provider_flagged": 3,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM10": {
+        "raw": 9304,
+        "kept": 7051,
+        "rejected": {
+          "under_75_percent_coverage": 2253
+        }
+      },
+      "PM2.5": {
+        "raw": 9318,
+        "kept": 7148,
+        "rejected": {
+          "under_75_percent_coverage": 2154,
+          "stuck_sensor_run": 16
+        }
+      }
+    },
+    "270771": {
+      "cache": "data/research/derived/station_targets/bb50d13ddf0802324d080527a1b3feda08b5a1e7e183f1322c2b93741799aedc",
+      "O3": {
+        "raw": 12679,
+        "kept": 11125,
+        "rejected": {
+          "under_75_percent_coverage": 1395,
+          "zero_reading": 138,
+          "provider_flagged": 9,
+          "stuck_sensor_run": 12
+        }
+      },
+      "PM10": {
+        "raw": 12666,
+        "kept": 10565,
+        "rejected": {
+          "under_75_percent_coverage": 1418,
+          "zero_reading": 680,
+          "provider_flagged": 3
+        }
+      },
+      "PM2.5": {
+        "raw": 12630,
+        "kept": 10580,
+        "rejected": {
+          "under_75_percent_coverage": 1428,
+          "zero_reading": 622
+        }
+      }
+    },
+    "270777": {
+      "cache": "data/research/derived/station_targets/3b45afa262444c09d1d4d4ef119b2103490357221406433515944819ace7263a",
+      "O3": {
+        "raw": 12966,
+        "kept": 11672,
+        "rejected": {
+          "under_75_percent_coverage": 1245,
+          "zero_reading": 7,
+          "stuck_sensor_run": 42
+        }
+      },
+      "PM10": {
+        "raw": 12937,
+        "kept": 11140,
+        "rejected": {
+          "under_75_percent_coverage": 1300,
+          "zero_reading": 495,
+          "provider_flagged": 2
+        }
+      },
+      "PM2.5": {
+        "raw": 12888,
+        "kept": 11041,
+        "rejected": {
+          "under_75_percent_coverage": 1320,
+          "zero_reading": 526,
+          "provider_flagged": 1
+        }
+      }
+    },
+    "301390": {
+      "cache": "data/research/derived/station_targets/2d869ab4faddbcfc8eb1ab532c0b595e0df090db5033f33f9103df596dece2e2",
+      "O3": {
+        "raw": 12055,
+        "kept": 10277,
+        "rejected": {
+          "under_75_percent_coverage": 1269,
+          "provider_flagged": 251,
+          "zero_reading": 258
+        }
+      },
+      "PM10": {
+        "raw": 11911,
+        "kept": 9637,
+        "rejected": {
+          "under_75_percent_coverage": 1295,
+          "zero_reading": 928,
+          "provider_flagged": 51
+        }
+      },
+      "PM2.5": {
+        "raw": 11937,
+        "kept": 10026,
+        "rejected": {
+          "under_75_percent_coverage": 1282,
+          "zero_reading": 629
+        }
+      }
+    },
+    "304956": {
+      "cache": "data/research/derived/station_targets/13a505fb2b32f692eac57ccb1b8ba1382b2a914b6215c4f9ce9d1d7f30310739",
+      "O3": {
+        "raw": 10411,
+        "kept": 7774,
+        "rejected": {
+          "zero_reading": 309,
+          "under_75_percent_coverage": 2320,
+          "provider_flagged": 8
+        }
+      },
+      "PM10": {
+        "raw": 9294,
+        "kept": 6527,
+        "rejected": {
+          "under_75_percent_coverage": 2767
+        }
+      },
+      "PM2.5": {
+        "raw": 8644,
+        "kept": 5325,
+        "rejected": {
+          "under_75_percent_coverage": 3292,
+          "stuck_sensor_run": 27
+        }
+      }
+    },
+    "313411": {
+      "cache": "data/research/derived/station_targets/923208bc83b2b182ded16e699705f17a4124f73c7b6ff71f7e72be8a6f4c919b",
+      "O3": {
+        "raw": 6824,
+        "kept": 1607,
+        "rejected": {
+          "zero_reading": 4436,
+          "under_75_percent_coverage": 781
+        }
+      },
+      "PM10": {
+        "raw": 6593,
+        "kept": 4327,
+        "rejected": {
+          "zero_reading": 1501,
+          "under_75_percent_coverage": 764,
+          "provider_flagged": 1
+        }
+      },
+      "PM2.5": {
+        "raw": 6207,
+        "kept": 4754,
+        "rejected": {
+          "under_75_percent_coverage": 697,
+          "zero_reading": 756
+        }
+      }
+    },
+    "330021": {
+      "cache": "data/research/derived/station_targets/78698319fa569491cfedc020fb200c14ca8fca0f5c3ab2f2d5989c31c9618e0d",
+      "O3": {
+        "raw": 12037,
+        "kept": 10718,
+        "rejected": {
+          "under_75_percent_coverage": 1144,
+          "zero_reading": 129,
+          "stuck_sensor_run": 46
+        }
+      },
+      "PM10": {
+        "raw": 11883,
+        "kept": 10068,
+        "rejected": {
+          "under_75_percent_coverage": 1152,
+          "zero_reading": 651,
+          "provider_flagged": 12
+        }
+      },
+      "PM2.5": {
+        "raw": 11886,
+        "kept": 10070,
+        "rejected": {
+          "under_75_percent_coverage": 1155,
+          "zero_reading": 651,
+          "provider_flagged": 10
+        }
+      }
+    },
+    "346438": {
+      "cache": "data/research/derived/station_targets/5d3f283b0220e2eacaac3f6173ee2c334814b689991e4ff46128f75014bc00f5",
+      "O3": {
+        "raw": 10937,
+        "kept": 4068,
+        "rejected": {
+          "zero_reading": 5509,
+          "under_75_percent_coverage": 1334,
+          "provider_flagged": 26
+        }
+      },
+      "PM10": {
+        "raw": 12331,
+        "kept": 10154,
+        "rejected": {
+          "under_75_percent_coverage": 1398,
+          "zero_reading": 779
+        }
+      },
+      "PM2.5": {
+        "raw": 12435,
+        "kept": 10217,
+        "rejected": {
+          "under_75_percent_coverage": 1405,
+          "zero_reading": 812,
+          "provider_flagged": 1
+        }
+      }
+    },
+    "358467": {
+      "cache": "data/research/derived/station_targets/62da03b30ff2676c7ff59b40496678b0673e2fe49889c236d1604879ba1e9737",
+      "O3": {
+        "raw": 11878,
+        "kept": 10504,
+        "rejected": {
+          "under_75_percent_coverage": 1307,
+          "provider_flagged": 20,
+          "stuck_sensor_run": 47
+        }
+      },
+      "PM10": {
+        "raw": 12276,
+        "kept": 10238,
+        "rejected": {
+          "zero_reading": 617,
+          "under_75_percent_coverage": 1421
+        }
+      },
+      "PM2.5": {
+        "raw": 12307,
+        "kept": 10048,
+        "rejected": {
+          "zero_reading": 828,
+          "under_75_percent_coverage": 1431
+        }
+      }
+    },
+    "361378": {
+      "cache": "data/research/derived/station_targets/84fd9460fe684fe2199a28efbc0db86caba8bdbd4e756cb32925c107dca7b736",
+      "O3": {
+        "raw": 13023,
+        "kept": 11265,
+        "rejected": {
+          "under_75_percent_coverage": 1758
+        }
+      },
+      "PM10": {
+        "raw": 12929,
+        "kept": 11714,
+        "rejected": {
+          "under_75_percent_coverage": 1215
+        }
+      },
+      "PM2.5": {
+        "raw": 12874,
+        "kept": 11645,
+        "rejected": {
+          "under_75_percent_coverage": 1229
+        }
+      }
+    },
+    "3409317": {
+      "cache": "data/research/derived/station_targets/73e760b0a2777ef61fa65391c3ac1aabe784adb1e1c243e5204bf7f4c5298e01",
+      "O3": {
+        "raw": 12473,
+        "kept": 8303,
+        "rejected": {
+          "under_75_percent_coverage": 1319,
+          "provider_flagged": 5,
+          "zero_reading": 25,
+          "stuck_sensor_run": 2821
+        }
+      },
+      "PM10": {
+        "raw": 11956,
+        "kept": 9987,
+        "rejected": {
+          "under_75_percent_coverage": 1969
+        }
+      },
+      "PM2.5": {
+        "raw": 11661,
+        "kept": 9512,
+        "rejected": {
+          "under_75_percent_coverage": 2121,
+          "stuck_sensor_run": 28
+        }
+      }
+    },
+    "3409322": {
+      "cache": "data/research/derived/station_targets/3d6a3b7a175c2c4485272b06ae83b449030ec4da8b693aa68f902258a1c1ec79",
+      "O3": {
+        "raw": 5249,
+        "kept": 4471,
+        "rejected": {
+          "under_75_percent_coverage": 771,
+          "provider_flagged": 4,
+          "zero_reading": 3
+        }
+      },
+      "PM10": {
+        "raw": 5589,
+        "kept": 4649,
+        "rejected": {
+          "under_75_percent_coverage": 832,
+          "zero_reading": 9,
+          "stuck_sensor_run": 99
+        }
+      },
+      "PM2.5": {
+        "raw": 5391,
+        "kept": 4493,
+        "rejected": {
+          "under_75_percent_coverage": 869,
+          "zero_reading": 19,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 8
+        }
+      }
+    },
+    "3409346": {
+      "cache": "data/research/derived/station_targets/27518aadb17fdf4cbd727cd220f0e492c9de5b0648718fd3936d227b6fb49fd0",
+      "O3": {
+        "raw": 8705,
+        "kept": 7231,
+        "rejected": {
+          "under_75_percent_coverage": 1474
+        }
+      },
+      "PM10": {
+        "raw": 8550,
+        "kept": 5881,
+        "rejected": {
+          "under_75_percent_coverage": 1382,
+          "provider_flagged": 77,
+          "zero_reading": 945,
+          "stuck_sensor_run": 265
+        }
+      },
+      "PM2.5": {
+        "raw": 6474,
+        "kept": 5418,
+        "rejected": {
+          "under_75_percent_coverage": 942,
+          "zero_reading": 35,
+          "stuck_sensor_run": 79
+        }
+      }
+    },
+    "3409354": {
+      "cache": "data/research/derived/station_targets/7c0392a4a2c02fc97fb307e51faea4d946205bf879de283f9643cf8b5f920f8b",
+      "O3": {
+        "raw": 5803,
+        "kept": 3376,
+        "rejected": {
+          "under_75_percent_coverage": 2291,
+          "provider_flagged": 136
+        }
+      },
+      "PM10": {
+        "raw": 5003,
+        "kept": 4297,
+        "rejected": {
+          "under_75_percent_coverage": 593,
+          "provider_flagged": 113
+        }
+      },
+      "PM2.5": {
+        "raw": 7149,
+        "kept": 5382,
+        "rejected": {
+          "under_75_percent_coverage": 1730,
+          "provider_flagged": 9,
+          "stuck_sensor_run": 28
+        }
+      }
+    },
+    "3409361": {
+      "cache": "data/research/derived/station_targets/ad98bdc668314dc143056cfd61da383e72a804a2e44e8acd5f1a4d7dab4d5be7",
+      "O3": {
+        "raw": 12313,
+        "kept": 10938,
+        "rejected": {
+          "under_75_percent_coverage": 1288,
+          "zero_reading": 5,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 80
+        }
+      },
+      "PM10": {
+        "raw": 12383,
+        "kept": 11082,
+        "rejected": {
+          "under_75_percent_coverage": 1289,
+          "zero_reading": 12
+        }
+      },
+      "PM2.5": {
+        "raw": 12341,
+        "kept": 11032,
+        "rejected": {
+          "under_75_percent_coverage": 1286,
+          "zero_reading": 23
+        }
+      }
+    },
+    "3409362": {
+      "cache": "data/research/derived/station_targets/fcb13ea6a89780d57676abb4240e908deda698c954fdbbfe03b9385eb331a8e7",
+      "O3": {
+        "raw": 12458,
+        "kept": 9883,
+        "rejected": {
+          "under_75_percent_coverage": 1247,
+          "provider_flagged": 11,
+          "zero_reading": 6,
+          "stuck_sensor_run": 1311
+        }
+      },
+      "PM10": {
+        "raw": 12303,
+        "kept": 10965,
+        "rejected": {
+          "zero_reading": 45,
+          "under_75_percent_coverage": 1272,
+          "provider_flagged": 6,
+          "stuck_sensor_run": 15
+        }
+      },
+      "PM2.5": {
+        "raw": 12233,
+        "kept": 10870,
+        "rejected": {
+          "zero_reading": 65,
+          "under_75_percent_coverage": 1261,
+          "provider_flagged": 37
+        }
+      }
+    },
+    "3409365": {
+      "cache": "data/research/derived/station_targets/e4f11289b08577d08f884eec95c184fdfcf4925e1ff323de42507788e2a3ba06",
+      "O3": {
+        "raw": 11620,
+        "kept": 8041,
+        "rejected": {
+          "under_75_percent_coverage": 1597,
+          "zero_reading": 1034,
+          "provider_flagged": 16,
+          "stuck_sensor_run": 932
+        }
+      },
+      "PM10": {
+        "raw": 11592,
+        "kept": 9754,
+        "rejected": {
+          "under_75_percent_coverage": 1591,
+          "provider_flagged": 27,
+          "zero_reading": 45,
+          "stuck_sensor_run": 175
+        }
+      },
+      "PM2.5": {
+        "raw": 11595,
+        "kept": 9138,
+        "rejected": {
+          "under_75_percent_coverage": 1594,
+          "zero_reading": 181,
+          "provider_flagged": 82,
+          "stuck_sensor_run": 600
+        }
+      }
+    },
+    "3409366": {
+      "cache": "data/research/derived/station_targets/dc3a530d3893718152c8875e2f54286161bc26c0b3d02bf41bc20dc035b9567d",
+      "O3": {
+        "raw": 12060,
+        "kept": 10995,
+        "rejected": {
+          "under_75_percent_coverage": 1045,
+          "stuck_sensor_run": 20
+        }
+      },
+      "PM10": {
+        "raw": 12002,
+        "kept": 10792,
+        "rejected": {
+          "under_75_percent_coverage": 1055,
+          "zero_reading": 34,
+          "provider_flagged": 26,
+          "stuck_sensor_run": 95
+        }
+      },
+      "PM2.5": {
+        "raw": 11999,
+        "kept": 10717,
+        "rejected": {
+          "under_75_percent_coverage": 1059,
+          "zero_reading": 19,
+          "provider_flagged": 14,
+          "stuck_sensor_run": 190
+        }
+      }
+    },
+    "3409367": {
+      "cache": "data/research/derived/station_targets/ede1a2d8428169c0a31e261a2ae1fef03c057dcba53445c827e09bf1d444e477",
+      "O3": {
+        "raw": 8895,
+        "kept": 7778,
+        "rejected": {
+          "under_75_percent_coverage": 1106,
+          "provider_flagged": 11
+        }
+      },
+      "PM10": {
+        "raw": 11653,
+        "kept": 9381,
+        "rejected": {
+          "under_75_percent_coverage": 2210,
+          "provider_flagged": 52,
+          "zero_reading": 10
+        }
+      },
+      "PM2.5": {
+        "raw": 11339,
+        "kept": 8627,
+        "rejected": {
+          "under_75_percent_coverage": 2598,
+          "provider_flagged": 77,
+          "zero_reading": 29,
+          "stuck_sensor_run": 8
+        }
+      }
+    },
+    "3409369": {
+      "cache": "data/research/derived/station_targets/e45a1edc0a9f1d8799783f1239b3c5e9c607d6e823c9c103679a84611602d1e2",
+      "O3": {
+        "raw": 12786,
+        "kept": 10670,
+        "rejected": {
+          "under_75_percent_coverage": 2116
+        }
+      },
+      "PM10": {
+        "raw": 12677,
+        "kept": 10891,
+        "rejected": {
+          "under_75_percent_coverage": 1786
+        }
+      },
+      "PM2.5": {
+        "raw": 12698,
+        "kept": 10966,
+        "rejected": {
+          "under_75_percent_coverage": 1732
+        }
+      }
+    },
+    "3409370": {
+      "cache": "data/research/derived/station_targets/88ca8ab612a17955ea19f9d33a90bbd3c67904caf0f5e9e96d14cd4c483bb96d",
+      "O3": {
+        "raw": 12668,
+        "kept": 10713,
+        "rejected": {
+          "under_75_percent_coverage": 1955
+        }
+      },
+      "PM10": {
+        "raw": 12502,
+        "kept": 10792,
+        "rejected": {
+          "under_75_percent_coverage": 1704,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM2.5": {
+        "raw": 12434,
+        "kept": 10740,
+        "rejected": {
+          "under_75_percent_coverage": 1694
+        }
+      }
+    },
+    "3409372": {
+      "cache": "data/research/derived/station_targets/0dcba941256a79b018bee9e340640cc4ea59d44838e8f0eb81e567eb3ae14046",
+      "O3": {
+        "raw": 5171,
+        "kept": 2217,
+        "rejected": {
+          "under_75_percent_coverage": 2248,
+          "stuck_sensor_run": 706
+        }
+      },
+      "PM10": {
+        "raw": 9896,
+        "kept": 5168,
+        "rejected": {
+          "under_75_percent_coverage": 4640,
+          "provider_flagged": 19,
+          "stuck_sensor_run": 69
+        }
+      },
+      "PM2.5": {
+        "raw": 9422,
+        "kept": 4610,
+        "rejected": {
+          "under_75_percent_coverage": 4666,
+          "provider_flagged": 77,
+          "stuck_sensor_run": 69
+        }
+      }
+    },
+    "3409382": {
+      "cache": "data/research/derived/station_targets/207bb1c51f8f3e1644163cb8bfd1a89c52e6e36a3d85766885d1e3b02b5f1b6c",
+      "O3": {
+        "raw": 12042,
+        "kept": 9493,
+        "rejected": {
+          "under_75_percent_coverage": 1229,
+          "provider_flagged": 1060,
+          "zero_reading": 103,
+          "stuck_sensor_run": 157
+        }
+      },
+      "PM10": {
+        "raw": 11901,
+        "kept": 10487,
+        "rejected": {
+          "under_75_percent_coverage": 1390,
+          "zero_reading": 15,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 7
+        }
+      },
+      "PM2.5": {
+        "raw": 11886,
+        "kept": 10452,
+        "rejected": {
+          "under_75_percent_coverage": 1379,
+          "provider_flagged": 45,
+          "zero_reading": 10
+        }
+      }
+    },
+    "3409394": {
+      "cache": "data/research/derived/station_targets/e16415f87273d747e3dd2169921569a8e0ae40468556b7ae21dfe07e0bd9b571",
+      "O3": {
+        "raw": 9819,
+        "kept": 0,
+        "rejected": {
+          "zero_reading": 8503,
+          "under_75_percent_coverage": 1316
+        }
+      },
+      "PM10": {
+        "raw": 11947,
+        "kept": 10178,
+        "rejected": {
+          "under_75_percent_coverage": 1554,
+          "zero_reading": 183,
+          "stuck_sensor_run": 32
+        }
+      },
+      "PM2.5": {
+        "raw": 11956,
+        "kept": 10240,
+        "rejected": {
+          "under_75_percent_coverage": 1552,
+          "zero_reading": 114,
+          "stuck_sensor_run": 50
+        }
+      }
+    },
+    "3409401": {
+      "cache": "data/research/derived/station_targets/276420fbaea5b9962fca4b4a1218d1e1ecfe37226456c1620d01773d52d7574f",
+      "O3": {
+        "raw": 13011,
+        "kept": 11437,
+        "rejected": {
+          "under_75_percent_coverage": 1574
+        }
+      },
+      "PM10": {
+        "raw": 13000,
+        "kept": 11724,
+        "rejected": {
+          "under_75_percent_coverage": 1276
+        }
+      },
+      "PM2.5": {
+        "raw": 12964,
+        "kept": 11659,
+        "rejected": {
+          "under_75_percent_coverage": 1305
+        }
+      }
+    },
+    "3409402": {
+      "cache": "data/research/derived/station_targets/84180baef8bcfae5185a183d77c9fbf36b002a7e7db04b2f174ce760f28c7f0b",
+      "O3": {
+        "raw": 13181,
+        "kept": 11334,
+        "rejected": {
+          "under_75_percent_coverage": 1847
+        }
+      },
+      "PM10": {
+        "raw": 13183,
+        "kept": 11769,
+        "rejected": {
+          "under_75_percent_coverage": 1414
+        }
+      },
+      "PM2.5": {
+        "raw": 13132,
+        "kept": 11695,
+        "rejected": {
+          "under_75_percent_coverage": 1437
+        }
+      }
+    },
+    "3409403": {
+      "cache": "data/research/derived/station_targets/7aab4e1faddd537e97067e792cffeca75a5bf05ab3676ba1ab88875a210bd27c",
+      "O3": {
+        "raw": 12483,
+        "kept": 10725,
+        "rejected": {
+          "under_75_percent_coverage": 1758
+        }
+      },
+      "PM10": {
+        "raw": 12425,
+        "kept": 11047,
+        "rejected": {
+          "under_75_percent_coverage": 1378
+        }
+      },
+      "PM2.5": {
+        "raw": 12397,
+        "kept": 11045,
+        "rejected": {
+          "under_75_percent_coverage": 1352
+        }
+      }
+    },
+    "3409406": {
+      "cache": "data/research/derived/station_targets/7d1d996dde32399df518708823c79ea71cd9fb530b9d18c1b76495af3c9ae474",
+      "O3": {
+        "raw": 12957,
+        "kept": 11188,
+        "rejected": {
+          "under_75_percent_coverage": 1769
+        }
+      },
+      "PM10": {
+        "raw": 13038,
+        "kept": 11652,
+        "rejected": {
+          "under_75_percent_coverage": 1386
+        }
+      },
+      "PM2.5": {
+        "raw": 13006,
+        "kept": 11574,
+        "rejected": {
+          "under_75_percent_coverage": 1432
+        }
+      }
+    },
+    "3409416": {
+      "cache": "data/research/derived/station_targets/bade2b052bd1fe57fd0339aa4534d213ce3c0724cab5b915bc14350d42c2468f",
+      "O3": {
+        "raw": 12639,
+        "kept": 10905,
+        "rejected": {
+          "under_75_percent_coverage": 1729,
+          "zero_reading": 5
+        }
+      },
+      "PM10": {
+        "raw": 12582,
+        "kept": 11242,
+        "rejected": {
+          "under_75_percent_coverage": 1340
+        }
+      },
+      "PM2.5": {
+        "raw": 12523,
+        "kept": 11031,
+        "rejected": {
+          "under_75_percent_coverage": 1492
+        }
+      }
+    },
+    "3409418": {
+      "cache": "data/research/derived/station_targets/ee17905064c59948c1a62d3bb05ea67118a78a3fcf865b42897b39617a74466e",
+      "O3": {
+        "raw": 12933,
+        "kept": 11030,
+        "rejected": {
+          "under_75_percent_coverage": 1903
+        }
+      },
+      "PM10": {
+        "raw": 12743,
+        "kept": 11287,
+        "rejected": {
+          "under_75_percent_coverage": 1456
+        }
+      },
+      "PM2.5": {
+        "raw": 12831,
+        "kept": 11357,
+        "rejected": {
+          "under_75_percent_coverage": 1474
+        }
+      }
+    },
+    "3409423": {
+      "cache": "data/research/derived/station_targets/30a3968518f9cac8b0cb9f45fe6684678001d15a1b9863c4d71e6084e929d15b",
+      "O3": {
+        "raw": 12854,
+        "kept": 10962,
+        "rejected": {
+          "under_75_percent_coverage": 1891,
+          "provider_flagged": 1
+        }
+      },
+      "PM10": {
+        "raw": 12785,
+        "kept": 11043,
+        "rejected": {
+          "under_75_percent_coverage": 1742
+        }
+      },
+      "PM2.5": {
+        "raw": 12720,
+        "kept": 10962,
+        "rejected": {
+          "under_75_percent_coverage": 1758
+        }
+      }
+    },
+    "3409425": {
+      "cache": "data/research/derived/station_targets/5f8ac6ba71ae6a6df1ec8dad5d192d25a262c767b09205dc0def46032dba2522",
+      "O3": {
+        "raw": 13157,
+        "kept": 11501,
+        "rejected": {
+          "under_75_percent_coverage": 1655,
+          "zero_reading": 1
+        }
+      },
+      "PM10": {
+        "raw": 13091,
+        "kept": 11735,
+        "rejected": {
+          "under_75_percent_coverage": 1356
+        }
+      },
+      "PM2.5": {
+        "raw": 13037,
+        "kept": 11655,
+        "rejected": {
+          "under_75_percent_coverage": 1382
+        }
+      }
+    },
+    "3409428": {
+      "cache": "data/research/derived/station_targets/48529ffba1ba1d36acdb39a30fc99ab7ea29a689fb20403f96d308c15635bae4",
+      "O3": {
+        "raw": 12647,
+        "kept": 10660,
+        "rejected": {
+          "under_75_percent_coverage": 1987
+        }
+      },
+      "PM10": {
+        "raw": 12367,
+        "kept": 10813,
+        "rejected": {
+          "under_75_percent_coverage": 1554
+        }
+      },
+      "PM2.5": {
+        "raw": 12141,
+        "kept": 10338,
+        "rejected": {
+          "under_75_percent_coverage": 1803
+        }
+      }
+    },
+    "3409429": {
+      "cache": "data/research/derived/station_targets/0468fed72246a8b9a1f0717f02243548d4b0aaa4b4c644526f9e0097bd435b75",
+      "O3": {
+        "raw": 13030,
+        "kept": 11363,
+        "rejected": {
+          "under_75_percent_coverage": 1667
+        }
+      },
+      "PM10": {
+        "raw": 13046,
+        "kept": 11665,
+        "rejected": {
+          "under_75_percent_coverage": 1381
+        }
+      },
+      "PM2.5": {
+        "raw": 13005,
+        "kept": 11605,
+        "rejected": {
+          "under_75_percent_coverage": 1400
+        }
+      }
+    },
+    "3409435": {
+      "cache": "data/research/derived/station_targets/51dd4fad14aa66722a2b24c5dc807adc86de22a1b1b9f2610b63581fcffab1e3",
+      "O3": {
+        "raw": 11883,
+        "kept": 9798,
+        "rejected": {
+          "under_75_percent_coverage": 1820,
+          "provider_flagged": 96,
+          "zero_reading": 23,
+          "stuck_sensor_run": 146
+        }
+      },
+      "PM10": {
+        "raw": 11845,
+        "kept": 10025,
+        "rejected": {
+          "under_75_percent_coverage": 1797,
+          "zero_reading": 18,
+          "provider_flagged": 5
+        }
+      },
+      "PM2.5": {
+        "raw": 10957,
+        "kept": 9283,
+        "rejected": {
+          "under_75_percent_coverage": 1631,
+          "provider_flagged": 30,
+          "zero_reading": 13
+        }
+      }
+    },
+    "3409436": {
+      "cache": "data/research/derived/station_targets/380fd58ebe5d6181dbd593e03a16213c071bad4d501418d1b890aee8baa63c80",
+      "O3": {
+        "raw": 12055,
+        "kept": 10108,
+        "rejected": {
+          "under_75_percent_coverage": 1901,
+          "zero_reading": 41,
+          "provider_flagged": 5
+        }
+      },
+      "PM10": {
+        "raw": 12081,
+        "kept": 10092,
+        "rejected": {
+          "under_75_percent_coverage": 1853,
+          "zero_reading": 78,
+          "provider_flagged": 13,
+          "stuck_sensor_run": 45
+        }
+      },
+      "PM2.5": {
+        "raw": 12072,
+        "kept": 10017,
+        "rejected": {
+          "under_75_percent_coverage": 1860,
+          "provider_flagged": 8,
+          "zero_reading": 49,
+          "invalid_value_or_unit": 7,
+          "stuck_sensor_run": 131
+        }
+      }
+    },
+    "3409440": {
+      "cache": "data/research/derived/station_targets/cfa770aa4524cd88935deeca654239d4114ebe0fd1ff44c4db9560efe1a73367",
+      "O3": {
+        "raw": 12387,
+        "kept": 8339,
+        "rejected": {
+          "under_75_percent_coverage": 3849,
+          "zero_reading": 131,
+          "provider_flagged": 54,
+          "invalid_value_or_unit": 8,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM10": {
+        "raw": 12297,
+        "kept": 8079,
+        "rejected": {
+          "under_75_percent_coverage": 4149,
+          "provider_flagged": 19,
+          "zero_reading": 36,
+          "stuck_sensor_run": 14
+        }
+      },
+      "PM2.5": {
+        "raw": 12349,
+        "kept": 8404,
+        "rejected": {
+          "under_75_percent_coverage": 3870,
+          "zero_reading": 47,
+          "provider_flagged": 2,
+          "stuck_sensor_run": 26
+        }
+      }
+    },
+    "3409441": {
+      "cache": "data/research/derived/station_targets/0af50a46b7971bff51c8ae3831581d9b472eb41c6ae4cafdb41827810ee5ec8d",
+      "O3": {
+        "raw": 9392,
+        "kept": 8120,
+        "rejected": {
+          "under_75_percent_coverage": 1251,
+          "zero_reading": 16,
+          "provider_flagged": 5
+        }
+      },
+      "PM10": {
+        "raw": 9818,
+        "kept": 8083,
+        "rejected": {
+          "under_75_percent_coverage": 1688,
+          "provider_flagged": 9,
+          "zero_reading": 24,
+          "stuck_sensor_run": 14
+        }
+      },
+      "PM2.5": {
+        "raw": 9531,
+        "kept": 7936,
+        "rejected": {
+          "under_75_percent_coverage": 1524,
+          "provider_flagged": 37,
+          "zero_reading": 34
+        }
+      }
+    },
+    "3409443": {
+      "cache": "data/research/derived/station_targets/4d5027356b912ba603f667b8d8d377fdb5da3b6e579044dcfe1d961349fd16c6",
+      "O3": {
+        "raw": 12841,
+        "kept": 11083,
+        "rejected": {
+          "under_75_percent_coverage": 1758
+        }
+      },
+      "PM10": {
+        "raw": 12788,
+        "kept": 11351,
+        "rejected": {
+          "under_75_percent_coverage": 1437
+        }
+      },
+      "PM2.5": {
+        "raw": 12695,
+        "kept": 11170,
+        "rejected": {
+          "under_75_percent_coverage": 1525
+        }
+      }
+    },
+    "3409444": {
+      "cache": "data/research/derived/station_targets/79237e27c954f9bc7a96dd4a84d956439a21c96d58c3306e9ada28a0f5700521",
+      "O3": {
+        "raw": 13112,
+        "kept": 11504,
+        "rejected": {
+          "under_75_percent_coverage": 1608
+        }
+      },
+      "PM10": {
+        "raw": 13068,
+        "kept": 11826,
+        "rejected": {
+          "under_75_percent_coverage": 1242
+        }
+      },
+      "PM2.5": {
+        "raw": 13043,
+        "kept": 11792,
+        "rejected": {
+          "under_75_percent_coverage": 1251
+        }
+      }
+    },
+    "3409448": {
+      "cache": "data/research/derived/station_targets/5708096fe21bb9cf633436037bd9d4260b556a0ed63752252b53dc5460882a60",
+      "O3": {
+        "raw": 12622,
+        "kept": 10361,
+        "rejected": {
+          "under_75_percent_coverage": 1897,
+          "zero_reading": 10,
+          "provider_flagged": 354
+        }
+      },
+      "PM10": {
+        "raw": 12510,
+        "kept": 10552,
+        "rejected": {
+          "under_75_percent_coverage": 1892,
+          "zero_reading": 11,
+          "stuck_sensor_run": 55
+        }
+      },
+      "PM2.5": {
+        "raw": 12630,
+        "kept": 10685,
+        "rejected": {
+          "under_75_percent_coverage": 1898,
+          "zero_reading": 17,
+          "provider_flagged": 22,
+          "stuck_sensor_run": 8
+        }
+      }
+    },
+    "3409449": {
+      "cache": "data/research/derived/station_targets/276b3f8f4c63073c8646f07f8becc24aa7ee65c0b3b87d4be601d5f159de22a8",
+      "O3": {
+        "raw": 12617,
+        "kept": 11047,
+        "rejected": {
+          "under_75_percent_coverage": 1527,
+          "provider_flagged": 13,
+          "zero_reading": 30
+        }
+      },
+      "PM10": {
+        "raw": 12677,
+        "kept": 11161,
+        "rejected": {
+          "under_75_percent_coverage": 1488,
+          "zero_reading": 12,
+          "provider_flagged": 16
+        }
+      },
+      "PM2.5": {
+        "raw": 12672,
+        "kept": 11143,
+        "rejected": {
+          "under_75_percent_coverage": 1504,
+          "zero_reading": 15,
+          "provider_flagged": 10
+        }
+      }
+    },
+    "3409451": {
+      "cache": "data/research/derived/station_targets/af1a0597f3e3c544af0f307708b78d4454e3e3ad10b469a3ed84f93764f634b7",
+      "O3": {
+        "raw": 7120,
+        "kept": 2638,
+        "rejected": {
+          "under_75_percent_coverage": 4479,
+          "zero_reading": 3
+        }
+      },
+      "PM10": {
+        "raw": 11461,
+        "kept": 6114,
+        "rejected": {
+          "under_75_percent_coverage": 5336,
+          "zero_reading": 11
+        }
+      },
+      "PM2.5": {
+        "raw": 11234,
+        "kept": 5646,
+        "rejected": {
+          "under_75_percent_coverage": 5580,
+          "zero_reading": 8
+        }
+      }
+    },
+    "3409452": {
+      "cache": "data/research/derived/station_targets/b1e95f7ff02ac3e4e7170cdb45062e3e2383c777c6640ea6b4485a69ab7b029d",
+      "O3": {
+        "raw": 12713,
+        "kept": 11015,
+        "rejected": {
+          "under_75_percent_coverage": 1596,
+          "zero_reading": 44,
+          "provider_flagged": 58
+        }
+      },
+      "PM10": {
+        "raw": 12680,
+        "kept": 10978,
+        "rejected": {
+          "under_75_percent_coverage": 1644,
+          "zero_reading": 53,
+          "provider_flagged": 5
+        }
+      },
+      "PM2.5": {
+        "raw": 12579,
+        "kept": 10838,
+        "rejected": {
+          "under_75_percent_coverage": 1643,
+          "zero_reading": 60,
+          "stuck_sensor_run": 38
+        }
+      }
+    },
+    "3409459": {
+      "cache": "data/research/derived/station_targets/92ffa164406c5ca30aa6ea9f176d63818bb53173d0bc2c6ae5c8f25ef160adaa",
+      "O3": {
+        "raw": 12858,
+        "kept": 10386,
+        "rejected": {
+          "under_75_percent_coverage": 2332,
+          "zero_reading": 134,
+          "provider_flagged": 6
+        }
+      },
+      "PM10": {
+        "raw": 12861,
+        "kept": 10529,
+        "rejected": {
+          "under_75_percent_coverage": 2297,
+          "zero_reading": 35
+        }
+      },
+      "PM2.5": {
+        "raw": 12833,
+        "kept": 10492,
+        "rejected": {
+          "under_75_percent_coverage": 2314,
+          "provider_flagged": 4,
+          "zero_reading": 23
+        }
+      }
+    },
+    "3409464": {
+      "cache": "data/research/derived/station_targets/80928bd743cc9cb20e80ddb30b99257a3e9602884d8b7874a5ea0a7ccb79799e",
+      "O3": {
+        "raw": 13131,
+        "kept": 11716,
+        "rejected": {
+          "under_75_percent_coverage": 1285,
+          "zero_reading": 129,
+          "provider_flagged": 1
+        }
+      },
+      "PM10": {
+        "raw": 13081,
+        "kept": 11825,
+        "rejected": {
+          "under_75_percent_coverage": 1245,
+          "zero_reading": 10,
+          "provider_flagged": 1
+        }
+      },
+      "PM2.5": {
+        "raw": 13117,
+        "kept": 11844,
+        "rejected": {
+          "under_75_percent_coverage": 1260,
+          "zero_reading": 13
+        }
+      }
+    },
+    "3409469": {
+      "cache": "data/research/derived/station_targets/927df38a9d9921f99604a9526be2b65b6b9f2ba7554e2a95c533936dc33bfd26",
+      "O3": {
+        "raw": 12882,
+        "kept": 11445,
+        "rejected": {
+          "under_75_percent_coverage": 1305,
+          "provider_flagged": 8,
+          "zero_reading": 124
+        }
+      },
+      "PM10": {
+        "raw": 12876,
+        "kept": 11566,
+        "rejected": {
+          "under_75_percent_coverage": 1297,
+          "provider_flagged": 4,
+          "zero_reading": 9
+        }
+      },
+      "PM2.5": {
+        "raw": 12852,
+        "kept": 11485,
+        "rejected": {
+          "under_75_percent_coverage": 1299,
+          "provider_flagged": 16,
+          "zero_reading": 52
+        }
+      }
+    },
+    "3409470": {
+      "cache": "data/research/derived/station_targets/899c792ab4973ed45c96a8edc6cc66cbc1007e7abf0b94c610df4ab2a578fbbd",
+      "O3": {
+        "raw": 12581,
+        "kept": 11065,
+        "rejected": {
+          "under_75_percent_coverage": 1431,
+          "zero_reading": 25,
+          "provider_flagged": 3,
+          "stuck_sensor_run": 57
+        }
+      },
+      "PM10": {
+        "raw": 12590,
+        "kept": 11081,
+        "rejected": {
+          "under_75_percent_coverage": 1474,
+          "zero_reading": 5,
+          "provider_flagged": 9,
+          "stuck_sensor_run": 21
+        }
+      },
+      "PM2.5": {
+        "raw": 12582,
+        "kept": 10830,
+        "rejected": {
+          "under_75_percent_coverage": 1474,
+          "zero_reading": 6,
+          "provider_flagged": 6,
+          "stuck_sensor_run": 266
+        }
+      }
+    },
+    "3409471": {
+      "cache": "data/research/derived/station_targets/9454febb5e8837ca22c16acc598d0bc3d424058bfd08d3d55e0fc6aa74ff7a63",
+      "O3": {
+        "raw": 6782,
+        "kept": 2499,
+        "rejected": {
+          "under_75_percent_coverage": 4264,
+          "provider_flagged": 17,
+          "zero_reading": 2
+        }
+      },
+      "PM10": {
+        "raw": 11732,
+        "kept": 7679,
+        "rejected": {
+          "under_75_percent_coverage": 4042,
+          "provider_flagged": 8,
+          "zero_reading": 3
+        }
+      },
+      "PM2.5": {
+        "raw": 11605,
+        "kept": 6945,
+        "rejected": {
+          "under_75_percent_coverage": 4631,
+          "zero_reading": 11,
+          "provider_flagged": 18
+        }
+      }
+    },
+    "3409474": {
+      "cache": "data/research/derived/station_targets/00dc4093936ce92c0564539178e61c27a070d6315cacf7514bfe5e90a08da4c0",
+      "O3": {
+        "raw": 6551,
+        "kept": 2104,
+        "rejected": {
+          "under_75_percent_coverage": 4377,
+          "provider_flagged": 44,
+          "zero_reading": 4,
+          "stuck_sensor_run": 22
+        }
+      },
+      "PM10": {
+        "raw": 9785,
+        "kept": 4433,
+        "rejected": {
+          "under_75_percent_coverage": 5312,
+          "provider_flagged": 8,
+          "zero_reading": 32
+        }
+      },
+      "PM2.5": {
+        "raw": 9630,
+        "kept": 4136,
+        "rejected": {
+          "under_75_percent_coverage": 5430,
+          "provider_flagged": 16,
+          "zero_reading": 48
+        }
+      }
+    },
+    "3409475": {
+      "cache": "data/research/derived/station_targets/87cef7b9bf10ec9e48b9072a861b456f6656d3e5b97f39f1d5181d6f47fe1196",
+      "O3": {
+        "raw": 12158,
+        "kept": 10744,
+        "rejected": {
+          "under_75_percent_coverage": 1257,
+          "provider_flagged": 9,
+          "zero_reading": 77,
+          "stuck_sensor_run": 71
+        }
+      },
+      "PM10": {
+        "raw": 12199,
+        "kept": 10859,
+        "rejected": {
+          "under_75_percent_coverage": 1323,
+          "zero_reading": 12,
+          "provider_flagged": 5
+        }
+      },
+      "PM2.5": {
+        "raw": 12192,
+        "kept": 10768,
+        "rejected": {
+          "under_75_percent_coverage": 1318,
+          "provider_flagged": 25,
+          "zero_reading": 40,
+          "stuck_sensor_run": 41
+        }
+      }
+    },
+    "3409480": {
+      "cache": "data/research/derived/station_targets/408a914e6fc08ba9d545709bf6a4d23d0039c34a303eb10ec9474ad131fe0a1b",
+      "O3": {
+        "raw": 12360,
+        "kept": 10577,
+        "rejected": {
+          "under_75_percent_coverage": 1692,
+          "provider_flagged": 60,
+          "zero_reading": 31
+        }
+      },
+      "PM10": {
+        "raw": 12350,
+        "kept": 10689,
+        "rejected": {
+          "under_75_percent_coverage": 1621,
+          "zero_reading": 31,
+          "provider_flagged": 6,
+          "invalid_value_or_unit": 3
+        }
+      },
+      "PM2.5": {
+        "raw": 12345,
+        "kept": 10625,
+        "rejected": {
+          "under_75_percent_coverage": 1617,
+          "zero_reading": 67,
+          "provider_flagged": 19,
+          "invalid_value_or_unit": 3,
+          "stuck_sensor_run": 14
+        }
+      }
+    },
+    "3409488": {
+      "cache": "data/research/derived/station_targets/ab265cc7d379bbf481705c48be9f73eceadd348a24932bc6ec64a195cb594a2d",
+      "O3": {
+        "raw": 12270,
+        "kept": 10841,
+        "rejected": {
+          "under_75_percent_coverage": 1374,
+          "stuck_sensor_run": 55
+        }
+      },
+      "PM10": {
+        "raw": 11921,
+        "kept": 10428,
+        "rejected": {
+          "under_75_percent_coverage": 1493
+        }
+      },
+      "PM2.5": {
+        "raw": 11831,
+        "kept": 10317,
+        "rejected": {
+          "under_75_percent_coverage": 1479,
+          "stuck_sensor_run": 35
+        }
+      }
+    },
+    "3409492": {
+      "cache": "data/research/derived/station_targets/c00fddcc07087fb5e2c5081f6d5290af1f6869521ba0368ccc364cfd0d0ecc29",
+      "O3": {
+        "raw": 11636,
+        "kept": 7679,
+        "rejected": {
+          "under_75_percent_coverage": 1577,
+          "provider_flagged": 125,
+          "zero_reading": 14,
+          "stuck_sensor_run": 2241
+        }
+      },
+      "PM10": {
+        "raw": 11643,
+        "kept": 9386,
+        "rejected": {
+          "under_75_percent_coverage": 1536,
+          "provider_flagged": 23,
+          "stuck_sensor_run": 698
+        }
+      },
+      "PM2.5": {
+        "raw": 11643,
+        "kept": 9383,
+        "rejected": {
+          "under_75_percent_coverage": 1540,
+          "provider_flagged": 23,
+          "stuck_sensor_run": 697
+        }
+      }
+    },
+    "3409493": {
+      "cache": "data/research/derived/station_targets/cfaa818cddf50b32f951cfed373b12ede84b47a6c3893841e6fd38cb93281745",
+      "O3": {
+        "raw": 8607,
+        "kept": 6179,
+        "rejected": {
+          "provider_flagged": 54,
+          "under_75_percent_coverage": 1584,
+          "stuck_sensor_run": 790
+        }
+      },
+      "PM10": {
+        "raw": 10083,
+        "kept": 7398,
+        "rejected": {
+          "under_75_percent_coverage": 2642,
+          "provider_flagged": 13,
+          "stuck_sensor_run": 30
+        }
+      },
+      "PM2.5": {
+        "raw": 9731,
+        "kept": 7200,
+        "rejected": {
+          "under_75_percent_coverage": 2489,
+          "provider_flagged": 11,
+          "zero_reading": 1,
+          "stuck_sensor_run": 30
+        }
+      }
+    },
+    "3409498": {
+      "cache": "data/research/derived/station_targets/0e4d517a956901cb0c72923dd012bb1463dcb49f3f98309e5f41ecf2d0a44942",
+      "O3": {
+        "raw": 11749,
+        "kept": 10716,
+        "rejected": {
+          "under_75_percent_coverage": 946,
+          "zero_reading": 87
+        }
+      },
+      "PM10": {
+        "raw": 11655,
+        "kept": 10445,
+        "rejected": {
+          "under_75_percent_coverage": 961,
+          "zero_reading": 249
+        }
+      },
+      "PM2.5": {
+        "raw": 11635,
+        "kept": 10482,
+        "rejected": {
+          "under_75_percent_coverage": 961,
+          "zero_reading": 192
+        }
+      }
+    },
+    "3409499": {
+      "cache": "data/research/derived/station_targets/4286bf27b5c0e4748cf379cb37b14458c796cb7910b6b18897d9ccd2c6ada523",
+      "O3": {
+        "raw": 11736,
+        "kept": 10642,
+        "rejected": {
+          "under_75_percent_coverage": 1034,
+          "zero_reading": 60
+        }
+      },
+      "PM10": {
+        "raw": 11531,
+        "kept": 9641,
+        "rejected": {
+          "under_75_percent_coverage": 1099,
+          "zero_reading": 791
+        }
+      },
+      "PM2.5": {
+        "raw": 11513,
+        "kept": 9847,
+        "rejected": {
+          "under_75_percent_coverage": 1092,
+          "zero_reading": 574
+        }
+      }
+    },
+    "3409504": {
+      "cache": "data/research/derived/station_targets/023a3f5dc49ba7242dfa8ed9d01e12c37f90091bbaf4c0cbd6d19cbddcc814b8",
+      "O3": {
+        "raw": 12542,
+        "kept": 11482,
+        "rejected": {
+          "under_75_percent_coverage": 1057,
+          "zero_reading": 3
+        }
+      },
+      "PM10": {
+        "raw": 12848,
+        "kept": 11482,
+        "rejected": {
+          "under_75_percent_coverage": 1366
+        }
+      },
+      "PM2.5": {
+        "raw": 12735,
+        "kept": 11320,
+        "rejected": {
+          "under_75_percent_coverage": 1415
+        }
+      }
+    },
+    "3409505": {
+      "cache": "data/research/derived/station_targets/f56a205c3438108c71798b8c8feebbd69c5b7f878fc399e5deff608774fa4ebd",
+      "O3": {
+        "raw": 12325,
+        "kept": 10923,
+        "rejected": {
+          "under_75_percent_coverage": 1395,
+          "provider_flagged": 1,
+          "stuck_sensor_run": 6
+        }
+      },
+      "PM10": {
+        "raw": 12554,
+        "kept": 11036,
+        "rejected": {
+          "under_75_percent_coverage": 1518
+        }
+      },
+      "PM2.5": {
+        "raw": 12484,
+        "kept": 10948,
+        "rejected": {
+          "under_75_percent_coverage": 1536
+        }
+      }
+    },
+    "3409508": {
+      "cache": "data/research/derived/station_targets/f60b25513d1e9ce58aadc6d828866a7332302efe0a9d614b1d3e787e4ce80eed",
+      "O3": {
+        "raw": 12603,
+        "kept": 11624,
+        "rejected": {
+          "under_75_percent_coverage": 979
+        }
+      },
+      "PM10": {
+        "raw": 12826,
+        "kept": 11554,
+        "rejected": {
+          "under_75_percent_coverage": 1259,
+          "stuck_sensor_run": 13
+        }
+      },
+      "PM2.5": {
+        "raw": 12647,
+        "kept": 11288,
+        "rejected": {
+          "under_75_percent_coverage": 1359
+        }
+      }
+    },
+    "3409509": {
+      "cache": "data/research/derived/station_targets/d423f2ee7f065310ade51cd9f7533e873dc6cb8c0244cb2a489a647bc9f378da",
+      "O3": {
+        "raw": 12880,
+        "kept": 11860,
+        "rejected": {
+          "under_75_percent_coverage": 938,
+          "provider_flagged": 82
+        }
+      },
+      "PM10": {
+        "raw": 13028,
+        "kept": 11911,
+        "rejected": {
+          "under_75_percent_coverage": 927,
+          "zero_reading": 122,
+          "provider_flagged": 68
+        }
+      },
+      "PM2.5": {
+        "raw": 13013,
+        "kept": 11821,
+        "rejected": {
+          "under_75_percent_coverage": 918,
+          "zero_reading": 122,
+          "provider_flagged": 152
+        }
+      }
+    },
+    "3409519": {
+      "cache": "data/research/derived/station_targets/870e97ab1ac3fcf56d2b14c44ab57723686687941de4025ddbc3fbb9537ac50e",
+      "O3": {
+        "raw": 12622,
+        "kept": 10770,
+        "rejected": {
+          "under_75_percent_coverage": 1852
+        }
+      },
+      "PM10": {
+        "raw": 12542,
+        "kept": 11040,
+        "rejected": {
+          "under_75_percent_coverage": 1502
+        }
+      },
+      "PM2.5": {
+        "raw": 12622,
+        "kept": 11149,
+        "rejected": {
+          "under_75_percent_coverage": 1473
+        }
+      }
+    },
+    "3409520": {
+      "cache": "data/research/derived/station_targets/3bdbf94357942dd3085b7601bc3f0440b45d64ee25ede557d1c84417c8f7a18d",
+      "O3": {
+        "raw": 11811,
+        "kept": 10472,
+        "rejected": {
+          "under_75_percent_coverage": 868,
+          "provider_flagged": 466,
+          "invalid_value_or_unit": 5
+        }
+      },
+      "PM10": {
+        "raw": 12780,
+        "kept": 11615,
+        "rejected": {
+          "under_75_percent_coverage": 1020,
+          "zero_reading": 21,
+          "provider_flagged": 84,
+          "stuck_sensor_run": 40
+        }
+      },
+      "PM2.5": {
+        "raw": 12789,
+        "kept": 11465,
+        "rejected": {
+          "under_75_percent_coverage": 1022,
+          "zero_reading": 21,
+          "provider_flagged": 126,
+          "stuck_sensor_run": 155
+        }
+      }
+    },
+    "3409521": {
+      "cache": "data/research/derived/station_targets/4c8640179796d17af1c3a791be71abca8a317fa95cab857d0f22fa4dc02ee51b",
+      "O3": {
+        "raw": 13233,
+        "kept": 12056,
+        "rejected": {
+          "under_75_percent_coverage": 1011,
+          "provider_flagged": 166
+        }
+      },
+      "PM10": {
+        "raw": 13241,
+        "kept": 12063,
+        "rejected": {
+          "under_75_percent_coverage": 1009,
+          "zero_reading": 31,
+          "provider_flagged": 92,
+          "stuck_sensor_run": 46
+        }
+      },
+      "PM2.5": {
+        "raw": 13215,
+        "kept": 11942,
+        "rejected": {
+          "under_75_percent_coverage": 1008,
+          "zero_reading": 31,
+          "provider_flagged": 133,
+          "invalid_value_or_unit": 10,
+          "stuck_sensor_run": 91
+        }
+      }
+    }
+  },
+  "provenance": "OpenAQ CPCB provider; AirGuard CPCB-style targets, not official bulletin AQI",
+  "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL"
+}

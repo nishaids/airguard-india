@@ -1,0 +1,337 @@
+{
+  "generated_at": "2026-10-12T02:49:26.445552+00:00",
+  "branch": "research/station-calibration",
+  "checkpoint_commit": "def4158d93e855622e0ba409f6dee617dd54722b",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "download": {
+    "generated_at": "2026-10-12T02:37:26.637818+00:00",
+    "data_version": "a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502",
+    "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
+    "protocol_version": "airguard-retrospective-station-calibration-v3.1",
+    "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+    "openaq_complete": 180,
+    "openaq_selected": 181,
+    "openaq_rows": 6331429,
+    "weather_points_complete": 151,
+    "weather_points_expected": 151,
+    "firms_windows_complete": 123,
+    "firms_windows_expected": 123,
+    "proxy_cams_files_preserved": 107,
+    "proxy_cams_used_for_research": false,
+    "checksummed_files": 921,
+    "recovered_sensor_metadata_files_verified": 12,
+    "uncompressed_bytes_verified": 828543876,
+    "checksum_audit": "PASS",
+    "repairs_applied": [],
+    "original_repair_bases_verified": 14,
+    "metadata_revision": {
+      "version": "station-metadata-v2",
+      "sha256": "d43acdc5476d61e41186fb2a2c99dd62e9478b1c07a369cf80147b0e7144da04",
+      "membership_and_strata": "frozen original sample; never resampled after correction"
+    },
+    "snapshot": "data/research/derived/a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502/inputs.json",
+    "no_api_requests": true
+  },
+  "measured": {
+    "status": "PARTIAL_COLLECTION",
+    "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+    "data_version": "a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502",
+    "code_sha256": "f6e083144f43d9e43be789e81242bed44d847e79c4305898c866ed5433fa17b1",
+    "feature_version": "non-cams-preliminary-v1",
+    "protocol_version": "airguard-retrospective-station-calibration-v3.1",
+    "raw_stations": 180,
+    "usable_stations": 179,
+    "usable_cities": 100,
+    "eligible_stations_full_window_descriptive_only": 166,
+    "station_days": 107280,
+    "valid_targets": 64799,
+    "rejected_targets": 42481,
+    "severe_days": 383,
+    "date_count": 552,
+    "date_coverage": [
+      "2025-02-19",
+      "2026-10-07"
+    ],
+    "target_rejection_reason_counts": {
+      "fewer_than_three_supported_pollutants": 42481,
+      "no_supported_particulate": 29474,
+      "PM2.5:fewer_than_16_hours": 32111,
+      "PM10:fewer_than_16_hours": 31475,
+      "NO2:fewer_than_16_hours": 42481,
+      "SO2:fewer_than_16_hours": 42481,
+      "CO:fewer_than_16_hours": 42481,
+      "O3:fewer_than_16_hours": 32943,
+      "O3:no_complete_8h_window": 3901
+    },
+    "hourly_exclusion_reason_counts": {
+      "under_75_percent_coverage": 851125,
+      "provider_flagged": 15177,
+      "zero_reading": 90090,
+      "stuck_sensor_run": 36746,
+      "invalid_value_or_unit": 78
+    },
+    "pollutant_target_coverage": {
+      "PM2.5": 64799,
+      "PM10": 64799,
+      "NO2": 0,
+      "SO2": 0,
+      "CO": 0,
+      "O3": 64799
+    },
+    "strict_snapshot_rows_passed": 107280,
+    "table": "data/research/derived/a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502/f6e083144f43d9e43be789e81242bed44d847e79c4305898c866ed5433fa17b1/non_cams_table.parquet"
+  },
+  "preliminary": {
+    "run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
+    "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+    "artifact": "results/research/preliminary/287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f/results.json",
+    "acquisition_and_experiment_hash_match": true,
+    "temporal_evaluations_completed": 24,
+    "spatial_evaluations_completed": 36,
+    "spatial_insufficient_entries": 0,
+    "uncertainty_folds": 12,
+    "advisory_folds": 12,
+    "final_test_scored": false,
+    "paired_comparisons": {
+      "ridge_strict_vs_climatology": {
+        "n": 38382,
+        "dates": 332,
+        "mae_difference": -8.960360518767821,
+        "relative_mae_change": -0.16964838748111494,
+        "ci95": [
+          -12.48743010364286,
+          -5.609403106301186
+        ],
+        "dm_statistic": -5.272264473638954,
+        "dm_pvalue": 1.347507064244057e-07,
+        "dm_note": "Daily mean loss; Newey-West lag 6; gaps omitted from DM only",
+        "bootstrap": "moving seven-calendar-day blocks; sum/count weighting preserves station pairs",
+        "resamples": 5000,
+        "holm_pvalue": 4.042521192732171e-07
+      },
+      "weather_ablation": {
+        "n": 38382,
+        "dates": 332,
+        "mae_difference": -2.8841027608398146,
+        "relative_mae_change": -0.06170393276535404,
+        "ci95": [
+          -4.471235652862503,
+          -1.5416628800006225
+        ],
+        "dm_statistic": -3.5533706351629797,
+        "dm_pvalue": 0.0003803282048781663,
+        "dm_note": "Daily mean loss; Newey-West lag 6; gaps omitted from DM only",
+        "bootstrap": "moving seven-calendar-day blocks; sum/count weighting preserves station pairs",
+        "resamples": 5000,
+        "holm_pvalue": 0.0007606564097563326
+      },
+      "ridge_history_vs_persistence": {
+        "n": 31622,
+        "dates": 320,
+        "mae_difference": 0.6144278946972983,
+        "relative_mae_change": 0.0223636375928503,
+        "ci95": [
+          -0.40867685542106413,
+          1.7040475542111795
+        ],
+        "dm_statistic": 1.7833548447380234,
+        "dm_pvalue": 0.07452855882366606,
+        "dm_note": "Daily mean loss; Newey-West lag 6; gaps omitted from DM only",
+        "bootstrap": "moving seven-calendar-day blocks; sum/count weighting preserves station pairs",
+        "resamples": 5000,
+        "holm_pvalue": 0.07452855882366606
+      },
+      "history_ablation_conditional": {
+        "n": 31622,
+        "dates": 320,
+        "mae_difference": -16.386149736251486,
+        "relative_mae_change": -0.3684351181983868,
+        "ci95": [
+          -19.70619404727581,
+          -13.432491256934531
+        ],
+        "dm_statistic": -9.377854608106553,
+        "dm_pvalue": 6.7328710089160225e-21,
+        "dm_note": "Daily mean loss; Newey-West lag 6; gaps omitted from DM only",
+        "bootstrap": "moving seven-calendar-day blocks; sum/count weighting preserves station pairs",
+        "resamples": 5000,
+        "holm_pvalue": 2.693148403566409e-20
+      }
+    }
+  },
+  "prospective": {
+    "forecasts": 12,
+    "issued_target_days": 1,
+    "verified_days": 0,
+    "elapsed_real_days": 0.5103450057754629,
+    "station_bound_forecasts": 0,
+    "historical_forecasts_missing_git_sha": 12,
+    "input_availability_violations": 0,
+    "outcomes_due": 0,
+    "verification_pairing_mismatches": 0,
+    "immutability_triggers": [
+      "immutable_research_record",
+      "research_issue_guard"
+    ]
+  },
+  "readiness": {
+    "generated_at": "2026-10-12T02:45:04.639570+00:00",
+    "status": "COLLECTING_NOT_RESEARCH_READY",
+    "checks": {
+      "literature_review_complete": false,
+      "research_question_locked": true,
+      "protocol_locked": true,
+      "issue_time_dataset_validated": false,
+      "cpcb_method_verified": true,
+      "baseline_complete": false,
+      "rolling_origin_complete": false,
+      "spatial_validation_complete": false,
+      "ablation_complete": false,
+      "uncertainty_complete": false,
+      "extreme_event_analysis_complete": false,
+      "advisory_evaluation_complete": false,
+      "statistical_comparison_complete": false,
+      "reproducibility_passed": false,
+      "prospective_logging_active": true,
+      "30_day_track_record_complete": false,
+      "security_passed": true
+    },
+    "passed": 5,
+    "total": 17,
+    "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
+    "evidence": {
+      "protocol_version": "airguard-retrospective-station-calibration-v3.1",
+      "protocol_hash": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+      "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+      "preliminary_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
+      "fixed_time_issuance": {
+        "forecasts": 12,
+        "issued_target_days": 1,
+        "verified_days": 0,
+        "elapsed_real_days": 0.5103450057754629,
+        "station_bound_forecasts": 0
+      },
+      "issuance_state": "ISSUED",
+      "test_validation_current": true,
+      "test_counts": {
+        "tests": 580,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5,
+        "collected": 580,
+        "passed": 575,
+        "deselected": 4
+      },
+      "security_gate": {
+        "checks": {
+          "row_level_security_everywhere": true,
+          "no_generated_path_leaks": true,
+          "no_secret_material_committed": true,
+          "service_role_key_server_only": true,
+          "request_budget_enforced": true,
+          "coordinate_range_validated": true,
+          "path_guard_in_ci": true,
+          "dependency_audit_in_ci": true
+        },
+        "passed": true,
+        "failed": [],
+        "unknown": [],
+        "path_leaks": [],
+        "client_secret_references": [],
+        "evidence": {
+          "database_audit": "2026-10-11T19:11:13.960569+00:00",
+          "secret_audit": "2026-10-12T02:43:41.967062+00:00"
+        },
+        "notice": "A check without evidence is unknown, and unknown does not pass. Penetration testing, authentication hardening and upstream provider terms are outside this gate."
+      }
+    },
+    "preliminary": {
+      "experiment": "NON_CAMS_PRELIMINARY",
+      "baseline_complete": true,
+      "final_test_scored": false,
+      "does_not_satisfy_primary_gates": true
+    },
+    "prospective_evaluable": false,
+    "claims_supported": [
+      "Measured CPCB-style target construction with v3.1 QC",
+      "Non-CAMS preliminary validation with a sealed final test",
+      "Real immutable prospective forecast logging"
+    ],
+    "claims_not_supported": [
+      "AirGuard improves CAMS",
+      "Calibrated operational station corrections",
+      "Controlled vulnerable-cohort under-warning",
+      "Station correction generalises nationwide"
+    ],
+    "pending_archive": "PENDING_MANUAL_ADS_CREDENTIAL"
+  },
+  "paper": {
+    "source": "paper/station_calibration_skeleton.tex",
+    "acquisition_dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+    "acquisition_data_version": "a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502",
+    "experiment_dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+    "experiment_data_version": "a4d7d9edb96289996048bc385dd5827f18051963d4989a816a96b9461792a502",
+    "datasets_identical": true,
+    "acquisition_minus_experiment_counts": {
+      "usable_stations": 0,
+      "usable_cities": 0,
+      "valid_targets": 0,
+      "rejected_targets": 0,
+      "severe_days": 0
+    },
+    "experiment_input_counts": {
+      "usable_stations": 179,
+      "usable_cities": 100,
+      "valid_targets": 64799,
+      "rejected_targets": 42481,
+      "severe_days": 383
+    },
+    "acquisition_counts": {
+      "usable_stations": 179,
+      "usable_cities": 100,
+      "valid_targets": 64799,
+      "rejected_targets": 42481,
+      "severe_days": 383
+    },
+    "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+    "preliminary_result_artifact": "results/research/preliminary/287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f/results.json",
+    "preliminary_result_sha256": "c19049cbe45ad05a1fec704081bb69c3d6cbff3d2a7bcc14ed7d3bf465841a50",
+    "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+    "protocol_locked_at": "2026-10-11T18:32:05.939254+00:00",
+    "previous_runs_source": "https://open-meteo.com/en/docs/previous-runs-api",
+    "primary_support_policy": "PENDING_OPERATIONAL_SUPPORT_VERIFICATION",
+    "preliminary_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
+    "author_details": "PENDING",
+    "primary_results": "PENDING_CAMS_ARCHIVE",
+    "intended_pages": 6,
+    "page_count_verified": false,
+    "submission_ready": false,
+    "bibliography_source": "inherited generated paper/refs.bib; no new manually authored entries",
+    "compilation_current": true
+  },
+  "test_status": "PASS",
+  "test_counts": {
+    "tests": 580,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5,
+    "collected": 580,
+    "passed": 575,
+    "deselected": 4
+  },
+  "test_evidence_current": true,
+  "local_reproduction_current": true,
+  "continuation": {
+    "state": "FINISHED_WITH_FAILURES",
+    "collection_finished": false,
+    "measured_completed": true,
+    "experiment_completed": true,
+    "worker_pids": [
+      33748,
+      12384,
+      36128
+    ]
+  },
+  "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
+  "production_deployed": false
+}

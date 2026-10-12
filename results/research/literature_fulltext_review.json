@@ -1,0 +1,362 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at": "2026-10-12",
+  "review_type": "TARGETED_PRIMARY_TEXT_REVIEW",
+  "inherited_sources": [
+    "docs/research/prior_art.json",
+    "docs/research/LITERATURE_CONTINUATION.md",
+    "docs/research/EVIDENCE_REVIEW.md"
+  ],
+  "scope": "Targeted methodological comparison, not an exhaustive novelty or health-coefficient review.",
+  "status": {
+    "targeted_matrix_recorded": true,
+    "literature_review_complete": false,
+    "exhaustive_search_complete": false,
+    "independent_human_reference_review_complete": false,
+    "human_evidence_acceptance": false,
+    "health_coefficient_acceptance": false,
+    "world_first_claim_supported": false,
+    "airguard_health_benefit_claim_supported": false,
+    "acceptance_artifact_created": false
+  },
+  "interpretation_rules": [
+    "Not established means not demonstrated by inspected text, not proven absent.",
+    "Selected full-text sections is not a reproduction audit or claim that every appendix was read.",
+    "Indexed primary body sections are distinguished from a directly inspected complete article.",
+    "Overlap and transfer limits are reviewer assessments; source findings are not AirGuard results.",
+    "Forecast inputs, retrospective reanalysis estimation and general calibration theory are distinct tasks.",
+    "Primary versions and access limitations remain explicit; paper references require human editing.",
+    "No locked test outcomes, protocol or QC rules were changed for this review."
+  ],
+  "search_record": {
+    "dates": [
+      "2026-10-12"
+    ],
+    "approach": "Follow inherited primary identifiers; inspect publisher/arXiv/PMLR texts and targeted primary-domain method queries.",
+    "coverage": [
+      "CAMS post-processing",
+      "Indian operational PM2.5/AQI work",
+      "conformal intervals",
+      "expected-risk and online calibration",
+      "spatial air-quality calibration",
+      "vulnerability and warning guidance"
+    ],
+    "not_completed": [
+      "Systematic databases/search strings and screening log",
+      "Every candidate full text/supplement",
+      "Author claim-by-claim human acceptance",
+      "Independent code/data reproduction"
+    ]
+  },
+  "entries": [
+    {
+      "id": "riccio_chianese_2024",
+      "authors": "Riccio and Chianese",
+      "year": 2024,
+      "title": "Technical note: Accurate, reliable, and high-resolution air quality predictions by improving the Copernicus Atmosphere Monitoring Service using a novel statistical post-processing method",
+      "doi": "10.5194/acp-24-1673-2024",
+      "sources": [
+        "https://acp.copernicus.org/articles/24/1673/2024/",
+        "https://acp.copernicus.org/articles/24/1673/2024/acp-24-1673-2024-supplement.pdf"
+      ],
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "Main sections 2, 3.1, 3.2, 5; supplement S1 Table S1, S3-S5.",
+      "task": "Daily PM10/PM2.5; maximum 8-hour O3 and 1-hour NO2; EMOS then INLA-SPDE.",
+      "geography_data": "Italy; 750-station network; 2022.",
+      "validation_splits": "668 training/82 stratified held-out stations; next-day repetition using previous three days.",
+      "inputs_availability": "CAMS available 08 UTC. Main 2.2 says ECMWF operational weather; supplement S1 lists ERA5 precipitation, wind and boundary-layer height. Receipt-time audit unresolved.",
+      "uncertainty_advisory": "Predictive distributions, PIT, intervals and exceedance diagnostics; cohort advice not established.",
+      "overlap_limits": "Direct overlap with CAMS station correction and spatial uncertainty. Weather provenance discrepancy prevents treating this as proof of issue-time validity.",
+      "matrix_note": "Spatial and next-day validation; operational-weather versus ERA5 discrepancy."
+    },
+    {
+      "id": "petetin_2022",
+      "authors": "Petetin et al.",
+      "year": 2022,
+      "title": "Model output statistics (MOS) applied to Copernicus Atmospheric Monitoring Service (CAMS) O3 forecasts: trade-offs between continuous and categorical skill scores",
+      "doi": "10.5194/acp-22-11603-2022",
+      "sources": [
+        "https://acp.copernicus.org/articles/22/11603/2022/"
+      ],
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "2.1-2.4; 3.4.5; discussion.",
+      "task": "O3 MOS; persistence, moving averages, quantile mapping, Kalman, analogs and boosting; 1-4-day leads.",
+      "geography_data": "Iberian domain and southwestern France; 455 stations; 2018-2019.",
+      "validation_splits": "Expanding training starts January 2018; only accumulated past observations; matched complete forecast-observation pairs.",
+      "inputs_availability": "ECMWF HRES forecast weather primary; ERA5 sensitivity separate. Previous-day O3 reporting availability explicitly questioned and ablated.",
+      "uncertainty_advisory": "Continuous versus hits/misses/false alarms; boosting can suppress peaks; tail weighting changes trade-offs.",
+      "overlap_limits": "Established station CAMS correction. Continuous improvement does not establish extreme-event warning improvement; no cohort health-benefit result.",
+      "matrix_note": "Expanding past-data MOS; prior-observation availability ablation and warning trade-offs."
+    },
+    {
+      "id": "casciaro_2022",
+      "authors": "Casciaro, Cavaiola and Mazzino",
+      "year": 2022,
+      "title": "Calibrating the CAMS European multi-model air quality forecasts for regional air pollution monitoring",
+      "arxiv": "2201.13355v1",
+      "sources": [
+        "https://arxiv.org/html/2201.13355",
+        "https://arxiv.org/abs/2201.13355"
+      ],
+      "version_inspected": "31 January 2022 arXiv v1; journal-version differences not audited.",
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "Sections 2-6; Appendix A.",
+      "task": "Dynamic gamma-EMOS calibration of nine CAMS members; PM10, PM2.5, O3, NO2 and CO.",
+      "geography_data": "Liguria, northwestern Italy; 2019-2020.",
+      "validation_splits": "2019 training/cross-validation; 2020 evaluation; additional rolling 40-day calibration.",
+      "inputs_availability": "CAMS 08 UTC; dynamic persistence uses 09 UTC observations and previous-day values; WRF forecast weather. Ingestion receipts not audited.",
+      "uncertainty_advisory": "Gamma predictive distribution, CRPS and PIT-based reliability; no cohort advice established.",
+      "overlap_limits": "Direct overlap with observation/weather-conditioned correction; static calibration does not uniformly beat persistence. No India CPCB-AQI experiment.",
+      "matrix_note": "2019/2020 separation plus rolling calibration; probabilistic station correction."
+    },
+    {
+      "id": "colette_2025",
+      "authors": "Colette et al.",
+      "year": 2025,
+      "title": "Copernicus Atmosphere Monitoring Service - Regional Air Quality Production System v1.0",
+      "doi": "10.5194/gmd-18-6835-2025",
+      "sources": [
+        "https://gmd.copernicus.org/articles/18/6835/2025/"
+      ],
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "4.1-4.3.",
+      "task": "European regional operational system; CAMS-MOS random forest uses ensemble concentrations and forecast meteorology.",
+      "geography_data": "Thousands of European observation sites; PM10, PM2.5, NO2 and O3; 96-hour forecasts.",
+      "validation_splits": "MOS trains daily on previous three days. System forecasts evaluated against available stations; analyses reserve approximately one-third outside assimilation.",
+      "inputs_availability": "Forecast, analysis and reanalysis products differentiated. Daily MOS operational in ADS; AirGuard receipt provenance not established.",
+      "uncertainty_advisory": "Ensemble dispersion; threshold-detection diagnostics; no India cohort guarantee.",
+      "overlap_limits": "Operational precedent for station correction. System description is not an isolated MOS ablation study; reanalysis diagnostic figures are not forecast comparisons.",
+      "matrix_note": "Operational CAMS-MOS precedent; distinguishes forecast and reanalysis diagnostics."
+    },
+    {
+      "id": "jena_2021",
+      "authors": "Jena et al.",
+      "year": 2021,
+      "title": "Performance of high resolution (400 m) PM2.5 forecast over Delhi",
+      "doi": "10.1038/s41598-021-83467-8",
+      "sources": [
+        "https://www.nature.com/articles/s41598-021-83467-8",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7892871/"
+      ],
+      "text_status": "PRIMARY_INDEXED_FULLTEXT_SECTIONS",
+      "sections_inspected": "Indexed introduction, observations, forecast evaluation and conclusion.",
+      "access_limit": "Direct publisher/PDF navigation failed; PMC direct view presented access challenge; indexed primary sections read.",
+      "task": "Daily 72-hour, 400 m WRF-Chem PM2.5 forecast with AOD/surface assimilation and fire emissions.",
+      "geography_data": "Delhi/NCR; 37 CPCB/DPCC/IITM stations; October 2019-February 2020.",
+      "validation_splits": "Operational seasonal evaluation by lead; geographic station holdout not established.",
+      "inputs_availability": "Near-real-time observations/fire inputs reported; exact issue/receipt audit not established.",
+      "uncertainty_advisory": "Concentration and AQI-category detection/false alarms; Severe forecast difficulty. Calibrated intervals not established.",
+      "overlap_limits": "Indian operational forecasting precedent; distinct from CAMS residual correction. Evaluation-site assimilation independence requires further inspection.",
+      "matrix_note": "Indian operational forecast precedent; indexed body only; spatial independence unresolved."
+    },
+    {
+      "id": "natarajan_2024",
+      "authors": "Natarajan et al.",
+      "year": 2024,
+      "title": "Optimized machine learning model for air quality index prediction in major cities in India",
+      "doi": "10.1038/s41598-024-54807-1",
+      "sources": [
+        "https://www.nature.com/articles/s41598-024-54807-1"
+      ],
+      "text_status": "PRIMARY_INDEXED_FULLTEXT_SECTIONS",
+      "sections_inspected": "Indexed dataset, preprocessing, methods, experimental setup and results.",
+      "access_limit": "Publisher/PDF direct navigation failed; primary indexed body sections read.",
+      "task": "Grey-wolf feature selection and decision-tree AQI regression.",
+      "geography_data": "India Kaggle 2015-2020 data; six-city evaluation.",
+      "validation_splits": "Null removal and SMOTE described; chronological/spatial isolation not established in inspected text.",
+      "inputs_availability": "Pollutant-to-AQI inputs described; future forecast horizon and issue cutoff not established.",
+      "uncertainty_advisory": "Deterministic regression metrics; intervals and cohort advice not established.",
+      "overlap_limits": "Indian AQI ML precedent. Reported accuracy cannot establish next-day operational forecast skill or absence of leakage without a timestamp/split audit.",
+      "matrix_note": "Indian AQI regression; issue-time horizon and split isolation unestablished."
+    },
+    {
+      "id": "govardhan_2024",
+      "authors": "Govardhan et al.",
+      "year": 2024,
+      "title": "Decision Support System version 1.0 (DSS v1.0) for air quality management in Delhi, India",
+      "doi": "10.5194/gmd-17-2617-2024",
+      "sources": [
+        "https://gmd.copernicus.org/articles/17/2617/2024/"
+      ],
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "2.2-2.3, 2.7, 3.1; evaluation tables discussion.",
+      "task": "WRF-Chem five-day PM2.5/source-apportionment/emission-scenario forecasts.",
+      "geography_data": "Delhi/NCR; 39 evaluation locations; October 2021-February 2022.",
+      "validation_splits": "Daily leads 1-5 evaluated separately by post-monsoon/winter season; no leave-city-out experiment established.",
+      "inputs_availability": "IITM-GFS forecast, emission inventories, VIIRS fires, CPCB/satellite assimilation; exact receipt timestamps not audited.",
+      "uncertainty_advisory": "Category detection, misses and false alarms; poorer/severe episodes underpredicted; source scenarios support management.",
+      "overlap_limits": "Indian operational advisory precedent. Source/emission scenarios do not identify an individual health benefit; distinct from calibrated CAMS station residuals.",
+      "matrix_note": "Indian five-day operational evaluation; peak underprediction and categorical diagnostics."
+    },
+    {
+      "id": "singh_2026",
+      "authors": "Singh et al.",
+      "year": 2026,
+      "title": "Estimation of surface PM2.5 over the Indo-Gangetic Basin using MERRA-2 reanalysis and machine learning",
+      "doi": "10.1038/s41598-026-37934-9",
+      "sources": [
+        "https://www.nature.com/articles/s41598-026-37934-9",
+        "https://www.nature.com/articles/s41598-026-37934-9_reference.pdf"
+      ],
+      "version_inspected": "Publisher accepted-manuscript PDF and indexed version-of-record methods.",
+      "text_status": "PUBLISHER_MANUSCRIPT_AND_INDEXED_SECTIONS",
+      "sections_inspected": "PDF pages 1-13; indexed machine-learning modeling and conclusions.",
+      "task": "RF, Extra Trees, LightGBM and stacking estimate daily city-background PM2.5.",
+      "geography_data": "183 CPCB stations, 2014-2023; Delhi, Kanpur, Lucknow and Patna modeling.",
+      "validation_splits": "75/25 train/test; tenfold K-fold comparison; chronological/spatial separation not established.",
+      "inputs_availability": "Same-day MERRA-2 aerosol and weather reanalysis; not issue-time operational forecasts.",
+      "uncertainty_advisory": "Deterministic errors/seasonal analysis; calibrated intervals/cohort advice not established.",
+      "overlap_limits": "Indian measured-data correction precedent; reanalysis estimation cannot substitute the required archived CAMS forecast baseline.",
+      "matrix_note": "Indian reanalysis correction; 75/25 and K-fold study, distinct task."
+    },
+    {
+      "id": "delhi_birnn_2024",
+      "authors": "Pande et al.",
+      "year": 2024,
+      "title": "Daily scale air quality index forecasting using bidirectional recurrent neural networks: Case study of Delhi, India",
+      "doi": "10.1016/j.envpol.2024.124040",
+      "sources": [
+        "https://www.sciencedirect.com/science/article/abs/pii/S0269749124007541",
+        "https://www.sciencedirect.com/science/article/pii/S0269749124007541"
+      ],
+      "text_status": "ABSTRACT_AND_PRIMARY_INDEXED_BODY_SECTIONS",
+      "sections_inspected": "Publisher abstract/highlights; indexed introduction, dataset, results, conclusion and CRediT statement.",
+      "access_limit": "Full direct article retrieval failed; subscription status not determined.",
+      "task": "Daily AQI using LSTM, Bi-LSTM, Bi-RNN and KRR.",
+      "geography_data": "Delhi; 3318 daily points; seven pollutant inputs. Dataset section ends December 2022; results/conclusion end January 2023.",
+      "validation_splits": "Training/testing reported; exact chronology, tuning isolation and forecast lead not established.",
+      "inputs_availability": "Input pollutant measurements stated; lag/receipt cutoff validity unresolved.",
+      "uncertainty_advisory": "Deterministic metrics; uncertainty and cohort advice not established.",
+      "overlap_limits": "Indian AQI forecast prior art; full methods needed before claiming comparable forecast horizons or leakage protection.",
+      "matrix_note": "Daily Delhi AQI prior art; indexed sections; timing/split details pending."
+    },
+    {
+      "id": "cqr_2019",
+      "authors": "Romano, Patterson and Candes",
+      "year": 2019,
+      "title": "Conformalized Quantile Regression",
+      "arxiv": "1905.03222",
+      "sources": [
+        "https://arxiv.org/html/1905.03222"
+      ],
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "4, Algorithm 1, Theorem 1; 6 experimental setup.",
+      "task": "Quantile regression plus held-out conformal interval calibration.",
+      "geography_data": "Synthetic and 11 generic regression benchmarks; not an air-quality study.",
+      "validation_splits": "Disjoint proper training/calibration; experiments 40/40/20 train/calibration/test with repeated random splits.",
+      "inputs_availability": "Preprocessing fitted on proper training; operational issue-time availability outside scope.",
+      "uncertainty_advisory": "Finite-sample rank gives marginal coverage under exchangeability; adaptive interval width.",
+      "overlap_limits": "Established interval method. Does not automatically guarantee dependent daily, city, vulnerability-cohort or Severe-conditional coverage.",
+      "matrix_note": "Marginal exchangeability guarantee; separate calibration and test are essential."
+    },
+    {
+      "id": "crc_2024",
+      "authors": "Angelopoulos, Bates, Fisch, Lei and Schuster",
+      "year": 2024,
+      "title": "Conformal Risk Control",
+      "arxiv": "2208.02814v4",
+      "sources": [
+        "https://arxiv.org/html/2208.02814",
+        "https://research.google/pubs/conformal-risk-control/"
+      ],
+      "version_inspected": "ICLR 2024 metadata; arXiv v4, 13 June 2025, for inspected theory.",
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "1.1, 2/Theorem 1, 3 examples.",
+      "task": "Post-process fixed models to control expected bounded monotone loss.",
+      "geography_data": "Segmentation, multilabel vision, hierarchical classification and question-answering examples; no India air-quality data.",
+      "validation_splits": "Separate observed calibration losses and unseen test loss; exchangeability required.",
+      "inputs_availability": "Predict then evaluate unseen point; operational exposure timestamps outside scope.",
+      "uncertainty_advisory": "Expected-risk bound with finite-sample correction; not a high-probability conditional risk bound.",
+      "overlap_limits": "Under-warning loss can be related only after assumptions/monotonicity are justified. Daily dependence and cohort health risk remain unvalidated.",
+      "matrix_note": "Expected monotone-loss control; dependent cohort warning guarantee does not follow."
+    },
+    {
+      "id": "online_conformal_2024",
+      "authors": "Angelopoulos, Barber and Bates",
+      "year": 2024,
+      "title": "Online conformal prediction with decaying step sizes",
+      "publication": "PMLR 235:1616-1630, ICML 2024",
+      "arxiv": "2402.01139v2",
+      "sources": [
+        "https://proceedings.mlr.press/v235/angelopoulos24a.html",
+        "https://arxiv.org/html/2402.01139v2"
+      ],
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "1.1; 2-3 assumptions/results; 4 experiments.",
+      "task": "Predict-then-observe interval updates with decaying step sizes.",
+      "geography_data": "Australian Elec2 demand and ImageNet sequences; no air-quality experiment.",
+      "validation_splits": "Time-ordered online prediction; Elec2 even/odd sequence/holdout; ImageNet sequence/holdout.",
+      "inputs_availability": "Base prediction uses past data; score updates after outcome arrival.",
+      "uncertainty_advisory": "Bounded-score arbitrary-sequence long-run coverage; IID quantile convergence under stated conditions.",
+      "overlap_limits": "Long-run historical coverage is distinct from next-day/cohort-conditional coverage. Static split-conformal calibration does not implement this update method.",
+      "matrix_note": "Sequential dependence-relevant calibration; long-run coverage is a distinct guarantee."
+    },
+    {
+      "id": "adjei_2026",
+      "authors": "Adjei et al.",
+      "year": 2026,
+      "title": "Conformal PM2.5 Mapping Under Spatial Covariate Shift: Satellite-Reanalysis Fusion for Africa's Green Industrial Transition",
+      "arxiv": "2604.22787v1",
+      "sources": [
+        "https://arxiv.org/html/2604.22787"
+      ],
+      "version_inspected": "5 April 2026 preprint; publication status not asserted.",
+      "text_status": "FULLTEXT_SELECTED_SECTIONS",
+      "sections_inspected": "III-V, VIII.",
+      "task": "Satellite/reanalysis PM2.5 mapping with LightGBM and split conformal intervals.",
+      "geography_data": "404 locations, 29 African countries; OpenAQ 2017-2022.",
+      "validation_splits": "Five location-grouped folds; 80/20 proper train/calibration; random inner tuning described.",
+      "inputs_availability": "ERA5, MERRA-2 and satellite inputs; location-year standardization described; not issue-time forecasting.",
+      "uncertainty_advisory": "Regional coverage degradation and reliability flags; no demonstrated clinical intervention benefit.",
+      "overlap_limits": "Relevant spatial-calibration diagnostics. Inner splits/group normalization need independent audit; stated spatial leakage resistance does not establish temporal availability.",
+      "matrix_note": "Spatial conformal mapping preprint; reanalysis and inner-validation audit limits."
+    },
+    {
+      "id": "who_2024",
+      "authors": "WHO Regional Office for Europe",
+      "year": 2024,
+      "title": "Personal-level actions to reduce air pollution exposure in the WHO European Region",
+      "identifier": "WHO/EURO:2024-9115-48887-72806",
+      "sources": [
+        "https://www.who.int/publications/i/item/WHO-EURO-2024-9115-48887-72806",
+        "https://iris.who.int/bitstream/handle/10665/375889/WHO-EURO-2024-9115-48887-72806-eng.pdf"
+      ],
+      "text_status": "OFFICIAL_OVERVIEW_ONLY",
+      "sections_inspected": "Official overview; full 44-page report unavailable through attempted retrieval.",
+      "access_limit": "PDF retrieval failed; action-specific evidence and effect estimates not reviewed.",
+      "task": "Guidance reviewing personal exposure-reduction actions and implementation context.",
+      "geography_data": "WHO European Region; transfer to India requires local assessment.",
+      "validation_splits": "Not predictive-model evaluation.",
+      "inputs_availability": "Guidance, not a forecast-input dataset.",
+      "uncertainty_advisory": "Effectiveness, costs and social feasibility considered at overview level.",
+      "overlap_limits": "Supports reviewing feasible exposure advice, not AirGuard medical coefficients, 10%/5% policy targets or demonstrated health benefit.",
+      "matrix_note": "Official overview only; full action-specific evidence acceptance remains pending."
+    },
+    {
+      "id": "airnow_guidance",
+      "authors": "US EPA / AirNow",
+      "year": "undated webpages inspected 2026-10-12",
+      "title": "AQI Basics; Asthma and Heart Disease",
+      "sources": [
+        "https://www.airnow.gov/aqi/aqi-basics/",
+        "https://www.airnow.gov/air-quality-and-health/asthma-and-heart-disease/"
+      ],
+      "text_status": "OFFICIAL_WEBPAGES",
+      "sections_inspected": "AQI category guidance; asthma/heart-disease sensitivity guidance.",
+      "task": "Public AQI and sensitive-group guidance.",
+      "geography_data": "United States; US AQI categories and thresholds.",
+      "validation_splits": "No model split or AirGuard intervention evaluation.",
+      "inputs_availability": "Guidance, not predictive input provenance.",
+      "uncertainty_advisory": "Pollutant/category-specific sensitive-group advice.",
+      "overlap_limits": "Vulnerability-aware air-quality guidance already exists. US thresholds must not replace CPCB thresholds; no individualized disease probabilities or AirGuard clinical benefits follow.",
+      "matrix_note": "Sensitive-group guidance precedent; US thresholds cannot replace CPCB."
+    }
+  ],
+  "remaining_actions": [
+    "Resolve Riccio main/supplement weather-source inconsistency before using its design as availability evidence.",
+    "Inspect inaccessible complete Indian forecasting methods, supplements and split construction.",
+    "Read WHO action-specific full text and independently review any proposed health coefficient under EVIDENCE_REVIEW.md.",
+    "Complete human bibliographic editing and claim-by-claim evidence acceptance.",
+    "Verify AirGuard contributions only after matched archived-CAMS experiments and genuine prospective outcomes."
+  ]
+}

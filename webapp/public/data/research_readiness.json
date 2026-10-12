@@ -1,4 +1,5 @@
 {
+  "generated_at": "2026-10-12T02:45:04.639570+00:00",
   "status": "COLLECTING_NOT_RESEARCH_READY",
   "checks": {
     "literature_review_complete": false,
@@ -13,45 +14,78 @@
     "uncertainty_complete": false,
     "extreme_event_analysis_complete": false,
     "advisory_evaluation_complete": false,
-    "prospective_logging_active": true,
-    "30_day_track_record_complete": false,
     "statistical_comparison_complete": false,
     "reproducibility_passed": false,
+    "prospective_logging_active": true,
+    "30_day_track_record_complete": false,
     "security_passed": true
   },
   "passed": 5,
   "total": 17,
+  "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
   "evidence": {
-    "experiment_id": "d6c8a817339e65e8a7a342e55209798d6dea43f8a91825463624351aec48ea5e",
-    "dataset_version": "adf80a7c70d8f462df56afd463697925ed0efe935c8511589fe534af926a10ca",
-    "git_sha": "4e701aee000f937dd54c65a13dbe3ae67c01d91c",
-    "working_tree_hash": "98e9b639e0ebb38014c2f104a606cf9df7d19469533a9f641bb54512e339b671",
-    "protocol_hash": "6edb0157b36770a98621c626860a3145d8dc2f3471640597dd1b01b7b1f04e41",
+    "protocol_version": "airguard-retrospective-station-calibration-v3.1",
+    "protocol_hash": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+    "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+    "preliminary_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
     "fixed_time_issuance": {
       "forecasts": 12,
-      "target_days": 1,
-      "last_issued_at": "2026-10-11 14:32:03.021671+00:00",
-      "verified_days": 0
+      "issued_target_days": 1,
+      "verified_days": 0,
+      "elapsed_real_days": 0.5103450057754629,
+      "station_bound_forecasts": 0
     },
     "issuance_state": "ISSUED",
+    "test_validation_current": true,
+    "test_counts": {
+      "tests": 580,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "collected": 580,
+      "passed": 575,
+      "deselected": 4
+    },
     "security_gate": {
+      "checks": {
+        "row_level_security_everywhere": true,
+        "no_generated_path_leaks": true,
+        "no_secret_material_committed": true,
+        "service_role_key_server_only": true,
+        "request_budget_enforced": true,
+        "coordinate_range_validated": true,
+        "path_guard_in_ci": true,
+        "dependency_audit_in_ci": true
+      },
       "passed": true,
       "failed": [],
-      "unknown": []
-    },
-    "reproducibility_note": "Requires a clean-clone `make results` run on a machine with no local data; not asserted from this working tree."
+      "unknown": [],
+      "path_leaks": [],
+      "client_secret_references": [],
+      "evidence": {
+        "database_audit": "2026-10-11T19:11:13.960569+00:00",
+        "secret_audit": "2026-10-12T02:43:41.967062+00:00"
+      },
+      "notice": "A check without evidence is unknown, and unknown does not pass. Penetration testing, authentication hardening and upstream provider terms are outside this gate."
+    }
   },
-  "pending_archive": "PENDING \u2014 ADS credential/terms required",
+  "preliminary": {
+    "experiment": "NON_CAMS_PRELIMINARY",
+    "baseline_complete": true,
+    "final_test_scored": false,
+    "does_not_satisfy_primary_gates": true
+  },
+  "prospective_evaluable": false,
   "claims_supported": [
-    "Nationwide raw CAMS estimate",
-    "Issue-time guarded research framework",
-    "Immutable on-demand baseline forecast collection"
+    "Measured CPCB-style target construction with v3.1 QC",
+    "Non-CAMS preliminary validation with a sealed final test",
+    "Real immutable prospective forecast logging"
   ],
   "claims_not_supported": [
     "AirGuard improves CAMS",
-    "Calibrated operational intervals",
+    "Calibrated operational station corrections",
     "Controlled vulnerable-cohort under-warning",
     "Station correction generalises nationwide"
   ],
-  "generated_at": "2026-10-11T15:40:55.630787+00:00"
+  "pending_archive": "PENDING_MANUAL_ADS_CREDENTIAL"
 }

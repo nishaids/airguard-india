@@ -1,5 +1,78 @@
 # AirGuard India — progress ledger
 
+## Verified non-CAMS checkpoint — 2026-10-12 (IST)
+
+Scientific source commit `def4158` produced immutable run
+`287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f`.
+The v3.1 protocol hash and final-test seal are unchanged. Metadata corrections
+are versioned separately; earlier affected city analyses remain preserved and
+explicitly superseded. No sampling rule, station membership or QC rule changed.
+
+- Acquisition: 180/181 stations, 6,331,429 raw hourly rows; all 151 weather
+  points and 123 FIRMS windows complete. The remaining station 6530249 returns
+  HTTP 500 on both metadata routes. All 14 page-cap concerns have verified empty
+  extra pages; no raw file was replaced. Metadata recovery used official
+  individual-sensor responses, retaining real dates and checksums.
+- Measured data: 179 usable stations, 100 cities, 552 dates with valid targets,
+  107,280 retained station-days, 64,799 valid / 42,481 rejected targets and 383
+  censored Severe days. Dataset SHA
+  `4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d`.
+- All 107,280 snapshots pass availability guards. Strict models admit forecast
+  weather, calendar and coordinates; historical observations remain an explicit
+  latency sensitivity and fire features are withheld. Current-catalogue
+  survivorship and unresolved geography are disclosed limitations.
+- Completed 24 temporal evaluations, 36 city/cluster/station/region holdouts and
+  12 uncertainty/advisory calibration windows, with severity, seasonal/regional,
+  ablation and paired seven-day block/Holm diagnostics. Final test unscored.
+- Strict Ridge MAE is 8.96 AQI lower than climatology (95% block interval
+  [-12.49,-5.61]); conditional history Ridge has no established advantage over
+  persistence (difference +0.61, interval [-0.41,1.70]). Every strict baseline
+  forecast on evaluated censored Severe days is below 401. No CAMS improvement
+  or calibrated health benefit is established; no correction was deployed.
+- Stable source validation: 575 passed, 5 skipped, 4 database cases excluded.
+  Local raw-cache reconstruction and a fresh Git checkout both reproduce the
+  exact dataset hash. The fresh checkout reused the pinned runtime and copied
+  945 input files, zero derived caches and made zero acquisition calls.
+- Production: 12 immutable forecasts, one issued target day, zero bound stations
+  and zero verified days. Source fixes remain undeployed. Thirty-day gate false.
+- Readiness 5/17, `COLLECTING_NOT_RESEARCH_READY`. A 15-source literature matrix
+  documents access/method limits; full-review acceptance remains incomplete.
+  Existing IEEE source regenerated and compiled successfully; six intended
+  pages, actual PDF page count unverified. Primary numerical placeholders remain.
+
+The finite helper finished all scientific stages on available data, with an
+explicit acquisition failure for the one server-blocked station. Genuine CAMS
+experiments remain `PENDING_MANUAL_ADS_CREDENTIAL`. See the generated 15-item
+`docs/research/CONTINUATION_CHECKPOINT.md`, the runbook and manual ADS guide.
+Historical progress entries below are preserved.
+
+## Audited continuation infrastructure — 2026-10-12 (IST)
+
+Source milestone `b8dd253` preserves the inherited v3.1 lock and the exact
+research branch. Stable offline validation has **556 passed, 5 skipped,
+4 database cases deselected**; actual exit and source fingerprints are recorded
+in `results/research/test_validation.json`. Local raw-cache reconstruction
+passes on dataset `a23727370c5774579cb429a2652ca89ebc298f132d60fea2135f4998e37883c7`.
+
+The measured snapshot has 97 usable stations / 64 cities, 57,812 retained
+station-days, 36,707 valid and 21,105 rejected targets, including 364 censored
+Severe days. Weather is complete at 151 points and FIRMS at 123 windows;
+inherited OpenAQ workers continue. Selection, protocol and plan are unchanged.
+Audit repairs and the superseded first preliminary run are documented in
+`docs/research/IMPLEMENTATION_AUDIT.md`. Corrected experiments are regenerated
+under a new immutable identity; exact counts/results belong to that run.
+
+A finite helper is active in `WAITING_INHERITED_WORKERS`, with no archive
+requests until the observed workers exit. It performs bounded idempotent
+completion and regenerates research artifacts without Git or production
+mutations. See `docs/research/RESEARCH_RUNBOOK.md` and
+`results/research/continuation_status.json`. Production logging is active but
+12 issued forecasts have no bound station or recorded Git SHA; no verified
+day exists. Source fixes are tested and undeployed. A 15-source literature
+review states access/method limits; primary CAMS results remain blocked by
+`PENDING_MANUAL_ADS_CREDENTIAL`. Readiness is 5/17, collecting, not ready.
+
+
 ## Research continuation — 2026-10-12 (IST)
 
 Recovered `research/station-calibration` at `5790c3a`, including Claude's

@@ -1,0 +1,73 @@
+{
+  "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
+  "collection_finished": false,
+  "experiment_completed": false,
+  "failures": [],
+  "fingerprint": {
+    "branch": "research/station-calibration",
+    "files": {
+      "requirements-research.txt": "cd6728d76f75c3e3bb21f5fa3a6bf82523a02d341c191eeb9afa45631c8e63ce",
+      "requirements.txt": "3cc9e75b4c87cf831011feb9d7ceaaf89a8d47185a4ff603434f3ce29a50ed35",
+      "src/nationwide/aqi.py": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e",
+      "src/research/calibration/__init__.py": "24e278308c46270bf4ae1e4dfb8a0d9907518fd8a9dcfe9842ce3b74a5f59d57",
+      "src/research/calibration/availability.py": "d8e6f28bbffdfe2d8ce8f3384a23618f094c66eb9bd3aaf6c0acd537c5045045",
+      "src/research/calibration/catalogue.py": "ae75a829ff6c5f25185170ef50e5e1a18f26fead5f074477920f47c6a746b3b6",
+      "src/research/calibration/checkpoint.py": "8563e9b278bfeaddc372b813503819e8580d30fd6aeaa792294de1905e853e6d",
+      "src/research/calibration/continuation.py": "3b6779803e6d8f2412d26bd681b74dd17e02ade7cbf349f28d7b9fb126e670aa",
+      "src/research/calibration/data.py": "8d9426e6fae6cf722b7a95b8f370bf5f920cb78e4aa14194fdf3e6d73c85537a",
+      "src/research/calibration/dataset.py": "aacce5e38b06ad10aac59a18301f5319db85553c91dcf3f3da2c0a97fe4dc077",
+      "src/research/calibration/figures.py": "9b4f1c567ec2a6e3a7fa1dfdbaebdba3f094e080c6a17eac62e365b0b1278b52",
+      "src/research/calibration/measured.py": "54a7c3c1cae06150afe7288b031fa2ea760fa6bf539076ce53e7b0481f9b54b9",
+      "src/research/calibration/metrics.py": "0acf5341f2766f392b40f3b8824a67b6c626ce4a9b445a8f2df0a7d11e4eeb12",
+      "src/research/calibration/model_archives.py": "0c5e73f1f15b32f52f2d29f2d7cc8433ce2f002b920093ffbb8af15366effa01",
+      "src/research/calibration/openaq_archive.py": "2e11d2b2fd898dfc5a58746e05888696510a028b3f35936bb25067a66aa26746",
+      "src/research/calibration/paper.py": "115f788c415828f42e76fcbd7521d182e2977173bdbf3416d7f71c70b17f76fb",
+      "src/research/calibration/preliminary.py": "93bfd6511c2be32b88570488a146c4b3d91f8060cfabff3d28ad4db36027cd2b",
+      "src/research/calibration/primary.py": "cab26b55202a9e762d5a43ad0a48a1de6810affc133734ddc4f93c2ae21feed4",
+      "src/research/calibration/prospective_audit.py": "35ca2ba85ef2a65db698bfedda97958e96554eb297e6fa6d9094c5384b23f390",
+      "src/research/calibration/protocol.py": "b4b73c68f8b835bb44c2d61ffb4d8ef345a66b3865c0bf75ae240522401d7e5b",
+      "src/research/calibration/readiness.py": "f2ac319cb5bb1805f422045766a0ed196b561a13b4cb95a69793df085d434365",
+      "src/research/calibration/repair_archive.py": "2bd4c7311aa71315919292a8e4b54419e0b8a9519b75db436e0032dc271374c6",
+      "src/research/calibration/report.py": "af27910e172d1d1923531b78b316617f8d63da860a11f2a98f250690d0891aea",
+      "src/research/calibration/reproducibility.py": "ebc68df4f6ecf1f00556548d5ec48331eca2fceb1e1181399c49b240a785ceff",
+      "src/research/calibration/splits.py": "75444dfa8a9c9af94875063cd0bd07fd8771f9105bf2dab16091c1b907b0b4b9",
+      "src/research/calibration/statistics.py": "94e670c02c58f006c21a74609ffd103f410d79cdecd16c3d3e4bb2ab4174dc4e",
+      "src/research/calibration/validation.py": "545b248dc12e69fcb5e1d434f608980e6fc8d59b59938862100d8a451eea1e10"
+    },
+    "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+    "runtime": {
+      "packages": {
+        "PyYAML": "6.0.3",
+        "lightgbm": "4.7.0",
+        "matplotlib": "3.10.8",
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "psutil": "7.2.2",
+        "pyarrow": "23.0.0",
+        "scikit-learn": "1.7.2",
+        "scipy": "1.15.3",
+        "xgboost": "3.2.0"
+      },
+      "python": "3.10.6"
+    },
+    "selection_sha256": "73357fe1ab5fd4f2efe3a4197e09b9429474ca7738f63d45721442684dd322ac",
+    "source_sha256": "a5cffa77765ba447c8fdedddb230f3d175d663e97066dc7068d58ae58ce1b603"
+  },
+  "inherited_worker_pids_still_alive": [
+    33748,
+    12384
+  ],
+  "measured_completed": false,
+  "primary_experiment_completed": false,
+  "stages": {},
+  "started_at": "2026-10-11T20:04:27.178943+00:00",
+  "state": "WAITING_INHERITED_WORKERS",
+  "updated_at": "2026-10-11T20:09:27.414610+00:00",
+  "version": "airguard-finite-continuation-v1",
+  "worker_manifest_sha256": "0f0aaab3b5734929dc824955f877188fe4bdfbd0a7e7ab2ed71a9e70e62177be",
+  "worker_pids": [
+    33748,
+    12384,
+    36128
+  ]
+}

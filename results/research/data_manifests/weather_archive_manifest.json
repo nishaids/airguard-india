@@ -1,0 +1,4285 @@
+{
+ "source": "OPEN_METEO_PREVIOUS_RUNS",
+ "endpoint": "https://previous-runs-api.open-meteo.com/v1/forecast",
+ "model": "gfs_seamless",
+ "lead": "previous_day2",
+ "variables": [
+  "temperature_2m",
+  "relative_humidity_2m",
+  "wind_speed_10m",
+  "wind_direction_10m",
+  "precipitation",
+  "surface_pressure",
+  "shortwave_radiation",
+  "cloud_cover"
+ ],
+ "window": [
+  "2025-02-01",
+  "2026-10-08"
+ ],
+ "issue_time_valid": true,
+ "why": "Each value was forecast by a run initialised at least 48 hours before its valid hour. Every hour of a target day therefore comes from a run initialised before the 20:00 IST issue time of the previous day. This is older than the forecast an operator would have had, so it handicaps the weather features rather than flattering them.",
+ "not_available": "boundary_layer_height is not archived at any previous-run lead (verified: all null).",
+ "files": {
+  "+008.5_+0076.9": {
+   "file": "data/research/weather/+008.5_+0076.9.json.gz",
+   "sha256": "3b76569cb477f4a6591561f11be842d49ecc21498c6eb399db5d93608c1c0f24",
+   "content_sha256": "ee1902544eeec5221a61573cecaa96d37ec2a938b00d197211950643227eeaf8",
+   "bytes": 822864,
+   "point": {
+    "latitude": 8.5,
+    "longitude": 76.9,
+    "stations": [
+     5646
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 8.5,
+    "longitude": 76.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    8.493332,
+    76.99219
+   ],
+   "retrieved_at": "2026-10-11T18:38:17.834682+00:00"
+  },
+  "+008.6_+0076.9": {
+   "file": "data/research/weather/+008.6_+0076.9.json.gz",
+   "sha256": "7380aa3524cd8c4bfdc4bea3c2daa166f2247c3ded05f84a4bd554e6ada91636",
+   "content_sha256": "136e4372f69ec9c9a7e45a34f79d6f5c72f4ce2599f20b00955074d7331cd432",
+   "bytes": 819874,
+   "point": {
+    "latitude": 8.6,
+    "longitude": 76.9,
+    "stations": [
+     8190
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 8.6,
+    "longitude": 76.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    8.610481,
+    76.99219
+   ],
+   "retrieved_at": "2026-10-11T18:38:51.111548+00:00"
+  },
+  "+010.1_+0076.3": {
+   "file": "data/research/weather/+010.1_+0076.3.json.gz",
+   "sha256": "1e83d9ace8981054e4ddb42daf10e8137bdc4b2efbd188c570be3d8e1e281e6c",
+   "content_sha256": "cd367e6219301c49632ee97d97a4ac010ab3a19d0e71ef0d5440ff7e0d1d10b8",
+   "bytes": 817134,
+   "point": {
+    "latitude": 10.1,
+    "longitude": 76.3,
+    "stations": [
+     6966
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 10.1,
+    "longitude": 76.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    10.133423,
+    76.28906
+   ],
+   "retrieved_at": "2026-10-11T18:39:26.795581+00:00"
+  },
+  "+011.7_+0079.8": {
+   "file": "data/research/weather/+011.7_+0079.8.json.gz",
+   "sha256": "613b2500caabe06bc71e3dbbc318cfe946532ae108e02e801020b3b5d476350f",
+   "content_sha256": "247d41a04b7840c2c59e2be40cf7edda260a06bfe1d4432b93dd72264fc4b4d4",
+   "bytes": 827030,
+   "point": {
+    "latitude": 11.7,
+    "longitude": 79.8,
+    "stations": [
+     3409354
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 11.7,
+    "longitude": 79.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    11.656364,
+    79.6875
+   ],
+   "retrieved_at": "2026-10-11T18:40:02.935472+00:00"
+  },
+  "+011.8_+0079.7": {
+   "file": "data/research/weather/+011.8_+0079.7.json.gz",
+   "sha256": "7b0cd1f7f73f0bfc4c273b1e072e3b6e04724cb6971d944fe67f95a5d7aad673",
+   "content_sha256": "79b2fbbd5583a0df1a1b226c49c967eb8df27775d39f42e56504a077f0f0b9b4",
+   "bytes": 827230,
+   "point": {
+    "latitude": 11.8,
+    "longitude": 79.7,
+    "stations": [
+     3409346
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 11.8,
+    "longitude": 79.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    11.773514,
+    79.6875
+   ],
+   "retrieved_at": "2026-10-11T18:40:37.642856+00:00"
+  },
+  "+011.9_+0079.8": {
+   "file": "data/research/weather/+011.9_+0079.8.json.gz",
+   "sha256": "3f1c293f3ff0b9b78d798ccd68bba1476be1c0a8285fa61ab3c126506fdc03fe",
+   "content_sha256": "38af65fd36108ba42cbc9188fbbb1fb20f00fd6262a585d26bd8b8b8adbbc260",
+   "bytes": 828058,
+   "point": {
+    "latitude": 11.9,
+    "longitude": 79.8,
+    "stations": [
+     60659
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 11.9,
+    "longitude": 79.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    11.890663,
+    79.80469
+   ],
+   "retrieved_at": "2026-10-11T18:41:04.350104+00:00"
+  },
+  "+012.9_+0074.9": {
+   "file": "data/research/weather/+012.9_+0074.9.json.gz",
+   "sha256": "02c3fb6f0b67c26dcb217e9a93fbfbc38074ca73e66a800d8db5cd941500122e",
+   "content_sha256": "664a289476023d5199e348e87c26e5b48a28889c98fbfa050a2af3aa3787bcbf",
+   "bytes": 806201,
+   "point": {
+    "latitude": 12.9,
+    "longitude": 74.9,
+    "stations": [
+     44513
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 12.9,
+    "longitude": 74.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    12.945007,
+    74.88281
+   ],
+   "retrieved_at": "2026-10-11T18:41:32.036772+00:00"
+  },
+  "+012.9_+0077.6": {
+   "file": "data/research/weather/+012.9_+0077.6.json.gz",
+   "sha256": "c43662a5debd294b6d35899e70d8069db4fc9fefc6a29bce3d492fbea981ec2b",
+   "content_sha256": "762187a5e6aac9d28676ddbe414c1586e6b068260d7b82e788735fe457d88a02",
+   "bytes": 811656,
+   "point": {
+    "latitude": 12.9,
+    "longitude": 77.6,
+    "stations": [
+     5548,
+     6973
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 12.9,
+    "longitude": 77.6,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    12.945007,
+    77.578125
+   ],
+   "retrieved_at": "2026-10-11T18:41:56.933102+00:00"
+  },
+  "+013.0_+0077.5": {
+   "file": "data/research/weather/+013.0_+0077.5.json.gz",
+   "sha256": "99f0f384abc367a16a8f765ead340c07dc2ac0be2b36f355d1a6cfdccd9f63bd",
+   "content_sha256": "70abe61155c5936c2b7cc32a29f70c4189bb9c4e9981c77bfcc95f9647f04a0d",
+   "bytes": 811325,
+   "point": {
+    "latitude": 13.0,
+    "longitude": 77.5,
+    "stations": [
+     5607
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 13.0,
+    "longitude": 77.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    12.945007,
+    77.46094
+   ],
+   "retrieved_at": "2026-10-11T18:42:22.054138+00:00"
+  },
+  "+013.0_+0080.2": {
+   "file": "data/research/weather/+013.0_+0080.2.json.gz",
+   "sha256": "5eac39f331f6647643370d66c2e049c9f599afd1ba7fe522d2d87c7e5a45442c",
+   "content_sha256": "3c089173e6d4a6429e42b2016b184ab9bb3cc1689a8eb559ddf3c1742774a350",
+   "bytes": 826181,
+   "point": {
+    "latitude": 13.0,
+    "longitude": 80.2,
+    "stations": [
+     5655
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 13.0,
+    "longitude": 80.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    12.945007,
+    80.15625
+   ],
+   "retrieved_at": "2026-10-11T18:42:47.451097+00:00"
+  },
+  "+013.2_+0079.1": {
+   "file": "data/research/weather/+013.2_+0079.1.json.gz",
+   "sha256": "86530f3547fe3c338e36376c0adfba6e39a46e75632f50547e18b3df35e11e48",
+   "content_sha256": "0dce0ad9799f31913ddcd58cc396db0add280235c10108f162b2144c66961d16",
+   "bytes": 809214,
+   "point": {
+    "latitude": 13.2,
+    "longitude": 79.1,
+    "stations": [
+     3409372
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 13.2,
+    "longitude": 79.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    13.179306,
+    79.10156
+   ],
+   "retrieved_at": "2026-10-11T18:43:22.505664+00:00"
+  },
+  "+013.2_+0080.3": {
+   "file": "data/research/weather/+013.2_+0080.3.json.gz",
+   "sha256": "612645f114484af52d56707118ecc79183d1d1f0c8b4f361f982fe24e3a59ff4",
+   "content_sha256": "0a918465321cf0cd792dca2b54e7ac8e8a8c639a2c78597e8754e9776db2f0e1",
+   "bytes": 826442,
+   "point": {
+    "latitude": 13.2,
+    "longitude": 80.3,
+    "stations": [
+     2586,
+     10780
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 13.2,
+    "longitude": 80.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    13.296455,
+    80.27344
+   ],
+   "retrieved_at": "2026-10-11T18:43:56.307151+00:00"
+  },
+  "+013.3_+0074.7": {
+   "file": "data/research/weather/+013.3_+0074.7.json.gz",
+   "sha256": "964a2e6c051fa2e9d9ded26c20b4d1451111a48e5520b26ee4db108f107fb55e",
+   "content_sha256": "132c221883e43592af70bb9341ac364a99bf64ab71c454cae308c477f36d6cd4",
+   "bytes": 818075,
+   "point": {
+    "latitude": 13.3,
+    "longitude": 74.7,
+    "stations": [
+     220353
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 13.3,
+    "longitude": 74.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    13.296455,
+    74.765625
+   ],
+   "retrieved_at": "2026-10-11T18:44:21.636705+00:00"
+  },
+  "+013.7_+0079.3": {
+   "file": "data/research/weather/+013.7_+0079.3.json.gz",
+   "sha256": "fede5e4f9c26467bdca3590b93f166a04efd5f69dc793bacc61d9e0ba8f43a3c",
+   "content_sha256": "5d90c13b3fd8706f83eb9c3aa563f176f5458f47f893018b78bcd0392f151f21",
+   "bytes": 806533,
+   "point": {
+    "latitude": 13.7,
+    "longitude": 79.3,
+    "stations": [
+     5649
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 13.7,
+    "longitude": 79.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    13.647903,
+    79.33594
+   ],
+   "retrieved_at": "2026-10-11T18:44:53.414349+00:00"
+  },
+  "+016.5_+0080.5": {
+   "file": "data/research/weather/+016.5_+0080.5.json.gz",
+   "sha256": "d7a4be23fc4929bff2a73e6f5b9f7b0296b2675d7fb6fccd1a175727b7c1280a",
+   "content_sha256": "2501d35a62ef685e449de460a1a9d7faaf7cb9da06af70215debfd0c978bf246",
+   "bytes": 819592,
+   "point": {
+    "latitude": 16.5,
+    "longitude": 80.5,
+    "stations": [
+     5408
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 16.5,
+    "longitude": 80.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    16.459488,
+    80.50781
+   ],
+   "retrieved_at": "2026-10-11T18:45:25.319395+00:00"
+  },
+  "+016.5_+0080.6": {
+   "file": "data/research/weather/+016.5_+0080.6.json.gz",
+   "sha256": "b6853444e1036e2909aa98b4b7ae2e5bc5603c0fbfa1c73bec0856e6d0227d61",
+   "content_sha256": "413f1c182c8189e0d938ce0c4392792dc3ef7be79ff98f3902bd08012ed59e17",
+   "bytes": 819396,
+   "point": {
+    "latitude": 16.5,
+    "longitude": 80.6,
+    "stations": [
+     3409492,
+     3409493
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 16.5,
+    "longitude": 80.6,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    16.459488,
+    80.625
+   ],
+   "retrieved_at": "2026-10-11T18:45:50.276435+00:00"
+  },
+  "+016.7_+0074.2": {
+   "file": "data/research/weather/+016.7_+0074.2.json.gz",
+   "sha256": "f313eb17b0712540d06d7e77da7fb477cbce35ff97903a66523b9373499109f9",
+   "content_sha256": "f0d80dac911d6663065b0247a53c11d12ba20f1cb1ea42b179b0ebdbe800aa82",
+   "bytes": 804079,
+   "point": {
+    "latitude": 16.7,
+    "longitude": 74.2,
+    "stations": [
+     3409441
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 16.7,
+    "longitude": 74.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    16.693787,
+    74.17969
+   ],
+   "retrieved_at": "2026-10-11T18:46:25.785883+00:00"
+  },
+  "+016.7_+0074.3": {
+   "file": "data/research/weather/+016.7_+0074.3.json.gz",
+   "sha256": "d46398c9301726e02cd4b47f494ea28cfe366ee1aaef4282290ad41474def221",
+   "content_sha256": "c75a7822fc6c15121fed6bea3f6942b9cf256356e9d2b3c02c5be312bc8b01fa",
+   "bytes": 805023,
+   "point": {
+    "latitude": 16.7,
+    "longitude": 74.3,
+    "stations": [
+     3409440
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 16.7,
+    "longitude": 74.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    16.693787,
+    74.296875
+   ],
+   "retrieved_at": "2026-10-11T18:46:50.791972+00:00"
+  },
+  "+017.3_+0078.5": {
+   "file": "data/research/weather/+017.3_+0078.5.json.gz",
+   "sha256": "f53eff6c9ee8f34eab84982819a6ccd4d239c4fb4d826a32fbeb7ba070d9c62b",
+   "content_sha256": "6b44c82724ec6c30f088a42b4845e2d6646b7c89ecb82a9fc93a2d645eef4aee",
+   "bytes": 806859,
+   "point": {
+    "latitude": 17.3,
+    "longitude": 78.5,
+    "stations": [
+     407
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 17.3,
+    "longitude": 78.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    17.279533,
+    78.515625
+   ],
+   "retrieved_at": "2026-10-11T18:47:19.235495+00:00"
+  },
+  "+017.5_+0078.3": {
+   "file": "data/research/weather/+017.5_+0078.3.json.gz",
+   "sha256": "f2a35cebe8188da5512a0d7110573b5840d584e1f2ef8ca57da9674efe668565",
+   "content_sha256": "047bfad7128348b2a8aa87781e5f13088720b54fe521a142a5eda82dec1d0de6",
+   "bytes": 807264,
+   "point": {
+    "latitude": 17.5,
+    "longitude": 78.3,
+    "stations": [
+     5623
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 17.5,
+    "longitude": 78.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    17.513832,
+    78.28125
+   ],
+   "retrieved_at": "2026-10-11T18:47:46.644240+00:00"
+  },
+  "+017.5_+0078.4": {
+   "file": "data/research/weather/+017.5_+0078.4.json.gz",
+   "sha256": "854753c77310e1569bee6a9ce82367281cfa1ac7a553d0128b93d47cea7a8b8a",
+   "content_sha256": "421baa49366741e7663122235db01547f5857cd3f5a10972d1e6894e037df932",
+   "bytes": 807142,
+   "point": {
+    "latitude": 17.5,
+    "longitude": 78.4,
+    "stations": [
+     5599
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 17.5,
+    "longitude": 78.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    17.513832,
+    78.39844
+   ],
+   "retrieved_at": "2026-10-11T18:48:11.537641+00:00"
+  },
+  "+017.6_+0075.9": {
+   "file": "data/research/weather/+017.6_+0075.9.json.gz",
+   "sha256": "50c987af60b9e669fb2ea3e0a37faf493ab61bb333098c4fa3c80c2a62084d2d",
+   "content_sha256": "d6227c79cc6791a8d0871cce112675584ae1148fdf2d8141e1b913fa40cf25ea",
+   "bytes": 807694,
+   "point": {
+    "latitude": 17.6,
+    "longitude": 75.9,
+    "stations": [
+     3409449
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 17.6,
+    "longitude": 75.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    17.630981,
+    75.9375
+   ],
+   "retrieved_at": "2026-10-11T18:48:46.194853+00:00"
+  },
+  "+017.7_+0075.9": {
+   "file": "data/research/weather/+017.7_+0075.9.json.gz",
+   "sha256": "c326e311dfbcc089faf2690d75b34aaabd23c38187f7d6a7bf412dd669d24119",
+   "content_sha256": "e9eaa21196790e163e00b957a62bd8d0f33a2d067f3a9ac5c7e533d04c78a775",
+   "bytes": 807445,
+   "point": {
+    "latitude": 17.7,
+    "longitude": 75.9,
+    "stations": [
+     3409448
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 17.7,
+    "longitude": 75.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    17.74813,
+    75.9375
+   ],
+   "retrieved_at": "2026-10-11T18:49:14.265554+00:00"
+  },
+  "+018.4_+0076.6": {
+   "file": "data/research/weather/+018.4_+0076.6.json.gz",
+   "sha256": "1489164a9a823e477be9cb01db796fe6dd452457413ebd5f8ee6a4a8ea8f849d",
+   "content_sha256": "fead2abd4bf7ac5514b5d4ba861c7827dcebc806a092b1015d3a255a89fa727f",
+   "bytes": 805477,
+   "point": {
+    "latitude": 18.4,
+    "longitude": 76.6,
+    "stations": [
+     3409452
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 18.4,
+    "longitude": 76.6,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    18.451027,
+    76.640625
+   ],
+   "retrieved_at": "2026-10-11T18:49:43.466024+00:00"
+  },
+  "+018.5_+0073.8": {
+   "file": "data/research/weather/+018.5_+0073.8.json.gz",
+   "sha256": "a69ce513e28a2b0ea94742dcb9d7c0e69c4e57815cf198253a9c4f9144179965",
+   "content_sha256": "f9c021409e9efc7b6234e9bb095d2a3dd19d161c08df0fe01be310dadda32fdd",
+   "bytes": 801515,
+   "point": {
+    "latitude": 18.5,
+    "longitude": 73.8,
+    "stations": [
+     11613
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 18.5,
+    "longitude": 73.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    18.451027,
+    73.828125
+   ],
+   "retrieved_at": "2026-10-11T18:50:08.359585+00:00"
+  },
+  "+018.6_+0073.8": {
+   "file": "data/research/weather/+018.6_+0073.8.json.gz",
+   "sha256": "692fe4710c2a3f0f1590154870fe57dd20add4f7b9d3f7e94af1aef7029b35ba",
+   "content_sha256": "46e0eb7ca100873eb721e64d5913566a3ddbbf6a67fb6251a08455113d55aa80",
+   "bytes": 802099,
+   "point": {
+    "latitude": 18.6,
+    "longitude": 73.8,
+    "stations": [
+     3409435,
+     3409436
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 18.6,
+    "longitude": 73.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    18.568176,
+    73.828125
+   ],
+   "retrieved_at": "2026-10-11T18:50:36.246528+00:00"
+  },
+  "+018.6_+0073.9": {
+   "file": "data/research/weather/+018.6_+0073.9.json.gz",
+   "sha256": "21c9d2d475af173c5d2a0bc858d2398cbd29ceafb3e38954348466a95dbb49a6",
+   "content_sha256": "45f7e3abd6b68e4c8f926649f2fbb7cd72d48f8c01a8ecc7334af1d709fa03e3",
+   "bytes": 803522,
+   "point": {
+    "latitude": 18.6,
+    "longitude": 73.9,
+    "stations": [
+     11609
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 18.6,
+    "longitude": 73.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    18.568176,
+    73.94531
+   ],
+   "retrieved_at": "2026-10-11T18:51:01.847911+00:00"
+  },
+  "+018.7_+0073.8": {
+   "file": "data/research/weather/+018.7_+0073.8.json.gz",
+   "sha256": "c1e44e7fb1f9bf1c5fa66e26d680b356f5589978fe7000402abc60b05f2ac03f",
+   "content_sha256": "5f979f75b5c5dbdc61d598167c97eb962635c8dcd86453feb91115912c258a8c",
+   "bytes": 803252,
+   "point": {
+    "latitude": 18.7,
+    "longitude": 73.8,
+    "stations": [
+     11610
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 18.7,
+    "longitude": 73.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    18.685326,
+    73.828125
+   ],
+   "retrieved_at": "2026-10-11T18:51:39.699178+00:00"
+  },
+  "+018.9_+0072.8": {
+   "file": "data/research/weather/+018.9_+0072.8.json.gz",
+   "sha256": "fc93900371345058bc57249b9b41e86930201f05f328cd55074e181217277932",
+   "content_sha256": "43a2bca2c0475cdece68577f7bbb672697c447709219ec1bdf6f31aa4ee49ac7",
+   "bytes": 820639,
+   "point": {
+    "latitude": 18.9,
+    "longitude": 72.8,
+    "stations": [
+     6927
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 18.9,
+    "longitude": 72.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    18.919624,
+    72.77344
+   ],
+   "retrieved_at": "2026-10-11T18:52:15.398409+00:00"
+  },
+  "+019.0_+0073.1": {
+   "file": "data/research/weather/+019.0_+0073.1.json.gz",
+   "sha256": "d79b6f742456a077a0dce6481bbbe62e7ed7056efe54c458b2842698b167663d",
+   "content_sha256": "dd6402221cc18a67f8c82a14c8347b75e2507ec56deed5d16ae5bd41e238bae3",
+   "bytes": 812352,
+   "point": {
+    "latitude": 19.0,
+    "longitude": 73.1,
+    "stations": [
+     3409471
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.0,
+    "longitude": 73.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.036774,
+    73.125
+   ],
+   "retrieved_at": "2026-10-11T18:52:50.281080+00:00"
+  },
+  "+019.1_+0072.9": {
+   "file": "data/research/weather/+019.1_+0072.9.json.gz",
+   "sha256": "e938db4f799725b9747e88062aed056c75972cd1913aa1c930da9af3ed5ea0bd",
+   "content_sha256": "64bf1dc6b51a024d7d4076a4f1996cefc653842f94b5a2254a88fb183b2539c3",
+   "bytes": 815198,
+   "point": {
+    "latitude": 19.1,
+    "longitude": 72.9,
+    "stations": [
+     6945,
+     6948
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.1,
+    "longitude": 72.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.153923,
+    72.890625
+   ],
+   "retrieved_at": "2026-10-11T18:53:17.632794+00:00"
+  },
+  "+019.1_+0073.0": {
+   "file": "data/research/weather/+019.1_+0073.0.json.gz",
+   "sha256": "690de62ab6ee7fa4e44acf49e1a7164921958278326d39e9f38facbdc25d7e85",
+   "content_sha256": "1981d4eff32a652628b508af6053a939679885108ca242273b5d89d22ae0f8ae",
+   "bytes": 814001,
+   "point": {
+    "latitude": 19.1,
+    "longitude": 73.0,
+    "stations": [
+     6943
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.1,
+    "longitude": 73.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.153923,
+    73.00781
+   ],
+   "retrieved_at": "2026-10-11T18:53:42.327147+00:00"
+  },
+  "+019.1_+0073.1": {
+   "file": "data/research/weather/+019.1_+0073.1.json.gz",
+   "sha256": "8d1e0101724ad0aa2898a15ddffc500dd09a6f55cba45dcc684e8eeadacc9d63",
+   "content_sha256": "a67f58565685ff15031e70a8b08a895f13a52a8836cb6a3ab55ef1db58a8e1d5",
+   "bytes": 812429,
+   "point": {
+    "latitude": 19.1,
+    "longitude": 73.1,
+    "stations": [
+     3409475
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.1,
+    "longitude": 73.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.153923,
+    73.125
+   ],
+   "retrieved_at": "2026-10-11T18:54:07.414554+00:00"
+  },
+  "+019.2_+0073.0": {
+   "file": "data/research/weather/+019.2_+0073.0.json.gz",
+   "sha256": "20f444c8d92b6b43ecfaca36f65f019da74ade76e5aa25ee47de7ebd5f187213",
+   "content_sha256": "c3a40a22b2aa212f549f3bcb447a5e1108114233ebfdebde5c8e3cd021a9b715",
+   "bytes": 813999,
+   "point": {
+    "latitude": 19.2,
+    "longitude": 73.0,
+    "stations": [
+     3409322
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.2,
+    "longitude": 73.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.153923,
+    73.00781
+   ],
+   "retrieved_at": "2026-10-11T18:54:33.956280+00:00"
+  },
+  "+019.2_+0073.2": {
+   "file": "data/research/weather/+019.2_+0073.2.json.gz",
+   "sha256": "ffb941742ce7d1f051dd35c06250e4302d28abfb8ee4a0502a3367ce80debdac",
+   "content_sha256": "5c970606460e07688e075a926911f3975e8187c44b5a96931429afa33dd69b11",
+   "bytes": 810925,
+   "point": {
+    "latitude": 19.2,
+    "longitude": 73.2,
+    "stations": [
+     3409470
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.2,
+    "longitude": 73.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.153923,
+    73.24219
+   ],
+   "retrieved_at": "2026-10-11T18:54:58.880961+00:00"
+  },
+  "+019.3_+0073.0": {
+   "file": "data/research/weather/+019.3_+0073.0.json.gz",
+   "sha256": "08b099a46529f9e107e4109a01304ee50bb7401508852bbe83d61ebd9d0b746d",
+   "content_sha256": "69fb64d7b22e16573d75f00c9846c3340031ed10d65c5bdca08c886bc09a7d4c",
+   "bytes": 813540,
+   "point": {
+    "latitude": 19.3,
+    "longitude": 73.0,
+    "stations": [
+     3409469
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.3,
+    "longitude": 73.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.271072,
+    73.00781
+   ],
+   "retrieved_at": "2026-10-11T18:55:25.617360+00:00"
+  },
+  "+019.4_+0072.8": {
+   "file": "data/research/weather/+019.4_+0072.8.json.gz",
+   "sha256": "9df9cc16267ea5374ded33e4e48aa0f11d9e22ecdefd65cd3596aaf0ac0aa668",
+   "content_sha256": "e58c5779ab93e2618f55749e3ec9ac8317f14d26dc5358c4741e4e251aa2d8b6",
+   "bytes": 817402,
+   "point": {
+    "latitude": 19.4,
+    "longitude": 72.8,
+    "stations": [
+     3409480
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.4,
+    "longitude": 72.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.388222,
+    72.77344
+   ],
+   "retrieved_at": "2026-10-11T18:56:02.245152+00:00"
+  },
+  "+019.8_+0075.2": {
+   "file": "data/research/weather/+019.8_+0075.2.json.gz",
+   "sha256": "01e0f1cb7b796b667ca0572c16602da9c5229c439edad11c76335a5fcf3997da",
+   "content_sha256": "bb25c4d081f1105dab4caa0278efd72b9998238b0d3a6458ad0e6f285ee4ee38",
+   "bytes": 802294,
+   "point": {
+    "latitude": 19.8,
+    "longitude": 75.2,
+    "stations": [
+     5642
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 19.8,
+    "longitude": 75.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.85682,
+    75.234375
+   ],
+   "retrieved_at": "2026-10-11T18:56:38.125024+00:00"
+  },
+  "+020.0_+0073.8": {
+   "file": "data/research/weather/+020.0_+0073.8.json.gz",
+   "sha256": "acedd12018ad7679ab1aa472291d6c5746176946f888b7d57129fafeb6c8d002",
+   "content_sha256": "b0469b561a5b35b59f57d297398179824c53cdc9dd8671f3c8ce45df3bca36eb",
+   "bytes": 802770,
+   "point": {
+    "latitude": 20.0,
+    "longitude": 73.8,
+    "stations": [
+     5592,
+     3409451
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.0,
+    "longitude": 73.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.973969,
+    73.828125
+   ],
+   "retrieved_at": "2026-10-11T18:57:12.934272+00:00"
+  },
+  "+020.0_+0079.2": {
+   "file": "data/research/weather/+020.0_+0079.2.json.gz",
+   "sha256": "2f20a1e88437b9bfedcfab52d2051df57535e5cef01b0857538b9558b431504a",
+   "content_sha256": "996c4ec818f52277754ccaeaec39fd54cfced924d584b7e48b93b0de2435f512",
+   "bytes": 799347,
+   "point": {
+    "latitude": 20.0,
+    "longitude": 79.2,
+    "stations": [
+     5565
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.0,
+    "longitude": 79.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.973969,
+    79.21875
+   ],
+   "retrieved_at": "2026-10-11T18:57:38.149914+00:00"
+  },
+  "+020.0_+0079.3": {
+   "file": "data/research/weather/+020.0_+0079.3.json.gz",
+   "sha256": "18ebca3753ab1526caa444b12fe0d3d99699ee5e9a51ba91d90c6c06c6e273be",
+   "content_sha256": "21a284d9319726adbdf756a87d44af0c2e92d0dad97b600b9e7c1a7f22051dc7",
+   "bytes": 797926,
+   "point": {
+    "latitude": 20.0,
+    "longitude": 79.3,
+    "stations": [
+     3409317
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.0,
+    "longitude": 79.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    19.973969,
+    79.33594
+   ],
+   "retrieved_at": "2026-10-11T18:58:02.911782+00:00"
+  },
+  "+020.2_+0085.8": {
+   "file": "data/research/weather/+020.2_+0085.8.json.gz",
+   "sha256": "2654e023d2f59f1b07a84c6b7640cc096c9034e8ff66eac7f8314816bfa276eb",
+   "content_sha256": "46612517c94ba1717cc3ad43dc207b04b4d51f87f5691786bdbb3bd89c713f2a",
+   "bytes": 817099,
+   "point": {
+    "latitude": 20.2,
+    "longitude": 85.8,
+    "stations": [
+     3409505
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.2,
+    "longitude": 85.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    20.208267,
+    85.78125
+   ],
+   "retrieved_at": "2026-10-11T18:58:41.048617+00:00"
+  },
+  "+020.3_+0085.8": {
+   "file": "data/research/weather/+020.3_+0085.8.json.gz",
+   "sha256": "27bbf3c00dfc7cd9b184b36116a8b10e1db1908c66e4a241daf03156f9050918",
+   "content_sha256": "cb7b87070a22c16f606f6313a089e9afe325974475012475724b218603a5ae41",
+   "bytes": 810163,
+   "point": {
+    "latitude": 20.3,
+    "longitude": 85.8,
+    "stations": [
+     3409508
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.3,
+    "longitude": 85.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    20.325417,
+    85.78125
+   ],
+   "retrieved_at": "2026-10-11T18:59:07.732335+00:00"
+  },
+  "+020.6_+0074.5": {
+   "file": "data/research/weather/+020.6_+0074.5.json.gz",
+   "sha256": "a44ca1150d71737a2df744a5f627ea866649db684531f2afc85ca7bd5205a254",
+   "content_sha256": "b2bbff2da365b9647e46a914c5aa50a8cd8cf6880915a9f72158a3bb2600501d",
+   "bytes": 802116,
+   "point": {
+    "latitude": 20.6,
+    "longitude": 74.5,
+    "stations": [
+     3409474
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.6,
+    "longitude": 74.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    20.559715,
+    74.53125
+   ],
+   "retrieved_at": "2026-10-11T18:59:42.153315+00:00"
+  },
+  "+020.8_+0085.1": {
+   "file": "data/research/weather/+020.8_+0085.1.json.gz",
+   "sha256": "dba57888f5047ee7ef04bfabbe532c1f1b69f5bc194686528ffd287dea8b9995",
+   "content_sha256": "cc14c3344d16bf78bdd1b18a31ca4d8f21ab9b497c1e35b3e41378b49d361263",
+   "bytes": 801662,
+   "point": {
+    "latitude": 20.8,
+    "longitude": 85.1,
+    "stations": [
+     3409504
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.8,
+    "longitude": 85.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    20.794014,
+    85.078125
+   ],
+   "retrieved_at": "2026-10-11T19:00:15.455895+00:00"
+  },
+  "+020.9_+0077.8": {
+   "file": "data/research/weather/+020.9_+0077.8.json.gz",
+   "sha256": "9f8ef8add6930da76eec2b9a8e7710e9630a6fb053ef6398477b768bfbf5430a",
+   "content_sha256": "405319cdb29b6698f306e717dabd695047cf062b394f5b4862d4a1256ef59ac3",
+   "bytes": 801019,
+   "point": {
+    "latitude": 20.9,
+    "longitude": 77.8,
+    "stations": [
+     3409459
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.9,
+    "longitude": 77.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    20.911163,
+    77.8125
+   ],
+   "retrieved_at": "2026-10-11T19:00:49.851093+00:00"
+  },
+  "+020.9_+0085.2": {
+   "file": "data/research/weather/+020.9_+0085.2.json.gz",
+   "sha256": "689de154efa8408147d81321febb270e832d7f580c914900df59e475d223bf79",
+   "content_sha256": "276d923da855445e20e3bc6382729c578ac7bab31fa6ffe829904d4347f660e2",
+   "bytes": 806303,
+   "point": {
+    "latitude": 20.9,
+    "longitude": 85.2,
+    "stations": [
+     5566
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 20.9,
+    "longitude": 85.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    20.911163,
+    85.19531
+   ],
+   "retrieved_at": "2026-10-11T19:03:39.091328+00:00"
+  },
+  "+021.1_+0079.0": {
+   "file": "data/research/weather/+021.1_+0079.0.json.gz",
+   "sha256": "86f35d36e6c004ca08cbfc748e47b8c7ba54a1951dc7786d2b18ec0242c63691",
+   "content_sha256": "47479947a14b1cb7b7cc3e734b4c2d7fbbd1bce2dcdb80b119c3a76029a5039d",
+   "bytes": 800069,
+   "point": {
+    "latitude": 21.1,
+    "longitude": 79.0,
+    "stations": [
+     3409464
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 21.1,
+    "longitude": 79.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    21.145462,
+    78.984375
+   ],
+   "retrieved_at": "2026-10-11T19:04:07.084476+00:00"
+  },
+  "+021.2_+0079.1": {
+   "file": "data/research/weather/+021.2_+0079.1.json.gz",
+   "sha256": "9dc62ca23142eff77bcf6569d0bbc49357838203b3434bdfbd46fb76111c5efc",
+   "content_sha256": "cce16821016b46527318b3973c7426aa500b55d52962f91c960b8ccf995fd4c4",
+   "bytes": 798765,
+   "point": {
+    "latitude": 21.2,
+    "longitude": 79.1,
+    "stations": [
+     5621
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 21.2,
+    "longitude": 79.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    21.145462,
+    79.10156
+   ],
+   "retrieved_at": "2026-10-11T19:04:33.889856+00:00"
+  },
+  "+021.2_+0081.3": {
+   "file": "data/research/weather/+021.2_+0081.3.json.gz",
+   "sha256": "7bc86ab302f9e2ce408f4411d565c12efaf6dcab121e64e78ccfaede9e0c2a90",
+   "content_sha256": "1112174ccc2c588d813ef117e841998af174726b5306df2fde49d41c2c9e9e86",
+   "bytes": 800446,
+   "point": {
+    "latitude": 21.2,
+    "longitude": 81.3,
+    "stations": [
+     270708
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 21.2,
+    "longitude": 81.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    21.145462,
+    81.328125
+   ],
+   "retrieved_at": "2026-10-11T19:05:00.196784+00:00"
+  },
+  "+021.2_+0081.4": {
+   "file": "data/research/weather/+021.2_+0081.4.json.gz",
+   "sha256": "858484e00ad81e6b95afbc11879de181bd14c8262aa19888190b3bb885155643",
+   "content_sha256": "f68dee20100f86b97d0581aac5ac46c3445ca085bab9961b3553ca46ccfea0f4",
+   "bytes": 800496,
+   "point": {
+    "latitude": 21.2,
+    "longitude": 81.4,
+    "stations": [
+     3409367
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 21.2,
+    "longitude": 81.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    21.145462,
+    81.44531
+   ],
+   "retrieved_at": "2026-10-11T19:05:25.803574+00:00"
+  },
+  "+021.3_+0081.6": {
+   "file": "data/research/weather/+021.3_+0081.6.json.gz",
+   "sha256": "7208e488b2cff1da2915696ce5c6266ee392d19e8ff300f98f8457c912915b43",
+   "content_sha256": "db6a268f978ff5b3b23e43f5e6c994cab7d7565731a3cb2f6e5bd060aae03c2e",
+   "bytes": 800193,
+   "point": {
+    "latitude": 21.3,
+    "longitude": 81.6,
+    "stations": [
+     3409361
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 21.3,
+    "longitude": 81.6,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    21.262611,
+    81.5625
+   ],
+   "retrieved_at": "2026-10-11T19:05:52.714290+00:00"
+  },
+  "+021.4_+0081.7": {
+   "file": "data/research/weather/+021.4_+0081.7.json.gz",
+   "sha256": "81875e26d7ba363f4e4349f0fa390b080ec7860601a303cbc3901a6cff2a1cc2",
+   "content_sha256": "4c9af7d2d38120cf18d67aaff64b4dc019dceae734ac2851547eeaca1bdc05d5",
+   "bytes": 799817,
+   "point": {
+    "latitude": 21.4,
+    "longitude": 81.7,
+    "stations": [
+     3409362
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 21.4,
+    "longitude": 81.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    21.37976,
+    81.67969
+   ],
+   "retrieved_at": "2026-10-11T19:06:25.531392+00:00"
+  },
+  "+022.2_+0084.8": {
+   "file": "data/research/weather/+022.2_+0084.8.json.gz",
+   "sha256": "ab2d00628f077e1a8010be70d4ab213fa9a7db4afda4aba46a7a7dae01715ba0",
+   "content_sha256": "d9802be1ebbd3b5fbb64c0ae60a2d0791a9ec562a59a2c514bb60b2f9f65223f",
+   "bytes": 796537,
+   "point": {
+    "latitude": 22.2,
+    "longitude": 84.8,
+    "stations": [
+     3409382
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.2,
+    "longitude": 84.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.199806,
+    84.84375
+   ],
+   "retrieved_at": "2026-10-11T19:06:54.648655+00:00"
+  },
+  "+022.2_+0084.9": {
+   "file": "data/research/weather/+022.2_+0084.9.json.gz",
+   "sha256": "a09ecb32225fe6225e46b6a02bfc03ee342b32e53cc2a8542805a9093468bf9a",
+   "content_sha256": "b6820aca26a84e9030ded999c112b8f58d9f143d27a0a10449a8e2e551878f97",
+   "bytes": 796513,
+   "point": {
+    "latitude": 22.2,
+    "longitude": 84.9,
+    "stations": [
+     3409394
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.2,
+    "longitude": 84.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.199806,
+    84.84375
+   ],
+   "retrieved_at": "2026-10-11T19:07:20.181890+00:00"
+  },
+  "+022.3_+0082.5": {
+   "file": "data/research/weather/+022.3_+0082.5.json.gz",
+   "sha256": "a31545f2acac0c909ad44e6ab402f84204806a798104dd001294c1f16bfa30df",
+   "content_sha256": "89493ae6b55672ceac75d11744999b82f3a8e9815c8843d3fdf049f382043dcb",
+   "bytes": 796989,
+   "point": {
+    "latitude": 22.3,
+    "longitude": 82.5,
+    "stations": [
+     3409366
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.3,
+    "longitude": 82.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.316956,
+    82.5
+   ],
+   "retrieved_at": "2026-10-11T19:07:46.721750+00:00"
+  },
+  "+022.4_+0075.5": {
+   "file": "data/research/weather/+022.4_+0075.5.json.gz",
+   "sha256": "a31e31bbc5f5ffc1addd41aed517293f44487b83f8fa4af4629faef7e344879c",
+   "content_sha256": "a2970b986d96cbf24b731f5cb2c0e915ddf274616ff5509d106c7ddc2f60d8a1",
+   "bytes": 800699,
+   "point": {
+    "latitude": 22.4,
+    "longitude": 75.5,
+    "stations": [
+     7292
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.4,
+    "longitude": 75.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.434105,
+    75.46875
+   ],
+   "retrieved_at": "2026-10-11T19:08:19.350667+00:00"
+  },
+  "+022.4_+0082.7": {
+   "file": "data/research/weather/+022.4_+0082.7.json.gz",
+   "sha256": "835d21b5aa0eb84b6e2f8be386a405ff784420ecd2085f8e50596691b25125c4",
+   "content_sha256": "21e160b4d149bee243fbbc3b942e9869b9b0e6ec23a0bf7971dde278fc23c571",
+   "bytes": 794572,
+   "point": {
+    "latitude": 22.4,
+    "longitude": 82.7,
+    "stations": [
+     3409365
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.4,
+    "longitude": 82.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.434105,
+    82.734375
+   ],
+   "retrieved_at": "2026-10-11T19:08:44.967093+00:00"
+  },
+  "+022.5_+0088.3": {
+   "file": "data/research/weather/+022.5_+0088.3.json.gz",
+   "sha256": "e909e2dd01224b68e4c6f0874d36ccc1b95e69006dc0995fcc3b8b00f78e683b",
+   "content_sha256": "5e3d38db4dc5ec3900f8ab39c3268044e7fd68f3e06d56390fc246fa36b185a7",
+   "bytes": 818483,
+   "point": {
+    "latitude": 22.5,
+    "longitude": 88.3,
+    "stations": [
+     10633
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.5,
+    "longitude": 88.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.551254,
+    88.24219
+   ],
+   "retrieved_at": "2026-10-11T19:09:11.539382+00:00"
+  },
+  "+022.5_+0088.4": {
+   "file": "data/research/weather/+022.5_+0088.4.json.gz",
+   "sha256": "5362618e4ddd096dbdc0c76421f567a06b0f38e896b0c086c1c694c8b8906a1e",
+   "content_sha256": "498e307e96fe6f05c2151e8174da703e88b61cb9607e4815b4180290d6075888",
+   "bytes": 818973,
+   "point": {
+    "latitude": 22.5,
+    "longitude": 88.4,
+    "stations": [
+     6950
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.5,
+    "longitude": 88.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.551254,
+    88.359375
+   ],
+   "retrieved_at": "2026-10-11T19:09:36.872947+00:00"
+  },
+  "+022.6_+0088.3": {
+   "file": "data/research/weather/+022.6_+0088.3.json.gz",
+   "sha256": "1726ed7c3559ce8fdf10b7c70b11ae22f4de2699609b9b73363cbc6810018e03",
+   "content_sha256": "0aae5e95288edcfa1ab6dfd8f583a46c7031fe4ae49b60c4edb40f5885f901d8",
+   "bytes": 818355,
+   "point": {
+    "latitude": 22.6,
+    "longitude": 88.3,
+    "stations": [
+     5614,
+     6981,
+     10844
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.6,
+    "longitude": 88.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.551254,
+    88.24219
+   ],
+   "retrieved_at": "2026-10-11T19:10:02.048371+00:00"
+  },
+  "+022.6_+0088.4": {
+   "file": "data/research/weather/+022.6_+0088.4.json.gz",
+   "sha256": "e48085c8e1c8ed15f9733f20daec4ff4735864affd962f225f027de634c5663e",
+   "content_sha256": "6a480a8cbe79991bd84f7ab17036445694acddf56d46bf8075e739958bfcd856",
+   "bytes": 817896,
+   "point": {
+    "latitude": 22.6,
+    "longitude": 88.4,
+    "stations": [
+     6946
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.6,
+    "longitude": 88.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.551254,
+    88.359375
+   ],
+   "retrieved_at": "2026-10-11T19:10:27.849410+00:00"
+  },
+  "+022.7_+0075.9": {
+   "file": "data/research/weather/+022.7_+0075.9.json.gz",
+   "sha256": "4587d0e5f65c9929d0c50c38afa1523611998fa6113848c9ac0d7cf45929bcc9",
+   "content_sha256": "06d9980d67cd8bc9b51c400da7d7c9b4589d14f3f9ad7d4d4d87dc1218541c1c",
+   "bytes": 801904,
+   "point": {
+    "latitude": 22.7,
+    "longitude": 75.9,
+    "stations": [
+     3409498,
+     3409499
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.7,
+    "longitude": 75.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.668404,
+    75.9375
+   ],
+   "retrieved_at": "2026-10-11T19:10:55.820442+00:00"
+  },
+  "+022.8_+0088.4": {
+   "file": "data/research/weather/+022.8_+0088.4.json.gz",
+   "sha256": "11466ea86d943311b4c2de5cf9e0a231bc3ca3ae56b3beb5a8172f61bc5f4890",
+   "content_sha256": "0a3d9019c09a4e692717f171492362bdd42a94d9f9abe7ec50c87ba9f2a3810d",
+   "bytes": 817838,
+   "point": {
+    "latitude": 22.8,
+    "longitude": 88.4,
+    "stations": [
+     3409509
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 22.8,
+    "longitude": 88.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    22.785553,
+    88.359375
+   ],
+   "retrieved_at": "2026-10-11T19:11:24.034538+00:00"
+  },
+  "+023.0_+0072.6": {
+   "file": "data/research/weather/+023.0_+0072.6.json.gz",
+   "sha256": "c00ddc700623b0110f35fc34db5d92bd0507b0ca8cf79390519b6ac78c687471",
+   "content_sha256": "25f08d92fe027c5ff1cdb88194757a0d0270ac6ac904f2b45b8ea71a3d12caff",
+   "bytes": 808585,
+   "point": {
+    "latitude": 23.0,
+    "longitude": 72.6,
+    "stations": [
+     5631,
+     227533,
+     227534
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.0,
+    "longitude": 72.6,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.019852,
+    72.65625
+   ],
+   "retrieved_at": "2026-10-11T19:11:52.189657+00:00"
+  },
+  "+023.2_+0072.7": {
+   "file": "data/research/weather/+023.2_+0072.7.json.gz",
+   "sha256": "d2d4ef98796d9e8583026053a17135f433f7094a178e955ab56ce9409c4f1167",
+   "content_sha256": "543c5d01fde5d0067e6ac0bd5c6b0ac157018225931ad0c1c5e3047d263f2da0",
+   "bytes": 806781,
+   "point": {
+    "latitude": 23.2,
+    "longitude": 72.7,
+    "stations": [
+     6937,
+     228301
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.2,
+    "longitude": 72.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.25415,
+    72.65625
+   ],
+   "retrieved_at": "2026-10-11T19:12:20.109301+00:00"
+  },
+  "+023.2_+0077.4": {
+   "file": "data/research/weather/+023.2_+0077.4.json.gz",
+   "sha256": "45ee85dd46794adf1cc81fc28e4a0641d2f5a98eed1689df14d944bfd2a047f7",
+   "content_sha256": "77a98e3be59dad7b1a6ee7bbd98b1939f6053f04b2aab6e24033b2b6409f9adc",
+   "bytes": 799555,
+   "point": {
+    "latitude": 23.2,
+    "longitude": 77.4,
+    "stations": [
+     10913,
+     361378
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.2,
+    "longitude": 77.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.25415,
+    77.34375
+   ],
+   "retrieved_at": "2026-10-11T19:12:45.023162+00:00"
+  },
+  "+023.2_+0079.9": {
+   "file": "data/research/weather/+023.2_+0079.9.json.gz",
+   "sha256": "4f4661f3c5fc000e68adcb6409d14a04a56964f7beef65afe6f15bb4de676c87",
+   "content_sha256": "e1465ed5bbf121fe3d88cb0a9f1df31c1f586fc9b188312c38cfc93beb65ebc4",
+   "bytes": 797867,
+   "point": {
+    "latitude": 23.2,
+    "longitude": 79.9,
+    "stations": [
+     10911
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.2,
+    "longitude": 79.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.25415,
+    79.921875
+   ],
+   "retrieved_at": "2026-10-11T19:13:11.253039+00:00"
+  },
+  "+023.2_+0080.0": {
+   "file": "data/research/weather/+023.2_+0080.0.json.gz",
+   "sha256": "e2948451b751ce5fd5cfbf6aed02504195d3ddd62cf0754422c4f4c756b0a684",
+   "content_sha256": "5fcbca9cde83ae0154d58a47138776f550969d397c370a2164502061680dfa6d",
+   "bytes": 797608,
+   "point": {
+    "latitude": 23.2,
+    "longitude": 80.0,
+    "stations": [
+     3409488
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.2,
+    "longitude": 80.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.25415,
+    80.03906
+   ],
+   "retrieved_at": "2026-10-11T19:13:36.991967+00:00"
+  },
+  "+023.5_+0080.2": {
+   "file": "data/research/weather/+023.5_+0080.2.json.gz",
+   "sha256": "4b5fd72e45064821cfa0e6bfbd5d19917770c2d2a47114f2d88d9b7d34b4c6c9",
+   "content_sha256": "63c979d1e1b49352b609b6d5bd71d5fcef04c16189a5f73e8d4714a18da792f2",
+   "bytes": 797616,
+   "point": {
+    "latitude": 23.5,
+    "longitude": 80.2,
+    "stations": [
+     8245
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.5,
+    "longitude": 80.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.48845,
+    80.15625
+   ],
+   "retrieved_at": "2026-10-11T19:14:08.959533+00:00"
+  },
+  "+023.5_+0087.3": {
+   "file": "data/research/weather/+023.5_+0087.3.json.gz",
+   "sha256": "98bdd6cca791ebf4a25ba7622eb772151d48bd69d5f0fde7bbf1692aea96cda7",
+   "content_sha256": "92afe44ac56028bbdc92e205c9d975edbd935cb2552df0d835d79f7956f1d409",
+   "bytes": 807435,
+   "point": {
+    "latitude": 23.5,
+    "longitude": 87.3,
+    "stations": [
+     5615
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.5,
+    "longitude": 87.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.48845,
+    87.30469
+   ],
+   "retrieved_at": "2026-10-11T19:14:34.609276+00:00"
+  },
+  "+023.5_+0087.4": {
+   "file": "data/research/weather/+023.5_+0087.4.json.gz",
+   "sha256": "f7a1292e97ec2d81a935ca1ce2105a7553921ba88d8a7739557e5cb278d896a6",
+   "content_sha256": "4af1d925f75665d06edd4e84108a10801792834438c89de595f08eda802b4cc0",
+   "bytes": 807527,
+   "point": {
+    "latitude": 23.5,
+    "longitude": 87.4,
+    "stations": [
+     3409520
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.5,
+    "longitude": 87.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.48845,
+    87.421875
+   ],
+   "retrieved_at": "2026-10-11T19:14:59.502462+00:00"
+  },
+  "+023.6_+0074.4": {
+   "file": "data/research/weather/+023.6_+0074.4.json.gz",
+   "sha256": "990e6220a1ce9fdf606ba38725948013308d71a1db3a749a49715e63b9b02e9e",
+   "content_sha256": "d7943cb015d3e2c9c8ee84995b4040da26e78c2eb3bce37523d9c3ed3753035a",
+   "bytes": 799425,
+   "point": {
+    "latitude": 23.6,
+    "longitude": 74.4,
+    "stations": [
+     3409416
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.6,
+    "longitude": 74.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.605598,
+    74.41406
+   ],
+   "retrieved_at": "2026-10-11T19:15:31.805203+00:00"
+  },
+  "+023.7_+0086.9": {
+   "file": "data/research/weather/+023.7_+0086.9.json.gz",
+   "sha256": "0a53e4f8a27ed4bf0c45ca0b923fe38d01f9d8fdf3e37453adb7de2491fbfe41",
+   "content_sha256": "f771527da7449b2738e463b344e9274a8222dab36c384dd66a33643381807a49",
+   "bytes": 802998,
+   "point": {
+    "latitude": 23.7,
+    "longitude": 86.9,
+    "stations": [
+     5602,
+     3409521
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.7,
+    "longitude": 86.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.722748,
+    86.953125
+   ],
+   "retrieved_at": "2026-10-11T19:15:58.543951+00:00"
+  },
+  "+023.8_+0078.8": {
+   "file": "data/research/weather/+023.8_+0078.8.json.gz",
+   "sha256": "c72240f32ddd41d00755f6ad0211eb1e65a29e1eee528e52fe5121765fdc2ea6",
+   "content_sha256": "c2c70e21a2b13d82c4e473f21eebf529b18d4719ca907582e2265278f55106be",
+   "bytes": 800690,
+   "point": {
+    "latitude": 23.8,
+    "longitude": 78.8,
+    "stations": [
+     3409370
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.8,
+    "longitude": 78.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.839897,
+    78.75
+   ],
+   "retrieved_at": "2026-10-11T19:16:27.173922+00:00"
+  },
+  "+023.8_+0091.3": {
+   "file": "data/research/weather/+023.8_+0091.3.json.gz",
+   "sha256": "6ff9862b00358ec94b433e85a2896eba62c4ef7facd736a636b90be7f8b9a7a0",
+   "content_sha256": "7b824713b8827ae92fe3c82913b62548a66a2e2eacc95fb84219cfa8d1ff5c8e",
+   "bytes": 813541,
+   "point": {
+    "latitude": 23.8,
+    "longitude": 91.3,
+    "stations": [
+     301390
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 23.8,
+    "longitude": 91.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    23.839897,
+    91.28906
+   ],
+   "retrieved_at": "2026-10-11T19:16:53.569951+00:00"
+  },
+  "+024.6_+0076.2": {
+   "file": "data/research/weather/+024.6_+0076.2.json.gz",
+   "sha256": "d14d5f65cd47e123828eca4c46d1e15bdfde5705060b849cf2a7028cde459af4",
+   "content_sha256": "35dab2c1ba9dbde785cec3d98f55615e83c1e5e636c182abcdb6d9d90f0224c2",
+   "bytes": 798683,
+   "point": {
+    "latitude": 24.6,
+    "longitude": 76.2,
+    "stations": [
+     3409429
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 24.6,
+    "longitude": 76.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    24.542793,
+    76.171875
+   ],
+   "retrieved_at": "2026-10-11T19:17:21.035822+00:00"
+  },
+  "+024.6_+0080.9": {
+   "file": "data/research/weather/+024.6_+0080.9.json.gz",
+   "sha256": "6b5363abfb9df42bfdfbc39dd93e0c90f788beabb154e719203448d4fc81f2dd",
+   "content_sha256": "c41ad9cf684655822cb48bbc131c37ba99a60924698b05379384c161dd1e070f",
+   "bytes": 798651,
+   "point": {
+    "latitude": 24.6,
+    "longitude": 80.9,
+    "stations": [
+     6443
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 24.6,
+    "longitude": 80.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    24.542793,
+    80.859375
+   ],
+   "retrieved_at": "2026-10-11T19:17:46.962254+00:00"
+  },
+  "+024.8_+0084.4": {
+   "file": "data/research/weather/+024.8_+0084.4.json.gz",
+   "sha256": "ae042df6b05911974d1f5166b51d6ae8136d534ea38bd01910017aa03fb72015",
+   "content_sha256": "27ca4c6713eb49340c247e175772550cd5fc995230e7c6985a8beabe67636e6f",
+   "bytes": 802041,
+   "point": {
+    "latitude": 24.8,
+    "longitude": 84.4,
+    "stations": [
+     304956
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 24.8,
+    "longitude": 84.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    24.777092,
+    84.375
+   ],
+   "retrieved_at": "2026-10-11T19:18:13.890294+00:00"
+  },
+  "+024.8_+0085.0": {
+   "file": "data/research/weather/+024.8_+0085.0.json.gz",
+   "sha256": "d324139d9ca0de02c6d15eb5a0540e74c27301c82fc8d670af16b9ea23f573f2",
+   "content_sha256": "8fab48078055e21f7fa19abc4c00cc10d02bb9d8ccca46f0bfefcf8cac69bd53",
+   "bytes": 801574,
+   "point": {
+    "latitude": 24.8,
+    "longitude": 85.0,
+    "stations": [
+     7494,
+     270724
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 24.8,
+    "longitude": 85.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    24.777092,
+    84.96094
+   ],
+   "retrieved_at": "2026-10-11T19:18:39.139455+00:00"
+  },
+  "+025.0_+0073.9": {
+   "file": "data/research/weather/+025.0_+0073.9.json.gz",
+   "sha256": "769666060ffb1e3302427ca1350ce6c75d2e6074654a19149c6864b5bf9c678f",
+   "content_sha256": "4e80dddb522a8acb2bdd10d92d70aec9534bc0e2c15d4576b74db35254fcdc5a",
+   "bytes": 799212,
+   "point": {
+    "latitude": 25.0,
+    "longitude": 73.9,
+    "stations": [
+     3409423
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.0,
+    "longitude": 73.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.01139,
+    73.94531
+   ],
+   "retrieved_at": "2026-10-11T19:19:05.974325+00:00"
+  },
+  "+025.1_+0075.8": {
+   "file": "data/research/weather/+025.1_+0075.8.json.gz",
+   "sha256": "5395af9333bce9a090da1106879205ab1635648affc81db01034b664e46d42e4",
+   "content_sha256": "b58990d96de1590589171c803c5094d63e17537a3fb04b2269c821c23d04a831",
+   "bytes": 798841,
+   "point": {
+    "latitude": 25.1,
+    "longitude": 75.8,
+    "stations": [
+     5636
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.1,
+    "longitude": 75.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.12854,
+    75.82031
+   ],
+   "retrieved_at": "2026-10-11T19:19:32.866626+00:00"
+  },
+  "+025.2_+0075.9": {
+   "file": "data/research/weather/+025.2_+0075.9.json.gz",
+   "sha256": "1e25edd74e16e113c4a15598e6f78deb3a52b36fd141bf3334d2754b5991a7a5",
+   "content_sha256": "d745ea1e55bc7b398ca77dde1719ecd0d831f0ef97153d58f1b4c1e6495e7948",
+   "bytes": 799018,
+   "point": {
+    "latitude": 25.2,
+    "longitude": 75.9,
+    "stations": [
+     3409406
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.2,
+    "longitude": 75.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.24569,
+    75.9375
+   ],
+   "retrieved_at": "2026-10-11T19:20:00.478793+00:00"
+  },
+  "+025.3_+0083.0": {
+   "file": "data/research/weather/+025.3_+0083.0.json.gz",
+   "sha256": "450d36e5e97c9e43198b83e0f67c9dc56208c4ee8fd6c9c8657f2a0dee844535",
+   "content_sha256": "e464216bf5fbce125e5e027d100efd062160b6f1b28f80c10e44d5b1514634c3",
+   "bytes": 802920,
+   "point": {
+    "latitude": 25.3,
+    "longitude": 83.0,
+    "stations": [
+     228397
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.3,
+    "longitude": 83.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.24569,
+    82.96875
+   ],
+   "retrieved_at": "2026-10-11T19:20:26.369154+00:00"
+  },
+  "+025.3_+0087.0": {
+   "file": "data/research/weather/+025.3_+0087.0.json.gz",
+   "sha256": "2aff3b900886f56708cf927915cfdb5e836148ae4f377f6b6cecb38c54c88736",
+   "content_sha256": "54db03612a2ee960957a175dc54ede8c32d56aab5f789dcb018280be97f228ae",
+   "bytes": 808843,
+   "point": {
+    "latitude": 25.3,
+    "longitude": 87.0,
+    "stations": [
+     270721,
+     270723
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.3,
+    "longitude": 87.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.24569,
+    86.953125
+   ],
+   "retrieved_at": "2026-10-11T19:20:53.078959+00:00"
+  },
+  "+025.4_+0075.6": {
+   "file": "data/research/weather/+025.4_+0075.6.json.gz",
+   "sha256": "e560f14266354b98d7f205a587844a679fc8a00066a8b9c62ee8907e91065ecc",
+   "content_sha256": "e2f0acfc42ad66987b12d508544aade1b79459e23f609ffe825165461e74fe6b",
+   "bytes": 798902,
+   "point": {
+    "latitude": 25.4,
+    "longitude": 75.6,
+    "stations": [
+     3409443
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.4,
+    "longitude": 75.6,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.362839,
+    75.58594
+   ],
+   "retrieved_at": "2026-10-11T19:21:22.891294+00:00"
+  },
+  "+025.4_+0081.9": {
+   "file": "data/research/weather/+025.4_+0081.9.json.gz",
+   "sha256": "ae4e532576e1e5cb3267ec3fffe4152b9be679d33cb0f550526ee5492e5b312d",
+   "content_sha256": "d04d72f4bf26d6d5a5e771e1d2fec4d1d07931d6e40b7926a7b4458912bfdd3e",
+   "bytes": 803669,
+   "point": {
+    "latitude": 25.4,
+    "longitude": 81.9,
+    "stations": [
+     227384
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.4,
+    "longitude": 81.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.362839,
+    81.91406
+   ],
+   "retrieved_at": "2026-10-11T19:21:50.172511+00:00"
+  },
+  "+025.4_+0082.9": {
+   "file": "data/research/weather/+025.4_+0082.9.json.gz",
+   "sha256": "4213bc6cf1965507a7b6e0cca8b5131ed624dadf6df0adc18f9632836477a980",
+   "content_sha256": "bacb00f079af6b0bb649751f6afddc29c2f48bac6329dedbe9f22a899c08524d",
+   "bytes": 803297,
+   "point": {
+    "latitude": 25.4,
+    "longitude": 82.9,
+    "stations": [
+     5590
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.4,
+    "longitude": 82.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.362839,
+    82.85156
+   ],
+   "retrieved_at": "2026-10-11T19:22:16.142275+00:00"
+  },
+  "+025.4_+0086.5": {
+   "file": "data/research/weather/+025.4_+0086.5.json.gz",
+   "sha256": "7f6df1986ed7b8c18dff7f1995551d6fdc911e4ce16ed5696fcabc4d1beb13f0",
+   "content_sha256": "f18c0116da3333657714fb8410d09d53604e26d8208f014a4e47576f127462ff",
+   "bytes": 807436,
+   "point": {
+    "latitude": 25.4,
+    "longitude": 86.5,
+    "stations": [
+     270704
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.4,
+    "longitude": 86.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.362839,
+    86.484375
+   ],
+   "retrieved_at": "2026-10-11T19:22:42.689258+00:00"
+  },
+  "+025.5_+0081.9": {
+   "file": "data/research/weather/+025.5_+0081.9.json.gz",
+   "sha256": "350890bcf5fa3806363d8567eda9e8173e334a9fc75027982693256253512d31",
+   "content_sha256": "b60ba1a66e565d4f5abe2c339cd5b20d604ac18d96b49e3696fdc5e18dfff722",
+   "bytes": 803147,
+   "point": {
+    "latitude": 25.5,
+    "longitude": 81.9,
+    "stations": [
+     227387
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.5,
+    "longitude": 81.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.479988,
+    81.91406
+   ],
+   "retrieved_at": "2026-10-11T19:23:09.720531+00:00"
+  },
+  "+025.6_+0085.0": {
+   "file": "data/research/weather/+025.6_+0085.0.json.gz",
+   "sha256": "dcb06a93fad28864d30373dd02a6ad7ea2896899369226e694211f5de52fdf78",
+   "content_sha256": "c9a6456ace232cc93c768ca3c2fdc9ed434fc1d1897f93b1aefa5016d2d4f545",
+   "bytes": 805607,
+   "point": {
+    "latitude": 25.6,
+    "longitude": 85.0,
+    "stations": [
+     7495
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 85.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.597137,
+    84.96094
+   ],
+   "retrieved_at": "2026-10-11T19:23:37.035569+00:00"
+  },
+  "+025.6_+0085.1": {
+   "file": "data/research/weather/+025.6_+0085.1.json.gz",
+   "sha256": "97e4c0066c66c650176c866f8591f5be9dc5ad0b24c0325fee15096d32c506d9",
+   "content_sha256": "53b728ea3834cba6db4ea6e19d917d05648bea7b8c7ce7db75141c800978a036",
+   "bytes": 803771,
+   "point": {
+    "latitude": 25.6,
+    "longitude": 85.1,
+    "stations": [
+     10599
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 85.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.597137,
+    85.078125
+   ],
+   "retrieved_at": "2026-10-11T19:24:02.514835+00:00"
+  },
+  "+025.6_+0085.2": {
+   "file": "data/research/weather/+025.6_+0085.2.json.gz",
+   "sha256": "f73119dffcdcd7e81e4b3fd76e27080f095b1b46aacea9884ddf4b2c145c8ca4",
+   "content_sha256": "4cc5bb09048e0ef9aae013f20bba7cfb0d3dfa28e0bf5737fd296f1da93ff57e",
+   "bytes": 804438,
+   "point": {
+    "latitude": 25.6,
+    "longitude": 85.2,
+    "stations": [
+     10630
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 85.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.597137,
+    85.19531
+   ],
+   "retrieved_at": "2026-10-11T19:24:28.133713+00:00"
+  },
+  "+025.6_+0091.9": {
+   "file": "data/research/weather/+025.6_+0091.9.json.gz",
+   "sha256": "57541c89a4eb6660cf312375fc0e08fd0910561bfd5e7d1df9b643e90608d247",
+   "content_sha256": "e13fb1f5aabd0efddd648f98e0db54a05ce3454564e55c66a3d2b8e32d06af76",
+   "bytes": 797664,
+   "point": {
+    "latitude": 25.6,
+    "longitude": 91.9,
+    "stations": [
+     10895,
+     313411
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.6,
+    "longitude": 91.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.597137,
+    91.875
+   ],
+   "retrieved_at": "2026-10-11T19:24:54.169508+00:00"
+  },
+  "+025.7_+0094.1": {
+   "file": "data/research/weather/+025.7_+0094.1.json.gz",
+   "sha256": "f17ca47e900941e84ea90a41513c3e30cc89afb6a6adc724d22aff281995b25e",
+   "content_sha256": "91c6ea189bb9a3bed4345eeb70bf11bc7a12cdee56d009eaeab0e2c0be66e1e9",
+   "bytes": 798187,
+   "point": {
+    "latitude": 25.7,
+    "longitude": 94.1,
+    "stations": [
+     10901
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.7,
+    "longitude": 94.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.714287,
+    94.10156
+   ],
+   "retrieved_at": "2026-10-11T19:25:21.693646+00:00"
+  },
+  "+025.8_+0073.3": {
+   "file": "data/research/weather/+025.8_+0073.3.json.gz",
+   "sha256": "635e454e8d209afc479240b91bf08bf1291ce672ac28632f963df38d1b491067",
+   "content_sha256": "ad2770b01822b983f4d2ed982c2434813169473ee42fd0349723b0d7cfbfec2c",
+   "bytes": 799962,
+   "point": {
+    "latitude": 25.8,
+    "longitude": 73.3,
+    "stations": [
+     5638
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 25.8,
+    "longitude": 73.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    25.831436,
+    73.24219
+   ],
+   "retrieved_at": "2026-10-11T19:25:52.948821+00:00"
+  },
+  "+026.1_+0085.4": {
+   "file": "data/research/weather/+026.1_+0085.4.json.gz",
+   "sha256": "5f69c33f2866dd7b1c3619e7c73b56d9532375354715ca88851a9e178147d919",
+   "content_sha256": "85fcc0af6bcd3e44010a8a762acf72b008bf347374ca1a401abebb08d23a5f46",
+   "bytes": 805914,
+   "point": {
+    "latitude": 26.1,
+    "longitude": 85.4,
+    "stations": [
+     10823,
+     229987
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.1,
+    "longitude": 85.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.065735,
+    85.42969
+   ],
+   "retrieved_at": "2026-10-11T19:26:22.752694+00:00"
+  },
+  "+026.2_+0073.1": {
+   "file": "data/research/weather/+026.2_+0073.1.json.gz",
+   "sha256": "0dd30dd070551c06235b2bd5557fb3fc8fdee3b846925cdb0550ce932974de42",
+   "content_sha256": "89cc166b5f893e9cd53321af3cac913f5ef644c46e67bb5b89d3565d2e8878d2",
+   "bytes": 799697,
+   "point": {
+    "latitude": 26.2,
+    "longitude": 73.1,
+    "stations": [
+     3409425
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.2,
+    "longitude": 73.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.182884,
+    73.125
+   ],
+   "retrieved_at": "2026-10-11T19:26:50.579026+00:00"
+  },
+  "+026.2_+0078.1": {
+   "file": "data/research/weather/+026.2_+0078.1.json.gz",
+   "sha256": "4b57fb9c644441c5598934976189f33e831572b84e1ccdb42ce9414a627e6d12",
+   "content_sha256": "7a410850db4e819f1eb5be4fce478afaaa79d2f2f3c5183e5cd1d9d093a9bb49",
+   "bytes": 799428,
+   "point": {
+    "latitude": 26.2,
+    "longitude": 78.1,
+    "stations": [
+     3409369
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.2,
+    "longitude": 78.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.182884,
+    78.046875
+   ],
+   "retrieved_at": "2026-10-11T19:27:15.997792+00:00"
+  },
+  "+026.2_+0078.2": {
+   "file": "data/research/weather/+026.2_+0078.2.json.gz",
+   "sha256": "aafd212b59e2e91575595ebc4ddd35c4eff3c0331133435deb6e6945cbf86418",
+   "content_sha256": "afd84de6aae996e8137da7cb1cf8f1b7f4d6baaa0523c5dc61e83f3a0cfaeecd",
+   "bytes": 799418,
+   "point": {
+    "latitude": 26.2,
+    "longitude": 78.2,
+    "stations": [
+     10907
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.2,
+    "longitude": 78.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.182884,
+    78.16406
+   ],
+   "retrieved_at": "2026-10-11T19:27:41.014209+00:00"
+  },
+  "+026.2_+0084.4": {
+   "file": "data/research/weather/+026.2_+0084.4.json.gz",
+   "sha256": "c4298550543635bb23f00aa4c1f78c9909af9bc4a574cb0d4f7fb79bf1bf4139",
+   "content_sha256": "f4e02f5093e262cb34a9d4df04cec4ea236f9334ad8a2dba76567edb82fcb87a",
+   "bytes": 804245,
+   "point": {
+    "latitude": 26.2,
+    "longitude": 84.4,
+    "stations": [
+     270726
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.2,
+    "longitude": 84.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.182884,
+    84.375
+   ],
+   "retrieved_at": "2026-10-11T19:28:06.854118+00:00"
+  },
+  "+026.2_+0091.7": {
+   "file": "data/research/weather/+026.2_+0091.7.json.gz",
+   "sha256": "28ca6956c635cced5778d74f86a9dad4eb4eecc2115780580e110f8b0648ab14",
+   "content_sha256": "bff4b9b1f08373976aa560c8baf7cb916fcc580b3f281cd27f8593131d66572c",
+   "bytes": 801789,
+   "point": {
+    "latitude": 26.2,
+    "longitude": 91.7,
+    "stations": [
+     42240
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.2,
+    "longitude": 91.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.182884,
+    91.75781
+   ],
+   "retrieved_at": "2026-10-11T19:28:31.867647+00:00"
+  },
+  "+026.2_+0091.8": {
+   "file": "data/research/weather/+026.2_+0091.8.json.gz",
+   "sha256": "381e135a647420acaf26bff18683f15b636d79d55ffa466fe8361fa22bb456f8",
+   "content_sha256": "77aa39ca53edf6722bcf0c40ff460c946caea8748f7c6a2d453759e99ed0bc97",
+   "bytes": 795689,
+   "point": {
+    "latitude": 26.2,
+    "longitude": 91.8,
+    "stations": [
+     10903
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.2,
+    "longitude": 91.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.182884,
+    91.75781
+   ],
+   "retrieved_at": "2026-10-11T19:28:57.632004+00:00"
+  },
+  "+026.3_+0073.0": {
+   "file": "data/research/weather/+026.3_+0073.0.json.gz",
+   "sha256": "e42fb8b31c41f5a11b3e243b82d7803c48ea693a075edf13093684ecca19a635",
+   "content_sha256": "dff393c25fe01557a47eaba5bb38d05d3c4073b9e3e990a6ab0ccb399c06214c",
+   "bytes": 799861,
+   "point": {
+    "latitude": 26.3,
+    "longitude": 73.0,
+    "stations": [
+     5587,
+     3409401
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.3,
+    "longitude": 73.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.300034,
+    73.00781
+   ],
+   "retrieved_at": "2026-10-11T19:29:24.154583+00:00"
+  },
+  "+026.5_+0077.0": {
+   "file": "data/research/weather/+026.5_+0077.0.json.gz",
+   "sha256": "ce6797e6160c314b17eee9ba8df118dd341e354fc1d08593c570958dbe581f5a",
+   "content_sha256": "88f668d30b2846f5a02f895bbf9f3e16cf455519fadd3f9bedbf3b791d3686be",
+   "bytes": 798712,
+   "point": {
+    "latitude": 26.5,
+    "longitude": 77.0,
+    "stations": [
+     3409428
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.5,
+    "longitude": 77.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.534332,
+    76.99219
+   ],
+   "retrieved_at": "2026-10-11T19:29:57.995992+00:00"
+  },
+  "+026.5_+0080.2": {
+   "file": "data/research/weather/+026.5_+0080.2.json.gz",
+   "sha256": "db8d605bf35af39f709553a32defc9c96f734d6c4cf9b43570bfa7166de9fb24",
+   "content_sha256": "e07c82378e7cdd3d7cb28f7c647eaa31fcb6da22615ca1c2de6a87364265ef92",
+   "bytes": 800711,
+   "point": {
+    "latitude": 26.5,
+    "longitude": 80.2,
+    "stations": [
+     229252
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.5,
+    "longitude": 80.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.534332,
+    80.15625
+   ],
+   "retrieved_at": "2026-10-11T19:30:24.086121+00:00"
+  },
+  "+026.5_+0080.3": {
+   "file": "data/research/weather/+026.5_+0080.3.json.gz",
+   "sha256": "e8b8c7533be0630c9ddc6c731c374c125bafc49e435806cf181fd4afcb67a537",
+   "content_sha256": "581e87fd34ebbf4b6ea6430fe0efb82356ace142348ba563ebf446e8fba8d832",
+   "bytes": 800413,
+   "point": {
+    "latitude": 26.5,
+    "longitude": 80.3,
+    "stations": [
+     5662
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.5,
+    "longitude": 80.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.534332,
+    80.27344
+   ],
+   "retrieved_at": "2026-10-11T19:30:49.579235+00:00"
+  },
+  "+026.7_+0083.4": {
+   "file": "data/research/weather/+026.7_+0083.4.json.gz",
+   "sha256": "341e4a99f232336c72c15c06a309d0010f9999a2be6c628bae25ee94db2fee92",
+   "content_sha256": "7bc53b31bda69eeaf03ce66526263c3185226431e183103cec5dc1981aee26ce",
+   "bytes": 801880,
+   "point": {
+    "latitude": 26.7,
+    "longitude": 83.4,
+    "stations": [
+     228840
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.7,
+    "longitude": 83.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.651482,
+    83.4375
+   ],
+   "retrieved_at": "2026-10-11T19:31:19.531195+00:00"
+  },
+  "+026.7_+0088.4": {
+   "file": "data/research/weather/+026.7_+0088.4.json.gz",
+   "sha256": "aefdb1d82dc7541a875091ac69a17ad45f67ba35b79ed957ff59d6b99da19e66",
+   "content_sha256": "c8644986067d4deb8e65e25cc51367b1e7424b28b1050e47b153ced9ebb3e891",
+   "bytes": 794881,
+   "point": {
+    "latitude": 26.7,
+    "longitude": 88.4,
+    "stations": [
+     5648
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.7,
+    "longitude": 88.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.651482,
+    88.359375
+   ],
+   "retrieved_at": "2026-10-11T19:31:45.046349+00:00"
+  },
+  "+026.8_+0080.9": {
+   "file": "data/research/weather/+026.8_+0080.9.json.gz",
+   "sha256": "74d1eda7d3beaa829b478c3f18ef923830a196d238489843e470064e938f8893",
+   "content_sha256": "282a77a7d9f094de1e9c51d17e7c799505a77ab3904ecd480350a014f27cb990",
+   "bytes": 800136,
+   "point": {
+    "latitude": 26.8,
+    "longitude": 80.9,
+    "stations": [
+     2456,
+     5659
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.8,
+    "longitude": 80.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.768631,
+    80.859375
+   ],
+   "retrieved_at": "2026-10-11T19:32:10.751928+00:00"
+  },
+  "+026.9_+0070.9": {
+   "file": "data/research/weather/+026.9_+0070.9.json.gz",
+   "sha256": "f3588c90a4049f4f342683441ed28445e302b03eb106a6f71b52c0e88293c0ef",
+   "content_sha256": "f64e9ef536ec73cd4485f6b8facb244259374ce216c2d8ae0aae03da166a37bf",
+   "bytes": 798857,
+   "point": {
+    "latitude": 26.9,
+    "longitude": 70.9,
+    "stations": [
+     3409444
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.9,
+    "longitude": 70.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.88578,
+    70.89844
+   ],
+   "retrieved_at": "2026-10-11T19:32:37.513221+00:00"
+  },
+  "+026.9_+0075.8": {
+   "file": "data/research/weather/+026.9_+0075.8.json.gz",
+   "sha256": "c5f7672001f5aa02bd6b32e94d31ad3653210d8e26b43d2810006a9210ca8296",
+   "content_sha256": "f508c8f32b8c0e64609f2ad073a398e3a263c86dc8232ba1b13aae2d3953017e",
+   "bytes": 798803,
+   "point": {
+    "latitude": 26.9,
+    "longitude": 75.8,
+    "stations": [
+     5633,
+     5635
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.9,
+    "longitude": 75.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.88578,
+    75.82031
+   ],
+   "retrieved_at": "2026-10-11T19:33:02.516888+00:00"
+  },
+  "+026.9_+0076.3": {
+   "file": "data/research/weather/+026.9_+0076.3.json.gz",
+   "sha256": "4dd94834513520b08e5725aff6e112889ff02196b4cb7dbc0b9e3469b56f014d",
+   "content_sha256": "c1e12bfa40b44c3a0e5595c2b45e9cc32dbee1f3c6df7f3466ebc2103a38eaef",
+   "bytes": 797760,
+   "point": {
+    "latitude": 26.9,
+    "longitude": 76.3,
+    "stations": [
+     3409418
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.9,
+    "longitude": 76.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.88578,
+    76.28906
+   ],
+   "retrieved_at": "2026-10-11T19:33:28.062877+00:00"
+  },
+  "+026.9_+0081.0": {
+   "file": "data/research/weather/+026.9_+0081.0.json.gz",
+   "sha256": "469d7cfedd00dd2b12faf1cbb09c2d474e0842dc4705ff47f80e24ada3b96f4e",
+   "content_sha256": "a3dbdaa92c918ccefd1ecb77ce17c3d7be0532105c0fa4f2263c64afadce2980",
+   "bytes": 799348,
+   "point": {
+    "latitude": 26.9,
+    "longitude": 81.0,
+    "stations": [
+     7140
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 26.9,
+    "longitude": 81.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    26.88578,
+    80.97656
+   ],
+   "retrieved_at": "2026-10-11T19:33:53.843147+00:00"
+  },
+  "+027.0_+0075.7": {
+   "file": "data/research/weather/+027.0_+0075.7.json.gz",
+   "sha256": "bbf723eeedcc0f0e53403fe17577e2ba62b52818a1085032e8412e4a1d3917af",
+   "content_sha256": "8d17077bf1a59dae781b0dcce42731ecb389585d3814726ede6c667410aad9a0",
+   "bytes": 799107,
+   "point": {
+    "latitude": 27.0,
+    "longitude": 75.7,
+    "stations": [
+     5612
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.0,
+    "longitude": 75.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    27.00293,
+    75.703125
+   ],
+   "retrieved_at": "2026-10-11T19:34:21.044500+00:00"
+  },
+  "+027.1_+0093.7": {
+   "file": "data/research/weather/+027.1_+0093.7.json.gz",
+   "sha256": "00d46198c06e4796c18dee8622efed9f7e999b6ecfb3e1f954eb5e6b4938cef2",
+   "content_sha256": "27ccdbb1879645c3fdc6b536ffbbcb9627359b270fea95885ee58996105e3012",
+   "bytes": 794423,
+   "point": {
+    "latitude": 27.1,
+    "longitude": 93.7,
+    "stations": [
+     223146
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.1,
+    "longitude": 93.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    27.120079,
+    93.75
+   ],
+   "retrieved_at": "2026-10-11T19:34:51.113036+00:00"
+  },
+  "+027.2_+0077.5": {
+   "file": "data/research/weather/+027.2_+0077.5.json.gz",
+   "sha256": "2dae7523cfc37851b3a353874dd97b44326663876ae989dc7291e51d2c655621",
+   "content_sha256": "dd8247f6155ac949d300b65359ef4c632d17dff8ffe3d4058916264490e5cc14",
+   "bytes": 798235,
+   "point": {
+    "latitude": 27.2,
+    "longitude": 77.5,
+    "stations": [
+     3409402
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.2,
+    "longitude": 77.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    27.237228,
+    77.46094
+   ],
+   "retrieved_at": "2026-10-11T19:35:24.472905+00:00"
+  },
+  "+027.2_+0078.0": {
+   "file": "data/research/weather/+027.2_+0078.0.json.gz",
+   "sha256": "8f1853b41b5f8b33386dfea6ca2aa4e461bfead50f6dbc6d46acfda5631fe681",
+   "content_sha256": "415711e34dfdc4db6972c464637d905084fe24aba6af8c5105c0299db951091b",
+   "bytes": 797819,
+   "point": {
+    "latitude": 27.2,
+    "longitude": 78.0,
+    "stations": [
+     860,
+     227535,
+     227931
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.2,
+    "longitude": 78.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    27.237228,
+    78.046875
+   ],
+   "retrieved_at": "2026-10-11T19:35:49.662306+00:00"
+  },
+  "+027.2_+0078.4": {
+   "file": "data/research/weather/+027.2_+0078.4.json.gz",
+   "sha256": "9b7909fb05758b6b02fb349f025f82a76234e537999118005cee7d23656e6d4c",
+   "content_sha256": "67aa1498c70d2c223a7156b19748b63dd2bb38336804a7e6598f61bb56aef640",
+   "bytes": 798593,
+   "point": {
+    "latitude": 27.2,
+    "longitude": 78.4,
+    "stations": [
+     229729,
+     330021
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.2,
+    "longitude": 78.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    27.237228,
+    78.39844
+   ],
+   "retrieved_at": "2026-10-11T19:36:14.959951+00:00"
+  },
+  "+027.6_+0076.6": {
+   "file": "data/research/weather/+027.6_+0076.6.json.gz",
+   "sha256": "f07be7d8bc6db58d373cf1e1df0e3e36e4e26b1ee3dcf2fde7431e407f1b225d",
+   "content_sha256": "c446f70e0b4c453e55fb09f5be28e3e8713bd44d8ffb28b08dee48f4875bf6fe",
+   "bytes": 797557,
+   "point": {
+    "latitude": 27.6,
+    "longitude": 76.6,
+    "stations": [
+     5576
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.6,
+    "longitude": 76.6,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    27.588676,
+    76.640625
+   ],
+   "retrieved_at": "2026-10-11T19:36:43.044221+00:00"
+  },
+  "+027.6_+0077.6": {
+   "file": "data/research/weather/+027.6_+0077.6.json.gz",
+   "sha256": "6021d5683183614bc6f13ab86dc9d58ec159b32b1df33e29326de456ae6f6f24",
+   "content_sha256": "65cc09ada27d55620155a1fcfd3602e45b445dff41b601ca565e6838844a9708",
+   "bytes": 798339,
+   "point": {
+    "latitude": 27.6,
+    "longitude": 77.6,
+    "stations": [
+     6530249
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.6,
+    "longitude": 77.6,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    27.588676,
+    77.578125
+   ],
+   "retrieved_at": "2026-10-11T19:37:08.534198+00:00"
+  },
+  "+027.6_+0077.7": {
+   "file": "data/research/weather/+027.6_+0077.7.json.gz",
+   "sha256": "d95c6bdd4baedd6b71cffe6c2f733c9cfef513ac5d8675faac79dc26d1e4cda2",
+   "content_sha256": "0c74e571616cf9d3fd1fdab44bba3ca7b8a3c41ddff3ff847f8ed0e0ef5f77b6",
+   "bytes": 798448,
+   "point": {
+    "latitude": 27.6,
+    "longitude": 77.7,
+    "stations": [
+     233414
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 27.6,
+    "longitude": 77.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    27.588676,
+    77.69531
+   ],
+   "retrieved_at": "2026-10-11T19:37:33.268045+00:00"
+  },
+  "+028.0_+0073.3": {
+   "file": "data/research/weather/+028.0_+0073.3.json.gz",
+   "sha256": "d3f537a945dd5ae84dafa233e1d25a44e9ec8523c1d46ba4183c017821ac0d89",
+   "content_sha256": "61592a4c61da9155120bf67be2ff693aca90fbc5e979a0446450807056e5034b",
+   "bytes": 798441,
+   "point": {
+    "latitude": 28.0,
+    "longitude": 73.3,
+    "stations": [
+     3409403
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.0,
+    "longitude": 73.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.057274,
+    73.24219
+   ],
+   "retrieved_at": "2026-10-11T19:38:02.863998+00:00"
+  },
+  "+028.2_+0076.8": {
+   "file": "data/research/weather/+028.2_+0076.8.json.gz",
+   "sha256": "7c061c9dbe68db76dc8d28f091a13fa58bef68bc878bba84d04c7ad713ab2775",
+   "content_sha256": "0ed24b7a09209c96d56435caf9bdc62fde7a99c373354233f979fbd1a14748c9",
+   "bytes": 798662,
+   "point": {
+    "latitude": 28.2,
+    "longitude": 76.8,
+    "stations": [
+     6949,
+     3409519
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.2,
+    "longitude": 76.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.174423,
+    76.75781
+   ],
+   "retrieved_at": "2026-10-11T19:38:36.391276+00:00"
+  },
+  "+028.2_+0076.9": {
+   "file": "data/research/weather/+028.2_+0076.9.json.gz",
+   "sha256": "327833c7db54a53341124efee37ce5eccb1d4bf540f4054fd38277cf869b4ad9",
+   "content_sha256": "f16b0e6e4d5950294e1c310494a62aa5048f46bb0546b4bd0b262dc051224b11",
+   "bytes": 798470,
+   "point": {
+    "latitude": 28.2,
+    "longitude": 76.9,
+    "stations": [
+     5588
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.2,
+    "longitude": 76.9,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.174423,
+    76.875
+   ],
+   "retrieved_at": "2026-10-11T19:39:01.102323+00:00"
+  },
+  "+028.4_+0077.1": {
+   "file": "data/research/weather/+028.4_+0077.1.json.gz",
+   "sha256": "3490ef17486d98d8d7586978831262212ed978c4f0ec5d3803c01cc629348216",
+   "content_sha256": "53cbe4da6dc0c71cecd3fe394437e1cee4ad4237c7f0b5500bcb81e7972ced69",
+   "bytes": 799230,
+   "point": {
+    "latitude": 28.4,
+    "longitude": 77.1,
+    "stations": [
+     10825
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.4,
+    "longitude": 77.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.408722,
+    77.109375
+   ],
+   "retrieved_at": "2026-10-11T19:39:27.912003+00:00"
+  },
+  "+028.4_+0077.3": {
+   "file": "data/research/weather/+028.4_+0077.3.json.gz",
+   "sha256": "5e31e8683c66029673ed155e8840b35e5400056561184dc4fb9693cb4af9a814",
+   "content_sha256": "6acca82bab245fcbfa12bebcb6fe8c75ec4cdfb22ddcabd54f100b051600330c",
+   "bytes": 798573,
+   "point": {
+    "latitude": 28.4,
+    "longitude": 77.3,
+    "stations": [
+     10820,
+     10908
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.4,
+    "longitude": 77.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.408722,
+    77.34375
+   ],
+   "retrieved_at": "2026-10-11T19:39:52.733044+00:00"
+  },
+  "+028.4_+0079.4": {
+   "file": "data/research/weather/+028.4_+0079.4.json.gz",
+   "sha256": "6a78833dc29c3a7907522ea58533ece40367d57157e8d890cd7e76bda196e9f4",
+   "content_sha256": "85d2af1a0e876f49fe57fe5a7da8a19747e8680b7d8bcf834a6bbed52b552451",
+   "bytes": 798162,
+   "point": {
+    "latitude": 28.4,
+    "longitude": 79.4,
+    "stations": [
+     346438,
+     358467
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.4,
+    "longitude": 79.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.408722,
+    79.453125
+   ],
+   "retrieved_at": "2026-10-11T19:40:18.318195+00:00"
+  },
+  "+028.5_+0077.0": {
+   "file": "data/research/weather/+028.5_+0077.0.json.gz",
+   "sha256": "48a3fa5eabfabecfc87ccdf616355d3504e3e183731e9c93a2be5a459a9efa41",
+   "content_sha256": "28eaa1655851bf91f6ed1f6fee100ebe99bac2aef9bb9901eeecafc4c94a5c3b",
+   "bytes": 798604,
+   "point": {
+    "latitude": 28.5,
+    "longitude": 77.0,
+    "stations": [
+     301
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.5,
+    "longitude": 77.0,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.525871,
+    76.99219
+   ],
+   "retrieved_at": "2026-10-11T19:40:44.717866+00:00"
+  },
+  "+028.5_+0077.1": {
+   "file": "data/research/weather/+028.5_+0077.1.json.gz",
+   "sha256": "b57a8ed82e428f286780b7027079f98a4ddc197b363881132aff40f5a6fbb7d8",
+   "content_sha256": "3cef74f4f05accdbde9f150728b479fe19421335b824a5b08e6321e7435ce903",
+   "bytes": 798478,
+   "point": {
+    "latitude": 28.5,
+    "longitude": 77.1,
+    "stations": [
+     5570
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.5,
+    "longitude": 77.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.525871,
+    77.109375
+   ],
+   "retrieved_at": "2026-10-11T19:41:09.624702+00:00"
+  },
+  "+028.5_+0077.3": {
+   "file": "data/research/weather/+028.5_+0077.3.json.gz",
+   "sha256": "82fcc81e9a256753ad2fca9aff3bedc9123e0345a7abdabc4ee98e45461fa7d5",
+   "content_sha256": "ea906c6056b4f522f9d63ba788399bb280c401807bb1c8b1494e38c8911cb7af",
+   "bytes": 797662,
+   "point": {
+    "latitude": 28.5,
+    "longitude": 77.3,
+    "stations": [
+     5598
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.5,
+    "longitude": 77.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.525871,
+    77.34375
+   ],
+   "retrieved_at": "2026-10-11T19:41:35.076204+00:00"
+  },
+  "+028.5_+0077.5": {
+   "file": "data/research/weather/+028.5_+0077.5.json.gz",
+   "sha256": "0526a844ef8494f914a5b54d89eaa65285cbebd60994bc1645521037c4e091ee",
+   "content_sha256": "180b0b162653211cd6f08b6e06a3bbd1a6378e8d0e3af6d6716792bbbbfeed18",
+   "bytes": 796671,
+   "point": {
+    "latitude": 28.5,
+    "longitude": 77.5,
+    "stations": [
+     6978
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.5,
+    "longitude": 77.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.525871,
+    77.46094
+   ],
+   "retrieved_at": "2026-10-11T19:41:59.865018+00:00"
+  },
+  "+028.6_+0076.3": {
+   "file": "data/research/weather/+028.6_+0076.3.json.gz",
+   "sha256": "a41d3c1dfcdf31b26ad6ee94f05b602ccba8fb2feb2a1217347bce1730726917",
+   "content_sha256": "84f48c5e0cc13462ada937e9eb4463fe3097178a42100022dd7700ea05c44348",
+   "bytes": 798377,
+   "point": {
+    "latitude": 28.6,
+    "longitude": 76.3,
+    "stations": [
+     10725
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.6,
+    "longitude": 76.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    76.28906
+   ],
+   "retrieved_at": "2026-10-11T19:42:26.016890+00:00"
+  },
+  "+028.6_+0077.1": {
+   "file": "data/research/weather/+028.6_+0077.1.json.gz",
+   "sha256": "67622bdcede1c1f2df0c625bd8f002adde396788318165dca976a4569aa4cdd7",
+   "content_sha256": "2d901af5f4eded34ffdb33a8506bd9e8f2502397c2b7b3c95e8f6a733bcf2ead",
+   "bytes": 797523,
+   "point": {
+    "latitude": 28.6,
+    "longitude": 77.1,
+    "stations": [
+     5404
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.6,
+    "longitude": 77.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.109375
+   ],
+   "retrieved_at": "2026-10-11T19:42:50.958097+00:00"
+  },
+  "+028.6_+0077.2": {
+   "file": "data/research/weather/+028.6_+0077.2.json.gz",
+   "sha256": "8560981f877dd0bebea83a51ff3813d0879bbe32be5577381595cb3ad8a9791f",
+   "content_sha256": "2152208c775baf78fd34835bc687c3b6b1a9cc09522d11c8dd2caf4352ec296f",
+   "bytes": 797165,
+   "point": {
+    "latitude": 28.6,
+    "longitude": 77.2,
+    "stations": [
+     17
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.6,
+    "longitude": 77.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.22656
+   ],
+   "retrieved_at": "2026-10-11T19:43:15.707586+00:00"
+  },
+  "+028.6_+0077.3": {
+   "file": "data/research/weather/+028.6_+0077.3.json.gz",
+   "sha256": "dd2474b1de6156f5555c784a912e317d716df8df77dee529bf98b06ee292c98e",
+   "content_sha256": "6f2a5a8b36b45f7372b742c4ad16e27c6efc40533d89905adbc74d132b4409ed",
+   "bytes": 796560,
+   "point": {
+    "latitude": 28.6,
+    "longitude": 77.3,
+    "stations": [
+     235,
+     6980
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.6,
+    "longitude": 77.3,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.34375
+   ],
+   "retrieved_at": "2026-10-11T19:43:40.624061+00:00"
+  },
+  "+028.6_+0077.4": {
+   "file": "data/research/weather/+028.6_+0077.4.json.gz",
+   "sha256": "0b4d8bd427917043d35c6936f64714aa45a075b6e349386d6226c3bb83b25817",
+   "content_sha256": "b3d9971dc257374ec7622358377ab0412f5c5a19529b0bf6cf983005e00e3d71",
+   "bytes": 796559,
+   "point": {
+    "latitude": 28.6,
+    "longitude": 77.4,
+    "stations": [
+     5616,
+     6924,
+     6988
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.6,
+    "longitude": 77.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.34375
+   ],
+   "retrieved_at": "2026-10-11T19:44:05.956176+00:00"
+  },
+  "+028.6_+0077.5": {
+   "file": "data/research/weather/+028.6_+0077.5.json.gz",
+   "sha256": "b309f93c965b9868b328a9ccbe4f5b2212b89f506e6ca9869cf7d70a5d55baf9",
+   "content_sha256": "e195b98f626015ff709d03358349399e9145697b7882af5719dbe62545d5dd2e",
+   "bytes": 796241,
+   "point": {
+    "latitude": 28.6,
+    "longitude": 77.5,
+    "stations": [
+     6986
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.6,
+    "longitude": 77.5,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.46094
+   ],
+   "retrieved_at": "2026-10-11T19:44:30.839811+00:00"
+  },
+  "+028.7_+0077.1": {
+   "file": "data/research/weather/+028.7_+0077.1.json.gz",
+   "sha256": "25141b59524be7e818f3617adce9fe61445a4ac2b8505d094d612d16b6d0cc06",
+   "content_sha256": "8b0f6497a10da16e12c5b50063a3844c5a041321169cf630a64490eccb185fc8",
+   "bytes": 797524,
+   "point": {
+    "latitude": 28.7,
+    "longitude": 77.1,
+    "stations": [
+     50
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.7,
+    "longitude": 77.1,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.109375
+   ],
+   "retrieved_at": "2026-10-11T19:44:57.103809+00:00"
+  },
+  "+028.7_+0077.2": {
+   "file": "data/research/weather/+028.7_+0077.2.json.gz",
+   "sha256": "be847302ec80e63a2e285376e06a044dddd2bf6087e05028cafe25aa2c002500",
+   "content_sha256": "e55dbe043b445d1d766a6890a055636b536a4be25aafaa29d1a97b80da0076d4",
+   "bytes": 797165,
+   "point": {
+    "latitude": 28.7,
+    "longitude": 77.2,
+    "stations": [
+     5541
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.7,
+    "longitude": 77.2,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.22656
+   ],
+   "retrieved_at": "2026-10-11T19:45:21.991786+00:00"
+  },
+  "+028.7_+0077.4": {
+   "file": "data/research/weather/+028.7_+0077.4.json.gz",
+   "sha256": "a7c9c548cb0539b64b7c94fd1effd0d58530d937b3d6f0bff3326522ca4f0ace",
+   "content_sha256": "fab4156483c9ff919473e0943791d16ae368d70416df44d0c2dd6fa226619b1f",
+   "bytes": 796558,
+   "point": {
+    "latitude": 28.7,
+    "longitude": 77.4,
+    "stations": [
+     5665
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.7,
+    "longitude": 77.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.34375
+   ],
+   "retrieved_at": "2026-10-11T19:45:47.918565+00:00"
+  },
+  "+028.7_+0077.7": {
+   "file": "data/research/weather/+028.7_+0077.7.json.gz",
+   "sha256": "5bc3ba94eb557ca5cc4859cebc869b6e846cd1ed1a3df8d546a1aba393394aba",
+   "content_sha256": "e5c81f33761e53c00e8b07dc182217727fb57ec8c0bdc345802c4780637aa5d0",
+   "bytes": 798424,
+   "point": {
+    "latitude": 28.7,
+    "longitude": 77.7,
+    "stations": [
+     8319
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.7,
+    "longitude": 77.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.64302,
+    77.69531
+   ],
+   "retrieved_at": "2026-10-11T19:46:12.824951+00:00"
+  },
+  "+028.8_+0078.7": {
+   "file": "data/research/weather/+028.8_+0078.7.json.gz",
+   "sha256": "e6f2d0e027708e29dfc2ad07b29d9a1ecdb61925f524ef62400a0c08974c9ba2",
+   "content_sha256": "a5338341b6c84efb8906d6d062a22137707bb12c8842178e755c421d8622c90d",
+   "bytes": 798719,
+   "point": {
+    "latitude": 28.8,
+    "longitude": 78.7,
+    "stations": [
+     270771
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.8,
+    "longitude": 78.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.76017,
+    78.75
+   ],
+   "retrieved_at": "2026-10-11T19:46:39.472587+00:00"
+  },
+  "+028.9_+0078.7": {
+   "file": "data/research/weather/+028.9_+0078.7.json.gz",
+   "sha256": "032dbb3c13b51db3fa2dadbe44c662578558a163553ca3988c9f1217852366c1",
+   "content_sha256": "20ec1bf5198b31129b79fab91f42091a07b2c3b64e3cf427288ec8ac16617d90",
+   "bytes": 798618,
+   "point": {
+    "latitude": 28.9,
+    "longitude": 78.7,
+    "stations": [
+     270697
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.9,
+    "longitude": 78.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.87732,
+    78.75
+   ],
+   "retrieved_at": "2026-10-11T19:47:07.979656+00:00"
+  },
+  "+028.9_+0078.8": {
+   "file": "data/research/weather/+028.9_+0078.8.json.gz",
+   "sha256": "4b45ac9aaacbdf37e22d63b791f48ff1741d0151b71297e5ce6ac495f58650ad",
+   "content_sha256": "725e8afb3e294cf015a1b1ed78a7cce7147888d2008e6533951244f4cc4a2361",
+   "bytes": 798620,
+   "point": {
+    "latitude": 28.9,
+    "longitude": 78.8,
+    "stations": [
+     270777
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 28.9,
+    "longitude": 78.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.87732,
+    78.75
+   ],
+   "retrieved_at": "2026-10-11T19:47:33.440386+00:00"
+  },
+  "+029.0_+0077.8": {
+   "file": "data/research/weather/+029.0_+0077.8.json.gz",
+   "sha256": "296edbd0bf70e73bf26fdc1a2f42d9e974fe7eab2e948d17cc386c6bc3f1457e",
+   "content_sha256": "9e4efddb645466a9e5918ad74c524289d647b3ab80611d19b415187b6ee16bc4",
+   "bytes": 797857,
+   "point": {
+    "latitude": 29.0,
+    "longitude": 77.8,
+    "stations": [
+     6976
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 29.0,
+    "longitude": 77.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    28.994469,
+    77.8125
+   ],
+   "retrieved_at": "2026-10-11T19:47:59.608319+00:00"
+  },
+  "+029.1_+0077.7": {
+   "file": "data/research/weather/+029.1_+0077.7.json.gz",
+   "sha256": "7b0c53d0c447cf849c8edf5ed1593e7643da0a9df9931ee0ae80cc68552ea8f0",
+   "content_sha256": "0107b3798a7974bb0550cd52859e560c5e5f5c5c92784965e9a1cbaf3a7699bc",
+   "bytes": 797444,
+   "point": {
+    "latitude": 29.1,
+    "longitude": 77.7,
+    "stations": [
+     7720
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 29.1,
+    "longitude": 77.7,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    29.111618,
+    77.69531
+   ],
+   "retrieved_at": "2026-10-11T19:48:30.000795+00:00"
+  },
+  "+029.8_+0076.4": {
+   "file": "data/research/weather/+029.8_+0076.4.json.gz",
+   "sha256": "b0a901335c5690e93a0791e9dcf4385378caad3a91e326499e904e5b05e671c7",
+   "content_sha256": "3dc33e382406682a145daa623f6524adb47af9bdca8ab765cb16f43951c8a10b",
+   "bytes": 797237,
+   "point": {
+    "latitude": 29.8,
+    "longitude": 76.4,
+    "stations": [
+     6971
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 29.8,
+    "longitude": 76.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    29.814514,
+    76.40625
+   ],
+   "retrieved_at": "2026-10-11T19:49:03.796870+00:00"
+  },
+  "+030.3_+0076.4": {
+   "file": "data/research/weather/+030.3_+0076.4.json.gz",
+   "sha256": "9eb25727e7d3651a1cadc3c14b7ba9f8662b50ff18abaa01295673d3bc7c6777",
+   "content_sha256": "f58c24a9678d4e8371630382bdaef2d506a6f2f3c94efa590ee3bcba827d1803",
+   "bytes": 797535,
+   "point": {
+    "latitude": 30.3,
+    "longitude": 76.4,
+    "stations": [
+     5544
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 30.3,
+    "longitude": 76.4,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    30.283112,
+    76.40625
+   ],
+   "retrieved_at": "2026-10-11T19:49:30.643365+00:00"
+  },
+  "+030.7_+0076.8": {
+   "file": "data/research/weather/+030.7_+0076.8.json.gz",
+   "sha256": "f88333b03a7313315ce6fc3edf33a2a1261ebd8a6a04975a1817582027a64645",
+   "content_sha256": "5db1eef2d55ce1d1a5880595f6ae47e8ecf0fde7982ca1236435d8a50d1d8a93",
+   "bytes": 794261,
+   "point": {
+    "latitude": 30.7,
+    "longitude": 76.8,
+    "stations": [
+     233415
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 30.7,
+    "longitude": 76.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    30.751709,
+    76.75781
+   ],
+   "retrieved_at": "2026-10-11T19:49:57.176791+00:00"
+  },
+  "+030.8_+0076.8": {
+   "file": "data/research/weather/+030.8_+0076.8.json.gz",
+   "sha256": "fae79edfc9e86e09138490429e346e9f547a00f3b243daf00efe1c251eb88443",
+   "content_sha256": "302014dabd1cd61d7896cf37e8169e023f20c6d85214b6c91cf71aea0de994df",
+   "bytes": 794214,
+   "point": {
+    "latitude": 30.8,
+    "longitude": 76.8,
+    "stations": [
+     10914
+    ]
+   },
+   "hours": 14760,
+   "request": {
+    "latitude": 30.8,
+    "longitude": 76.8,
+    "hourly": "temperature_2m_previous_day2,relative_humidity_2m_previous_day2,wind_speed_10m_previous_day2,wind_direction_10m_previous_day2,precipitation_previous_day2,surface_pressure_previous_day2,shortwave_radiation_previous_day2,cloud_cover_previous_day2",
+    "start_date": "2025-02-01",
+    "end_date": "2026-10-08",
+    "models": "gfs_seamless",
+    "timezone": "UTC"
+   },
+   "grid": [
+    30.751709,
+    76.75781
+   ],
+   "retrieved_at": "2026-10-11T19:50:21.975183+00:00"
+  }
+ },
+ "updated_at": "2026-10-11T19:50:21.983201+00:00",
+ "points": 151
+}

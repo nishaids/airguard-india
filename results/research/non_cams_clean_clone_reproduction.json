@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-10-12T02:41:24.221337+00:00",
+  "status": "PASS",
+  "source_git_sha": "def4158d93e855622e0ba409f6dee617dd54722b",
+  "experiment": "NON_CAMS_PRELIMINARY",
+  "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "builder_code_sha256": "f6e083144f43d9e43be789e81242bed44d847e79c4305898c866ed5433fa17b1",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "fresh_local_git_clone": true,
+  "derived_caches_copied": false,
+  "raw_files_copied": 945,
+  "raw_file_manifest_sha256": "9e97deb1872205238e42072f247e583e2ddafb0aff7e0aa161aa9ac94c5831a7",
+  "actual_exit_code": 0,
+  "semantic_table_hash_match": true,
+  "station_days": 107280,
+  "valid_targets": 64799,
+  "acquisition_calls": 0,
+  "primary_reproduction_complete": false,
+  "limitations": "Pinned existing runtime reused; exact cached inputs copied. New acquisition and genuine CAMS/model reproduction remain pending."
+}

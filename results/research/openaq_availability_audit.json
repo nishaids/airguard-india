@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-10-12T02:11:08.254675+00:00",
+  "location_id": 42240,
+  "endpoint_kind": "location_sensor_metadata",
+  "attempts": 1,
+  "status": "HTTP_ERROR",
+  "http_status": 500
+}

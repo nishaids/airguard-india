@@ -1,0 +1,210 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,booktabs,url}
+\title{AirGuard India: Station Calibration, Uncertainty and Prospective Verification of Day-Ahead Air Quality}
+\author{\IEEEauthorblockN{Nishanth R, NAME, NAME}
+\IEEEauthorblockA{Affiliations and author consent pending}}
+\begin{document}
+\maketitle
+\begin{abstract}
+This unsubmitted skeleton documents an India-specific station-calibration
+protocol locked before model fitting; the manuscript itself is not a new
+preregistration. The intended comparison is raw operational CAMS versus direct learning
+and residual correction, followed by uncertainty calibration and exposure
+advisory evaluation. Hourly quality rules, chronological and spatial validation,
+and a sealed final test constrain the analysis. The genuine historical CAMS
+issue-time archive remains unavailable. A separate preliminary measured-data
+study is reported as infrastructure evidence, without a CAMS improvement claim.
+Real prospective forecasts are frozen, but matched measured outcomes remain
+pending. [RESULT PENDING CAMS ARCHIVE EXPERIMENT]
+\end{abstract}
+\begin{IEEEkeywords}CAMS, air quality, India, calibration, prospective verification\end{IEEEkeywords}
+\section{Problem and Related Work}
+The research question is whether a correction learned at Indian stations
+improves next-day CPCB-style AQI while retaining useful uncertainty and warning
+behaviour. Atmospheric forecasts and measured concentrations have different
+provenance. Existing Indian forecasting systems establish that this is an
+evaluation problem, not an unoccupied application domain \cite{jena2021delhi}.
+Station MOS, CAMS statistical post-processing, conformal intervals and risk
+calibration are established methods. The targeted review records overlapping
+European CAMS work and distinguishes Indian reanalysis mapping from genuine
+issue-time prediction. No world's-first claim is made. The contribution under
+test is the audited Indian operational procedure and its empirical warning
+trade-offs. Full-text novelty review remains incomplete.
+\section{Study Status}
+Two streams are kept separate: frozen current forecasts constitute the
+prospective study; measured historical targets support non-CAMS preliminary
+research. Neither substitutes for the blocked primary archive comparison.
+\clearpage
+\section{Data, Targets and Quality}
+OpenAQ preserves upstream CPCB-provider station identity; its measurements are
+not an official CPCB bulletin or licensed CCR export \cite{openaq2026}.
+The inherited catalogue contains 481 eligible stations across 255 parsed cities;
+the metadata-only stratified sample selects 181 stations in 100 cities. Current
+catalogue selection can introduce survivorship bias and is disclosed.
+The locked v3.1 window is 2025-02-19 through 2026-10-07. The protocol was
+locked at 2026-10-11T18:32:05.939254+00:00; its prior version and hash remain in the lock history.
+Its immutable hash is recorded in the result artifact. This acquisition checkpoint has
+179 usable stations, 100 cities, 64799 valid targets and 42481
+retained rejected station-days. These are partial-collection counts, not
+national study acceptance.
+
+The acquisition dataset SHA-256 is \texttt{4761a5da60dde059}\allowbreak\texttt{b1c7bbfc5403e32d}\allowbreak\texttt{26c983f80e3fc226}\allowbreak\texttt{83eba8a13119821d}. The preliminary experiment input dataset SHA-256 is \texttt{4761a5da60dde059}\allowbreak\texttt{b1c7bbfc5403e32d}\allowbreak\texttt{26c983f80e3fc226}\allowbreak\texttt{83eba8a13119821d}, with 179 usable stations, 100 cities, 64799 valid targets, 42481 retained rejected station-days and 383 censored Severe days before final-test isolation. Both checkpoints have the same dataset identity. The immutable preliminary run is \texttt{287c87db04a6b294}\allowbreak\texttt{59374c4d50637f94}\allowbreak\texttt{3c04dfe10d9072d7}\allowbreak\texttt{e296b74ad1d45a3f}.
+
+The single CPCB-style engine applies pollutant breakpoints, at least sixteen
+distinct hours per pollutant, at least three supported pollutants and a required
+particulate species \cite{cpcb2014aqi}. Particulates and the designated gases use
+24-hour means; CO and ozone use the maximum complete trailing eight-hour mean.
+Targets are labelled AirGuard CPCB-style AQI. Exact zeros, provider flags, poor
+coverage and six-hour identical runs are rejected. PM2.5 above PM10 and potential
+spikes are flagged and retained. Raw caches and row-addressable rejection ledgers
+preserve exclusions. Unsupported ppb conversion is refused.
+
+Severe AQI is an open lower bound of at least 401. The checkpoint contains
+383 censored Severe days. They cannot supply exact residual labels or
+identified MAE, RMSE, bias or coefficient-of-determination values. Category,
+exceedance, forecasts below 401 and lower-bound shortfall remain estimable.
+\section{Issue-Time Availability}
+Issue time is 20:00 IST on the preceding day. Observation bins must end by
+17:00 IST; daily history is D-2 or earlier. Historical OpenAQ publication time
+is unknown, so measured-history analyses explicitly assume a healthy feed.
+Archived weather uses the documented 48-hour Previous Runs offset
+at \url{https://open-meteo.com/en/docs/previous-runs-api}. The Air Quality API documentation is a separate
+source \cite{openmeteo2026}. FIRMS acquisition time alone does not establish release
+time. CAMS past fields without their producing run are excluded from the primary
+experiment. Every admitted snapshot passes its guard.
+\clearpage
+\section{Primary Forecast and Correction}
+The genuine CAMS global forecast archive \cite{cams2024forecasts} must retain
+initialisation, lead, valid time, units and evidence of pre-issue availability.
+Reanalysis is prohibited as a replacement. The locked v3.1 protocol specifies
+target-support-matched CAMS scoring and a six-pollutant secondary comparator.
+Later target support is an evaluation annotation and cannot become a predictor.
+Verification of an operational pollutant-support policy and its compatible
+primary runner remains pending archive integration. Any change to the locked
+comparison requires a transparent protocol amendment before primary fitting,
+without consulting final-test outcomes.
+All methods share observations and evaluation windows. With frozen CAMS index
+$b_{s,d}$ and exact measured index $y_{s,d}$, residual learning uses
+\begin{equation}r_{s,d}=y_{s,d}-b_{s,d},\qquad
+\widehat y_{s,d}=b_{s,d}+\widehat r_{s,d}.\end{equation}
+The ladder comprises raw CAMS, direct ML, residual Ridge, residual LightGBM and
+residual XGBoost, with persistence and prior-only climatology as operational
+floors. There is no assumption that correction wins. The legacy city model has
+a different period, target and input representation, and is reported separately.
+
+\begin{table}[h]\centering\caption{Primary comparison contract}
+\begin{tabular}{ll}\toprule Method & Result \\\midrule
+Raw operational CAMS & Pending archive \\
+Direct ML & Pending archive \\
+Residual Ridge & Pending archive \\
+Residual LightGBM & Pending archive \\
+Residual XGBoost & Pending archive \\\bottomrule\end{tabular}\end{table}
+
+\section{Selection and Ablation}
+Model settings use training-only inner validation. The locked protocol fixes
+90 training days initially, 30 calibration days, 30 test days, a 30-day step and
+one-day embargo gaps, with expanding training windows. Each fold is reported.
+The latest 90 dates, 2026-07-10 through 2026-10-07, are sealed.
+The referenced result artifact declares that no final-test scoring was performed. Feature ablation separates CAMS, measured history,
+forecast weather, calendar, spatial context and optional fires. Fire admission
+requires a date-block interval supporting its benefit. An additional sliding
+90-day non-CAMS sensitivity is labelled separately.
+[RESULT PENDING CAMS ARCHIVE EXPERIMENT]
+\clearpage
+\section{Temporal and Spatial Verification}
+Primary evaluation will report exact-target MAE, RMSE, signed forecast bias,
+coefficient of determination, six-category diagnostics, threshold detection,
+false alarms and censored-Severe shortfall. Poor, Very Poor and Severe events
+receive explicit diagnostics. Seasonal and regional groups below thirty pairs
+are listed with counts and withheld metrics.
+Spatial tests isolate cities, 25-km connected urban clusters, stations and
+regions. Local-history and monitor-free inference are distinct conditions.
+Held-out station targets cannot determine training eligibility. The all-station
+reference is scored on the identical held-out test rows.
+
+Paired comparison uses seven-day moving date blocks with 5,000 resamples and
+a two-sided Diebold--Mariano daily loss comparison with Newey--West variance
+and Holm multiplicity adjustment \cite{diebold1995comparing}. A confidence
+interval containing zero does not establish improvement.
+\section{Preliminary Results Contract}
+The separate non-CAMS run completed 24 temporal evaluations,
+36 spatial holdouts and 12 calibration-window evaluations;
+0 temporal and 0 spatial entries lacked sufficient data.
+Its predictions and per-fold metrics come from the exact immutable artifact
+identified above. Strict Ridge had lower paired MAE than climatology (signed difference -8.96 AQI; 95\% date-block interval [-12.49, -5.61]; n=38382 exact pairs); lower MAE supported by this interval. History Ridge had higher paired MAE than persistence (signed difference +0.61 AQI; 95\% date-block interval [-0.41, +1.70]; n=31622 exact pairs); a nonzero MAE difference is not established by this interval.
+These preliminary comparisons do not establish production approval. They do not answer
+whether CAMS station correction improves a genuine operational baseline.
+The definitive results table and skill figure remain:
+[RESULT PENDING CAMS ARCHIVE EXPERIMENT]
+
+\section{Reproducibility}
+Files and decompressed cache content have SHA-256 manifests. Dataset identity,
+feature version, protocol hash, source hash and run configuration accompany each
+result. Local station reconstruction is audited independently of derived caches.
+A complete clean-clone primary reproduction remains pending. Numerical values
+in this skeleton are generated from evidence artifacts, never filled manually.
+\clearpage
+\section{Uncertainty Calibration}
+Split conformal intervals at 80\% and 90\%, quantile calibration and
+forecast-category Mondrian calibration use only the preceding calibration
+window. Coverage and widths are reported by category, season and region.
+For a censored Severe outcome, an upper bound reaching 401 is merely compatible
+with the known lower bound; it does not identify true-value coverage.
+Calibration under temporal and spatial shift is evaluated empirically;
+exchangeability guarantees are not asserted for dependent station-days
+\cite{gibbs2021aci,xu2021enbpi}. Proper uncertainty scoring requires identified
+outcomes \cite{gneiting2007scoring}.
+\section{Vulnerability-Aware Advisory Evaluation}
+Declared exposure strata include general adults, children, older adults,
+asthma/COPD, heart conditions, pregnancy and outdoor workers. They are not
+personal medical-risk predictions. P0 uses the point forecast; P1 the calibrated
+median; P2 the calibrated 0.75 quantile; P3 the smallest calibration-window
+candidate achieving the corrected empirical under-warning aim $(k+1)/(n+1)$.
+The aims are 10\% for general adults and 5\% for the other declared strata.
+If no candidate qualifies, the policy reports that fact.
+Under-warning, over-warning, serious under-warning and high-pollution misses
+are reported alongside date-block confidence intervals. A lower warning rate
+does not demonstrate a health benefit. Unsupported cohort coefficients remain
+unadopted. [RESULT PENDING CAMS ARCHIVE EXPERIMENT]
+\section{Prospective Verification}
+The current ledger contains 12 real forecasts across 1
+target days, and 0 verified days. 0 forecasts have a bound station; 12 do not. Unbound records cannot be made station forecasts by retrospectively selecting an outcome monitor. 12 historical forecasts lack an issuance Git SHA; missing identities will not be invented. No experimental correction is deployed.
+Station binding and deployment identity must be present before future issue. Issued
+forecasts are immutable; a thirty-day track record requires real elapsed days
+and matched outcomes.
+\clearpage
+\section{Limitations and Planned Completion}
+ADS credentials and manual dataset terms acceptance block the genuine CAMS
+comparison. Partial station acquisition, current-catalogue survivorship,
+unknown historical observation latency and limited extreme-event support bound
+the preliminary analysis. Optional fire release time remains unproven. The
+initial station-free prospective forecasts do not establish station forecast
+skill. Final-test isolation, transparent artifacts and explicit missing results
+are necessary conditions for completion, not evidence of improved accuracy.
+The intended completed narrative is CAMS baseline, India-specific correction,
+rolling/spatial testing, calibrated uncertainty, cohort advisory trade-offs and
+prospective station verification.
+\section{Conclusion}
+The recovery preserves the existing protocol and acquisition checkpoint, and
+extends measured-data and non-CAMS infrastructure. Correction performance,
+operational intervals, advisory risk attainment and thirty-day verification
+remain hypotheses. [RESULT PENDING CAMS ARCHIVE EXPERIMENT]
+\section*{Ethics and AI Disclosure}
+No human-subject data was collected. Cohort guidance is environmental exposure
+advice, not validated medical advice. Any participant study requires prior
+ethics approval and consent. Claude Code and OpenAI Codex assisted software,
+tests and drafting. Authors must review the methods, bibliography, disclosures
+and generated claims before submission. Author placeholders remain unresolved.
+\begin{thebibliography}{99}
+\bibitem{jena2021delhi} Jena, Chinmay and Ghude, Sachin D. and Kumar, Rajesh and Debnath, Sreyashi and Govardhan, Gaurav and Soni, Vijay K. and Kulkarni, Santosh H. and Beig, G. and Nanjundiah, Ravi S. and Rajeevan, M., ``Performance of high resolution (400 m) PM2.5 forecast over Delhi'', Scientific Reports, Springer Science and Business Media LLC, vol. 11, no. 1, 2021, DOI: \url{https://doi.org/10.1038/s41598-021-83467-8}, \url{http://dx.doi.org/10.1038/s41598-021-83467-8}.
+\bibitem{diebold1995comparing} Diebold, Francis X. and Mariano, Roberto S., ``Comparing Predictive Accuracy'', Journal of Business \& Economic Statistics, Informa UK Limited, vol. 13, no. 3, pp. 253–263, 1995, DOI: \url{https://doi.org/10.1080/07350015.1995.10524599}, \url{http://dx.doi.org/10.1080/07350015.1995.10524599}.
+\bibitem{gneiting2007scoring} Gneiting, Tilmann and Raftery, Adrian E, ``Strictly Proper Scoring Rules, Prediction, and Estimation'', Journal of the American Statistical Association, Informa UK Limited, vol. 102, no. 477, pp. 359–378, 2007, DOI: \url{https://doi.org/10.1198/016214506000001437}, \url{http://dx.doi.org/10.1198/016214506000001437}.
+\bibitem{xu2021enbpi} Chen Xu and Yao Xie, ``Conformal prediction for time series'', 2020, arXiv: \url{https://arxiv.org/abs/2010.09107}.
+\bibitem{gibbs2021aci} Isaac Gibbs and Emmanuel Candès, ``Adaptive Conformal Inference Under Distribution Shift'', 2021, arXiv: \url{https://arxiv.org/abs/2106.00170}.
+\bibitem{cpcb2014aqi} {Central Pollution Control Board}, ``National Air Quality Index'', Central Pollution Control Board, Ministry of Environment, Forest and Climate Change, India, Control of Urban Pollution Series CUPS/82/2014-15, 2014, Online: \url{https://cpcb.nic.in/National-Air-Quality-Index/}.
+\bibitem{cams2024forecasts} {Copernicus Atmosphere Monitoring Service}, ``CAMS global atmospheric composition forecasts'', Copernicus Atmosphere Data Store, 2024, Online: \url{https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts}.
+\bibitem{openaq2026} {OpenAQ}, ``OpenAQ API version 3 documentation'', OpenAQ, 2026, Online: \url{https://docs.openaq.org/}.
+\bibitem{openmeteo2026} {Open-Meteo}, ``Air Quality API documentation'', Open-Meteo, 2026, Online: \url{https://open-meteo.com/en/docs/air-quality-api}.
+\end{thebibliography}
+\end{document}

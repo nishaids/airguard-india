@@ -1,0 +1,11 @@
+{
+  "run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
+  "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "final_test_scored": false,
+  "generator_code_sha256": "5eab6974e94cc7a78bb51acfa4521eea350ea047a5846b936c607603d1701679",
+  "result_artifact_sha256": "c19049cbe45ad05a1fec704081bb69c3d6cbff3d2a7bcc14ed7d3bf465841a50",
+  "files": {
+    "results/research/preliminary/287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f/preliminary_diagnostics.png": "a6e519fb3d783c033e980309ca2f46ae95532f0266e45e5ef30eb00f11da6a8d",
+    "results/research/preliminary/287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f/preliminary_diagnostics.pdf": "4f785badba42cdbdbf8e5f895858730caedf53fd7a3da80a37cd5de82614e072"
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "counts": {
+    "tests": 561,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5,
+    "collected": 561,
+    "passed": 556,
+    "deselected": 4
+  },
+  "counts_consistent": true,
+  "suite_passed": false,
+  "cpcb_method_passed": false,
+  "cpcb_test_groups": {
+    "closed_breakpoints": {
+      "collected": 120,
+      "passed": 120,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "interpolation_and_minimum": {
+      "collected": 1,
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "units": {
+      "collected": 1,
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "hourly_coverage_and_gas_windows": {
+      "collected": 1,
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "target_timezone": {
+      "collected": 1,
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "censored_severe": {
+      "collected": 1,
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "cpcb_missing_or_unsuccessful_groups": [],
+  "unsuccessful_tests": [],
+  "validation_version": "research-offline-test-validation-v1",
+  "run_id": "20261011T200151Z-d46adacde7cc",
+  "started_at": "2026-10-11T20:01:51.677159+00:00",
+  "completed_at": "2026-10-11T20:02:35.574634+00:00",
+  "generated_at": "2026-10-11T20:02:35.574634+00:00",
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "tests",
+    "-q",
+    "-k",
+    "not real_database",
+    "-p",
+    "src.research.calibration.validation",
+    "--junitxml=logs/research_validation_20261011T200151Z-d46adacde7cc.junit.xml.log"
+  ],
+  "interpreter_version": "3.10.6",
+  "working_directory": ".",
+  "actual_exit_observed": true,
+  "exit_code": 0,
+  "source_fingerprint": {
+    "normalization": "UTF-8 text; CRLF and CR normalized to LF; no other changes",
+    "tested_module_sha256": {
+      "src/nationwide/aqi.py": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e",
+      "src/nationwide/providers.py": "7c01d639c29ec0d690ab3b75a0b0c1ff31d9b68197be285a0164430db9376cab",
+      "src/nationwide/store.py": "c7c53f3a83745f031ee1383d9a396648d4cc752bf0eb5441b3fa2502c0449fbf",
+      "src/research/storage.py": "670ddc63b49d8462010c12eeecaf40ac7c459efb52630c98ee3389e9dad613f7",
+      "src/research/calibration/availability.py": "d8e6f28bbffdfe2d8ce8f3384a23618f094c66eb9bd3aaf6c0acd537c5045045",
+      "src/research/calibration/data.py": "8d9426e6fae6cf722b7a95b8f370bf5f920cb78e4aa14194fdf3e6d73c85537a",
+      "src/research/calibration/measured.py": "54a7c3c1cae06150afe7288b031fa2ea760fa6bf539076ce53e7b0481f9b54b9",
+      "src/research/calibration/preliminary.py": "93bfd6511c2be32b88570488a146c4b3d91f8060cfabff3d28ad4db36027cd2b",
+      "src/research/calibration/statistics.py": "94e670c02c58f006c21a74609ffd103f410d79cdecd16c3d3e4bb2ab4174dc4e",
+      "src/research/calibration/splits.py": "75444dfa8a9c9af94875063cd0bd07fd8771f9105bf2dab16091c1b907b0b4b9",
+      "src/research/calibration/primary.py": "cab26b55202a9e762d5a43ad0a48a1de6810affc133734ddc4f93c2ae21feed4",
+      "src/research/calibration/checkpoint.py": "8563e9b278bfeaddc372b813503819e8580d30fd6aeaa792294de1905e853e6d",
+      "src/research/calibration/repair_archive.py": "2bd4c7311aa71315919292a8e4b54419e0b8a9519b75db436e0032dc271374c6",
+      "src/research/calibration/openaq_archive.py": "2e11d2b2fd898dfc5a58746e05888696510a028b3f35936bb25067a66aa26746",
+      "src/research/calibration/model_archives.py": "0c5e73f1f15b32f52f2d29f2d7cc8433ce2f002b920093ffbb8af15366effa01",
+      "src/research/calibration/protocol.py": "b4b73c68f8b835bb44c2d61ffb4d8ef345a66b3865c0bf75ae240522401d7e5b",
+      "src/research/calibration/dataset.py": "aacce5e38b06ad10aac59a18301f5319db85553c91dcf3f3da2c0a97fe4dc077",
+      "src/research/calibration/validation.py": "545b248dc12e69fcb5e1d434f608980e6fc8d59b59938862100d8a451eea1e10"
+    },
+    "missing_tested_modules": [],
+    "source_tree_scope": "src/**/*.py",
+    "source_tree_sha256": "d4a92ce1fac0c9ab8749f6d9dde58101397563f648416a6fc3ca20a864e56c44",
+    "source_file_count": 124,
+    "test_file_sha256": {
+      "tests/test_archive_backfill.py": "d099eba154dfd0761ace7fae811e29ee03e15a493cfc6ddee2efc3885676e321",
+      "tests/test_archive_targets.py": "83b551d6561d8907bdd89c144d1245a0cb328157a84970f622247985ff6d61e5",
+      "tests/test_calibration_checkpoint.py": "9ef6559f965da542cf8f25a4637fee10325cf20781940c4757ef3b63dc18c9ee",
+      "tests/test_calibration_continuation.py": "d6f98b1c8a33a87e7a323f8dc8034ad64ef7bacabc1dcd66da6507e3a72080fa",
+      "tests/test_calibration_paper.py": "0666ce3a517509dc66450ad84742d747a8fc3691a39eaa584720eae40c71a8d2",
+      "tests/test_calibration_primary.py": "0dd1b4eba90074f2a2368e0a955df93a28ddfb4e61ed11ac9f3b85ac13f085bf",
+      "tests/test_calibration_repair.py": "7d3e89297b7796ffcb06a505a4cd34aec65bafe23ff7c1fb306895f4e7528e55",
+      "tests/test_calibration_validation.py": "9c26ac38be27da75150bcc043f2dfdbcc8fcff956076226fa23d24e83438ba27",
+      "tests/test_cloud_research_schedule.py": "e612b259da4ddc440a0fd91d0c751d185db08bd101de38a7dd29756ec5c3b263",
+      "tests/test_hai_v2.py": "c34b18b36150e9fb22bf627a05b115474a8eec3a4ac30287de7fea472c7087d0",
+      "tests/test_health_index.py": "efa9416878e98339677d9ec1be2285d372ca5b736f0b127aae201db2ef11ca72",
+      "tests/test_hourly_qa.py": "74c271441960abbf32c1ef533b877df9b8c2c9e87e3bb75104078b32fbdba4a6",
+      "tests/test_ingestion.py": "6b1c5a5a035116cc1a4ae1a6f5f5237594af0f961116f12e7f57649ce06044b3",
+      "tests/test_issuance_alerts.py": "4d156ac2f5d695cce1da4c2297bef8ce4d83f7f9d62c01ec53bbdc066c4c3b27",
+      "tests/test_live.py": "b185759684397179e1139de89aefdd01dcd36516af03556c6a2b8e5071a4ae6e",
+      "tests/test_live_data.py": "13a5219ff363fe90ca1c94493efd92f271980eaa78789e57492d5a3234463f6d",
+      "tests/test_nationwide.py": "576efbf81f31ab7fb6ec548211aa46591a9b6c45b647924cf479e1e55aeed2a5",
+      "tests/test_nationwide_verification.py": "b01cc1245fe7c84ed006dc1364d4cda53379572b6b6dc814ebe85f746d7edb56",
+      "tests/test_operational_scenarios.py": "d0eaa147260e51556d377691c6e89fa7c58de779d104eec8a394599e1dd00866",
+      "tests/test_operational_sensor_selection.py": "39b50d3663fbc3a8a4bfec3ed211c1b15c4c1b9ff6f8039a130c0f20f03d9b5c",
+      "tests/test_optional_cloud_ingestion.py": "7ddf6cbdbd5631d53e2c2c420b3ae53abed8e3ae7946e10937f36430bc53ddb8",
+      "tests/test_phase0_audit.py": "77c3f90f7cbfe03f14117011d41b99c83799eaa0ec0905f14c72c3b793d266bb",
+      "tests/test_public_exports.py": "4a6b842f5966e2b5b14f261048a44beec998dd0846088f0c6b9024fc5ba52424",
+      "tests/test_release_monitoring.py": "c1546a785bee431072892842ab58efe831688623818340b2d69b428fbed36646",
+      "tests/test_request_scope_queue.py": "685256e37d9423a88f6fa5a06f37925420e0a13c26c0647d747504f5e1309349",
+      "tests/test_research_extensions.py": "27d5c0d7da156978beec8cce4ee350146b68add289080ad5ebc2e05bcc9609c7",
+      "tests/test_research_protocol.py": "70798508a8bace685fb15eb2479a436b1023a9ef633f4d1a9aba2a293839eb2f",
+      "tests/test_security_gate.py": "1ca3356b615316b35a920beb71b8d9990086918a9a770008a10ea078edab3286",
+      "tests/test_shared_exposure.py": "c471df37d3145eb063e141f66ce9ac268428b73c4c5545fd73bde580e200872b",
+      "tests/test_smoke.py": "c17d242a9bde3bdadfa36650dd9f0c92e178bc3cb91d83dd0fa06a0fb3681e96",
+      "tests/test_static_site.py": "d09e3b8bf8131aa6d56b97a692591729f259a31529b1d3ad646bc5f04dbdc0f1"
+    },
+    "test_tree_sha256": "2ffad97c3b2ba23fdecddb402767ee42c8bdbd9936792df4807234cf09c7d916"
+  },
+  "source_changed_during_run": true,
+  "offline_policy": {
+    "blank_credentials": [
+      "DATA_GOV_API_KEY",
+      "OPENAQ_API_KEY",
+      "NASA_FIRMS_MAP_KEY",
+      "DATABASE_URL",
+      "CRON_SECRET",
+      "ADS_API_KEY",
+      "CDSAPI_KEY",
+      "SUPABASE_SERVICE_ROLE_KEY",
+      "VERCEL_TOKEN"
+    ],
+    "python_socket_connections": "blocked",
+    "third_party_pytest_autoload": "disabled",
+    "excluded_name_expression": "real_database"
+  },
+  "logs": {
+    "console": "logs/research_validation_20261011T200151Z-d46adacde7cc.pytest.log",
+    "console_sha256": "69f8af07d5c912bce765cfdba90e44a94a00dad31c1694b456b76ba049a6bc44",
+    "junit": "logs/research_validation_20261011T200151Z-d46adacde7cc.junit.xml.log",
+    "junit_sha256": "10b368f07c7db55a5ac282804cc757129ed361492a32645a043cdd70f8543bb2"
+  },
+  "status": "FAILED_OR_INCOMPLETE"
+}

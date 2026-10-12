@@ -1,0 +1,90 @@
+{
+  "fingerprint": {
+    "branch": "research/station-calibration",
+    "files": {
+      "requirements-research.txt": "cd6728d76f75c3e3bb21f5fa3a6bf82523a02d341c191eeb9afa45631c8e63ce",
+      "requirements.txt": "3cc9e75b4c87cf831011feb9d7ceaaf89a8d47185a4ff603434f3ce29a50ed35",
+      "src/nationwide/aqi.py": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e",
+      "src/research/calibration/__init__.py": "24e278308c46270bf4ae1e4dfb8a0d9907518fd8a9dcfe9842ce3b74a5f59d57",
+      "src/research/calibration/availability.py": "d8e6f28bbffdfe2d8ce8f3384a23618f094c66eb9bd3aaf6c0acd537c5045045",
+      "src/research/calibration/catalogue.py": "0daafb83d27661d54a8a5a5200d625d124f181de7444da97a2974e51133ae320",
+      "src/research/calibration/checkpoint.py": "ce171019e6eb1429d9e3e242ba89661479e019bce3bc9ff441d66693579e1c7f",
+      "src/research/calibration/continuation.py": "21245e889dbc0e60d130d2cf4f37a05c7748b65a8c23ad17266e26673db419db",
+      "src/research/calibration/data.py": "3821250370f4448b1068a597358eb33f6e2b36b84568e97f0df55c9df8afea73",
+      "src/research/calibration/dataset.py": "aacce5e38b06ad10aac59a18301f5319db85553c91dcf3f3da2c0a97fe4dc077",
+      "src/research/calibration/figures.py": "5eab6974e94cc7a78bb51acfa4521eea350ea047a5846b936c607603d1701679",
+      "src/research/calibration/measured.py": "432042afa1b9bf33064251465545bd4dfacacacf24a482ca1d3ebe1f21c56224",
+      "src/research/calibration/metadata.py": "a12b28c53aef77f29fbb51a28b583eb8118c5cc7ab3d3a5745b7b25bc45d282c",
+      "src/research/calibration/metrics.py": "0acf5341f2766f392b40f3b8824a67b6c626ce4a9b445a8f2df0a7d11e4eeb12",
+      "src/research/calibration/model_archives.py": "0c5e73f1f15b32f52f2d29f2d7cc8433ce2f002b920093ffbb8af15366effa01",
+      "src/research/calibration/openaq_archive.py": "2e11d2b2fd898dfc5a58746e05888696510a028b3f35936bb25067a66aa26746",
+      "src/research/calibration/paper.py": "115f788c415828f42e76fcbd7521d182e2977173bdbf3416d7f71c70b17f76fb",
+      "src/research/calibration/preliminary.py": "669053e247d4dd0faecbdf313b169a7015bc31153852337e8fd9dfc144eb5396",
+      "src/research/calibration/primary.py": "cab26b55202a9e762d5a43ad0a48a1de6810affc133734ddc4f93c2ae21feed4",
+      "src/research/calibration/prospective_audit.py": "35ca2ba85ef2a65db698bfedda97958e96554eb297e6fa6d9094c5384b23f390",
+      "src/research/calibration/protocol.py": "b4b73c68f8b835bb44c2d61ffb4d8ef345a66b3865c0bf75ae240522401d7e5b",
+      "src/research/calibration/readiness.py": "f2ac319cb5bb1805f422045766a0ed196b561a13b4cb95a69793df085d434365",
+      "src/research/calibration/repair_archive.py": "2bd4c7311aa71315919292a8e4b54419e0b8a9519b75db436e0032dc271374c6",
+      "src/research/calibration/report.py": "765655071ad7de88b4502d18b02defa792d22d929c762accfaecffaacf07c252",
+      "src/research/calibration/reproducibility.py": "ebc68df4f6ecf1f00556548d5ec48331eca2fceb1e1181399c49b240a785ceff",
+      "src/research/calibration/splits.py": "75444dfa8a9c9af94875063cd0bd07fd8771f9105bf2dab16091c1b907b0b4b9",
+      "src/research/calibration/statistics.py": "94e670c02c58f006c21a74609ffd103f410d79cdecd16c3d3e4bb2ab4174dc4e",
+      "src/research/calibration/validation.py": "545b248dc12e69fcb5e1d434f608980e6fc8d59b59938862100d8a451eea1e10"
+    },
+    "metadata_correction_sha256": "4cf5be348694a2edd00e4bda9fd9883c05e74c80b5d94e5e08ff46debe44dd6a",
+    "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+    "runtime": {
+      "packages": {
+        "PyYAML": "6.0.3",
+        "lightgbm": "4.7.0",
+        "matplotlib": "3.10.8",
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "psutil": "7.2.2",
+        "pyarrow": "23.0.0",
+        "scikit-learn": "1.7.2",
+        "scipy": "1.15.3",
+        "xgboost": "3.2.0"
+      },
+      "python": "3.10.6"
+    },
+    "selection_sha256": "73357fe1ab5fd4f2efe3a4197e09b9429474ca7738f63d45721442684dd322ac",
+    "source_sha256": "1ff065a93d7718dc93e7ec2ebf212bc9f8ac82260372a31c434844bd02a49803"
+  },
+  "prepared_at": "2026-10-12T01:57:46.396579+00:00",
+  "sha256": "959ae670d00a3bfbf5052b7399a4877bc41216261791d281ea5ed09968d49290",
+  "version": "airguard-finite-continuation-v1",
+  "workers": [
+    {
+      "command_prefix": [
+        "-m",
+        "src.research.calibration.openaq_archive"
+      ],
+      "create_time": null,
+      "executable_sha256": "",
+      "pid": 33748,
+      "prepared_state": "ALREADY_EXITED"
+    },
+    {
+      "command_prefix": [
+        "-m",
+        "src.research.calibration.openaq_archive"
+      ],
+      "create_time": null,
+      "executable_sha256": "",
+      "pid": 12384,
+      "prepared_state": "ALREADY_EXITED"
+    },
+    {
+      "command_prefix": [
+        "-m",
+        "src.research.calibration.model_archives",
+        "weather"
+      ],
+      "create_time": null,
+      "executable_sha256": "",
+      "pid": 36128,
+      "prepared_state": "ALREADY_EXITED"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "generated_at_utc": "2026-10-12T08:44:05.465286+00:00",
+  "scope": "local current source; no production deployment",
+  "frontend_source_sha256": "e3dca902d78c7b7ea0b92cf1cb4000712c0c4e37dacda4bde9d4fd5e11236f2d",
+  "frontend_checks": {
+    "lint": {
+      "command": "npm run lint",
+      "actual_exit_code": 0,
+      "output_sha256": "01eb50153d6738d3741f38414457234df412e2b383fe23bee7ef571f9077b262"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "actual_exit_code": 0,
+      "output_sha256": "40d1417f7d45107467b570dd3a0addbf79e86854421e76bdddb792904d986f58"
+    },
+    "build": {
+      "command": "npm run build",
+      "actual_exit_code": 0,
+      "output_sha256": "b927e0c3e96d49209937051cf35928b0677226243d01ab5089defae71daeff76"
+    }
+  },
+  "frontend_unit_tests": {
+    "success": true,
+    "numTotalTests": 42,
+    "numPassedTests": 42,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "frontend_unit_report_sha256": "ef2779ea62d0fbbd1f6bfc78e285f71e913def0c76fc29b08b0f2fb825953a1e",
+  "browser_acceptance": {
+    "last_run_status": "passed",
+    "failed_tests": [],
+    "observed_runs": [
+      {
+        "command": "playwright test nationwide.spec.ts --grep 'real nationwide flow: Avadi'",
+        "actual_tool_exit_code": 0,
+        "passed": 1
+      },
+      {
+        "command": "playwright test --grep-invert 'real nationwide flow: Avadi'",
+        "actual_tool_exit_code": 0,
+        "passed": 42
+      }
+    ],
+    "report_note": "Counts/exit codes observed in actual tool executions; last-run artifact verifies the final 42-test run; not a single combined JSON run",
+    "total_observed_passed": 43,
+    "last_run_sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+  },
+  "python_report": "results/project_hardening/all_python_tests.json",
+  "paper_generated_or_modified": false,
+  "experimental_correction_deployed": false
+}

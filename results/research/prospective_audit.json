@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-12T02:44:58.216652+00:00",
+  "generated_at": "2026-10-12T08:30:57.249228+00:00",
   "read_only": true,
   "stream": "A_PROSPECTIVE_OPERATIONAL",
   "health": {
     "ok": true,
-    "generated_at": "2026-10-12T02:44:56.573433+00:00",
+    "generated_at": "2026-10-12T08:30:55.465499+00:00",
     "protocol_version": "airguard-dayahead-20ist-v1",
     "issuance": {
       "state": "ISSUED",
@@ -44,6 +44,54 @@
       }
     ],
     "heartbeats": [
+      {
+        "provider": "scheduler",
+        "operation": "refresh",
+        "status": "SUCCESS",
+        "created_at": "2026-10-12 08:17:49.581589+00:00",
+        "record_count": 2,
+        "error_class": null
+      },
+      {
+        "provider": "scheduler",
+        "operation": "refresh",
+        "status": "SUCCESS",
+        "created_at": "2026-10-12 07:17:47.398896+00:00",
+        "record_count": 2,
+        "error_class": null
+      },
+      {
+        "provider": "scheduler",
+        "operation": "refresh",
+        "status": "SUCCESS",
+        "created_at": "2026-10-12 06:17:55.905863+00:00",
+        "record_count": 2,
+        "error_class": null
+      },
+      {
+        "provider": "scheduler",
+        "operation": "refresh",
+        "status": "SUCCESS",
+        "created_at": "2026-10-12 05:17:47.287518+00:00",
+        "record_count": 2,
+        "error_class": null
+      },
+      {
+        "provider": "scheduler",
+        "operation": "refresh",
+        "status": "SUCCESS",
+        "created_at": "2026-10-12 04:18:11.074496+00:00",
+        "record_count": 2,
+        "error_class": null
+      },
+      {
+        "provider": "scheduler",
+        "operation": "refresh",
+        "status": "SUCCESS",
+        "created_at": "2026-10-12 03:18:01.638181+00:00",
+        "record_count": 2,
+        "error_class": null
+      },
       {
         "provider": "scheduler",
         "operation": "refresh",
@@ -91,54 +139,6 @@
         "created_at": "2026-10-11 22:17:48.160501+00:00",
         "record_count": 2,
         "error_class": null
-      },
-      {
-        "provider": "scheduler",
-        "operation": "refresh",
-        "status": "SUCCESS",
-        "created_at": "2026-10-11 21:17:39.816610+00:00",
-        "record_count": 2,
-        "error_class": null
-      },
-      {
-        "provider": "scheduler",
-        "operation": "refresh",
-        "status": "SUCCESS",
-        "created_at": "2026-10-11 20:17:47.277525+00:00",
-        "record_count": 2,
-        "error_class": null
-      },
-      {
-        "provider": "scheduler",
-        "operation": "refresh",
-        "status": "SUCCESS",
-        "created_at": "2026-10-11 19:17:39.838539+00:00",
-        "record_count": 2,
-        "error_class": null
-      },
-      {
-        "provider": "scheduler",
-        "operation": "refresh",
-        "status": "SUCCESS",
-        "created_at": "2026-10-11 18:17:47.506993+00:00",
-        "record_count": 2,
-        "error_class": null
-      },
-      {
-        "provider": "scheduler",
-        "operation": "refresh",
-        "status": "SUCCESS",
-        "created_at": "2026-10-11 17:17:40.562056+00:00",
-        "record_count": 2,
-        "error_class": null
-      },
-      {
-        "provider": "scheduler",
-        "operation": "refresh",
-        "status": "SUCCESS",
-        "created_at": "2026-10-11 16:17:47.827491+00:00",
-        "record_count": 2,
-        "error_class": null
       }
     ],
     "notice": "Dispatch, retrieval, fixed-time issuance and measured-outcome verification are different events. No forecast is backdated.",
@@ -148,7 +148,7 @@
   "issued_target_days": 1,
   "verified_days": 0,
   "verification_records": 0,
-  "elapsed_real_days": 0.5103450057754629,
+  "elapsed_real_days": 0.7506115865162036,
   "30_day_track_record_complete": false,
   "verification_pairing_mismatches": 0,
   "input_availability_violations": 0,

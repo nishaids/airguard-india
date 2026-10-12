@@ -1,0 +1,375 @@
+{
+  "generated_at_utc": "2026-10-12T10:12:29.557763+00:00",
+  "status": "INDEPENDENT_HARDENING_COMPLETE_PRIMARY_RESEARCH_WAITING_FOR_ARCHIVE",
+  "branch": "research/station-calibration",
+  "generation_git_sha": "bb61b0f7e6e8ed3affdead32e359fb5b8a833ce4",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "measured_dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "CAMS_archive_counts": {
+    "VERIFIED_GRIB": 3,
+    "accepted": 1,
+    "running": 1
+  },
+  "CAMS_archive_complete": false,
+  "raw_baseline_table_sha256": "08f2d50ea7a6e3df772ccadb16422c5df00e2218a9445f31d7780ec9aad69602",
+  "primary_model_selected": false,
+  "selection_lock_created": false,
+  "final_test_scored": false,
+  "paper_generated": false,
+  "experimental_correction_deployed": false,
+  "test_source_current_and_stable": true,
+  "readiness": {
+    "passed": 5,
+    "total": 17,
+    "status": "COLLECTING_NOT_RESEARCH_READY"
+  },
+  "assessment_note": "Readiness /10 values are qualitative audit judgments with rationale, not measured forecasting or event probabilities.",
+  "readiness_assessments": [
+    {
+      "dimension": "Edge-case readiness",
+      "score_out_of_10": 8,
+      "rationale": "35 documented scenarios, input/schema/fallback tests; no exhaustive real incident study"
+    },
+    {
+      "dimension": "Technical readiness",
+      "score_out_of_10": 8,
+      "rationale": "Build/types/lint, unit and real browser/API checks; national load and penetration proof absent"
+    },
+    {
+      "dimension": "ML readiness",
+      "score_out_of_10": 3,
+      "rationale": "Measured/QC and preliminary baselines established; full CAMS comparison, selection and final evidence absent"
+    },
+    {
+      "dimension": "Research-defense readiness",
+      "score_out_of_10": 7,
+      "rationale": "Protocol, hashes, splits, reproduction and negative findings; primary experiment/literature acceptance incomplete"
+    },
+    {
+      "dimension": "Novelty readiness",
+      "score_out_of_10": 6,
+      "rationale": "Owned contribution/fair comparisons explicit; exhaustive novelty and forecast advantage unproved"
+    },
+    {
+      "dimension": "People-impact readiness",
+      "score_out_of_10": 6,
+      "rationale": "Realistic group/scenario planning and responsible limits; no user/intervention outcome study"
+    },
+    {
+      "dimension": "Viva readiness",
+      "score_out_of_10": 8,
+      "rationale": "210 Q&A, ten personas and concise sheets; student rehearsal remains necessary"
+    },
+    {
+      "dimension": "Demo readiness",
+      "score_out_of_10": 8,
+      "rationale": "43 browser/API checks and backup scripts; provider/network availability remains external"
+    },
+    {
+      "dimension": "Production-prototype readiness",
+      "score_out_of_10": 6,
+      "rationale": "Tested local controls and database evidence; approved release, capacity, privacy/penetration work incomplete"
+    }
+  ],
+  "points": [
+    {
+      "number": 1,
+      "topic": "CAMS probe",
+      "evidence": "VERIFIED_OPERATIONAL_FORECAST; 134 bytes; SHA256 d65309028388aaa0dcfd80de3d209ff87d0c06ba0a3bc82e497ed6fec8d4b28b; 3x3 PM2.5 forecast, init 2025-02-18 00 UTC, +24h, valid 2025-02-19 00 UTC; no replacement probe"
+    },
+    {
+      "number": 2,
+      "topic": "CAMS archive",
+      "evidence": "{'VERIFIED_GRIB': 3, 'accepted': 1, 'running': 1} of 36 monthly jobs; development-only 507 runs; complete=False; source/provider waiting remains"
+    },
+    {
+      "number": 3,
+      "topic": "Measured dataset",
+      "evidence": "Unchanged: 179 usable stations / 100 cities; 107280 retained rows; 64799 valid / 42481 rejected; semantic SHA 4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d"
+    },
+    {
+      "number": 4,
+      "topic": "Selected model",
+      "evidence": "No primary model selected. The preliminary fixed Ridge experiment is not primary CAMS selection."
+    },
+    {
+      "number": 5,
+      "topic": "MODEL_SELECTION_LOCK",
+      "evidence": "Not created: incomplete primary development evidence. No placeholder lock is used."
+    },
+    {
+      "number": 6,
+      "topic": "Final-test status",
+      "evidence": "SEALED/UNSCORED: 2026-07-10..2026-10-07. Latest task conditionally authorises one evaluation only after a committed lock and isolation/hashes checks."
+    },
+    {
+      "number": 7,
+      "topic": "Raw CAMS result",
+      "evidence": "Partial forecast derivation: 1991 station-days, 11 dates, three/six species indices; no measured outcome comparison; table SHA 08f2d50ea7a6e3df772ccadb16422c5df00e2218a9445f31d7780ec9aad69602"
+    },
+    {
+      "number": 8,
+      "topic": "AirGuard result",
+      "evidence": "NON_CAMS_PRELIMINARY only, immutable run 287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f; primary corrected CAMS results pending"
+    },
+    {
+      "number": 9,
+      "topic": "Improvement/degradation",
+      "evidence": "Strict Ridge minus climatology MAE -8.96, CI95 [-12.48743010364286, -5.609403106301186]; history Ridge minus persistence +0.61, CI95 [-0.40867685542106413, 1.7040475542111795] includes zero; no CAMS improvement claim"
+    },
+    {
+      "number": 10,
+      "topic": "Temporal generalisation",
+      "evidence": "24 non-CAMS temporal evaluations (12 expanding + 12 sliding sensitivities); primary CAMS temporal evaluation pending"
+    },
+    {
+      "number": 11,
+      "topic": "Spatial generalisation",
+      "evidence": "36 non-CAMS city/cluster/station/region holdouts; not proof of nationwide calibrated CAMS transfer"
+    },
+    {
+      "number": 12,
+      "topic": "Severe/high pollution",
+      "evidence": "383 censored Severe measured station-days; all strict baseline forecasts on 363 evaluated censored Severe validation days below 401. No fabricated exact Severe error."
+    },
+    {
+      "number": 13,
+      "topic": "Uncertainty quality",
+      "evidence": "Twelve preliminary calibration windows; weighted coverage/width in UNCERTAINTY_ADVISORY_DEFENSE.md; subgroup failures disclosed, including zero Very Poor coverage in fold_01 split-80 (35 exact pairs). Primary intervals pending."
+    },
+    {
+      "number": 14,
+      "topic": "Advisory trade-off",
+      "evidence": "P0/P1/P2 weighted under-/over-warning in the defense sheet; P3 fold artifacts retain empirical feasibility/targets. No dependent-day risk guarantee or clinical validation."
+    },
+    {
+      "number": 15,
+      "topic": "Ablation conclusion",
+      "evidence": "Preliminary forecast-weather addition lowered paired MAE by 2.88 AQI; history contributes conditional on healthy feed but does not establish beating persistence. CAMS/FIRMS primary ablations pending."
+    },
+    {
+      "number": 16,
+      "topic": "Application tests",
+      "evidence": "Python 620 passed, actual exit 0, current stable source=True; frontend 42 passed; browser/API 43 passed; lint/typecheck/build exit 0. Current offline scientific evidence: 611 passed, 5 skipped, 4 database cases excluded."
+    },
+    {
+      "number": 17,
+      "topic": "Edge-case readiness",
+      "evidence": "8/10 \u2014 35 documented scenarios, input/schema/fallback tests; no exhaustive real incident study"
+    },
+    {
+      "number": 18,
+      "topic": "Technical readiness",
+      "evidence": "8/10 \u2014 Build/types/lint, unit and real browser/API checks; national load and penetration proof absent"
+    },
+    {
+      "number": 19,
+      "topic": "ML readiness",
+      "evidence": "3/10 \u2014 Measured/QC and preliminary baselines established; full CAMS comparison, selection and final evidence absent"
+    },
+    {
+      "number": 20,
+      "topic": "Research-defense readiness",
+      "evidence": "7/10 \u2014 Protocol, hashes, splits, reproduction and negative findings; primary experiment/literature acceptance incomplete"
+    },
+    {
+      "number": 21,
+      "topic": "Novelty readiness",
+      "evidence": "6/10 \u2014 Owned contribution/fair comparisons explicit; exhaustive novelty and forecast advantage unproved"
+    },
+    {
+      "number": 22,
+      "topic": "People-impact readiness",
+      "evidence": "6/10 \u2014 Realistic group/scenario planning and responsible limits; no user/intervention outcome study"
+    },
+    {
+      "number": 23,
+      "topic": "Viva readiness",
+      "evidence": "8/10 \u2014 210 Q&A, ten personas and concise sheets; student rehearsal remains necessary"
+    },
+    {
+      "number": 24,
+      "topic": "Demo readiness",
+      "evidence": "8/10 \u2014 43 browser/API checks and backup scripts; provider/network availability remains external"
+    },
+    {
+      "number": 25,
+      "topic": "Production-prototype readiness",
+      "evidence": "6/10 \u2014 Tested local controls and database evidence; approved release, capacity, privacy/penetration work incomplete"
+    },
+    {
+      "number": 26,
+      "topic": "Top ten strengths",
+      "evidence": "See the numbered list below."
+    },
+    {
+      "number": 27,
+      "topic": "Top ten weaknesses",
+      "evidence": "See the numbered list below."
+    },
+    {
+      "number": 28,
+      "topic": "Remaining external blockers",
+      "evidence": "CAMS full archive still processing; Chhatikara upstream station remains unavailable; 30 real verified prospective days have not elapsed. Commercial licensing/capacity/user validation and a separately approved production release remain future work."
+    },
+    {
+      "number": 29,
+      "topic": "Files created/modified",
+      "evidence": "docs/defense (33 authored documents plus this report); archive/physics/baseline/readiness source and tests; frontend/provider validation; verification/defense scripts; research/security/readiness artifacts; refreshed browser screenshots. Full tracked changes listed below."
+    },
+    {
+      "number": 30,
+      "topic": "Commits",
+      "evidence": "Current generation source bb61b0f7e6e8ed3affdead32e359fb5b8a833ce4; branch research/station-calibration; the enclosing checkpoint report is committed afterward. See git log for the final evidence commit."
+    },
+    {
+      "number": 31,
+      "topic": "Exact local demo commands",
+      "evidence": "Repository root: .\\.venv-live\\Scripts\\python.exe -m webapp.dev_api_server --port 8787. Separate terminal: cd webapp; npm run dev -- --hostname 127.0.0.1 --port 3000. Open http://127.0.0.1:3000/live."
+    }
+  ],
+  "strengths": [
+    "Locked v3.1 protocol and retained prior hashes/commits",
+    "Measured/QC ledger with explicit rejected targets",
+    "Genuine decoded operational probe and validated first archive cubes",
+    "Resumable requests, checksums and no duplicate probe",
+    "Censored-Severe methodology and negative findings retained",
+    "Chronological/spatial preliminary validation and paired comparisons",
+    "Fresh-checkout measured reconstruction evidence",
+    "Actual unit/browser/API/build/security checks",
+    "Clear measured/modelled/fallback/withheld UI states",
+    "Complete practical defense navigation and explicit claim boundaries"
+  ],
+  "weaknesses": [
+    "Primary archive/development selection unfinished",
+    "Strict preliminary Severe under-warning",
+    "Historical source-publication uncertainty",
+    "Current-catalogue survivorship and uneven monitoring",
+    "No street-level precision or nationwide calibrated transfer proof",
+    "Conditional uncertainty and sparse extreme strata",
+    "No clinical/user intervention benefit evidence",
+    "Zero verified prospective days and unbound old forecasts",
+    "Provider/commercial licensing/cost dependence",
+    "No million-user load or penetration/retention certification"
+  ],
+  "files": [
+    "HUMAN_ACTIONS.md",
+    "README.md",
+    "docs/PROGRESS.md",
+    "docs/defense/ARCHITECTURE_DEFENSE.md",
+    "docs/defense/CLAIM_EVIDENCE_MATRIX.md",
+    "docs/defense/COMPETITOR_MATRIX.md",
+    "docs/defense/COMPLETION_REPORT.md",
+    "docs/defense/COST_AND_SCALABILITY.md",
+    "docs/defense/DATASET_DEFENSE.md",
+    "docs/defense/DEMO_3_MIN.md",
+    "docs/defense/DEMO_8_MIN.md",
+    "docs/defense/DEMO_FAILURE_MODE.md",
+    "docs/defense/DEPENDENCY_SECURITY.md",
+    "docs/defense/ETHICS_AND_LIMITATIONS.md",
+    "docs/defense/FAILURE_MATRIX.md",
+    "docs/defense/HOSTILE_AUDIT.md",
+    "docs/defense/JUDGE_PERSONAS.md",
+    "docs/defense/JURY_QA.md",
+    "docs/defense/ML_DEFENSE.md",
+    "docs/defense/NOVELTY_MATRIX.md",
+    "docs/defense/ONE_PAGE_ARCHITECTURE.md",
+    "docs/defense/ONE_PAGE_DATASETS.md",
+    "docs/defense/ONE_PAGE_IMPACT.md",
+    "docs/defense/ONE_PAGE_LIMITATIONS.md",
+    "docs/defense/ONE_PAGE_ML.md",
+    "docs/defense/ONE_PAGE_NOVELTY.md",
+    "docs/defense/ONE_PAGE_PROJECT.md",
+    "docs/defense/ONE_PAGE_RESULTS.md",
+    "docs/defense/OWNED_CONTRIBUTIONS.md",
+    "docs/defense/PEOPLE_IMPACT.md",
+    "docs/defense/PITCHES.md",
+    "docs/defense/PRESENTATION_10_SLIDES.md",
+    "docs/defense/README.md",
+    "docs/defense/RISK_PROBABILITY_MATRIX.md",
+    "docs/defense/SECURITY_DEFENSE.md",
+    "docs/defense/UNCERTAINTY_ADVISORY_DEFENSE.md",
+    "docs/defense/USE_CASES.md",
+    "docs/defense/WHY_AIRGUARD_MATTERS.md",
+    "docs/research/ADS_MANUAL_SETUP.md",
+    "docs/research/CAMS_ADS_ACTIVATION.md",
+    "docs/research/FINAL_TEST_EXECUTION_GATE.md",
+    "docs/screens/city-atlas-1280.png",
+    "docs/screens/city-atlas-375.png",
+    "docs/screens/forecast-1280.png",
+    "docs/screens/forecast-375.png",
+    "docs/screens/historical-replay-1280.png",
+    "docs/screens/historical-replay-375.png",
+    "docs/screens/home-1280.png",
+    "docs/screens/home-375.png",
+    "docs/screens/live-1280.png",
+    "docs/screens/live-375.png",
+    "docs/screens/live-headlines-1280.png",
+    "docs/screens/methods-1280.png",
+    "docs/screens/methods-375.png",
+    "docs/screens/model-insights-1280.png",
+    "docs/screens/model-insights-375.png",
+    "docs/screens/policy-simulator-1280.png",
+    "docs/screens/policy-simulator-375.png",
+    "docs/screens/research-1280.png",
+    "docs/screens/research-375.png",
+    "docs/screens/research-historical-atlas-1280.png",
+    "docs/screens/research-historical-atlas-375.png",
+    "docs/screens/research-historical-policy-1280.png",
+    "docs/screens/research-historical-policy-375.png",
+    "docs/screens/research-legacy-1280.png",
+    "docs/screens/research-legacy-375.png",
+    "docs/screens/research-track-record-1280.png",
+    "docs/screens/research-track-record-375.png",
+    "docs/screens/status-1280.png",
+    "docs/screens/status-375.png",
+    "requirements.txt",
+    "results/project_hardening/all_python_tests.json",
+    "results/project_hardening/completion_report.json",
+    "results/project_hardening/defense_pack_manifest.json",
+    "results/project_hardening/dependency_audit.json",
+    "results/project_hardening/python_dependency_audit.json",
+    "results/project_hardening/research_dependency_audit.json",
+    "results/project_hardening/research_dependency_audit_before_patch.json",
+    "results/project_hardening/verification.json",
+    "results/release/database_audit.json",
+    "results/release/secret_audit.json",
+    "results/research/cams_ads_probe.json",
+    "results/research/cams_ads_probe_status.json",
+    "results/research/cams_development_acquisition.json",
+    "results/research/cams_development_acquisition_plan.json",
+    "results/research/cams_development_acquisition_plan.v2.json",
+    "results/research/cams_raw_baseline_derivation.json",
+    "results/research/prospective_audit.json",
+    "results/research/research_readiness.json",
+    "results/research/security_gate.json",
+    "results/research/test_validation.json",
+    "results/research/test_validation_snapshots/20261012T081519Z-a2370eca1cab.json",
+    "results/research/test_validation_snapshots/20261012T083201Z-5ffbd132df01.json",
+    "results/research/test_validation_snapshots/20261012T084010Z-aa1746c0420b.json",
+    "results/research/test_validation_snapshots/20261012T084516Z-ef5b5503398e.json",
+    "results/research/test_validation_snapshots/20261012T091705Z-8b5141c0d7fa.json",
+    "scripts/build_defense_pack.py",
+    "scripts/build_project_checkpoint.py",
+    "scripts/check_defense_python.py",
+    "scripts/record_project_verification.py",
+    "src/nationwide/providers.py",
+    "src/research/calibration/ads_probe.py",
+    "src/research/calibration/cams_acquisition.py",
+    "src/research/calibration/cams_baseline.py",
+    "src/research/calibration/cams_physics.py",
+    "src/research/calibration/readiness.py",
+    "src/research/readiness.json",
+    "tests/test_calibration_cams_acquisition.py",
+    "tests/test_calibration_cams_baseline.py",
+    "tests/test_calibration_cams_physics.py",
+    "tests/test_calibration_cams_readiness.py",
+    "tests/test_defense_provider_hardening.py",
+    "webapp/app/components/LocationPicker.tsx",
+    "webapp/app/components/OperationalProvider.tsx",
+    "webapp/app/lib/validate-summary.ts",
+    "webapp/public/data/research_readiness.json",
+    "webapp/tests/dashboard.test.tsx",
+    "webapp/tests/response-validation.test.ts"
+  ]
+}

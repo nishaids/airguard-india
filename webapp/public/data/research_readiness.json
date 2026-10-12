@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T03:01:24.636569+00:00",
+  "generated_at": "2026-10-12T09:20:52.920939+00:00",
   "status": "COLLECTING_NOT_RESEARCH_READY",
   "checks": {
     "literature_review_complete": false,
@@ -22,7 +22,7 @@
   },
   "passed": 5,
   "total": 17,
-  "CAMS_ARCHIVE_STATUS": "PENDING_MANUAL_ADS_CREDENTIAL",
+  "CAMS_ARCHIVE_STATUS": "ADS_OPERATIONAL_ARCHIVE_ACQUIRING",
   "evidence": {
     "protocol_version": "airguard-retrospective-station-calibration-v3.1",
     "protocol_hash": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
@@ -32,18 +32,18 @@
       "forecasts": 12,
       "issued_target_days": 1,
       "verified_days": 0,
-      "elapsed_real_days": 0.5103450057754629,
+      "elapsed_real_days": 0.7506115865162036,
       "station_bound_forecasts": 0
     },
     "issuance_state": "ISSUED",
     "test_validation_current": true,
     "test_counts": {
-      "tests": 580,
+      "tests": 616,
       "failures": 0,
       "errors": 0,
       "skipped": 5,
-      "collected": 580,
-      "passed": 575,
+      "collected": 616,
+      "passed": 611,
       "deselected": 4
     },
     "security_gate": {
@@ -63,8 +63,8 @@
       "path_leaks": [],
       "client_secret_references": [],
       "evidence": {
-        "database_audit": "2026-10-11T19:11:13.960569+00:00",
-        "secret_audit": "2026-10-12T03:01:18.399307+00:00"
+        "database_audit": "2026-10-12T08:20:42.896332+00:00",
+        "secret_audit": "2026-10-12T08:20:42.000513+00:00"
       },
       "notice": "A check without evidence is unknown, and unknown does not pass. Penetration testing, authentication hardening and upstream provider terms are outside this gate."
     }
@@ -87,5 +87,5 @@
     "Controlled vulnerable-cohort under-warning",
     "Station correction generalises nationwide"
   ],
-  "pending_archive": "PENDING_MANUAL_ADS_CREDENTIAL"
+  "pending_archive": "ADS_OPERATIONAL_ARCHIVE_ACQUIRING"
 }

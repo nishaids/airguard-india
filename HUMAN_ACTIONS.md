@@ -8,17 +8,18 @@ authorizations below describe earlier work and do not authorize this research
 release. No production merge, deployment, secret change or paid purchase is part
 of the continuation.
 
-The user completed ADS manual setup. The official client imports, the private
-credential file exists, and ADS accepted one tiny forecast request. Current
-state: `ADS_PROBE_SUBMITTED`; provider queue pending, no file received yet.
-No additional manual setup is currently indicated. See
+The user completed ADS manual setup. The original tiny result is now a verified
+operational GRIB forecast with nine valid PM2.5 grid values. No duplicate probe
+was needed. Development archive acquisition is active with checksums and saved
+job IDs; full model selection/final evaluation remain pending that archive.
+No additional ADS manual setup is currently indicated. See
 [CAMS_ADS_ACTIVATION.md](docs/research/CAMS_ADS_ACTIVATION.md). No secret is
 needed in chat. Full acquisition remains gated on a successful inspected file.
 
-The new OpenAQ station-calibration acquisition is separate from the older
-200-request/hour archive walk described below. Its existing two workers remain
-active at 27 requests/minute each and obey provider limit headers. The raw
-research archive stays in files, outside production Supabase storage.
+Measured acquisition has completed 180 of 181 frozen stations; the remaining
+station has an audited upstream HTTP 500. Weather and FIRMS acquisition are
+complete. Do not restart those downloads. Raw research files remain outside
+production Supabase storage.
 
 The audited prospective ledger has 12 real forecasts, one target day, zero
 bound stations and zero verifications. Historical issuance Git SHAs are absent.

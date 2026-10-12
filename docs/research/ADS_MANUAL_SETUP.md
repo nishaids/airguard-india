@@ -2,8 +2,9 @@
 
 **12 October 2026 update:** the user completed setup, `cdsapi==0.7.7` imports
 in `.venv-live`, the credential file exists, and ADS accepted the one tiny
-forecast request. The provider queue is pending; retrieval and GRIB inspection
-have not succeeded yet. No additional manual setup is currently indicated.
+forecast request. The original 134-byte GRIB file has now passed checksum,
+forecast/run/lead/valid-time, PM2.5 and 3×3 grid/value inspection. Development
+archive acquisition is active. No additional manual setup is currently indicated.
 See [CAMS_ADS_ACTIVATION.md](CAMS_ADS_ACTIVATION.md). The instructions below are
 retained as setup reference, not a request to reveal or reconfigure the token.
 

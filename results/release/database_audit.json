@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T19:11:13.960569+00:00",
+  "generated_at": "2026-10-12T08:20:42.896332+00:00",
   "database_url_available": true,
   "read_only": true,
   "connectivity": "CONNECTED",
@@ -131,13 +131,13 @@
   ],
   "counts": {
     "stations": 135,
-    "air_quality_observations": 1690,
-    "weather_forecasts": 8516,
-    "fire_detections": 2275,
-    "environmental_records": 51075,
-    "provider_snapshots": 213,
+    "air_quality_observations": 1801,
+    "weather_forecasts": 11283,
+    "fire_detections": 3138,
+    "environmental_records": 55830,
+    "provider_snapshots": 288,
     "feature_snapshots": 20,
-    "forecast_runs": 164,
+    "forecast_runs": 188,
     "forecast_verifications": 0,
     "station_daily_targets": 0,
     "research_forecast_runs": 12,
@@ -149,20 +149,20 @@
     {
       "provider": "open_meteo",
       "source_type": "modelled_forecast",
-      "n": 22445,
+      "n": 27138,
       "stations": 0,
       "first_valid": "2026-10-07 18:30:00+00:00",
-      "last_valid": "2026-10-13 17:30:00+00:00",
-      "last_retrieved": "2026-10-11 16:17:18.508081+00:00"
+      "last_valid": "2026-10-14 17:30:00+00:00",
+      "last_retrieved": "2026-10-12 08:20:21.989939+00:00"
     },
     {
       "provider": "openaq",
       "source_type": "measured",
-      "n": 28630,
+      "n": 28692,
       "stations": 5,
       "first_valid": "2023-10-12 16:00:00+00:00",
-      "last_valid": "2026-10-11 16:30:00+00:00",
-      "last_retrieved": "2026-10-11 18:17:12.557178+00:00"
+      "last_valid": "2026-10-12 06:30:00+00:00",
+      "last_retrieved": "2026-10-12 08:18:27.563830+00:00"
     }
   ],
   "duplicate_record_keys": 0,
@@ -197,6 +197,96 @@
     {
       "jobname": "airguard-nationwide-refresh",
       "status": "succeeded",
+      "start_time": "2026-10-12 08:17:00.158474+00:00",
+      "end_time": "2026-10-12 08:17:00.161795+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-12 07:17:00.159168+00:00",
+      "end_time": "2026-10-12 07:17:00.240804+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-12 06:17:00.179321+00:00",
+      "end_time": "2026-10-12 06:17:00.271138+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-12 05:17:00.173374+00:00",
+      "end_time": "2026-10-12 05:17:00.262678+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-12 04:17:00.174767+00:00",
+      "end_time": "2026-10-12 04:17:00.262846+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-12 03:17:00.170166+00:00",
+      "end_time": "2026-10-12 03:17:00.260221+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-12 02:17:00.175424+00:00",
+      "end_time": "2026-10-12 02:17:00.275643+00:00"
+    },
+    {
+      "jobname": "airguard-research-verify",
+      "status": "succeeded",
+      "start_time": "2026-10-12 01:30:00.165750+00:00",
+      "end_time": "2026-10-12 01:30:00.223321+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-12 01:17:00.242736+00:00",
+      "end_time": "2026-10-12 01:17:00.369838+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-12 00:17:00.169818+00:00",
+      "end_time": "2026-10-12 00:17:00.246373+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-11 23:17:00.176517+00:00",
+      "end_time": "2026-10-11 23:17:00.276372+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-11 22:17:00.180434+00:00",
+      "end_time": "2026-10-11 22:17:00.259729+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-11 21:17:00.169870+00:00",
+      "end_time": "2026-10-11 21:17:00.267920+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-11 20:17:00.163881+00:00",
+      "end_time": "2026-10-11 20:17:00.251511+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
+      "start_time": "2026-10-11 19:17:00.168252+00:00",
+      "end_time": "2026-10-11 19:17:00.270109+00:00"
+    },
+    {
+      "jobname": "airguard-nationwide-refresh",
+      "status": "succeeded",
       "start_time": "2026-10-11 18:17:00.162786+00:00",
       "end_time": "2026-10-11 18:17:00.167044+00:00"
     },
@@ -223,78 +313,110 @@
       "status": "succeeded",
       "start_time": "2026-10-11 14:30:00.160479+00:00",
       "end_time": "2026-10-11 14:30:00.200411+00:00"
-    },
-    {
-      "jobname": "airguard-research-prefetch",
-      "status": "succeeded",
-      "start_time": "2026-10-11 14:20:00.038601+00:00",
-      "end_time": "2026-10-11 14:20:00.048925+00:00"
-    },
-    {
-      "jobname": "airguard-nationwide-refresh",
-      "status": "succeeded",
-      "start_time": "2026-10-11 14:17:00.161978+00:00",
-      "end_time": "2026-10-11 14:17:00.253491+00:00"
-    },
-    {
-      "jobname": "airguard-nationwide-refresh",
-      "status": "succeeded",
-      "start_time": "2026-10-11 13:17:00.167613+00:00",
-      "end_time": "2026-10-11 13:17:00.209138+00:00"
-    },
-    {
-      "jobname": "airguard-nationwide-refresh",
-      "status": "succeeded",
-      "start_time": "2026-10-11 12:17:00.179238+00:00",
-      "end_time": "2026-10-11 12:17:00.229779+00:00"
-    },
-    {
-      "jobname": "airguard-nationwide-refresh",
-      "status": "succeeded",
-      "start_time": "2026-10-11 11:17:00.179563+00:00",
-      "end_time": "2026-10-11 11:17:00.268486+00:00"
-    },
-    {
-      "jobname": "airguard-nationwide-refresh",
-      "status": "succeeded",
-      "start_time": "2026-10-11 10:17:00.185782+00:00",
-      "end_time": "2026-10-11 10:17:00.288120+00:00"
-    },
-    {
-      "jobname": "airguard-nationwide-refresh",
-      "status": "succeeded",
-      "start_time": "2026-10-11 09:17:00.143162+00:00",
-      "end_time": "2026-10-11 09:17:00.197686+00:00"
-    },
-    {
-      "jobname": "airguard-nationwide-refresh",
-      "status": "succeeded",
-      "start_time": "2026-10-11 08:17:00.196126+00:00",
-      "end_time": "2026-10-11 08:17:00.286654+00:00"
     }
   ],
   "provider_events": [
     {
-      "provider": "scheduler",
-      "operation": "refresh",
+      "provider": "open_meteo",
+      "operation": "air-quality",
       "status": "SUCCESS",
-      "created_at": "2026-10-11 18:17:47.506993+00:00",
+      "created_at": "2026-10-12 08:20:21.337510+00:00",
+      "record_count": 120,
+      "error_class": null
+    },
+    {
+      "provider": "weather",
+      "operation": "forecast",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:20:21.163141+00:00",
+      "record_count": 72,
+      "error_class": null
+    },
+    {
+      "provider": "openaq",
+      "operation": "locations",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:20:18.883360+00:00",
+      "record_count": 3,
+      "error_class": null
+    },
+    {
+      "provider": "weather",
+      "operation": "forecast",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:19:57.891534+00:00",
+      "record_count": 72,
+      "error_class": null
+    },
+    {
+      "provider": "open_meteo",
+      "operation": "air-quality",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:19:57.689720+00:00",
+      "record_count": 120,
+      "error_class": null
+    },
+    {
+      "provider": "openaq",
+      "operation": "locations",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:19:54.495892+00:00",
       "record_count": 2,
       "error_class": null
     },
     {
-      "provider": "CPCB/data.gov.in",
-      "operation": "scheduled_ingestion",
-      "status": "FAILED",
-      "created_at": "2026-10-11 18:17:45.268489+00:00",
-      "record_count": 0,
-      "error_class": "SourceUnavailable"
+      "provider": "weather",
+      "operation": "forecast",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:19:33.126823+00:00",
+      "record_count": 72,
+      "error_class": null
     },
     {
-      "provider": "NASA FIRMS",
-      "operation": "scheduled_ingestion",
+      "provider": "open_meteo",
+      "operation": "air-quality",
       "status": "SUCCESS",
-      "created_at": "2026-10-11 18:17:44.957198+00:00",
+      "created_at": "2026-10-12 08:19:32.617642+00:00",
+      "record_count": 120,
+      "error_class": null
+    },
+    {
+      "provider": "openaq",
+      "operation": "locations",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:19:29.961749+00:00",
+      "record_count": 17,
+      "error_class": null
+    },
+    {
+      "provider": "weather",
+      "operation": "forecast",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:19:08.792365+00:00",
+      "record_count": 72,
+      "error_class": null
+    },
+    {
+      "provider": "open_meteo",
+      "operation": "air-quality",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:19:08.587726+00:00",
+      "record_count": 120,
+      "error_class": null
+    },
+    {
+      "provider": "openaq",
+      "operation": "locations",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:19:05.901833+00:00",
+      "record_count": 19,
+      "error_class": null
+    },
+    {
+      "provider": "openaq",
+      "operation": "hours",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:18:41.996089+00:00",
       "record_count": 0,
       "error_class": null
     },
@@ -302,7 +424,7 @@
       "provider": "openaq",
       "operation": "hours",
       "status": "SUCCESS",
-      "created_at": "2026-10-11 18:17:19.928804+00:00",
+      "created_at": "2026-10-12 08:18:34.995837+00:00",
       "record_count": 32,
       "error_class": null
     },
@@ -310,128 +432,48 @@
       "provider": "open_meteo",
       "operation": "air-quality",
       "status": "SUCCESS",
-      "created_at": "2026-10-11 18:17:17.331285+00:00",
+      "created_at": "2026-10-12 08:18:33.181455+00:00",
       "record_count": 120,
       "error_class": null
     },
     {
-      "provider": "openaq",
-      "operation": "locations",
+      "provider": "weather",
+      "operation": "forecast",
       "status": "SUCCESS",
-      "created_at": "2026-10-11 18:17:14.986963+00:00",
-      "record_count": 13,
+      "created_at": "2026-10-12 08:18:32.702078+00:00",
+      "record_count": 72,
       "error_class": null
     },
     {
       "provider": "openaq",
       "operation": "locations",
       "status": "SUCCESS",
-      "created_at": "2026-10-11 18:17:14.694001+00:00",
-      "record_count": 0,
-      "error_class": null
-    },
-    {
-      "provider": "scheduler",
-      "operation": "refresh",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 17:17:40.562056+00:00",
-      "record_count": 2,
+      "created_at": "2026-10-12 08:18:30.030556+00:00",
+      "record_count": 26,
       "error_class": null
     },
     {
       "provider": "openaq",
       "operation": "hours",
       "status": "SUCCESS",
-      "created_at": "2026-10-11 17:17:20.466183+00:00",
-      "record_count": 31,
+      "created_at": "2026-10-12 08:18:07.165612+00:00",
+      "record_count": 30,
+      "error_class": null
+    },
+    {
+      "provider": "weather",
+      "operation": "forecast",
+      "status": "SUCCESS",
+      "created_at": "2026-10-12 08:18:04.555157+00:00",
+      "record_count": 72,
       "error_class": null
     },
     {
       "provider": "open_meteo",
       "operation": "air-quality",
       "status": "SUCCESS",
-      "created_at": "2026-10-11 17:17:18.249488+00:00",
+      "created_at": "2026-10-12 08:18:04.345537+00:00",
       "record_count": 120,
-      "error_class": null
-    },
-    {
-      "provider": "weather",
-      "operation": "forecast",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 17:17:18.121083+00:00",
-      "record_count": 72,
-      "error_class": null
-    },
-    {
-      "provider": "weather",
-      "operation": "forecast",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 17:17:17.754215+00:00",
-      "record_count": 72,
-      "error_class": null
-    },
-    {
-      "provider": "openaq",
-      "operation": "locations",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 17:17:15.563462+00:00",
-      "record_count": 0,
-      "error_class": null
-    },
-    {
-      "provider": "openaq",
-      "operation": "locations",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 17:17:15.500834+00:00",
-      "record_count": 13,
-      "error_class": null
-    },
-    {
-      "provider": "open_meteo",
-      "operation": "elevation",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 16:38:06.090388+00:00",
-      "record_count": 0,
-      "error_class": null
-    },
-    {
-      "provider": "open_meteo",
-      "operation": "elevation",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 16:38:04.276051+00:00",
-      "record_count": 0,
-      "error_class": null
-    },
-    {
-      "provider": "openaq",
-      "operation": "hours",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 16:25:31.898421+00:00",
-      "record_count": 0,
-      "error_class": null
-    },
-    {
-      "provider": "openaq",
-      "operation": "hours",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 16:25:29.702564+00:00",
-      "record_count": 0,
-      "error_class": null
-    },
-    {
-      "provider": "openaq",
-      "operation": "hours",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 16:25:27.064087+00:00",
-      "record_count": 0,
-      "error_class": null
-    },
-    {
-      "provider": "openaq",
-      "operation": "hours",
-      "status": "SUCCESS",
-      "created_at": "2026-10-11 16:25:24.261201+00:00",
-      "record_count": 0,
       "error_class": null
     }
   ],

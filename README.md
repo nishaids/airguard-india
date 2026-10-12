@@ -2,6 +2,14 @@
 
 **Nationwide modelled air-quality forecasts with measured station context and traceable Indian CPCB-style AQI.**
 
+Current modern-research and jury/viva checkpoint: [defense index](docs/defense/README.md)
+and [31-point completion report](docs/defense/COMPLETION_REPORT.md). The measured
+dataset and protocol are locked. Genuine CAMS archive acquisition is active;
+primary correction selection and the locked final evaluation remain pending.
+The defense pack distinguishes verified preliminary results from unproved
+forecasting, clinical and commercial claims. It includes demo commands for the
+patched project environment and an honest provider-failure backup.
+
 The consumer product uses Next.js and Python APIs, real CAMS concentrations via
 Open-Meteo, OpenAQ hourly station measurements, and the existing Supabase project.
 It does not feed current data through the historical LightGBM/XGBoost models.
@@ -131,7 +139,7 @@ streamlit run app/Home.py
 | --- | --- |
 | **Home** | Live headline metrics, in-app dataset provenance and licence block, archetype summary, disclaimer |
 | **1 · Forecast** | City + cohort + date → next-day AQI, predicted band with confidence and full probability distribution, cohort HAI and band, dominant pollutant, cleanest outdoor window, advisory in **English / தமிழ் / हिन्दी**, 30-day history chart, all-cohort comparison, input drift check, **what-if pollutant sliders** |
-| **2 · City Risk Atlas** | Archetypes with policy levers, how *k* was chosen (including rejected partitions), ranked risk table with per-cohort burden, seasonal heatmap, safe windows, Diwali and lockdown panels |
+| **2 · City Risk Atlas** | Archetypes with policy levers, how *k* was chosen (including rejected partitions), ranked risk table with per-cohort burden, seasonal heatmap, relatively lower-exposure windows, Diwali and lockdown panels |
 | **3 · Policy Simulator** | Presets + free sliders → band migration, **cohort advisory-days averted**, per-city effect, sanity check against the real lockdown |
 | **4 · Model Insights** | Master comparison tables, confusion matrices, ROC curves, residuals, learning curves, per-city error, error analysis, **SHAP global + local**, tuning report, **leakage demonstration**, imputation bake-off, plain-language metric glossary, data card and model card |
 

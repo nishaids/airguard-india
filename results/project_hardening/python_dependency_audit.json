@@ -1,0 +1,8 @@
+{
+  "actual_exit_code": 0,
+  "scope": "declared Python API requirements and resolved transitive dependencies",
+  "dependency_count": 12,
+  "vulnerability_count": 0,
+  "affected_packages": [],
+  "report_available": true
+}

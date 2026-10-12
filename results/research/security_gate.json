@@ -15,8 +15,8 @@
   "path_leaks": [],
   "client_secret_references": [],
   "evidence": {
-    "database_audit": "2026-10-11T19:11:13.960569+00:00",
-    "secret_audit": "2026-10-12T03:01:18.399307+00:00"
+    "database_audit": "2026-10-12T08:20:42.896332+00:00",
+    "secret_audit": "2026-10-12T08:20:42.000513+00:00"
   },
   "notice": "A check without evidence is unknown, and unknown does not pass. Penetration testing, authentication hardening and upstream provider terms are outside this gate."
 }

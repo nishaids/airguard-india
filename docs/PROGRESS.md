@@ -1,5 +1,35 @@
 # AirGuard India — progress ledger
 
+## Project hardening and defense checkpoint — 2026-10-12
+
+The original ADS probe is verified: 134-byte GRIB1, nine PM2.5 values on the
+requested grid, real init/lead/valid time and checksum. No duplicate probe.
+Development archive plan v2 has 507 runs and 36 jobs over the frozen station
+envelope. The first surface/model-level pair passed cube/unit/grid checks;
+1,991 raw CAMS forecast station-days over eleven dates were derived without
+reading outcomes. Remaining planned jobs are being acquired idempotently.
+Full primary comparison, selection lock and final evaluation remain pending.
+The locked measured dataset and protocol are unchanged.
+
+UI response/search boundaries now validate malformed/null values, bound search
+timeouts and reject invalid locations. Backend rejects boolean timestamps and
+malformed geocoding records. Source hardening is not a production release.
+Frontend: 42 tests pass; 43 real browser/API acceptance checks pass; lint,
+typecheck and production build pass. Final full Python suite: 620 pass with
+configured integrations; offline scientific suite: 611 pass, 5 skipped, 4
+database cases excluded. Test evidence is bound to stable current source.
+One earlier concurrent suite collided on a shared planted-path fixture; the
+final suites ran sequentially. No scientific results were changed.
+
+Defense material is generated from immutable artifacts under docs/defense:
+210 answered questions, 35 failure scenarios, 30 use cases, ten reviewer
+personas, ten-slide content, demo scripts, eight one-page sheets, claim/novelty/
+competitor/impact/security/ethics/cost matrices and explicit negative results.
+No IEEE paper, PPT or experimental production deployment was generated.
+Readiness remains 5/17, COLLECTING_NOT_RESEARCH_READY, with the archive status
+now derived as acquiring from verified evidence. Prospective: 12 real forecasts,
+zero verified days and zero bound stations at the latest read-only audit.
+
 ## ADS activation in progress — 2026-10-12
 
 User-reported manual setup is present: `.venv-live` imports `cdsapi==0.7.7`,

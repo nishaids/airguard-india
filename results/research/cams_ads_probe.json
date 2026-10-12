@@ -1,0 +1,34 @@
+{
+  "dataset": "cams-global-atmospheric-composition-forecasts",
+  "request": {
+    "variable": [
+      "particulate_matter_2.5um"
+    ],
+    "date": "2025-02-18",
+    "time": [
+      "00:00"
+    ],
+    "leadtime_hour": [
+      "24"
+    ],
+    "type": [
+      "forecast"
+    ],
+    "data_format": "grib",
+    "area": [
+      29.2,
+      76.8,
+      28.4,
+      77.6
+    ]
+  },
+  "request_sha256": "778a5c7eaeb9ea19731bab80080df2bd92394993b9dcbce2455343edb0c8dba4",
+  "cdsapi_version": "0.7.7",
+  "credential_file_exists": true,
+  "started_at_utc": "2026-10-12T06:32:57.067213+00:00",
+  "status": "SUBMITTED",
+  "full_acquisition_authorized_by_probe": false,
+  "locked_final_test_accessed": false,
+  "request_id": "33a7789e-bdec-47b4-9f9e-9d92ed41c976",
+  "submitted_at_utc": "2026-10-12T06:33:00.939830+00:00"
+}

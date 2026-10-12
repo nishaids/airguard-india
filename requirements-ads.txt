@@ -1,0 +1,4 @@
+# Isolated acquisition/GRIB decoding additions; no application rebuild required.
+# Verified in .venv-live on Windows for the ADS smoke request.
+cdsapi==0.7.7
+eccodes==2.44.0

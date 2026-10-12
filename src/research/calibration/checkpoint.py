@@ -80,6 +80,10 @@ def apply_repairs(stations, repairs):
 def capture():
     protocol = load()
     selection = read_json(data.MANIFESTS / 'station_selection.json')
+    from src.research.calibration import metadata
+    metadata_correction = read_json(metadata.PATH) if metadata.PATH.exists() else None
+    if metadata_correction:
+        selection = metadata.apply(selection, metadata_correction)
     stations = {}
     paths = [data.MANIFESTS / 'openaq_hours_manifest.json',
              *sorted(data.MANIFESTS.glob('openaq_hours_manifest.shard*.json'))]
@@ -106,6 +110,7 @@ def capture():
     snapshot = {'data_version': version, 'protocol_sha256': protocol['_sha256'],
                 'selection': selection, 'stations': stations, 'manifests': manifests, 'identity': identity,
                 'repairs_applied': repairs_applied,
+                'metadata_correction': metadata_correction,
                 'selection_file_sha256':hashlib.sha256((data.MANIFESTS/'station_selection.json').read_bytes()).hexdigest()}
     path = data.DERIVED / version / 'inputs.json'
     if not path.exists():
@@ -123,6 +128,7 @@ def capture():
               'proxy_cams_used_for_research': False, 'checksummed_files': len(records),
               'uncompressed_bytes_verified': size, 'checksum_audit': 'PASS',
               'repairs_applied': repairs_applied,'original_repair_bases_verified':len(repair_originals),
+              'metadata_revision': selection.get('metadata_revision'),
               'snapshot': config.portable(path), 'no_api_requests': True}
     write_json(OUT / 'recovery_checkpoint.json', report)
     return snapshot, report

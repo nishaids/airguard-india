@@ -131,13 +131,16 @@ def scientific_fingerprint():
     files = {path.relative_to(config.PROJECT_ROOT).as_posix():
              hashlib.sha256(path.read_bytes().replace(b'\r\n', b'\n')).hexdigest() for path in sorted(paths)}
     selection = config.PROJECT_ROOT/'results/research/data_manifests/station_selection.json'
+    correction = config.PROJECT_ROOT/'results/research/data_manifests/station_metadata_corrections.v1.json'
     branch=subprocess.check_output(['git','branch','--show-current'],text=True).strip()
     if branch!='research/station-calibration':
         raise ContinuationError('RESEARCH_BRANCH_REQUIRED')
     return {'protocol_sha256': protocol['_sha256'], 'source_sha256': canonical_hash(files),'branch':branch,
             'runtime':{'python':platform.python_version(),'packages':{p:version(p) for p in
                 ('numpy','pandas','scipy','scikit-learn','pyarrow','matplotlib','lightgbm','xgboost','PyYAML','psutil')}},
-            'selection_sha256': canonical_hash(json.loads(selection.read_text(encoding='utf-8'))), 'files': files}
+            'selection_sha256': canonical_hash(json.loads(selection.read_text(encoding='utf-8'))),
+            'metadata_correction_sha256': canonical_hash(json.loads(correction.read_text(encoding='utf-8'))) if correction.exists() else None,
+            'files': files}
 
 
 def atomic_json(path, value):

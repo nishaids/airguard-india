@@ -1,0 +1,72 @@
+{
+  "version": "station-metadata-v1",
+  "created_at": "2026-10-12T01:54:50.262569+00:00",
+  "base_selection_sha256": "73357fe1ab5fd4f2efe3a4197e09b9429474ca7738f63d45721442684dd322ac",
+  "catalogue_sha256": "55acf54d08f120d38f9acc7f3ff094431861b3198bcd49324859fe55925c5536",
+  "basis": "Provider-name parsing only; no outcomes or model results determine a correction",
+  "membership_changed": false,
+  "strata_changed": false,
+  "qc_or_protocol_changed": false,
+  "corrected_universe": {
+    "eligible_stations": 481,
+    "eligible_cities": 255,
+    "stations_per_city": {
+      "1": 194,
+      "2": 18,
+      "3": 14,
+      "4": 11,
+      "5": 5,
+      "6": 5,
+      "7": 1,
+      "8": 1,
+      "9": 2,
+      "11": 1,
+      "13": 1,
+      "24": 1,
+      "29": 1
+    }
+  },
+  "corrections": [
+    {
+      "location_id": 5598,
+      "source_name": "Sector - 125, Noida, UP - UPPCB",
+      "latitude": 28.5447608,
+      "longitude": 77.3231257,
+      "before": {
+        "site": "Sector - 125, Noida",
+        "city": "UP",
+        "agency": "UPPCB",
+        "state": "Uttar Pradesh",
+        "region": "North"
+      },
+      "after": {
+        "site": "Sector - 125",
+        "city": "Noida",
+        "agency": "UPPCB",
+        "state": "Uttar Pradesh",
+        "region": "North"
+      }
+    },
+    {
+      "location_id": 5616,
+      "source_name": "Sector - 62, Noida, UP - IMD",
+      "latitude": 28.6245479,
+      "longitude": 77.3577104,
+      "before": {
+        "site": "Sector - 62, Noida",
+        "city": "UP",
+        "agency": "IMD",
+        "state": null,
+        "region": "North"
+      },
+      "after": {
+        "site": "Sector - 62",
+        "city": "Noida",
+        "agency": "IMD",
+        "state": "Uttar Pradesh",
+        "region": "North"
+      }
+    }
+  ],
+  "sha256": "c818998b1c4f4162072260431f6109ca12939f826d2617069d36243beee7e812"
+}

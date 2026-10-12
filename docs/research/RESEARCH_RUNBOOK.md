@@ -24,6 +24,12 @@ before fitting. Generated readiness/report JSON changes do not change this
 source fingerprint. A genuine pre-fitting defect needs a documented versioned
 amendment, preserving previous hashes and results.
 
+The metadata-only overlay `station_metadata_corrections.v1.json` is also frozen.
+It corrects two Noida city labels while retaining the original 181 selected IDs
+and acquisition manifests. Never rebuild selection to enforce city caps after
+this correction. Earlier city-holdout results are explicitly superseded; see
+`IMPLEMENTATION_AUDIT.md`. New inputs retain the exact correction identity.
+
 ## One finite acquisition continuation
 
 Prepare only after scientific source and the environment are stable, then run:

@@ -71,9 +71,20 @@ def region_from_coordinates(latitude, longitude):
 
 def parse_name(name):
     match = NAME.match(name or '')
-    if not match:
-        return None, None, None
-    return match.group('site').strip(), match.group('city').strip(), match.group('agency').strip()
+    if match:
+        site, city, agency = (match.group(k).strip() for k in ('site','city','agency'))
+        # Some provider names explicitly append a state after the city.
+        # Treating that state token as a city separates Noida stations incorrectly.
+        if city in ('UP','Uttar Pradesh') and ',' in site:
+            site, city = (part.strip() for part in site.rsplit(',',1))
+        return site, city, agency
+    body, separator, agency = (name or '').rpartition(' - ')
+    if separator and agency in AGENCY_STATE and ' - ' in body:
+        site, city = body.rsplit(' - ',1)
+        return site.strip(), city.strip(), agency.strip()
+    if body == 'Haldia' and agency == 'WBSPCB':
+        return body, body, agency
+    return None, None, None
 
 
 def mass_sensor(location, parameter):

@@ -275,7 +275,9 @@ def run():
               'code_sha256':code_hash,'git_sha':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
               'runtime':{'python':platform.python_version(),'packages':{p:version(p) for p in
                   ('numpy','pandas','scipy','scikit-learn','pyarrow','matplotlib','lightgbm','xgboost','PyYAML','psutil')}},
-              'implementation_audit_revision':2,
+              'implementation_audit_revision':3,
+              'metadata_revision':quality.get('metadata_revision'),
+              'superseded_city_metadata_runs':['bfda9efd836f91909f41c09bccf9fba71ea13f8e13349d753dc2a076d18aee4e'],
               'superseded_spatial_and_history_ablation_runs':['29e43a4d61965d039d42587a272512a34610f5b1e0ed09c25e29cf662980649a'],
               'protocol_sha256':protocol['_sha256'],'final_test_range':final['test_range'],'final_test_scored':False,
               'folds':fold_results,'spatial':spatial,'spatial_assignments_from_catalogue':assignments,

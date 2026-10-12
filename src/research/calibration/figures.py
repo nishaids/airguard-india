@@ -53,7 +53,7 @@ def generate():
         points=[(a,b) for a,b in points if b is not None]
         if points:axes[1,1].plot(*zip(*points),marker='o',ms=4,label=label,color=color)
     axes[1,1].set(xlabel='Expanding validation fold',ylabel='Share below 401 on censored Severe days',ylim=(0,1.05),
-                  title='Severe lower bounds: no fabricated regression error')
+                  title='Severe-day forecasts below the 401 lower bound')
     axes[1,1].legend(fontsize=7)
     for ax in axes.flat:ax.grid(alpha=.15)
     fig.suptitle('Stream B: NON-CAMS preliminary study — locked final test unscored',fontsize=13)
@@ -64,6 +64,7 @@ def generate():
     fig.savefig(pdf,metadata={'Title':'AirGuard non-CAMS preliminary diagnostics'})
     plt.close(fig)
     report={'run_id':result['run_id'],'dataset_hash':result['dataset_hash'],'final_test_scored':False,
+        'generator_code_sha256':hashlib.sha256(Path(__file__).read_bytes().replace(b'\r\n',b'\n')).hexdigest(),
         'result_artifact_sha256':hashlib.sha256(result_path.read_bytes()).hexdigest(),
         'files':{config.portable(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in (png,pdf)}}
     write_json(destination/'figures.json',report)

@@ -23,7 +23,7 @@ def generate():
     reproduction_current=(reproduction.get('status')=='PASS' and reproduction.get('dataset_hash')==q.get('dataset_hash'))
     tests_current=evidence_matches_current(tests)
     active_schedules=sum(s.get('active') is True for s in prospective.get('health',{}).get('schedules',[]))
-    study_days=(date.fromisoformat(protocol['study_window']['last_date'])-date.fromisoformat(protocol['study_window']['first_date'])).days+1
+    study_days=(date.fromisoformat(str(protocol['study_window']['last_date']))-date.fromisoformat(str(protocol['study_window']['first_date']))).days+1
     full_station_calendar=q.get('station_days')==q.get('raw_stations',0)*study_days
     thirty_day_gate=readiness.get('checks',{}).get('30_day_track_record_complete',False)
     compile_result=read('paper_compile.json')

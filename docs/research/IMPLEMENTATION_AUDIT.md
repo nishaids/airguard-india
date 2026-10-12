@@ -39,3 +39,27 @@ The production source audit also repaired dated operational sensor selection,
 actual response receipt timestamps and nearby-candidate filtering before its
 limit. These changes are tested locally and **not deployed**. The existing 12
 station-free forecasts and their missing issuance SHAs remain immutable.
+
+## Metadata correction after preliminary fits
+
+Independent review of immutable run
+`bfda9efd836f91909f41c09bccf9fba71ea13f8e13349d753dc2a076d18aee4e`
+found that stations 5598 and 5616 were labelled city `UP` from provider names
+`Sector - 125, Noida, UP - UPPCB` and `Sector - 62, Noida, UP - IMD`.
+The final test remained unscored. This was detected from identity metadata,
+not selected because of forecast errors. Its city-holdout conclusions are
+superseded; the original result and dataset remain preserved.
+
+`station_metadata_corrections.v1.json` binds the correction to the exact original
+catalogue and selection hashes. Acquisition selection, all 181 station IDs,
+nominal strata, raw measurements, QC, protocol and final-test dates are unchanged.
+No sampling rule was rerun. Corrected sample labels contain 100 cities, while
+the original sample had 101 parsed labels. Noida consequently has four already
+selected stations; this disclosed naming correction does not retroactively
+enforce a cap by dropping stations. The corrected eligible catalogue has
+481 stations in 255 cities. Unknown states remain unknown where evidence is
+insufficient. New corrected snapshots and experiments receive new identities.
+
+The checkpoint reporter also needed a YAML date-type repair (the protocol loader
+returns date objects), and a plot title was shortened to avoid clipping.
+These reporting changes do not alter fitted predictions.

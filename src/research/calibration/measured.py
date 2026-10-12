@@ -239,6 +239,7 @@ def build():
               'feature_version': FEATURE_VERSION, 'protocol_version': protocol['protocol_version'],
               'protocol_sha256': protocol['_sha256'], 'table': config.portable(path),
               'catalogue_universe': snapshot['selection'].get('universe'), 'selected_stations': len(stations),
+              'metadata_revision': snapshot['selection'].get('metadata_revision'),
               'raw_stations': len(snapshot['stations']), 'eligible_stations_full_window_descriptive_only': len(eligible),
               'usable_stations': valid.station_id.nunique(), 'usable_cities': valid.city.nunique(),
               'station_days': len(table), 'valid_targets': len(valid), 'rejected_targets': len(table)-len(valid),

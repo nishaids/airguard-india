@@ -45,6 +45,9 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+# Runtime-only mutex/lease; evidence remains in continuation_status/workers.json.
+results/research/continuation.lock
+results/research/continuation.lock.guard
 webapp/test-results/
 webapp/playwright-report/
 supabase/.temp/

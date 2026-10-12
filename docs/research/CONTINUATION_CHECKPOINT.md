@@ -2,11 +2,11 @@
 
 
 
-Generated 2026-10-12T02:49:26.445552+00:00; values describe identified snapshots, not future completed downloads.
+Generated 2026-10-12T03:01:27.214308+00:00; values describe identified snapshots, not future completed downloads.
 
 
 
-1. **Branch and checkpoint commit:** `research/station-calibration` at `def4158d93e855622e0ba409f6dee617dd54722b`. No branch switch, reset, production merge, push or deployment.
+1. **Branch and checkpoint commit:** `research/station-calibration` at `8cc6598e6c25bfe42f65b81916b82871d0fe2531`. No branch switch, reset, production merge, push or deployment.
 
 2. **Inherited from Claude:** checkpoint 5790c3a, locked v3.1 protocol/history, metadata station catalogue/selection, sensor QC, availability guards, target/metric/split infrastructure and running OpenAQ/weather/FIRMS acquisition. Preserved.
 

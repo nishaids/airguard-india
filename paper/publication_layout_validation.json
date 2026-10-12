@@ -1,0 +1,43 @@
+{
+  "recorded_at_utc": "2026-10-12T17:10:51.085033+00:00",
+  "source_manifest_sha256": "c5369002760673efa0a1d615fdfd18074855096c799737df99b533f4853b8304",
+  "source_hashes_verified": 21,
+  "reference_file_unchanged": true,
+  "protected_protocol_and_measured_summaries_unchanged_from": "fc0eb67",
+  "desktop_editor_compile": {
+    "path": "paper/station_calibration_skeleton.tex",
+    "status": "SUCCESS",
+    "source_sha256": "edd0517154fa479b0167b0fa2e307993dfea01510d76e23d00e30763e67d9de5"
+  },
+  "compiler_executable_sha256": "99ffcfdbf1ebf8bdda9e791942e3d06aedb12463fddc33f07de6f5211c8bf08d",
+  "outputs": {
+    "conference": {
+      "pdf": "paper/conference/main.pdf",
+      "pdf_sha256": "64e3c6f13f53eb355c829be61eab9575d8cf7d08dde7249cbeb4b7094272b341",
+      "pages": 5,
+      "compile_status": "SUCCESS",
+      "overfull_boxes": 0,
+      "undefined_citations_or_references": 0,
+      "visual_review": "ALL_PAGES_REVIEWED",
+      "page_size": "A4",
+      "review_findings": "No clipped text, overlapping labels, broken tables or unreadable figures; final columns balanced.",
+      "remaining_compile_warnings": "XeTeX class-load font fallback, ignored inputenc and underfull spacing; rendered body and mathematics reviewed."
+    },
+    "journal": {
+      "pdf": "paper/journal/main.pdf",
+      "pdf_sha256": "b41025604ad9b61a852c9ae300b4988ba59ef6b2981ec22ee98e215ce59c38a8",
+      "pages": 6,
+      "compile_status": "SUCCESS",
+      "overfull_boxes": 0,
+      "undefined_citations_or_references": 0,
+      "visual_review": "ALL_PAGES_REVIEWED",
+      "page_size": "Letter",
+      "review_findings": "No clipped text, overlapping labels, broken tables or unreadable figures; final columns balanced.",
+      "remaining_compile_warnings": "XeTeX class-load font fallback, ignored inputenc and underfull spacing; rendered body and mathematics reviewed."
+    }
+  },
+  "primary_results": "PENDING",
+  "model_selection": "PENDING",
+  "final_test_accessed": false,
+  "submission_ready": false
+}

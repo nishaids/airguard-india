@@ -1,0 +1,58 @@
+\section{Results and Discussion}
+\subsection{Preliminary Measured-data Evidence}
+The separate non-CAMS run contains 24 temporal evaluations (expanding and
+sliding sensitivities), 36 spatial holdouts and 12 calibration evaluations.
+Table~\ref{tab:paired} and Fig.~\ref{fig:paired} show two paired development
+comparisons. Strict Ridge improves climatology on these pairs; history Ridge
+does not establish improvement over persistence. These comparisons answer
+neither the raw-CAMS correction question nor the locked final-test question.
+\begin{table}[t]\centering\footnotesize
+\caption{Non-CAMS preliminary paired MAE differences. Negative differences favour Ridge; intervals use seven-day date blocks.}
+\label{tab:paired}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+Comparison & $\Delta$MAE & 95\% interval & $n$\\\midrule
+Strict Ridge--climatology & -8.96 & [-12.49, -5.61] & 38,382\\
+History Ridge--persistence & +0.61 & [-0.41, +1.70] & 31,622\\
+\bottomrule\end{tabular}
+\end{table}
+\begin{figure}[t]\centering\AirGuardPaired
+\caption{Paired non-CAMS development differences. The persistence comparison
+crosses zero; a lower error than climatology does not establish a CAMS improvement.}
+\label{fig:paired}\end{figure}
+
+\subsection{Uncertainty and Extreme-event Failures}
+First-fold marginal interval coverage masks a high-pollution failure.
+Both nominal intervals cover none of the 35 exact Very Poor outcomes or
+48 exact Poor-or-worse pairs. The individual Poor subgroup has only 13 pairs
+and its subgroup metric is withheld. Figure~\ref{fig:coverage} retains these
+denominators rather than treating unavailable estimates as zeros.
+\begin{table}[t]\centering\footnotesize
+\caption{First-fold non-CAMS interval diagnostics. Width is in AQI units; neither row establishes operational calibration.}
+\label{tab:coverage}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+Nominal & Exact coverage & Mean width & $n$\\\midrule
+80\% & 0.855 & 95.5 & 2,923\\
+90\% & 0.944 & 120.6 & 2,923\\
+\bottomrule\end{tabular}
+\end{table}
+\begin{figure}[t]\centering\AirGuardCoverage
+\caption{Non-CAMS first-fold coverage by observed category. Both Very Poor
+estimates are zero; the Poor metric is unavailable at $n<30$. Satisfactory and
+Moderate are abbreviated on the axis.}\label{fig:coverage}\end{figure}
+
+\subsection{Primary CAMS Status}
+The request manifest verifies 6 of 36 chunks. The guarded join covers 42 dates and 7,560 station-days, retaining 2,054 rejected targets and 2 censored Severe targets. This coverage cannot support the locked training and verification
+windows. No primary model has been fitted or selected. Missing archive months
+are not replaced with reanalysis, later operational fields or fabricated data.
+\textit{Primary CAMS comparison: [RESULT PENDING CAMS ARCHIVE EXPERIMENT].}
+
+\subsection{Prospective Application}
+The audited ledger has 24 immutable forecasts across 2 target days and 0 verified days. 0 forecasts have pre-issue station bindings; 12 historical entries lack an issuance Git SHA. Missing historical identities or station bindings are not inferred
+after the outcome. The production application displays raw CAMS-based estimates;
+no experimental correction or unvalidated interval is deployed. Its interface
+and API checks establish software behaviour, while predictive skill requires
+matched outcomes and the declared research evaluation.

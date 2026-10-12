@@ -1,0 +1,29 @@
+\section{Introduction}
+A useful next-day AQI forecast must describe what could have been issued
+before the target day and how well that forecast agrees with measurements.
+This distinction matters when an atmospheric model represents a grid cell,
+while a resident or monitoring instrument represents a particular location.
+Indian high-resolution pollution forecasting already has an established
+research context \cite{jena2021delhi}. The present question is whether
+India-specific station correction improves a genuine operational CAMS
+baseline, and whether its uncertainty can support defensible warning choices.
+
+AirGuard India fixes issuance at 20:00 IST for the next IST calendar day.
+Its retrospective stream reconstructs measured targets and admissible
+forecast features; its prospective stream freezes forecasts when actually
+issued. A past model field without its producing run cannot establish an
+operational forecast, and a deployed dashboard cannot establish predictive
+skill. Both distinctions shape the evaluation.
+
+The work provides three research components:
+\begin{itemize}
+\item a versioned station dataset with recorded rejection reasons, causal
+history features and a shared CPCB-style AQI engine;
+\item a locked comparison of raw CAMS, direct learning and residual
+correction with rolling and spatial validation and censored-Severe diagnostics;
+\item an uncertainty and advisory evaluation that reports coverage failures,
+under-warning and over-warning, alongside immutable prospective verification.
+\end{itemize}
+The second and third components are evaluation commitments rather than
+completed primary findings. This manuscript distinguishes existing measured-data
+evidence from pending CAMS experiments and makes no world's-first claim.

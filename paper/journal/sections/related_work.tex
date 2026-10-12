@@ -1,13 +1,27 @@
 \section{Related Work}
-\subsection{Problem and Related Work}
-The research question is whether a correction learned at Indian stations
-improves next-day CPCB-style AQI while retaining useful uncertainty and warning
-behaviour. Atmospheric forecasts and measured concentrations have different
-provenance. Existing Indian forecasting systems establish that this is an
-evaluation problem, not an unoccupied application domain \cite{jena2021delhi}.
-Station MOS, CAMS statistical post-processing, conformal intervals and risk
-calibration are established methods. The targeted review records overlapping
-European CAMS work and distinguishes Indian reanalysis mapping from genuine
-issue-time prediction. No world's-first claim is made. The contribution under
-test is the audited Indian operational procedure and its empirical warning
-trade-offs. Full-text novelty review remains incomplete.
+\subsection{Atmospheric Forecast Post-processing}
+Station-specific model output statistics is established. Riccio and Chianese
+study statistical improvement of CAMS with spatial verification
+\cite{riccio2024mos}; Petetin et al. examine the trade-off between continuous
+and categorical ozone-forecast skill \cite{petetin2022mos}. Operational
+regional CAMS production also includes statistical post-processing
+\cite{colette2025cams}. Consequently, introducing a correction learner alone
+does not establish novelty. AirGuard's contribution under investigation is
+the audited Indian station evaluation and its warning behaviour.
+
+\subsection{Uncertainty and Warning Decisions}
+Conformal methods provide a framework for data-driven prediction intervals.
+Time-series and distribution-shift settings require attention to dependence
+and changing coverage \cite{xu2021enbpi,gibbs2021aci}. A narrow interval or
+near-nominal aggregate coverage is insufficient if high-pollution categories
+are systematically missed. Proper forecast evaluation also separates the
+quantity predicted from the decision made from it \cite{gneiting2007scoring}.
+Here, vulnerability groups specify exposure-warning tolerances; they do not
+constitute clinical cohorts or individual health-risk models.
+
+\subsection{Scope of the Comparison}
+Published methods use different targets, locations and verification periods.
+Their published scores are therefore not inserted into AirGuard's numerical
+leaderboard. The shared-observation CAMS comparison, spatial inference
+regimes and uncertainty failures must be established with this study's own
+artifacts. A complete novelty assessment remains pending the primary study.

@@ -1,0 +1,82 @@
+\section{Experimental Setup}
+\subsection{Study Data and Provenance}
+The locked window is 19 February 2025--7 October 2026. The metadata-only
+sample selected 181 stations from an eligible catalogue of 481 stations in
+255 parsed cities. Full-window counts in Table~\ref{tab:data} are inherited
+descriptive metadata; final-test labels are not opened to produce this draft.
+All analysis discussed here is development-only.
+\begin{table}[t]\centering\footnotesize
+\caption{Measured dataset and current operational alignment. Completed measured targets are preserved; archive coverage is partial.}
+\label{tab:data}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lr}
+\toprule
+Measure & Count\\\midrule
+Usable measured stations / cities & 179 / 100\\
+Retained measured station-days & 107,280\\
+Valid / rejected targets & 64,799 / 42,481\\
+Censored Severe targets & 383\\
+Guarded CAMS-aligned development rows & 7,560\\
+Aligned stations / cities / dates & 180 / 100 / 42\\
+Aligned valid / rejected targets & 5,506 / 2,054\\
+Verified raw archive chunks & 6 / 36\\
+\bottomrule\end{tabular}
+\end{table}
+\subsection{Chronological and Spatial Splits}
+Expanding-window validation begins with 90 training dates, then 30 calibration
+dates and 30 evaluation dates, advancing by 30 dates. One-day embargoes
+separate adjacent partitions. Every station's row for a date moves together.
+Station eligibility requires 120 valid training targets, so the first 90-day
+training fold is necessarily insufficient; later outcomes cannot rescue it.
+The latest 90 dates, 10 July--7 October 2026, remain sealed.
+
+Spatial validation trains through 31 October 2025 and tests from 2 November
+2025 through the final pre-test day. Ten-fold 25-km urban-cluster and station
+holdouts, and six region holdouts, distinguish unseen cities from unseen
+stations in seen clusters. Local-history and monitor-free inference are
+reported separately. The all-station reference uses the same dates and test
+pairs. Unavailable held-out monitor feeds must be masked in the corresponding
+inference regime.
+
+\subsection{Baselines and Training-only Tuning}
+Climatology uses the station's training targets in the same month, with
+station and global means as fallbacks. Persistence uses the rolling measured
+24-hour index ending at the cutoff. Raw CAMS uses the same AQI engine.
+The primary exact comparison requires all three baselines on identical pairs;
+secondary comparisons relax only persistence availability. Severe days remain
+in their category and lower-bound diagnostics.
+
+Hyperparameters and early stopping use the last 30 dates of a fold's training
+window as inner validation. Calibration and evaluation labels do not tune the
+learner. All seeds are 42. The carry-forward model has the lowest mean
+rolling-fold MAE, with ties favouring Ridge and residual formulations; raw
+CAMS is retained if no learned model improves that criterion. Ablation fixes
+the learner while varying feature groups. Fire admission requires a favourable
+95\% paired date-block interval.
+\begin{table}[t]\centering\footnotesize
+\caption{Declared primary search space. These are preregistered candidates, not selected parameters.}
+\label{tab:search}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lp{.54\columnwidth}}
+\toprule
+Learner & Training-only choices\\\midrule
+Ridge & $\alpha\in\{0.1,1,10,100\}$\\
+LightGBM & Leaves 15/31; minimum child samples 20/60\\
+XGBoost & Depth 4/6; minimum child weight 5/20\\
+Boosting controls & Rate 0.05; at most 600 rounds; early stop 40; row and column fractions 0.8\\
+\bottomrule\end{tabular}
+\end{table}
+\subsection{Metrics and Statistical Comparison}
+Exact-target MAE is primary; RMSE, signed forecast bias, coefficient of
+determination and six-category diagnostics are secondary. Poor-or-worse and
+Very-Poor-or-worse detection, false alarms and lower-bound Severe shortfall
+are reported explicitly. Regional, seasonal and city-size subgroups below
+30 pairs retain counts but withhold inferential metrics. Intervals are assessed
+at 80\% and 90\% nominal coverage, with width and severity-specific coverage.
+
+Paired comparisons preserve station/date pairs. Moving seven-day date blocks
+with 5,000 resamples provide percentile intervals; daily mean loss differences
+use a Diebold--Mariano comparison with Newey--West variance and Holm adjustment
+\cite{diebold1995comparing}. An interval spanning zero does not establish a
+nonzero difference. The immutable non-CAMS study uses a separate 30-valid-day
+station rule and fixed Ridge $\alpha=10$; it cannot select the primary model.

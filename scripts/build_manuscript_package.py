@@ -32,6 +32,12 @@ def replace_section(source, name, body):
 
 
 def main():
+    # The historical packager assumes the old section names. Refresh the
+    # current layouts instead of overwriting the revised editable manuscript.
+    if (ROOT/'paper/publication_format_manifest.json').exists():
+        import runpy
+        runpy.run_path(str(ROOT/'scripts/format_publication_drafts.py'),run_name='__main__')
+        return
     preliminary = read('results/research/preliminary_latest.json')
     immutable = read(preliminary['artifact'])
     if preliminary != immutable or preliminary['final_test_scored']:

@@ -1,22 +1,166 @@
 \documentclass[journal]{IEEEtran}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath,booktabs,url,graphicx}
-\title{AirGuard India: Station-Calibrated Day-Ahead Air Quality Forecasting with Uncertainty-Aware Vulnerability Advisories}
+\usepackage{amsmath,amssymb,booktabs,url,graphicx,xcolor,balance}
+
+\newcommand{\AirGuardArchitecture}{%
+\setlength{\unitlength}{1mm}\begin{picture}(86,62)
+\put(1,50){\framebox(40,11){\shortstack{Measured station bins\\Identity and locked QC}}}
+\put(45,50){\framebox(40,11){\shortstack{Archived CAMS forecasts\\Run, lead, grid and units}}}
+\put(21,50){\vector(0,-1){6}}\put(65,50){\vector(0,-1){6}}
+\put(1,34){\framebox(84,10){\shortstack{20:00 IST feature snapshot\\Pre-issue availability guard}}}
+\put(43,34){\vector(0,-1){4}}
+\put(1,22){\framebox(84,8){\shortstack{Raw CAMS and direct or residual models}}}
+\put(43,22){\vector(0,-1){4}}
+\put(1,10){\framebox(84,8){\shortstack{Rolling and spatial tests; uncertainty and advisories}}}
+\put(43,10){\vector(0,-1){4}}
+\put(1,0){\framebox(84,6){Selection lock then human final-test approval}}
+\end{picture}}
+\newcommand{\AirGuardPaired}{%
+\setlength{\unitlength}{1mm}
+\begin{picture}(86,48)
+\linethickness{.35pt}
+\put(6,9){\line(1,0){74}}
+\color{gray}\put(61.5,9){\line(0,1){29}}\color{black}
+\put(6.00,8){\line(0,1){2}}
+\put(6.00,5){\makebox(0,0){\scriptsize -15}}
+\put(24.50,8){\line(0,1){2}}
+\put(24.50,5){\makebox(0,0){\scriptsize -10}}
+\put(43.00,8){\line(0,1){2}}
+\put(43.00,5){\makebox(0,0){\scriptsize -5}}
+\put(61.50,8){\line(0,1){2}}
+\put(61.50,5){\makebox(0,0){\scriptsize 0}}
+\put(80.00,8){\line(0,1){2}}
+\put(80.00,5){\makebox(0,0){\scriptsize 5}}
+\put(43,38){\makebox(0,0){\footnotesize Strict Ridge versus climatology}}
+\put(15.30,32){\line(1,0){25.45}}
+\put(15.30,30.6){\line(0,1){2.8}}
+\put(40.75,30.6){\line(0,1){2.8}}
+\put(28.35,32){\circle*{1.5}}
+\put(43,25){\makebox(0,0){\footnotesize History Ridge versus persistence}}
+\put(59.99,19){\line(1,0){7.82}}
+\put(59.99,17.6){\line(0,1){2.8}}
+\put(67.80,17.6){\line(0,1){2.8}}
+\put(63.77,19){\circle*{1.5}}
+\put(43,1){\makebox(0,0){\footnotesize Difference in MAE (AQI units)}}
+\end{picture}}
+\newcommand{\AirGuardCoverage}{%
+\setlength{\unitlength}{1mm}
+\begin{picture}(86,49)
+\put(10,11){\line(1,0){72}}
+\put(10,11){\line(0,1){29}}
+\put(8,11.00){\makebox(0,0)[r]{\scriptsize 0}}
+\put(8,25.50){\makebox(0,0)[r]{\scriptsize 0.5}}
+\put(8,40.00){\makebox(0,0)[r]{\scriptsize 1}}
+\put(15,11){\textcolor{black}{\rule{3.3mm}{24.248mm}}}
+\put(19,11){\textcolor{gray}{\rule{3.3mm}{27.685mm}}}
+\put(18,7){\makebox(0,0){\scriptsize Good}}
+\put(18,3){\makebox(0,0){\scriptsize $n=1367$}}
+\put(29,11){\textcolor{black}{\rule{3.3mm}{26.973mm}}}
+\put(33,11){\textcolor{gray}{\rule{3.3mm}{28.439mm}}}
+\put(32,7){\makebox(0,0){\scriptsize Satis.}}
+\put(32,3){\makebox(0,0){\scriptsize $n=1345$}}
+\put(43,11){\textcolor{black}{\rule{3.3mm}{18.859mm}}}
+\put(47,11){\textcolor{gray}{\rule{3.3mm}{24.018mm}}}
+\put(46,7){\makebox(0,0){\scriptsize Moder.}}
+\put(46,3){\makebox(0,0){\scriptsize $n=163$}}
+\put(60,24){\makebox(0,0){\scriptsize $n<30$}}
+\put(60,7){\makebox(0,0){\scriptsize Poor}}
+\put(60,3){\makebox(0,0){\scriptsize $n=13$}}
+\put(74,7){\makebox(0,0){\scriptsize V. Poor}}
+\put(74,3){\makebox(0,0){\scriptsize $n=35$}}
+\put(16,45){\rule{3mm}{2mm}}\put(21,46){\makebox(0,0)[l]{\scriptsize Nominal 80\%}}
+\put(52,45){\textcolor{gray}{\rule{3mm}{2mm}}}\put(57,46){\makebox(0,0)[l]{\scriptsize Nominal 90\%}}
+\put(43,41){\makebox(0,0){\scriptsize Empirical exact-target coverage}}
+\end{picture}}
+\newcommand{\AirGuardWidths}{%
+\setlength{\unitlength}{1mm}
+\begin{picture}(86,48)
+\put(12,9){\line(1,0){65}}\put(12,9){\line(0,1){31}}
+\put(9,9.00){\makebox(0,0)[r]{\scriptsize 0}}
+\put(9,18.69){\makebox(0,0)[r]{\scriptsize 100}}
+\put(9,28.38){\makebox(0,0)[r]{\scriptsize 200}}
+\put(9,38.06){\makebox(0,0)[r]{\scriptsize 300}}
+\put(14,6){\makebox(0,0){\scriptsize 1}}
+\put(19.5,6){\makebox(0,0){\scriptsize 2}}
+\put(25,6){\makebox(0,0){\scriptsize 3}}
+\put(30.5,6){\makebox(0,0){\scriptsize 4}}
+\put(36,6){\makebox(0,0){\scriptsize 5}}
+\put(41.5,6){\makebox(0,0){\scriptsize 6}}
+\put(47,6){\makebox(0,0){\scriptsize 7}}
+\put(52.5,6){\makebox(0,0){\scriptsize 8}}
+\put(58,6){\makebox(0,0){\scriptsize 9}}
+\put(63.5,6){\makebox(0,0){\scriptsize 10}}
+\put(69,6){\makebox(0,0){\scriptsize 11}}
+\put(74.5,6){\makebox(0,0){\scriptsize 12}}
+\color{black}
+\put(14.00,18.25){\circle*{1.2}}
+\put(19.50,15.64){\circle*{1.2}}
+\put(25.00,15.25){\circle*{1.2}}
+\put(30.50,15.37){\circle*{1.2}}
+\put(36.00,17.44){\circle*{1.2}}
+\put(41.50,27.48){\circle*{1.2}}
+\put(47.00,28.71){\circle*{1.2}}
+\put(52.50,29.68){\circle*{1.2}}
+\put(58.00,24.47){\circle*{1.2}}
+\put(63.50,22.82){\circle*{1.2}}
+\put(69.00,19.73){\circle*{1.2}}
+\put(74.50,18.41){\circle*{1.2}}
+\qbezier(14.00,18.25)(16.75,16.94)(19.50,15.64)
+\qbezier(19.50,15.64)(22.25,15.44)(25.00,15.25)
+\qbezier(25.00,15.25)(27.75,15.31)(30.50,15.37)
+\qbezier(30.50,15.37)(33.25,16.41)(36.00,17.44)
+\qbezier(36.00,17.44)(38.75,22.46)(41.50,27.48)
+\qbezier(41.50,27.48)(44.25,28.10)(47.00,28.71)
+\qbezier(47.00,28.71)(49.75,29.20)(52.50,29.68)
+\qbezier(52.50,29.68)(55.25,27.08)(58.00,24.47)
+\qbezier(58.00,24.47)(60.75,23.64)(63.50,22.82)
+\qbezier(63.50,22.82)(66.25,21.27)(69.00,19.73)
+\qbezier(69.00,19.73)(71.75,19.07)(74.50,18.41)
+\color{gray}
+\put(14.00,20.69){\circle*{1.2}}
+\put(19.50,17.82){\circle*{1.2}}
+\put(25.00,17.06){\circle*{1.2}}
+\put(30.50,17.15){\circle*{1.2}}
+\put(36.00,21.13){\circle*{1.2}}
+\put(41.50,37.53){\circle*{1.2}}
+\put(47.00,34.57){\circle*{1.2}}
+\put(52.50,34.06){\circle*{1.2}}
+\put(58.00,34.01){\circle*{1.2}}
+\put(63.50,27.84){\circle*{1.2}}
+\put(69.00,22.70){\circle*{1.2}}
+\put(74.50,21.96){\circle*{1.2}}
+\qbezier(14.00,20.69)(16.75,19.25)(19.50,17.82)
+\qbezier(19.50,17.82)(22.25,17.44)(25.00,17.06)
+\qbezier(25.00,17.06)(27.75,17.11)(30.50,17.15)
+\qbezier(30.50,17.15)(33.25,19.14)(36.00,21.13)
+\qbezier(36.00,21.13)(38.75,29.33)(41.50,37.53)
+\qbezier(41.50,37.53)(44.25,36.05)(47.00,34.57)
+\qbezier(47.00,34.57)(49.75,34.32)(52.50,34.06)
+\qbezier(52.50,34.06)(55.25,34.03)(58.00,34.01)
+\qbezier(58.00,34.01)(60.75,30.92)(63.50,27.84)
+\qbezier(63.50,27.84)(66.25,25.27)(69.00,22.70)
+\qbezier(69.00,22.70)(71.75,22.33)(74.50,21.96)
+\color{black}\put(42,1){\makebox(0,0){\footnotesize Chronological development fold}}
+\put(43,44){\makebox(0,0){\scriptsize Mean interval width (AQI units)}}
+\put(56,38){\makebox(0,0)[l]{\scriptsize Gray: 90\%}}\put(56,34){\makebox(0,0)[l]{\scriptsize Black: 80\%}}
+\end{picture}}
+\title{AirGuard India: Station Calibration and Uncertainty-Aware Day-Ahead AQI Forecasting}
 \author{Nishanth R\thanks{Nishanth R is with the Department of AI and Data Science,
 Rajalakshmi Engineering College, Chennai, Tamil Nadu, India.
 Email: nishanth.r.2024.aids@rajalakshmi.edu.in; backup: nishanth.artwork@gmail.com.}
-\thanks{Development manuscript. Primary CAMS results and model selection are pending;
-the final evaluation interval remains sealed.}}
-\begin{document}
-\maketitle
+\thanks{Development draft. Primary CAMS results are pending; the final test remains sealed.}}
+\begin{document}\maketitle
 \input{sections/abstract}
 \input{sections/introduction}
 \input{sections/related_work}
-\input{sections/data_methods}
-\input{sections/results}
-\input{sections/discussion}
+\input{sections/proposed_method}
+\input{sections/experimental_setup}
+\input{sections/results_discussion}
+\input{sections/limitations}
 \input{sections/conclusion}
+\input{sections/reproducibility}
+\balance
 \bibliographystyle{IEEEtran}
 \bibliography{../references}
 \end{document}

@@ -2,16 +2,20 @@
   "status": "DEVELOPMENT_DRAFT_PRIMARY_RESULTS_PENDING",
   "final_test_accessed": false,
   "model_selected": false,
+  "format_manifest": "paper/publication_format_manifest.json",
+  "source_hash_method": "sha256_lf_normalized",
   "files": {
-    "paper/station_calibration_skeleton.tex": "ae6f3d270781663003f79815acf0be2c9b6ba4527e1d1c3a9e6983de3fa3dede",
-    "paper/references.bib": "6ac0c24c92f0ca0e01140a5d682dac1da21e14140ab12929064afba16c3ed84a",
-    "paper/journal/main.tex": "80e5161b86a99be8aa6e9abf8e723b84e9578b48cfe802496d3df7dc26c61e90",
-    "paper/journal/sections/abstract.tex": "134aad24a4838bf037df2172119a157a23f4790f0029b2f0102be861909e3541",
-    "paper/journal/sections/conclusion.tex": "513ed24efebfaabb6c81323e3b872f00be2190dae933851419bfc765bbab7ffb",
-    "paper/journal/sections/data_methods.tex": "02e00aa0b1813365c8e055274800879557c1b179f5e55f9886aa0673b0a119d2",
-    "paper/journal/sections/discussion.tex": "87ef34438a55864711021e45451118d381fa301531d0ec6bfa4e9788884d1634",
-    "paper/journal/sections/introduction.tex": "c5873149aea44cb8cc7b163258ddb423ddfedd46fea9fc68687f009fd2067a4d",
-    "paper/journal/sections/related_work.tex": "4544db85434c6891455ee99bb7eac89d13efad5c0b7226414dbe04a959a14c1f",
-    "paper/journal/sections/results.tex": "e3a1e7a568fa004e0172cb545896d4d37ac711b187951e3704c1afb61ecac564"
+    "paper/station_calibration_skeleton.tex": "b744e8b595792e002397b6d2ec9520b54cd209ac5b1a2b631b6ee9c2c453fb16",
+    "paper/references.bib": "db5f69494cf51a46bf60e491325cd3f3f8335d5c9d62539d8e50d1f25090cfd2",
+    "paper/journal/main.tex": "f559d561b087d75d4ae802b294a19d521bae7f4b7165340b43362ca3458ac005",
+    "paper/journal/sections/abstract.tex": "09decff21cf65cc11dfc035d8264209e89a05273122c33af6d093cb3feda82df",
+    "paper/journal/sections/introduction.tex": "0fc77d103f4710863a7c4116b25bc5dd09d549d733c6b6e1d21f713aeb864c54",
+    "paper/journal/sections/related_work.tex": "53690702beb7fb8187265f4c1ebabea443e65b6918664f3161d020d426c60f57",
+    "paper/journal/sections/proposed_method.tex": "4b0d65f465556641a43a07f1143f6c80d1f70ef0b028ff8c9994202f54217a70",
+    "paper/journal/sections/experimental_setup.tex": "5f2a4d658aaee96cc067526c65d4628516ee48e3e50a7189c235387082ff7970",
+    "paper/journal/sections/results_discussion.tex": "b326b010420c87de1403508840fda48d7584d55fcad52d5ffe1fd7d115df67e2",
+    "paper/journal/sections/limitations.tex": "4968befb846f40df2b6d88b421fcdf4126974f5f37899f9607a814bae9c6a9f5",
+    "paper/journal/sections/conclusion.tex": "0650f87c170ed771b56c26c0b9bf2996b96bd6a46408b2a8684c6784188b6023",
+    "paper/journal/sections/reproducibility.tex": "178f55ee2e6b71b91ae4eafc62fc548f2d11d9b0b22f1861932473e81265e0de"
   }
 }

@@ -14,6 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    # Preserve the historical packager, but keep the adopted publication
+    # layouts authoritative once their formatting manifest exists.
+    if (ROOT/'paper/publication_format_manifest.json').exists():
+        import runpy
+        runpy.run_path(str(ROOT/'scripts/format_publication_drafts.py'),run_name='__main__')
+        return
     path = ROOT/'paper/station_calibration_skeleton.tex'
     source = path.read_text(encoding='utf-8')
     source = source.replace(r'\documentclass[conference]{IEEEtran}', r'\documentclass[journal]{IEEEtran}')

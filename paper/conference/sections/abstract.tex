@@ -1,0 +1,19 @@
+\begin{abstract}
+Day-ahead air-quality forecasts require station-scale verification and an
+explicit distinction between observations and modelled concentrations.
+AirGuard India combines quality-controlled CPCB-provider measurements,
+archived operational CAMS forecasts and a fixed 20:00 IST issue-time contract
+to study station calibration, predictive uncertainty and exposure advisories.
+The design compares climatology, persistence and raw CAMS with direct and
+residual Ridge, LightGBM and XGBoost models using chronological and spatial
+validation. Severe AQI is retained as an open-ended lower bound rather than
+an exact regression label. A separate non-CAMS preliminary study finds a
+paired MAE difference of -8.96 AQI units for strict Ridge versus climatology
+(95\% date-block interval: -12.49 to -5.61), while history Ridge does not
+establish improvement over persistence. In its first fold, both 80\% and
+90\% intervals fail to cover any of 35 exact Very Poor outcomes. These
+findings motivate severity-specific calibration checks and transparent
+under-warning analysis. The genuine CAMS archive is partially acquired;
+primary correction results remain pending and the final test remains sealed.
+\end{abstract}
+\begin{IEEEkeywords}air quality forecasting, CAMS, station calibration, conformal prediction, exposure advisories\end{IEEEkeywords}

@@ -60,7 +60,12 @@ GZIP_FILES = [
 
 
 def _ignore(_dir: str, names: list[str]) -> set[str]:
-    return {n for n in names if n == "__pycache__" or n.endswith(".pyc")}
+    ignored = {n for n in names if n == "__pycache__" or n.endswith(".pyc")}
+    # The live server uses the prospective ledger, never offline archive/model
+    # development. Keep those research entry points out of the deployed bundle.
+    if Path(_dir).resolve() == (config.PROJECT_ROOT / "src" / "research").resolve():
+        ignored.add("calibration")
+    return ignored
 
 
 def main() -> None:

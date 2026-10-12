@@ -1,11 +1,11 @@
 # Final-test execution gate
 
-The attached “FINAL COMPLETE PROJECT + RESEARCH + JURY/VIVA HARDENING” user
-instruction explicitly authorises **one** locked final-test evaluation **only
-after MODEL_SELECTION_LOCK has been created and committed**. This supersedes
-the earlier instruction to ask again at that point; it does not grant access
-before selection is complete. No production deployment or paper generation is
-authorised by this task.
+The latest attached “ONE MASTER EXECUTION PROMPT” explicitly requires
+**fresh user approval after a committed MODEL_SELECTION_LOCK and a READY
+FINAL_TEST_READINESS_REPORT.md**, before any final labels are opened or scored.
+This supersedes the previous conditional one-evaluation authorization.
+Production-safe website deployment and an evidence-backed manuscript draft
+are now authorized; experimental correction deployment remains prohibited.
 
 The locked period remains **2026-07-10 through 2026-10-07**. The v3.1 YAML,
 its hash, the completed measured table and previous result artifacts are

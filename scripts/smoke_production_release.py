@@ -72,7 +72,7 @@ def main():
         ('/',200,'AirGuard'),('/live',200,'AirGuard'),('/research',200,'Station-calibrated forecasting research'),
         ('/research/track-record',200,'Prospective forecast ledger'),('/research/legacy',200,'AirGuard'),('/methods',200,'CPCB'),
         ('/forecast',200,'Forecast &amp; advisory'),('/city-atlas',200,'Air quality across selected places'),
-        ('/policy-simulator',200,'Policy scenarios'),('/status',200,'Live system status'),
+        ('/policy-simulator',200,'Policy scenarios'),('/model-insights',200,'AirGuard'),('/status',200,'Live system status'),
         ('/api/health',200,None),('/api/research/status',200,None),('/api/providers/status',200,None),
         ('/api/status/scheduler',200,None),
         ('/api/air-quality/tomorrow?lat=13.1147&lon=80.10981&name=Avadi',200,None),
@@ -102,7 +102,8 @@ def main():
             assert 'weather_context' in value and 'fire_context' in value and 'tomorrow' not in value
         if path == '/api/research/status':
             assert value['protocol']['protocol_version']=='airguard-dayahead-20ist-v1'
-            assert value['archive_experiment']=='PENDING \u2014 ADS credential/terms required'
+            assert value['archive_experiment']==value['readiness'].get('CAMS_ARCHIVE_STATUS','PENDING_MANUAL_ADS_CREDENTIAL')
+            assert value['correction_status']=='NOT_VALIDATED'
             evidence['research'] = value['prospective']
         if path.startswith('/api/air-quality/summary?') and check['status']==200:
             validate_summary(value)

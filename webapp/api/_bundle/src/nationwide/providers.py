@@ -21,6 +21,7 @@ AIR_URL = "https://air-quality-api.open-meteo.com/v1/air-quality"
 WEATHER_URL = "https://api.open-meteo.com/v1/forecast"
 GEO_URL = "https://geocoding-api.open-meteo.com/v1/search"
 OPENAQ_URL = "https://api.openaq.org/v3"
+MEASURED_FIELDS = {"pm25": "PM2.5", "pm10": "PM10", "no2": "NO2", "so2": "SO2", "co": "CO", "o3": "O3", "nh3": "NH3", "pb": "Pb"}
 
 
 def utcnow():
@@ -46,6 +47,43 @@ def distance(lat, lon, station):
     a, b = map(math.radians, (lat, station["latitude"]))
     dlat, dlon = b - a, math.radians(station["longitude"] - lon)
     return 6371 * 2 * math.asin(min(1, math.sqrt(math.sin(dlat / 2) ** 2 + math.cos(a) * math.cos(b) * math.sin(dlon / 2) ** 2)))
+
+
+def select_measured_sensors(sensors, start, end):
+    """Choose one evidenced, convertible sensor per pollutant for this window.
+
+    OpenAQ's location discovery lists retired sensors beside their successors,
+    without their dates. The location's dedicated sensors endpoint supplies
+    those dates; list order is never evidence that a sensor is still active.
+    """
+    chosen = {}
+    for sensor in sensors:
+        if not isinstance(sensor, dict) or not isinstance(sensor.get("parameter"), dict):
+            continue
+        parameter = sensor["parameter"]
+        pollutant = MEASURED_FIELDS.get(parameter.get("name"))
+        unit = parameter.get("units")
+        if not pollutant or not isinstance(unit, str) or normalize(pollutant, 1, unit) is None:
+            continue
+        try:
+            if isinstance(sensor.get("id"), bool):
+                continue
+            sensor_id = int(sensor["id"])
+            first = datetime.fromisoformat(sensor["datetimeFirst"]["utc"].replace("Z", "+00:00"))
+            last = datetime.fromisoformat(sensor["datetimeLast"]["utc"].replace("Z", "+00:00"))
+            if sensor_id <= 0 or first.tzinfo is None or last.tzinfo is None:
+                continue
+            if first > last or last < start or first >= end:
+                continue
+        except (KeyError, TypeError, ValueError, AttributeError):
+            continue
+        coverage = sensor.get("coverage")
+        count = coverage.get("observedCount") if isinstance(coverage, dict) else None
+        count = count if isinstance(count, (int, float)) and not isinstance(count, bool) and math.isfinite(count) and count >= 0 else 0
+        rank = (last, count, -sensor_id)
+        if pollutant not in chosen or rank > chosen[pollutant][0]:
+            chosen[pollutant] = (rank, sensor)
+    return [(entry[1], pollutant) for pollutant, entry in sorted(chosen.items())]
 
 
 class Providers:
@@ -98,7 +136,7 @@ class Providers:
         now = utcnow().isoformat()
         rows, records = [], []
         for i, timestamp in enumerate(hourly["time"]):
-            if not isinstance(timestamp, (float, int)) or not math.isfinite(timestamp):
+            if isinstance(timestamp, bool) or not isinstance(timestamp, (float, int)) or not math.isfinite(timestamp):
                 raise HttpError("Invalid provider timestamp.", kind="schema")
             at = datetime.fromtimestamp(timestamp, timezone.utc).isoformat()
             row = {"time": at}
@@ -110,7 +148,7 @@ class Providers:
                 if source_type == "weather_forecast":
                     # Temperature and direction can be zero/negative; weather is
                     # kept in the immutable provider payload, not the AQ table.
-                    if isinstance(raw_value, (int, float)) and math.isfinite(raw_value) and isinstance(unit, str):
+                    if not isinstance(raw_value, bool) and isinstance(raw_value, (int, float)) and math.isfinite(raw_value) and isinstance(unit, str):
                         row[pollutant] = raw_value
                     continue
                 value = normalize(pollutant, raw_value, unit or "")
@@ -145,10 +183,15 @@ class Providers:
             raise HttpError("Invalid geocoding response.", kind="schema")
         locations = []
         for r in results[:10]:
+            if not isinstance(r, dict):
+                raise HttpError("Invalid geocoding record.", kind="schema")
             if r.get("country_code") != "IN":
                 continue
             lat, lon = coordinates(r.get("latitude"), r.get("longitude"))
-            label = ", ".join(dict.fromkeys(x for x in (r.get("name"), r.get("admin2"), r.get("admin1"), "India") if x))
+            labels = (r.get("name"), r.get("admin2"), r.get("admin1"), "India")
+            if any(x is not None and (not isinstance(x,str) or len(x)>160 or any(ord(c)<32 for c in x)) for x in labels):
+                raise HttpError("Invalid geocoding label.",kind="schema")
+            label = ", ".join(dict.fromkeys(x for x in labels if x))
             locations.append({"key": f"{lat:.4f},{lon:.4f}", "name": label, "region": r.get("admin1"), "district": r.get("admin2"), "lat": lat, "lon": lon, "geonames_id": r.get("id"), "country_code": "IN", "country": "IN"})
         return {"results": locations, "provider": "Open-Meteo / GeoNames", "fetched_at": utcnow().isoformat(), "postal_code_support": "Provider dependent; empty results are not replaced by a city guess."}
 
@@ -161,6 +204,7 @@ class Providers:
         start = start or end - timedelta(hours=32)
         headers = {"X-API-Key": key}
         payload = self.get_json("openaq", OPENAQ_URL + "/locations", {"coordinates": f"{lat},{lon}", "radius": get_settings().openaq_search_radius_m, "limit": 100}, headers)
+        station_metadata_received_at = utcnow()
         if not isinstance(payload.get("results"), list):
             raise HttpError("Invalid station discovery response.", kind="schema")
         candidates = []
@@ -183,23 +227,35 @@ class Providers:
         candidates.sort(key=lambda x: (len({s["parameter"]["name"] for s in x[2]}) < 3, x[1]))
         stations, partial_errors = [], []
         for metadata, km, sensors in candidates[:2]:
+            try:
+                sensor_payload = self.get_json("openaq", OPENAQ_URL + f"/locations/{int(metadata['id'])}/sensors", {"limit": 100}, headers)
+                sensor_metadata_received_at = utcnow()
+                sensor_metadata = sensor_payload.get("results")
+                if not isinstance(sensor_metadata, list) or len(sensor_metadata) > 100:
+                    raise HttpError("Missing or oversized station sensor metadata", kind="schema")
+                jobs = select_measured_sensors(sensor_metadata, start, end)
+            except (HttpError, KeyError, ValueError, TypeError, BudgetExceeded) as exc:
+                partial_errors.append(type(exc).__name__)
+                continue
             station_pk = self.store.station(metadata)
             rows_by_time, records, readings = {}, [], []
-            mapping = {"pm25": "PM2.5", "pm10": "PM10", "no2": "NO2", "so2": "SO2", "co": "CO", "o3": "O3", "nh3": "NH3", "pb": "Pb"}
+            sensor_receipts = {}
+
+            def fetch_hours(sensor):
+                data = self.get_json("openaq", OPENAQ_URL + f"/sensors/{int(sensor['id'])}/hours", {"datetime_from": start.isoformat(), "datetime_to": end.isoformat(), "limit": 100}, headers)
+                # Sample in the receiving worker, after the successful response.
+                # The operation's start time cannot establish input availability.
+                return data, utcnow()
+
             # One sensor per pollutant, no mixing measurements from different stations.
-            seen, jobs = set(), []
-            for sensor in sensors:
-                pollutant = mapping[sensor["parameter"]["name"]]
-                if pollutant in seen or normalize(pollutant, 1, sensor["parameter"].get("units", "")) is None:
-                    continue
-                seen.add(pollutant)
-                jobs.append((sensor, pollutant))
             with ThreadPoolExecutor(max_workers=4) as pool:
-                futures = {pool.submit(self.get_json, "openaq", OPENAQ_URL + f"/sensors/{int(sensor['id'])}/hours", {"datetime_from": start.isoformat(), "datetime_to": end.isoformat(), "limit": 100}, headers): (sensor, pollutant) for sensor, pollutant in jobs[:8]}
+                futures = {pool.submit(fetch_hours, sensor): (sensor, pollutant) for sensor, pollutant in jobs[:8]}
                 for future in as_completed(futures):
                     sensor, pollutant = futures[future]
                     try:
-                        data = future.result()
+                        data, received_at = future.result()
+                        sensor_receipts[str(sensor['id'])] = received_at.isoformat()
+                        available_at = max(station_metadata_received_at, sensor_metadata_received_at, received_at)
                         if not isinstance(data.get("results"), list):
                             raise HttpError("Missing hourly station results", kind="schema")
                         self.store.sensor(station_pk, sensor)
@@ -220,8 +276,8 @@ class Providers:
                             if coverage is not None and coverage < 75:
                                 continue
                             rows_by_time.setdefault(at.isoformat(), {"time": at.isoformat()})[pollutant] = value
-                            provenance = {"endpoint": f"{OPENAQ_URL}/sensors/{int(sensor['id'])}/hours", "station": metadata, "sensor": sensor, "hourly_record": item, "upstream_provider": metadata.get("provider"), "owner": metadata.get("owner"), "distance_km": round(km, 2)}
-                            records.append({"record_key": digest(["openaq", sensor["id"], at.isoformat(), pollutant]), "provider": "openaq", "source_type": "measured", "station_pk": station_pk, "sensor_id": str(sensor["id"]), "latitude": metadata["coordinates"]["latitude"], "longitude": metadata["coordinates"]["longitude"], "pollutant": pollutant, "raw_value": item["value"], "raw_unit": unit, "normalized_value": value, "normalized_unit": "mg/m3" if pollutant == "CO" else "ug/m3", "valid_at": at.isoformat(), "issued_at": None, "fetched_at": now.isoformat(), "quality_state": "VALID", "provenance": provenance, "methodology_version": METHOD})
+                            provenance = {"endpoint": f"{OPENAQ_URL}/sensors/{int(sensor['id'])}/hours", "station": metadata, "sensor": sensor, "hourly_record": item, "upstream_provider": metadata.get("provider"), "owner": metadata.get("owner"), "distance_km": round(km, 2), "response_received_at": received_at.isoformat(), "station_metadata_received_at": station_metadata_received_at.isoformat(), "sensor_metadata_received_at": sensor_metadata_received_at.isoformat()}
+                            records.append({"record_key": digest(["openaq", sensor["id"], at.isoformat(), pollutant]), "provider": "openaq", "source_type": "measured", "station_pk": station_pk, "sensor_id": str(sensor["id"]), "latitude": metadata["coordinates"]["latitude"], "longitude": metadata["coordinates"]["longitude"], "pollutant": pollutant, "raw_value": item["value"], "raw_unit": unit, "normalized_value": value, "normalized_unit": "mg/m3" if pollutant == "CO" else "ug/m3", "valid_at": at.isoformat(), "issued_at": None, "fetched_at": available_at.isoformat(), "quality_state": "VALID", "provenance": provenance, "methodology_version": METHOD})
                             readings.append({"pollutant": pollutant, "value": value, "unit": "mg/m³" if pollutant == "CO" else "µg/m³", "raw_unit": unit, "raw_value": item["value"], "sensor": sensor["id"], "observed_at": until.isoformat()})
                     except (HttpError, KeyError, ValueError, TypeError, BudgetExceeded) as exc:
                         partial_errors.append(type(exc).__name__)
@@ -232,11 +288,15 @@ class Providers:
             calculation = aggregate(rows, snapshot_end-timedelta(hours=24), snapshot_end, rolling=True)
             # Latest context remains visible even when a complete AQI is impossible.
             latest = {r["pollutant"]: r for r in sorted(readings, key=lambda r: r["observed_at"])}
-            stations.append({"id": metadata["id"], "station_pk": station_pk, "name": metadata.get("name"), "coordinates": metadata["coordinates"], "distance_km": round(km, 2), "provider": metadata.get("provider"), "owner": metadata.get("owner"), "licenses": metadata.get("licenses"), "last_observed_at": last.isoformat() if last else None, "calculation": calculation, "latest": list(latest.values()), "rows": rows})
+            completed_at = max(utcnow(), station_metadata_received_at, sensor_metadata_received_at,
+                               *(parse_time(t) for t in sensor_receipts.values()))
+            stations.append({"id": metadata["id"], "station_pk": station_pk, "name": metadata.get("name"), "coordinates": metadata["coordinates"], "distance_km": round(km, 2), "provider": metadata.get("provider"), "owner": metadata.get("owner"), "licenses": metadata.get("licenses"), "last_observed_at": last.isoformat() if last else None, "calculation": calculation, "latest": list(latest.values()), "rows": rows, "fetched_at": completed_at.isoformat(), "station_metadata_received_at": station_metadata_received_at.isoformat(), "sensor_metadata_received_at": sensor_metadata_received_at.isoformat(), "sensor_response_received_at": sensor_receipts})
         if hasattr(self.store,'research_snapshot'):
             for station in stations:
                 try:
-                    self.store.research_snapshot(dict(station,source_type='measured',provider='openaq',fetched_at=now.isoformat()),
+                    self.store.research_snapshot(dict(station,source_type='measured',provider='openaq'),
                         station['coordinates']['latitude'],station['coordinates']['longitude'],station['station_pk'])
                 except Exception: self.store.event('research','snapshot','FAILED',0,error_class='SnapshotPersistenceFailure')
-        return {"status": "PARTIAL" if partial_errors else "SUCCESS", "stations": stations, "fetched_at": now.isoformat(), "reason": "No sufficiently recent nearby station with adequate hourly pollutants." if not stations else "Station hourly series evaluated; partial pollutant coverage is not a complete AQI.", "errors": partial_errors}
+        completed_at = max(utcnow(), station_metadata_received_at,
+                           *(parse_time(station['fetched_at']) for station in stations))
+        return {"status": "PARTIAL" if partial_errors else "SUCCESS", "stations": stations, "fetched_at": completed_at.isoformat(), "reason": "No sufficiently recent nearby station with adequate hourly pollutants." if not stations else "Station hourly series evaluated; partial pollutant coverage is not a complete AQI.", "errors": partial_errors}

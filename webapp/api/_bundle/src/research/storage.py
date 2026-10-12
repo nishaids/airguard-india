@@ -3,6 +3,8 @@ from __future__ import annotations
 from datetime import timedelta, datetime, timezone
 from pathlib import Path
 import json
+import os
+import re
 from psycopg2.extras import Json as PgJson
 from src.nationwide.store import Store, digest
 from src.research.protocol import PROTOCOL, VERSION, aware, cutoff_for, period, build_features, daily_target
@@ -10,6 +12,15 @@ from src.research.protocol import PROTOCOL, VERSION, aware, cutoff_for, period, 
 
 def Json(value):
     return PgJson(value,dumps=lambda x:json.dumps(x,default=str,allow_nan=False))
+
+
+def issuance_identity():
+    """Use deployment-supplied identity only; never infer an old issuance SHA."""
+    sha = os.environ.get('AIRGUARD_GIT_SHA') or os.environ.get('VERCEL_GIT_COMMIT_SHA')
+    sha = sha if sha and re.fullmatch(r'[0-9a-fA-F]{40}', sha) else None
+    return {'git_sha': sha, 'feature_version': PROTOCOL['feature_version'],
+            'protocol_version': VERSION, 'model_version': 'RAW_CAMS_UPSTREAM_VERSION_NOT_EXPOSED',
+            'correction_status': 'NOT_VALIDATED', 'interval': None}
 
 
 class ResearchStore:
@@ -53,6 +64,26 @@ class ResearchStore:
             r.update(available_at=r['fetched_at'].isoformat(),retrieved_at=r['fetched_at'].isoformat(),valid_end=(r['valid_at']+timedelta(hours=1)).isoformat())
         return rows
 
+    def candidate_stations(self,lat,lon,cutoff):
+        """Filter eligible nearby pre-issue snapshots before limiting candidates."""
+        with self.store.cursor() as c:
+            c.execute('''with nearby as (
+                select station_pk,payload,available_at,
+                    6371*acos(least(1.0,greatest(-1.0,
+                        sin(radians(%s))*sin(radians(latitude))+
+                        cos(radians(%s))*cos(radians(latitude))*cos(radians(longitude-%s))))) km
+                from airguard.provider_snapshots where source_type='measured' and station_pk is not null
+                    and available_at<=%s and available_at>%s-interval '3 hours'
+                    and abs(latitude-%s)<=0.25 and abs(longitude-%s)<=0.5
+            ), eligible as (
+                select distinct on (station_pk) station_pk,payload,km,available_at from nearby
+                where km<=25 and (select count(distinct item->>'pollutant')
+                    from jsonb_array_elements(coalesce(payload->'latest','[]'::jsonb)) item)>=3
+                order by station_pk,available_at desc
+            ) select station_pk,payload from eligible order by km,station_pk limit 100''',
+                (lat,lat,lon,cutoff,cutoff,lat,lon))
+            return [dict(r) for r in c.fetchall()]
+
     def capture(self,location,issue_day,now=None):
         from src.nationwide.providers import grid,distance
         now=aware(now or datetime.now(timezone.utc));cutoff=cutoff_for(issue_day)
@@ -63,10 +94,7 @@ class ResearchStore:
         weather=self.latest_snapshot('weather_forecast',gx,gy,cutoff)
         if not cams:return {'status':'NO_ISSUE_TIME_CAMS_SNAPSHOT','location':location['key']}
         # Only metadata and measurements actually retrieved before cutoff can bind the outcome station.
-        with self.store.cursor() as c:
-            c.execute('''select station_pk,payload from airguard.provider_snapshots where source_type='measured'
-                and available_at<=%s and available_at>%s-interval '3 hours' order by available_at desc limit 100''',(cutoff,cutoff))
-            candidates=[dict(r) for r in c.fetchall()]
+        candidates=self.candidate_stations(lat,lon,cutoff)
         usable=[]
         for r in candidates:
             st=r['payload'];km=distance(lat,lon,st['coordinates'])
@@ -86,10 +114,10 @@ class ResearchStore:
                 (key,VERSION,PROTOCOL['feature_version'],location['key'],station_pk,now,cutoff,latest,features['target_date'],features['target_start'],features['target_end'],
                  Json(features['features']),Json(features)))
             c.execute('''insert into airguard.research_forecast_runs(protocol_version,location_key,station_pk,feature_snapshot_hash,forecast_mode,
-                issued_at,feature_cutoff,target_date,target_start,target_end,cams_aqi,predicted_aqi,methodology_version,artifact)
-                values(%s,%s,%s,%s,'CAMS_BASED_NATIONWIDE',%s,%s,%s,%s,%s,%s,%s,%s,%s) on conflict do nothing returning id''',
+                issued_at,feature_cutoff,target_date,target_start,target_end,cams_aqi,predicted_aqi,methodology_version,git_sha,artifact)
+                values(%s,%s,%s,%s,'CAMS_BASED_NATIONWIDE',%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) on conflict do nothing returning id''',
                 (VERSION,location['key'],station_pk,key,now,cutoff,features['target_date'],features['target_start'],features['target_end'],features['cams_aqi'],features['cams_aqi'],
-                 PROTOCOL['methodology_version'],Json({'location':location,'features':features,'correction_status':'NOT_VALIDATED','interval':None})))
+                 PROTOCOL['methodology_version'],issuance_identity()['git_sha'],Json({'location':location,'features':features,**issuance_identity()})))
             r=c.fetchone()
         return {'status':'ISSUED' if r else 'ALREADY_ISSUED','forecast_run_id':r['id'] if r else None,'location':location['key']}
 
@@ -146,4 +174,5 @@ class ResearchStore:
         summary['last_issued_at']=max((r['issued_at'] for r in ledger),default=None)
         return {'ok':True,'protocol':PROTOCOL,'readiness':readiness,'prospective':summary,'ledger':ledger,'schedules':schedules,
             'on_demand_forecasts':on_demand,'on_demand_notice':'Immutable nationwide forecasts issued before target; variable issuance times, excluded from fixed 20:00 protocol experiments.',
-            'archive_experiment':'PENDING — ADS credential/terms required','correction_status':'NOT_VALIDATED','last_updated':datetime.now(timezone.utc).isoformat()}
+            'archive_experiment':readiness.get('CAMS_ARCHIVE_STATUS','PENDING_MANUAL_ADS_CREDENTIAL'),
+            'correction_status':'NOT_VALIDATED','last_updated':datetime.now(timezone.utc).isoformat()}

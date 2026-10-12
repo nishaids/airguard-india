@@ -174,4 +174,5 @@ class ResearchStore:
         summary['last_issued_at']=max((r['issued_at'] for r in ledger),default=None)
         return {'ok':True,'protocol':PROTOCOL,'readiness':readiness,'prospective':summary,'ledger':ledger,'schedules':schedules,
             'on_demand_forecasts':on_demand,'on_demand_notice':'Immutable nationwide forecasts issued before target; variable issuance times, excluded from fixed 20:00 protocol experiments.',
-            'archive_experiment':'PENDING — ADS credential/terms required','correction_status':'NOT_VALIDATED','last_updated':datetime.now(timezone.utc).isoformat()}
+            'archive_experiment':readiness.get('CAMS_ARCHIVE_STATUS','PENDING_MANUAL_ADS_CREDENTIAL'),
+            'correction_status':'NOT_VALIDATED','last_updated':datetime.now(timezone.utc).isoformat()}

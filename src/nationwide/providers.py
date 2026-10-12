@@ -136,7 +136,7 @@ class Providers:
         now = utcnow().isoformat()
         rows, records = [], []
         for i, timestamp in enumerate(hourly["time"]):
-            if not isinstance(timestamp, (float, int)) or not math.isfinite(timestamp):
+            if isinstance(timestamp, bool) or not isinstance(timestamp, (float, int)) or not math.isfinite(timestamp):
                 raise HttpError("Invalid provider timestamp.", kind="schema")
             at = datetime.fromtimestamp(timestamp, timezone.utc).isoformat()
             row = {"time": at}
@@ -148,7 +148,7 @@ class Providers:
                 if source_type == "weather_forecast":
                     # Temperature and direction can be zero/negative; weather is
                     # kept in the immutable provider payload, not the AQ table.
-                    if isinstance(raw_value, (int, float)) and math.isfinite(raw_value) and isinstance(unit, str):
+                    if not isinstance(raw_value, bool) and isinstance(raw_value, (int, float)) and math.isfinite(raw_value) and isinstance(unit, str):
                         row[pollutant] = raw_value
                     continue
                 value = normalize(pollutant, raw_value, unit or "")
@@ -183,10 +183,15 @@ class Providers:
             raise HttpError("Invalid geocoding response.", kind="schema")
         locations = []
         for r in results[:10]:
+            if not isinstance(r, dict):
+                raise HttpError("Invalid geocoding record.", kind="schema")
             if r.get("country_code") != "IN":
                 continue
             lat, lon = coordinates(r.get("latitude"), r.get("longitude"))
-            label = ", ".join(dict.fromkeys(x for x in (r.get("name"), r.get("admin2"), r.get("admin1"), "India") if x))
+            labels = (r.get("name"), r.get("admin2"), r.get("admin1"), "India")
+            if any(x is not None and (not isinstance(x,str) or len(x)>160 or any(ord(c)<32 for c in x)) for x in labels):
+                raise HttpError("Invalid geocoding label.",kind="schema")
+            label = ", ".join(dict.fromkeys(x for x in labels if x))
             locations.append({"key": f"{lat:.4f},{lon:.4f}", "name": label, "region": r.get("admin1"), "district": r.get("admin2"), "lat": lat, "lon": lon, "geonames_id": r.get("id"), "country_code": "IN", "country": "IN"})
         return {"results": locations, "provider": "Open-Meteo / GeoNames", "fetched_at": utcnow().isoformat(), "postal_code_support": "Provider dependent; empty results are not replaced by a city guess."}
 

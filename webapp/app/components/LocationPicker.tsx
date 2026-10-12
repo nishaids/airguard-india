@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { copy } from "../lib/i18n";
 import type { Location } from "../lib/live-types";
-import { useOperational } from "./OperationalProvider";
+import { useOperational, validLocation } from "./OperationalProvider";
 export default function LocationPicker() {
   const { location, selectLocation, busy, refresh } = useOperational();
   const [query, setQuery] = useState(""); const [results, setResults] = useState<Location[]>([]); const [status, setStatus] = useState("");
@@ -10,7 +10,8 @@ export default function LocationPicker() {
   useEffect(() => () => controller.current?.abort(), []);
   async function search(e: React.FormEvent) {
     e.preventDefault(); controller.current?.abort(); const request = new AbortController(); controller.current = request; setStatus("Searching…"); setResults([]);
-    try { const response = await fetch(`/api/locations/search?q=${encodeURIComponent(query.trim())}`, { signal: request.signal }); const result = await response.json(); if (!response.ok) throw new Error(result.message || "Location search is unavailable."); if (request.signal.aborted) return; setResults(result.results); setStatus(result.results.length ? `${result.results.length} matching places. Choose a result.` : "No matching place. Try a nearby town or coordinates; postal codes depend on provider coverage."); } catch (e) { if (!request.signal.aborted) setStatus(e instanceof Error ? e.message : "Search failed."); }
+    const timer = window.setTimeout(() => { request.abort(); setStatus("Location search timed out. Try again or enter coordinates."); }, 15000);
+    try { const response = await fetch(`/api/locations/search?q=${encodeURIComponent(query.trim())}`, { signal: request.signal }); const result = await response.json(); if (!response.ok) throw new Error("Location search is unavailable."); if (request.signal.aborted) return; if (!result || !Array.isArray(result.results) || result.results.length > 100) throw new Error("Location search returned incomplete data. Please retry."); const found = result.results.map(validLocation).filter((v: Location | null): v is Location => v !== null); const unique = Array.from(new Map<string, Location>(found.map((v: Location) => [v.key, v])).values()); setResults(unique); setStatus(unique.length ? `${unique.length} matching places. Choose a result.` : "No matching place. Try a nearby town or coordinates; postal codes depend on provider coverage."); } catch (e) { if (!request.signal.aborted) setStatus(e instanceof Error ? e.message : "Search failed."); } finally { window.clearTimeout(timer); }
   }
   function choose(v: Location) { selectLocation(v); setResults([]); setStatus(""); heading.current?.focus(); }
   function geolocate() {

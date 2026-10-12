@@ -3,6 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { usePathname } from "next/navigation";
 import { cohorts, type Cohort } from "../lib/i18n";
 import type { Location, Summary } from "../lib/live-types";
+import { isSummary } from "../lib/validate-summary";
 
 export const DEFAULT_LOCATION: Location = { key: "13.1147,80.1098", name: "Avadi, Tamil Nadu, India", lat: 13.1147, lon: 80.10981, region: "Tamil Nadu", country: "IN" };
 export const LOCATION_STORAGE = "airguard.location.v1";
@@ -67,7 +68,7 @@ export default function OperationalProvider({ children }: { children: ReactNode 
     const pending = inflight.current.get(key); if (pending?.day === day) return pending.request;
     const request = (async () => {
       const params = new URLSearchParams({ lat: String(v.lat), lon: String(v.lon), name: v.name, ...(v.region ? { region: v.region } : {}) });
-      let result: Summary | null = null;
+      let result: unknown = null;
       for (let attempt = 0; attempt < 24; attempt++) {
         if (day !== istDay()) throw new Error('The IST day changed. Refreshing current data.');
         const response = await fetch(`/api/air-quality/summary?${params}`, { cache: "no-store", signal: AbortSignal.timeout(15000) });
@@ -76,7 +77,8 @@ export default function OperationalProvider({ children }: { children: ReactNode 
         await new Promise(resolve => window.setTimeout(resolve, 5000));
       }
       if (!result) throw new Error('Live data is temporarily unavailable.');
-      if (!result.current || !result.tomorrow) throw new Error(result.message || "Live data is temporarily unavailable.");
+      if (typeof result === "object" && "state" in result && result.state === "FAILED") throw new Error("Provider retrieval failed. Please retry shortly.");
+      if (!isSummary(result)) throw new Error("Live data is unavailable or incomplete. Please retry shortly.");
       if (day === istDay()) cache.current.set(key, { at: Date.now(), day, data: result });
       // Bounded browser cache; no cohort or provider credentials enter it.
       if (cache.current.size > 24) cache.current.delete(cache.current.keys().next().value!);

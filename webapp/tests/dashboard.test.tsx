@@ -4,11 +4,12 @@ import OperationalProvider from "../app/components/OperationalProvider";
 const render = (value: React.ReactNode) => rtlRender(<OperationalProvider>{value}</OperationalProvider>);
 vi.mock("next/navigation", () => ({ usePathname: () => "/live" }));
 import NationwideDashboard from "../app/components/NationwideDashboard";
+import { operationalSample } from "./operational-fixture";
 
 vi.mock("next/dynamic", () => ({ default: () => () => <div>Hourly chart</div> }));
 vi.mock("next/link", () => ({ default: ({ children, href }: { children: React.ReactNode; href: string }) => <a href={href}>{children}</a> }));
-const aqi = { aqi: 120, category: { label: "Moderate", colour: "#e8b500", index: 2 }, status: "VALID", dominant_pollutant: "PM2.5", freshness: "FRESH", pollutants: {}, source: "Open-Meteo / CAMS", timestamp: "2026-10-10T10:30:00Z", measured_or_modelled: "MODELLED" };
-const sample = { ok: true, current: aqi, tomorrow: { ...aqi, date: "2026-10-11", issued_at: "2026-10-10T10:30:00Z", peak_hour: "2026-10-11T11:30:00Z", peak_aqi: 130 }, hourly_forecast: [], measured_context: { stations: [], reason: "No complete station" }, weather_context: { hourly: [], units: {} }, fire_context: { detections: [] }, track_record: [], provider_status: {}, provenance: { methodology_version: "test", attribution: [] }, refreshed_at: "2026-10-10T10:30:00Z" };
+const aqi = { ...operationalSample.current, pollutants: {} };
+const sample = { ...operationalSample, current: aqi, tomorrow: { ...operationalSample.tomorrow, aqi: 120 } };
 const response = (data: unknown, ok = true) => Promise.resolve({ ok, json: () => Promise.resolve(data) });
 beforeEach(() => { localStorage.clear(); window.history.replaceState({}, "", "/live"); vi.stubGlobal("fetch", vi.fn(() => response(sample))); });
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
@@ -62,7 +63,7 @@ describe("nationwide dashboard", () => {
   it("shows a provider error and no invented AQI", async () => {
     vi.stubGlobal("fetch", vi.fn(() => response({ message: "Sources unavailable" }, false)));
     render(<NationwideDashboard />);
-    expect(await screen.findByRole("alert")).toHaveTextContent("Sources unavailable");
+    expect(await screen.findByRole("alert")).toHaveTextContent("Live data is unavailable or incomplete");
     expect(screen.getAllByText("—")).toHaveLength(2);
   });
 });

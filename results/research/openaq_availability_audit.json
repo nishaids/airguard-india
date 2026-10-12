@@ -4,5 +4,16 @@
   "endpoint_kind": "location_sensor_metadata",
   "attempts": 1,
   "status": "HTTP_ERROR",
-  "http_status": 500
+  "http_status": 500,
+  "final_remaining_station": {
+    "location_id": 6530249,
+    "catalogue_name": "Chhatikara, Vrindavan - UPPCB",
+    "metadata_status": 500,
+    "single_sensor_metadata_status": 500,
+    "hourly_probe_sensor_id": 17552554,
+    "hourly_probe_status": 500,
+    "checked_at": "2026-10-12T03:08:28.125012+00:00",
+    "manual_credential_action_required": false,
+    "required_external_change": "OpenAQ upstream server error resolution"
+  }
 }

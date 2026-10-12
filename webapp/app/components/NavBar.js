@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { useOperational } from "./OperationalProvider";
 
@@ -17,9 +17,14 @@ const LINKS = [
   { href: "/status", label: "Status" },
 ];
 
+const subscribeHydration = () => () => {};
+const clientHydrationSnapshot = () => true;
+const serverHydrationSnapshot = () => false;
+
 export default function NavBar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const hydrated = useSyncExternalStore(subscribeHydration, clientHydrationSnapshot, serverHydrationSnapshot);
   const { href } = useOperational();
   const operational = ["/live", "/forecast", "/city-atlas", "/policy-simulator", "/research"];
   return (
@@ -34,7 +39,7 @@ export default function NavBar() {
         </span>
         AirGuard India
       </Link>
-      <button type="button" className="nav-toggle" aria-expanded={open} aria-controls="main-nav-links" onClick={() => setOpen(v => !v)}>{open ? "Close menu" : "Menu"}</button>
+      <button type="button" className="nav-toggle" disabled={!hydrated} aria-expanded={open} aria-controls="main-nav-links" onClick={() => setOpen(v => !v)}>{open ? "Close menu" : "Menu"}</button>
       <div id="main-nav-links" className={`nav-links${open ? " is-open" : ""}`} onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>
       {LINKS.map((link) => (
         <Link key={link.href} href={operational.includes(link.href) ? href(link.href) : link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href ? "page" : undefined} className={pathname === link.href ? "active" : ""}>

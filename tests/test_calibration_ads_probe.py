@@ -92,6 +92,24 @@ def test_probe_is_before_locked_test_and_forecast_only():
     assert len(probe.REQUEST['variable']) == len(probe.REQUEST['leadtime_hour']) == 1
 
 
+def test_status_poll_persists_only_allowlisted_metadata(isolated, monkeypatch, capsys):
+    probe.write(isolated / 'results/research/cams_ads_probe.json',
+                {'status': 'SUBMITTED', 'request_id': 'existing-id'})
+    class Client:
+        def __init__(self, **kwargs):
+            self.client = self
+        def get_remote(self, request_id):
+            assert request_id == 'existing-id'
+            print('TEST_PROVIDER_RESPONSE_MUST_NOT_BE_PERSISTED')
+            return SimpleNamespace(status='accepted', headers={'authorization': 'TEST_SECRET'})
+    monkeypatch.setitem(sys.modules, 'cdsapi', SimpleNamespace(Client=Client))
+    assert probe.status() == 0
+    record = json.loads((isolated / 'results/research/cams_ads_probe_status.json').read_text())
+    assert set(record) == {'local_status', 'remote_status', 'checked_at_utc'}
+    assert record['remote_status'] == 'accepted'
+    assert 'TEST_' not in capsys.readouterr().out
+
+
 def forecast_metadata():
     return {'dataDate': 20250218, 'dataTime': 0, 'step': 24, 'stepUnits': 1,
             'validityDate': 20250219, 'validityTime': 0, 'dataType': 'fc',

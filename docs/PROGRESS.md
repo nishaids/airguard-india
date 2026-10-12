@@ -8,7 +8,7 @@ operational forecast request. Its contents and credentials were never printed.
 The request is queued; a verified download is still required before full
 acquisition. See [activation checkpoint](research/CAMS_ADS_ACTIVATION.md) and
 `results/research/cams_ads_probe.json`. Native ecCodes 2.44.0 self-check passed.
-Offline validation: 592 passed, 5 skipped, 4 database cases excluded.
+Offline validation: 593 passed, 5 skipped, 4 database cases excluded.
 The completed measured dataset, protocol hash and sealed final test remain
 unchanged. Model development and `MODEL_SELECTION_LOCK` await the archive.
 

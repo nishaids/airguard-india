@@ -49,9 +49,12 @@ to derive and acquire the minimum development archive, complete development
 evaluations and commit `MODEL_SELECTION_LOCK`; final evaluation requires the
 user's separate explicit approval after that lock exists.
 
-Validation: 592 passed, 5 skipped, 4 database cases excluded in the offline
+Validation: 593 passed, 5 skipped, 4 database cases excluded in the offline
 suite. The new tests cover safe error handling, duplicate prevention, resume,
 checksum corruption, analysis rejection and inconsistent time/unit metadata.
+The latest read-only provider poll is recorded separately in
+`results/research/cams_ads_probe_status.json`, without replacing the submission
+record or dumping the provider response.
 
 Official references: [ADS client setup](https://ads.atmosphere.copernicus.eu/how-to-api),
 [forecast dataset](https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts),

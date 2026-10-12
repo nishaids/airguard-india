@@ -8,10 +8,12 @@ authorizations below describe earlier work and do not authorize this research
 release. No production merge, deployment, secret change or paid purchase is part
 of the continuation.
 
-The genuine historical archive state is `PENDING_MANUAL_ADS_CREDENTIAL`.
-Follow [ADS_MANUAL_SETUP.md](docs/research/ADS_MANUAL_SETUP.md): accept the
-CAMS global forecast dataset terms manually and configure the personal token in
-the private user-home `.cdsapirc`. No secret is needed in chat.
+The user completed ADS manual setup. The official client imports, the private
+credential file exists, and ADS accepted one tiny forecast request. Current
+state: `ADS_PROBE_SUBMITTED`; provider queue pending, no file received yet.
+No additional manual setup is currently indicated. See
+[CAMS_ADS_ACTIVATION.md](docs/research/CAMS_ADS_ACTIVATION.md). No secret is
+needed in chat. Full acquisition remains gated on a successful inspected file.
 
 The new OpenAQ station-calibration acquisition is separate from the older
 200-request/hour archive walk described below. Its existing two workers remain

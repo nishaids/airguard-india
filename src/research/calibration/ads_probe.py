@@ -75,6 +75,8 @@ def status():
                 'accepted', 'running', 'successful', 'failed', 'rejected', 'dismissed', 'deleted') else 'UNKNOWN'
         except Exception as error:
             result['error'] = safe_error(error)
+    result['checked_at_utc'] = now()
+    write(ROOT / 'results/research/cams_ads_probe_status.json', result)
     print(json.dumps(result))
     return 0
 

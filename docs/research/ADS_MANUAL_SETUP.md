@@ -1,4 +1,11 @@
-# Manual ADS setup still required
+# ADS manual setup reference
+
+**12 October 2026 update:** the user completed setup, `cdsapi==0.7.7` imports
+in `.venv-live`, the credential file exists, and ADS accepted the one tiny
+forecast request. The provider queue is pending; retrieval and GRIB inspection
+have not succeeded yet. No additional manual setup is currently indicated.
+See [CAMS_ADS_ACTIVATION.md](CAMS_ADS_ACTIVATION.md). The instructions below are
+retained as setup reference, not a request to reveal or reconfigure the token.
 
 1. Sign in or register at the [Copernicus Atmosphere Data Store](https://ads.atmosphere.copernicus.eu/).
 2. Open [CAMS global atmospheric composition forecasts](https://ads.atmosphere.copernicus.eu/datasets/cams-global-atmospheric-composition-forecasts?tab=download)
@@ -25,6 +32,6 @@ ADS metadata, including pressure/temperature from the same forecast where
 needed. Archive import must not change the locked final-test dates or expose
 their scores for selection.
 
-No token value is needed in chat. No credentials, terms or paid resources have
-been configured by this continuation. The inherited Open-Meteo CAMS cache is
+No token value is needed in chat. Credentials and terms were configured by the
+user; the agent has not changed them. The inherited Open-Meteo CAMS cache is
 preserved with its proxy label and is excluded from the primary experiment.

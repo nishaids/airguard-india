@@ -1,0 +1,9 @@
+{
+  "recorded_at_utc": "2026-10-12T13:15:42.617726+00:00",
+  "github_owner": "nishaids",
+  "git_author_name": "Nishanth Rajendran",
+  "git_author_email": "nishanth.r.2024.aids@rajalakshmi.edu.in",
+  "basis": "Project owner explicitly supplied linked GitHub email and authorized deployment retry. Existing commits preserved; only repository-local identity for new commits changed.",
+  "previous_blocked_deployment": "dpl_5xaNNx1bo2tggkptgDfpbZoHj5Uw",
+  "production_safe_source_commit": "1a57cbd2d1a34ac71e388505465ca9447088fe8f"
+}

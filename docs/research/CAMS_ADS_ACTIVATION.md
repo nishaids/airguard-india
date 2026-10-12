@@ -1,5 +1,43 @@
 # ADS activation checkpoint — 12 October 2026
 
+## Verified continuation (supersedes the queued status below)
+
+The original job completed and downloaded a **134-byte valid GRIB1**, not an
+empty file or an ADS message. SHA256:
+`d65309028388aaa0dcfd80de3d209ff87d0c06ba0a3bc82e497ed6fec8d4b28b`.
+Decoded metadata proves forecast type `fc`, parameter 210073/PM2.5,
+initialisation 2025-02-18 00 UTC, lead +24h and valid time 2025-02-19 00 UTC.
+The 3×3 surface grid covers the exact requested area at 0.4° increments,
+contains nine finite nonnegative values and no missing data. No second probe
+was submitted. Credentials were not displayed or logged.
+
+The active development plan is
+`results/research/cams_development_acquisition_plan.v2.json`, SHA
+`952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a`.
+It covers 507 runs (2025-02-17 through 2026-07-08), 00 UTC only, the 181 frozen
+station locations and bounding box 30.8/70.8/8.4/94.0. The original plan remains
+preserved; v2 removed unused interpolation brackets before acquisition/fitting.
+There are 36 monthly surface/model-level jobs, at most two concurrent. The
+first pair must validate before later requests are admitted. Ambiguous/failed
+submissions are never automatically replaced.
+
+Two chunks are now verified: 1,152 surface messages (10,454,784 bytes) and 864
+lowest-level messages (7,805,791 bytes). Dates, leads, units, grid and hybrid
+coefficients passed the exact cube audit. Current progress remains in
+`cams_development_acquisition.json`; it may advance after this checkpoint.
+`cams_baseline.py` has derived 1,991 raw forecast station-days over eleven dates
+without reading measured outcomes. Three- and six-species indices, raw hashes,
+normalised code hashes and the parquet checksum are retained. This is partial
+forecast derivation, **not** a complete primary model dataset or comparison.
+
+Models/selection/final evaluation remain gated on the complete archive and
+guarded joins. Current prototype forecast data and the archived primary study
+remain distinct. The new task authorises one final evaluation only after a
+committed selection lock; see FINAL_TEST_EXECUTION_GATE.md. No paper generation
+or experimental correction deployment is included.
+
+## Historical submission checkpoint
+
 Continuation begins at `4212d05` on `research/station-calibration`. The user
 reported completing the ADS manual setup. The official `cdsapi==0.7.7` imports
 in `.venv-live`; the default system interpreter does not have this client.

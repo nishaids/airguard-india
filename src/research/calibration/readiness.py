@@ -1,5 +1,6 @@
 """Compute primary readiness from evidence; preliminary results cannot pass it."""
 import json
+import hashlib
 from datetime import datetime, timezone
 from src import config
 from src.qa.security import gate
@@ -13,8 +14,32 @@ def artifact(name):
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
 
 
+def current_archive_status():
+    """Collection status from the verified smoke file; no primary gate release."""
+    probe=artifact('cams_ads_probe.json')
+    if probe.get('status')!='VERIFIED_OPERATIONAL_FORECAST':
+        return CAMS_ARCHIVE_STATUS
+    try:
+        path=(config.PROJECT_ROOT/probe['file']).resolve()
+        if not path.is_relative_to((config.PROJECT_ROOT/'data/research').resolve()):
+            return 'ADS_PROBE_EVIDENCE_INVALID'
+        if hashlib.sha256(path.read_bytes()).hexdigest()!=probe['sha256']:
+            return 'ADS_PROBE_EVIDENCE_INVALID'
+        from src.research.calibration.ads_probe import verify_fields
+        verify_fields(probe['decoded_fields'])
+    except (KeyError,ValueError,OSError,TypeError):
+        return 'ADS_PROBE_EVIDENCE_INVALID'
+    acquisition=artifact('cams_development_acquisition.json')
+    if acquisition.get('complete') is True:
+        return 'ADS_ARCHIVE_COLLECTED_PRIMARY_AUDIT_PENDING'
+    if acquisition.get('jobs'):
+        return 'ADS_OPERATIONAL_ARCHIVE_ACQUIRING'
+    return 'ADS_SMOKE_VERIFIED_ARCHIVE_INCOMPLETE'
+
+
 def generate():
     protocol=load()
+    cams_status=current_archive_status()
     measured=artifact('measured_dataset.json')
     preliminary=artifact('preliminary_latest.json')
     prospective=artifact('prospective_audit.json')
@@ -49,7 +74,7 @@ def generate():
     value={'generated_at':datetime.now(timezone.utc).isoformat(),
            'status':'RESEARCH_READY' if all(checks.values()) else 'COLLECTING_NOT_RESEARCH_READY',
            'checks':checks,'passed':sum(checks.values()),'total':len(checks),
-           'CAMS_ARCHIVE_STATUS':CAMS_ARCHIVE_STATUS,
+           'CAMS_ARCHIVE_STATUS':cams_status,
            'evidence':{'protocol_version':protocol['protocol_version'],'protocol_hash':protocol['_sha256'],
                        'dataset_hash':measured.get('dataset_hash'),'preliminary_run_id':preliminary.get('run_id'),
                        'fixed_time_issuance':{k:prospective.get(k) for k in ('forecasts','issued_target_days','verified_days','elapsed_real_days','station_bound_forecasts')},
@@ -67,7 +92,7 @@ def generate():
                                'Real immutable prospective forecast logging'],
            'claims_not_supported':['AirGuard improves CAMS','Calibrated operational station corrections',
                                    'Controlled vulnerable-cohort under-warning','Station correction generalises nationwide'],
-           'pending_archive':CAMS_ARCHIVE_STATUS}
+           'pending_archive':cams_status}
     write_json(OUT/'research_readiness.json',value)
     write_json(OUT/'security_gate.json',security)
     # Local source/status mirrors only; no vendoring, build or deployment.

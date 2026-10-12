@@ -116,8 +116,23 @@ def audit():
                         'validityTime', 'dataType', 'shortName', 'paramId', 'units',
                         'typeOfLevel', 'level', 'numberOfDataPoints', 'edition',
                         'latitudeOfFirstGridPointInDegrees', 'longitudeOfFirstGridPointInDegrees',
-                        'latitudeOfLastGridPointInDegrees', 'longitudeOfLastGridPointInDegrees')
-                fields.append({key: ec.codes_get(gid, key) for key in keys})
+                        'latitudeOfLastGridPointInDegrees', 'longitudeOfLastGridPointInDegrees',
+                        'Ni', 'Nj', 'numberOfMissing', 'iDirectionIncrementInDegrees',
+                        'jDirectionIncrementInDegrees')
+                field = {key: ec.codes_get(gid, key) for key in keys}
+                values = ec.codes_get_values(gid)
+                import math
+                if field['numberOfMissing'] or not all(math.isfinite(v) and v >= 0 for v in values):
+                    raise ValueError('Probe contains missing/invalid concentration values')
+                if field['Ni'] != 3 or field['Nj'] != 3 or field['numberOfDataPoints'] != 9 or field['typeOfLevel'] != 'surface':
+                    raise ValueError('Probe is not the requested 3 by 3 surface subset')
+                expected = {'latitudeOfFirstGridPointInDegrees':29.2,'longitudeOfFirstGridPointInDegrees':76.8,
+                    'latitudeOfLastGridPointInDegrees':28.4,'longitudeOfLastGridPointInDegrees':77.6,
+                    'iDirectionIncrementInDegrees':.4,'jDirectionIncrementInDegrees':.4}
+                if any(abs(field[key]-value)>1e-6 for key,value in expected.items()):
+                    raise ValueError('Decoded probe area/grid differs from request')
+                field['minimum_kg_m3'],field['maximum_kg_m3'] = float(min(values)),float(max(values))
+                fields.append(field)
             finally:
                 ec.codes_release(gid)
     reference, valid = verify_fields(fields)

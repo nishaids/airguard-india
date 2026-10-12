@@ -1,0 +1,30 @@
+{
+  "status": "PARTIAL_FORECAST_DERIVATION",
+  "dataset_identity": "0b23240e345f92229530002a64a520f3baa0e182351b94357ccc4709dafe3247",
+  "plan_sha256": "952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a",
+  "raw_file_sha256": {
+    "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/3fbb78f22c76f4dbf0b95fdf186e829cc629dd305bdff5567bd087dfad2b3797.grib": "353a103e97ec85e416b0c4747ac7876b6b8eebe8bc80fd7ba10ead4feba2b8d0",
+    "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/7a909395e4a9c443804354310abc3161a499f324e9a0ac7c331455ca6f77d6b1.grib": "c8fbc18b64b409b8468e5c5d9d4aacc2bd4a0c944f68e593fdaf886b7e240853"
+  },
+  "code_sha256": {
+    "baseline": "40dada4d0097d44be51c13be66bbf12bddfe56380d4f3b572a7115dacfd737aa",
+    "physics": "98a73049d91fba9bc755c26ba673ea3e5599aa133282cc14cc8a053a070b225b",
+    "aqi": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e"
+  },
+  "table": "data/research/cams_operational/derived/0b23240e345f92229530002a64a520f3baa0e182351b94357ccc4709dafe3247/raw_cams_indices.parquet",
+  "sha256": "08f2d50ea7a6e3df772ccadb16422c5df00e2218a9445f31d7780ec9aad69602",
+  "rows": 1991,
+  "stations": 181,
+  "dates": 11,
+  "date_range": [
+    "2025-02-19",
+    "2025-03-01"
+  ],
+  "valid_three_species_indices": 1991,
+  "valid_six_species_indices": 1991,
+  "measured_targets_read": false,
+  "final_test_accessed": false,
+  "primary_model_dataset_complete": false,
+  "evaluation_performed": false,
+  "future_work": "complete acquisition, issue-time guarded joins, development validation and selection before final access"
+}

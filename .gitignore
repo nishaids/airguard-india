@@ -56,3 +56,15 @@ results/ingestion.log.*
 
 # Webfont cache for the explainer PDF; refetched on demand.
 reports/.fontcache/
+
+# Local diagnostics/toolchains stay on disk; vetted evidence may be force-added.
+logs/
+paper/conference_final/*.aux
+paper/conference_final/*.blg
+paper/conference_final/main.bbl
+paper/conference_final/review/
+paper/conference/main.blg
+paper/journal/main.blg
+paper/station_calibration_skeleton.pdf
+results/research/extensions/**/*.parquet
+results/release/codex_push_receipt.json

@@ -1,5 +1,13 @@
 # Operational continuation checkpoint
 
+The current submitted six-page snapshot is `paper/conference_final/main.tex`
+and `main.pdf`. Preserve it byte-for-byte; do not run older manuscript generators
+as part of continuation. The earlier journal-development instructions below
+are historical. Current reports and reproducibility commands are in
+`CODEX_CONTINUATION_STATE.md`, `CODEX_REPRODUCIBILITY.md` and
+`AIRGUARD_FINAL_COMPLETION_REPORT.md`. `scripts.finish_codex_handoff` refreshes
+metadata reports without touching the paper or measured targets.
+
 The locked v3.1 protocol and measured dataset are preserved. This continuation
 uses the existing ADS IDs and versioned acquisition plan. No new probe is needed.
 The plan contains development dates only. Keep 2026-07-10 through 2026-10-07 sealed.
@@ -29,6 +37,7 @@ Never print credentials, transport diagnostics, or the contents of `.cdsapirc`.
 python -m src.research.calibration.cams_baseline
 python -m src.research.calibration.primary_dataset
 python -m scripts.audit_development_readiness
+python -m src.research.calibration.primary_experiments --run-development
 ```
 
 The first step verifies checksums and the complete parameter/date/lead cube.
@@ -47,14 +56,20 @@ run, leads and valid times are checked against each downloaded GRIB.
 ## What remains before primary fitting
 
 - Complete paired archive coverage and enough protocol-eligible training history.
-- Finish the cutoff-aligned CAMS rolling-bias descriptor. The frozen cube starts
+- The prototype's cutoff-aligned CAMS rolling-bias descriptor is unavailable. The frozen cube starts
   at lead 11h (surface) / 9h (model level). A rolling window ending at 17:00 IST
   on D-1, reconstructed from the D-2 run with seven preceding gas-support bins,
-  starts at lead 4.5h. This needs an audited minimal supplementary-lead plan;
+  starts at lead 4.5h. It is excluded from the current predictor list. Recent bias
+  is instead provided by the protocol's available D-2 and seven-day history,
+  computed using exact earlier targets and their frozen CAMS forecasts.
+  Adding the prototype descriptor would need an audited supplementary-lead plan;
   do not extrapolate the current cube or silently substitute a daily CAMS index.
   No supplementary request was submitted in this continuation.
-- Integrate the primary train-only tuning, temporal/spatial runner and its donor
-  masking, ablations, calibration, advisories and statistical comparisons.
+- Exercise the new primary train-only tuning, temporal/spatial runner and its donor
+  masking, ablations, calibration, advisories and statistical comparisons on real
+  protocol-eligible folds. The current data preflight runs but no fold can fit.
+  Synthetic tests validate tuning, censored labels, library APIs, final isolation,
+  station eligibility and test-independent advisory calibration.
 - Treat missing historical FIRMS publication evidence explicitly; acquisition
   timestamps alone do not establish pre-issue availability.
 - Bind all completed experiment outputs to a genuine model-selection lock and

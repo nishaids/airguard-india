@@ -1,0 +1,20 @@
+{
+  "generated_at_utc": "2026-10-13T18:37:55.501087+00:00",
+  "status": "PRODUCTION_DEPLOYED_AND_VERIFIED",
+  "exit_code": 0,
+  "deployed_git_sha": "9ac8b5a607246ced7150bfa47591c3398d72b5d8",
+  "runtime_git_sha": "9ac8b5a607246ced7150bfa47591c3398d72b5d8",
+  "project_id": "prj_CRhIlQYLGST3dBwUfTiFgJXa25qe",
+  "candidate_url": "https://webapp-2cs2rm3ux-nishanth-s-projects-e335f110.vercel.app",
+  "production_url": "https://webapp-phi-taupe.vercel.app",
+  "experimental_calibration_included": false,
+  "paper_included": false,
+  "deployment_id": "dpl_pFFAE3FypQiA8NWaG52DHkK51tT9",
+  "inspected_status": "READY",
+  "production_promoted": true,
+  "promoted_at_utc": "2026-10-13T18:48:24.555043+00:00",
+  "public_api_checks": 37,
+  "browser_checks": 28,
+  "receipt_validation": true,
+  "verified_at_utc": "2026-10-13T19:06:42.536137+00:00"
+}

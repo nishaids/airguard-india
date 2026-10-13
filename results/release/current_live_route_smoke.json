@@ -1,0 +1,45 @@
+{
+  "generated_at_utc": "2026-10-12T10:59:17.860293+00:00",
+  "public_url": "https://webapp-phi-taupe.vercel.app",
+  "deployment_scope": "previous unchanged production; new candidate blocked",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/forecast",
+      "status": 200
+    },
+    {
+      "path": "/city-atlas",
+      "status": 200
+    },
+    {
+      "path": "/model-insights",
+      "status": 200
+    },
+    {
+      "path": "/research",
+      "status": 200
+    },
+    {
+      "path": "/methods",
+      "status": 200
+    },
+    {
+      "path": "/policy-simulator",
+      "status": 200
+    },
+    {
+      "path": "/api/health",
+      "status": 200
+    }
+  ],
+  "all_http_200": true,
+  "new_release_deployed": false
+}

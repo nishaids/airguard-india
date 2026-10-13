@@ -1,0 +1,20 @@
+{
+  "url": "https://webapp-phi-taupe.vercel.app",
+  "exit_code": 0,
+  "stats": {
+    "startTime": "2026-10-13T18:50:51.627Z",
+    "duration": 104619.09,
+    "expected": 28,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "routes": 14,
+  "viewports": [
+    375,
+    1280
+  ],
+  "source": "webapp/tests/e2e/production-smoke.spec.ts",
+  "uncaught_page_errors_checked": true,
+  "same_origin_http_errors_checked": true
+}

@@ -1,25 +1,15 @@
-# Verified live deployment
+# Deployment completion
 
 Status: **PRODUCTION_DEPLOYED_AND_VERIFIED**.
 
-- Live URL: https://webapp-phi-taupe.vercel.app
-- Deployment URL: https://webapp-4kwhperqo-nishanth-s-projects-e335f110.vercel.app
-- Deployed Git commit: 35c2ca08b86a53dcc27da11f79edb311d0e77ffe
-- Existing project: prj_CRhIlQYLGST3dBwUfTiFgJXa25qe
-- Workflow: push the research branch; create a production-configured candidate without changing domains; test; promote using the existing Vercel project. No connected Git production trigger is configured.
+Live URL: https://webapp-phi-taupe.vercel.app. Existing project: `prj_CRhIlQYLGST3dBwUfTiFgJXa25qe`. Deployment ID: `dpl_pFFAE3FypQiA8NWaG52DHkK51tT9`. Deployed code SHA: `9ac8b5a607246ced7150bfa47591c3398d72b5d8`.
 
-## Verification
+The production-configured candidate was staged without replacing the live domain, passed 31 route/API checks and an authorized refresh, then was promoted. Public verification passed 37 checks across Chennai/Avadi, Delhi, Mumbai, Kolkata, Bengaluru, Hyderabad, Kochi and a low-monitor-coverage location. All 28 browser checks passed across 14 routes at 375 and 1280 pixels, including errors and horizontal overflow.
 
-Fresh lint, typecheck and production build passed. 43 frontend unit tests, 37 public API/route/security checks and 16 actual browser checks passed. Browser checks cover eight core routes at 375px and 1280px, mobile navigation, horizontal overflow, uncaught page exceptions and same-origin HTTP failures.
+A cold-cache request confirmed real receipt-bearing CAMS/weather snapshots in the database. Request/response times are separate from raw payloads and unavailable forecast initialization remains unknown. Future fixed-time issuance receives the runtime Git SHA; historical missing identities and station bindings are unchanged.
 
-The owner-confirmed GitHub email resolved Vercel commit attribution. A mobile first-click race was fixed by disabling the menu before hydration. The additional JavaScript lint check used the installed JSX-capable parser; the earlier default-parser failure and corrected evidence are retained in the machine-readable report.
+The upload contains only webapp and its curated runtime bundle. Offline calibration, post-paper experiments, raw research caches, credentials and the paper are excluded. No experimental correction or interval is deployed. The final test remains sealed.
 
-The latest secret audit found zero history, worktree or built-browser-asset credential hits. Experimental correction models remain disabled. The locked final test was not opened or scored.
+Evidence: `results/release/codex_continuation_deployment.json`, `codex_continuation_preflight.json`, `codex_live_browser.json`, `results/research/staged_production_acceptance.json`, `production_acceptance.json` and `prospective_receipt_validation.json`.
 
-## Paper work
-
-Paper work stopped at the owner's request. New local paper changes, PDF, artifact package and generator remain uncommitted and unpushed. Existing historical commits were preserved. They are outside the website deployment upload.
-
-No human action is required for this completed deployment.
-
-See [verification artifact](../../results/release/website_deployment_verification.json).
+The six-page conference paper is preserved on the research branch as a frozen submission snapshot; it is outside the deployment upload.

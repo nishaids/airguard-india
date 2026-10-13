@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-10-13T18:53:43.026685+00:00",
+  "source": "Public production cold-cache request",
+  "http_status": 200,
+  "location": {
+    "lat": 23.6123,
+    "lon": 70.8123
+  },
+  "receipt_bearing_snapshots": [
+    {
+      "source_type": "weather_forecast",
+      "n": 5
+    },
+    {
+      "source_type": "modelled_forecast",
+      "n": 5
+    }
+  ],
+  "historical_rows_modified": false,
+  "provider_initialization_not_invented": true,
+  "credentials_logged": false
+}

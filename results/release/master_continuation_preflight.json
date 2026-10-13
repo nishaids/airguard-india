@@ -1,0 +1,33 @@
+{
+  "generated_at_utc": "2026-10-12T14:41:19.928608+00:00",
+  "checks": {
+    "lint": {
+      "command": "npm run lint",
+      "exit_code": 0,
+      "log_sha256": "ccc2b94368e376747e58a3104acfea4df1c281eab6357c2d188019d53e90f054"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exit_code": 0,
+      "log_sha256": "287d65165d6435818e4bb72866eb9d65715ddc0b888831ba315f24a53c60467e"
+    },
+    "test": {
+      "command": "npm run test -- --reporter=json --outputFile=test-results/live-release-unit.json",
+      "exit_code": 0,
+      "log_sha256": "4527b9093909378719bb7f4fbd1945568b73c377bfe5f0dbbdef3c1a1e851da0"
+    },
+    "build": {
+      "command": "npm run build",
+      "exit_code": 0,
+      "log_sha256": "d4b76d7a1508caa46a68660319ef3a52f9b2ed65cca14aa5d023540e5c779b95"
+    }
+  },
+  "git_sha": "4ba5d4111cf98ffaa1f603d6f0561f69a06bfd60",
+  "unit": {
+    "success": true,
+    "numTotalTests": 43,
+    "numPassedTests": 43,
+    "numFailedTests": 0
+  },
+  "passed": true
+}

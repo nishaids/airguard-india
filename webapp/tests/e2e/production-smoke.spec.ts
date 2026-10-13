@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-const routes = ['/', '/live', '/forecast', '/city-atlas', '/model-insights', '/research', '/methods', '/policy-simulator'];
+const routes = ['/', '/live', '/forecast', '/city-atlas', '/model-insights', '/research', '/methods', '/policy-simulator',
+  '/research/track-record', '/historical-replay', '/research/historical-atlas', '/research/historical-policy', '/research/legacy', '/status'];
 for (const width of [375, 1280]) {
   for (const route of routes) {
     test(`production ${width} ${route}`, async ({ page, baseURL }) => {

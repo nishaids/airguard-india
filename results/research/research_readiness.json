@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T14:59:19.697104+00:00",
+  "generated_at": "2026-10-13T18:24:20.690775+00:00",
   "status": "COLLECTING_NOT_RESEARCH_READY",
   "checks": {
     "literature_review_complete": false,
@@ -29,21 +29,21 @@
     "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
     "preliminary_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
     "fixed_time_issuance": {
-      "forecasts": 24,
-      "issued_target_days": 2,
+      "forecasts": 36,
+      "issued_target_days": 3,
       "verified_days": 0,
-      "elapsed_real_days": 1.0191258276851853,
+      "elapsed_real_days": 2.157883610925926,
       "station_bound_forecasts": 0
     },
     "issuance_state": "ISSUED",
     "test_validation_current": true,
     "test_counts": {
-      "tests": 627,
+      "tests": 658,
       "failures": 0,
       "errors": 0,
       "skipped": 5,
-      "collected": 627,
-      "passed": 622,
+      "collected": 658,
+      "passed": 653,
       "deselected": 4
     },
     "security_gate": {
@@ -63,8 +63,8 @@
       "path_leaks": [],
       "client_secret_references": [],
       "evidence": {
-        "database_audit": "2026-10-12T08:20:42.896332+00:00",
-        "secret_audit": "2026-10-12T13:36:37.974340+00:00"
+        "database_audit": "2026-10-13T18:17:26.062271+00:00",
+        "secret_audit": "2026-10-13T18:19:56.259459+00:00"
       },
       "notice": "A check without evidence is unknown, and unknown does not pass. Penetration testing, authentication hardening and upstream provider terms are outside this gate."
     }

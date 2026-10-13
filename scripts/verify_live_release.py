@@ -1,5 +1,6 @@
 """Capture fresh, credential-redacted checks for a production-safe release."""
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -11,6 +12,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output', default='results/release/website_preflight.json')
+    parser.add_argument('--log-prefix', default='live-release')
+    args = parser.parse_args()
     load_env()
     checks = {}
     for name in ('lint', 'typecheck', 'test', 'build'):
@@ -18,7 +23,7 @@ def main():
         if name == 'test':
             command += ['--', '--reporter=json', '--outputFile=test-results/live-release-unit.json']
         result = subprocess.run(command, cwd=ROOT/'webapp', capture_output=True)
-        path = ROOT/f'logs/live-release-{name}.log'
+        path = ROOT/f'logs/{args.log_prefix}-{name}.log'
         path.write_text(redact((result.stdout + result.stderr).decode('utf-8', errors='replace')), encoding='utf-8')
         checks[name] = {'command': ' '.join(command[2:]), 'exit_code': result.returncode,
                         'log_sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
@@ -31,7 +36,7 @@ def main():
               'git_sha': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
               'unit': {k: unit.get(k) for k in ('success', 'numTotalTests', 'numPassedTests', 'numFailedTests')},
               'passed': len(checks) == 4 and all(c['exit_code'] == 0 for c in checks.values()) and unit.get('success') is True}
-    write_json(ROOT/'results/release/website_preflight.json', report)
+    write_json(ROOT/args.output, report)
     raise SystemExit(0 if report['passed'] else 1)
 
 

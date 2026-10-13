@@ -9,6 +9,7 @@ from contextlib import nullcontext
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from dataclasses import replace
+from email.utils import parsedate_to_datetime
 
 from src.ingestion.http import HttpClient, HttpError, as_dict
 from src.ingestion.settings import get_settings, secret, redact
@@ -26,6 +27,13 @@ MEASURED_FIELDS = {"pm25": "PM2.5", "pm10": "PM10", "no2": "NO2", "so2": "SO2", 
 
 def utcnow():
     return datetime.now(timezone.utc)
+
+
+class ReceivedPayload(dict):
+    """Transport receipt kept separate from the unmodified provider JSON."""
+    def __init__(self, payload, receipt):
+        super().__init__(payload)
+        self.receipt = receipt
 
 
 def coordinates(lat, lon):
@@ -97,11 +105,24 @@ class Providers:
 
     def _get_json(self, provider, url, params=None, headers=None):
         started = time.monotonic()
+        requested_at = utcnow()
         try:
-            result = as_dict(self.client.get(url, params, headers, label=provider, before_attempt=lambda: self.request_budget(provider)).json(), provider)
+            response = self.client.get(url, params, headers, label=provider, before_attempt=lambda: self.request_budget(provider))
+            result = as_dict(response.json(), provider)
+            received_at = utcnow()
+            provider_http_date = None
+            try:
+                stamp = parsedate_to_datetime(getattr(response, 'headers', {}).get('Date', ''))
+                if stamp.tzinfo is not None:
+                    provider_http_date = stamp.astimezone(timezone.utc).isoformat()
+            except (TypeError, ValueError, AttributeError):
+                pass
+            receipt = {'source':provider,'request_started_at':requested_at.isoformat(),
+                       'response_received_at':received_at.isoformat(),'provider_http_date':provider_http_date,
+                       'provider_http_date_is_forecast_initialization':False}
             count = len(result.get("results", result.get("hourly", {}).get("time", [])))
             self.store.event(provider, url.split("/")[-1], "SUCCESS", int((time.monotonic() - started) * 1000), count)
-            return result
+            return ReceivedPayload(result, receipt)
         except HttpError as exc:
             self.store.event(provider, url.split("/")[-1], "FAILED", int((time.monotonic() - started) * 1000), http_status=exc.status, error_class=exc.kind, detail=redact(exc))
             raise
@@ -133,7 +154,8 @@ class Providers:
             raise HttpError("Provider returned no hourly series or unit metadata.", kind="schema")
         if len(hourly["time"]) > 240:
             raise HttpError("Hourly response exceeded the configured bound.", kind="schema")
-        now = utcnow().isoformat()
+        receipt = getattr(payload, 'receipt', None)
+        now = receipt['response_received_at'] if receipt else utcnow().isoformat()
         rows, records = [], []
         for i, timestamp in enumerate(hourly["time"]):
             if isinstance(timestamp, bool) or not isinstance(timestamp, (float, int)) or not math.isfinite(timestamp):
@@ -158,6 +180,7 @@ class Providers:
                     continue
                 row[pollutant] = value
                 provenance = {"endpoint": url, "model": model, "configured_domain": model, "native_grid_degrees": .4, "provider_grid": {"lat": payload.get("latitude"), "lon": payload.get("longitude")}, "raw_unit": unit, "raw_value": raw_value, "provider_issued_at": None, "issue_time_basis": "AirGuard retrieval; provider API does not publish model run time", "attribution": "Open-Meteo.com / Copernicus Atmosphere Monitoring Service", "time_semantics": "hourly model value; native 3h CAMS data interpolated by provider"}
+                provenance['input_receipt'] = receipt
                 records.append({"record_key": digest([provider, model, lat, lon, at, pollutant, raw_value]), "provider": provider, "source_type": source_type,
                     "model": model, "latitude": lat, "longitude": lon, "pollutant": pollutant, "raw_value": raw_value, "raw_unit": unit,
                     "normalized_value": value, "normalized_unit": "mg/m3" if pollutant == "CO" else "ug/m3", "valid_at": at,
@@ -168,7 +191,7 @@ class Providers:
         self.store.records(records)
         result = {"rows": rows, "provider": provider, "model": model, "source_type": source_type, "fetched_at": now, "issued_at": now,
             "provider_issued_at": None, "grid": {"lat": payload.get("latitude"), "lon": payload.get("longitude"), "native_resolution_degrees": .4 if model == "cams_global" else None},
-            "units": units, "raw": payload, "raw_reference": digest(payload), "quality": "VALID"}
+            "units": units, "raw": payload, "raw_reference": digest(payload), "quality": "VALID", "input_receipt":receipt}
         if hasattr(self.store,'research_snapshot'):
             try: self.store.research_snapshot(result,lat,lon)
             except Exception: self.store.event('research','snapshot','FAILED',0,error_class='SnapshotPersistenceFailure')
@@ -277,6 +300,7 @@ class Providers:
                                 continue
                             rows_by_time.setdefault(at.isoformat(), {"time": at.isoformat()})[pollutant] = value
                             provenance = {"endpoint": f"{OPENAQ_URL}/sensors/{int(sensor['id'])}/hours", "station": metadata, "sensor": sensor, "hourly_record": item, "upstream_provider": metadata.get("provider"), "owner": metadata.get("owner"), "distance_km": round(km, 2), "response_received_at": received_at.isoformat(), "station_metadata_received_at": station_metadata_received_at.isoformat(), "sensor_metadata_received_at": sensor_metadata_received_at.isoformat()}
+                            provenance['input_receipt'] = getattr(data, 'receipt', None)
                             records.append({"record_key": digest(["openaq", sensor["id"], at.isoformat(), pollutant]), "provider": "openaq", "source_type": "measured", "station_pk": station_pk, "sensor_id": str(sensor["id"]), "latitude": metadata["coordinates"]["latitude"], "longitude": metadata["coordinates"]["longitude"], "pollutant": pollutant, "raw_value": item["value"], "raw_unit": unit, "normalized_value": value, "normalized_unit": "mg/m3" if pollutant == "CO" else "ug/m3", "valid_at": at.isoformat(), "issued_at": None, "fetched_at": available_at.isoformat(), "quality_state": "VALID", "provenance": provenance, "methodology_version": METHOD})
                             readings.append({"pollutant": pollutant, "value": value, "unit": "mg/m³" if pollutant == "CO" else "µg/m³", "raw_unit": unit, "raw_value": item["value"], "sensor": sensor["id"], "observed_at": until.isoformat()})
                     except (HttpError, KeyError, ValueError, TypeError, BudgetExceeded) as exc:

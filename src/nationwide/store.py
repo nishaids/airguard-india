@@ -176,7 +176,7 @@ class Store:
                     continue
                 values.append(("Open-Meteo", "gfs_seamless", f"{lat},{lon}", lat, lon, now.replace(minute=0, second=0, microsecond=0), now, at,
                     (at-now).total_seconds()/3600, *(row.get(c) for c in columns), Json(payload["units"]), "ok",
-                    Json({"endpoint": "https://api.open-meteo.com/v1/forecast", "model": "gfs_seamless", "source_type": "weather_forecast", "provider_issued_at": None, "raw_reference": payload["raw_reference"], "attribution": "Weather data by Open-Meteo.com"})))
+                    Json({"endpoint": "https://api.open-meteo.com/v1/forecast", "model": "gfs_seamless", "source_type": "weather_forecast", "provider_issued_at": None, "raw_reference": payload["raw_reference"], "input_receipt":payload.get('input_receipt'), "attribution": "Weather data by Open-Meteo.com"})))
             if values:
                 execute_values(cur, "insert into airguard.weather_forecasts(source_id,model,location_label,latitude,longitude,vintage_at,retrieved_at,valid_at,lead_time_hours," + ",".join(columns) + ",units,quality_state,provenance) values %s on conflict do nothing", values)
 

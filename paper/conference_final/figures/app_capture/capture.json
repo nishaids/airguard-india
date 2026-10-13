@@ -1,0 +1,61 @@
+{
+ "site": "https://webapp-phi-taupe.vercel.app",
+ "captured_at_utc": "2026-10-13T16:13:16.066Z",
+ "viewport": {
+  "width": 650,
+  "height": 1500
+ },
+ "device_scale_factor": 3,
+ "panels": {
+  "live": {
+   "url": "https://webapp-phi-taupe.vercel.app/live?lat=13.1147&lon=80.10981&name=Avadi%2C+Tamil+Nadu%2C+India&region=Tamil+Nadu&country=IN",
+   "element": {
+    "x": 48,
+    "y": 430.578125,
+    "width": 554,
+    "height": 534.578125
+   },
+   "scrollY": 0,
+   "text": "CURRENT AIR QUALITY\nMODELLED · FRESH\n120\n\nModerate\n\nDominant: O3\n\n13 Oct 2026, 08:00 pm IST · Open-Meteo / CAMS global\n\nTOMORROW’S AIRGUARD AQI FORECAST\nMODELLED · FRESH · 2026-10-14\n87\n\nSatisfactory\n\nDominant: O3 · Expected variation through the day: 37–87 AQI\n\nPeak: 87 · 14 Oct 2026, 12:00 am IST\n\nCAMS-based nationwide estimate · Source: Open-Meteo / CAMS global · Issued 13 Oct 2026, 08:54 pm IST\n\nStation-calibrated correction is under evaluation. A predictive interval is not yet available.\n\nForecast evidence and research status",
+   "previous": {
+    "x": 48,
+    "y": 362.578125,
+    "width": 554,
+    "height": 68,
+    "text": "Avadi, Tamil Nadu, India\nRefresh"
+   },
+   "next": {
+    "x": 48,
+    "y": 973.15625,
+    "width": 554,
+    "height": 65.78125,
+    "text": "Modelled air-quality estimate — no sufficiently recent nearby station with adequate hourly pollutant data."
+   }
+  },
+  "research": {
+   "url": "https://webapp-phi-taupe.vercel.app/research?lat=13.1147&lon=80.10981&name=Avadi%2C+Tamil+Nadu%2C+India&region=Tamil+Nadu&country=IN",
+   "element": {
+    "x": 48,
+    "y": 613.6875,
+    "width": 554,
+    "height": 462.375
+   },
+   "scrollY": 0,
+   "text": "Current AQI\n120 · MODELLED · Open-Meteo / CAMS global · FRESH\nForecast mode\nCAMS_BASED_NATIONWIDE\nCAMS baseline\n87\nAirGuard corrected forecast / model version\nNot validated · Unavailable\nIssue time / target\n13 Oct 2026, 08:54 pm IST / 2026-10-14 (Asia/Kolkata)\nData source / freshness\nOpen-Meteo / CAMS global · MODELLED · FRESH\nforecast_run_id\n879\nPrediction interval\nNot available — calibrated uncertainty has not been established\nProspective verification\nOn-demand operational record; the fixed 20:00 IST research ledger below is separate. Awaiting eligible forecast–measurement pairs.",
+   "previous": {
+    "x": 48,
+    "y": 522.546875,
+    "width": 554,
+    "height": 76.140625,
+    "text": "Avadi, Tamil Nadu, India\nRefresh"
+   },
+   "next": {
+    "x": 48,
+    "y": 1091.0625,
+    "width": 554,
+    "height": 22.390625,
+    "text": "Station-calibrated correction is under evaluation."
+   }
+  }
+ }
+}

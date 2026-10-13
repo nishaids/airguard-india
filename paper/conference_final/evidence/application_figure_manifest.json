@@ -1,0 +1,42 @@
+{
+ "site": "https://webapp-phi-taupe.vercel.app",
+ "captured_at_utc": "2026-10-13T16:13:16.066Z",
+ "viewport_css_px": {
+  "width": 650,
+  "height": 1500
+ },
+ "device_scale_factor": 3,
+ "processing": "crop only, by measured element boxes; no retouching, no rescaling",
+ "panels": {
+  "live": {
+   "file": "figures/fig6a_forecast.png",
+   "size_px": [
+    1746,
+    1411
+   ],
+   "crop_box_device_px": [
+    102,
+    1268,
+    1848,
+    2679
+   ],
+   "sha256": "df9830b71fe556e21a57f94b46db690bd02dc49f482fb304c576105bbbaf92d2",
+   "url": "https://webapp-phi-taupe.vercel.app/live?lat=13.1147&lon=80.10981&name=Avadi%2C+Tamil+Nadu%2C+India&region=Tamil+Nadu&country=IN"
+  },
+  "research": {
+   "file": "figures/fig6b_research.png",
+   "size_px": [
+    1746,
+    1411
+   ],
+   "crop_box_device_px": [
+    102,
+    1817,
+    1848,
+    3228
+   ],
+   "sha256": "a79d352ab60b40101588e768fd6653c279ac4e4b90740b1fe2c057d57c92fb2e",
+   "url": "https://webapp-phi-taupe.vercel.app/research?lat=13.1147&lon=80.10981&name=Avadi%2C+Tamil+Nadu%2C+India&region=Tamil+Nadu&country=IN"
+  }
+ }
+}

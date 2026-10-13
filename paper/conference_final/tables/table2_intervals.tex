@@ -1,0 +1,21 @@
+\begin{table}[!t]
+\caption{Interval Coverage (\%) of Exact Targets, Overall and by Observed Category}
+\label{tab:intervals}
+\centering
+\footnotesize
+\setlength{\aboverulesep}{0pt}\setlength{\belowrulesep}{0pt}\renewcommand{\arraystretch}{1.14}\setlength{\tabcolsep}{2.5pt}
+\begin{tabularx}{\columnwidth}{X c r r r r r r r}
+\toprule
+\rowcolor{TableHeader}\textbf{Method} & \textbf{Level} & \textbf{Overall} & \textbf{Good} & \textbf{Sat.} & \textbf{Mod.} & \textbf{Poor} & \textbf{V.~Poor} & \textbf{Width}\\
+\midrule
+Split & 80 & 78.2 & 77.7 & 93.9 & 84.2 & 20.2 & \textbf{0.0} & 124\\
+Split & 90 & 87.6 & 92.0 & 98.7 & 91.4 & 54.0 & \textbf{8.7} & 169\\
+Mondrian & 90 & 87.0 & 91.1 & 98.2 & 89.7 & 55.1 & \textbf{14.7} & 166\\
+CQR & 90 & 87.1 & 76.3 & 99.4 & 96.1 & 60.4 & \textbf{17.6} & 162\\
+\midrule
+\rowcolor{TableGroup}Pairs & & 38{,}382 & 7{,}541 & 14{,}229 & 12{,}262 & 2{,}307 & 2{,}043 & \\
+\bottomrule
+\end{tabularx}
+\\[3pt]
+\parbox{\columnwidth}{\footnotesize Nominal level is 80\% or 90\%; subgroup entries are empirical coverage on exact targets, pooled over 12 folds. Sat.: Satisfactory. Mod.: Moderate. Width: mean width (AQI units). No upper bound reaches 401 on the 363 censored Severe days.}
+\end{table}

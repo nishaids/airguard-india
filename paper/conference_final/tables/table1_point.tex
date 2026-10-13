@@ -1,0 +1,24 @@
+\begin{table}[!t]
+\caption{Point Forecast Errors on Exact Development Targets}
+\label{tab:point}
+\centering
+\footnotesize
+\setlength{\aboverulesep}{0pt}\setlength{\belowrulesep}{0pt}\renewcommand{\arraystretch}{1.14}\setlength{\tabcolsep}{6pt}
+\begin{tabularx}{\columnwidth}{X r r r}
+\toprule
+\rowcolor{TableHeader}\textbf{Model} & \textbf{MAE} & \textbf{RMSE} & \textbf{Bias}\\
+\midrule
+\rowcolor{TableGroup}\multicolumn{4}{l}{\textit{All exact pairs}: $n=38{,}382$, 171 stations, 332 dates}\\
+Climatology & 52.82 & 74.42 & $-$8.21\\
+Calendar Ridge & 46.74 & 69.49 & $-$19.18\\
+Weather Ridge & 43.86 & 67.33 & $-$16.69\\
+\midrule
+\rowcolor{TableGroup}\multicolumn{4}{l}{\textit{History-available pairs}: $n=31{,}622$, 171 stations, 320 dates}\\
+Weather Ridge, refitted on these rows & 44.47 & 68.24 & $-$17.67\\
+Persistence & 27.47 & 48.13 & $+$0.97\\
+History Ridge & 28.09 & 46.20 & $-$7.17\\
+\bottomrule
+\end{tabularx}
+\\[3pt]
+\parbox{\columnwidth}{\footnotesize AQI units. Bias: forecast minus observed. The two groups are different populations; censored Severe outcomes are excluded.}
+\end{table}

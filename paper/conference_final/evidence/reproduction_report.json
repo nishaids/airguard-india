@@ -1,0 +1,337 @@
+{
+ "purpose": "Development-only row-level reproduction of the frozen non-CAMS run",
+ "frozen_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
+ "frozen_results_sha256": "c19049cbe45ad05a1fec704081bb69c3d6cbff3d2a7bcc14ed7d3bf465841a50",
+ "frozen_git_sha": "def4158d93e855622e0ba409f6dee617dd54722b",
+ "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+ "measured_table_sha256": "6ae0ae2bae6b2e9b9412e8a6d1015f029a86399ed25bfc13b86b264d89f62492",
+ "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+ "plan": "non-cams-plan-v1",
+ "reader_filter": "target_date < 2026-07-10 (Arrow predicate pushdown)",
+ "final_test_accessed": false,
+ "final_test_scored": false,
+ "spatial_train_range": [
+  "2025-02-19",
+  "2025-10-31"
+ ],
+ "spatial_test_range": [
+  "2025-11-02",
+  "2026-07-09"
+ ],
+ "ledger": {
+  "development_station_days": 91080,
+  "development_valid_targets": 55192,
+  "development_rejected_targets": 35888,
+  "development_last_date": "2026-07-09",
+  "development_first_date": "2025-02-19",
+  "development_valid_stations": 178,
+  "development_valid_cities": 99,
+  "development_valid_dates": 466,
+  "development_censored_severe": 375,
+  "development_exact_targets": 54817
+ },
+ "folds": {
+  "fold_01": {
+   "calibration_exact": 2926,
+   "calibration_censored": 1,
+   "split_radius_80": 50.429617962411044,
+   "split_radius_90": 65.91175573012727,
+   "cqr_correction": 6.5293791734317175,
+   "p3_quantile_10": 0.65,
+   "p3_quantile_05": 0.75,
+   "train_range": [
+    "2025-02-19",
+    "2025-05-19"
+   ],
+   "calibration_range": [
+    "2025-05-21",
+    "2025-06-19"
+   ],
+   "test_range": [
+    "2025-06-21",
+    "2025-07-20"
+   ],
+   "stations_training_eligible": 158,
+   "train_exact_rows": 10358,
+   "test_rows": 2923
+  },
+  "fold_02": {
+   "calibration_exact": 2968,
+   "calibration_censored": 0,
+   "split_radius_80": 34.75316854124347,
+   "split_radius_90": 47.05159106444442,
+   "cqr_correction": 0.44064282658353804,
+   "p3_quantile_10": 0.5,
+   "p3_quantile_05": 0.85,
+   "train_range": [
+    "2025-02-19",
+    "2025-06-18"
+   ],
+   "calibration_range": [
+    "2025-06-20",
+    "2025-07-19"
+   ],
+   "test_range": [
+    "2025-07-21",
+    "2025-08-19"
+   ],
+   "stations_training_eligible": 162,
+   "train_exact_rows": 13377,
+   "test_rows": 3385
+  },
+  "fold_03": {
+   "calibration_exact": 3396,
+   "calibration_censored": 3,
+   "split_radius_80": 32.27332038673548,
+   "split_radius_90": 41.816525893823425,
+   "cqr_correction": 0.785253404367964,
+   "p3_quantile_10": 0.75,
+   "p3_quantile_05": 0.9,
+   "train_range": [
+    "2025-02-19",
+    "2025-07-18"
+   ],
+   "calibration_range": [
+    "2025-07-20",
+    "2025-08-18"
+   ],
+   "test_range": [
+    "2025-08-20",
+    "2025-09-18"
+   ],
+   "stations_training_eligible": 164,
+   "train_exact_rows": 16403,
+   "test_rows": 3328
+  },
+  "fold_04": {
+   "calibration_exact": 3388,
+   "calibration_censored": 2,
+   "split_radius_80": 32.887964093255164,
+   "split_radius_90": 42.12426758532908,
+   "cqr_correction": 1.608989097683292,
+   "p3_quantile_10": 0.65,
+   "p3_quantile_05": 0.85,
+   "train_range": [
+    "2025-02-19",
+    "2025-08-17"
+   ],
+   "calibration_range": [
+    "2025-08-19",
+    "2025-09-17"
+   ],
+   "test_range": [
+    "2025-09-19",
+    "2025-10-18"
+   ],
+   "stations_training_eligible": 166,
+   "train_exact_rows": 19890,
+   "test_rows": 3519
+  },
+  "fold_05": {
+   "calibration_exact": 3471,
+   "calibration_censored": 10,
+   "split_radius_80": 43.67676284810226,
+   "split_radius_90": 63.76072946910092,
+   "cqr_correction": 7.5260704212206235,
+   "p3_quantile_10": 0.9,
+   "p3_quantile_05": 0.95,
+   "train_range": [
+    "2025-02-19",
+    "2025-09-16"
+   ],
+   "calibration_range": [
+    "2025-09-18",
+    "2025-10-17"
+   ],
+   "test_range": [
+    "2025-10-19",
+    "2025-11-17"
+   ],
+   "stations_training_eligible": 166,
+   "train_exact_rows": 23273,
+   "test_rows": 3127
+  },
+  "fold_06": {
+   "calibration_exact": 3051,
+   "calibration_censored": 89,
+   "split_radius_80": 97.65885464244315,
+   "split_radius_90": 179.81485911266563,
+   "cqr_correction": 80.49044304307301,
+   "p3_quantile_10": null,
+   "p3_quantile_05": null,
+   "train_range": [
+    "2025-02-19",
+    "2025-10-16"
+   ],
+   "calibration_range": [
+    "2025-10-18",
+    "2025-11-16"
+   ],
+   "test_range": [
+    "2025-11-18",
+    "2025-12-17"
+   ],
+   "stations_training_eligible": 167,
+   "train_exact_rows": 26763,
+   "test_rows": 3439
+  },
+  "fold_07": {
+   "calibration_exact": 3310,
+   "calibration_censored": 129,
+   "split_radius_80": 104.34970632147966,
+   "split_radius_90": 142.6686308712331,
+   "cqr_correction": 26.08111196771489,
+   "p3_quantile_10": 0.975,
+   "p3_quantile_05": null,
+   "train_range": [
+    "2025-02-19",
+    "2025-11-15"
+   ],
+   "calibration_range": [
+    "2025-11-17",
+    "2025-12-16"
+   ],
+   "test_range": [
+    "2025-12-18",
+    "2026-01-16"
+   ],
+   "stations_training_eligible": 167,
+   "train_exact_rows": 29846,
+   "test_rows": 2988
+  },
+  "fold_08": {
+   "calibration_exact": 3088,
+   "calibration_censored": 79,
+   "split_radius_80": 120.00972646534154,
+   "split_radius_90": 164.13582990061374,
+   "cqr_correction": 17.50798506494658,
+   "p3_quantile_10": 0.95,
+   "p3_quantile_05": 0.975,
+   "train_range": [
+    "2025-02-19",
+    "2025-12-15"
+   ],
+   "calibration_range": [
+    "2025-12-17",
+    "2026-01-15"
+   ],
+   "test_range": [
+    "2026-01-17",
+    "2026-02-15"
+   ],
+   "stations_training_eligible": 170,
+   "train_exact_rows": 33247,
+   "test_rows": 2956
+  },
+  "fold_09": {
+   "calibration_exact": 2822,
+   "calibration_censored": 4,
+   "split_radius_80": 80.59757548977149,
+   "split_radius_90": 136.6316208536034,
+   "cqr_correction": 0,
+   "p3_quantile_10": 0.85,
+   "p3_quantile_05": 0.9,
+   "train_range": [
+    "2025-02-19",
+    "2026-01-14"
+   ],
+   "calibration_range": [
+    "2026-01-16",
+    "2026-02-14"
+   ],
+   "test_range": [
+    "2026-02-16",
+    "2026-03-17"
+   ],
+   "stations_training_eligible": 171,
+   "train_exact_rows": 36493,
+   "test_rows": 2991
+  },
+  "fold_10": {
+   "calibration_exact": 2981,
+   "calibration_censored": 14,
+   "split_radius_80": 71.73529547776025,
+   "split_radius_90": 99.9244994334197,
+   "cqr_correction": 0,
+   "p3_quantile_10": 0.75,
+   "p3_quantile_05": 0.95,
+   "train_range": [
+    "2025-02-19",
+    "2026-02-13"
+   ],
+   "calibration_range": [
+    "2026-02-15",
+    "2026-03-16"
+   ],
+   "test_range": [
+    "2026-03-18",
+    "2026-04-16"
+   ],
+   "stations_training_eligible": 171,
+   "train_exact_rows": 39179,
+   "test_rows": 3595
+  },
+  "fold_11": {
+   "calibration_exact": 3719,
+   "calibration_censored": 4,
+   "split_radius_80": 56.019979834022536,
+   "split_radius_90": 72.88658443822028,
+   "cqr_correction": 2.532254149067981,
+   "p3_quantile_10": 0.65,
+   "p3_quantile_05": 0.95,
+   "train_range": [
+    "2025-02-19",
+    "2026-03-15"
+   ],
+   "calibration_range": [
+    "2026-03-17",
+    "2026-04-15"
+   ],
+   "test_range": [
+    "2026-04-17",
+    "2026-05-16"
+   ],
+   "stations_training_eligible": 171,
+   "train_exact_rows": 42168,
+   "test_rows": 3142
+  },
+  "fold_12": {
+   "calibration_exact": 3001,
+   "calibration_censored": 20,
+   "split_radius_80": 49.59502970909098,
+   "split_radius_90": 70.99962500635458,
+   "cqr_correction": 2.3166484661991333,
+   "p3_quantile_10": 0.65,
+   "p3_quantile_05": 0.95,
+   "train_range": [
+    "2025-02-19",
+    "2026-04-14"
+   ],
+   "calibration_range": [
+    "2026-04-16",
+    "2026-05-15"
+   ],
+   "test_range": [
+    "2026-05-17",
+    "2026-06-15"
+   ],
+   "stations_training_eligible": 171,
+   "train_exact_rows": 45886,
+   "test_rows": 3352
+  }
+ },
+ "checks_compared": 144,
+ "max_abs_difference_from_frozen": 0.0,
+ "tolerance": 1e-09,
+ "reproduces_frozen_artifact": true,
+ "rows_temporal": {
+  "path": "evidence/rows_temporal.parquet",
+  "rows": 38745,
+  "sha256": "1936df82a955858e3d4881c3ec94cd9f406522f587cb866f8795ccb36c151e0e"
+ },
+ "rows_spatial": {
+  "path": "evidence/rows_spatial.parquet",
+  "rows": 106220,
+  "sha256": "9b0208a82bbd8446e4fe0f6a84a8b16b9cdc6c9f1068bc7b580d1b023acd678b"
+ }
+}

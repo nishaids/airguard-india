@@ -1,0 +1,392 @@
+{
+ "audit": "read-only; no ADS contact, no request submitted, no measured target opened",
+ "dataset": "cams-global-atmospheric-composition-forecasts",
+ "plan_sha256": "952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a",
+ "planned_chunks": 36,
+ "planned_jobs_in_plan_file": 36,
+ "manifest_checked_at_utc": "2026-10-12T17:29:08.998537+00:00",
+ "job_status_counts": {
+  "VERIFIED_GRIB": 6,
+  "RETRIEVAL_OR_VALIDATION_FAILED": 1
+ },
+ "verified_chunks": 6,
+ "verified_chunks_rehashed_and_matching": 6,
+ "failed_jobs": 1,
+ "manifest_complete": false,
+ "files": [
+  {
+   "job": "3fbb78f22c76",
+   "status": "VERIFIED_GRIB",
+   "request_id_present": true,
+   "manifest_sha256": "353a103e97ec85e416b0c4747ac7876b6b8eebe8bc80fd7ba10ead4feba2b8d0",
+   "bytes": 10454784,
+   "messages": 1152,
+   "grid": {
+    "Ni": 59,
+    "Nj": 57,
+    "latitudeOfFirstGridPointInDegrees": 30.8,
+    "longitudeOfFirstGridPointInDegrees": 70.8,
+    "latitudeOfLastGridPointInDegrees": 8.4,
+    "longitudeOfLastGridPointInDegrees": 94.0,
+    "iDirectionIncrementInDegrees": 0.4,
+    "jDirectionIncrementInDegrees": 0.4
+   },
+   "lead_hours": [
+    11,
+    42
+   ],
+   "reference_dates": [
+    "2025-02-17",
+    "2025-02-28"
+   ],
+   "variables": [
+    "particulate_matter_2.5um",
+    "particulate_matter_10um",
+    "surface_pressure"
+   ],
+   "times": [
+    "00:00"
+   ],
+   "levels": null,
+   "parameter_units": {
+    "210073": "kg m**-3",
+    "210074": "kg m**-3",
+    "134": "Pa"
+   },
+   "on_disk": true,
+   "disk_sha256": "353a103e97ec85e416b0c4747ac7876b6b8eebe8bc80fd7ba10ead4feba2b8d0",
+   "disk_bytes": 10454784,
+   "hash_matches_manifest": true
+  },
+  {
+   "job": "7a909395e4a9",
+   "status": "VERIFIED_GRIB",
+   "request_id_present": true,
+   "manifest_sha256": "c8fbc18b64b409b8468e5c5d9d4aacc2bd4a0c944f68e593fdaf886b7e240853",
+   "bytes": 7805791,
+   "messages": 864,
+   "grid": {
+    "Ni": 59,
+    "Nj": 57,
+    "latitudeOfFirstGridPointInDegrees": 30.8,
+    "longitudeOfFirstGridPointInDegrees": 70.8,
+    "latitudeOfLastGridPointInDegrees": 8.4,
+    "longitudeOfLastGridPointInDegrees": 94.0,
+    "iDirectionIncrementInDegrees": 0.4,
+    "jDirectionIncrementInDegrees": 0.4
+   },
+   "lead_hours": [
+    9,
+    42
+   ],
+   "reference_dates": [
+    "2025-02-17",
+    "2025-02-28"
+   ],
+   "variables": [
+    "ozone",
+    "nitrogen_dioxide",
+    "sulphur_dioxide",
+    "carbon_monoxide",
+    "temperature",
+    "specific_humidity"
+   ],
+   "times": [
+    "00:00"
+   ],
+   "levels": [
+    "137"
+   ],
+   "parameter_units": {
+    "210203": "kg kg**-1",
+    "210121": "kg kg**-1",
+    "210122": "kg kg**-1",
+    "210123": "kg kg**-1",
+    "130": "K",
+    "133": "kg kg**-1"
+   },
+   "on_disk": true,
+   "disk_sha256": "c8fbc18b64b409b8468e5c5d9d4aacc2bd4a0c944f68e593fdaf886b7e240853",
+   "disk_bytes": 7805791,
+   "hash_matches_manifest": true
+  },
+  {
+   "job": "1cb61a281356",
+   "status": "VERIFIED_GRIB",
+   "request_id_present": true,
+   "manifest_sha256": "cddfa21527dd43ab74a33fef9e22f4efbd7b65de58d27028dbdc38723e76acce",
+   "bytes": 27008192,
+   "messages": 2976,
+   "grid": {
+    "Ni": 59,
+    "Nj": 57,
+    "latitudeOfFirstGridPointInDegrees": 30.8,
+    "longitudeOfFirstGridPointInDegrees": 70.8,
+    "latitudeOfLastGridPointInDegrees": 8.4,
+    "longitudeOfLastGridPointInDegrees": 94.0,
+    "iDirectionIncrementInDegrees": 0.4,
+    "jDirectionIncrementInDegrees": 0.4
+   },
+   "lead_hours": [
+    11,
+    42
+   ],
+   "reference_dates": [
+    "2025-03-01",
+    "2025-03-31"
+   ],
+   "variables": [
+    "particulate_matter_2.5um",
+    "particulate_matter_10um",
+    "surface_pressure"
+   ],
+   "times": [
+    "00:00"
+   ],
+   "levels": null,
+   "parameter_units": {
+    "210073": "kg m**-3",
+    "210074": "kg m**-3",
+    "134": "Pa"
+   },
+   "on_disk": true,
+   "disk_sha256": "cddfa21527dd43ab74a33fef9e22f4efbd7b65de58d27028dbdc38723e76acce",
+   "disk_bytes": 27008192,
+   "hash_matches_manifest": true
+  },
+  {
+   "job": "540de0dcf1e0",
+   "status": "VERIFIED_GRIB",
+   "request_id_present": true,
+   "manifest_sha256": "b1d310ab7a3c1313ea08121f05491216362f52f864c44436cde0a87e5e155c03",
+   "bytes": 20194737,
+   "messages": 2232,
+   "grid": {
+    "Ni": 59,
+    "Nj": 57,
+    "latitudeOfFirstGridPointInDegrees": 30.8,
+    "longitudeOfFirstGridPointInDegrees": 70.8,
+    "latitudeOfLastGridPointInDegrees": 8.4,
+    "longitudeOfLastGridPointInDegrees": 94.0,
+    "iDirectionIncrementInDegrees": 0.4,
+    "jDirectionIncrementInDegrees": 0.4
+   },
+   "lead_hours": [
+    9,
+    42
+   ],
+   "reference_dates": [
+    "2025-03-01",
+    "2025-03-31"
+   ],
+   "variables": [
+    "ozone",
+    "nitrogen_dioxide",
+    "sulphur_dioxide",
+    "carbon_monoxide",
+    "temperature",
+    "specific_humidity"
+   ],
+   "times": [
+    "00:00"
+   ],
+   "levels": [
+    "137"
+   ],
+   "parameter_units": {
+    "210203": "kg kg**-1",
+    "210121": "kg kg**-1",
+    "210122": "kg kg**-1",
+    "210123": "kg kg**-1",
+    "130": "K",
+    "133": "kg kg**-1"
+   },
+   "on_disk": true,
+   "disk_sha256": "b1d310ab7a3c1313ea08121f05491216362f52f864c44436cde0a87e5e155c03",
+   "disk_bytes": 20194737,
+   "hash_matches_manifest": true
+  },
+  {
+   "job": "d320816e3e38",
+   "status": "VERIFIED_GRIB",
+   "request_id_present": true,
+   "manifest_sha256": "5b19907596dd758bcc3a4c49ef7203d2659b5c640a36ffb1f6b7ae45a81a723c",
+   "bytes": 26136960,
+   "messages": 2880,
+   "grid": {
+    "Ni": 59,
+    "Nj": 57,
+    "latitudeOfFirstGridPointInDegrees": 30.8,
+    "longitudeOfFirstGridPointInDegrees": 70.8,
+    "latitudeOfLastGridPointInDegrees": 8.4,
+    "longitudeOfLastGridPointInDegrees": 94.0,
+    "iDirectionIncrementInDegrees": 0.4,
+    "jDirectionIncrementInDegrees": 0.4
+   },
+   "lead_hours": [
+    11,
+    42
+   ],
+   "reference_dates": [
+    "2025-04-01",
+    "2025-04-30"
+   ],
+   "variables": [
+    "particulate_matter_2.5um",
+    "particulate_matter_10um",
+    "surface_pressure"
+   ],
+   "times": [
+    "00:00"
+   ],
+   "levels": null,
+   "parameter_units": {
+    "210073": "kg m**-3",
+    "210074": "kg m**-3",
+    "134": "Pa"
+   },
+   "on_disk": true,
+   "disk_sha256": "5b19907596dd758bcc3a4c49ef7203d2659b5c640a36ffb1f6b7ae45a81a723c",
+   "disk_bytes": 26136960,
+   "hash_matches_manifest": true
+  },
+  {
+   "job": "3e9d28f242aa",
+   "status": "RETRIEVAL_OR_VALIDATION_FAILED",
+   "request_id_present": true,
+   "manifest_sha256": null,
+   "bytes": null,
+   "messages": null,
+   "grid": null,
+   "lead_hours": null,
+   "reference_dates": null,
+   "variables": [
+    "ozone",
+    "nitrogen_dioxide",
+    "sulphur_dioxide",
+    "carbon_monoxide",
+    "temperature",
+    "specific_humidity"
+   ],
+   "times": [
+    "00:00"
+   ],
+   "levels": [
+    "137"
+   ],
+   "parameter_units": null,
+   "on_disk": false
+  },
+  {
+   "job": "5184ce28fd0f",
+   "status": "VERIFIED_GRIB",
+   "request_id_present": true,
+   "manifest_sha256": "025949192a64741b999a30cafd41a26d9d30ac562a33cd788ec62a2f9e796ad6",
+   "bytes": 27008192,
+   "messages": 2976,
+   "grid": {
+    "Ni": 59,
+    "Nj": 57,
+    "latitudeOfFirstGridPointInDegrees": 30.8,
+    "longitudeOfFirstGridPointInDegrees": 70.8,
+    "latitudeOfLastGridPointInDegrees": 8.4,
+    "longitudeOfLastGridPointInDegrees": 94.0,
+    "iDirectionIncrementInDegrees": 0.4,
+    "jDirectionIncrementInDegrees": 0.4
+   },
+   "lead_hours": [
+    11,
+    42
+   ],
+   "reference_dates": [
+    "2025-05-01",
+    "2025-05-31"
+   ],
+   "variables": [
+    "particulate_matter_2.5um",
+    "particulate_matter_10um",
+    "surface_pressure"
+   ],
+   "times": [
+    "00:00"
+   ],
+   "levels": null,
+   "parameter_units": {
+    "210073": "kg m**-3",
+    "210074": "kg m**-3",
+    "134": "Pa"
+   },
+   "on_disk": true,
+   "disk_sha256": "025949192a64741b999a30cafd41a26d9d30ac562a33cd788ec62a2f9e796ad6",
+   "disk_bytes": 27008192,
+   "hash_matches_manifest": true
+  }
+ ],
+ "probe": {
+  "status": "VERIFIED_OPERATIONAL_FORECAST",
+  "reference_time_utc": "2025-02-18T00:00:00+00:00",
+  "lead_hours": 24,
+  "valid_time_utc": "2025-02-19T00:00:00+00:00",
+  "bytes": 134,
+  "sha256": "d65309028388aaa0dcfd80de3d209ff87d0c06ba0a3bc82e497ed6fec8d4b28b",
+  "verification_scope": "One surface PM2.5 forecast only; gas conversion and archive completeness not established"
+ },
+ "raw_baseline": {
+  "status": "PARTIAL_FORECAST_DERIVATION",
+  "rows": 7602,
+  "stations": 181,
+  "dates": 42,
+  "date_range": [
+   "2025-02-19",
+   "2025-04-01"
+  ],
+  "measured_targets_read": false,
+  "evaluation_performed": false
+ },
+ "alignment": {
+  "status": "PARTIAL_GUARDED_DEVELOPMENT_ALIGNMENT",
+  "rows": 7560,
+  "stations": 180,
+  "cities": 100,
+  "dates": 42,
+  "valid_targets": 5506,
+  "rejected_targets_retained": 2054,
+  "censored_severe_retained": 2,
+  "reader_filter": "target_date < 2026-07-10",
+  "model_fitting_performed": false,
+  "complete_primary_feature_dataset": false,
+  "remaining_features": [
+   "cutoff-aligned CAMS bias_now descriptor",
+   "spatial-regime donor masking in primary runner",
+   "fire historical publication evidence"
+  ],
+  "per_run_publication_empirically_verified": false
+ },
+ "eligible_rolling_folds": 0,
+ "readiness": {
+  "status": "BLOCKED",
+  "blockers": [
+   "Operational archive incomplete: 6/36 verified chunks",
+   "Primary feature integration remains incomplete",
+   "No protocol-eligible rolling fold with acquired validation dates",
+   "Primary experiment pending: baselines",
+   "Primary experiment pending: rolling_origin",
+   "Primary experiment pending: spatial_validation",
+   "Primary experiment pending: severity",
+   "Primary experiment pending: ablation",
+   "Primary experiment pending: uncertainty",
+   "Primary experiment pending: advisory",
+   "Primary experiment pending: statistical_comparison",
+   "Primary experiment pending: reproducibility",
+   "MODEL_SELECTION_LOCK is absent or uncommitted",
+   "Final executor and complete experiment-to-lock hash binding audit not yet implemented"
+  ],
+  "model_selection_complete": false,
+  "final_test_interval": [
+   "2026-07-10",
+   "2026-10-07"
+  ]
+ },
+ "cams_correction_evaluated": false,
+ "final_test_accessed": false
+}

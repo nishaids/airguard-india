@@ -1,0 +1,21 @@
+\begin{table}[!t]
+\caption{Category Warning Losses (\%) on Development Outcomes, Censored Severe Days Included}
+\label{tab:warnings}
+\centering
+\footnotesize
+\setlength{\aboverulesep}{0pt}\setlength{\belowrulesep}{0pt}\renewcommand{\arraystretch}{1.14}\setlength{\tabcolsep}{3.6pt}
+\begin{tabularx}{\columnwidth}{X r r r r r r}
+\toprule
+\rowcolor{TableHeader}\textbf{Policy} & \textbf{Folds} & \textbf{$n$} & \textbf{Under} & \textbf{Over} & \textbf{Serious} & \textbf{Poor$+$}\\
+\midrule
+P0: point forecast & 12 & 38{,}745 & 27.1 & 24.7 & 8.4 & 100.0\\
+P1: calibrated median & 12 & 38{,}745 & 26.4 & 23.6 & 7.6 & 100.0\\
+P2: 0.75 quantile & 12 & 38{,}745 & 14.2 & 41.7 & 4.1 & 86.3\\
+\midrule
+P3: 10\% target & 11 & 35{,}306 & 11.1 & 48.7 & 2.8 & 67.8\\
+P3: 5\% target & 10 & 32{,}318 & 6.2 & 68.1 & 1.8 & 60.1\\
+\bottomrule
+\end{tabularx}
+\\[3pt]
+\parbox{\columnwidth}{\footnotesize Under: issued category below observed. Over: above observed. Serious: at least two bands below. Poor$+$: under-warning among Poor-or-worse outcomes. P3 uses feasible folds only.}
+\end{table}

@@ -59,6 +59,7 @@ def main():
     final=read('results/research/final_test_readiness.json')
     if final['status']!='BLOCKED':raise ValueError('This continuation report cannot declare final-test readiness')
     archive=read('results/research/cams_development_acquisition.json')
+    reconciliation=read('results/research/cams_archive_status.json')
     aligned=read('results/research/cams_development_alignment.json')
     prospective=read('results/research/prospective_audit.json')
     security=read('results/release/secret_audit.json')
@@ -91,12 +92,28 @@ def main():
     (ROOT/'results/research/cams_station_join_manifest.json').write_text(json.dumps(join,indent=2)+'\n')
     prefix=f'Checkpoint: {now}. Research branch; code checkpoint `{commit}`. Final test remains sealed.\n\n'
     write('CAMS_ARCHIVE_STATUS.md','# CAMS operational archive status\n\n'+prefix+
-          f'Current manifest: **{archive["counts"].get("VERIFIED_GRIB",0)}/36 verified**, statuses `{archive["counts"]}`. '
-          f'The existing sequential worker retains original request IDs; no duplicate probe or archive request was submitted by this handoff. '
+          f'Current manifest: **{archive["counts"].get("VERIFIED_GRIB",0)}/36 verified**, statuses `{archive["counts"]}`. '+
+          ('The submission worker is stopped and new requests are persistently paused. ' if archive.get('submission_control',{}).get('new_requests_authorized') is False else 'Inspect the existing worker before any acquisition operation. ')+
+          'Original request IDs are retained; no new or replacement request was submitted by this reconciliation. '+
           f'Frozen plan SHA-256: `{archive["plan_sha256"]}`.\n\n'
           'The readiness audit independently rehashed and decoded each verified GRIB. Forecast type, reference time, leads, valid times, fields, mass units, hybrid coefficients and the 0.4-degree grid are checked. Only paired surface/model-level months enter station extraction. Reanalysis and missing-month substitution are prohibited.\n\n'
           f'Current join: {aligned["rows"]:,} retained station-days, {aligned["stations"]} stations, {aligned["cities"]} cities, {aligned["dates"]} dates, {join["exact_targets"]:,} exact targets and {aligned["censored_severe_retained"]} censored Severe targets; {aligned["rejected_targets_retained"]:,} rejected targets remain visible. Availability violations: {join["availability_violations"]}.\n\n'
-          'Evidence: `results/research/final_test_readiness.json`, `cams_station_join_manifest.json`, and the existing acquisition/alignment manifests. Existing worker status must be inspected before any future launch; only resume when no worker owns the lease. Transport-only re-poll recovery preserves the existing remote ID.\n')
+          'Availability guards pass under the disclosed nominal 00 UTC dissemination and observation-feed latency assumptions. Historical per-run publication times are not empirically verified.\n\n'+
+          (table(['Nine reported ADS requests','Count'],[(name,str(reconciliation['counts'][key])+'/9') for name,key in (
+              ('Server successful','ads_server_side_successful'),('Downloaded locally','downloaded_locally'),
+              ('Content-valid','content_valid'),('Checksum-verified','checksum_verified'),
+              ('Protocol-accepted primary archive chunks','protocol_accepted_primary_chunks'))])+
+           '\nThe remaining valid artifact is the accepted original probe, excluded from the 36 primary chunks. '+
+           f'Total known request IDs: {reconciliation["total_known_request_ids"]}; nine reported successes plus the additional pre-existing request below.\n\n'+
+           table(['Request ID','Scope','Bytes','Initialization dates','Content'],[[r['request_id'],r['scope'],str(r.get('bytes')),
+               ' to '.join(r.get('reference_date_range',['2025-02-18'])),
+               'VALID' if r['content_valid'] else 'UNVERIFIED'] for r in reconciliation['requests']])+
+           '\nAdditional pre-existing request(s): '+json.dumps(reconciliation['additional_preexisting_requests'])+'. These were not polled or downloaded by this reconciliation; status is last recorded.\n\n'+
+           'Invalid/unverified artifacts: '+json.dumps(reconciliation['invalid_or_unverified_request_ids'])+'.\n\n'+
+           'The 134-byte probe is a complete GRIB edition 1 message: `GRIB` header, length 134, `7777` terminator, ECMWF centre `ecmf`, CAMS class `mc`, operational stream `oper`, forecast type `fc`, surface PM2.5 (`paramId=210073`, kg m**-3). It contains nine finite nonmissing values on a 3 by 3, 0.4-degree grid covering 29.2–28.4 N and 76.8–77.6 E. Initialization: 2025-02-18 00:00 UTC; lead: 24 h; valid: 2025-02-19 00:00 UTC. Packing: grid_simple, 24 bits/value. It contains binary forecast data, no HTML/XML/error response.\n\n'+
+           'Exact decoded values and all 134 bytes in hexadecimal, per-request checksums, server timestamps, parameter units and valid-time ranges are recorded in `results/research/cams_archive_status.json`.\n\n'
+           if reconciliation else '')+
+          'Evidence: `results/research/final_test_readiness.json`, `cams_station_join_manifest.json`, and the existing acquisition/alignment manifests. Only explicit existing IDs may be re-polled; new submissions remain paused until the author changes this instruction.\n')
     point=ext['point']
     rows=[]
     for name in audit['accepted_independent_methods']:
@@ -139,14 +156,14 @@ def main():
           '\nThe frozen cohort excludes 13 late-entry stations. Weather-minus-climatology remains negative and History-minus-persistence remains inconclusive; cluster and region transfer penalties remain positive. Category shares and full paired intervals are retained in the immutable extension artifact.\n\n'
           'Catalogue metadata identify 35 monitors removed by the recent-activity rule among those reporting at the study start. They were never downloaded, so this sensitivity cannot restore lost monitors or resolve complete survivorship bias. No historical paper result is replaced.\n')
     write('MODEL_SELECTION_REPORT.md','# Development model selection: NOT READY\n\n'+prefix+
-          'No primary model is selected. The current 72-date operational join has no protocol-eligible complete rolling fold. The sealed protocol requires training-only tuning, identical baseline pairs and mean rolling-fold MAE selection with declared Ridge/residual ties; retain raw CAMS if no learned candidate improves that criterion. A stronger persistence result must still be reported honestly.\n\n'
+          f'No primary model is selected. The current {aligned["dates"]}-date operational join has no protocol-eligible complete rolling fold. The sealed protocol requires training-only tuning, identical baseline pairs and mean rolling-fold MAE selection with declared Ridge/residual ties; retain raw CAMS if no learned candidate improves that criterion. A stronger persistence result must still be reported honestly.\n\n'
           'Direct/residual Ridge, LightGBM and XGBoost, spatial holdouts, fixed-learner ablation, uncertainty, advisory and paired-statistics infrastructure are implemented and tested on synthetic fixtures. Their real primary experiments remain blocked by archive coverage. The refreshed preflight records `fitting_performed=false`.\n\n'
           'The preserved paper establishes Weather Ridge versus climatology, not versus raw CAMS; its History Ridge gain over persistence is not established. The exploratory extension does not select the primary learner. No `MODEL_SELECTION_LOCK` or surrogate lock has been created.\n')
     readiness=read('results/research/research_readiness.json')
     limitations=[
         ('Measured QC, Severe censoring and target support','RESOLVED','Locked v3.1 dataset and tests; three-species research target preserved.','No retrospective redefinition.'),
         ('ADS credential setup','RESOLVED','Genuine operational GRIBs verified.','Never disclose credentials.'),
-        ('Operational archive coverage','EXTERNALLY BLOCKED',str(archive['counts']),'Existing ADS worker must complete remaining chunks.'),
+        ('Operational archive coverage','BLOCKED',str(archive['counts']),'New submissions paused by author; acquired dates insufficient for primary folds.'),
         ('Primary comparisons, selection and lock','REQUIRES MORE DATA','No eligible primary fold; no real primary fit.','Complete archive then execute declared workflow.'),
         ('Severe forecasting','PARTIALLY RESOLVED','Bound-aware exploratory comparison completed; no tail learner dominates.','Primary severity evaluation and prospective extremes.'),
         ('Uncertainty and warning costs','PARTIALLY RESOLVED','Delayed exploratory calibration and balanced operating points recorded.','Primary calibration; no guarantee or invented optimum.'),
@@ -175,7 +192,7 @@ def main():
           f'CAMS plan hash: `{archive["plan_sha256"]}`. Alignment hash: `{aligned["sha256"]}`.\n\n'+
           '\n'.join('- '+b for b in final['blockers'])+'\n\n'
           'Development, geographic, Severe, uncertainty, warning and survivorship findings are the separate non-CAMS paper/extension evidence linked in this directory. They cannot release the primary gate. A complete experiment-to-lock binding audit and one-shot final executor remain outstanding infrastructure.\n\n'
-          '**Next human action now: none.** Allow the existing ADS acquisition and real prospective collection to continue. Explicit author approval will be requested only after genuine primary selection, a committed lock and an evidence-backed READY report.\n')
+          '**Final-test approval is not requested now.** New ADS submissions are paused by the author; the nine successful requests are reconciled and the additional earlier request is preserved. Primary folds require more acquired development dates. Explicit final-test approval will be requested only after genuine primary selection, a committed lock and an evidence-backed READY report.\n')
     deployment_path=ROOT/'results/release/codex_continuation_deployment.json'
     deployment=read(deployment_path.relative_to(ROOT).as_posix()) if deployment_path.exists() else {'status':'PENDING_SAFE_RELEASE'}
     release_verified=deployment['status']=='PRODUCTION_DEPLOYED_AND_VERIFIED'
@@ -184,7 +201,7 @@ def main():
           'The six-page paper is preserved and the app has production-safe provenance infrastructure. Scientific completion is not established by software tests or paper formatting.\n\n'+
           table(['Area','Current evidence','Remaining gap'],[
               ['Paper','Six-page SHA-protected snapshot; assets/citations present.','Author submission decisions.'],
-              ['CAMS','Seven verified chunks; one existing job running.','Remaining verified paired months.'],
+              ['CAMS',f'{archive["counts"].get("VERIFIED_GRIB",0)} verified chunks; new submissions paused.','Remaining verified paired months and renewed author acquisition authorization.'],
               ['Primary models','Runner/guards tested; no eligible real fold.','Real development comparisons and lock.'],
               ['Extensions','Original valid independent outputs reused; floor surrogate excluded.','Primary replication; no selected correction.'],
               ['Prospective','36 forecasts, 3 target days, no violations.','Timely station binding, outcomes and real elapsed days.'],
@@ -198,7 +215,9 @@ def main():
             'prospective':{k:prospective[k] for k in ('forecasts','issued_target_days','verified_days','station_bound_forecasts','historical_forecasts_missing_git_sha','input_availability_violations')},
             'backend':{'offline':tests['counts'],'integration_passed':integration_passed,'separate_full_suite_passed':full_suite_passed},
             'frontend':frontend,'security':security,'deployment':deployment,'readiness':{'passed':readiness['passed'],'total':readiness['total']},
-            'final_test_accessed':False,'experimental_correction_deployed':False,'human_action_now':None}
+            'final_test_accessed':False,'experimental_correction_deployed':False,'human_action_now':None,
+            'cams_request_reconciliation':'results/research/cams_archive_status.json',
+            'new_ads_requests_authorized':archive.get('submission_control',{}).get('new_requests_authorized')}
     (ROOT/'results/research/codex_continuation_completion.json').write_text(json.dumps(report,indent=2)+'\n')
     write('AIRGUARD_FINAL_COMPLETION_REPORT.md','# AirGuard Codex completion checkpoint\n\n'+prefix+
           '**Executive status:** production-safe completion proceeds; primary research and final-test readiness remain blocked by real evidence gaps.\n\n'
@@ -213,7 +232,7 @@ def main():
           f'**Release verification:** public API checks {deployment.get("public_api_checks","pending")}; browser checks {deployment.get("browser_checks","pending")}; actual production receipt persistence is recorded in `results/research/prospective_receipt_validation.json`. Deployed code SHA: `{deployment.get("deployed_git_sha","pending")}`.\n\n'
           '**Paper:** PRESERVED — SIX PAGE SUBMISSION SNAPSHOT, with unchanged PDF and protected source/assets. **Final test:** SEALED — no approval requested while BLOCKED.\n\n'
           '**Remaining blockers:** incomplete paired archive; complete primary experiments/selection/lock and final executor audit; eligible future station feeds and real verified days; bounded literature/author acceptance. No manual credential setup remains.\n\n'
-          '**Next action:** continue the existing acquisition and prospective schedules, then run eligible development workflows. Later request fresh final-test approval only after a real committed lock and READY audit. Full machine-readable evidence: `results/research/codex_continuation_completion.json`.\n')
+          '**Current acquisition instruction:** stop after existing-request verification and an insufficient-fold checkpoint; no new ADS submissions. Real prospective logging remains separate. Later request fresh final-test approval only after a real committed lock and READY audit. Full machine-readable evidence: `results/research/codex_continuation_completion.json`.\n')
     print(json.dumps({'status':'DEVELOPMENT_CHECKPOINT_FINAL_BLOCKED','reports_written':12,'paper_modified':False,'final_test_accessed':False}))
 
 

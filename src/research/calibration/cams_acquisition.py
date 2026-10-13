@@ -110,6 +110,7 @@ def freeze():
 def validate_file(path, job):
     import eccodes as ec
     import numpy as np
+    container = ads_probe.validate_grib_container(path)
     expected = {PARAMETERS[v][0]: PARAMETERS[v][1] for v in job['request']['variable']}
     dates = {int(x.replace('-','')) for x in job['request']['date']}
     leads = {int(x) for x in job['request']['leadtime_hour']}
@@ -124,6 +125,8 @@ def validate_file(path, job):
                         or ec.codes_get(g,'dataType') != 'fc' or ec.codes_get(g,'dataTime') != 0
                         or ec.codes_get(g,'stepUnits') != 1):
                     raise ValueError('Unexpected or duplicate operational field metadata')
+                if tuple(ec.codes_get(g,k) for k in ('centre','marsClass','marsStream','marsType')) != ('ecmf','mc','oper','fc'):
+                    raise ValueError('Not the ECMWF CAMS operational forecast product')
                 actual_valid = datetime.strptime(str(ec.codes_get(g,'validityDate'))+f"{ec.codes_get(g,'validityTime'):04d}",'%Y%m%d%H%M')
                 if actual_valid != datetime.strptime(str(reference),'%Y%m%d')+timedelta(hours=int(step)):
                     raise ValueError('Operational valid time does not equal run plus lead')
@@ -155,11 +158,15 @@ def validate_file(path, job):
             finally:
                 ec.codes_release(g)
     required = set(itertools.product(dates, leads, expected))
-    if seen != required:
+    if seen != required or count != container['messages']:
         raise ValueError('Incomplete operational parameter/date/lead cube')
     return {'status':'VERIFIED_GRIB', 'messages':count, 'grid':grid,
+            'container_validation':container,
             'parameter_units':expected, 'hybrid_coefficients':pv,
             'reference_dates':job['request']['date'], 'lead_hours':sorted(leads),
+            'product_metadata':{'centre':'ecmf','marsClass':'mc','marsStream':'oper','marsType':'fc'},
+            'reference_time_range_utc':[datetime.strptime(str(d),'%Y%m%d').replace(tzinfo=timezone.utc).isoformat() for d in (min(dates),max(dates))],
+            'valid_time_range_utc':[(datetime.strptime(str(d),'%Y%m%d').replace(tzinfo=timezone.utc)+timedelta(hours=h)).isoformat() for d,h in ((min(dates),min(leads)),(max(dates),max(leads)))],
             'valid_time_rule':'reference date 00 UTC + lead hours',
             'decoder':'eccodes '+ec.codes_get_api_version()}
 
@@ -209,7 +216,7 @@ def step(*, poll_only=False):
                 if entry and entry['status'] not in ('SUBMITTED','accepted','running','successful'):
                     continue  # failures and ambiguous submits require review, never replacement
                 if not entry:
-                    if poll_only:
+                    if poll_only or record.get('submission_control',{}).get('new_requests_authorized') is False:
                         continue
                     active = sum(j['status'] in ('SUBMITTING','SUBMITTED','accepted','running','successful') for j in record['jobs'].values())
                     # Also block on unresolved failures: review/recover the existing
@@ -246,6 +253,155 @@ def step(*, poll_only=False):
                     entry.update(status='RETRIEVAL_OR_VALIDATION_FAILED',error=ads_probe.safe_error(error)); save()
             save()
         return {'complete':record['complete'],'counts':record['counts'],'total_jobs':len(plan['jobs'])}
+
+
+def pause_new_requests():
+    """Persist the author's submission pause without changing IDs or the plan."""
+    record = json.loads(STATE.read_text(encoding='utf-8'))
+    with lease(ROOT/'data/research/cams_operational'/record['plan_sha256']):
+        record = json.loads(STATE.read_text(encoding='utf-8'))
+        record['submission_control'] = {
+            'new_requests_authorized': False, 'recorded_at_utc': ads_probe.now(),
+            'reason': 'Author requested existing-request reconciliation only; no new ADS submissions.'}
+        write_json(STATE, record)
+    return {'new_requests_authorized':False,'request_ids_preserved':True}
+
+
+def reconcile_existing(request_ids):
+    """Poll an explicit scope of known IDs, reuse/download, hash and decode only.
+
+    No retrieve/submit endpoint is called. Provider replies and download URLs
+    are never printed or stored; only allowlisted non-secret fields are retained.
+    """
+    if len(request_ids) != len(set(request_ids)) or not request_ids:
+        raise ValueError('A unique nonempty existing-request scope is required')
+    plan = freeze()
+    probe_path = ROOT/'results/research/cams_ads_probe.json'
+    probe = json.loads(probe_path.read_text(encoding='utf-8'))
+    folder = ROOT/'data/research/cams_operational'/plan['sha256']
+    report_path = ROOT/'results/research/cams_archive_status.json'
+    with lease(folder):
+        record = json.loads(STATE.read_text(encoding='utf-8'))
+        known = {e['request_id']:(j,e) for j in plan['jobs']
+                 if (e:=record['jobs'].get(j['id'],{})).get('request_id')}
+        if probe.get('request_id') in known:
+            raise ValueError('Probe and archive request IDs overlap')
+        unknown = set(request_ids) - set(known) - {probe.get('request_id')}
+        if unknown:
+            raise ValueError('Unknown request ID; reconciliation cannot submit it')
+        if record.get('submission_control',{}).get('new_requests_authorized') is not False:
+            raise ValueError('Pause new submissions before reconciling existing requests')
+        rows = []
+        old_logging = logging.root.manager.disable
+        logging.disable(sys.maxsize)
+        try:
+            with open(os.devnull,'w') as silent, contextlib.redirect_stdout(silent), contextlib.redirect_stderr(silent):
+                import cdsapi
+                client = cdsapi.Client(url='https://ads.atmosphere.copernicus.eu/api',quiet=True,
+                    debug=False,progress=False,retry_max=1,timeout=60,wait_until_complete=False,delete=False)
+                for request_id in request_ids:
+                    is_probe = request_id == probe['request_id']
+                    job, entry = (None,probe) if is_probe else known[request_id]
+                    row = {'request_id':request_id,'scope':'probe' if is_probe else 'development_chunk',
+                           'downloaded_locally':False,'content_valid':False,'checksum_verified':False,
+                           'protocol_accepted_primary_chunk':False,'status_checked_at_utc':ads_probe.now(),
+                           'submitted_at_utc':entry.get('submitted_at_utc')}
+                    if job:
+                        row.update(job_sha256=job['id'],group=job['group'],
+                                   reference_date_range=[job['request']['date'][0],job['request']['date'][-1]])
+                    try:
+                        remote = client.client.get_remote(request_id)
+                        reply = remote.json
+                        server = {k:reply.get(k) for k in ('status','processID','created','started','finished','updated')}
+                        if server['status'] not in ('accepted','running','successful','failed','rejected','dismissed','deleted'):
+                            raise ValueError('Unknown provider status')
+                        if server['processID'] != ads_probe.DATASET:
+                            raise ValueError('Provider collection differs from the CAMS forecast dataset')
+                        row['server'] = server
+                        entry['server_metadata'] = server
+                        if server['status'] == 'successful':
+                            target = ROOT/entry['file'] if entry.get('file') else folder/(job['id']+'.grib')
+                            existed = target.exists()
+                            if not existed:
+                                temporary = target.with_suffix('.grib.partial')
+                                remote.download(str(temporary))
+                                temporary.replace(target)
+                                entry.update(file=target.relative_to(ROOT).as_posix(),retrieved_at_utc=ads_probe.now())
+                            digest = sha(target)
+                            row.update(downloaded_locally=True,reused_local_artifact=existed,
+                                       file=target.relative_to(ROOT).as_posix(),bytes=target.stat().st_size,sha256=digest,
+                                       retrieved_at_utc=entry.get('retrieved_at_utc'))
+                            if entry.get('sha256') and entry['sha256'] != digest:
+                                raise ValueError('Existing artifact checksum differs')
+                            row['checksum_verified'] = True
+                            if is_probe:
+                                # Re-decode the original tiny binary; never submit another probe.
+                                ads_probe.audit()
+                                entry = probe = json.loads(probe_path.read_text(encoding='utf-8'))
+                                entry['server_metadata'] = server
+                                row.update(decoded_fields=probe['decoded_fields'],
+                                           container_validation=probe['container_validation'],
+                                           probe_accepted=True,
+                                           explanation='One complete GRIB1 PM2.5 surface message, nine grid values; smoke validation only, not a primary archive chunk.')
+                                if target.stat().st_size <= 256:
+                                    row['binary_hex'] = target.read_bytes().hex()
+                            else:
+                                decoded = validate_file(target,job)
+                                entry.update(decoded,bytes=target.stat().st_size,sha256=digest)
+                                row.update(content_validation=decoded,protocol_accepted_primary_chunk=True)
+                            row['content_valid'] = True
+                            row['validated_at_utc'] = ads_probe.now()
+                        else:
+                            row['validation_not_attempted'] = 'Provider result is not successful'
+                    except Exception as error:
+                        row['error'] = ads_probe.safe_error(error)
+                        # Exception text may contain signed URLs or secrets: record class only.
+                        row['exception_class'] = type(error).__name__
+                        if not is_probe and row.get('downloaded_locally') and not row['content_valid']:
+                            entry['status'] = 'RETRIEVAL_OR_VALIDATION_FAILED'
+                            entry['error'] = row['error']
+                    rows.append(row)
+        finally:
+            logging.disable(old_logging)
+        probe['server_metadata'] = next((r['server'] for r in rows if r['scope']=='probe' and 'server' in r),probe.get('server_metadata',{}))
+        write_json(probe_path,probe)
+        if probe.get('file'):
+            write_json((ROOT/probe['file']).parent/'retrieval.json',probe)
+        probe_row = next((r for r in rows if r['scope']=='probe'),None)
+        if probe_row:
+            write_json(ROOT/'results/research/cams_ads_probe_status.json', {
+                'local_status':probe['status'],'remote_status':probe_row.get('server',{}).get('status'),
+                'checked_at_utc':probe_row['status_checked_at_utc']})
+        record['checked_at_utc'] = ads_probe.now()
+        record['counts'] = {s:sum(j['status']==s for j in record['jobs'].values()) for s in sorted({j['status'] for j in record['jobs'].values()})}
+        record['complete'] = len(record['jobs'])==len(plan['jobs']) and all(j['status']=='VERIFIED_GRIB' for j in record['jobs'].values())
+        record['reconciliation'] = {'request_ids':request_ids,'checked_at_utc':record['checked_at_utc'],
+                                    'report':report_path.relative_to(ROOT).as_posix(),'new_requests_submitted':0}
+        write_json(STATE,record)
+        extra = [{'request_id':rid,'job_sha256':job['id'],'status':entry['status'],
+                  'submitted_at_utc':entry.get('submitted_at_utc'),
+                  'reference_date_range':[job['request']['date'][0],job['request']['date'][-1]],
+                  'reason':'Pre-existing request outside the nine reported successes; preserved, not polled or downloaded by this reconciliation.'}
+                 for rid,(job,entry) in known.items() if rid not in request_ids]
+        counts = {'ads_requests_in_reported_scope':len(rows),
+                  'ads_server_side_successful':sum(r.get('server',{}).get('status')=='successful' for r in rows),
+                  'downloaded_locally':sum(r['downloaded_locally'] for r in rows),
+                  'content_valid':sum(r['content_valid'] for r in rows),
+                  'checksum_verified':sum(r['checksum_verified'] for r in rows),
+                  'protocol_accepted_primary_chunks':sum(r['protocol_accepted_primary_chunk'] for r in rows),
+                  'accepted_probe_artifacts':sum(r.get('probe_accepted',False) for r in rows),
+                  'overall_cams_chunks_verified':record['counts'].get('VERIFIED_GRIB',0),
+                  'required_cams_chunks':len(plan['jobs'])}
+        report = {'status':'EXISTING_REQUESTS_RECONCILED','generated_at_utc':ads_probe.now(),
+                  'dataset':ads_probe.DATASET,'plan_sha256':plan['sha256'],
+                  'protocol_sha256':plan['protocol_sha256'],'counts':counts,'requests':rows,
+                  'additional_preexisting_requests':extra,'total_known_request_ids':len(known)+1,
+                  'new_requests_submitted':0,'replacement_requests_submitted':0,
+                  'invalid_or_unverified_request_ids':[r['request_id'] for r in rows if not r['content_valid']],
+                  'final_test_accessed':False,'new_submissions_paused':True,
+                  'scientific_scope':'CAMS operational forecast development archive; the probe is not counted among the 36 primary chunks.'}
+        write_json(report_path,report)
+    return counts
 
 
 def reopen_transport_failure(job_prefix, note):
@@ -285,7 +441,14 @@ def main():
     parser.add_argument('--poll-only',action='store_true',help='Recheck/download existing IDs; never submit a request')
     parser.add_argument('--reopen-transport-failure',metavar='JOB_PREFIX',help='Reviewed re-poll of one existing remote ID; never submits')
     parser.add_argument('--review-note',default='')
+    parser.add_argument('--pause-new-requests',action='store_true')
+    parser.add_argument('--reconcile-request-ids',nargs='+',help='Recheck only these already-recorded request IDs; never submit')
     parser.add_argument('--worker-hours',type=float,default=0); args=parser.parse_args()
+    if args.pause_new_requests:
+        print(json.dumps(pause_new_requests()))
+        if not args.reconcile_request_ids:return
+    if args.reconcile_request_ids:
+        print(json.dumps(reconcile_existing(args.reconcile_request_ids)));return
     if args.reopen_transport_failure:
         if not args.review_note.strip():
             raise ValueError('A review note is required')

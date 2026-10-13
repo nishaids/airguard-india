@@ -16,5 +16,8 @@ def test_probe_and_collection_cannot_release_primary_readiness(tmp_path,monkeypa
     assert r.current_archive_status()=='ADS_SMOKE_VERIFIED_ARCHIVE_INCOMPLETE'
     (r.OUT/'cams_development_acquisition.json').write_text(json.dumps({'jobs':{'existing-id':{'status':'running'}},'complete':False}))
     assert r.current_archive_status()=='ADS_OPERATIONAL_ARCHIVE_ACQUIRING'
+    (r.OUT/'cams_development_acquisition.json').write_text(json.dumps({
+        'jobs':{'existing':{'status':'running'}},'submission_control':{'new_requests_authorized':False}}))
+    assert r.current_archive_status()=='ADS_OPERATIONAL_ARCHIVE_PAUSED_AUTHOR_REQUEST'
     raw.write_bytes(b'corrupt')
     assert r.current_archive_status()=='ADS_PROBE_EVIDENCE_INVALID'

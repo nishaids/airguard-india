@@ -1,0 +1,199 @@
+{
+  "experiment": "GENUINE_CAMS_DEVELOPMENT",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "dataset_sha256": "e9ecca99412bf916fe4ba6e7fc65eee0dd758409f1d490b866a8522b9d9f646d",
+  "run_id": "5c98aa20410529a6439903bd05b18d529d1a15c693142e7aa56934fdd89c4c27",
+  "preflight": {
+    "feature_groups": {
+      "A": [
+        "cams_conc_PM2.5",
+        "cams_sub_PM2.5",
+        "cams_hourly_max_PM2.5",
+        "cams_hourly_range_PM2.5",
+        "cams_hourly_std_PM2.5",
+        "cams_hourly_day_minus_night_PM2.5",
+        "cams_conc_PM10",
+        "cams_sub_PM10",
+        "cams_hourly_max_PM10",
+        "cams_hourly_range_PM10",
+        "cams_hourly_std_PM10",
+        "cams_hourly_day_minus_night_PM10",
+        "cams_conc_NO2",
+        "cams_sub_NO2",
+        "cams_hourly_max_NO2",
+        "cams_hourly_range_NO2",
+        "cams_hourly_std_NO2",
+        "cams_hourly_day_minus_night_NO2",
+        "cams_conc_SO2",
+        "cams_sub_SO2",
+        "cams_hourly_max_SO2",
+        "cams_hourly_range_SO2",
+        "cams_hourly_std_SO2",
+        "cams_hourly_day_minus_night_SO2",
+        "cams_conc_CO",
+        "cams_sub_CO",
+        "cams_hourly_max_CO",
+        "cams_hourly_range_CO",
+        "cams_hourly_std_CO",
+        "cams_hourly_day_minus_night_CO",
+        "cams_conc_O3",
+        "cams_sub_O3",
+        "cams_hourly_max_O3",
+        "cams_hourly_range_O3",
+        "cams_hourly_std_O3",
+        "cams_hourly_day_minus_night_O3",
+        "cams_dom_PM2.5",
+        "cams_dom_PM10",
+        "cams_dom_O3",
+        "cams_aqi_frozen",
+        "cams_six",
+        "cams_previous_day",
+        "cams_day_change"
+      ],
+      "B": [
+        "obs24_conc_PM2.5",
+        "obs24_conc_PM10",
+        "obs24_conc_NO2",
+        "obs24_conc_SO2",
+        "obs24_conc_CO",
+        "obs24_conc_O3",
+        "obs_pm25_last6_mean",
+        "obs_pm25_last6_slope",
+        "history_lag2",
+        "history_lag2_censored",
+        "bias_lag2",
+        "history_lag3",
+        "history_lag3_censored",
+        "history_lag7",
+        "history_lag7_censored",
+        "history_roll7_n",
+        "history_roll7_mean",
+        "history_roll7_std",
+        "bias_roll7",
+        "obs24_aqi"
+      ],
+      "C": [
+        "wx_temp_mean",
+        "wx_temp_range",
+        "wx_rh_mean",
+        "wx_wind_mean",
+        "wx_wind_min",
+        "wx_u_mean",
+        "wx_v_mean",
+        "wx_precip_sum",
+        "wx_pressure_mean",
+        "wx_shortwave_mean",
+        "wx_cloud_mean"
+      ],
+      "D": [
+        "doy_sin",
+        "doy_cos",
+        "month",
+        "dow",
+        "weekend",
+        "season_index"
+      ],
+      "E": [
+        "nbr50_obs24_mean",
+        "nbr50_count",
+        "nbr150_obs24_mean",
+        "nbr150_count",
+        "region_obs24_mean",
+        "latitude",
+        "longitude",
+        "cell_row",
+        "cell_column",
+        "cell_station_count",
+        "nearest_station_km",
+        "elevation"
+      ]
+    },
+    "folds": [
+      {
+        "fold": "fold_01",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 48,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_02",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 77,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_03",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 107,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_04",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 137,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_05",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 167,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_06",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 197,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_07",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 227,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_08",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 257,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_09",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 287,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_10",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 317,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_11",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 347,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_12",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 377,
+        "can_fit": false
+      }
+    ],
+    "final_test_accessed": false,
+    "can_execute_any_fold": false
+  },
+  "status": "BLOCKED_NO_ELIGIBLE_FOLDS",
+  "final_test_scored": false,
+  "model_selection_lock_created": false,
+  "fitting_performed": false,
+  "remaining_stages": [
+    "spatial comparisons",
+    "ablation",
+    "uncertainty/advisory",
+    "paired statistics",
+    "selection lock and final-executor audit"
+  ]
+}

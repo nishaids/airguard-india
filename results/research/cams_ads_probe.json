@@ -60,18 +60,52 @@
       "numberOfMissing": 0,
       "iDirectionIncrementInDegrees": 0.4,
       "jDirectionIncrementInDegrees": 0.4,
+      "centre": "ecmf",
+      "marsClass": "mc",
+      "marsStream": "oper",
+      "marsType": "fc",
+      "packingType": "grid_simple",
+      "bitsPerValue": 24,
+      "totalLength": 134,
       "minimum_kg_m3": 6.725338153046323e-08,
-      "maximum_kg_m3": 8.127934858492836e-08
+      "maximum_kg_m3": 8.127934858492836e-08,
+      "values_kg_m3_row_major": [
+        7.808564195244116e-08,
+        7.462530238200316e-08,
+        6.725338153046323e-08,
+        8.127934858492836e-08,
+        7.414986669118662e-08,
+        7.194704121360473e-08,
+        7.285065350970399e-08,
+        7.596684792332553e-08,
+        7.75633797189812e-08
+      ]
     }
   ],
   "reference_time_utc": "2025-02-18T00:00:00+00:00",
   "lead_hours": 24,
   "valid_time_utc": "2025-02-19T00:00:00+00:00",
-  "audited_at_utc": "2026-10-12T08:33:27.627668+00:00",
+  "audited_at_utc": "2026-10-13T19:57:40.326001+00:00",
   "decoder": {
     "name": "eccodes",
     "python_version": "2.44.0",
     "library_version": "2.44.0"
   },
-  "verification_scope": "One surface PM2.5 forecast only; gas conversion and archive completeness not established"
+  "verification_scope": "One surface PM2.5 forecast only; gas conversion and archive completeness not established",
+  "container_validation": {
+    "bytes": 134,
+    "messages": 1,
+    "editions": [
+      1
+    ],
+    "complete_message_framing": true
+  },
+  "server_metadata": {
+    "status": "successful",
+    "processID": "cams-global-atmospheric-composition-forecasts",
+    "created": "2026-10-12T06:33:00.818497",
+    "started": "2026-10-12T06:52:01.872848",
+    "finished": "2026-10-12T07:37:35.647969",
+    "updated": "2026-10-12T07:37:35.647969"
+  }
 }

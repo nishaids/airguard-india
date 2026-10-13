@@ -96,6 +96,42 @@ def verify_fields(fields):
     return reference, valid
 
 
+def validate_grib_container(path):
+    """Require complete, contiguous GRIB messages; reject text and trailing junk."""
+    size = Path(path).stat().st_size
+    messages, editions, offset = 0, set(), 0
+    with Path(path).open('rb') as handle:
+        while offset < size:
+            header = handle.read(8)
+            if len(header) != 8 or header[:4] != b'GRIB':
+                raise ValueError('Not a contiguous GRIB container')
+            edition = header[7]
+            if edition == 1:
+                length = int.from_bytes(header[4:7], 'big')
+                minimum = 12
+            elif edition == 2:
+                extra = handle.read(8)
+                if len(extra) != 8:
+                    raise ValueError('Truncated GRIB2 header')
+                length = int.from_bytes(extra, 'big')
+                minimum = 20
+            else:
+                raise ValueError('Unsupported GRIB edition')
+            if length < minimum or offset + length > size:
+                raise ValueError('Truncated or invalid GRIB message length')
+            handle.seek(offset + length - 4)
+            if handle.read(4) != b'7777':
+                raise ValueError('Missing GRIB message terminator')
+            offset += length
+            handle.seek(offset)
+            messages += 1
+            editions.add(edition)
+    if not messages:
+        raise ValueError('Empty GRIB container')
+    return {'bytes': size, 'messages': messages, 'editions': sorted(editions),
+            'complete_message_framing': True}
+
+
 def audit():
     """Verify the downloaded GRIB against the tiny request, never target labels."""
     import eccodes as ec
@@ -108,6 +144,7 @@ def audit():
     path = ROOT / record['file']
     if hashlib.sha256(path.read_bytes()).hexdigest() != record['sha256']:
         raise ValueError('Probe file checksum differs')
+    container = validate_grib_container(path)
     fields = []
     with path.open('rb') as handle:
         while (gid := ec.codes_grib_new_from_file(handle)) is not None:
@@ -118,8 +155,11 @@ def audit():
                         'latitudeOfFirstGridPointInDegrees', 'longitudeOfFirstGridPointInDegrees',
                         'latitudeOfLastGridPointInDegrees', 'longitudeOfLastGridPointInDegrees',
                         'Ni', 'Nj', 'numberOfMissing', 'iDirectionIncrementInDegrees',
-                        'jDirectionIncrementInDegrees')
+                        'jDirectionIncrementInDegrees', 'centre', 'marsClass', 'marsStream',
+                        'marsType', 'packingType', 'bitsPerValue', 'totalLength')
                 field = {key: ec.codes_get(gid, key) for key in keys}
+                if (field['centre'],field['marsClass'],field['marsStream'],field['marsType']) != ('ecmf','mc','oper','fc'):
+                    raise ValueError('Probe does not identify the ECMWF CAMS operational forecast product')
                 values = ec.codes_get_values(gid)
                 import math
                 if field['numberOfMissing'] or not all(math.isfinite(v) and v >= 0 for v in values):
@@ -132,11 +172,15 @@ def audit():
                 if any(abs(field[key]-value)>1e-6 for key,value in expected.items()):
                     raise ValueError('Decoded probe area/grid differs from request')
                 field['minimum_kg_m3'],field['maximum_kg_m3'] = float(min(values)),float(max(values))
+                field['values_kg_m3_row_major'] = values.tolist()
                 fields.append(field)
             finally:
                 ec.codes_release(gid)
     reference, valid = verify_fields(fields)
+    if container['messages'] != len(fields):
+        raise ValueError('Probe container and decoder message counts differ')
     record.update(status='VERIFIED_OPERATIONAL_FORECAST', decoded_fields=fields,
+                  container_validation=container,
                   reference_time_utc=reference.isoformat(), lead_hours=24,
                   valid_time_utc=valid.isoformat(), audited_at_utc=now(),
                   decoder={'name': 'eccodes', 'python_version': importlib.metadata.version('eccodes'),

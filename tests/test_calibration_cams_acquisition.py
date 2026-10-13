@@ -116,3 +116,59 @@ def test_transport_failure_reopens_existing_id_without_submitting(tmp_path,monke
         assert archive.step()['counts']=={'running':1}
     finally: logging.disable(old)
     assert calls==[('poll','EXISTING_ID'),('poll','EXISTING_ID')]
+
+
+def test_author_pause_blocks_default_submission_and_preserves_ids(tmp_path,monkeypatch):
+    plan=archive.make_plan(load(),selection())
+    plan['jobs']=plan['jobs'][:2]
+    monkeypatch.setattr(archive,'ROOT',tmp_path)
+    monkeypatch.setattr(archive,'STATE',tmp_path/'state.json')
+    monkeypatch.setattr(archive,'freeze',lambda:plan)
+    archive.STATE.write_text(json.dumps({'plan_sha256':plan['sha256'],'jobs':{}}))
+    archive.pause_new_requests()
+    class Client:
+        def __init__(self,**kw): self.client=self
+        def retrieve(self,*args): pytest.fail('Author pause must block submissions')
+        def get_remote(self,*args): pytest.fail('There are no existing request IDs')
+    monkeypatch.setitem(sys.modules,'cdsapi',SimpleNamespace(Client=Client))
+    old=logging.root.manager.disable
+    try:
+        assert archive.step()['counts']=={}
+    finally: logging.disable(old)
+    state=json.loads(archive.STATE.read_text())
+    assert state['submission_control']['new_requests_authorized'] is False
+    assert state['jobs']=={}
+
+
+def test_reconciliation_polls_only_explicit_existing_scope_and_redacts_replies(tmp_path,monkeypatch,capsys):
+    plan=archive.make_plan(load(),selection())
+    plan['jobs']=plan['jobs'][:2]
+    monkeypatch.setattr(archive,'ROOT',tmp_path)
+    monkeypatch.setattr(archive,'STATE',tmp_path/'state.json')
+    monkeypatch.setattr(archive,'freeze',lambda:plan)
+    result=tmp_path/'results/research';result.mkdir(parents=True)
+    (result/'cams_ads_probe.json').write_text(json.dumps({'request_id':'PROBE','status':'SUBMITTED'}))
+    entries={j['id']:{'request_id':f'ARCHIVE{i}','status':'running'} for i,j in enumerate(plan['jobs'])}
+    archive.STATE.write_text(json.dumps({'plan_sha256':plan['sha256'],'jobs':entries}))
+    archive.pause_new_requests()
+    calls=[]
+    secret='TEST_SECRET_NEVER_PERSIST_PROVIDER_REPLY'
+    class Client:
+        def __init__(self,**kw): self.client=self;print(secret)
+        def retrieve(self,*args): pytest.fail('Reconciliation must never submit')
+        def get_remote(self,request_id):
+            calls.append(request_id)
+            return SimpleNamespace(json={'processID':archive.ads_probe.DATASET,'status':'running',
+                                         'metadata':{'credentials':secret},'download_url':secret})
+    monkeypatch.setitem(sys.modules,'cdsapi',SimpleNamespace(Client=Client))
+    counts=archive.reconcile_existing(['ARCHIVE0','PROBE'])
+    assert calls==['ARCHIVE0','PROBE']
+    assert counts['ads_requests_in_reported_scope']==2 and counts['content_valid']==0
+    report=json.loads((result/'cams_archive_status.json').read_text())
+    assert report['additional_preexisting_requests'][0]['request_id']=='ARCHIVE1'
+    assert report['new_requests_submitted']==0
+    assert secret not in capsys.readouterr().out
+    assert all(secret not in p.read_text() for p in tmp_path.rglob('*.json'))
+    with pytest.raises(ValueError,match='Unknown request'):
+        archive.reconcile_existing(['UNKNOWN'])
+    assert calls==['ARCHIVE0','PROBE']

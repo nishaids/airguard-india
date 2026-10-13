@@ -32,6 +32,8 @@ def current_archive_status():
     acquisition=artifact('cams_development_acquisition.json')
     if acquisition.get('complete') is True:
         return 'ADS_ARCHIVE_COLLECTED_PRIMARY_AUDIT_PENDING'
+    if acquisition.get('submission_control',{}).get('new_requests_authorized') is False:
+        return 'ADS_OPERATIONAL_ARCHIVE_PAUSED_AUTHOR_REQUEST'
     if acquisition.get('jobs'):
         return 'ADS_OPERATIONAL_ARCHIVE_ACQUIRING'
     return 'ADS_SMOKE_VERIFIED_ARCHIVE_INCOMPLETE'

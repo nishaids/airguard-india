@@ -1,8 +1,8 @@
 {
   "experiment": "GENUINE_CAMS_DEVELOPMENT",
   "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
-  "dataset_sha256": "0dd0f06987815dc95a4a07ab10d15c33637b37c660928a5a3151b0423e478412",
-  "run_id": "ac4a87301a31e9a8c2f6b43258711b617a6f5f47d7bfe99d5f7c692053b76179",
+  "dataset_sha256": "e9ecca99412bf916fe4ba6e7fc65eee0dd758409f1d490b866a8522b9d9f646d",
+  "run_id": "5c98aa20410529a6439903bd05b18d529d1a15c693142e7aa56934fdd89c4c27",
   "preflight": {
     "feature_groups": {
       "A": [
@@ -112,73 +112,73 @@
       {
         "fold": "fold_01",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 78,
+        "missing_archive_dates": 48,
         "can_fit": false
       },
       {
         "fold": "fold_02",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 108,
+        "missing_archive_dates": 77,
         "can_fit": false
       },
       {
         "fold": "fold_03",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 138,
+        "missing_archive_dates": 107,
         "can_fit": false
       },
       {
         "fold": "fold_04",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 168,
+        "missing_archive_dates": 137,
         "can_fit": false
       },
       {
         "fold": "fold_05",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 198,
+        "missing_archive_dates": 167,
         "can_fit": false
       },
       {
         "fold": "fold_06",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 228,
+        "missing_archive_dates": 197,
         "can_fit": false
       },
       {
         "fold": "fold_07",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 258,
+        "missing_archive_dates": 227,
         "can_fit": false
       },
       {
         "fold": "fold_08",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 288,
+        "missing_archive_dates": 257,
         "can_fit": false
       },
       {
         "fold": "fold_09",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 318,
+        "missing_archive_dates": 287,
         "can_fit": false
       },
       {
         "fold": "fold_10",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 348,
+        "missing_archive_dates": 317,
         "can_fit": false
       },
       {
         "fold": "fold_11",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 378,
+        "missing_archive_dates": 347,
         "can_fit": false
       },
       {
         "fold": "fold_12",
         "eligible_training_stations": 0,
-        "missing_archive_dates": 408,
+        "missing_archive_dates": 377,
         "can_fit": false
       }
     ],

@@ -9,6 +9,26 @@ import pytest
 from src.research.calibration import ads_probe as probe
 
 
+def test_container_accepts_complete_tiny_grib1_and_multiple_messages(tmp_path):
+    message=b'GRIB'+(12).to_bytes(3,'big')+b'\x01'+b'7777'
+    path=tmp_path/'tiny.grib';path.write_bytes(message)
+    assert probe.validate_grib_container(path)=={
+        'bytes':12,'messages':1,'editions':[1],'complete_message_framing':True}
+    path.write_bytes(message*2)
+    assert probe.validate_grib_container(path)['messages']==2
+
+
+@pytest.mark.parametrize('artifact', [b'',b'<html>error</html>',b'<?xml error>',
+    b'GRIB\x00\x00\x86\x01'+b'7777',  # declared length 134, actually truncated
+    b'GRIB\x00\x00\x0c\x01'+b'0000',  # bad terminator
+    b'GRIB\x00\x00\x0c\x01'+b'7777'+b'junk',
+    b'GRIB\x00\x00\x00\x02',            # incomplete GRIB2 header
+    b'GRIB\x00\x00\x0c\x03'+b'7777'])
+def test_container_rejects_text_truncation_and_trailing_bytes(tmp_path,artifact):
+    path=tmp_path/'bad.grib';path.write_bytes(artifact)
+    with pytest.raises(ValueError):probe.validate_grib_container(path)
+
+
 @pytest.fixture
 def isolated(tmp_path, monkeypatch):
     monkeypatch.setattr(probe, 'ROOT', tmp_path)

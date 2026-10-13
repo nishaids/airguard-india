@@ -1,0 +1,2 @@
+# Preserve exact submitted-source/evidence bytes and hashes across checkouts.
+paper/conference_final/** -text

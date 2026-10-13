@@ -89,6 +89,8 @@ def main():
                 missing_cams_dates=len(__import__('src.research.calibration.splits',fromlist=['calendar']).calendar(
                     __import__('src.research.calibration.protocol',fromlist=['load']).load()))-90-aligned['dates'],
                 final_test_accessed=False,source_manifest='results/research/cams_development_alignment.json')
+    if reconciliation.get('development_join',{}).get('sha256') == aligned['sha256']:
+        join['date_range'] = reconciliation['development_join']['date_range']
     (ROOT/'results/research/cams_station_join_manifest.json').write_text(json.dumps(join,indent=2)+'\n')
     prefix=f'Checkpoint: {now}. Research branch; code checkpoint `{commit}`. Final test remains sealed.\n\n'
     write('CAMS_ARCHIVE_STATUS.md','# CAMS operational archive status\n\n'+prefix+
@@ -158,6 +160,7 @@ def main():
     write('MODEL_SELECTION_REPORT.md','# Development model selection: NOT READY\n\n'+prefix+
           f'No primary model is selected. The current {aligned["dates"]}-date operational join has no protocol-eligible complete rolling fold. The sealed protocol requires training-only tuning, identical baseline pairs and mean rolling-fold MAE selection with declared Ridge/residual ties; retain raw CAMS if no learned candidate improves that criterion. A stronger persistence result must still be reported honestly.\n\n'
           'Direct/residual Ridge, LightGBM and XGBoost, spatial holdouts, fixed-learner ablation, uncertainty, advisory and paired-statistics infrastructure are implemented and tested on synthetic fixtures. Their real primary experiments remain blocked by archive coverage. The refreshed preflight records `fitting_performed=false`.\n\n'
+          'The locked station eligibility requirement is 120 valid training targets per station. There are only '+str(aligned['dates'])+' acquired development dates in total; every fold has zero eligible training stations and missing declared dates. No window, station minimum or protocol rule was relaxed.\n\n'+
           'The preserved paper establishes Weather Ridge versus climatology, not versus raw CAMS; its History Ridge gain over persistence is not established. The exploratory extension does not select the primary learner. No `MODEL_SELECTION_LOCK` or surrogate lock has been created.\n')
     readiness=read('results/research/research_readiness.json')
     limitations=[

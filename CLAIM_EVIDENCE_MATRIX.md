@@ -32,15 +32,16 @@ The exact six-page snapshot is `paper/conference_final/main.pdf` (SHA-256 `460d5
 
 | Claim | Script / artifact | Population and identity | Status |
 | --- | --- | --- | --- |
-| Current CAMS join | primary_dataset.py; results/research/cams_station_join_manifest.json | 12,960 rows; 180 stations; 72 dates; SHA 0dd0f06987815dc95a4a07ab10d15c33637b37c660928a5a3151b0423e478412 | Guarded; 0 availability violations; no primary fit |
+| Current CAMS join | primary_dataset.py; results/research/cams_station_join_manifest.json | 18,540 rows; 180 stations; 100 cities; 103 dates; SHA e9ecca99412bf916fe4ba6e7fc65eee0dd758409f1d490b866a8522b9d9f646d | Guarded; 0 availability violations under disclosed timing assumptions; no primary fit |
+| Nine reported ADS successes | results/research/cams_archive_status.json | 9/9 local, content-valid and checksummed; 8/36 primary chunks plus one valid 134-byte GRIB1 probe | No new/replacement submission; extra prior request preserved; submission worker stopped and paused |
 | Severe / interval / warning extension | extensions.py; docs/research/DEVELOPMENT_EXTENSION_AUDIT.md | Run 54efbbe1af8a7e03c30a19060e6d2259b78949f62deb3eabe64e34143ef1a9c2; 31,622 exact history pairs, 306 censored Severe | Exploratory; floor-surrogate excluded; none selected/deployed |
 | Frozen-cohort sensitivity | docs/research/STATION_SURVIVORSHIP_SENSITIVITY.md | 158 stations; 92 cities; 36,993 exact pairs; same extension run | Qualitative findings preserved; lost-monitor bias unresolved |
 | Provider transport receipts | src/nationwide/providers.py; tests/test_input_receipt.py | Request/response timestamps; raw JSON hash unchanged; initialization remains unknown when unavailable | Tested; production release recorded separately |
-| Backend correctness | results/research/test_validation.json; logs/codex-continuation-backend.xml | 658 passed separately; source-bound offline 653 passed / 5 skipped; 4 database integrations | Current source fingerprint verified |
+| Backend correctness | results/research/test_validation.json; logs/codex-continuation-backend.xml | Source-bound offline 664 passed / 5 skipped / 4 deselected; earlier separate 658-pass suite and 4 database integrations retained as historical evidence | Current source fingerprint verified |
 | Frontend correctness | results/release/codex_continuation_preflight.json | 43 unit tests; lint/type/build | PASS |
 | Prospective real collection | results/research/prospective_audit.json | 36 forecasts; 3 target days; 0 verified days; 0 bound stations | Immutable; no historical repair; 30-day gate false |
 | Primary model improvement / lock | docs/research/MODEL_SELECTION_REPORT.md | No eligible real primary fold | NOT ESTABLISHED / NOT READY |
-| Final test | docs/research/FINAL_TEST_READY_FOR_AUTHOR_APPROVAL.md | 10 July–7 October 2026 | SEALED; BLOCKED; fresh later approval required |
+| Final test | docs/research/FINAL_TEST_READY_FOR_AUTHOR_APPROVAL.md | 10 Julyâ€“7 October 2026 | SEALED; BLOCKED; fresh later approval required |
 
 The extension audit records raw prediction/source hashes and metadata-only date isolation checks. New analyses cannot replace the submitted-paper snapshot. No clinical, world-first or guaranteed risk-control claim is made.
 

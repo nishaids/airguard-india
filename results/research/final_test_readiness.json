@@ -1,13 +1,13 @@
 {
   "status": "BLOCKED",
-  "generated_at_utc": "2026-10-13T18:16:23.531914+00:00",
-  "git_sha": "b41022197f31cd5b7375dfc2e8077550ac4048e3",
+  "generated_at_utc": "2026-10-13T20:05:26.972991+00:00",
+  "git_sha": "106c33eafac531a04dae99f19ec0005ae808ff6a",
   "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
   "protocol_version": "airguard-retrospective-station-calibration-v3.1",
   "measured_semantic_sha256": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
   "measured_file_sha256": "6ae0ae2bae6b2e9b9412e8a6d1015f029a86399ed25bfc13b86b264d89f62492",
   "cams_plan_sha256": "952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a",
-  "verified_chunks": 7,
+  "verified_chunks": 8,
   "required_chunks": 36,
   "verified_files": [
     {
@@ -65,11 +65,19 @@
       "bytes": 27008192,
       "messages": 2976,
       "grid_degrees": 0.4
+    },
+    {
+      "job_sha256": "f36aa09651a2020b3e4376d1d7a49223c1ea532313f16b127c7add9425074c08",
+      "file": "data/research/cams_operational/952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a/f36aa09651a2020b3e4376d1d7a49223c1ea532313f16b127c7add9425074c08.grib",
+      "sha256": "7783be665634afe8b2b48f545dd20d888f309b22b84b8a55796d09ff7808ca27",
+      "bytes": 20106460,
+      "messages": 2232,
+      "grid_degrees": 0.4
     }
   ],
-  "alignment_sha256": "0dd0f06987815dc95a4a07ab10d15c33637b37c660928a5a3151b0423e478412",
-  "alignment_rows": 12960,
-  "development_dates": 72,
+  "alignment_sha256": "e9ecca99412bf916fe4ba6e7fc65eee0dd758409f1d490b866a8522b9d9f646d",
+  "alignment_rows": 18540,
+  "development_dates": 103,
   "fold_coverage": [
     {
       "name": "fold_01",
@@ -133,7 +141,7 @@
     }
   ],
   "blockers": [
-    "Operational archive incomplete: 7/36 verified chunks",
+    "Operational archive incomplete: 8/36 verified chunks",
     "Primary feature integration remains incomplete",
     "No protocol-eligible rolling fold with acquired validation dates",
     "Primary experiment pending: baselines",

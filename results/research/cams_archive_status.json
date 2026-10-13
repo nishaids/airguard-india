@@ -2257,5 +2257,105 @@
       27760
     ],
     "reason": "Author prohibited new requests; previous submission-enabled worker stopped before reconciliation."
-  }
+  },
+  "development_join": {
+    "table": "data/research/cams_operational/aligned/ff8259be632d062e4eaec6706fd32ed55bab520b46e260c4cb61d3a1dc91ad38/development_alignment.parquet",
+    "sha256": "e9ecca99412bf916fe4ba6e7fc65eee0dd758409f1d490b866a8522b9d9f646d",
+    "date_range": [
+      "2025-02-19",
+      "2025-06-01"
+    ],
+    "rows": 18540,
+    "stations": 180,
+    "cities": 100,
+    "dates": 103,
+    "exact_targets": 11634,
+    "censored_severe_retained": 7,
+    "rejected_targets_retained": 6899,
+    "availability_violations": 0
+  },
+  "primary_fold_readiness": {
+    "status": "BLOCKED_NO_ELIGIBLE_FOLDS",
+    "preflight_run_id": "5c98aa20410529a6439903bd05b18d529d1a15c693142e7aa56934fdd89c4c27",
+    "eligible_folds": 0,
+    "station_minimum_valid_training_days": 120,
+    "folds": [
+      {
+        "fold": "fold_01",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 48,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_02",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 77,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_03",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 107,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_04",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 137,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_05",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 167,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_06",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 197,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_07",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 227,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_08",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 257,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_09",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 287,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_10",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 317,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_11",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 347,
+        "can_fit": false
+      },
+      {
+        "fold": "fold_12",
+        "eligible_training_stations": 0,
+        "missing_archive_dates": 377,
+        "can_fit": false
+      }
+    ],
+    "fitting_performed": false,
+    "model_selection_lock_created": false,
+    "required_action": "STOP_INSUFFICIENT_DEVELOPMENT_DATES"
+  },
+  "checkpoint_code_commit": "106c33eafac531a04dae99f19ec0005ae808ff6a"
 }

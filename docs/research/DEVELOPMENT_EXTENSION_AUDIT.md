@@ -1,6 +1,6 @@
 # Post-paper extension audit
 
-Checkpoint: 2026-10-13T19:16:03.423817+00:00. Research branch; code checkpoint `9ac8b5a607246ced7150bfa47591c3398d72b5d8`. Final test remains sealed.
+Checkpoint: 2026-10-13T20:05:39.026617+00:00. Research branch; code checkpoint `106c33eafac531a04dae99f19ec0005ae808ff6a`. Final test remains sealed.
 
 Reused immutable run `54efbbe1af8a7e03c30a19060e6d2259b78949f62deb3eabe64e34143ef1a9c2`; development predictions and source checksums passed. No experiment was rerun. All accepted learners were fitted independently of the excluded floor surrogate. Their scores remain post-paper exploratory findings, not primary CAMS results.
 

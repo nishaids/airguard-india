@@ -1,6 +1,6 @@
 # Continuation reproducibility
 
-Checkpoint: 2026-10-13T19:16:03.423817+00:00. Research branch; code checkpoint `9ac8b5a607246ced7150bfa47591c3398d72b5d8`. Final test remains sealed.
+Checkpoint: 2026-10-13T20:05:39.026617+00:00. Research branch; code checkpoint `106c33eafac531a04dae99f19ec0005ae808ff6a`. Final test remains sealed.
 
 Use the existing `.venv-live` runtime. Immutable extension metadata records Python 3.10.6, NumPy 2.2.6, pandas 2.3.3, scikit-learn 1.7.2, LightGBM 4.7.0, PyArrow 23.0.1 and SciPy 1.15.3. Seeds are 42; full primary runtime/search grids are in each plan.json.
 

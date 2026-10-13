@@ -1,12 +1,12 @@
 # Limitations and future work
 
-Checkpoint: 2026-10-13T19:16:03.423817+00:00. Research branch; code checkpoint `9ac8b5a607246ced7150bfa47591c3398d72b5d8`. Final test remains sealed.
+Checkpoint: 2026-10-13T20:05:39.026617+00:00. Research branch; code checkpoint `106c33eafac531a04dae99f19ec0005ae808ff6a`. Final test remains sealed.
 
 | Issue | State | Evidence | Next action |
 | --- | --- | --- | --- |
 | Measured QC, Severe censoring and target support | RESOLVED | Locked v3.1 dataset and tests; three-species research target preserved. | No retrospective redefinition. |
 | ADS credential setup | RESOLVED | Genuine operational GRIBs verified. | Never disclose credentials. |
-| Operational archive coverage | EXTERNALLY BLOCKED | {'VERIFIED_GRIB': 7, 'running': 1} | Existing ADS worker must complete remaining chunks. |
+| Operational archive coverage | BLOCKED | {'VERIFIED_GRIB': 8, 'running': 1} | New submissions paused by author; acquired dates insufficient for primary folds. |
 | Primary comparisons, selection and lock | REQUIRES MORE DATA | No eligible primary fold; no real primary fit. | Complete archive then execute declared workflow. |
 | Severe forecasting | PARTIALLY RESOLVED | Bound-aware exploratory comparison completed; no tail learner dominates. | Primary severity evaluation and prospective extremes. |
 | Uncertainty and warning costs | PARTIALLY RESOLVED | Delayed exploratory calibration and balanced operating points recorded. | Primary calibration; no guarantee or invented optimum. |

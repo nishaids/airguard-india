@@ -1,6 +1,6 @@
 # Exploratory uncertainty findings
 
-Checkpoint: 2026-10-13T19:16:03.423817+00:00. Research branch; code checkpoint `9ac8b5a607246ced7150bfa47591c3398d72b5d8`. Final test remains sealed.
+Checkpoint: 2026-10-13T20:05:39.026617+00:00. Research branch; code checkpoint `106c33eafac531a04dae99f19ec0005ae808ff6a`. Final test remains sealed.
 
 Nominal 90% intervals; populations must not be interchanged. Delayed online updates use outcomes from D-2 or earlier. Their censored contributions are lower-bound nonconformity scores, not exact errors. No conditional-coverage or operational guarantee is claimed.
 

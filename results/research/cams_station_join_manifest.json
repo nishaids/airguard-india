@@ -16,5 +16,9 @@
   "availability_violations": 0,
   "missing_cams_dates": 403,
   "final_test_accessed": false,
-  "source_manifest": "results/research/cams_development_alignment.json"
+  "source_manifest": "results/research/cams_development_alignment.json",
+  "date_range": [
+    "2025-02-19",
+    "2025-06-01"
+  ]
 }

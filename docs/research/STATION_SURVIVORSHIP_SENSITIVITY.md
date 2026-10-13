@@ -1,6 +1,6 @@
 # Station-cohort survivorship sensitivity
 
-Checkpoint: 2026-10-13T19:16:03.423817+00:00. Research branch; code checkpoint `9ac8b5a607246ced7150bfa47591c3398d72b5d8`. Final test remains sealed.
+Checkpoint: 2026-10-13T20:05:39.026617+00:00. Research branch; code checkpoint `106c33eafac531a04dae99f19ec0005ae808ff6a`. Final test remains sealed.
 
 Inherited rule: stations with at least 30 valid targets in the first fold training window, fixed for all folds; eligibility window `['2025-02-19', '2025-05-19']`. This applies the preliminary study's 30-valid-day rule, not the primary protocol's 120-day requirement.
 

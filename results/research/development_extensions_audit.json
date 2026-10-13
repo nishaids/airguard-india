@@ -1,0 +1,40 @@
+{
+  "recorded_at_utc": "2026-10-13T18:30:54.497063+00:00",
+  "run_id": "54efbbe1af8a7e03c30a19060e6d2259b78949f62deb3eabe64e34143ef1a9c2",
+  "artifact": "results/research/extensions/54efbbe1af8a7e03c30a19060e6d2259b78949f62deb3eabe64e34143ef1a9c2/results.json",
+  "artifact_sha256": "e9fcc80e48fea70c6a1e8dad78967699f45fcf72e5f4ef6974aebbfa0372b82e",
+  "recovered_source_sha256": "9e3303107dc3e1d475879d0f3e4f9487a36c9c72013830ae36b54a65435a5b64",
+  "development_table_checks": {
+    "history": {
+      "sha256": "9836fded24d6c4107ca8e9365e7e7584ef82e8d1d23f7d7da21ff76432ddfd7b",
+      "rows": 31928,
+      "last_date": "2026-06-15",
+      "check": "METADATA_AND_CHECKSUM_ONLY"
+    },
+    "all": {
+      "sha256": "54785dfe69f644d7754b9545be9f7ef74a750ca7efd74500269cf83c10277b62",
+      "rows": 38745,
+      "last_date": "2026-06-15",
+      "check": "METADATA_AND_CHECKSUM_ONLY"
+    }
+  },
+  "excluded_method": "lgbm_censored_floor",
+  "exclusion_reason": "Uses censored Severe lower bounds as exact regression labels; violates preserved exact-fit exclusion.",
+  "accepted_independent_methods": [
+    "persistence",
+    "ridge_weather_same_rows",
+    "ridge_history",
+    "ridge_persistence_residual",
+    "lgbm_history",
+    "lgbm_persistence_residual",
+    "lgbm_tail_weighted",
+    "max_persistence_ridge",
+    "ridge_weather_all_pairs"
+  ],
+  "scope": "Exploratory post-paper non-CAMS analysis; no primary selection, final scoring or deployment.",
+  "historical_artifact_modified": false,
+  "paper_modified": false,
+  "final_test_accessed": false,
+  "future_runner_version": "development-extensions-v2",
+  "v2_experiments_executed": false
+}

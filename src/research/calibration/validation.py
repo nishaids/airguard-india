@@ -38,6 +38,8 @@ TESTED_MODULES = (
     'src/research/calibration/cams_acquisition.py', 'src/research/calibration/cams_baseline.py',
     'src/research/calibration/cams_physics.py', 'src/research/calibration/primary_dataset.py',
     'src/research/calibration/operational_features.py',
+    'src/research/calibration/primary_experiments.py', 'src/research/calibration/primary_uncertainty.py',
+    'src/research/calibration/extensions.py',
 )
 CPCB_REQUIRED_TESTS = {
     'closed_breakpoints': ('tests.test_nationwide', 'test_all_closed_breakpoints'),

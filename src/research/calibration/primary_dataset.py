@@ -22,7 +22,7 @@ from src.research.calibration.validation import normalized_text_sha256
 from src.research.calibration import operational_features, primary
 
 ROOT = config.PROJECT_ROOT
-FEATURE_VERSION = 'operational-cams-station-alignment-v2'
+FEATURE_VERSION = 'operational-cams-station-alignment-v3'
 FIXED_SUPPORT = frozenset(('PM2.5', 'PM10', 'O3'))
 
 
@@ -37,7 +37,7 @@ def read_development(path, protocol):
 
 
 def predictors(frame):
-    allowed = ('cams_conc_', 'cams_sub_', 'cams_hourly_', 'obs24_conc_', 'obs_pm25_', 'wx_', 'history_', 'bias_', 'nbr', 'region_obs')
+    allowed = ('cams_conc_', 'cams_sub_', 'cams_hourly_', 'cams_dom_', 'obs24_conc_', 'obs_pm25_', 'wx_', 'history_', 'bias_', 'nbr', 'region_obs')
     names = [n for n in frame if n.startswith(allowed) and n != 'wx_hours']
     names += [n for n in ('cams_aqi_frozen', 'cams_six', 'obs24_aqi', 'latitude', 'longitude',
                          'cell_row', 'cell_column', 'cell_station_count', 'nearest_station_km',
@@ -83,6 +83,9 @@ def align(measured, forecasts, protocol, *, enrich=False):
             raise ValueError('Forecast issue timestamp differs from locked 20:00 IST clock')
     frame['cams_matched_evaluation_only'] = matched
     frame['matched_support_equals_frozen_support'] = support_equivalent
+    for pollutant in ('PM2.5', 'PM10', 'O3'):
+        if 'cams_dominant_static_three' in frame:
+            frame['cams_dom_'+pollutant] = (frame.cams_dominant_static_three == pollutant).astype(float)
     if enrich:
         frame = pd.concat([frame, operational_features.history_features(frame, measured, forecasts),
                            operational_features.neighbour_features(frame, measured)], axis=1)
@@ -149,8 +152,11 @@ def build():
               'reader_filter': 'target_date < '+str(final_start(protocol)),
               'per_run_publication_empirically_verified': False,
               'availability_limitation': 'Documented nominal dissemination; historical delivery logs unknown. Measured history assumes a healthy feed with 3h latency.',
-              'complete_primary_feature_dataset': False, 'model_fitting_performed': False,
-              'remaining_features': ['cutoff-aligned CAMS bias_now descriptor', 'spatial-regime donor masking in primary runner', 'fire historical publication evidence'],
+              'complete_primary_feature_dataset': bool(json.loads(archive.STATE.read_text())['complete'] and frame.elevation.notna().all()),
+              'model_fitting_performed': False,
+              'excluded_unavailable_predictors': ['prototype cutoff-aligned CAMS bias_now', 'fire inputs without historical publication evidence'],
+              'recent_bias_implementation': 'Preregistered recent bias supplied by D-2 and seven-day exact-history bias; no extra early-lead request is required for these features',
+              'remaining_primary_work': ['complete paired archive coverage', 'execute protocol-eligible comparisons', 'reproduction and selection lock audit'],
               'history_policy': 'D-2/D-3/D-7 date-keyed exact history; censored lag indicator retained; no exact bias on censored targets',
               'elevation_missing_rows': int(frame.elevation.isna().sum()),
               'fold_coverage': folds}

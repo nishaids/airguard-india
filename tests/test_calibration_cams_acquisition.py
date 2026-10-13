@@ -67,3 +67,52 @@ def test_pending_and_failed_jobs_never_resubmitted(tmp_path,monkeypatch):
         assert empty['counts']=={}
         assert calls.count('submit')==1
     finally: logging.disable(old)
+
+
+def test_transport_failure_reopens_existing_id_without_submitting(tmp_path,monkeypatch):
+    plan=archive.make_plan(load(),selection())
+    plan['jobs']=plan['jobs'][:2]
+    monkeypatch.setattr(archive,'ROOT',tmp_path)
+    monkeypatch.setattr(archive,'STATE',tmp_path/'state.json')
+    monkeypatch.setattr(archive,'freeze',lambda:plan)
+    first,second=(job['id'] for job in plan['jobs'])
+    transport={'category':'CLIENT_OR_SERVICE_ERROR','http_status':None,'terms_mentioned':False}
+    def write(entries):
+        archive.STATE.write_text(json.dumps({'plan_sha256':plan['sha256'],'dataset':'d','jobs':entries,'final_test_accessed':False}))
+    base={'status':'RETRIEVAL_OR_VALIDATION_FAILED','request_id':'EXISTING_ID','error':transport}
+    write({first:dict(base)})
+    result=archive.reopen_transport_failure(first[:12],'network interruption during polling')
+    entry=json.loads(archive.STATE.read_text())['jobs'][first]
+    assert result=={'reopened':first[:12],'counts':{'running':1},'new_request_submitted':False}
+    assert entry['status']=='running' and entry['request_id']=='EXISTING_ID' and 'error' not in entry
+    assert entry['recovery_history'][0]['previous_error']==transport
+    assert entry['recovery_history'][0]['new_request_submitted'] is False
+    refused=[
+        {first:{**base,'error':{**transport,'http_status':400,'category':'REQUEST_REJECTED'}}},  # provider rejection
+        {first:{**base,'request_id':None}},                                                   # ambiguous submission
+        {first:{**base,'file':'data/x.grib'}},                                                # validation failure
+        {first:{**base,'status':'SUBMISSION_FAILED'}},
+        {first:dict(base),second:dict(base)},                                                 # ambiguous identifier
+    ]
+    for index,entries in enumerate(refused):
+        write(entries)
+        with pytest.raises(ValueError):
+            archive.reopen_transport_failure(first[:12] if index<4 else '', 'note')
+        assert json.loads(archive.STATE.read_text())['jobs']==entries
+    # A reopened job is polled, never resubmitted.
+    write({first:dict(base)})
+    archive.reopen_transport_failure(first[:12],'note')
+    calls=[]
+    class Remote:
+        status='running'
+    class Client:
+        def __init__(self,**kw): self.client=self
+        def retrieve(self,*args): calls.append('submit')
+        def get_remote(self,id): calls.append(('poll',id)); return Remote()
+    monkeypatch.setitem(sys.modules,'cdsapi',SimpleNamespace(Client=Client))
+    old=logging.root.manager.disable
+    try:
+        assert archive.step(poll_only=True)['counts']=={'running':1}
+        assert archive.step()['counts']=={'running':1}
+    finally: logging.disable(old)
+    assert calls==[('poll','EXISTING_ID'),('poll','EXISTING_ID')]

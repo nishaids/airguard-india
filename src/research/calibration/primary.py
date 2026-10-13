@@ -190,7 +190,7 @@ def guard_primary_row(row, features):
     for name in features:
         if not isinstance(name, str):
             raise LeakageError('Primary predictor names must be strings')
-        if name.startswith(('y_','target_')) or name in ('censored','quality_flags','cams_matched','y_support'):
+        if name.startswith(('y_','target_', 'cams_matched')) or name in ('censored','quality_flags','y_support', 'matched_support_equals_frozen_support'):
             raise LeakageError('Outcome-dependent pollutant support/target metadata cannot be a predictor')
         value = row.get(name)
         if value is None or (isinstance(value, Real) and math.isnan(value)):

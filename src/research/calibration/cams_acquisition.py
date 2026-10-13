@@ -248,10 +248,48 @@ def step(*, poll_only=False):
         return {'complete':record['complete'],'counts':record['counts'],'total_jobs':len(plan['jobs'])}
 
 
+def reopen_transport_failure(job_prefix, note):
+    """Reviewed recovery of one existing remote ID after a transport failure.
+
+    Nothing is submitted. The entry returns to a pollable state only when the
+    recorded failure carried no provider status and no file was written, so a
+    rejected request or a validation failure can never be reopened this way.
+    """
+    plan = freeze()
+    folder = ROOT/'data/research/cams_operational'/plan['sha256']
+    with lease(folder):
+        record = json.loads(STATE.read_text(encoding='utf-8'))
+        if record['plan_sha256'] != plan['sha256']:
+            raise ValueError('Archive state belongs to a different frozen plan')
+        matches = [key for key in record['jobs'] if key.startswith(job_prefix)]
+        if len(job_prefix) < 8 or len(matches) != 1:
+            raise ValueError('Exactly one existing job must match the reviewed identifier')
+        entry, error = record['jobs'][matches[0]], record['jobs'][matches[0]].get('error') or {}
+        if (entry['status'] != 'RETRIEVAL_OR_VALIDATION_FAILED' or not entry.get('request_id') or entry.get('file')
+                or error.get('category') != 'CLIENT_OR_SERVICE_ERROR' or error.get('http_status') is not None
+                or (folder/(matches[0]+'.grib')).exists()):
+            raise ValueError('Only a transport failure with an existing remote ID and no downloaded file may be reopened')
+        entry.setdefault('recovery_history', []).append({'reopened_at_utc':ads_probe.now(), 'previous_status':entry['status'],
+            'previous_error':error, 'review_note':str(note), 'new_request_submitted':False})
+        entry['status'] = 'running'  # re-polled under the original ID by the next step
+        entry.pop('error', None)
+        record['checked_at_utc'] = ads_probe.now()
+        record['counts'] = {s:sum(j['status']==s for j in record['jobs'].values()) for s in sorted({j['status'] for j in record['jobs'].values()})}
+        record['complete'] = False
+        write_json(STATE, record)
+        return {'reopened':matches[0][:12], 'counts':record['counts'], 'new_request_submitted':False}
+
+
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('--step',action='store_true')
     parser.add_argument('--poll-only',action='store_true',help='Recheck/download existing IDs; never submit a request')
+    parser.add_argument('--reopen-transport-failure',metavar='JOB_PREFIX',help='Reviewed re-poll of one existing remote ID; never submits')
+    parser.add_argument('--review-note',default='')
     parser.add_argument('--worker-hours',type=float,default=0); args=parser.parse_args()
+    if args.reopen_transport_failure:
+        if not args.review_note.strip():
+            raise ValueError('A review note is required')
+        print(json.dumps(reopen_transport_failure(args.reopen_transport_failure, args.review_note))); return
     if not args.step and not args.worker_hours and not args.poll_only:
         p=freeze(); print(json.dumps({k:p[k] for k in ('sha256','run_range','run_count','area','station_count')})); return
     deadline=time.monotonic()+min(24,max(0,args.worker_hours))*3600

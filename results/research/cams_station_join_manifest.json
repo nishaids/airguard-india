@@ -1,0 +1,20 @@
+{
+  "sha256": "0dd0f06987815dc95a4a07ab10d15c33637b37c660928a5a3151b0423e478412",
+  "table": "data/research/cams_operational/aligned/bd0985ce0e90006c9a610e226d245060ad6f18c9496a75ecc9956b0ac0989e4f/development_alignment.parquet",
+  "feature_version": "operational-cams-station-alignment-v3",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "rows": 12960,
+  "stations": 180,
+  "cities": 100,
+  "dates": 72,
+  "valid_targets": 8487,
+  "censored_severe_retained": 3,
+  "rejected_targets_retained": 4473,
+  "guarded_rows": 12960,
+  "status": "PARTIAL_GUARDED_DEVELOPMENT_ALIGNMENT",
+  "exact_targets": 8484,
+  "availability_violations": 0,
+  "missing_cams_dates": 434,
+  "final_test_accessed": false,
+  "source_manifest": "results/research/cams_development_alignment.json"
+}

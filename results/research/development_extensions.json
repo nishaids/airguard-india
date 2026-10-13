@@ -1,0 +1,1973 @@
+{
+  "generated_at": "2026-10-13T17:54:43.163597+00:00",
+  "experiment": "NON_CAMS_DEVELOPMENT_EXTENSIONS",
+  "status": "EXPLORATORY_POST_PAPER",
+  "run_id": "54efbbe1af8a7e03c30a19060e6d2259b78949f62deb3eabe64e34143ef1a9c2",
+  "plan": {
+    "experiment": "NON_CAMS_DEVELOPMENT_EXTENSIONS",
+    "version": "development-extensions-v1",
+    "status": "EXPLORATORY_POST_PAPER",
+    "selection": "none; no model, interval method or warning rule is selected, locked or deployed here",
+    "point_candidates": {
+      "persistence": "AQI of the 24 h ending at the 17:00 cutoff (reference)",
+      "ridge_weather_same_rows": "paper Weather Ridge refitted on history-available rows (reference)",
+      "ridge_history": "paper History Ridge (reference)",
+      "ridge_persistence_residual": "Ridge on target minus persistence; shrinks toward persistence, not the mean",
+      "lgbm_history": "LightGBM, squared error, history features",
+      "lgbm_persistence_residual": "LightGBM on target minus persistence",
+      "lgbm_tail_weighted": "LightGBM, sample weight 1 + observed category index",
+      "lgbm_censored_floor": "LightGBM trained with censored Severe days at their 401 lower bound (biased low by construction)",
+      "max_persistence_ridge": "maximum of persistence and History Ridge (threshold-aware heuristic)"
+    },
+    "lightgbm": {
+      "n_estimators": 300,
+      "learning_rate": 0.05,
+      "num_leaves": 31,
+      "min_child_samples": 60,
+      "subsample": 0.8,
+      "subsample_freq": 1,
+      "colsample_bytree": 0.8,
+      "random_state": 42,
+      "n_jobs": 4,
+      "deterministic": true,
+      "force_col_wise": true,
+      "verbose": -1
+    },
+    "quantile_levels": [
+      0.5,
+      0.6,
+      0.7,
+      0.75,
+      0.8,
+      0.9,
+      0.95
+    ],
+    "quantile_rounds": 200,
+    "interval_level": 0.9,
+    "rolling_window_days": 30,
+    "outcome_delay_days": 2,
+    "adaptive_gamma": 0.02,
+    "scale_floor": 50.0,
+    "interval_note": "outcomes of day D-1 are incomplete at the 20:00 issue on D-1, so recalibration uses dates up to D-2",
+    "survivorship_cohort": "stations with at least 30 valid targets in the first fold training window, fixed for all folds",
+    "final_test": "SEALED; rows filtered by date before materialisation"
+  },
+  "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
+  "protocol_sha256": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
+  "code_sha256": "9e3303107dc3e1d475879d0f3e4f9487a36c9c72013830ae36b54a65435a5b64",
+  "git_sha": "b41022197f31cd5b7375dfc2e8077550ac4048e3",
+  "runtime": {
+    "python": "3.10.6",
+    "packages": {
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.7.2",
+      "lightgbm": "4.7.0",
+      "pyarrow": "23.0.1",
+      "scipy": "1.15.3"
+    }
+  },
+  "reader_filter": "target_date < 2026-07-10",
+  "final_test_accessed": false,
+  "final_test_scored": false,
+  "paper_run_modified": false,
+  "selection_made": false,
+  "populations": {
+    "all_pairs": {
+      "outcomes": 38745,
+      "exact": 38382,
+      "censored_severe": 363
+    },
+    "history_pairs": {
+      "outcomes": 31928,
+      "exact": 31622,
+      "censored_severe": 306
+    }
+  },
+  "point": {
+    "persistence": {
+      "n_exact": 31622,
+      "mae": 27.474416545443045,
+      "rmse": 48.129014103849705,
+      "bias": 0.9702738599709063,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 22.58300564810181,
+        "bias": 5.824015156931436
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 64.98327850877193,
+        "bias": -36.24972587719298
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 61.009419152276294,
+        "bias": -22.085295656724227
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 69.35521013241221,
+        "bias": -51.83304548071388
+      },
+      "category_accuracy": 0.6677837634678025,
+      "within_one_category": 0.9633863693309948,
+      "under_warning": 0.1642132297669757,
+      "over_warning": 0.16800300676522176,
+      "serious_under_warning": 0.0170383362565773,
+      "poor_or_worse_under_warning": 0.4312089023773394,
+      "severe": {
+        "n": 306,
+        "reaches_401": 147,
+        "reaches_very_poor": 259,
+        "mean_shortfall_lower_bound": 50.84313725490196
+      }
+    },
+    "ridge_weather_same_rows": {
+      "n_exact": 31622,
+      "mae": 44.474994176391824,
+      "rmse": 68.23713501501169,
+      "bias": -17.668928810702266,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 28.946296742275088,
+        "bias": 1.355461997763356
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 163.55388179206662,
+        "bias": -163.55388179206662
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 124.94669540185653,
+        "bias": -124.94669540185653
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 206.0284547291372,
+        "bias": -206.0284547291372
+      },
+      "category_accuracy": 0.47826359308444,
+      "within_one_category": 0.9015910799298421,
+      "under_warning": 0.2800050112753696,
+      "over_warning": 0.24173139564019042,
+      "serious_under_warning": 0.08656978200952142,
+      "poor_or_worse_under_warning": 1.0,
+      "severe": {
+        "n": 306,
+        "reaches_401": 0,
+        "reaches_very_poor": 0,
+        "mean_shortfall_lower_bound": 258.8935540422476
+      },
+      "minus_persistence": {
+        "mae_difference": 17.00057763094878,
+        "ci95": [
+          13.33436317742309,
+          21.06417940372012
+        ]
+      },
+      "minus_persistence_poor_or_worse": {
+        "n": 3648,
+        "mae_difference": 98.5706032832947,
+        "ci95": [
+          87.97130727088647,
+          107.5886926914726
+        ]
+      }
+    },
+    "ridge_history": {
+      "n_exact": 31622,
+      "mae": 28.088844440140345,
+      "rmse": 46.202835885579496,
+      "bias": -7.167347640228313,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 20.35522990793295,
+        "bias": 2.8546141076909897
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 87.39260894780742,
+        "bias": -84.0188711973266
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 66.03664773520784,
+        "bias": -60.40572770225106
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 110.88785470329263,
+        "bias": -109.99740730503493
+      },
+      "category_accuracy": 0.635304434978702,
+      "within_one_category": 0.9685542470558757,
+      "under_warning": 0.19960536206464546,
+      "over_warning": 0.16509020295665247,
+      "serious_under_warning": 0.02543222250062641,
+      "poor_or_worse_under_warning": 0.7926150733434497,
+      "severe": {
+        "n": 306,
+        "reaches_401": 1,
+        "reaches_very_poor": 127,
+        "mean_shortfall_lower_bound": 125.08425048223754
+      },
+      "minus_persistence": {
+        "mae_difference": 0.6144278946972983,
+        "ci95": [
+          -0.40867685542106413,
+          1.7040475542111795
+        ]
+      },
+      "minus_persistence_poor_or_worse": {
+        "n": 3648,
+        "mae_difference": 22.409330439035497,
+        "ci95": [
+          17.58201629146466,
+          26.893603025651327
+        ]
+      }
+    },
+    "ridge_persistence_residual": {
+      "n_exact": 31622,
+      "mae": 28.080959885655663,
+      "rmse": 46.1866232064075,
+      "bias": -7.156978628412413,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 20.353895862539,
+        "bias": 2.8575640849847654
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 87.33449304976357,
+        "bias": -83.95161071848167
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 66.0002777015335,
+        "bias": -60.35095243858537
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 110.80581459867985,
+        "bias": -109.91641093315172
+      },
+      "category_accuracy": 0.6354610373340015,
+      "within_one_category": 0.9685542470558757,
+      "under_warning": 0.19957404159358558,
+      "over_warning": 0.16496492107241292,
+      "serious_under_warning": 0.025400902029566526,
+      "poor_or_worse_under_warning": 0.7918563480020233,
+      "severe": {
+        "n": 306,
+        "reaches_401": 1,
+        "reaches_very_poor": 127,
+        "mean_shortfall_lower_bound": 125.00206177367708
+      },
+      "minus_persistence": {
+        "mae_difference": 0.6065433402126189,
+        "ci95": [
+          -0.4143602719278394,
+          1.6951734630505197
+        ]
+      },
+      "minus_persistence_poor_or_worse": {
+        "n": 3648,
+        "mae_difference": 22.35121454099162,
+        "ci95": [
+          17.532396663067747,
+          26.829898064723395
+        ]
+      }
+    },
+    "lgbm_history": {
+      "n_exact": 31622,
+      "mae": 26.359515733652092,
+      "rmse": 43.17078913005938,
+      "bias": -7.363241146249676,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 18.436170765860822,
+        "bias": 2.549681957283819
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 87.11819230409974,
+        "bias": -83.37862242318114
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 65.85694579183216,
+        "bias": -59.909174273224245
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 110.50923553089501,
+        "bias": -109.19906883341007
+      },
+      "category_accuracy": 0.649993735905788,
+      "within_one_category": 0.9690866950638938,
+      "under_warning": 0.19017790027562015,
+      "over_warning": 0.15982836381859183,
+      "serious_under_warning": 0.02875219243297419,
+      "poor_or_worse_under_warning": 0.7754172989377845,
+      "severe": {
+        "n": 306,
+        "reaches_401": 0,
+        "reaches_very_poor": 116,
+        "mean_shortfall_lower_bound": 130.28829916137448
+      },
+      "minus_persistence": {
+        "mae_difference": -1.1149008117909516,
+        "ci95": [
+          -2.162138802190587,
+          0.01914275237371315
+        ]
+      },
+      "minus_persistence_poor_or_worse": {
+        "n": 3648,
+        "mae_difference": 22.13491379532782,
+        "ci95": [
+          16.07789034315522,
+          28.189301720828063
+        ]
+      }
+    },
+    "lgbm_persistence_residual": {
+      "n_exact": 31622,
+      "mae": 26.359806054027345,
+      "rmse": 43.32055616753419,
+      "bias": -6.919898256435853,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 18.535762076957102,
+        "bias": 2.8707359349268233
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 86.35701170494924,
+        "bias": -81.99753007364515
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 65.68390920838678,
+        "bias": -58.51359110974572
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 109.10099493519154,
+        "bias": -107.8339188819421
+      },
+      "category_accuracy": 0.6530005011275369,
+      "within_one_category": 0.969024054121774,
+      "under_warning": 0.18187797544475068,
+      "over_warning": 0.16512152342771236,
+      "serious_under_warning": 0.02821974442495615,
+      "poor_or_worse_under_warning": 0.7460799190692969,
+      "severe": {
+        "n": 306,
+        "reaches_401": 0,
+        "reaches_very_poor": 150,
+        "mean_shortfall_lower_bound": 116.77970649232333
+      },
+      "minus_persistence": {
+        "mae_difference": -1.1146104914156987,
+        "ci95": [
+          -2.1642038231450273,
+          0.034877934032731144
+        ]
+      },
+      "minus_persistence_poor_or_worse": {
+        "n": 3648,
+        "mae_difference": 21.373733196177305,
+        "ci95": [
+          14.713693157812312,
+          28.098686899234565
+        ]
+      }
+    },
+    "lgbm_tail_weighted": {
+      "n_exact": 31622,
+      "mae": 27.709485745387507,
+      "rmse": 42.93167126031294,
+      "bias": -1.536667513153397,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 20.664709571560614,
+        "bias": 8.361897255563786
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 81.73102321431112,
+        "bias": -77.44194460747755
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 60.105741006947916,
+        "bias": -52.87626853233454
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 105.5225685788886,
+        "bias": -104.46843106665908
+      },
+      "category_accuracy": 0.617138561763969,
+      "within_one_category": 0.9683976447005763,
+      "under_warning": 0.16086193936356802,
+      "over_warning": 0.22199949887246304,
+      "serious_under_warning": 0.026465798045602607,
+      "poor_or_worse_under_warning": 0.7554375316135559,
+      "severe": {
+        "n": 306,
+        "reaches_401": 0,
+        "reaches_very_poor": 75,
+        "mean_shortfall_lower_bound": 130.09254465603908
+      },
+      "minus_persistence": {
+        "mae_difference": 0.23506919994445696,
+        "ci95": [
+          -0.7600246565962482,
+          1.2822687930854821
+        ]
+      },
+      "minus_persistence_poor_or_worse": {
+        "n": 3648,
+        "mae_difference": 16.747744705539187,
+        "ci95": [
+          10.833461662917172,
+          22.46970090042495
+        ]
+      }
+    },
+    "lgbm_censored_floor": {
+      "n_exact": 31622,
+      "mae": 26.14541773229568,
+      "rmse": 42.84290165853443,
+      "bias": -6.632182939840108,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 18.48818456909833,
+        "bias": 2.9561576138591263
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 84.86346611696746,
+        "bias": -80.15856414849756
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 64.83329828044967,
+        "bias": -57.84831611961161
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 106.90011017890498,
+        "bias": -104.70369021827365
+      },
+      "category_accuracy": 0.653251064896016,
+      "within_one_category": 0.97008895013781,
+      "under_warning": 0.1853545477323979,
+      "over_warning": 0.16139438737158607,
+      "serious_under_warning": 0.02702956652468053,
+      "poor_or_worse_under_warning": 0.7526555386949925,
+      "severe": {
+        "n": 306,
+        "reaches_401": 2,
+        "reaches_very_poor": 137,
+        "mean_shortfall_lower_bound": 118.31851515522105
+      },
+      "minus_persistence": {
+        "mae_difference": -1.328998813147368,
+        "ci95": [
+          -2.3079517612756186,
+          -0.25554921332834435
+        ]
+      },
+      "minus_persistence_poor_or_worse": {
+        "n": 3648,
+        "mae_difference": 19.880187608195524,
+        "ci95": [
+          14.14067160874125,
+          25.58968064933811
+        ]
+      }
+    },
+    "max_persistence_ridge": {
+      "n_exact": 31622,
+      "mae": 28.09538601172614,
+      "rmse": 48.9361274638789,
+      "bias": 6.340875253883894,
+      "good_to_moderate": {
+        "n": 27974,
+        "mae": 23.431841780046028,
+        "bias": 11.734193295065548
+      },
+      "poor_or_worse": {
+        "n": 3648,
+        "mae": 63.85689542428631,
+        "bias": -35.016766984058975
+      },
+      "poor": {
+        "n": 1911,
+        "mae": 59.588975912510115,
+        "bias": -20.60611880867743
+      },
+      "very_poor": {
+        "n": 1737,
+        "mae": 68.55234400632678,
+        "bias": -50.8709688626739
+      },
+      "category_accuracy": 0.6509959909797043,
+      "within_one_category": 0.9654221999498872,
+      "under_warning": 0.1210849411175144,
+      "over_warning": 0.22791906790278127,
+      "serious_under_warning": 0.014657980456026058,
+      "poor_or_worse_under_warning": 0.4301972685887709,
+      "severe": {
+        "n": 306,
+        "reaches_401": 147,
+        "reaches_very_poor": 259,
+        "mean_shortfall_lower_bound": 50.59430901354432
+      },
+      "minus_persistence": {
+        "mae_difference": 0.620969466283095,
+        "ci95": [
+          0.3003821886339686,
+          0.9943850687477378
+        ]
+      },
+      "minus_persistence_poor_or_worse": {
+        "n": 3648,
+        "mae_difference": -1.1263830844856284,
+        "ci95": [
+          -1.500968371945039,
+          -0.7991253203884073
+        ]
+      }
+    },
+    "ridge_weather_all_pairs": {
+      "n_exact": 38382,
+      "mae": 43.856884913436936,
+      "rmse": 67.33177450670804,
+      "bias": -16.69232817489689,
+      "good_to_moderate": {
+        "n": 34032,
+        "mae": 28.666379175225323,
+        "bias": 1.9703749602543579
+      },
+      "poor_or_worse": {
+        "n": 4350,
+        "mae": 162.69902084052154,
+        "bias": -162.69902084052154
+      },
+      "poor": {
+        "n": 2307,
+        "mae": 124.43982968913821,
+        "bias": -124.43982968913821
+      },
+      "very_poor": {
+        "n": 2043,
+        "mae": 205.90213096594562,
+        "bias": -205.90213096594562
+      },
+      "category_accuracy": 0.4820234869015357,
+      "within_one_category": 0.9029036004645761,
+      "under_warning": 0.27136404697380306,
+      "over_warning": 0.24661246612466126,
+      "serious_under_warning": 0.08406245967221578,
+      "poor_or_worse_under_warning": 1.0,
+      "severe": {
+        "n": 363,
+        "reaches_401": 0,
+        "reaches_very_poor": 0,
+        "mean_shortfall_lower_bound": 258.6212426909474
+      }
+    }
+  },
+  "intervals": {
+    "all_pairs": {
+      "population": "all outcomes; weather-only point forecast",
+      "methods": {
+        "split@weather_ridge (paper)": {
+          "n_exact": 38382,
+          "coverage": 0.8755666718774425,
+          "mean_width": 169.19225039899766,
+          "median_width": 141.99925001270915,
+          "by_category": {
+            "Good": {
+              "n": 7541,
+              "coverage": 0.9201697387614375,
+              "mean_width": 111.88993293289134
+            },
+            "Satisfactory": {
+              "n": 14229,
+              "coverage": 0.9867172675521821,
+              "mean_width": 152.44883718492733
+            },
+            "Moderate": {
+              "n": 12262,
+              "coverage": 0.9137171750122329,
+              "mean_width": 201.69044351190996
+            },
+            "Poor": {
+              "n": 2307,
+              "coverage": 0.5396618985695709,
+              "mean_width": 224.43605332418272
+            },
+            "Very Poor": {
+              "n": 2043,
+              "coverage": 0.08712677435144396,
+              "mean_width": 228.05743431106598
+            }
+          },
+          "poor_or_worse": {
+            "n": 4350,
+            "coverage": 0.3271264367816092,
+            "mean_width": 226.1368536359534
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 12567,
+              "coverage": 0.9107981220657277,
+              "mean_width": 100.86985915427597
+            },
+            "post_monsoon": {
+              "n": 6634,
+              "coverage": 0.7381670183901116,
+              "mean_width": 147.14909216579954
+            },
+            "pre_monsoon": {
+              "n": 10261,
+              "coverage": 0.9239840171523244,
+              "mean_width": 179.51210642150886
+            },
+            "winter": {
+              "n": 8920,
+              "coverage": 0.8724215246636772,
+              "mean_width": 267.2631949327241
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 3592,
+              "coverage": 0.9320712694877505,
+              "mean_width": 169.6047644902243
+            },
+            "East": {
+              "n": 7091,
+              "coverage": 0.8771682414328021,
+              "mean_width": 169.412617723224
+            },
+            "North": {
+              "n": 16532,
+              "coverage": 0.8206508589402371,
+              "mean_width": 174.91304159673834
+            },
+            "Northeast": {
+              "n": 820,
+              "coverage": 0.8597560975609756,
+              "mean_width": 168.47137572845807
+            },
+            "South": {
+              "n": 3680,
+              "coverage": 0.9263586956521739,
+              "mean_width": 143.1509800948979
+            },
+            "West": {
+              "n": 6667,
+              "coverage": 0.9535023248837559,
+              "mean_width": 165.3892748406475
+            }
+          },
+          "censored_severe": {
+            "n": 363,
+            "upper_reaches_401": 0
+          },
+          "worst_category_coverage": 0.08712677435144396
+        },
+        "rolling30@weather_ridge": {
+          "n_exact": 38382,
+          "coverage": 0.896878745245167,
+          "mean_width": 180.23716194529948,
+          "median_width": 151.42461017380495,
+          "by_category": {
+            "Good": {
+              "n": 7541,
+              "coverage": 0.9163240949476197,
+              "mean_width": 113.87378507806127
+            },
+            "Satisfactory": {
+              "n": 14229,
+              "coverage": 0.9881931267130508,
+              "mean_width": 157.88852643440237
+            },
+            "Moderate": {
+              "n": 12262,
+              "coverage": 0.9405480345783722,
+              "mean_width": 217.55837895190794
+            },
+            "Poor": {
+              "n": 2307,
+              "coverage": 0.6514954486345904,
+              "mean_width": 249.0414313278925
+            },
+            "Very Poor": {
+              "n": 2043,
+              "coverage": 0.20411160058737152,
+              "mean_width": 259.8649446444764
+            }
+          },
+          "poor_or_worse": {
+            "n": 4350,
+            "coverage": 0.4413793103448276,
+            "mean_width": 254.1247503407156
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 12567,
+              "coverage": 0.9068194477600063,
+              "mean_width": 100.58682737677766
+            },
+            "post_monsoon": {
+              "n": 6634,
+              "coverage": 0.8355441664154356,
+              "mean_width": 204.11061996702148
+            },
+            "pre_monsoon": {
+              "n": 10261,
+              "coverage": 0.9176493519150181,
+              "mean_width": 165.07278944622703
+            },
+            "winter": {
+              "n": 8920,
+              "coverage": 0.9045964125560538,
+              "mean_width": 287.7247934513743
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 3592,
+              "coverage": 0.9479398663697105,
+              "mean_width": 178.5514239083393
+            },
+            "East": {
+              "n": 7091,
+              "coverage": 0.9048089127062473,
+              "mean_width": 180.48826700800385
+            },
+            "North": {
+              "n": 16532,
+              "coverage": 0.8446044035809339,
+              "mean_width": 185.77753204656585
+            },
+            "Northeast": {
+              "n": 820,
+              "coverage": 0.8865853658536585,
+              "mean_width": 181.9700260229288
+            },
+            "South": {
+              "n": 3680,
+              "coverage": 0.9442934782608695,
+              "mean_width": 154.79428146746187
+            },
+            "West": {
+              "n": 6667,
+              "coverage": 0.9656517174141293,
+              "mean_width": 175.06074840764688
+            }
+          },
+          "censored_severe": {
+            "n": 363,
+            "upper_reaches_401": 0
+          },
+          "worst_category_coverage": 0.20411160058737152
+        },
+        "adaptive@weather_ridge": {
+          "n_exact": 38382,
+          "coverage": 0.9019853056120056,
+          "mean_width": 184.38856941141927,
+          "median_width": 152.70715706755516,
+          "by_category": {
+            "Good": {
+              "n": 7541,
+              "coverage": 0.9148654024665164,
+              "mean_width": 116.29730420100915
+            },
+            "Satisfactory": {
+              "n": 14229,
+              "coverage": 0.9876308946517676,
+              "mean_width": 160.85611751897036
+            },
+            "Moderate": {
+              "n": 12262,
+              "coverage": 0.9440548034578372,
+              "mean_width": 222.46937048130033
+            },
+            "Poor": {
+              "n": 2307,
+              "coverage": 0.6740355439965323,
+              "mean_width": 255.99850946355915
+            },
+            "Very Poor": {
+              "n": 2043,
+              "coverage": 0.26284875183553597,
+              "mean_width": 269.25765912757646
+            }
+          },
+          "poor_or_worse": {
+            "n": 4350,
+            "coverage": 0.48091954022988503,
+            "mean_width": 262.22573768507345
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 12567,
+              "coverage": 0.9073764621628073,
+              "mean_width": 100.79500540786435
+            },
+            "post_monsoon": {
+              "n": 6634,
+              "coverage": 0.8662948447392221,
+              "mean_width": 228.0083328610247
+            },
+            "pre_monsoon": {
+              "n": 10261,
+              "coverage": 0.913361270831303,
+              "mean_width": 163.1365546715198
+            },
+            "winter": {
+              "n": 8920,
+              "coverage": 0.907847533632287,
+              "mean_width": 289.3698146058162
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 3592,
+              "coverage": 0.9482182628062361,
+              "mean_width": 182.2596342007575
+            },
+            "East": {
+              "n": 7091,
+              "coverage": 0.9118601043576364,
+              "mean_width": 184.53041738124182
+            },
+            "North": {
+              "n": 16532,
+              "coverage": 0.8525889184611662,
+              "mean_width": 189.7899372910355
+            },
+            "Northeast": {
+              "n": 820,
+              "coverage": 0.8878048780487805,
+              "mean_width": 187.13876735981583
+            },
+            "South": {
+              "n": 3680,
+              "coverage": 0.9442934782608695,
+              "mean_width": 159.5633157139875
+            },
+            "West": {
+              "n": 6667,
+              "coverage": 0.9674516274186291,
+              "mean_width": 178.93883558895826
+            }
+          },
+          "censored_severe": {
+            "n": 363,
+            "upper_reaches_401": 0
+          },
+          "worst_category_coverage": 0.26284875183553597
+        }
+      }
+    },
+    "history_pairs": {
+      "population": "history-available outcomes",
+      "methods": {
+        "split@weather_ridge": {
+          "n_exact": 31622,
+          "coverage": 0.8707861615331098,
+          "mean_width": 167.83081624220395,
+          "median_width": 142.8506597696259,
+          "by_category": {
+            "Good": {
+              "n": 6104,
+              "coverage": 0.9154652686762779,
+              "mean_width": 109.2134010748357
+            },
+            "Satisfactory": {
+              "n": 11739,
+              "coverage": 0.9850924269528921,
+              "mean_width": 150.50341527855787
+            },
+            "Moderate": {
+              "n": 10131,
+              "coverage": 0.906919356430757,
+              "mean_width": 200.16725845055953
+            },
+            "Poor": {
+              "n": 1911,
+              "coverage": 0.531658817373103,
+              "mean_width": 224.3892590386008
+            },
+            "Very Poor": {
+              "n": 1737,
+              "coverage": 0.10362694300518134,
+              "mean_width": 228.18205575092242
+            }
+          },
+          "poor_or_worse": {
+            "n": 3648,
+            "coverage": 0.32785087719298245,
+            "mean_width": 226.19520418369467
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 10230,
+              "coverage": 0.9028347996089932,
+              "mean_width": 97.03631832451819
+            },
+            "post_monsoon": {
+              "n": 5478,
+              "coverage": 0.7318364366557137,
+              "mean_width": 146.13864758801694
+            },
+            "pre_monsoon": {
+              "n": 8566,
+              "coverage": 0.923768386644875,
+              "mean_width": 178.89842782000284
+            },
+            "winter": {
+              "n": 7348,
+              "coverage": 0.8679912901469787,
+              "mean_width": 266.845374481138
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 2905,
+              "coverage": 0.9294320137693631,
+              "mean_width": 166.7352722457561
+            },
+            "East": {
+              "n": 5938,
+              "coverage": 0.8757157292017514,
+              "mean_width": 168.92381233482482
+            },
+            "North": {
+              "n": 13874,
+              "coverage": 0.8154821969150929,
+              "mean_width": 173.42703860000228
+            },
+            "Northeast": {
+              "n": 615,
+              "coverage": 0.8780487804878049,
+              "mean_width": 168.68001184112987
+            },
+            "South": {
+              "n": 2863,
+              "coverage": 0.9200139713587147,
+              "mean_width": 142.22432167481963
+            },
+            "West": {
+              "n": 5427,
+              "coverage": 0.9485903814262023,
+              "mean_width": 162.5141063292202
+            }
+          },
+          "censored_severe": {
+            "n": 306,
+            "upper_reaches_401": 0
+          },
+          "worst_category_coverage": 0.10362694300518134
+        },
+        "split@persistence": {
+          "n_exact": 31622,
+          "coverage": 0.8927645310227057,
+          "mean_width": 121.92057128539213,
+          "median_width": 122.0,
+          "by_category": {
+            "Good": {
+              "n": 6104,
+              "coverage": 0.955602883355177,
+              "mean_width": 84.71641546526868
+            },
+            "Satisfactory": {
+              "n": 11739,
+              "coverage": 0.9410511968651504,
+              "mean_width": 114.46716074623052
+            },
+            "Moderate": {
+              "n": 10131,
+              "coverage": 0.8766163261277268,
+              "mean_width": 141.69568650676143
+            },
+            "Poor": {
+              "n": 1911,
+              "coverage": 0.6703296703296703,
+              "mean_width": 151.74306645735217
+            },
+            "Very Poor": {
+              "n": 1737,
+              "coverage": 0.6845135290731146,
+              "mean_width": 150.00115141047783
+            }
+          },
+          "poor_or_worse": {
+            "n": 3648,
+            "coverage": 0.6770833333333334,
+            "mean_width": 150.91365131578948
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 10230,
+              "coverage": 0.9141739980449658,
+              "mean_width": 82.1869990224829
+            },
+            "post_monsoon": {
+              "n": 5478,
+              "coverage": 0.8072289156626506,
+              "mean_width": 109.08178167214312
+            },
+            "pre_monsoon": {
+              "n": 8566,
+              "coverage": 0.9129115106233948,
+              "mean_width": 136.81461592341816
+            },
+            "winter": {
+              "n": 7348,
+              "coverage": 0.90323897659227,
+              "mean_width": 168.29259662493195
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 2905,
+              "coverage": 0.9266781411359725,
+              "mean_width": 117.70877796901894
+            },
+            "East": {
+              "n": 5938,
+              "coverage": 0.9013135735938026,
+              "mean_width": 123.0983496126642
+            },
+            "North": {
+              "n": 13874,
+              "coverage": 0.8532506847340349,
+              "mean_width": 124.01297390802941
+            },
+            "Northeast": {
+              "n": 615,
+              "coverage": 0.9642276422764228,
+              "mean_width": 111.35772357723577
+            },
+            "South": {
+              "n": 2863,
+              "coverage": 0.9353824659448131,
+              "mean_width": 115.25358016067062
+            },
+            "West": {
+              "n": 5427,
+              "coverage": 0.9356919108162889,
+              "mean_width": 120.68859406670352
+            }
+          },
+          "censored_severe": {
+            "n": 306,
+            "upper_reaches_401": 250
+          },
+          "worst_category_coverage": 0.6703296703296703
+        },
+        "split@ridge_history": {
+          "n_exact": 31622,
+          "coverage": 0.8783125672000506,
+          "mean_width": 114.66932589223829,
+          "median_width": 112.26646183113598,
+          "by_category": {
+            "Good": {
+              "n": 6104,
+              "coverage": 0.9544560943643512,
+              "mean_width": 78.95902276885457
+            },
+            "Satisfactory": {
+              "n": 11739,
+              "coverage": 0.9530624414345344,
+              "mean_width": 106.24117446933663
+            },
+            "Moderate": {
+              "n": 10131,
+              "coverage": 0.8885598657585628,
+              "mean_width": 133.62163794204045
+            },
+            "Poor": {
+              "n": 1911,
+              "coverage": 0.5996860282574569,
+              "mean_width": 146.56039933014526
+            },
+            "Very Poor": {
+              "n": 1737,
+              "coverage": 0.35233160621761656,
+              "mean_width": 145.79260770187722
+            }
+          },
+          "poor_or_worse": {
+            "n": 3648,
+            "coverage": 0.4819078947368421,
+            "mean_width": 146.19481433609332
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 10230,
+              "coverage": 0.9090909090909091,
+              "mean_width": 73.99072183478067
+            },
+            "post_monsoon": {
+              "n": 5478,
+              "coverage": 0.7550200803212851,
+              "mean_width": 101.81249162351024
+            },
+            "pre_monsoon": {
+              "n": 8566,
+              "coverage": 0.9116273639971982,
+              "mean_width": 125.38875335061728
+            },
+            "winter": {
+              "n": 7348,
+              "coverage": 0.8885410996189439,
+              "mean_width": 167.04362330984324
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 2905,
+              "coverage": 0.9228915662650602,
+              "mean_width": 112.77609493256432
+            },
+            "East": {
+              "n": 5938,
+              "coverage": 0.8829572246547659,
+              "mean_width": 116.34508146816115
+            },
+            "North": {
+              "n": 13874,
+              "coverage": 0.832780740954303,
+              "mean_width": 116.31937096362228
+            },
+            "Northeast": {
+              "n": 615,
+              "coverage": 0.967479674796748,
+              "mean_width": 113.03296222246607
+            },
+            "South": {
+              "n": 2863,
+              "coverage": 0.921760391198044,
+              "mean_width": 106.37239207962088
+            },
+            "West": {
+              "n": 5427,
+              "coverage": 0.9327436889625944,
+              "mean_width": 112.36861731866665
+            }
+          },
+          "censored_severe": {
+            "n": 306,
+            "upper_reaches_401": 81
+          },
+          "worst_category_coverage": 0.35233160621761656
+        },
+        "split@ridge_persistence_residual": {
+          "n_exact": 31622,
+          "coverage": 0.8782493200936057,
+          "mean_width": 114.6497214158859,
+          "median_width": 112.1573605938031,
+          "by_category": {
+            "Good": {
+              "n": 6104,
+              "coverage": 0.9544560943643512,
+              "mean_width": 78.98980334184228
+            },
+            "Satisfactory": {
+              "n": 11739,
+              "coverage": 0.9531476275662322,
+              "mean_width": 106.25345478330375
+            },
+            "Moderate": {
+              "n": 10131,
+              "coverage": 0.8883624518803672,
+              "mean_width": 133.5694007384314
+            },
+            "Poor": {
+              "n": 1911,
+              "coverage": 0.6002093144950288,
+              "mean_width": 146.45935200030854
+            },
+            "Very Poor": {
+              "n": 1737,
+              "coverage": 0.3511801957397812,
+              "mean_width": 145.6831022319474
+            }
+          },
+          "poor_or_worse": {
+            "n": 3648,
+            "coverage": 0.48163377192982454,
+            "mean_width": 146.08973965172214
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 10230,
+              "coverage": 0.9090909090909091,
+              "mean_width": 74.01964516836227
+            },
+            "post_monsoon": {
+              "n": 5478,
+              "coverage": 0.7550200803212851,
+              "mean_width": 101.75754058358591
+            },
+            "pre_monsoon": {
+              "n": 8566,
+              "coverage": 0.9117441045995798,
+              "mean_width": 125.4309356753309
+            },
+            "winter": {
+              "n": 7348,
+              "coverage": 0.8881328252585737,
+              "mean_width": 166.91614889034085
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 2905,
+              "coverage": 0.9228915662650602,
+              "mean_width": 112.76072717967553
+            },
+            "East": {
+              "n": 5938,
+              "coverage": 0.8827888177837656,
+              "mean_width": 116.3212766517593
+            },
+            "North": {
+              "n": 13874,
+              "coverage": 0.832708663687473,
+              "mean_width": 116.29769100247157
+            },
+            "Northeast": {
+              "n": 615,
+              "coverage": 0.967479674796748,
+              "mean_width": 113.0062953343022
+            },
+            "South": {
+              "n": 2863,
+              "coverage": 0.9214111072301782,
+              "mean_width": 106.37294380784381
+            },
+            "West": {
+              "n": 5427,
+              "coverage": 0.9329279528284503,
+              "mean_width": 112.35408264132874
+            }
+          },
+          "censored_severe": {
+            "n": 306,
+            "upper_reaches_401": 81
+          },
+          "worst_category_coverage": 0.3511801957397812
+        },
+        "scaled@ridge_persistence_residual": {
+          "n_exact": 31622,
+          "coverage": 0.8822338877996332,
+          "mean_width": 105.72541428622641,
+          "median_width": 88.8883730150619,
+          "by_category": {
+            "Good": {
+              "n": 6104,
+              "coverage": 0.9043250327653998,
+              "mean_width": 56.590619194706925
+            },
+            "Satisfactory": {
+              "n": 11739,
+              "coverage": 0.9282732771104865,
+              "mean_width": 80.00408594655289
+            },
+            "Moderate": {
+              "n": 10131,
+              "coverage": 0.9035633205014313,
+              "mean_width": 124.75422010345153
+            },
+            "Poor": {
+              "n": 1911,
+              "coverage": 0.6661433804290947,
+              "mean_width": 183.02077671631386
+            },
+            "Very Poor": {
+              "n": 1737,
+              "coverage": 0.6067933218192285,
+              "mean_width": 224.0146170245239
+            }
+          },
+          "poor_or_worse": {
+            "n": 3648,
+            "coverage": 0.6378837719298246,
+            "mean_width": 202.54004771833164
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 10230,
+              "coverage": 0.8943304007820136,
+              "mean_width": 68.51189279885591
+            },
+            "post_monsoon": {
+              "n": 5478,
+              "coverage": 0.8462942679810149,
+              "mean_width": 124.20837208915498
+            },
+            "pre_monsoon": {
+              "n": 8566,
+              "coverage": 0.8909642773756713,
+              "mean_width": 100.4293012301462
+            },
+            "winter": {
+              "n": 7348,
+              "coverage": 0.8820087098530213,
+              "mean_width": 142.32181307314877
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 2905,
+              "coverage": 0.8919104991394148,
+              "mean_width": 88.02706224360175
+            },
+            "East": {
+              "n": 5938,
+              "coverage": 0.8839676658807679,
+              "mean_width": 100.02884735852713
+            },
+            "North": {
+              "n": 13874,
+              "coverage": 0.8795588871270001,
+              "mean_width": 122.57705432577353
+            },
+            "Northeast": {
+              "n": 615,
+              "coverage": 0.8634146341463415,
+              "mean_width": 76.94894877091139
+            },
+            "South": {
+              "n": 2863,
+              "coverage": 0.8305972755850507,
+              "mean_width": 69.62866452702261
+            },
+            "West": {
+              "n": 5427,
+              "coverage": 0.9113690805233093,
+              "mean_width": 90.35448115943636
+            }
+          },
+          "censored_severe": {
+            "n": 306,
+            "upper_reaches_401": 216
+          },
+          "worst_category_coverage": 0.6067933218192285
+        },
+        "mondrian_persistence_category@ridge_persistence_residual": {
+          "n_exact": 31622,
+          "coverage": 0.886756055910442,
+          "mean_width": 106.43162568476994,
+          "median_width": 80.51936985996858,
+          "by_category": {
+            "Good": {
+              "n": 6104,
+              "coverage": 0.9123525557011796,
+              "mean_width": 59.550476726920905
+            },
+            "Satisfactory": {
+              "n": 11739,
+              "coverage": 0.9408808246017548,
+              "mean_width": 82.18528611403843
+            },
+            "Moderate": {
+              "n": 10131,
+              "coverage": 0.8991215082420294,
+              "mean_width": 130.03926146295325
+            },
+            "Poor": {
+              "n": 1911,
+              "coverage": 0.6567242281527996,
+              "mean_width": 185.42631802585635
+            },
+            "Very Poor": {
+              "n": 1737,
+              "coverage": 0.6119746689694876,
+              "mean_width": 197.46663541592864
+            }
+          },
+          "poor_or_worse": {
+            "n": 3648,
+            "coverage": 0.6354166666666666,
+            "mean_width": 191.15933099366214
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 10230,
+              "coverage": 0.8913978494623656,
+              "mean_width": 67.39468875847935
+            },
+            "post_monsoon": {
+              "n": 5478,
+              "coverage": 0.841913106973348,
+              "mean_width": 121.59055167496078
+            },
+            "pre_monsoon": {
+              "n": 8566,
+              "coverage": 0.9042727060471633,
+              "mean_width": 105.81665650413832
+            },
+            "winter": {
+              "n": 7348,
+              "coverage": 0.8933043004899293,
+              "mean_width": 147.12846941899207
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 2905,
+              "coverage": 0.8981067125645439,
+              "mean_width": 92.60608468721935
+            },
+            "East": {
+              "n": 5938,
+              "coverage": 0.8900303132367801,
+              "mean_width": 104.31144428307068
+            },
+            "North": {
+              "n": 13874,
+              "coverage": 0.8683148335015136,
+              "mean_width": 118.89425873334186
+            },
+            "Northeast": {
+              "n": 615,
+              "coverage": 0.8813008130081301,
+              "mean_width": 84.12420259577495
+            },
+            "South": {
+              "n": 2863,
+              "coverage": 0.8983583653510304,
+              "mean_width": 83.6804405931621
+            },
+            "West": {
+              "n": 5427,
+              "coverage": 0.9187396351575456,
+              "mean_width": 94.6695627657317
+            }
+          },
+          "censored_severe": {
+            "n": 306,
+            "upper_reaches_401": 116
+          },
+          "worst_category_coverage": 0.6119746689694876
+        },
+        "rolling30_scaled@ridge_persistence_residual": {
+          "n_exact": 31622,
+          "coverage": 0.890266270318133,
+          "mean_width": 109.05873948201727,
+          "median_width": 92.19103400107932,
+          "by_category": {
+            "Good": {
+              "n": 6104,
+              "coverage": 0.9085845347313237,
+              "mean_width": 57.65352115267757
+            },
+            "Satisfactory": {
+              "n": 11739,
+              "coverage": 0.9347474231195162,
+              "mean_width": 82.28334604739638
+            },
+            "Moderate": {
+              "n": 10131,
+              "coverage": 0.9113611686901589,
+              "mean_width": 129.0726763888257
+            },
+            "Poor": {
+              "n": 1911,
+              "coverage": 0.6881214024071167,
+              "mean_width": 188.80913472586656
+            },
+            "Very Poor": {
+              "n": 1737,
+              "coverage": 0.6246401842256765,
+              "mean_width": 231.87651007468756
+            }
+          },
+          "poor_or_worse": {
+            "n": 3648,
+            "coverage": 0.6578947368421053,
+            "mean_width": 209.31572216580682
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 10230,
+              "coverage": 0.8976539589442816,
+              "mean_width": 69.5467801886038
+            },
+            "post_monsoon": {
+              "n": 5478,
+              "coverage": 0.8742241694048923,
+              "mean_width": 138.2361311476181
+            },
+            "pre_monsoon": {
+              "n": 8566,
+              "coverage": 0.8937660518328274,
+              "mean_width": 100.08252018320145
+            },
+            "winter": {
+              "n": 7348,
+              "coverage": 0.8878606423516603,
+              "mean_width": 144.66962107743794
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 2905,
+              "coverage": 0.895697074010327,
+              "mean_width": 90.5094817002128
+            },
+            "East": {
+              "n": 5938,
+              "coverage": 0.8895250926237791,
+              "mean_width": 103.27262699577307
+            },
+            "North": {
+              "n": 13874,
+              "coverage": 0.889649704483206,
+              "mean_width": 126.40569008697025
+            },
+            "Northeast": {
+              "n": 615,
+              "coverage": 0.8634146341463415,
+              "mean_width": 78.92705578957197
+            },
+            "South": {
+              "n": 2863,
+              "coverage": 0.8414250785888928,
+              "mean_width": 71.7128769687326
+            },
+            "West": {
+              "n": 5427,
+              "coverage": 0.9185553712916897,
+              "mean_width": 93.10683205153384
+            }
+          },
+          "censored_severe": {
+            "n": 306,
+            "upper_reaches_401": 232
+          },
+          "worst_category_coverage": 0.6246401842256765
+        },
+        "adaptive_scaled@ridge_persistence_residual": {
+          "n_exact": 31622,
+          "coverage": 0.8936183669597116,
+          "mean_width": 111.01848639990683,
+          "median_width": 93.29225012549412,
+          "by_category": {
+            "Good": {
+              "n": 6104,
+              "coverage": 0.9110419397116645,
+              "mean_width": 58.252703710805235
+            },
+            "Satisfactory": {
+              "n": 11739,
+              "coverage": 0.9377289377289377,
+              "mean_width": 83.50502902776083
+            },
+            "Moderate": {
+              "n": 10131,
+              "coverage": 0.9139275491067022,
+              "mean_width": 131.5822744841557
+            },
+            "Poor": {
+              "n": 1911,
+              "coverage": 0.6970172684458399,
+              "mean_width": 192.53825676795825
+            },
+            "Very Poor": {
+              "n": 1737,
+              "coverage": 0.6321243523316062,
+              "mean_width": 237.2492028933209
+            }
+          },
+          "poor_or_worse": {
+            "n": 3648,
+            "coverage": 0.6661184210526315,
+            "mean_width": 213.82743259574195
+          },
+          "by_season": {
+            "monsoon": {
+              "n": 10230,
+              "coverage": 0.9005865102639297,
+              "mean_width": 70.10365178888759
+            },
+            "post_monsoon": {
+              "n": 5478,
+              "coverage": 0.8831690397955458,
+              "mean_width": 145.20378181434913
+            },
+            "pre_monsoon": {
+              "n": 8566,
+              "coverage": 0.8954004202661686,
+              "mean_width": 100.539736333194
+            },
+            "winter": {
+              "n": 7348,
+              "coverage": 0.8896298312465977,
+              "mean_width": 146.31634187621444
+            }
+          },
+          "by_region": {
+            "Central": {
+              "n": 2905,
+              "coverage": 0.8967297762478486,
+              "mean_width": 92.00678033884324
+            },
+            "East": {
+              "n": 5938,
+              "coverage": 0.8937352643987875,
+              "mean_width": 105.17082250916091
+            },
+            "North": {
+              "n": 13874,
+              "coverage": 0.8923165633559176,
+              "mean_width": 128.65916674576562
+            },
+            "Northeast": {
+              "n": 615,
+              "coverage": 0.865040650406504,
+              "mean_width": 80.19694268147524
+            },
+            "South": {
+              "n": 2863,
+              "coverage": 0.8449179182675515,
+              "mean_width": 72.95673473697562
+            },
+            "West": {
+              "n": 5427,
+              "coverage": 0.9240832872673669,
+              "mean_width": 94.70148598495118
+            }
+          },
+          "censored_severe": {
+            "n": 306,
+            "upper_reaches_401": 231
+          },
+          "worst_category_coverage": 0.6321243523316062
+        }
+      }
+    }
+  },
+  "warnings": {
+    "history_pairs": {
+      "n": 31928,
+      "operating_points": {
+        "persistence": {
+          "n": 31928,
+          "under_warning": 0.1642132297669757,
+          "over_warning": 0.16800300676522176,
+          "serious_under_warning": 0.0170383362565773,
+          "poor_or_worse_under_warning": 0.4312089023773394,
+          "severe_issued_when_severe": 147,
+          "severe_observed": 306
+        },
+        "ridge_history": {
+          "n": 31928,
+          "under_warning": 0.19960536206464546,
+          "over_warning": 0.16509020295665247,
+          "serious_under_warning": 0.02543222250062641,
+          "poor_or_worse_under_warning": 0.7926150733434497,
+          "severe_issued_when_severe": 1,
+          "severe_observed": 306
+        },
+        "ridge_persistence_residual": {
+          "n": 31928,
+          "under_warning": 0.19957404159358558,
+          "over_warning": 0.16496492107241292,
+          "serious_under_warning": 0.025400902029566526,
+          "poor_or_worse_under_warning": 0.7918563480020233,
+          "severe_issued_when_severe": 1,
+          "severe_observed": 306
+        },
+        "lgbm_history": {
+          "n": 31928,
+          "under_warning": 0.19017790027562015,
+          "over_warning": 0.15982836381859183,
+          "serious_under_warning": 0.02875219243297419,
+          "poor_or_worse_under_warning": 0.7754172989377845,
+          "severe_issued_when_severe": 0,
+          "severe_observed": 306
+        },
+        "max_persistence_ridge": {
+          "n": 31928,
+          "under_warning": 0.1210849411175144,
+          "over_warning": 0.22791906790278127,
+          "serious_under_warning": 0.014657980456026058,
+          "poor_or_worse_under_warning": 0.4301972685887709,
+          "severe_issued_when_severe": 147,
+          "severe_observed": 306
+        },
+        "quantile_0.5": {
+          "n": 31928,
+          "under_warning": 0.22143573039338513,
+          "over_warning": 0.11525933350037584,
+          "serious_under_warning": 0.03435855675269356,
+          "poor_or_worse_under_warning": 0.8209408194233687,
+          "severe_issued_when_severe": 0,
+          "severe_observed": 306
+        },
+        "quantile_0.6": {
+          "n": 31928,
+          "under_warning": 0.17602104735655225,
+          "over_warning": 0.1594838386369331,
+          "serious_under_warning": 0.025995990979704335,
+          "poor_or_worse_under_warning": 0.7220536165907941,
+          "severe_issued_when_severe": 0,
+          "severe_observed": 306
+        },
+        "quantile_0.7": {
+          "n": 31928,
+          "under_warning": 0.13734026559759457,
+          "over_warning": 0.21482711099974944,
+          "serious_under_warning": 0.020233024304685543,
+          "poor_or_worse_under_warning": 0.6441578148710166,
+          "severe_issued_when_severe": 0,
+          "severe_observed": 306
+        },
+        "quantile_0.75": {
+          "n": 31928,
+          "under_warning": 0.1190491104986219,
+          "over_warning": 0.25538712102230016,
+          "serious_under_warning": 0.017664745677774995,
+          "poor_or_worse_under_warning": 0.599645928174001,
+          "severe_issued_when_severe": 0,
+          "severe_observed": 306
+        },
+        "quantile_0.8": {
+          "n": 31928,
+          "under_warning": 0.10163492858932599,
+          "over_warning": 0.2952580806815335,
+          "serious_under_warning": 0.014501378100726634,
+          "poor_or_worse_under_warning": 0.5402124430955993,
+          "severe_issued_when_severe": 0,
+          "severe_observed": 306
+        },
+        "quantile_0.9": {
+          "n": 31928,
+          "under_warning": 0.06386244049110498,
+          "over_warning": 0.42583312453019295,
+          "serious_under_warning": 0.010053871210223001,
+          "poor_or_worse_under_warning": 0.37860394537177544,
+          "severe_issued_when_severe": 0,
+          "severe_observed": 306
+        },
+        "quantile_0.95": {
+          "n": 31928,
+          "under_warning": 0.04434978702079679,
+          "over_warning": 0.5575043848659483,
+          "serious_under_warning": 0.0077987972939113,
+          "poor_or_worse_under_warning": 0.2900859888720283,
+          "severe_issued_when_severe": 6,
+          "severe_observed": 306
+        }
+      }
+    },
+    "all_pairs": {
+      "n": 38745,
+      "operating_points": {
+        "ridge_weather_point": {
+          "n": 38745,
+          "under_warning": 0.27136404697380306,
+          "over_warning": 0.24661246612466126,
+          "serious_under_warning": 0.08406245967221578,
+          "poor_or_worse_under_warning": 1.0,
+          "severe_issued_when_severe": 0,
+          "severe_observed": 363
+        }
+      }
+    },
+    "default_policy": "NONE SELECTED: no cost ratio between a missed category and an excess alert has been declared"
+  },
+  "survivorship": {
+    "frozen_rule": "stations with at least 30 valid targets in the first fold training window, fixed for all folds",
+    "eligibility_window": [
+      "2025-02-19",
+      "2025-05-19"
+    ],
+    "paper_cohort": {
+      "stations": 171,
+      "cities": 97,
+      "dates": 332,
+      "outcomes": 38745,
+      "exact_pairs": 38382,
+      "censored_severe": 363,
+      "history_exact_pairs": 31622,
+      "category_share": {
+        "Good": 0.19463156536327267,
+        "Satisfactory": 0.3672473867595819,
+        "Moderate": 0.31647954574783843,
+        "Poor": 0.059543166860240034,
+        "Very Poor": 0.05272938443670151,
+        "Severe": 0.009368950832365467
+      },
+      "mae": {
+        "climatology": 52.817245432204764,
+        "ridge_weather": 43.856884913436936,
+        "persistence": 27.474416545443045,
+        "ridge_history": 28.088844440140345
+      },
+      "paired": {
+        "weather_minus_climatology": {
+          "n": 38382,
+          "mae_difference": -8.960360518767821,
+          "ci95": [
+            -12.48743010364286,
+            -5.609403106301186
+          ]
+        },
+        "history_minus_persistence": {
+          "n": 31622,
+          "mae_difference": 0.6144278946972983,
+          "ci95": [
+            -0.40867685542106413,
+            1.7040475542111795
+          ]
+        }
+      },
+      "spatial": {
+        "cluster": {
+          "n_exact": 26228,
+          "mae_increase": 1.9412836933708273,
+          "ci95": [
+            1.5754503253538465,
+            2.34306937201351
+          ],
+          "poor_or_worse_n": 3911,
+          "poor_or_worse_mae_increase": 6.85121064631865,
+          "poor_or_worse_ci95": [
+            5.50695393532827,
+            7.941184474383211
+          ],
+          "stations": 176
+        },
+        "region": {
+          "n_exact": 26228,
+          "mae_increase": 2.1814254448635384,
+          "ci95": [
+            1.5219108714606129,
+            2.92633032480262
+          ],
+          "poor_or_worse_n": 3911,
+          "poor_or_worse_mae_increase": 9.96601988057845,
+          "poor_or_worse_ci95": [
+            3.677729366565629,
+            14.688094844514884
+          ],
+          "stations": 176
+        }
+      }
+    },
+    "frozen_cohort": {
+      "stations": 158,
+      "cities": 92,
+      "dates": 330,
+      "outcomes": 37347,
+      "exact_pairs": 36993,
+      "censored_severe": 354,
+      "history_exact_pairs": 30597,
+      "category_share": {
+        "Good": 0.19533028087932097,
+        "Satisfactory": 0.3690524004605457,
+        "Moderate": 0.3150186092591105,
+        "Poor": 0.059870940102283984,
+        "Very Poor": 0.05124909631295686,
+        "Severe": 0.009478672985781991
+      },
+      "mae": {
+        "climatology": 52.204022051861614,
+        "ridge_weather": 43.51742660590013,
+        "persistence": 27.312514298787463,
+        "ridge_history": 27.92649367201221
+      },
+      "paired": {
+        "weather_minus_climatology": {
+          "n": 36993,
+          "mae_difference": -8.686595445961487,
+          "ci95": [
+            -12.298528680779254,
+            -5.26775984092412
+          ]
+        },
+        "history_minus_persistence": {
+          "n": 30597,
+          "mae_difference": 0.6139793732247447,
+          "ci95": [
+            -0.4189795287137552,
+            1.6998541508297027
+          ]
+        }
+      },
+      "spatial": {
+        "cluster": {
+          "n_exact": 24816,
+          "mae_increase": 1.8273374352589615,
+          "ci95": [
+            1.5269756675742625,
+            2.154201568949505
+          ],
+          "poor_or_worse_n": 3603,
+          "poor_or_worse_mae_increase": 6.4462202521813845,
+          "poor_or_worse_ci95": [
+            5.332820238454484,
+            7.368643289608919
+          ],
+          "stations": 158
+        },
+        "region": {
+          "n_exact": 24816,
+          "mae_increase": 1.898178217851407,
+          "ci95": [
+            1.344146744896912,
+            2.5063864756356904
+          ],
+          "poor_or_worse_n": 3603,
+          "poor_or_worse_mae_increase": 8.928863029038034,
+          "poor_or_worse_ci95": [
+            3.325237957206949,
+            13.092636058392257
+          ],
+          "stations": 158
+        }
+      }
+    },
+    "late_entry_stations_removed": 13,
+    "catalogue_exposure": {
+      "structurally_eligible": 532,
+      "eligible_under_study_rule": 481,
+      "reporting_at_study_start": 506,
+      "of_those_active_after_cutoff": 471,
+      "of_those_dropped_by_recent_activity_rule": 35,
+      "started_after_study_start": 10,
+      "basis": "OpenAQ catalogue first/last timestamps; no pollutant value read; dropped monitors were never downloaded"
+    },
+    "limit": "Monitors that stopped reporting before the recent-activity cutoff were never downloaded, so this analysis removes late entrants but cannot add back lost monitors; catalogue_exposure counts them."
+  },
+  "rows": {
+    "history": {
+      "path": "results/research/extensions/54efbbe1af8a7e03c30a19060e6d2259b78949f62deb3eabe64e34143ef1a9c2/rows_history.parquet",
+      "sha256": "9836fded24d6c4107ca8e9365e7e7584ef82e8d1d23f7d7da21ff76432ddfd7b"
+    },
+    "all": {
+      "path": "results/research/extensions/54efbbe1af8a7e03c30a19060e6d2259b78949f62deb3eabe64e34143ef1a9c2/rows_all.parquet",
+      "sha256": "54785dfe69f644d7754b9545be9f7ef74a750ca7efd74500269cf83c10277b62"
+    }
+  },
+  "artifact": "results/research/extensions/54efbbe1af8a7e03c30a19060e6d2259b78949f62deb3eabe64e34143ef1a9c2/results.json"
+}

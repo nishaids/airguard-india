@@ -1,0 +1,227 @@
+{
+  "status": "EXPLORATORY_DEVELOPMENT_DIAGNOSTIC_NOT_PRIMARY",
+  "generated_by": "scripts/explore_raw_cams_development.py",
+  "generated_at_utc": "2026-10-20T08:18:29Z",
+  "join_sha256": "e9ecca99412bf916fe4ba6e7fc65eee0dd758409f1d490b866a8522b9d9f646d",
+  "dates": [
+    "2025-02-21",
+    "2025-06-01"
+  ],
+  "model_fitting_performed": false,
+  "selection_performed": false,
+  "final_test_accessed": false,
+  "population": "exact (uncensored) valid targets where matched CAMS, six-pollutant CAMS and persistence all exist",
+  "overall": {
+    "raw_cams_matched": {
+      "n": 9510,
+      "mae": 93.36,
+      "bias": 82.64,
+      "rmse": 122.68,
+      "category_agreement": 0.322,
+      "within_one_category": 0.7477,
+      "poor_or_worse_days": 572,
+      "poor_or_worse_under_warning": 0.5507,
+      "over_warning_on_cleaner_days": 0.2706
+    },
+    "raw_cams_six_pollutant_as_displayed": {
+      "n": 9510,
+      "mae": 93.36,
+      "bias": 82.64,
+      "rmse": 122.68,
+      "category_agreement": 0.322,
+      "within_one_category": 0.7477,
+      "poor_or_worse_days": 572,
+      "poor_or_worse_under_warning": 0.5507,
+      "over_warning_on_cleaner_days": 0.2706
+    },
+    "persistence_measured_24h": {
+      "n": 9510,
+      "mae": 25.67,
+      "bias": 0.97,
+      "rmse": 42.73,
+      "category_agreement": 0.6856,
+      "within_one_category": 0.9723,
+      "poor_or_worse_days": 572,
+      "poor_or_worse_under_warning": 0.514,
+      "over_warning_on_cleaner_days": 0.0349
+    }
+  },
+  "paired_differences": {
+    "matched_cams_minus_persistence": {
+      "mae_difference": 67.69,
+      "interval_95": [
+        60.78,
+        77.45
+      ],
+      "dates": 91,
+      "block_days": 7,
+      "replicates": 2000,
+      "seed": 20261020
+    },
+    "six_pollutant_minus_matched": {
+      "mae_difference": 0.0,
+      "interval_95": [
+        0.0,
+        0.0
+      ],
+      "dates": 91,
+      "block_days": 7,
+      "replicates": 2000,
+      "seed": 20261020
+    }
+  },
+  "by_region": {
+    "Central": {
+      "n": 927,
+      "mae": 61.77,
+      "bias": 52.63,
+      "rmse": 78.34,
+      "category_agreement": 0.4207,
+      "within_one_category": 0.8414,
+      "poor_or_worse_days": 21,
+      "poor_or_worse_under_warning": 0.8571,
+      "over_warning_on_cleaner_days": 0.106
+    },
+    "East": {
+      "n": 1700,
+      "mae": 90.49,
+      "bias": 74.18,
+      "rmse": 107.89,
+      "category_agreement": 0.2818,
+      "within_one_category": 0.7382,
+      "poor_or_worse_days": 168,
+      "poor_or_worse_under_warning": 0.5774,
+      "over_warning_on_cleaner_days": 0.3401
+    },
+    "North": {
+      "n": 3928,
+      "mae": 122.33,
+      "bias": 112.65,
+      "rmse": 158.78,
+      "category_agreement": 0.3144,
+      "within_one_category": 0.64,
+      "poor_or_worse_days": 286,
+      "poor_or_worse_under_warning": 0.4021,
+      "over_warning_on_cleaner_days": 0.422
+    },
+    "South": {
+      "n": 1047,
+      "mae": 62.04,
+      "bias": 59.9,
+      "rmse": 71.93,
+      "category_agreement": 0.2512,
+      "within_one_category": 0.8749,
+      "poor_or_worse_days": 3,
+      "poor_or_worse_under_warning": 1.0,
+      "over_warning_on_cleaner_days": 0.0239
+    },
+    "West": {
+      "n": 1742,
+      "mae": 67.67,
+      "bias": 55.68,
+      "rmse": 81.97,
+      "category_agreement": 0.3754,
+      "within_one_category": 0.8754,
+      "poor_or_worse_days": 73,
+      "poor_or_worse_under_warning": 0.9041,
+      "over_warning_on_cleaner_days": 0.1306
+    }
+  },
+  "by_month": {
+    "2025-02": {
+      "n": 980,
+      "mae": 62.37,
+      "bias": 46.26,
+      "rmse": 80.4,
+      "category_agreement": 0.402,
+      "within_one_category": 0.8918,
+      "poor_or_worse_days": 76,
+      "poor_or_worse_under_warning": 0.7763,
+      "over_warning_on_cleaner_days": 0.1383
+    },
+    "2025-03": {
+      "n": 3670,
+      "mae": 91.98,
+      "bias": 78.93,
+      "rmse": 123.62,
+      "category_agreement": 0.3632,
+      "within_one_category": 0.7725,
+      "poor_or_worse_days": 276,
+      "poor_or_worse_under_warning": 0.5072,
+      "over_warning_on_cleaner_days": 0.2602
+    },
+    "2025-04": {
+      "n": 2316,
+      "mae": 93.15,
+      "bias": 83.81,
+      "rmse": 119.44,
+      "category_agreement": 0.3312,
+      "within_one_category": 0.7496,
+      "poor_or_worse_days": 155,
+      "poor_or_worse_under_warning": 0.5161,
+      "over_warning_on_cleaner_days": 0.2809
+    },
+    "2025-05": {
+      "n": 2434,
+      "mae": 107.48,
+      "bias": 101.15,
+      "rmse": 136.46,
+      "category_agreement": 0.2173,
+      "within_one_category": 0.6537,
+      "poor_or_worse_days": 62,
+      "poor_or_worse_under_warning": 0.5323,
+      "over_warning_on_cleaner_days": 0.3225
+    },
+    "2025-06": {
+      "n": 110,
+      "mae": 107.46,
+      "bias": 96.83,
+      "rmse": 146.27,
+      "category_agreement": 0.3545,
+      "within_one_category": 0.6818,
+      "poor_or_worse_days": 3,
+      "poor_or_worse_under_warning": 1.0,
+      "over_warning_on_cleaner_days": 0.3645
+    }
+  },
+  "mechanism": {
+    "dominant_share_cams": {
+      "O3": 0.8047,
+      "PM10": 0.1868,
+      "PM2.5": 0.0085
+    },
+    "dominant_share_measured": {
+      "PM10": 0.654,
+      "PM2.5": 0.1947,
+      "O3": 0.1512
+    },
+    "mean_daily_concentration_ugm3": {
+      "PM2.5": {
+        "cams": 45.9,
+        "measured": 43.1,
+        "ratio": 1.07
+      },
+      "PM10": {
+        "cams": 149.4,
+        "measured": 103.1,
+        "ratio": 1.45
+      },
+      "O3": {
+        "cams": 140.1,
+        "measured": 53.5,
+        "ratio": 2.62
+      }
+    },
+    "matched_equals_six_pollutant_share": 1.0
+  },
+  "censored_severe": {
+    "days": 7,
+    "matched_cams_below_401": 5,
+    "persistence_below_401": 6
+  },
+  "caveats": [
+    "February to early June only: no winter, few Poor-or-worse days",
+    "persistence uses the measured index at the issue cutoff and assumes a healthy feed (3 h latency)",
+    "this is a baseline diagnostic; the primary comparison on locked folds is still required"
+  ]
+}

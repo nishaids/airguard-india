@@ -1,0 +1,15 @@
+{
+  "source": "results/research/extensions/raw_cams_development_diagnostic.json",
+  "status": "EXPLORATORY_DEVELOPMENT_DIAGNOSTIC_NOT_PRIMARY",
+  "period": [
+    "2025-02-21",
+    "2025-06-01"
+  ],
+  "station_days": 9510,
+  "raw_cams_mae": 93.36,
+  "raw_cams_bias": 82.64,
+  "persistence_mae": 25.67,
+  "ozone_ratio": 2.62,
+  "ozone_dominant_share_cams": 0.8047,
+  "ozone_dominant_share_measured": 0.1512
+}

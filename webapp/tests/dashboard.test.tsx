@@ -45,6 +45,15 @@ describe("nationwide dashboard", () => {
     expect(screen.getByText(/Maharashtra · <12h · Very Poor: 2 forecasts over 1 day/)).toBeInTheDocument();
     expect(screen.queryByText("249.5")).not.toBeInTheDocument();
   });
+  it("states the raw model's measured accuracy and flags an ozone-led estimate", async () => {
+    render(<NationwideDashboard />);
+    expect(await screen.findByText(/How far to trust a modelled value/)).toBeInTheDocument();
+    expect(screen.queryByText(/Ozone leads this estimate/)).not.toBeInTheDocument();
+    cleanup();
+    vi.stubGlobal("fetch", vi.fn(() => response({ ...sample, tomorrow: { ...sample.tomorrow, dominant_pollutant: "O3" } })));
+    render(<NationwideDashboard />);
+    expect(await screen.findByText(/Ozone leads this estimate/)).toBeInTheDocument();
+  });
   it("renders measured and stale labels", async () => {
     vi.stubGlobal("fetch", vi.fn(() => response({ ...sample, current: { ...aqi, measured_or_modelled: "MEASURED", freshness: "DELAYED" }, tomorrow: { ...sample.tomorrow, freshness: "STALE" } })));
     render(<NationwideDashboard />);

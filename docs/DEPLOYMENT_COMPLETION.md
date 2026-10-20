@@ -7,7 +7,7 @@
 | Live URL | https://webapp-phi-taupe.vercel.app (existing project and domain) |
 | Deployment ID | `dpl_5r2cg4ZKdAtgRMHo1TpoXh2653L9` (second release of the day; the first was `dpl_4YKByhjbQLA8Z7Tsi9U7PXSP44Bd`) |
 | Deployed commit | `7b882fa4b157ab5aa31085652c24999591fef005` (branch `research/station-calibration`, pushed to GitHub) |
-| Promoted | 2026-10-20, about 13:40 IST |
+| Promoted | 2026-10-20, twice in the early afternoon IST |
 | Staged checks | 31 of 31 passed on each protected candidate |
 | Public checks | 37 of 37 passed on the live domain after each release |
 | Security headers | CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Permissions-Policy present |
@@ -21,7 +21,7 @@
 
 ## How it was released
 
-1. Release preflight: lint, type check, 44 unit tests and production build pass (`results/release/website_preflight.json`).
+1. Release preflight: lint, type check, unit tests (44, then 45) and production build pass (`results/release/website_preflight.json`).
 2. Python suite 681 passed; source-bound offline validation 672 passed, 5 skipped (`results/research/test_validation.json`).
 3. A production candidate was staged without the live domain. **The first candidate was not promoted**: staging showed that summaries cached by the old code carried track-record cells the new page would reject for up to ten minutes. Fixed in `6f4da73`, restaged, re-checked.
 4. Promoted, then the public smoke test and a browser check of the track-record section.

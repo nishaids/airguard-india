@@ -1,5 +1,31 @@
 # AirGuard India — progress ledger
 
+## Final execution checkpoint — 2026-10-20
+
+Research is **not** complete; production is updated and verified. Branch
+`research/station-calibration`, pushed. Final test sealed; paper unchanged.
+
+- **CAMS**: the only pending ADS request (June 2025) had expired server-side
+  (HTTP 404). Retired with its ID kept; the author re-authorised the remaining
+  frozen jobs (two at a time). 10 of 36 files verified, more running. The first
+  protocol-eligible fold (fold_05) needs CAMS through 2025-11-16: 10 more files.
+  Resume: `.venv-live\Scripts\python.exe -m src.research.calibration.cams_acquisition --worker-hours 24`.
+- **Raw CAMS diagnostic** (exploratory, no fitting): on 9,510 development
+  station-days raw CAMS misses measured AQI by 93.4 and runs 82.6 high;
+  persistence 25.7. Cause: CAMS ozone 2.6x measured. The live page now says so.
+- **App**: track record publishes errors only with >=30 forecasts over >=7 days
+  (it had shown one-day anecdotes); stale summaries cached <=30 s. Two releases,
+  each 31 staged + 37 public checks.
+- **Docs**: data source register, CAMS matching report, literature verification
+  (48/56 verified) and novelty audit, public-impact plan, journal roadmap,
+  execution audit, limitations, completion report.
+- **Tests**: Python 681 passed; frontend 45; secret audit 0/0/0.
+- Readiness 5/17, `COLLECTING_NOT_RESEARCH_READY`.
+
+Next: keep the CAMS worker running; rebuild the join and preflight as pairs
+verify (`docs/research/CAMS_ARCHIVE_STATUS.md`); run the primary comparison at
+fold_05. Author: rotate the credentials pasted in chat; decide on ethics.
+
 ## Project hardening and defense checkpoint — 2026-10-12
 
 The original ADS probe is verified: 134-byte GRIB1, nine PM2.5 values on the

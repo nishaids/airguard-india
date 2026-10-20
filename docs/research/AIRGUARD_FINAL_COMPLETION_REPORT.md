@@ -14,7 +14,7 @@ Supersedes the 13 October checkpoint (preserved in git history). Every number be
 
 **6. Station matching.** `CAMS_STATION_MATCHING_REPORT.md`: 18,540 station-days, 180 stations, 100 cities, 103 dates, 11,634 exact and 7 censored Severe targets, **0 availability violations**. Rebuilt today with identical hashes. Nearest 0.4-degree cell; coastal cells not yet audited.
 
-**7. Development model comparison.** Not run: preflight `BLOCKED_NO_ELIGIBLE_FOLDS`. Folds 1-4 can never meet the locked 120 valid training days per station; fold_05 needs CAMS through 2025-11-16.
+**7. Development model comparison.** Not run: preflight `BLOCKED_NO_ELIGIBLE_FOLDS`. An exploratory baseline diagnostic was run instead, fitting and selecting nothing (`RAW_CAMS_DEVELOPMENT_DIAGNOSTIC.md`): on 9,510 development station-days raw CAMS misses measured AQI by 93.4 and runs 82.6 high, against 25.7 for persistence (paired difference +67.7, 95% block interval 60.8 to 77.5), because CAMS ozone averages 2.6 times the measured value. Folds 1-4 can never meet the locked 120 valid training days per station; fold_05 needs CAMS through 2025-11-16.
 
 **8. Model selection.** NOT READY. No `MODEL_SELECTION_LOCK` (correctly). No rule was relaxed.
 
@@ -30,7 +30,7 @@ Supersedes the 13 October checkpoint (preserved in git history). Every number be
 
 **14. Literature and novelty.** `FINAL_NOVELTY_AND_PRIOR_ART_AUDIT.md`: 48 of 56 references verified by Crossref, arXiv or the official page; a logged Crossref search (10 queries, 190 records, 13 added); 28-study matrix; gap and claim matrices. Verdict: every method has prior art; no first-ever or state-of-the-art claim is supported; the combination is a defensible design that becomes a contribution only after the primary experiment.
 
-**15. Public-impact functionality.** Measured/modelled labels, freshness labels, tomorrow forecast with issue time, pollutant breakdown, general exposure guidance with disclaimer, nearest-station context, forecast ledger. Today: the live track record now publishes error figures only with ≥30 checked forecasts over ≥7 days (it had shown one-day anecdotes such as a +249.5 bias), and stale data is no longer cached as current.
+**15. Public-impact functionality.** Measured/modelled labels, freshness labels, tomorrow forecast with issue time, pollutant breakdown, general exposure guidance with disclaimer, nearest-station context, forecast ledger. Today: the live track record now publishes error figures only with ≥30 checked forecasts over ≥7 days (it had shown one-day anecdotes such as a +249.5 bias), and stale data is no longer cached as current. A second release states the raw model's measured accuracy on the page and warns when ozone leads the estimate.
 
 **16. Public-impact evaluation.** `PUBLIC_IMPACT_EVALUATION_PLAN.md`: task-based protocol with pre-registered thresholds. Not run: needs ethics approval. No data collected.
 
@@ -48,7 +48,7 @@ Supersedes the 13 October checkpoint (preserved in git history). Every number be
 
 **23. GitHub.** Pushed; remote head matches local at push time.
 
-**24. Deployment.** `docs/DEPLOYMENT_COMPLETION.md`: deployment `dpl_4YKByhjbQLA8Z7Tsi9U7PXSP44Bd`, commit `6f4da73`, 31 staged and 37 public checks. The first candidate was not promoted because staging exposed a cached-format hazard; fixed first.
+**24. Deployment.** `docs/DEPLOYMENT_COMPLETION.md`: two verified releases today, latest `dpl_5r2cg4ZKdAtgRMHo1TpoXh2653L9`; each passed 31 staged and 37 public checks. The first candidate was not promoted because staging exposed a cached-format hazard; fixed first.
 
 **25. Paper.** PRESERVED. `paper/` unchanged this session.
 

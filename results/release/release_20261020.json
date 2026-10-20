@@ -1,0 +1,43 @@
+{
+  "generated_at_utc": "2026-10-20T08:11:16Z",
+  "status": "PRODUCTION_DEPLOYED_AND_VERIFIED",
+  "deployed_git_sha": "6f4da73833661b9fad8b9f71584c8a0292fd6157",
+  "deployment_id": "dpl_4YKByhjbQLA8Z7Tsi9U7PXSP44Bd",
+  "candidate_url": "https://webapp-rg27dxock-nishanth-s-projects-e335f110.vercel.app",
+  "production_url": "https://webapp-phi-taupe.vercel.app",
+  "existing_project_retained": true,
+  "workflow": [
+    "release preflight (lint, typecheck, 44 unit tests, build)",
+    "staged production candidate with --skip-domain",
+    "31 protected staged checks",
+    "promote",
+    "37 public production checks",
+    "browser check of the track-record section"
+  ],
+  "first_candidate_rejected": {
+    "url": "https://webapp-4snks0vsi-nishanth-s-projects-e335f110.vercel.app",
+    "reason": "summaries cached by older code carried old-format track-record cells the new page rejects; fixed in 6f4da73 before promotion"
+  },
+  "staged_checks_passed": 31,
+  "public_checks_passed": 37,
+  "security_headers": [
+    "Content-Security-Policy",
+    "Strict-Transport-Security",
+    "X-Content-Type-Options",
+    "X-Frame-Options",
+    "Permissions-Policy"
+  ],
+  "changes": [
+    "track-record errors published only for groups with >=30 checked forecasts over >=7 target days",
+    "summaries built while a source refresh is in progress are cached for at most 30 s",
+    "cached summaries from older code get the publication rule on read",
+    "readiness file reports the CAMS archive as ACQUIRING"
+  ],
+  "experimental_calibration_included": false,
+  "paper_included": false,
+  "final_test_accessed": false,
+  "github_push": {
+    "branch": "research/station-calibration",
+    "remote_head": "6f4da73833661b9fad8b9f71584c8a0292fd6157"
+  }
+}

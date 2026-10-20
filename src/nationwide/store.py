@@ -45,6 +45,15 @@ def publishable(rows):
     return sorted(cells, key=lambda c: (*pooled(c), not c["eligible"], -c["forecasts"], c["region"], c["lead"], c["predicted_category"]))
 
 
+def republish(cells):
+    """Apply the publication rule to cells read back from a cached summary.
+
+    Cells cached before the rule existed carry no forecast or day counts, so
+    they cannot show that they qualify: they are published as counts only.
+    """
+    return publishable([cell if "forecasts" in cell else {**cell, "forecasts": 0, "days": 0} for cell in cells])
+
+
 class BudgetExceeded(Exception):
     pass
 

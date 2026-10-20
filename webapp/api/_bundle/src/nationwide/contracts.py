@@ -24,4 +24,9 @@ def validate_summary(payload):
     tomorrow=payload["tomorrow"]
     if tomorrow.get("issued_at") and parse_time(tomorrow["issued_at"])>=parse_time(tomorrow["window_start"]):raise ContractError("Late forecast issuance")
     if payload["current"]["measured_or_modelled"]=="MEASURED" and not payload["current"]["station"]:raise ContractError("Measured AQI needs a station")
+    # Track-record scores exist only for cells that meet the publication rule.
+    for cell in payload.get("track_record") or []:
+        if not isinstance(cell.get("eligible"),bool):raise ContractError("Track-record cell without eligibility")
+        scored=[cell.get(k) is not None for k in ("mae","rmse","bias","category_accuracy","within_one_category")]
+        if any(scored)!=cell["eligible"] or (cell["eligible"] and not all(scored)):raise ContractError("Track-record score published without enough forecasts")
     return payload

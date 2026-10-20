@@ -1,11 +1,11 @@
 {
   "counts": {
-    "tests": 675,
+    "tests": 677,
     "failures": 0,
     "errors": 0,
     "skipped": 5,
-    "collected": 675,
-    "passed": 670,
+    "collected": 677,
+    "passed": 672,
     "deselected": 4
   },
   "counts_consistent": true,
@@ -58,10 +58,10 @@
   "cpcb_missing_or_unsuccessful_groups": [],
   "unsuccessful_tests": [],
   "validation_version": "research-offline-test-validation-v1",
-  "run_id": "20261020T074946Z-aa74e72a9e3b",
-  "started_at": "2026-10-20T07:49:46.780043+00:00",
-  "completed_at": "2026-10-20T07:50:55.161436+00:00",
-  "generated_at": "2026-10-20T07:50:55.161436+00:00",
+  "run_id": "20261020T080026Z-3ed5cd3444f0",
+  "started_at": "2026-10-20T08:00:26.473475+00:00",
+  "completed_at": "2026-10-20T08:01:31.743372+00:00",
+  "generated_at": "2026-10-20T08:01:31.743372+00:00",
   "command": [
     "python",
     "-m",
@@ -72,7 +72,7 @@
     "not real_database",
     "-p",
     "src.research.calibration.validation",
-    "--junitxml=logs/research_validation_20261020T074946Z-aa74e72a9e3b.junit.xml.log"
+    "--junitxml=logs/research_validation_20261020T080026Z-3ed5cd3444f0.junit.xml.log"
   ],
   "interpreter_version": "3.10.6",
   "working_directory": ".",
@@ -83,7 +83,7 @@
     "tested_module_sha256": {
       "src/nationwide/aqi.py": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e",
       "src/nationwide/providers.py": "95e22d9ab0dde1aeef5880ccc1eb7f835d127e1a2cbcbc12971deac9d176acfd",
-      "src/nationwide/store.py": "50dcb03434322f2afcde4662952162522ff31059e3970b954213b881207597bd",
+      "src/nationwide/store.py": "d0231b7a7db76e944df59cedc75fe3ed83d2503cd5c9047ec5bdb47526d86b06",
       "src/research/storage.py": "e3583d5c7e9431735f96b2f299d7d0237ac4c3fa11572b59e63dbeb3926951d2",
       "src/research/calibration/availability.py": "d8e6f28bbffdfe2d8ce8f3384a23618f094c66eb9bd3aaf6c0acd537c5045045",
       "src/research/calibration/data.py": "6121d3fc64963fdd553fdb4c13023a6458a4ec13434eb4de180feee0cddee9f9",
@@ -110,7 +110,7 @@
     },
     "missing_tested_modules": [],
     "source_tree_scope": "src/**/*.py",
-    "source_tree_sha256": "25a580dd187517720688a8d7a9f2e46cfb34b6184338812f5902e35a3be79c30",
+    "source_tree_sha256": "b6175be77e1fac9f791642632b46337c2efa27f76be09b8c1ed0f2229836d7ef",
     "source_file_count": 135,
     "test_file_sha256": {
       "tests/test_archive_backfill.py": "d099eba154dfd0761ace7fae811e29ee03e15a493cfc6ddee2efc3885676e321",
@@ -140,7 +140,7 @@
       "tests/test_live.py": "b185759684397179e1139de89aefdd01dcd36516af03556c6a2b8e5071a4ae6e",
       "tests/test_live_data.py": "13a5219ff363fe90ca1c94493efd92f271980eaa78789e57492d5a3234463f6d",
       "tests/test_nationwide.py": "3423525f5561e4069d2b3dac6b42c6ce1152b4e16c781181a040dbf6f71d0153",
-      "tests/test_nationwide_track_record.py": "72aef777674e1dd6aeaabc9bfb67538feebe9dee2bd4d5c330cef2b045a65b01",
+      "tests/test_nationwide_track_record.py": "f16d473eb9b06b588582548097b3bd496525ef3a498d5833ba99064315bd96be",
       "tests/test_nationwide_verification.py": "b01cc1245fe7c84ed006dc1364d4cda53379572b6b6dc814ebe85f746d7edb56",
       "tests/test_operational_features.py": "cca68071e7b511a98991654795cbcbdabb42cd28c1082c2458aaa45bfc13cd0a",
       "tests/test_operational_scenarios.py": "d0eaa147260e51556d377691c6e89fa7c58de779d104eec8a394599e1dd00866",
@@ -160,7 +160,7 @@
       "tests/test_smoke.py": "c17d242a9bde3bdadfa36650dd9f0c92e178bc3cb91d83dd0fa06a0fb3681e96",
       "tests/test_static_site.py": "d09e3b8bf8131aa6d56b97a692591729f259a31529b1d3ad646bc5f04dbdc0f1"
     },
-    "test_tree_sha256": "f8c96cc9e270a7e1c2d6ef5a287fd1043435b72d0d0a92b31b0145c996e604d6"
+    "test_tree_sha256": "3e8af4b7d925bb43eb57472cec28465600bb7b01fd79eb98c78848840f778901"
   },
   "source_changed_during_run": false,
   "offline_policy": {
@@ -180,10 +180,10 @@
     "excluded_name_expression": "real_database"
   },
   "logs": {
-    "console": "logs/research_validation_20261020T074946Z-aa74e72a9e3b.pytest.log",
-    "console_sha256": "6a3218d00102cd8a72df90588c6becc0aeebcfe4a3a0485a8c4ce00d181a6fbb",
-    "junit": "logs/research_validation_20261020T074946Z-aa74e72a9e3b.junit.xml.log",
-    "junit_sha256": "b1a5bc2f6b65009105f07c0afe4096fc3de140465c80f535ff8ffa68473c1e5c"
+    "console": "logs/research_validation_20261020T080026Z-3ed5cd3444f0.pytest.log",
+    "console_sha256": "f14c7a19cb9144786fa9cf145dadc44a6c75776ca9208df3a5c06e0426eb6874",
+    "junit": "logs/research_validation_20261020T080026Z-3ed5cd3444f0.junit.xml.log",
+    "junit_sha256": "486586665b3a6a541b2eb2a62caa487bf6864ec49f16c6e9388b01a0bfd930b6"
   },
   "status": "PASS"
 }

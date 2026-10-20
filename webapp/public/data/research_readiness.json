@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T07:51:02.489977+00:00",
+  "generated_at": "2026-10-20T08:01:39.014285+00:00",
   "status": "COLLECTING_NOT_RESEARCH_READY",
   "checks": {
     "literature_review_complete": false,
@@ -38,12 +38,12 @@
     "issuance_state": "ISSUED",
     "test_validation_current": true,
     "test_counts": {
-      "tests": 675,
+      "tests": 677,
       "failures": 0,
       "errors": 0,
       "skipped": 5,
-      "collected": 675,
-      "passed": 670,
+      "collected": 677,
+      "passed": 672,
       "deselected": 4
     },
     "security_gate": {

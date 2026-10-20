@@ -12,7 +12,7 @@ from statistics import mean
 from src.ingestion.settings import get_settings
 from src.nationwide.aqi import CATEGORIES, IST, METHOD, SOURCE, aggregate, parse_time, tomorrow_period
 from src.nationwide.providers import Providers, coordinates, grid, utcnow, distance
-from src.nationwide.store import Store, digest
+from src.nationwide.store import Store, digest, republish
 from src.features.exposure import VERSION as EXPOSURE_VERSION
 from src.nationwide.cache_policy import remaining_seconds
 
@@ -103,6 +103,9 @@ class Service:
                     if name: result['location']['name'] = name
                     if region: result['location']['region'] = region
                     result['response_cache'] = {'status':'HIT','computed_at':result['refreshed_at'],'expires_at':hit['expires_at'].isoformat()}
+                    # A summary cached by earlier code may carry track-record cells without the
+                    # counts the publication rule needs; such cells are published as counts only.
+                    result['track_record'] = republish(result.get('track_record') or [])
                     return result
         if defer and not force and hasattr(self.store,'enqueue_summary'):
             state = self.store.enqueue_summary(key,lat,lon)

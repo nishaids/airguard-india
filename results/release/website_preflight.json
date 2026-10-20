@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-12T13:32:06.387072+00:00",
+  "generated_at_utc": "2026-10-20T07:48:38.438378+00:00",
   "checks": {
     "lint": {
       "command": "npm run lint",
@@ -14,28 +14,20 @@
     "test": {
       "command": "npm run test -- --reporter=json --outputFile=test-results/live-release-unit.json",
       "exit_code": 0,
-      "log_sha256": "4527b9093909378719bb7f4fbd1945568b73c377bfe5f0dbbdef3c1a1e851da0"
+      "log_sha256": "61dc36b5398e1bf4ec65f92fc4d854a8f3a747b2cf502cdb1be8e3114953a47b"
     },
     "build": {
       "command": "npm run build",
       "exit_code": 0,
-      "log_sha256": "cb392cc3f03a62b789aa20b6e3e500583c3d740ed2f08fc8a56a3f3bd1a3287c"
+      "log_sha256": "1119f069e8c730cd46022244a63df68fdfe195e3a42fccd7c99145a0aa4a1416"
     }
   },
-  "git_sha": "68ee4dff6de2eb417ef5d7d588dea8273333d424",
+  "git_sha": "3259ce0c5a39dfeced1d4896a2aa6407fedc94ce",
   "unit": {
     "success": true,
-    "numTotalTests": 43,
-    "numPassedTests": 43,
+    "numTotalTests": 44,
+    "numPassedTests": 44,
     "numFailedTests": 0
   },
-  "passed": true,
-  "frontend_source_sha256_after_completed_checks": "6fc16f03586f0f258bed255e9b32f8e7a4f26cad3709249c987f639268467b01",
-  "extra_check": {
-    "command": "node node_modules/eslint/bin/eslint.js app/components/NavBar.js --parser @typescript-eslint/parser --parser-options {\"ecmaFeatures\": {\"jsx\": true}}",
-    "actual_exit_code": 0,
-    "initial_default_parser_exit_code": 1,
-    "initial_failure": "Default extra JS lint invocation lacked JSX parsing; npm lint only covers TSX and app/lib. Corrected by explicitly selecting the installed JSX-capable parser.",
-    "correction_note": "Supersedes the mistaken extra-check exit recorded in commit 35c2ca0; original four preflight check exits were genuinely zero."
-  }
+  "passed": true
 }

@@ -20,6 +20,31 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, default=str, allow_nan=False).encode()).hexdigest()
 
 
+#: A public error figure needs enough independent evidence behind it. A cell is
+#: scored once it holds this many verified forecasts spread over this many IST
+#: target days; until then only its counts are published, so one bad day or a
+#: handful of stations cannot stand in for a track record. With forecast errors
+#: of the order of 40 AQI, 30 forecasts put the standard error of an MAE near 7.
+TRACK_RECORD_MIN_FORECASTS = 30
+TRACK_RECORD_MIN_DAYS = 7
+_SCORES = ("mae", "rmse", "bias", "category_accuracy", "within_one_category")
+
+
+def publishable(rows):
+    """Apply the publication rule to raw track-record cells: counts always, scores only when eligible."""
+    cells = []
+    for row in rows:
+        cell = dict(row)
+        cell["n"], cell["forecasts"], cell["days"] = int(cell["n"]), int(cell["forecasts"]), int(cell["days"])
+        cell["eligible"] = cell["forecasts"] >= TRACK_RECORD_MIN_FORECASTS and cell["days"] >= TRACK_RECORD_MIN_DAYS
+        for key in _SCORES:
+            cell[key] = float(cell[key]) if cell["eligible"] and cell.get(key) is not None else None
+        cell["min_forecasts"], cell["min_days"] = TRACK_RECORD_MIN_FORECASTS, TRACK_RECORD_MIN_DAYS
+        cells.append(cell)
+    pooled = lambda c: (c["region"] != "All regions", c["lead"] != "All leads")
+    return sorted(cells, key=lambda c: (*pooled(c), not c["eligible"], -c["forecasts"], c["region"], c["lead"], c["predicted_category"]))
+
+
 class BudgetExceeded(Exception):
     pass
 
@@ -237,12 +262,24 @@ class Store:
             return [dict(r) for r in cur.fetchall()]
 
     def metrics(self):
+        """Thirty days of verified pairs per region, lead and predicted category, plus pooled rows.
+
+        Every cell carries its counts; its error figures are published only once
+        ``publishable`` accepts it (see TRACK_RECORD_MIN_FORECASTS / _DAYS).
+        """
         with self.cursor() as cur:
-            cur.execute("""select coalesce(f.region,'Unspecified') as region,f.predicted_category,
-                case when v.lead_hours<12 then '<12h' when v.lead_hours<24 then '12-24h' else '24h+' end as lead,
-                count(*) as n,avg(abs(v.error)) as mae,sqrt(avg(v.error*v.error)) as rmse,avg(v.error) as bias,
-                avg((v.category_index=v.predicted_category_index)::int)::float as category_accuracy,
-                avg((abs(v.category_index-v.predicted_category_index)<=1)::int)::float as within_one_category
-                from airguard.forecast_verifications v join airguard.forecast_runs f on f.id=v.forecast_run_id
-                where v.verified_at>now()-interval '30 days' group by 1,2,3""")
-            return [dict(r) for r in cur.fetchall()]
+            cur.execute("""with pairs as (select coalesce(f.region,'Unspecified') as region,f.predicted_category,
+                    case when v.lead_hours<12 then '<12h' when v.lead_hours<24 then '12-24h' else '24h+' end as lead,
+                    f.id as forecast_id,(f.target_start at time zone 'Asia/Kolkata')::date as target_day,v.error,
+                    v.category_index,v.predicted_category_index
+                    from airguard.forecast_verifications v join airguard.forecast_runs f on f.id=v.forecast_run_id
+                    where v.verified_at>now()-interval '30 days')
+                select case when grouping(region)=1 then 'All regions' else region end as region,
+                    case when grouping(predicted_category)=1 then 'All categories' else predicted_category end as predicted_category,
+                    case when grouping(lead)=1 then 'All leads' else lead end as lead,
+                    count(*) as n,count(distinct forecast_id) as forecasts,count(distinct target_day) as days,
+                    avg(abs(error)) as mae,sqrt(avg(error*error)) as rmse,avg(error) as bias,
+                    avg((category_index=predicted_category_index)::int)::float as category_accuracy,
+                    avg((abs(category_index-predicted_category_index)<=1)::int)::float as within_one_category
+                from pairs group by grouping sets ((region,predicted_category,lead),(lead),())""")
+            return publishable(cur.fetchall())

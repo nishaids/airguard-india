@@ -16,6 +16,11 @@ from src.nationwide.store import Store, digest
 from src.features.exposure import VERSION as EXPOSURE_VERSION
 from src.nationwide.cache_policy import remaining_seconds
 
+#: A summary assembled while another request was refreshing one of its sources
+#: carries that source's older copy. Fresh data is moments away, so such a
+#: summary is kept only briefly instead of for the usual ten minutes.
+STALE_SUMMARY_SECONDS = 30
+
 
 def ttl(name, default):
     try:
@@ -107,6 +112,8 @@ class Service:
         # remain labelled fresh after the next IST hour or calendar day.
         if result.get('ok'):
             seconds = min(600,remaining_seconds(result,now,ttl('AIRGUARD_AIR_TTL',3600),ttl('AIRGUARD_WEATHER_TTL',7200)))
+            if any(isinstance(state,dict) and state.get('status')=='STALE' for state in (result.get('provider_status') or {}).values()):
+                seconds = min(seconds, STALE_SUMMARY_SECONDS)
             if seconds < 1: return result
             token = self.store.claim(key,'summary')
             if token:

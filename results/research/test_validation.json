@@ -1,11 +1,11 @@
 {
   "counts": {
-    "tests": 669,
+    "tests": 675,
     "failures": 0,
     "errors": 0,
     "skipped": 5,
-    "collected": 669,
-    "passed": 664,
+    "collected": 675,
+    "passed": 670,
     "deselected": 4
   },
   "counts_consistent": true,
@@ -58,10 +58,10 @@
   "cpcb_missing_or_unsuccessful_groups": [],
   "unsuccessful_tests": [],
   "validation_version": "research-offline-test-validation-v1",
-  "run_id": "20261013T195811Z-c1545be3795b",
-  "started_at": "2026-10-13T19:58:11.337974+00:00",
-  "completed_at": "2026-10-13T19:59:21.423343+00:00",
-  "generated_at": "2026-10-13T19:59:21.423343+00:00",
+  "run_id": "20261020T074946Z-aa74e72a9e3b",
+  "started_at": "2026-10-20T07:49:46.780043+00:00",
+  "completed_at": "2026-10-20T07:50:55.161436+00:00",
+  "generated_at": "2026-10-20T07:50:55.161436+00:00",
   "command": [
     "python",
     "-m",
@@ -72,7 +72,7 @@
     "not real_database",
     "-p",
     "src.research.calibration.validation",
-    "--junitxml=logs/research_validation_20261013T195811Z-c1545be3795b.junit.xml.log"
+    "--junitxml=logs/research_validation_20261020T074946Z-aa74e72a9e3b.junit.xml.log"
   ],
   "interpreter_version": "3.10.6",
   "working_directory": ".",
@@ -83,7 +83,7 @@
     "tested_module_sha256": {
       "src/nationwide/aqi.py": "025b88ac4a9612466210c4ff1208ffde6a3c8b45c7ee50b6c81e088d92f11a0e",
       "src/nationwide/providers.py": "95e22d9ab0dde1aeef5880ccc1eb7f835d127e1a2cbcbc12971deac9d176acfd",
-      "src/nationwide/store.py": "b9bc5f4e4e20ea997e38b9a51ed277a3c9ca63250541dd0498d0abc15dbb9875",
+      "src/nationwide/store.py": "50dcb03434322f2afcde4662952162522ff31059e3970b954213b881207597bd",
       "src/research/storage.py": "e3583d5c7e9431735f96b2f299d7d0237ac4c3fa11572b59e63dbeb3926951d2",
       "src/research/calibration/availability.py": "d8e6f28bbffdfe2d8ce8f3384a23618f094c66eb9bd3aaf6c0acd537c5045045",
       "src/research/calibration/data.py": "6121d3fc64963fdd553fdb4c13023a6458a4ec13434eb4de180feee0cddee9f9",
@@ -99,7 +99,7 @@
       "src/research/calibration/protocol.py": "b4b73c68f8b835bb44c2d61ffb4d8ef345a66b3865c0bf75ae240522401d7e5b",
       "src/research/calibration/dataset.py": "aacce5e38b06ad10aac59a18301f5319db85553c91dcf3f3da2c0a97fe4dc077",
       "src/research/calibration/validation.py": "b8ad8276f386456ca312dda4e61c399c60d40d22319b3d948ea0b052f3fd9af6",
-      "src/research/calibration/cams_acquisition.py": "868f9252b1b9bbe4e686560a6b9f454bd86bec515bdc8aae62cfdbc70e5ddc3e",
+      "src/research/calibration/cams_acquisition.py": "cdb5d692fa4eaa099e31cd28fe5759b42f6e95475bcaee27acdb1d82af06f35c",
       "src/research/calibration/cams_baseline.py": "2aaa21923d2c46413c3bcf1194134a2bc27bbab2e69df8f31dfb1451b362c163",
       "src/research/calibration/cams_physics.py": "98a73049d91fba9bc755c26ba673ea3e5599aa133282cc14cc8a053a070b225b",
       "src/research/calibration/primary_dataset.py": "198ac907eb18143b02e36c5895dfe1cdf8a51f27c39c86a7a8e12ede63edcf64",
@@ -110,13 +110,13 @@
     },
     "missing_tested_modules": [],
     "source_tree_scope": "src/**/*.py",
-    "source_tree_sha256": "55e42475adeccc79075214a11ae36e71a772f1ff854248404435d4769b3484ce",
+    "source_tree_sha256": "25a580dd187517720688a8d7a9f2e46cfb34b6184338812f5902e35a3be79c30",
     "source_file_count": 135,
     "test_file_sha256": {
       "tests/test_archive_backfill.py": "d099eba154dfd0761ace7fae811e29ee03e15a493cfc6ddee2efc3885676e321",
       "tests/test_archive_targets.py": "83b551d6561d8907bdd89c144d1245a0cb328157a84970f622247985ff6d61e5",
       "tests/test_calibration_ads_probe.py": "94958c59be3cd314eded7f12056bf07f10f4f1e03d8183194fbc1cf96c41a95e",
-      "tests/test_calibration_cams_acquisition.py": "1a7f1cb14dd78b25ecfe40a3f778cd54257168a4d11056555443357cc30c78fd",
+      "tests/test_calibration_cams_acquisition.py": "fd5c9438a8f7119b03cc6b8e19697a9ae4a4edb2c180296af7c93e42cc1fddaa",
       "tests/test_calibration_cams_baseline.py": "cb544ba04dc4024c5b0fc86954824b55fca222d3868ff4dffcb9c5bc7650053f",
       "tests/test_calibration_cams_physics.py": "2deacf0caafd6c86ca6b7fe84100d9dc65ded354fe6bf663e497e73b4c04dcbc",
       "tests/test_calibration_cams_readiness.py": "83a71f0b9c2872b24c58439d7120608c48a009699630c29af984b5ef305fef8c",
@@ -139,7 +139,8 @@
       "tests/test_issuance_alerts.py": "4d156ac2f5d695cce1da4c2297bef8ce4d83f7f9d62c01ec53bbdc066c4c3b27",
       "tests/test_live.py": "b185759684397179e1139de89aefdd01dcd36516af03556c6a2b8e5071a4ae6e",
       "tests/test_live_data.py": "13a5219ff363fe90ca1c94493efd92f271980eaa78789e57492d5a3234463f6d",
-      "tests/test_nationwide.py": "576efbf81f31ab7fb6ec548211aa46591a9b6c45b647924cf479e1e55aeed2a5",
+      "tests/test_nationwide.py": "3423525f5561e4069d2b3dac6b42c6ce1152b4e16c781181a040dbf6f71d0153",
+      "tests/test_nationwide_track_record.py": "72aef777674e1dd6aeaabc9bfb67538feebe9dee2bd4d5c330cef2b045a65b01",
       "tests/test_nationwide_verification.py": "b01cc1245fe7c84ed006dc1364d4cda53379572b6b6dc814ebe85f746d7edb56",
       "tests/test_operational_features.py": "cca68071e7b511a98991654795cbcbdabb42cd28c1082c2458aaa45bfc13cd0a",
       "tests/test_operational_scenarios.py": "d0eaa147260e51556d377691c6e89fa7c58de779d104eec8a394599e1dd00866",
@@ -159,7 +160,7 @@
       "tests/test_smoke.py": "c17d242a9bde3bdadfa36650dd9f0c92e178bc3cb91d83dd0fa06a0fb3681e96",
       "tests/test_static_site.py": "d09e3b8bf8131aa6d56b97a692591729f259a31529b1d3ad646bc5f04dbdc0f1"
     },
-    "test_tree_sha256": "c93979977d5bacaf21dff33d1dad3278a756ad4c73a00c1efdcae7ae9206c168"
+    "test_tree_sha256": "f8c96cc9e270a7e1c2d6ef5a287fd1043435b72d0d0a92b31b0145c996e604d6"
   },
   "source_changed_during_run": false,
   "offline_policy": {
@@ -179,10 +180,10 @@
     "excluded_name_expression": "real_database"
   },
   "logs": {
-    "console": "logs/research_validation_20261013T195811Z-c1545be3795b.pytest.log",
-    "console_sha256": "7bc0e90ff47182e4dbffea638ecc13be328aabbdabcc55b79d986ddb2cbbe4ec",
-    "junit": "logs/research_validation_20261013T195811Z-c1545be3795b.junit.xml.log",
-    "junit_sha256": "eba06f3e5115d0f3e8bfea287ea914f8cfcc04c56144e706fc4f5fa910dfc749"
+    "console": "logs/research_validation_20261020T074946Z-aa74e72a9e3b.pytest.log",
+    "console_sha256": "6a3218d00102cd8a72df90588c6becc0aeebcfe4a3a0485a8c4ce00d181a6fbb",
+    "junit": "logs/research_validation_20261020T074946Z-aa74e72a9e3b.junit.xml.log",
+    "junit_sha256": "b1a5bc2f6b65009105f07c0afe4096fc3de140465c80f535ff8ffa68473c1e5c"
   },
   "status": "PASS"
 }

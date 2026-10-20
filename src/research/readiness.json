@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T20:00:24.884005+00:00",
+  "generated_at": "2026-10-20T07:51:02.489977+00:00",
   "status": "COLLECTING_NOT_RESEARCH_READY",
   "checks": {
     "literature_review_complete": false,
@@ -22,28 +22,28 @@
   },
   "passed": 5,
   "total": 17,
-  "CAMS_ARCHIVE_STATUS": "ADS_OPERATIONAL_ARCHIVE_PAUSED_AUTHOR_REQUEST",
+  "CAMS_ARCHIVE_STATUS": "ADS_OPERATIONAL_ARCHIVE_ACQUIRING",
   "evidence": {
     "protocol_version": "airguard-retrospective-station-calibration-v3.1",
     "protocol_hash": "e24b664747029a7611efcf4fb19b8cfdf8b12762d379927698fa6e98777d67e8",
     "dataset_hash": "4761a5da60dde059b1c7bbfc5403e32d26c983f80e3fc22683eba8a13119821d",
     "preliminary_run_id": "287c87db04a6b29459374c4d50637f943c04dfe10d9072d7e296b74ad1d45a3f",
     "fixed_time_issuance": {
-      "forecasts": 36,
-      "issued_target_days": 3,
-      "verified_days": 0,
-      "elapsed_real_days": 2.157883610925926,
-      "station_bound_forecasts": 0
+      "forecasts": 108,
+      "issued_target_days": 9,
+      "verified_days": 2,
+      "elapsed_real_days": 8.721773804756944,
+      "station_bound_forecasts": 29
     },
     "issuance_state": "ISSUED",
     "test_validation_current": true,
     "test_counts": {
-      "tests": 669,
+      "tests": 675,
       "failures": 0,
       "errors": 0,
       "skipped": 5,
-      "collected": 669,
-      "passed": 664,
+      "collected": 675,
+      "passed": 670,
       "deselected": 4
     },
     "security_gate": {
@@ -75,7 +75,7 @@
     "final_test_scored": false,
     "does_not_satisfy_primary_gates": true
   },
-  "prospective_evaluable": false,
+  "prospective_evaluable": true,
   "claims_supported": [
     "Measured CPCB-style target construction with v3.1 QC",
     "Non-CAMS preliminary validation with a sealed final test",
@@ -87,5 +87,5 @@
     "Controlled vulnerable-cohort under-warning",
     "Station correction generalises nationwide"
   ],
-  "pending_archive": "ADS_OPERATIONAL_ARCHIVE_PAUSED_AUTHOR_REQUEST"
+  "pending_archive": "ADS_OPERATIONAL_ARCHIVE_ACQUIRING"
 }

@@ -31,6 +31,20 @@ describe("nationwide dashboard", () => {
     expect(screen.getAllByText(/MODELLED/).length).toBeGreaterThan(0);
     expect(screen.getByText(/No eligible forecast/)).toBeInTheDocument();
   });
+  it("publishes track-record errors only for groups with enough checked forecasts", async () => {
+    const base = { lead: "<12h", n: 0, forecasts: 0, days: 0, eligible: false, min_forecasts: 30, min_days: 7, mae: null, rmse: null, bias: null, category_accuracy: null, within_one_category: null };
+    const track_record = [
+      { ...base, region: "All regions", lead: "All leads", predicted_category: "All categories", n: 77, forecasts: 48, days: 3 },
+      { ...base, region: "Maharashtra", predicted_category: "Very Poor", n: 6, forecasts: 2, days: 1 },
+      { ...base, region: "Delhi", predicted_category: "Poor", n: 80, forecasts: 31, days: 8, eligible: true, mae: 22.5, rmse: 30.1, bias: 12.0, category_accuracy: 0.5, within_one_category: 0.9 },
+    ];
+    vi.stubGlobal("fetch", vi.fn(() => response({ ...sample, track_record })));
+    render(<NationwideDashboard />);
+    expect(await screen.findByText(/48 forecasts were checked against nearby stations on 3 target days/)).toBeInTheDocument();
+    expect(screen.getByText("22.5")).toBeInTheDocument();
+    expect(screen.getByText(/Maharashtra · <12h · Very Poor: 2 forecasts over 1 day/)).toBeInTheDocument();
+    expect(screen.queryByText("249.5")).not.toBeInTheDocument();
+  });
   it("renders measured and stale labels", async () => {
     vi.stubGlobal("fetch", vi.fn(() => response({ ...sample, current: { ...aqi, measured_or_modelled: "MEASURED", freshness: "DELAYED" }, tomorrow: { ...sample.tomorrow, freshness: "STALE" } })));
     render(<NationwideDashboard />);

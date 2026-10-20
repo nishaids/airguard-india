@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { cohorts, copy, type Cohort } from "../lib/i18n";
 import { reviewState } from "../lib/messages";
-import type { AQI } from "../lib/live-types";
+import type { AQI, TrackCell } from "../lib/live-types";
 
 const HourlyChart = dynamic(() => import("./HourlyChart"), { ssr: false, loading: () => <p>Preparing chart. Hourly values are available in the table.</p> });
 import { useOperational } from "./OperationalProvider";
@@ -62,8 +62,23 @@ export default function NationwideDashboard({ mode = "live", children }: { mode?
       {children}
       <details className="live-section"><summary>Nearby measured pollutant context</summary><p>{data.measured_context.reason}</p>{data.measured_context.stations.map(station => <div key={`${station.name}-${station.distance_km}`}><h3>{station.name} · {station.distance_km} km · {station.freshness}</h3><p>OpenAQ / {station.provider?.name} · owner {station.owner?.name || "not supplied"} · last observation {ist(station.last_observed_at)} · AQI {station.calculation?.status}</p><ul>{station.latest.map(r => <li key={r.sensor}>{r.pollutant}: {r.value.toFixed(2)} {r.unit} · {ist(r.observed_at)} · sensor {r.sensor} · original unit {r.raw_unit}</li>)}</ul></div>)}</details>
       <details className="live-section"><summary>How was this calculated?</summary><p>Current: {data.current.measured_or_modelled} · {data.current.source} · retrieved {ist(data.current.fetched_at)}</p><p>Tomorrow: modelled forecast — not an official CPCB forecast. Issued {ist(tomorrow?.issued_at)}; valid on {tomorrow?.date} in IST.</p><p>Method: {data.provenance.methodology_version}. At least three pollutants, including PM2.5 or PM10, and 16 hourly bins per pollutant. CO/O3 need complete eight-hour windows; high ozone uses one-hour mathematical bands. Severe values above the last closed breakpoint display a lower bound.</p><p>{data.provenance.current_averaging}</p><p>{data.provenance.tomorrow_averaging}</p><p>{data.provenance.issue_time_basis}</p><p>Provider states: {Object.entries(data.provider_status).map(([provider,state]) => `${provider}: ${state.status} (${state.cache || "no cache"})`).join(" · ")}</p><p>Satellite context: {data.fire_context.detections.length} stored FIRMS detections within 50 km in the last 24 hours. {data.fire_context.meaning}</p><p>Last refreshed {ist(data.refreshed_at)} · forecast record {tomorrow?.forecast_run_id ?? "not issued"}</p><Link href="/methods">Read methods, sources and limitations</Link></details>
-      <section className="live-section"><h2>Live forecast track record</h2>{data.track_record.length ? <div className="live-table-scroll"><table><thead><tr><th>Region / lead / category</th><th>Pairs</th><th>MAE</th><th>RMSE</th><th>Bias</th><th>Category agreement</th><th>Within one category</th></tr></thead><tbody>{data.track_record.map(m => <tr key={`${m.region}-${m.lead}-${m.predicted_category}`}><td>{m.region} · {m.lead} · {m.predicted_category}</td><td>{m.n}</td><td>{Number(m.mae).toFixed(1)}</td><td>{Number(m.rmse).toFixed(1)}</td><td>{Number(m.bias).toFixed(1)}</td><td>{(m.category_accuracy*100).toFixed(0)}%</td><td>{(m.within_one_category*100).toFixed(0)}%</td></tr>)}</tbody></table></div> : <p>No eligible forecast–measurement pairs yet. Forecasts are saved before their target day; scores appear only after adequate measured station data becomes available. Historical model scores are separate.</p>}</section>
+      <TrackRecord cells={data.track_record} />
     </>}
     <footer className="live-footer">AirGuard transforms model concentrations into a CPCB-style estimate. Data: <a href="https://open-meteo.com/">Open-Meteo</a> / <a href="https://atmosphere.copernicus.eu/">CAMS Copernicus</a> · Geocoding: <a href="https://www.geonames.org/">GeoNames</a> · Measurements: <a href="https://openaq.org/">OpenAQ</a> and upstream providers · Fire context: <a href="https://firms.modaps.eosdis.nasa.gov/">NASA FIRMS</a>. {languageNotice()} <Link href="/research/legacy">Historical research</Link>.</footer>
   </div>;
+}
+
+function TrackRecord({ cells }: { cells: TrackCell[] }) {
+  if (!cells.length) return <section className="live-section"><h2>Live forecast track record</h2><p>No eligible forecast–measurement pairs yet. Forecasts are saved before their target day; scores appear only after adequate measured station data becomes available. Historical model scores are separate.</p></section>;
+  const scored = cells.filter(c => c.eligible), waiting = cells.filter(c => !c.eligible);
+  const overall = cells.find(c => c.region === "All regions" && c.lead === "All leads");
+  const label = (c: TrackCell) => `${c.region} · ${c.lead} · ${c.predicted_category}`;
+  return <section className="live-section"><h2>Live forecast track record</h2>
+    <p>{overall ? `In the last 30 days, ${overall.forecasts} forecasts were checked against nearby stations on ${overall.days} target ${overall.days === 1 ? "day" : "days"} (${overall.n} forecast–station pairs). ` : ""}
+      A group is scored only once it holds {cells[0].min_forecasts} checked forecasts over {cells[0].min_days} different days, so one bad day or a handful of stations cannot stand in for a track record.</p>
+    {scored.length ? <div className="live-table-scroll"><table><thead><tr><th>Region / lead / predicted category</th><th>Forecasts</th><th>Days</th><th>MAE</th><th>RMSE</th><th>Bias</th><th>Category agreement</th><th>Within one category</th></tr></thead><tbody>{scored.map(m => <tr key={label(m)}><td>{label(m)}</td><td>{m.forecasts}</td><td>{m.days}</td><td>{Number(m.mae).toFixed(1)}</td><td>{Number(m.rmse).toFixed(1)}</td><td>{Number(m.bias).toFixed(1)}</td><td>{(Number(m.category_accuracy) * 100).toFixed(0)}%</td><td>{(Number(m.within_one_category) * 100).toFixed(0)}%</td></tr>)}</tbody></table></div>
+      : <p><strong>Not enough checked forecasts to publish an error figure yet.</strong> This is a sample-size rule, not a result.</p>}
+    {waiting.length > 0 && <details><summary>Still collecting ({waiting.length} {waiting.length === 1 ? "group" : "groups"}; counts only)</summary><ul>{waiting.map(m => <li key={label(m)}>{label(m)}: {m.forecasts} {m.forecasts === 1 ? "forecast" : "forecasts"} over {m.days} {m.days === 1 ? "day" : "days"}</li>)}</ul></details>}
+    <small>Bias is forecast minus measured, so a positive value means the forecast ran high. A forecast checked against several nearby stations counts once.</small>
+  </section>;
 }

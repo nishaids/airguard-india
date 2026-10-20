@@ -1,0 +1,237 @@
+{
+  "generated_by": "scripts/build_cams_matching_report.py",
+  "join": {
+    "rows": 18540,
+    "stations": 180,
+    "cities": 100,
+    "dates": 103,
+    "exact_targets": 11634,
+    "censored_severe_retained": 7,
+    "rejected_targets_retained": 6899,
+    "availability_violations": 0,
+    "missing_cams_dates": 403,
+    "date_range": [
+      "2025-02-19",
+      "2025-06-01"
+    ],
+    "sha256": "e9ecca99412bf916fe4ba6e7fc65eee0dd758409f1d490b866a8522b9d9f646d"
+  },
+  "raw_cams_station_days": 18643,
+  "raw_cams_stations": 181,
+  "matching": {
+    "grid": "CAMS operational 0.4-degree grid",
+    "rule": "nearest grid centre (station latitude and longitude each rounded to the 0.4-degree lattice); the cell must exist exactly once in the file",
+    "time": "native 3-hourly leads interpolated to hourly within the acquired leads; no extrapolation",
+    "coastal_handling": "none: a coastal station can fall in a cell that is mostly sea; not yet audited"
+  },
+  "valid_target_share": 0.628,
+  "valid_days_per_station": {
+    "max": 93,
+    "median": 75,
+    "minimum_required": 120
+  },
+  "paired_months_verified": [
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05"
+  ],
+  "folds": [
+    {
+      "fold": "fold_01",
+      "train_days": 90,
+      "train_range": [
+        "2025-02-19",
+        "2025-05-19"
+      ],
+      "test_range": [
+        "2025-06-21",
+        "2025-07-20"
+      ],
+      "cams_needed_through": "2025-07-19",
+      "expected_valid_days_per_station": 57,
+      "can_meet_station_minimum": false
+    },
+    {
+      "fold": "fold_02",
+      "train_days": 120,
+      "train_range": [
+        "2025-02-19",
+        "2025-06-18"
+      ],
+      "test_range": [
+        "2025-07-21",
+        "2025-08-19"
+      ],
+      "cams_needed_through": "2025-08-18",
+      "expected_valid_days_per_station": 75,
+      "can_meet_station_minimum": false
+    },
+    {
+      "fold": "fold_03",
+      "train_days": 150,
+      "train_range": [
+        "2025-02-19",
+        "2025-07-18"
+      ],
+      "test_range": [
+        "2025-08-20",
+        "2025-09-18"
+      ],
+      "cams_needed_through": "2025-09-17",
+      "expected_valid_days_per_station": 94,
+      "can_meet_station_minimum": false
+    },
+    {
+      "fold": "fold_04",
+      "train_days": 180,
+      "train_range": [
+        "2025-02-19",
+        "2025-08-17"
+      ],
+      "test_range": [
+        "2025-09-19",
+        "2025-10-18"
+      ],
+      "cams_needed_through": "2025-10-17",
+      "expected_valid_days_per_station": 113,
+      "can_meet_station_minimum": false
+    },
+    {
+      "fold": "fold_05",
+      "train_days": 210,
+      "train_range": [
+        "2025-02-19",
+        "2025-09-16"
+      ],
+      "test_range": [
+        "2025-10-19",
+        "2025-11-17"
+      ],
+      "cams_needed_through": "2025-11-16",
+      "expected_valid_days_per_station": 132,
+      "can_meet_station_minimum": true
+    },
+    {
+      "fold": "fold_06",
+      "train_days": 240,
+      "train_range": [
+        "2025-02-19",
+        "2025-10-16"
+      ],
+      "test_range": [
+        "2025-11-18",
+        "2025-12-17"
+      ],
+      "cams_needed_through": "2025-12-16",
+      "expected_valid_days_per_station": 151,
+      "can_meet_station_minimum": true
+    },
+    {
+      "fold": "fold_07",
+      "train_days": 270,
+      "train_range": [
+        "2025-02-19",
+        "2025-11-15"
+      ],
+      "test_range": [
+        "2025-12-18",
+        "2026-01-16"
+      ],
+      "cams_needed_through": "2026-01-15",
+      "expected_valid_days_per_station": 170,
+      "can_meet_station_minimum": true
+    },
+    {
+      "fold": "fold_08",
+      "train_days": 300,
+      "train_range": [
+        "2025-02-19",
+        "2025-12-15"
+      ],
+      "test_range": [
+        "2026-01-17",
+        "2026-02-15"
+      ],
+      "cams_needed_through": "2026-02-14",
+      "expected_valid_days_per_station": 188,
+      "can_meet_station_minimum": true
+    },
+    {
+      "fold": "fold_09",
+      "train_days": 330,
+      "train_range": [
+        "2025-02-19",
+        "2026-01-14"
+      ],
+      "test_range": [
+        "2026-02-16",
+        "2026-03-17"
+      ],
+      "cams_needed_through": "2026-03-16",
+      "expected_valid_days_per_station": 207,
+      "can_meet_station_minimum": true
+    },
+    {
+      "fold": "fold_10",
+      "train_days": 360,
+      "train_range": [
+        "2025-02-19",
+        "2026-02-13"
+      ],
+      "test_range": [
+        "2026-03-18",
+        "2026-04-16"
+      ],
+      "cams_needed_through": "2026-04-15",
+      "expected_valid_days_per_station": 226,
+      "can_meet_station_minimum": true
+    },
+    {
+      "fold": "fold_11",
+      "train_days": 390,
+      "train_range": [
+        "2025-02-19",
+        "2026-03-15"
+      ],
+      "test_range": [
+        "2026-04-17",
+        "2026-05-16"
+      ],
+      "cams_needed_through": "2026-05-15",
+      "expected_valid_days_per_station": 245,
+      "can_meet_station_minimum": true
+    },
+    {
+      "fold": "fold_12",
+      "train_days": 420,
+      "train_range": [
+        "2025-02-19",
+        "2026-04-14"
+      ],
+      "test_range": [
+        "2026-05-17",
+        "2026-06-15"
+      ],
+      "cams_needed_through": "2026-06-14",
+      "expected_valid_days_per_station": 264,
+      "can_meet_station_minimum": true
+    }
+  ],
+  "first_fold_that_can_qualify": {
+    "fold": "fold_05",
+    "train_days": 210,
+    "train_range": [
+      "2025-02-19",
+      "2025-09-16"
+    ],
+    "test_range": [
+      "2025-10-19",
+      "2025-11-17"
+    ],
+    "cams_needed_through": "2025-11-16",
+    "expected_valid_days_per_station": 132,
+    "can_meet_station_minimum": true
+  },
+  "files_still_needed_for_that_fold": 10
+}

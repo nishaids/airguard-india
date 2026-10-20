@@ -2,8 +2,10 @@
 
 No target labels, model fitting, final-test access or production writes here.
 The minimum supported rectangular ADS subset covers the frozen station sample.
-New jobs are submitted sequentially, after all existing jobs finish. A missing/ambiguous job ID never
-causes an automatic replacement request.
+New jobs are submitted one at a time by default, or up to the author-authorised number
+of concurrent jobs. A missing/ambiguous job ID never causes an automatic replacement
+request; the only replacement path is a reviewed one for a result the provider has
+provably deleted (HTTP 404 on the original ID), and it keeps the original ID on record.
 """
 import argparse
 import contextlib
@@ -190,6 +192,9 @@ def lease(folder):
             else: fcntl.flock(f, fcntl.LOCK_UN)
 
 
+ACTIVE = ('SUBMITTING','SUBMITTED','accepted','running','successful')
+
+
 def step(*, poll_only=False):
     plan = freeze()
     folder = ROOT/'data/research/cams_operational'/plan['sha256']
@@ -218,11 +223,13 @@ def step(*, poll_only=False):
                 if not entry:
                     if poll_only or record.get('submission_control',{}).get('new_requests_authorized') is False:
                         continue
-                    active = sum(j['status'] in ('SUBMITTING','SUBMITTED','accepted','running','successful') for j in record['jobs'].values())
+                    control = record.get('submission_control', {})
+                    limit = max(1, min(2, int(control.get('max_active', 1))))
+                    active = sum(j['status'] in ACTIVE for j in record['jobs'].values())
                     # Also block on unresolved failures: review/recover the existing
                     # ID instead of adding load or silently leaving a data gap.
-                    unresolved = any(j['status'] != 'VERIFIED_GRIB' for j in record['jobs'].values())
-                    if active or unresolved: continue
+                    failed = any(j['status'] not in ACTIVE and j['status'] != 'VERIFIED_GRIB' for j in record['jobs'].values())
+                    if active >= limit or failed: continue
                     # Verify the first surface+model-level chunks before further jobs.
                     if job not in plan['jobs'][:2] and not all(record['jobs'].get(j['id'],{}).get('status')=='VERIFIED_GRIB' for j in plan['jobs'][:2]): continue
                     entry = record['jobs'][job['id']] = {'status':'SUBMITTING','request':job['request'],
@@ -265,6 +272,60 @@ def pause_new_requests():
             'reason': 'Author requested existing-request reconciliation only; no new ADS submissions.'}
         write_json(STATE, record)
     return {'new_requests_authorized':False,'request_ids_preserved':True}
+
+
+def authorize_new_requests(note, max_active=1):
+    """Record the author's renewed authorisation to submit the frozen plan's remaining jobs."""
+    if not str(note).strip():
+        raise ValueError('An authorisation note is required')
+    max_active = int(max_active)
+    if max_active not in (1, 2):
+        raise ValueError('At most two concurrent ADS jobs may be authorised')
+    plan = freeze()
+    with lease(ROOT/'data/research/cams_operational'/plan['sha256']):
+        record = json.loads(STATE.read_text(encoding='utf-8'))
+        if record['plan_sha256'] != plan['sha256']:
+            raise ValueError('Archive state belongs to a different frozen plan')
+        previous = record.get('submission_control')
+        record['submission_control'] = {
+            'new_requests_authorized': True, 'max_active': max_active, 'recorded_at_utc': ads_probe.now(),
+            'reason': str(note), 'scope': 'remaining jobs of the frozen plan only; no duplicate of a live or verified job',
+            'previous_control': previous}
+        write_json(STATE, record)
+    return {'new_requests_authorized': True, 'max_active': max_active, 'plan_sha256': plan['sha256'][:16]}
+
+
+def retire_expired_result(job_prefix, note):
+    """Reviewed handling of a provider-deleted result (HTTP 404 on the original ID).
+
+    Nothing is submitted here. The entry is moved, with its original request ID,
+    into ``retired_requests`` so that the frozen job can be submitted again by a
+    later authorised step. Any other failure kind is refused.
+    """
+    plan = freeze()
+    folder = ROOT/'data/research/cams_operational'/plan['sha256']
+    with lease(folder):
+        record = json.loads(STATE.read_text(encoding='utf-8'))
+        if record['plan_sha256'] != plan['sha256']:
+            raise ValueError('Archive state belongs to a different frozen plan')
+        matches = [key for key in record['jobs'] if key.startswith(job_prefix)]
+        if len(job_prefix) < 8 or len(matches) != 1:
+            raise ValueError('Exactly one existing job must match the reviewed identifier')
+        if not str(note).strip():
+            raise ValueError('A review note is required')
+        entry, error = record['jobs'][matches[0]], record['jobs'][matches[0]].get('error') or {}
+        if (entry['status'] != 'RETRIEVAL_OR_VALIDATION_FAILED' or not entry.get('request_id') or entry.get('file')
+                or error.get('http_status') != 404 or (folder/(matches[0]+'.grib')).exists()):
+            raise ValueError('Only a provider-deleted result (HTTP 404) with no downloaded file may be retired')
+        record.setdefault('retired_requests', []).append({
+            'job_id': matches[0], 'request_id': entry['request_id'], 'submitted_at_utc': entry.get('submitted_at_utc'),
+            'error': error, 'retired_at_utc': ads_probe.now(), 'review_note': str(note), 'new_request_submitted': False})
+        del record['jobs'][matches[0]]
+        record['checked_at_utc'] = ads_probe.now()
+        record['counts'] = {s:sum(j['status']==s for j in record['jobs'].values()) for s in sorted({j['status'] for j in record['jobs'].values()})}
+        record['complete'] = False
+        write_json(STATE, record)
+        return {'retired':matches[0][:12], 'request_id':entry['request_id'], 'counts':record['counts'], 'new_request_submitted':False}
 
 
 def reconcile_existing(request_ids):
@@ -442,8 +503,17 @@ def main():
     parser.add_argument('--reopen-transport-failure',metavar='JOB_PREFIX',help='Reviewed re-poll of one existing remote ID; never submits')
     parser.add_argument('--review-note',default='')
     parser.add_argument('--pause-new-requests',action='store_true')
+    parser.add_argument('--authorize-new-requests',metavar='NOTE',help="Record the author's renewed submission authorisation")
+    parser.add_argument('--max-active',type=int,default=1,help='Concurrent ADS jobs when authorising (1 or 2)')
+    parser.add_argument('--retire-expired-result',metavar='JOB_PREFIX',help='Reviewed retirement of a provider-deleted (404) result; never submits')
     parser.add_argument('--reconcile-request-ids',nargs='+',help='Recheck only these already-recorded request IDs; never submit')
     parser.add_argument('--worker-hours',type=float,default=0); args=parser.parse_args()
+    if args.authorize_new_requests:
+        print(json.dumps(authorize_new_requests(args.authorize_new_requests, args.max_active))); return
+    if args.retire_expired_result:
+        if not args.review_note.strip():
+            raise ValueError('A review note is required')
+        print(json.dumps(retire_expired_result(args.retire_expired_result, args.review_note))); return
     if args.pause_new_requests:
         print(json.dumps(pause_new_requests()))
         if not args.reconcile_request_ids:return

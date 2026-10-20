@@ -172,3 +172,54 @@ def test_reconciliation_polls_only_explicit_existing_scope_and_redacts_replies(t
     with pytest.raises(ValueError,match='Unknown request'):
         archive.reconcile_existing(['UNKNOWN'])
     assert calls==['ARCHIVE0','PROBE']
+
+
+def test_expired_result_is_retired_with_its_id_and_resubmitted_only_when_authorised(tmp_path,monkeypatch):
+    plan=archive.make_plan(load(),selection())
+    plan['jobs']=plan['jobs'][:2]
+    monkeypatch.setattr(archive,'ROOT',tmp_path)
+    monkeypatch.setattr(archive,'STATE',tmp_path/'state.json')
+    monkeypatch.setattr(archive,'freeze',lambda:plan)
+    first,second=(job['id'] for job in plan['jobs'])
+    gone={'category':'CLIENT_OR_SERVICE_ERROR','http_status':404,'terms_mentioned':False}
+    base={'status':'RETRIEVAL_OR_VALIDATION_FAILED','request_id':'OLD_ID','submitted_at_utc':'t','error':gone}
+    def write(entries):
+        archive.STATE.write_text(json.dumps({'plan_sha256':plan['sha256'],'dataset':'d','jobs':entries,'final_test_accessed':False}))
+    # anything other than a provider 404 with no file is refused, and nothing changes
+    for entries in ({first:{**base,'error':{**gone,'http_status':None}}}, {first:{**base,'file':'x.grib'}},
+                    {first:{**base,'status':'running'}}, {first:{**base,'request_id':None}}):
+        write(entries)
+        with pytest.raises(ValueError):
+            archive.retire_expired_result(first[:12],'expired before download')
+        assert json.loads(archive.STATE.read_text())['jobs']==entries
+    write({first:dict(base)})
+    with pytest.raises(ValueError):
+        archive.retire_expired_result(first[:12],'  ')
+    result=archive.retire_expired_result(first[:12],'expired before download')
+    state=json.loads(archive.STATE.read_text())
+    assert result['new_request_submitted'] is False and first not in state['jobs']
+    assert state['retired_requests'][0]['request_id']=='OLD_ID'
+    calls=[]
+    class Remote:
+        status='accepted'
+        def __init__(self): self.request_id='NEW_%d'%len(calls)
+    class Client:
+        def __init__(self,**kw): self.client=self
+        def retrieve(self,*args): calls.append('submit'); return Remote()
+        def get_remote(self,id): calls.append(('poll',id)); return Remote()
+    monkeypatch.setitem(sys.modules,'cdsapi',SimpleNamespace(Client=Client))
+    old=logging.root.manager.disable
+    try:
+        # still paused: the retired job is not resubmitted
+        archive.pause_new_requests()
+        assert archive.step()['counts']=={} and calls==[]
+        # authorised for two at a time: both frozen jobs go out, once each
+        assert archive.authorize_new_requests('author approved full plan',2)['max_active']==2
+        archive.step(); archive.step()
+    finally: logging.disable(old)
+    assert calls.count('submit')==2
+    state=json.loads(archive.STATE.read_text())
+    assert state['retired_requests'][0]['request_id']=='OLD_ID'
+    assert {e['status'] for e in state['jobs'].values()}=={'accepted'}
+    with pytest.raises(ValueError):
+        archive.authorize_new_requests('note',3)

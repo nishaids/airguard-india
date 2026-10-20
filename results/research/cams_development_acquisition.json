@@ -2640,7 +2640,7 @@
       ]
     },
     "82b88b23bc42bbd17d1e9832f967a9814155527c61920655874a8b7069cbb31a": {
-      "status": "running",
+      "status": "accepted",
       "request": {
         "variable": [
           "particulate_matter_2.5um",
@@ -2729,23 +2729,110 @@
       },
       "request_sha256": "82b88b23bc42bbd17d1e9832f967a9814155527c61920655874a8b7069cbb31a",
       "dataset": "cams-global-atmospheric-composition-forecasts",
-      "started_at_utc": "2026-10-13T19:44:21.163421+00:00",
-      "request_id": "0ffdede7-1a5c-4ea7-a58e-2eafaf510a76",
-      "submitted_at_utc": "2026-10-13T19:44:54.415976+00:00"
+      "started_at_utc": "2026-10-20T07:19:49.742004+00:00",
+      "request_id": "d07238c3-02a0-4949-943a-77cb8c92aced",
+      "submitted_at_utc": "2026-10-20T07:20:14.137344+00:00"
+    },
+    "36a96e374db402baf20c15124f2f22c96621e1fdbcc8e671fd26d00753869527": {
+      "status": "accepted",
+      "request": {
+        "variable": [
+          "ozone",
+          "nitrogen_dioxide",
+          "sulphur_dioxide",
+          "carbon_monoxide",
+          "temperature",
+          "specific_humidity"
+        ],
+        "date": [
+          "2025-06-01",
+          "2025-06-02",
+          "2025-06-03",
+          "2025-06-04",
+          "2025-06-05",
+          "2025-06-06",
+          "2025-06-07",
+          "2025-06-08",
+          "2025-06-09",
+          "2025-06-10",
+          "2025-06-11",
+          "2025-06-12",
+          "2025-06-13",
+          "2025-06-14",
+          "2025-06-15",
+          "2025-06-16",
+          "2025-06-17",
+          "2025-06-18",
+          "2025-06-19",
+          "2025-06-20",
+          "2025-06-21",
+          "2025-06-22",
+          "2025-06-23",
+          "2025-06-24",
+          "2025-06-25",
+          "2025-06-26",
+          "2025-06-27",
+          "2025-06-28",
+          "2025-06-29",
+          "2025-06-30"
+        ],
+        "time": [
+          "00:00"
+        ],
+        "leadtime_hour": [
+          "9",
+          "12",
+          "15",
+          "18",
+          "21",
+          "24",
+          "27",
+          "30",
+          "33",
+          "36",
+          "39",
+          "42"
+        ],
+        "type": [
+          "forecast"
+        ],
+        "data_format": "grib",
+        "area": [
+          30.8,
+          70.8,
+          8.4,
+          94.0
+        ],
+        "model_level": [
+          "137"
+        ]
+      },
+      "request_sha256": "36a96e374db402baf20c15124f2f22c96621e1fdbcc8e671fd26d00753869527",
+      "dataset": "cams-global-atmospheric-composition-forecasts",
+      "started_at_utc": "2026-10-20T07:20:14.856842+00:00",
+      "request_id": "dc0ac7fb-bd05-4d3a-a2da-7aa53ac6696b",
+      "submitted_at_utc": "2026-10-20T07:20:40.045584+00:00"
     }
   },
   "final_test_accessed": false,
-  "checked_at_utc": "2026-10-13T19:54:12.976883+00:00",
+  "checked_at_utc": "2026-10-20T07:20:42.094561+00:00",
   "counts": {
     "VERIFIED_GRIB": 8,
-    "running": 1
+    "accepted": 2
   },
   "complete": false,
   "submission_control": {
-    "new_requests_authorized": false,
-    "recorded_at_utc": "2026-10-13T19:53:26.914390+00:00",
-    "reason": "Author requested existing-request reconciliation only; no new ADS submissions.",
-    "submission_worker_stopped": true
+    "new_requests_authorized": true,
+    "max_active": 2,
+    "recorded_at_utc": "2026-10-20T07:19:40.212936+00:00",
+    "reason": "Author approved on 2026-10-20 (chat): submit the remaining 28 jobs of the frozen plan, one or two at a time, no duplicates, download each as soon as it finishes",
+    "scope": "remaining jobs of the frozen plan only; no duplicate of a live or verified job",
+    "previous_control": {
+      "new_requests_authorized": false,
+      "recorded_at_utc": "2026-10-13T19:53:26.914390+00:00",
+      "reason": "Author requested existing-request reconciliation only; no new ADS submissions.",
+      "submission_worker_stopped": true
+    }
   },
   "reconciliation": {
     "request_ids": [
@@ -2762,5 +2849,20 @@
     "checked_at_utc": "2026-10-13T19:54:12.976883+00:00",
     "report": "results/research/cams_archive_status.json",
     "new_requests_submitted": 0
-  }
+  },
+  "retired_requests": [
+    {
+      "job_id": "82b88b23bc42bbd17d1e9832f967a9814155527c61920655874a8b7069cbb31a",
+      "request_id": "0ffdede7-1a5c-4ea7-a58e-2eafaf510a76",
+      "submitted_at_utc": "2026-10-13T19:44:54.415976+00:00",
+      "error": {
+        "category": "CLIENT_OR_SERVICE_ERROR",
+        "http_status": 404,
+        "terms_mentioned": false
+      },
+      "retired_at_utc": "2026-10-20T07:19:39.211673+00:00",
+      "review_note": "June 2025 surface result expired on the ADS server before download (HTTP 404 on 2026-10-20 poll); original ID kept; author approved resubmitting the full frozen plan on 2026-10-20",
+      "new_request_submitted": false
+    }
+  ]
 }

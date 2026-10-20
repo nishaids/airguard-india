@@ -22,6 +22,6 @@ The raw model is too high on ordinary days yet still misses over half of the Poo
 
 ## What follows, and what does not
 
-- The live product shows a raw CAMS-based AQI. Since 20 October 2026 the page states these figures and warns when ozone leads the estimate. Nothing is corrected, because an uncorrected correction would be an unvalidated model.
+- The live product shows a raw CAMS-based AQI. Since 20 October 2026 the page states these figures and warns when ozone leads the estimate. Nothing is corrected: a correction would be an unvalidated model.
 - This is the strongest motivation yet for station calibration, and a reason to expect it to help. It is **not** evidence that calibration works: that needs the primary experiment on locked folds.
 - One season only (no winter, few Poor-or-worse days). Persistence assumes a healthy feed with 3-hour latency.

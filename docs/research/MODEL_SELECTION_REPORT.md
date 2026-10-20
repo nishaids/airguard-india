@@ -1,8 +1,8 @@
 # Development model selection: NOT READY
 
-Checkpoint: 2026-10-13T20:05:39.026617+00:00. Research branch; code checkpoint `106c33eafac531a04dae99f19ec0005ae808ff6a`. Final test remains sealed.
+Checkpoint: 20 October 2026 (IST), branch `research/station-calibration`. Supersedes the 13 October text, preserved in git history. Final test remains sealed.
 
-No primary model is selected. The current 103-date operational join has no protocol-eligible complete rolling fold. The sealed protocol requires training-only tuning, identical baseline pairs and mean rolling-fold MAE selection with declared Ridge/residual ties; retain raw CAMS if no learned candidate improves that criterion. A stronger persistence result must still be reported honestly.
+No primary model is selected. The current 103-date operational join has no protocol-eligible complete rolling fold; the first that can qualify is fold_05, which needs CAMS through 2025-11-16 (10 more verified files; see CAMS_STATION_MATCHING_REPORT.md). The join was rebuilt on 2026-10-20 with identical hashes. The sealed protocol requires training-only tuning, identical baseline pairs and mean rolling-fold MAE selection with declared Ridge/residual ties; retain raw CAMS if no learned candidate improves that criterion. A stronger persistence result must still be reported honestly.
 
 Direct/residual Ridge, LightGBM and XGBoost, spatial holdouts, fixed-learner ablation, uncertainty, advisory and paired-statistics infrastructure are implemented and tested on synthetic fixtures. Their real primary experiments remain blocked by archive coverage. The refreshed preflight records `fitting_performed=false`.
 

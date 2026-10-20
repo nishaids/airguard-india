@@ -1,43 +1,56 @@
 # CAMS operational archive status
 
-Checkpoint: 2026-10-13T20:05:39.026617+00:00. Research branch; code checkpoint `106c33eafac531a04dae99f19ec0005ae808ff6a`. Final test remains sealed.
+Checkpoint: 20 October 2026 (IST). Supersedes the 13 October checkpoint, which is preserved in git history. Final test sealed.
 
-Current manifest: **8/36 verified**, statuses `{'VERIFIED_GRIB': 8, 'running': 1}`. The submission worker is stopped and new requests are persistently paused. Original request IDs are retained; no new or replacement request was submitted by this reconciliation. Frozen plan SHA-256: `952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a`.
+**Current manifest: 10 of 36 planned files verified, 2 running, 24 not yet submitted.** Frozen plan SHA-256 `952325f75dfc11e773dda90cbfe4ec4e883cda045a30d03c17578980ababeb6a` (unchanged): 507 00 UTC operational runs, 2025-02-17 to 2026-07-08, surface plus lowest model level, area 30.8 N / 70.8 E / 8.4 N / 94.0 E, 0.4-degree grid. Reanalysis and missing-month substitution are prohibited.
 
-The readiness audit independently rehashed and decoded each verified GRIB. Forecast type, reference time, leads, valid times, fields, mass units, hybrid coefficients and the 0.4-degree grid are checked. Only paired surface/model-level months enter station extraction. Reanalysis and missing-month substitution are prohibited.
+## What changed today
 
-Current join: 18,540 retained station-days, 180 stations, 100 cities, 103 dates, 11,634 exact targets and 7 censored Severe targets; 6,899 rejected targets remain visible. Availability violations: 0.
+- The only request pending since 13 October (`0ffdede7`, June 2025 surface) returned **HTTP 404** when re-polled: the ADS server had deleted the result before anyone downloaded it. It was retired through a new reviewed path that keeps its ID on record (`retired_requests`); no other failure kind can be retired that way.
+- The author **re-authorised submissions** of the remaining frozen jobs on 2026-10-20, one or two at a time (`submission_control.max_active = 2`). The worker polls every minute and downloads each result at once, so a finished result can no longer sit until it expires.
+- June and July 2025 were submitted; both surface files are verified, both model-level files are running. Model-level files are slow: one earlier took 28.5 hours.
 
-Availability guards pass under the disclosed nominal 00 UTC dissemination and observation-feed latency assumptions. Historical per-run publication times are not empirically verified.
+## Request table
 
-| Nine reported ADS requests | Count |
+| Month | Field group | Request ID | Status | Bytes | SHA-256 (prefix) |
+| --- | --- | --- | --- | --- | --- |
+| 2025-02 | surface | `30cb6db9` | VERIFIED_GRIB | 10,454,784 | 353a103e97ec |
+| 2025-02 | model level | `a0e3264d` | VERIFIED_GRIB | 7,805,791 | c8fbc18b64b4 |
+| 2025-03 | surface | `679e52de` | VERIFIED_GRIB | 27,008,192 | cddfa21527dd |
+| 2025-03 | model level | `2e4f2f0c` | VERIFIED_GRIB | 20,194,737 | b1d310ab7a3c |
+| 2025-04 | surface | `d0f52b0c` | VERIFIED_GRIB | 26,136,960 | 5b19907596dd |
+| 2025-04 | model level | `3ba0572d` | VERIFIED_GRIB | 19,511,974 | e703d43b301d |
+| 2025-05 | surface | `1d4a865b` | VERIFIED_GRIB | 27,008,192 | 025949192a64 |
+| 2025-05 | model level | `819b3723` | VERIFIED_GRIB | 20,106,460 | 7783be665634 |
+| 2025-06 | surface | `d07238c3` | VERIFIED_GRIB | 26,136,960 | e3c9bd339c0f |
+| 2025-06 | model level | `dc0ac7fb` | running | — | — |
+| 2025-07 | surface | `c7bc38cb` | VERIFIED_GRIB | 27,008,192 | d5879fc1379e |
+| 2025-07 | model level | `97ecdff2` | running | — | — |
+| 2025-06 | surface (retired) | `0ffdede7` | HTTP 404, provider-deleted | — | — |
+| 2025-02-18 | probe (not a plan job) | `33a7789e` | VERIFIED (134-byte GRIB1, PM2.5, 3×3 cells) | 134 | see `cams_archive_status.json` |
+
+Every verified file is re-hashed and decoded before use: forecast type, reference time, leads, valid times, fields, units, hybrid coefficients and grid are checked. Only months whose two halves are both verified enter station extraction.
+
+## Counts the brief asks for
+
+| | Count |
 | --- | --- |
-| Server successful | 9/9 |
-| Downloaded locally | 9/9 |
-| Content-valid | 9/9 |
-| Checksum-verified | 9/9 |
-| Protocol-accepted primary archive chunks | 8/9 |
+| Expected chunks | 36 |
+| Verified | 10 |
+| Running | 2 |
+| Not yet submitted | 24 |
+| Failed (unresolved) | 0 |
+| Retired (provider-deleted, ID kept) | 1 |
+| Duplicate requests | 0 |
+| Paired months usable for the join | 4 (Feb-May 2025; June and July await their model-level halves) |
+| Eligible development dates in the join | 103 (2025-02-19 to 2025-06-01) |
 
-The remaining valid artifact is the accepted original probe, excluded from the 36 primary chunks. Total known request IDs: 10; nine reported successes plus the additional pre-existing request below.
+**External blocker:** ADS queue time. The first protocol-eligible fold (fold_05) needs CAMS through 2025-11-16, i.e. 10 more verified files (`CAMS_STATION_MATCHING_REPORT.md`).
 
-| Request ID | Scope | Bytes | Initialization dates | Content |
-| --- | --- | --- | --- | --- |
-| 819b3723-5f98-41f4-a190-fe2bd386c851 | development_chunk | 20106460 | 2025-05-01 to 2025-05-31 | VALID |
-| 1d4a865b-e61b-4213-9e5c-ebc373a915f6 | development_chunk | 27008192 | 2025-05-01 to 2025-05-31 | VALID |
-| 3ba0572d-52ca-45c9-bb7d-c5599c308499 | development_chunk | 19511974 | 2025-04-01 to 2025-04-30 | VALID |
-| d0f52b0c-4597-477c-820d-894b14c369f4 | development_chunk | 26136960 | 2025-04-01 to 2025-04-30 | VALID |
-| 2e4f2f0c-d537-435f-8eb5-17f81c8c0532 | development_chunk | 20194737 | 2025-03-01 to 2025-03-31 | VALID |
-| 679e52de-7e10-4653-b606-36b0543ab515 | development_chunk | 27008192 | 2025-03-01 to 2025-03-31 | VALID |
-| a0e3264d-c34c-46bb-a111-bab4bacb7af8 | development_chunk | 7805791 | 2025-02-17 to 2025-02-28 | VALID |
-| 30cb6db9-0e4f-4da5-94c9-fb53a702afc8 | development_chunk | 10454784 | 2025-02-17 to 2025-02-28 | VALID |
-| 33a7789e-bdec-47b4-9f9e-9d92ed41c976 | probe | 134 | 2025-02-18 | VALID |
+**To continue acquisition** (resumable, never duplicates, never submits beyond the frozen plan):
 
-Additional pre-existing request(s): [{"request_id": "0ffdede7-1a5c-4ea7-a58e-2eafaf510a76", "job_sha256": "82b88b23bc42bbd17d1e9832f967a9814155527c61920655874a8b7069cbb31a", "status": "running", "submitted_at_utc": "2026-10-13T19:44:54.415976+00:00", "reference_date_range": ["2025-06-01", "2025-06-30"], "reason": "Pre-existing request outside the nine reported successes; preserved, not polled or downloaded by this reconciliation."}]. These were not polled or downloaded by this reconciliation; status is last recorded.
+```
+.venv-live\Scripts\python.exe -m src.research.calibration.cams_acquisition --worker-hours 24
+```
 
-Invalid/unverified artifacts: [].
-
-The 134-byte probe is a complete GRIB edition 1 message: `GRIB` header, length 134, `7777` terminator, ECMWF centre `ecmf`, CAMS class `mc`, operational stream `oper`, forecast type `fc`, surface PM2.5 (`paramId=210073`, kg m**-3). It contains nine finite nonmissing values on a 3 by 3, 0.4-degree grid covering 29.2–28.4 N and 76.8–77.6 E. Initialization: 2025-02-18 00:00 UTC; lead: 24 h; valid: 2025-02-19 00:00 UTC. Packing: grid_simple, 24 bits/value. It contains binary forecast data, no HTML/XML/error response.
-
-Exact decoded values and all 134 bytes in hexadecimal, per-request checksums, server timestamps, parameter units and valid-time ranges are recorded in `results/research/cams_archive_status.json`.
-
-Evidence: `results/research/final_test_readiness.json`, `cams_station_join_manifest.json`, and the existing acquisition/alignment manifests. Only explicit existing IDs may be re-polled; new submissions remain paused until the author changes this instruction.
+Then, after new pairs verify: `python -m src.research.calibration.cams_baseline`, `python -m src.research.calibration.primary_dataset`, `python -m src.research.calibration.primary_experiments` (preflight) and `python -m scripts.build_cams_matching_report`.

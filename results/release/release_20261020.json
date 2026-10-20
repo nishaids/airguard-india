@@ -39,5 +39,14 @@
   "github_push": {
     "branch": "research/station-calibration",
     "remote_head": "6f4da73833661b9fad8b9f71584c8a0292fd6157"
+  },
+  "second_release": {
+    "deployment_id": "dpl_5r2cg4ZKdAtgRMHo1TpoXh2653L9",
+    "candidate_url": "https://webapp-b6eci74uv-nishanth-s-projects-e335f110.vercel.app",
+    "deployed_git_sha": "7b882fa4b157ab5aa31085652c24999591fef005",
+    "staged_checks_passed": 31,
+    "public_checks_passed": 37,
+    "change": "page states the raw CAMS accuracy from the development diagnostic and warns when ozone leads the estimate",
+    "browser_check": "trust note and ozone warning visible for Avadi on the live domain"
   }
 }

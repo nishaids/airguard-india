@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T08:10:31.218860+00:00",
+  "generated_at": "2026-10-20T08:27:02.807687+00:00",
   "url": "https://webapp-phi-taupe.vercel.app",
   "environment": "PUBLIC_PRODUCTION",
   "checks": [
@@ -276,7 +276,7 @@
     },
     "scheduler": {
       "ok": true,
-      "generated_at": "2026-10-20T08:08:03.713233+00:00",
+      "generated_at": "2026-10-20T08:25:13.794328+00:00",
       "protocol_version": "airguard-dayahead-20ist-v1",
       "issuance": {
         "state": "ISSUED",
@@ -316,6 +316,14 @@
         }
       ],
       "heartbeats": [
+        {
+          "provider": "scheduler",
+          "operation": "refresh",
+          "status": "SUCCESS",
+          "created_at": "2026-10-20 08:17:42.032513+00:00",
+          "record_count": 2,
+          "error_class": null
+        },
         {
           "provider": "scheduler",
           "operation": "refresh",
@@ -403,14 +411,6 @@
           "created_at": "2026-10-19 22:18:40.083382+00:00",
           "record_count": 2,
           "error_class": null
-        },
-        {
-          "provider": "scheduler",
-          "operation": "refresh",
-          "status": "SUCCESS",
-          "created_at": "2026-10-19 21:17:56.600545+00:00",
-          "record_count": 2,
-          "error_class": null
         }
       ],
       "notice": "Dispatch, retrieval, fixed-time issuance and measured-outcome verification are different events. No forecast is backdated.",
@@ -447,7 +447,7 @@
         "freshness": "FRESH",
         "qualifier": "EXACT",
         "timestamp": "2026-10-20T06:30:00+00:00",
-        "fetched_at": "2026-10-20T07:17:18.753079+00:00",
+        "fetched_at": "2026-10-20T08:23:25.115931+00:00",
         "pollutants": {
           "CO": {
             "unit": "mg/m\u00b3",
@@ -616,10 +616,10 @@
         "peak_aqi": 71,
         "provider": "open_meteo",
         "freshness": "FRESH",
-        "issued_at": "2026-10-20T07:17:18.753079+00:00",
+        "issued_at": "2026-10-20T08:23:25.115931+00:00",
         "peak_hour": "2026-10-21T09:30:00+00:00",
         "qualifier": "EXACT",
-        "fetched_at": "2026-10-20T07:17:18.753079+00:00",
+        "fetched_at": "2026-10-20T08:23:25.115931+00:00",
         "pollutants": {
           "CO": {
             "unit": "mg/m\u00b3",
@@ -752,7 +752,7 @@
         "corrected_aqi": null,
         "forecast_mode": "CAMS_BASED_NATIONWIDE",
         "model_version": null,
-        "forecast_run_id": 1333,
+        "forecast_run_id": 1355,
         "cams_baseline_aqi": 71,
         "correction_notice": "AirGuard station correction is not validated for this location.",
         "correction_status": "NOT_VALIDATED",
@@ -782,7 +782,7 @@
           "methodology_version": "hourly-relative-practical-window-v2",
           "boundary_layer_caveat": "Boundary-layer mixing and street-level emissions can change local exposure; modelled windows are approximate."
         },
-        "raw_forecast_reference": "30c4588cdde94583c3e669305625346009586ab7aec151932b7ac020c80b3a81",
+        "raw_forecast_reference": "2558915c1a15453cb35be4dd07ce749b3a8326d650b3776f30852e4d089c20c3",
         "highest_exposure_window": {
           "end": "2026-10-21T09:30:00+00:00",
           "start": "2026-10-21T07:30:00+00:00",

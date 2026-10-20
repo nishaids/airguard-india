@@ -1,0 +1,284 @@
+{
+  "generated_by": "scripts/build_data_source_register.py",
+  "generated_at_utc": "2026-10-20T07:31:09Z",
+  "kinds": [
+    "OBSERVED",
+    "HISTORICAL_REANALYSIS",
+    "ARCHIVED_OPERATIONAL_FORECAST",
+    "LIVE_FORECAST",
+    "MODELLED_OUTPUT"
+  ],
+  "sources": [
+    {
+      "id": "A_B_station_observations",
+      "kind": "OBSERVED",
+      "provider": "OpenAQ v3, upstream provider CPCB (Central Pollution Control Board monitoring network)",
+      "official_dataset_name": "OpenAQ sensor hourly aggregates for CPCB-network monitors",
+      "url": "https://openaq.org",
+      "api_endpoint": "https://api.openaq.org/v3/sensors/{id}/hours",
+      "time_coverage": [
+        "2025-02-19",
+        "2026-10-07"
+      ],
+      "geographic_coverage": "100 Indian cities",
+      "station_count": 179,
+      "selected_stations": 181,
+      "pollutants": [
+        "PM2.5",
+        "PM10",
+        "O3"
+      ],
+      "units": "ug/m3 (gas sensors reporting ppb are not converted to mass)",
+      "sampling_frequency": "hourly aggregates; daily station targets derived by AirGuard",
+      "download_date": "2026-10-12T02:37:13.674917+00:00",
+      "license": "OpenAQ terms; per-station upstream licence metadata preserved (docs/LICENSES.md)",
+      "update_frequency": "as delivered by OpenAQ; its CPCB copy stopped advancing on 2026-10-07 14:30 UTC (observed 2026-10-09)",
+      "missing_data": {
+        "raw_hourly_rows": 6331429,
+        "hourly_exclusions": {
+          "under_75_percent_coverage": 851125,
+          "provider_flagged": 15177,
+          "zero_reading": 90090,
+          "stuck_sensor_run": 36746,
+          "invalid_value_or_unit": 78
+        },
+        "station_days": 107280,
+        "rejected_station_day_targets": 42481,
+        "rejected_target_share": 0.396
+      },
+      "quality_control": "75% hourly coverage, provider flags, zero readings, stuck-sensor runs, invalid values; Severe days kept as lower-bound censored targets",
+      "issue_time_availability": "OpenAQ healthy-feed latency <= 3 hours; historical publication time is NOT observed",
+      "is_official_cpcb_data": false,
+      "note": "OpenAQ CPCB provider; AirGuard CPCB-style targets, not official bulletin AQI",
+      "evidence": [
+        "results/research/measured_dataset.json",
+        "results/research/data_manifests/openaq_hours_manifest.json"
+      ]
+    },
+    {
+      "id": "A_direct_cpcb_feed",
+      "kind": "OBSERVED",
+      "provider": "CPCB via data.gov.in",
+      "official_dataset_name": "Real time Air Quality Index from various locations",
+      "url": "https://www.data.gov.in",
+      "api_endpoint": "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69",
+      "time_coverage": null,
+      "station_count": null,
+      "pollutants": "per-station min/max/average; no unit published",
+      "license": "Government Open Data Licence - India",
+      "status": "UNAVAILABLE: no successful response recorded",
+      "live_ingestion_attempts": {
+        "cpcb_successful_ingestions": 0,
+        "cpcb_failed_ingestions": 187
+      },
+      "is_official_cpcb_data": true,
+      "used_in_research": false,
+      "evidence": [
+        "docs/airguard2/live_data_implementation.md",
+        "database: airguard.ingestion_runs"
+      ]
+    },
+    {
+      "id": "C_weather_archive",
+      "kind": "ARCHIVED_OPERATIONAL_FORECAST",
+      "provider": "Open-Meteo (NOAA GFS, model gfs_seamless)",
+      "official_dataset_name": "Open-Meteo Previous Runs API",
+      "url": "https://open-meteo.com",
+      "api_endpoint": "https://previous-runs-api.open-meteo.com/v1/forecast",
+      "time_coverage": [
+        "2025-02-01",
+        "2026-10-08"
+      ],
+      "geographic_coverage": "151 station-matched points",
+      "variables": [
+        "temperature_2m",
+        "relative_humidity_2m",
+        "wind_speed_10m",
+        "wind_direction_10m",
+        "precipitation",
+        "surface_pressure",
+        "shortwave_radiation",
+        "cloud_cover"
+      ],
+      "lead": "previous_day2",
+      "issue_time_valid": true,
+      "issue_time_availability": "Each value was forecast by a run initialised at least 48 hours before its valid hour. Every hour of a target day therefore comes from a run initialised before the 20:00 IST issue time of the previous day. This is older than the forecast an operator would have had, so it handicaps the weather features rather than flattering them.",
+      "not_available": "boundary_layer_height is not archived at any previous-run lead (verified: all null).",
+      "download_date": "2026-10-11T19:50:21.983201+00:00",
+      "license": "Open-Meteo CC BY 4.0; free API non-commercial",
+      "evidence": [
+        "results/research/data_manifests/weather_archive_manifest.json"
+      ]
+    },
+    {
+      "id": "D_cams_operational_archive",
+      "kind": "ARCHIVED_OPERATIONAL_FORECAST",
+      "provider": "Copernicus Atmosphere Monitoring Service (ECMWF), via the Atmosphere Data Store",
+      "official_dataset_name": "CAMS global atmospheric composition forecasts",
+      "url": "https://ads.atmosphere.copernicus.eu",
+      "api_endpoint": "ADS API (cdsapi), dataset cams-global-atmospheric-composition-forecasts",
+      "plan_run_range": [
+        "2025-02-17",
+        "2026-07-08"
+      ],
+      "planned_jobs": 36,
+      "verified_jobs": 9,
+      "paired_initialisation_dates": [
+        "2025-02-17",
+        "2025-05-31"
+      ],
+      "paired_initialisation_date_count": 104,
+      "area": [
+        30.8,
+        70.8,
+        8.4,
+        94.0
+      ],
+      "product": "00 UTC operational forecast, surface and lowest model level, 0.4-degree grid",
+      "issue_time_valid": true,
+      "join": {
+        "rows": 18540,
+        "stations": 180,
+        "cities": 100,
+        "dates": 103,
+        "valid_targets": 11641,
+        "censored_severe_retained": 7
+      },
+      "license": "Copernicus licence (free; attribution 'Generated using Copernicus Atmosphere Monitoring Service information')",
+      "acquisition_state": {
+        "VERIFIED_GRIB": 9,
+        "running": 2
+      },
+      "reanalysis_substitution": "prohibited",
+      "evidence": [
+        "results/research/cams_development_acquisition.json",
+        "results/research/cams_development_alignment.json"
+      ]
+    },
+    {
+      "id": "D_cams_short_lead_proxy",
+      "kind": "MODELLED_OUTPUT",
+      "provider": "CAMS global via Open-Meteo",
+      "official_dataset_name": "Open-Meteo Air Quality API, past hours",
+      "api_endpoint": "https://air-quality-api.open-meteo.com/v1/air-quality",
+      "time_coverage": [
+        "2025-02-01",
+        "2026-10-08"
+      ],
+      "variables": [
+        "pm2_5",
+        "pm10",
+        "nitrogen_dioxide",
+        "sulphur_dioxide",
+        "carbon_monoxide",
+        "ozone"
+      ],
+      "issue_time_valid": false,
+      "issue_time_availability": "The provider archives fields for past hours without the run that produced them and does not serve earlier runs for air quality. Values for a target day come from runs initialised at or after the 20:00 IST issue time. This is a short-lead proxy for the forecast that would have been available, and it must never be described as that forecast.",
+      "use": "exploratory only; never a substitute for archived operational forecasts",
+      "license": "Open-Meteo CC BY 4.0 + Copernicus attribution; free API non-commercial",
+      "evidence": [
+        "results/research/data_manifests/cams_archive_manifest.json"
+      ]
+    },
+    {
+      "id": "E_station_metadata",
+      "kind": "OBSERVED",
+      "provider": "OpenAQ locations, with versioned AirGuard corrections",
+      "api_endpoint": "https://api.openaq.org/v3/locations",
+      "catalogue_universe": {
+        "eligible_stations": 481,
+        "eligible_cities": 255,
+        "stations_per_city": {
+          "1": 194,
+          "2": 18,
+          "3": 14,
+          "4": 11,
+          "5": 5,
+          "6": 5,
+          "7": 1,
+          "8": 1,
+          "9": 2,
+          "11": 1,
+          "13": 1,
+          "24": 1,
+          "29": 1
+        }
+      },
+      "corrections_file_present": true,
+      "note": "Coordinates and city labels as delivered, corrected only through versioned correction files; current-catalogue survivorship is a disclosed limitation",
+      "evidence": [
+        "results/research/data_manifests/station_selection.json",
+        "results/research/data_manifests/station_metadata_corrections.v2.json"
+      ]
+    },
+    {
+      "id": "F_legacy_aqi",
+      "kind": "OBSERVED",
+      "provider": "Kaggle export of CPCB data (2015-2020)",
+      "official_dataset_name": "Air Quality Data in India (2015 - 2020)",
+      "url": "https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india",
+      "download_date": "2026-09-28T17:29:24Z",
+      "license": "CC0: Public Domain",
+      "upstream": "Central Pollution Control Board (CPCB), Ministry of Environment, Forest and Climate Change, Government of India",
+      "use": "1.0 historical replay only; cannot establish today's conditions or forecast availability",
+      "evidence": [
+        "data/raw/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "G_live_inputs",
+      "kind": "LIVE_FORECAST",
+      "provider": "Open-Meteo (CAMS global air quality, GFS weather), OpenAQ, NASA FIRMS",
+      "api_endpoint": "air-quality-api.open-meteo.com/v1/air-quality; api.open-meteo.com/v1/forecast; api.openaq.org/v3; firms.modaps.eosdis.nasa.gov/api/area",
+      "label_on_site": "MODELLED unless a recent nearby station supplies MEASURED values",
+      "records": {
+        "provider_events": 5353,
+        "live_observation_rows": 5828,
+        "fire_detection_rows": 16277
+      },
+      "records_unavailable_reason": null,
+      "evidence": [
+        "docs/DATA_SOURCES.md",
+        "database: airguard.provider_events"
+      ]
+    },
+    {
+      "id": "H_prospective_records",
+      "kind": "LIVE_FORECAST",
+      "provider": "AirGuard (issued forecasts) and OpenAQ (later outcomes)",
+      "records": {
+        "nationwide_forecast_runs": 532,
+        "nationwide_forecast_verifications": 77,
+        "nationwide_verified_target_days": 3,
+        "research_forecast_runs": 108,
+        "research_issue_days": 9,
+        "research_forecast_verifications": 10
+      },
+      "records_unavailable_reason": null,
+      "rule": "issued forecasts are append-only; outcomes are paired later and never alter the issued value",
+      "evidence": [
+        "database: airguard.forecast_runs / research_forecast_runs and their verification tables"
+      ]
+    },
+    {
+      "id": "satellite_fire",
+      "kind": "OBSERVED",
+      "provider": "NASA FIRMS",
+      "official_dataset_name": "VIIRS_NOAA21_NRT",
+      "api_endpoint": "https://firms.modaps.eosdis.nasa.gov/api/area/csv",
+      "time_coverage": [
+        "2025-02-01",
+        "2026-10-08"
+      ],
+      "area": "67,5,99,38",
+      "issue_time_availability": "Near-real-time detections carry acquisition date and time. The issue-time cutoff, with a three-hour processing allowance, is applied to each detection when features are built.",
+      "research_use": "WITHHELD: acquisition time alone does not prove publication time",
+      "license": "NASA open data policy; FIRMS attribution",
+      "note": "thermal anomalies, not air-quality observations",
+      "evidence": [
+        "results/research/data_manifests/firms_archive_manifest.json"
+      ]
+    }
+  ]
+}

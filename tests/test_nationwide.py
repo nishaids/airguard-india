@@ -172,6 +172,29 @@ class FakeProviders:
     def measured(self,*args):raise HttpError("openaq down")
 
 
+def test_a_summary_built_during_another_refresh_is_kept_only_briefly():
+    """Seen live on 2026-10-20: two overlapping refreshes, and the losing one cached 2-hour-old CAMS data for 10 minutes."""
+    class BusyStore(FakeStore):
+        def claim(self,key,*args):return None if key.startswith("cams:") else "lease"
+    store=BusyStore()
+    old=FakeProviders().air()
+    old["fetched_at"]=(NOW-timedelta(hours=2)).isoformat()
+    s=service.Service(store,FakeProviders())
+    gx,gy=service.grid(13.11,80.11)
+    store.cache[f"cams:{service.METHOD}:{gx},{gy}"]={"payload":old,"fetched_at":NOW-timedelta(hours=2),"expires_at":NOW-timedelta(hours=1)}
+    with patch("src.nationwide.service.utcnow",return_value=NOW):
+        result=s.summary(13.11,80.11,"Busy place")
+    assert result["ok"] and result["provider_status"]["air"]["status"]=="STALE"
+    summary=store.cache[service.Service.summary_key(13.11,80.11,NOW)]
+    assert summary["expires_at"]-NOW<=timedelta(seconds=service.STALE_SUMMARY_SECONDS)
+    # with every source fresh the usual lifetime applies
+    fresh_store=FakeStore()
+    with patch("src.nationwide.service.utcnow",return_value=NOW):
+        service.Service(fresh_store,FakeProviders()).summary(13.11,80.11,"Quiet place")
+    fresh=fresh_store.cache[service.Service.summary_key(13.11,80.11,NOW)]
+    assert fresh["expires_at"]-NOW>timedelta(seconds=service.STALE_SUMMARY_SECONDS)
+
+
 def test_openaq_weather_outage_preserves_forecast():
     s=service.Service(FakeStore(),FakeProviders())
     with patch("src.nationwide.service.utcnow",return_value=NOW):
